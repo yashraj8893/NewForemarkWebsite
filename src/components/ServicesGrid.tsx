@@ -9,9 +9,9 @@ const ServiceCard = ({ title, desc, children, className }: { title: string, desc
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: "-100px" }}
     transition={{ duration: 0.8, ease: [0.21, 0.45, 0.32, 0.9] }}
-    className={cn("bg-white border border-portfolio-dark/15 shadow-[0_8px_30px_rgb(0,0,0,0.06)] rounded-[2rem] p-8 flex flex-col h-full group hover:shadow-2xl hover:border-portfolio-gold/50 transition-all duration-500 cursor-target", className)}
+    className={cn("bg-white border border-portfolio-dark/15 shadow-[0_8px_30px_rgb(0,0,0,0.06)] rounded-[1.5rem] p-6 lg:p-8 flex flex-col h-full group hover:shadow-2xl hover:border-portfolio-gold/50 transition-all duration-500 cursor-target", className)}
   >
-    <div className="flex-1 mb-10 overflow-hidden rounded-2xl bg-portfolio-dark/[0.02] border border-portfolio-dark/5 relative min-h-[300px] flex items-center justify-center">
+    <div className="flex-1 mb-8 overflow-hidden rounded-[1rem] bg-portfolio-dark/[0.02] border border-portfolio-dark/5 relative min-h-[240px] lg:min-h-[260px] flex items-center justify-center">
       {children}
     </div>
     <div className="mt-auto">
@@ -633,7 +633,7 @@ const ServicesGrid = () => {
         </motion.p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
         <ServiceCard 
           title="Website Development" 
           desc="Crafting responsive, stunning websites tailored perfectly to your business goals."
