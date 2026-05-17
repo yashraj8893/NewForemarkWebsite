@@ -219,13 +219,6 @@ const CuratedWork = () => (
           A curated collection of <br /> websites designed with care
         </h2>
       </div>
-      <Link 
-        to="/projects" 
-        className="hidden md:flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.15em] text-[#1a1a1a]/60 hover:text-[#1a1a1a] border border-[#1a1a1a]/10 hover:border-[#1a1a1a]/30 rounded-full px-6 py-3 transition-all duration-400 group cursor-target"
-      >
-        All Projects 
-        <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-      </Link>
     </div>
 
     {/* Editorial Project List */}
@@ -287,15 +280,7 @@ const CuratedWork = () => (
       ))}
     </div>
 
-    {/* Mobile "All Projects" link */}
-    <div className="flex md:hidden justify-center mt-16">
-      <Link 
-        to="/projects" 
-        className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.15em] text-[#1a1a1a]/60 border border-[#1a1a1a]/10 rounded-full px-8 py-4 cursor-target"
-      >
-        All Projects <ArrowUpRight size={14} />
-      </Link>
-    </div>
+
   </section>
 );
 

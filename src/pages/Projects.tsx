@@ -34,19 +34,10 @@ const ProjectsPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-5xl md:text-7xl font-extrabold tracking-tight text-[#1a1a1a] max-w-3xl leading-[1.05]"
+              className="text-5xl md:text-7xl font-bold tracking-tight text-[#1a1a1a] max-w-3xl leading-[1.05]"
             >
               Examples of our work
             </motion.h2>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <Link to="/projects" className="flex items-center gap-2 text-sm font-bold text-[#1a1a1a] hover:text-portfolio-gold transition-colors cursor-target whitespace-nowrap group">
-                ALL PROJECTS <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-              </Link>
-            </motion.div>
           </div>
           
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
@@ -122,7 +113,7 @@ const ProjectsPage = () => {
             <div className="relative z-20 p-8 md:p-12 w-full flex flex-col">
               <div className="flex flex-col max-w-xl pr-16">
                 <span className="text-[11px] uppercase tracking-widest text-white/70 font-bold mb-3 block">Client: Regius Care</span>
-                <h3 className="text-3xl md:text-5xl font-extrabold text-white mb-4 leading-[1.1] group-hover/card:text-portfolio-gold transition-colors duration-400">Revolutionizing Digital Healthcare</h3>
+                <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-[1.1] group-hover/card:text-portfolio-gold transition-colors duration-400">Revolutionizing Digital Healthcare</h3>
                 <p className="text-white/80 text-base md:text-lg leading-relaxed">A comprehensive health management system focused on patient care and streamlined clinical workflows.</p>
               </div>
             </div>
@@ -230,7 +221,7 @@ const ProjectsPage = () => {
             <div className="relative w-full md:w-1/2 p-10 md:p-16 flex flex-col justify-center order-1 md:order-2 bg-white pb-24 md:pb-24 pr-16 md:pr-20">
               <div className="flex flex-col h-full justify-center">
                 <span className="text-[11px] uppercase tracking-widest text-portfolio-muted font-bold mb-6 block">Client: DataFlow</span>
-                <h3 className="text-3xl md:text-4xl font-extrabold text-[#1a1a1a] mb-8 leading-tight group-hover/card:text-portfolio-gold transition-colors duration-400">SaaS Analytics Dashboard</h3>
+                <h3 className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-8 leading-tight group-hover/card:text-portfolio-gold transition-colors duration-400">SaaS Analytics Dashboard</h3>
                 <p className="text-gray-500 text-base md:text-lg leading-relaxed max-w-md">Powerful data visualization for enterprise-level marketing automation and lead tracking. Designed to handle millions of data points with zero latency.</p>
               </div>
             </div>
