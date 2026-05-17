@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import ProjectsPage from './pages/Projects';
 import CareersPage from './pages/Careers';
@@ -78,23 +78,22 @@ const Navbar = () => {
 };
 
 function App() {
+  const location = useLocation();
   return (
-    <BrowserRouter>
-      <div className="relative min-h-screen bg-portfolio-bg selection:bg-portfolio-gold/30 font-geist">
-        <TargetCursor spinDuration={2} hideDefaultCursor={true} parallaxOn={true} hoverDuration={0.5} />
-        <ScrollToHash />
-        <div className="grainy-overlay" />
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/careers" element={<CareersPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/sovereign-counsel" element={<SovereignCounselPage />} />
-        </Routes>
-        <Footer />
-      </div>
-    </BrowserRouter>
+    <div className="relative min-h-screen bg-portfolio-bg selection:bg-portfolio-gold/30 font-geist">
+      <TargetCursor key={location.pathname} spinDuration={2} hideDefaultCursor={true} parallaxOn={true} hoverDuration={0.5} />
+      <ScrollToHash />
+      <div className="grainy-overlay" />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/careers" element={<CareersPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/sovereign-counsel" element={<SovereignCounselPage />} />
+      </Routes>
+      <Footer />
+    </div>
   );
 }
 
