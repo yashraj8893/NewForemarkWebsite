@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "../../lib/utils";
-import React, { useEffect, useId, useRef, useState } from "react";
+import React, { useId } from "react";
 
 interface InteractiveGridPatternProps extends React.SVGProps<SVGSVGElement> {
   width?: number;
@@ -30,7 +30,6 @@ export function InteractiveGridPattern({
 }: InteractiveGridPatternProps) {
   const [horizontal, vertical] = squares;
   const id = useId();
-  const [hoveredSquare, setHoveredSquare] = useState<number | null>(null);
 
   return (
     <svg

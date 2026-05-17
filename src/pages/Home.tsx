@@ -7,13 +7,6 @@ import { Link } from 'react-router-dom';
 
 // --- Data ---
 
-const stats = [
-  { number: "15+", label: "Projects Delivered", text: "Successful delivery of web and mobile applications across various industries." },
-  { number: "100%", label: "Client Retention", text: "We build long-term partnerships through consistent quality and technical excellence." },
-  { number: "3x", label: "Avg. Client Growth", text: "Our systems are designed to scale and drive measurable business impact." },
-  { number: "5+", label: "Industries Served", text: "Expertise across different domains from startups to established businesses." }
-];
-
 const curatedProjects = [
   {
     title: "Noto Café",

@@ -68,7 +68,7 @@ const TargetCursor = ({
 
     let activeTarget: Element | null = null;
     let currentLeaveHandler: (() => void) | null = null;
-    let resumeTimeout: NodeJS.Timeout | null = null;
+    let resumeTimeout: ReturnType<typeof setTimeout> | null = null;
 
     const cleanupTarget = (target: Element) => {
       if (currentLeaveHandler) {

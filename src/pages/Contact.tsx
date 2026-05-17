@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { Mail, MessageSquare, Globe, Share2, Info } from 'lucide-react';
-import { InteractiveGridPattern } from "../components/magicui/interactive-grid-pattern";
 
 const ContactPage = () => {
   return (
