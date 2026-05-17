@@ -168,7 +168,7 @@ const ProjectsPage = () => {
             initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8, delay: 0.2 }}
             className="group/card relative flex flex-col justify-end col-span-1 md:col-span-6 lg:col-span-4 h-[500px] lg:h-[550px] rounded-3xl overflow-hidden shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-out cursor-target bg-[#1a1a1a]"
           >
-            <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=80&w=800" alt="Legal" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover/card:scale-105 opacity-80 group-hover/card:opacity-100" />
+            <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=800" alt="Legal" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover/card:scale-105 opacity-80 group-hover/card:opacity-100" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-[#1a1a1a]/60 to-transparent opacity-90 transition-opacity duration-400" />
             <IndustryTag text="Legal Tech" />
             <div className="relative z-20 p-8 w-full flex flex-col pt-16 pr-16">
