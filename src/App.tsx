@@ -81,7 +81,14 @@ function App() {
   const location = useLocation();
   return (
     <div className="relative min-h-screen bg-portfolio-bg selection:bg-portfolio-gold/30 font-geist">
-      <TargetCursor key={location.pathname} spinDuration={2} hideDefaultCursor={true} parallaxOn={true} hoverDuration={0.5} />
+      <TargetCursor 
+        key={location.pathname} 
+        targetSelector=".cursor-target, a, button, input, textarea"
+        spinDuration={2} 
+        hideDefaultCursor={true} 
+        parallaxOn={true} 
+        hoverDuration={0.5} 
+      />
       <ScrollToHash />
       <div className="grainy-overlay" />
       <Navbar />

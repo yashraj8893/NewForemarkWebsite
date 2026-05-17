@@ -58,7 +58,7 @@ const SovereignCounselPage = () => {
           <p className="text-lg text-white/60 mb-10 leading-relaxed">
             Sovereign Counsel is currently in active development. We're engineering a state-of-the-art platform that will redefine how law firms operate and manage their digital ecosystem.
           </p>
-          <button className="bg-white text-portfolio-dark font-bold px-8 py-4 rounded-full hover:bg-portfolio-gold hover:scale-105 transition-all shadow-xl shadow-white/5 uppercase tracking-widest text-sm">
+          <button className="bg-white text-portfolio-dark font-bold px-8 py-4 rounded-full hover:bg-portfolio-gold hover:scale-105 transition-all shadow-xl shadow-white/5 uppercase tracking-widest text-sm cursor-target">
             Join Waitlist
           </button>
         </div>

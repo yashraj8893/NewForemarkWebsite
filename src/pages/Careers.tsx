@@ -110,7 +110,7 @@ const CareersPage = () => {
             key={category}
             onClick={() => setActiveCategory(category)}
             className={cn(
-              "px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-300",
+              "px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-300 cursor-target",
               activeCategory === category 
                 ? "bg-portfolio-dark text-white" 
                 : "border border-portfolio-dark/10 text-portfolio-muted hover:bg-portfolio-dark/5"
@@ -133,7 +133,7 @@ const CareersPage = () => {
                     <button 
                       onClick={() => toggleJob(job.id)}
                       className={cn(
-                        "w-8 h-8 rounded-full border border-portfolio-dark/10 flex items-center justify-center hover:bg-portfolio-dark/5 transition-all duration-300",
+                        "w-8 h-8 rounded-full border border-portfolio-dark/10 flex items-center justify-center hover:bg-portfolio-dark/5 transition-all duration-300 cursor-target",
                         expandedJobId === job.id && "bg-portfolio-dark text-white border-portfolio-dark"
                       )}
                     >
@@ -156,7 +156,7 @@ const CareersPage = () => {
                 </div>
 
                 <div className="flex items-center">
-                  <button className="flex items-center gap-2 text-portfolio-dark font-bold text-lg group/apply whitespace-nowrap">
+                  <button className="flex items-center gap-2 text-portfolio-dark font-bold text-lg group/apply whitespace-nowrap cursor-target">
                     Apply <ArrowUpRight size={20} className="transition-transform group-hover/apply:translate-x-0.5 group-hover/apply:-translate-y-0.5" />
                   </button>
                 </div>

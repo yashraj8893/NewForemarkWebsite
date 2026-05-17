@@ -81,7 +81,7 @@ const ContactPage = () => {
                   key={i}
                   href="#"
                   whileHover={{ y: -5 }}
-                  className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white transition-all"
+                  className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white transition-all cursor-target"
                 >
                   <Icon size={18} />
                 </motion.a>
@@ -114,7 +114,7 @@ const ContactPage = () => {
                   <input 
                     type="text" 
                     placeholder="Your full name"
-                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-portfolio-gold transition-colors placeholder:text-white/20"
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-portfolio-gold transition-colors placeholder:text-white/20 cursor-target"
                   />
                 </div>
                 <div className="space-y-2">
@@ -122,7 +122,7 @@ const ContactPage = () => {
                   <input 
                     type="email" 
                     placeholder="Your email address"
-                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-portfolio-gold transition-colors placeholder:text-white/20"
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-portfolio-gold transition-colors placeholder:text-white/20 cursor-target"
                   />
                 </div>
                 <div className="space-y-2">
@@ -130,10 +130,10 @@ const ContactPage = () => {
                   <textarea 
                     rows={4}
                     placeholder="How can we help you?"
-                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-portfolio-gold transition-colors placeholder:text-white/20 resize-none"
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-portfolio-gold transition-colors placeholder:text-white/20 resize-none cursor-target"
                   />
                 </div>
-                <button className="w-full bg-portfolio-gold text-portfolio-dark font-bold py-5 rounded-2xl hover:scale-[1.02] transition-all shadow-lg shadow-portfolio-gold/10 uppercase tracking-widest text-sm mt-4">
+                <button className="w-full bg-portfolio-gold text-portfolio-dark font-bold py-5 rounded-2xl hover:scale-[1.02] transition-all shadow-lg shadow-portfolio-gold/10 uppercase tracking-widest text-sm mt-4 cursor-target">
                   Send Message
                 </button>
               </form>
