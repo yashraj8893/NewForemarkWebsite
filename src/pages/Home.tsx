@@ -121,7 +121,7 @@ const Hero = () => {
 const AboutSection = () => (
   <section id="about" className="py-32 pb-36">
     <div className="flex flex-col">
-      <span className="text-[10px] uppercase tracking-[0.2em] text-[#1a1a1a]/40 font-bold mb-8 block">ABOUT US</span>
+      <span className="text-xs md:text-sm uppercase tracking-[0.2em] text-[#1a1a1a]/40 font-bold mb-8 block">ABOUT US</span>
       
       {/* Unified Hero Card */}
       <motion.div 

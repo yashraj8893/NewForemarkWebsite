@@ -50,7 +50,7 @@ body {
   }
   
   .section-label {
-    @apply uppercase tracking-[0.2em] text-[10px] font-semibold text-portfolio-muted mb-4 block;
+    @apply uppercase tracking-[0.2em] text-xs md:text-sm font-semibold text-portfolio-muted mb-4 block;
   }
 }
 
