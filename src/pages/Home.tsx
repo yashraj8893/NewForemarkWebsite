@@ -1,6 +1,5 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef, useState } from 'react';
-import { ArrowUpRight, Plus, ChevronRight, Mail, MessageSquare, Briefcase, Calendar, CheckCircle2, Globe, Share2, Info } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowUpRight, Mail, MessageSquare } from 'lucide-react';
 import { InteractiveGridPattern } from "../components/magicui/interactive-grid-pattern";
 import ServicesGrid from '../components/ServicesGrid';
 import { cn } from "../lib/utils";
@@ -42,38 +41,6 @@ const curatedProjects = [
   }
 ];
 
-const services = [
-  {
-    title: "Website Design",
-    desc: "Craft a visual identity that speaks with clarity and confidence. From logos to brand guidelines, I help businesses tell their story through cohesive design",
-    tags: ["Visual Identity", "Logo Design", "Brand Guidelines", "Typography", "+more"]
-  },
-  {
-    title: "Framer Website",
-    desc: "I build high-performing websites in Framer that are responsive, animated, and easy for clients to edit—no code required. Perfect for portfolios, startups, and product launches",
-    tags: ["Landing Page", "Multipage Website", "Website Migration", "+more"]
-  },
-  {
-    title: "UI/UX Design",
-    desc: "From wireframes to high-fidelity mockups, I design intuitive user interfaces that solve problems and elevate experiences—always guided by real user needs",
-    tags: ["Web Design", "Mobile Design", "Prototyping", "Design System", "+more"]
-  }
-];
-
-const steps = [
-  { title: "Book a Call", desc: "Let’s chat about your project, goals, and how I can help bring your vision to life", icon: Calendar },
-  { title: "Hire Me on Contra", desc: "Send a request through Contra to officially kick off our collaboration", icon: Briefcase },
-  { title: "Develop", desc: "We’ll work closely—sharing updates, feedback, and files—all organized through Contra", icon: CheckCircle2 },
-  { title: "Deliver", desc: "Final designs will be delivered directly via Contra, polished and ready to use", icon: MessageSquare },
-  { title: "Support", desc: "Enjoy 1 month of free post-launch support for tweaks, questions, or guidance", icon: Plus }
-];
-
-const testimonials = [
-  { text: "We needed a quick turnaround, and Foremark delivered a Framer site that was not only fast but visually stunning. Highly recommend.", name: "Jenna Morales", role: "Design Lead at LaunchNest" },
-  { text: "Their attention to detail is unmatched. Our mobile app now feels intuitive and premium—our users noticed the difference right away.", name: "Theo Barnes", role: "Product Manager at Driftly" },
-  { text: "Working with Foremark felt like working with a true engineering partner. They brought clarity and elegance to our digital presence.", name: "Marcus Allen", role: "CEO at Wellnest" }
-];
-
 const carouselImages = [
   "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
   "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&q=80&w=800",
@@ -103,10 +70,10 @@ const Hero = () => {
         
         <motion.h1 
           initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.2 }}
-          className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-8"
+          className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8"
         >
-          We are software <br /> 
-          <span className="text-portfolio-muted text-blue-600">developer company.</span>
+          We are a software <br /> 
+          <span className="text-portfolio-muted">development company.</span>
         </motion.h1>
 
         <motion.p 
@@ -120,10 +87,10 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }}
           className="flex flex-col sm:flex-row gap-4"
         >
-          <Link to="/contact" className="btn-primary flex items-center gap-2 px-10 border border-transparent hover:border-portfolio-gold transition-colors">
+          <Link to="/contact" className="btn-primary flex items-center gap-2 px-10 border border-transparent hover:border-portfolio-gold transition-colors cursor-target">
             <MessageSquare size={18} /> Let's Talk
           </Link>
-          <a href="mailto:hello@foremark.in" className="btn-ghost flex items-center gap-2 px-10 text-white/80 hover:text-white transition-colors">
+          <a href="mailto:hello@foremark.in" className="btn-ghost flex items-center gap-2 px-10 cursor-target">
             <Mail size={18} /> Email Us
           </a>
         </motion.div>
@@ -159,37 +126,91 @@ const Hero = () => {
 };
 
 const AboutSection = () => (
-  <section id="about" className="py-32">
-    <div className="flex flex-col mb-12">
-      <span className="text-[10px] uppercase tracking-[0.2em] text-portfolio-muted font-bold mb-8">ABOUT US</span>
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-          className="lg:col-span-5 bg-portfolio-dark text-white p-12 rounded-[2rem] flex flex-col justify-center min-h-[500px]"
-        >
-          <div className="mb-8 w-16 h-16">
+  <section id="about" className="py-32 pb-36">
+    <div className="flex flex-col">
+      <span className="text-[10px] uppercase tracking-[0.2em] text-[#1a1a1a]/40 font-bold mb-8 block">ABOUT US</span>
+      
+      {/* Unified Hero Card */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+        className="w-full bg-[#1a1a1a] text-white px-12 py-16 md:px-16 md:py-20 lg:px-24 lg:py-28 rounded-[3rem] flex flex-col lg:flex-row justify-between items-center gap-12 shadow-2xl relative overflow-hidden mb-6 lg:mb-8"
+      >
+        <div className="flex flex-col">
+          <div className="mb-10 w-16 h-16 md:w-20 md:h-20">
             <img src="/Foremark_Logo_-removebg-preview.png" alt="Foremark Technologies" className="w-full h-full object-contain" />
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-8 tracking-tight">Foremark Technologies</h2>
-          <p className="text-xl md:text-2xl font-medium leading-relaxed text-white/80">
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.95]">
+            Foremark <br/>
+            <span className="text-[#f97316]">Technologies</span>
+          </h2>
+        </div>
+
+        <div className="lg:w-[45%] flex flex-col">
+          <p className="text-xl md:text-2xl font-medium leading-relaxed text-[#f5f5f5]/80">
             We design and engineer intelligent digital systems that help companies build, scale, and automate modern technology platforms. Our expertise drives impactful gains and powerful results.
           </p>
-        </motion.div>
-        
-        <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8">
-          {stats.map((stat, i) => (
-            <motion.div
-              key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-              className="bg-white p-10 rounded-[2rem] border border-portfolio-dark/5 flex flex-col justify-center group hover:shadow-xl transition-all duration-500"
-            >
-              <div>
-                <h3 className="text-4xl md:text-5xl font-bold mb-2 tracking-tighter">{stat.number}</h3>
-                <p className="text-[10px] uppercase tracking-widest text-portfolio-muted font-bold mb-6">{stat.label}</p>
-              </div>
-              <p className="text-portfolio-muted text-base leading-relaxed">{stat.text}</p>
-            </motion.div>
-          ))}
         </div>
+      </motion.div>
+      
+      {/* Clean 2x2 Stat Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 auto-rows-fr md:[grid-auto-rows:1fr]">
+        
+        {/* Card 1: 100% */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
+          className="bg-[#f5f5f5] p-10 md:p-12 lg:p-14 rounded-[3rem] flex flex-col justify-start group hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all duration-500 cursor-target"
+        >
+          <h3 className="text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-[#1a1a1a] leading-none mb-4">
+            100<span className="text-[#f97316]">%</span>
+          </h3>
+          <p className="text-[12px] uppercase tracking-[0.2em] text-[#f97316] font-bold mb-8 md:mb-12">Client Retention</p>
+          <p className="text-[#1a1a1a]/70 text-lg md:text-xl leading-relaxed font-medium mt-auto">
+            We build long-term partnerships through consistent quality and technical excellence.
+          </p>
+        </motion.div>
+
+        {/* Card 2: 15+ */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
+          className="bg-[#f5f5f5] p-10 md:p-12 lg:p-14 rounded-[3rem] flex flex-col justify-start group hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all duration-500 cursor-target"
+        >
+          <h3 className="text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-[#1a1a1a] leading-none mb-4">
+            15<span className="text-[#f97316]">+</span>
+          </h3>
+          <p className="text-[12px] uppercase tracking-[0.2em] text-[#f97316] font-bold mb-8 md:mb-12">Projects Delivered</p>
+          <p className="text-[#1a1a1a]/70 text-lg md:text-xl leading-relaxed font-medium mt-auto">
+            Successful delivery of web and mobile applications across various industries.
+          </p>
+        </motion.div>
+
+        {/* Card 3: 3x */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }}
+          className="bg-[#f5f5f5] p-10 md:p-12 lg:p-14 rounded-[3rem] flex flex-col justify-start group hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all duration-500 cursor-target"
+        >
+          <h3 className="text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-[#1a1a1a] leading-none mb-4">
+            3<span className="text-[#1a1a1a]">x</span>
+          </h3>
+          <p className="text-[12px] uppercase tracking-[0.2em] text-[#f97316] font-bold mb-8 md:mb-12">Avg. Client Growth</p>
+          <p className="text-[#1a1a1a]/70 text-lg md:text-xl leading-relaxed font-medium mt-auto">
+            Our systems are designed to scale and drive measurable business impact.
+          </p>
+        </motion.div>
+
+        {/* Card 4: 5+ */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
+          className="bg-[#f5f5f5] p-10 md:p-12 lg:p-14 rounded-[3rem] flex flex-col justify-start group hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all duration-500 cursor-target"
+        >
+          <h3 className="text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-[#1a1a1a] leading-none mb-4">
+            5<span className="text-[#f97316]">+</span>
+          </h3>
+          <p className="text-[12px] uppercase tracking-[0.2em] text-[#f97316] font-bold mb-8 md:mb-12">Industries Served</p>
+          <p className="text-[#1a1a1a]/70 text-lg md:text-xl leading-relaxed font-medium mt-auto">
+            Expertise across different domains from startups to established businesses.
+          </p>
+        </motion.div>
+
       </div>
     </div>
   </section>
@@ -197,50 +218,90 @@ const AboutSection = () => (
 
 const CuratedWork = () => (
   <section id="projects" className="py-32">
-    <div className="flex justify-between items-end mb-20">
+    {/* Section Header */}
+    <div className="flex justify-between items-end mb-24">
       <div>
-        <span className="text-portfolio-gold font-bold mb-3 text-xs tracking-widest block uppercase">PROJECTS</span>
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight mt-4">A curated collection of <br /> websites designed with care</h2>
+        <span className="text-[10px] uppercase tracking-[0.2em] text-[#f97316] font-bold mb-6 block">PROJECTS</span>
+        <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05]">
+          A curated collection of <br /> websites designed with care
+        </h2>
       </div>
       <Link 
         to="/projects" 
-        className="hidden md:flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-portfolio-muted hover:text-portfolio-dark transition-colors"
+        className="hidden md:flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.15em] text-[#1a1a1a]/60 hover:text-[#1a1a1a] border border-[#1a1a1a]/10 hover:border-[#1a1a1a]/30 rounded-full px-6 py-3 transition-all duration-400 group cursor-target"
       >
-        All Projects <ChevronRight size={14} />
+        All Projects 
+        <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
       </Link>
     </div>
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-20">
+
+    {/* Editorial Project List */}
+    <div className="flex flex-col gap-20 lg:gap-28">
       {curatedProjects.map((p, i) => (
         <motion.div 
-          key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: [0.21, 0.45, 0.32, 0.9] }}
-          className="flex flex-col group"
+          key={i} 
+          initial={{ opacity: 0, y: 40 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.9, ease: [0.21, 0.45, 0.32, 0.9] }}
+          className={`group grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center cursor-target ${
+            i % 2 === 1 ? 'lg:[direction:rtl]' : ''
+          }`}
         >
-          <div className="relative aspect-[16/11] rounded-2xl overflow-hidden mb-8 shadow-sm">
-            <img src={p.image} alt={p.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
-          </div>
-          <div className="flex flex-col">
-            <div className="flex justify-between items-start mb-4">
-              <div className="flex flex-col">
-                <span className="text-[10px] uppercase tracking-widest text-portfolio-muted font-bold mb-1">CLIENT</span>
-                <h4 className="text-xl font-bold text-portfolio-dark">{p.client}</h4>
-              </div>
-              <Link 
-                to="/projects"
-                className="w-12 h-12 rounded-full border border-portfolio-dark/10 flex items-center justify-center hover:bg-portfolio-dark hover:text-white transition-all duration-500"
-              >
-                <ArrowUpRight size={20} />
-              </Link>
+          {/* Image */}
+          <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden shadow-lg lg:[direction:ltr]">
+            <img 
+              src={p.image} 
+              alt={p.title} 
+              className="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-[1.05]" 
+            />
+            {/* Image overlay gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            {/* Project number */}
+            <div className="absolute top-6 left-6 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center">
+              <span className="text-xs font-bold text-[#1a1a1a]">0{i + 1}</span>
             </div>
-            <h3 className="text-2xl md:text-3xl font-bold mb-4 tracking-tight leading-tight group-hover:text-portfolio-gold transition-colors duration-300">
+          </div>
+
+          {/* Content */}
+          <div className="flex flex-col justify-center lg:[direction:ltr]">
+            <div className="mb-6">
+              <span className="text-[10px] uppercase tracking-[0.2em] text-[#1a1a1a]/35 font-bold">CLIENT</span>
+              <p className="text-sm font-semibold text-[#1a1a1a]/70 mt-1">{p.client}</p>
+            </div>
+            
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1] mb-6 group-hover:text-[#f97316] transition-colors duration-500">
               {p.title}
             </h3>
-            <p className="text-base text-portfolio-muted leading-relaxed max-w-md">
+            
+            <p className="text-[#1a1a1a]/55 text-base md:text-lg leading-relaxed max-w-lg mb-10">
               {p.desc}
             </p>
+
+            <Link 
+              to="/projects"
+              className="inline-flex items-center gap-4 self-start group/btn cursor-target"
+            >
+              <div className="w-14 h-14 rounded-full border-2 border-[#1a1a1a]/10 flex items-center justify-center group-hover/btn:bg-[#1a1a1a] group-hover/btn:border-[#1a1a1a] transition-all duration-500">
+                <ArrowUpRight size={20} className="text-[#1a1a1a]/60 group-hover/btn:text-white transition-colors duration-500" />
+              </div>
+              <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#1a1a1a]/50 group-hover/btn:text-[#1a1a1a] transition-colors">
+                View Project
+              </span>
+            </Link>
           </div>
         </motion.div>
       ))}
+    </div>
+
+    {/* Mobile "All Projects" link */}
+    <div className="flex md:hidden justify-center mt-16">
+      <Link 
+        to="/projects" 
+        className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.15em] text-[#1a1a1a]/60 border border-[#1a1a1a]/10 rounded-full px-8 py-4 cursor-target"
+      >
+        All Projects <ArrowUpRight size={14} />
+      </Link>
     </div>
   </section>
 );
@@ -259,7 +320,7 @@ const CTASection = () => (
         <p className="text-lg text-white/60 mb-12">Whether you need a full application built from scratch or just want to explore how we can help your business grow.</p>
         <Link 
           to="/contact" 
-          className="inline-flex items-center gap-2 bg-portfolio-gold text-portfolio-dark font-bold px-10 py-5 rounded-full hover:scale-105 transition-transform uppercase tracking-widest text-sm shadow-xl shadow-portfolio-gold/20"
+          className="inline-flex items-center gap-2 bg-portfolio-gold text-portfolio-dark font-bold px-10 py-5 rounded-full hover:scale-105 transition-transform uppercase tracking-widest text-sm shadow-xl shadow-portfolio-gold/20 cursor-target"
         >
           Contact Us <ArrowUpRight size={18} />
         </Link>
