@@ -74,28 +74,43 @@ const ProjectsPage = () => {
           </div>
         </div>
 
-        {/* Brand Logos Row */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="w-full border-b border-[#1a1a1a]/10 pb-16 mb-24 flex flex-wrap justify-between items-center gap-10 md:gap-16 relative z-10"
-        >
-          {[
-            { name: "Google", url: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg", h: "h-8" },
-            { name: "Meta", url: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg", h: "h-5" },
-            { name: "Netflix", url: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg", h: "h-7" },
-            { name: "Amazon", url: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg", h: "h-8" }
-          ].map((brand, i) => (
-            <div key={i} className="flex-1 flex items-center justify-center min-w-[120px]">
-              <img 
-                src={brand.url} 
-                alt={brand.name} 
-                className={`${brand.h} w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-70 transition-all duration-400 cursor-target`} 
-              />
-            </div>
-          ))}
-        </motion.div>
+        {/* Brand Logos Row - Infinite Marquee */}
+        <div className="w-full border-b border-[#1a1a1a]/10 pb-16 mb-24 overflow-hidden relative z-10">
+          {/* Subtle fade edges for the marquee */}
+          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#f5f5f5] to-transparent z-20 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#f5f5f5] to-transparent z-20 pointer-events-none" />
+          
+          <motion.div 
+            className="flex gap-16 md:gap-24 items-center w-max"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ 
+              duration: 25, 
+              repeat: Infinity, 
+              ease: "linear" 
+            }}
+          >
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="flex gap-16 md:gap-24 shrink-0">
+                {[
+                  { name: "Google", url: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg", h: "h-8" },
+                  { name: "Meta", url: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg", h: "h-5" },
+                  { name: "Netflix", url: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg", h: "h-7" },
+                  { name: "Amazon", url: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg", h: "h-8" },
+                  { name: "Microsoft", url: "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg", h: "h-6" },
+                  { name: "Spotify", url: "https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg", h: "h-8" }
+                ].map((brand, j) => (
+                  <div key={j} className="flex items-center justify-center min-w-[120px]">
+                    <img 
+                      src={brand.url} 
+                      alt={brand.name} 
+                      className={`${brand.h} w-auto object-contain opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-400 cursor-target`} 
+                    />
+                  </div>
+                ))}
+              </div>
+            ))}
+          </motion.div>
+        </div>
 
         {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 relative z-10">
