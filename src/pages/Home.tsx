@@ -126,20 +126,20 @@ const AboutSection = () => (
       {/* Unified Hero Card */}
       <motion.div 
         initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-        className="w-full bg-[#1a1a1a] text-white px-8 py-10 md:px-12 md:py-16 lg:px-16 lg:py-20 rounded-[2.5rem] flex flex-col lg:flex-row justify-between items-center gap-12 shadow-2xl relative overflow-hidden mb-6 lg:mb-8"
+        className="w-full bg-[#1a1a1a] text-white px-10 py-14 md:px-14 md:py-20 lg:px-20 lg:py-24 rounded-[3rem] flex flex-col lg:flex-row justify-between items-center gap-12 shadow-2xl relative overflow-hidden mb-6 lg:mb-8"
       >
         <div className="flex flex-col">
-          <div className="mb-8 w-12 h-12 md:w-16 md:h-16">
+          <div className="mb-10 w-16 h-16 md:w-20 md:h-20">
             <img src="/Foremark_Logo_-removebg-preview.png" alt="Foremark Technologies" className="w-full h-full object-contain" />
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-[0.95]">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[0.95]">
             Foremark <br/>
             <span className="text-[#f97316]">Technologies</span>
           </h2>
         </div>
 
         <div className="lg:w-[45%] flex flex-col">
-          <p className="text-lg md:text-xl font-medium leading-relaxed text-[#f5f5f5]/80">
+          <p className="text-xl md:text-2xl font-medium leading-relaxed text-[#f5f5f5]/80">
             We design and engineer intelligent digital systems that help companies build, scale, and automate modern technology platforms. Our expertise drives impactful gains and powerful results.
           </p>
         </div>
@@ -151,13 +151,13 @@ const AboutSection = () => (
         {/* Card 1: 100% */}
         <motion.div
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
-          className="bg-[#fcfcfc] border border-[#1a1a1a]/10 p-8 md:p-10 lg:p-12 rounded-[2.5rem] flex flex-col justify-start group hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-[#1a1a1a]/20 transition-all duration-500 cursor-target"
+          className="bg-[#fcfcfc] border border-[#1a1a1a]/10 p-10 md:p-12 lg:p-14 rounded-[3rem] flex flex-col justify-start group hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-[#1a1a1a]/20 transition-all duration-500 cursor-target"
         >
-          <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-[#1a1a1a] leading-none mb-4">
+          <h3 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-[#1a1a1a] leading-none mb-4">
             100<span className="text-[#f97316]">%</span>
           </h3>
-          <p className="text-[12px] uppercase tracking-[0.2em] text-[#f97316] font-bold mb-6 md:mb-8">Client Retention</p>
-          <p className="text-[#1a1a1a]/70 text-base md:text-lg leading-relaxed font-medium mt-auto">
+          <p className="text-[12px] uppercase tracking-[0.2em] text-[#f97316] font-bold mb-8 md:mb-10">Client Retention</p>
+          <p className="text-[#1a1a1a]/70 text-lg md:text-xl leading-relaxed font-medium mt-auto">
             We build long-term partnerships through consistent quality and technical excellence.
           </p>
         </motion.div>
@@ -165,13 +165,13 @@ const AboutSection = () => (
         {/* Card 2: 15+ */}
         <motion.div
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
-          className="bg-[#fcfcfc] border border-[#1a1a1a]/10 p-8 md:p-10 lg:p-12 rounded-[2.5rem] flex flex-col justify-start group hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-[#1a1a1a]/20 transition-all duration-500 cursor-target"
+          className="bg-[#fcfcfc] border border-[#1a1a1a]/10 p-10 md:p-12 lg:p-14 rounded-[3rem] flex flex-col justify-start group hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-[#1a1a1a]/20 transition-all duration-500 cursor-target"
         >
-          <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-[#1a1a1a] leading-none mb-4">
+          <h3 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-[#1a1a1a] leading-none mb-4">
             15<span className="text-[#f97316]">+</span>
           </h3>
-          <p className="text-[12px] uppercase tracking-[0.2em] text-[#f97316] font-bold mb-6 md:mb-8">Projects Delivered</p>
-          <p className="text-[#1a1a1a]/70 text-base md:text-lg leading-relaxed font-medium mt-auto">
+          <p className="text-[12px] uppercase tracking-[0.2em] text-[#f97316] font-bold mb-8 md:mb-10">Projects Delivered</p>
+          <p className="text-[#1a1a1a]/70 text-lg md:text-xl leading-relaxed font-medium mt-auto">
             Successful delivery of web and mobile applications across various industries.
           </p>
         </motion.div>
@@ -179,13 +179,13 @@ const AboutSection = () => (
         {/* Card 3: 3x */}
         <motion.div
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }}
-          className="bg-[#fcfcfc] border border-[#1a1a1a]/10 p-8 md:p-10 lg:p-12 rounded-[2.5rem] flex flex-col justify-start group hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-[#1a1a1a]/20 transition-all duration-500 cursor-target"
+          className="bg-[#fcfcfc] border border-[#1a1a1a]/10 p-10 md:p-12 lg:p-14 rounded-[3rem] flex flex-col justify-start group hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-[#1a1a1a]/20 transition-all duration-500 cursor-target"
         >
-          <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-[#1a1a1a] leading-none mb-4">
+          <h3 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-[#1a1a1a] leading-none mb-4">
             3<span className="text-[#1a1a1a]">x</span>
           </h3>
-          <p className="text-[12px] uppercase tracking-[0.2em] text-[#f97316] font-bold mb-6 md:mb-8">Avg. Client Growth</p>
-          <p className="text-[#1a1a1a]/70 text-base md:text-lg leading-relaxed font-medium mt-auto">
+          <p className="text-[12px] uppercase tracking-[0.2em] text-[#f97316] font-bold mb-8 md:mb-10">Avg. Client Growth</p>
+          <p className="text-[#1a1a1a]/70 text-lg md:text-xl leading-relaxed font-medium mt-auto">
             Our systems are designed to scale and drive measurable business impact.
           </p>
         </motion.div>
@@ -193,13 +193,13 @@ const AboutSection = () => (
         {/* Card 4: 5+ */}
         <motion.div
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
-          className="bg-[#fcfcfc] border border-[#1a1a1a]/10 p-8 md:p-10 lg:p-12 rounded-[2.5rem] flex flex-col justify-start group hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-[#1a1a1a]/20 transition-all duration-500 cursor-target"
+          className="bg-[#fcfcfc] border border-[#1a1a1a]/10 p-10 md:p-12 lg:p-14 rounded-[3rem] flex flex-col justify-start group hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-[#1a1a1a]/20 transition-all duration-500 cursor-target"
         >
-          <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-[#1a1a1a] leading-none mb-4">
+          <h3 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-[#1a1a1a] leading-none mb-4">
             5<span className="text-[#f97316]">+</span>
           </h3>
-          <p className="text-[12px] uppercase tracking-[0.2em] text-[#f97316] font-bold mb-6 md:mb-8">Industries Served</p>
-          <p className="text-[#1a1a1a]/70 text-base md:text-lg leading-relaxed font-medium mt-auto">
+          <p className="text-[12px] uppercase tracking-[0.2em] text-[#f97316] font-bold mb-8 md:mb-10">Industries Served</p>
+          <p className="text-[#1a1a1a]/70 text-lg md:text-xl leading-relaxed font-medium mt-auto">
             Expertise across different domains from startups to established businesses.
           </p>
         </motion.div>
