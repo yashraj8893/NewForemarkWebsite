@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+
 
 const IndustryTag = ({ text }: { text: string }) => (
   <div className="absolute top-6 left-6 z-20">
