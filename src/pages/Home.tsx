@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { ArrowUpRight, Mail, MessageSquare } from 'lucide-react';
 import { InteractiveGridPattern } from "../components/magicui/interactive-grid-pattern";
 import ServicesGrid from '../components/ServicesGrid';
@@ -63,7 +64,7 @@ const Hero = () => {
         
         <motion.h1 
           initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.2 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8"
+          className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-8"
         >
           We are a software <br /> 
           <span className="text-portfolio-muted">development company.</span>
@@ -89,7 +90,9 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      <div className="relative w-full overflow-hidden mt-8 pb-16">
+      <div className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden mt-8 pb-16">
+        <div className="absolute top-0 left-0 w-40 md:w-64 h-full bg-gradient-to-r from-portfolio-bg to-transparent z-10 pointer-events-none backdrop-blur-[2px]" />
+        <div className="absolute top-0 right-0 w-40 md:w-64 h-full bg-gradient-to-l from-portfolio-bg to-transparent z-10 pointer-events-none backdrop-blur-[2px]" />
         <motion.div 
           className="flex gap-4 whitespace-nowrap"
           animate={{ x: ["-50%", "0%"] }}
@@ -121,7 +124,7 @@ const Hero = () => {
 const AboutSection = () => (
   <section id="about" className="py-32 pb-36">
     <div className="flex flex-col">
-      <span className="text-xs md:text-sm uppercase tracking-[0.2em] text-[#1a1a1a]/40 font-bold mb-8 block">ABOUT US</span>
+      <span className="text-sm md:text-base uppercase tracking-[0.25em] text-[#1a1a1a]/50 font-black mb-8 block">ABOUT US</span>
       
       {/* Unified Hero Card */}
       <motion.div 
@@ -132,7 +135,7 @@ const AboutSection = () => (
           <div className="mb-6 w-12 h-12 md:w-16 md:h-16">
             <img src="/Foremark_Logo_-removebg-preview.png" alt="Foremark Technologies" className="w-full h-full object-contain" />
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-[0.95]">
+          <h2 className="text-5xl md:text-6xl lg:text-8xl font-black tracking-tighter leading-[0.9]">
             Foremark <br/>
             <span className="text-[#f97316]">Technologies</span>
           </h2>
@@ -153,7 +156,7 @@ const AboutSection = () => (
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
           className="bg-[#fcfcfc] border border-[#1a1a1a]/10 p-6 md:p-8 rounded-[1.5rem] flex flex-col justify-start group hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-[#1a1a1a]/20 transition-all duration-500 cursor-target"
         >
-          <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-[#1a1a1a] leading-none mb-3">
+          <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-[#1a1a1a] leading-none mb-3">
             100<span className="text-[#f97316]">%</span>
           </h3>
           <p className="text-[10px] uppercase tracking-[0.2em] text-[#f97316] font-bold mb-4">Client Retention</p>
@@ -167,7 +170,7 @@ const AboutSection = () => (
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
           className="bg-[#fcfcfc] border border-[#1a1a1a]/10 p-6 md:p-8 rounded-[1.5rem] flex flex-col justify-start group hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-[#1a1a1a]/20 transition-all duration-500 cursor-target"
         >
-          <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-[#1a1a1a] leading-none mb-3">
+          <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-[#1a1a1a] leading-none mb-3">
             15<span className="text-[#f97316]">+</span>
           </h3>
           <p className="text-[10px] uppercase tracking-[0.2em] text-[#f97316] font-bold mb-4">Projects Delivered</p>
@@ -181,7 +184,7 @@ const AboutSection = () => (
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }}
           className="bg-[#fcfcfc] border border-[#1a1a1a]/10 p-6 md:p-8 rounded-[1.5rem] flex flex-col justify-start group hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-[#1a1a1a]/20 transition-all duration-500 cursor-target"
         >
-          <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-[#1a1a1a] leading-none mb-3">
+          <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-[#1a1a1a] leading-none mb-3">
             3<span className="text-[#1a1a1a]">x</span>
           </h3>
           <p className="text-[10px] uppercase tracking-[0.2em] text-[#f97316] font-bold mb-4">Avg. Client Growth</p>
@@ -195,7 +198,7 @@ const AboutSection = () => (
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
           className="bg-[#fcfcfc] border border-[#1a1a1a]/10 p-6 md:p-8 rounded-[1.5rem] flex flex-col justify-start group hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-[#1a1a1a]/20 transition-all duration-500 cursor-target"
         >
-          <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-[#1a1a1a] leading-none mb-3">
+          <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-[#1a1a1a] leading-none mb-3">
             5<span className="text-[#f97316]">+</span>
           </h3>
           <p className="text-[10px] uppercase tracking-[0.2em] text-[#f97316] font-bold mb-4">Industries Served</p>
@@ -214,8 +217,8 @@ const CuratedWork = () => (
     {/* Section Header */}
     <div className="flex justify-between items-end mb-24">
       <div>
-        <span className="text-[10px] uppercase tracking-[0.2em] text-[#f97316] font-bold mb-6 block">PROJECTS</span>
-        <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05]">
+        <span className="text-sm uppercase tracking-[0.25em] text-[#f97316] font-black mb-6 block">PROJECTS</span>
+        <h2 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.02]">
           A curated collection of <br /> websites designed with care
         </h2>
       </div>
@@ -256,7 +259,7 @@ const CuratedWork = () => (
               <p className="text-sm font-semibold text-[#1a1a1a]/70 mt-1">{p.client}</p>
             </div>
             
-            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1] mb-6 group-hover:text-[#f97316] transition-colors duration-500">
+            <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-6 group-hover:text-[#f97316] transition-colors duration-500">
               {p.title}
             </h3>
             
@@ -307,6 +310,222 @@ const CTASection = () => (
   </section>
 );
 
+// --- Testimonials Data ---
+
+const testimonials = [
+  {
+    name: "Arjun Mehta",
+    role: "CTO, Regius Care",
+    avatar: "https://i.pravatar.cc/150?u=arjun1",
+    text: "Foremark didn't just build us a website — they engineered a system. The attention to performance and detail was unlike any agency we'd worked with before."
+  },
+  {
+    name: "Priya Nair",
+    role: "Founder, CenterSpread",
+    avatar: "https://i.pravatar.cc/150?u=priya2",
+    text: "Our content platform went from a slow WordPress nightmare to a blazing-fast React app in under 6 weeks. The team communicates like engineers, not salespeople."
+  },
+  {
+    name: "Rohan Kapoor",
+    role: "Managing Partner, Sharma & Associates",
+    avatar: "https://i.pravatar.cc/150?u=rohan3",
+    text: "We needed a secure client portal for our law firm. Foremark understood the compliance requirements without us having to over-explain. Delivered exactly what we asked."
+  },
+  {
+    name: "Sneha Iyer",
+    role: "Product Lead, FinTrack",
+    avatar: "https://i.pravatar.cc/150?u=sneha4",
+    text: "The dashboard they built handles real-time data for thousands of users without breaking a sweat. I was skeptical of a smaller team, but they proved me wrong on every metric."
+  },
+  {
+    name: "Dev Anand",
+    role: "CEO, Luxe Wear",
+    avatar: "https://i.pravatar.cc/150?u=dev5",
+    text: "Our conversion rate went up 40% after the redesign. They didn't just make it pretty — they thought about the checkout flow, the load times, everything."
+  },
+  {
+    name: "Kavya Reddy",
+    role: "Operations Head, DataFlow",
+    avatar: "https://i.pravatar.cc/150?u=kavya6",
+    text: "The automation workflows Foremark built have saved us 20+ hours a week. It's not magic — it's just really good engineering. They understand business, not just code."
+  },
+  {
+    name: "Nikhil Sharma",
+    role: "Startup Founder",
+    avatar: "https://i.pravatar.cc/150?u=nikhil7",
+    text: "I came in with a rough idea and a tight deadline. They scoped it properly, pushed back on what didn't make sense, and shipped a clean MVP in 3 weeks. 10/10."
+  },
+  {
+    name: "Aisha Khan",
+    role: "Marketing Director, Aurora Legal",
+    avatar: "https://i.pravatar.cc/150?u=aisha8",
+    text: "Every other agency gave us templates. Foremark gave us something we actually own. The site feels like us — not like a theme someone slapped our logo on."
+  },
+  {
+    name: "Vikram Joshi",
+    role: "Tech Lead, SaaS Startup",
+    avatar: "https://i.pravatar.cc/150?u=vikram9",
+    text: "They inherited our messy codebase and didn't complain once. Cleaned it up, added proper CI/CD, and now our deploys take 2 minutes instead of 2 hours."
+  },
+];
+
+const TestimonialCard = ({ t }: { t: typeof testimonials[0] }) => (
+  <div className="bg-[#ffffff0a] border border-[#ffffff12] rounded-xl p-5 mb-3 flex flex-col gap-3 hover:bg-[#ffffff10] hover:border-[#ffffff20] transition-all duration-500">
+    <p className="text-white/65 text-[13px] leading-[1.7]">"{t.text}"</p>
+    <div className="flex items-center gap-2.5 pt-1 border-t border-white/[0.06]">
+      <img src={t.avatar} alt={t.name} className="w-8 h-8 rounded-full object-cover grayscale opacity-70 shrink-0" />
+      <div>
+        <p className="text-white/90 text-[11px] font-bold leading-tight">{t.name}</p>
+        <p className="text-white/35 text-[10px] font-medium leading-tight mt-0.5">{t.role}</p>
+      </div>
+    </div>
+  </div>
+);
+
+const TestimonialsSection = () => {
+  const col1 = testimonials.filter((_, i) => i % 4 === 0);
+  const col2 = testimonials.filter((_, i) => i % 4 === 1);
+  const col3 = testimonials.filter((_, i) => i % 4 === 2);
+  const col4 = testimonials.filter((_, i) => i % 4 === 3);
+
+  return (
+    <section className="py-24">
+      {/* Matches the site's dark card style: bg-[#1a1a1a] rounded-[3rem] */}
+      <div className="bg-[#1a1a1a] rounded-[3rem] relative overflow-hidden h-[600px]">
+
+        {/* Top fade — cards emerge from darkness */}
+        <div className="absolute top-0 inset-x-0 h-36 bg-gradient-to-b from-[#1a1a1a] to-transparent z-10 pointer-events-none" />
+        {/* Bottom fade — cards dissolve into darkness */}
+        <div className="absolute bottom-0 inset-x-0 h-36 bg-gradient-to-t from-[#1a1a1a] to-transparent z-10 pointer-events-none" />
+
+        {/* 4-column scroll grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 px-8 md:px-12 h-full">
+          {/* Col 1 — slowest, natural start */}
+          <div className="overflow-hidden">
+            <div className="animate-scroll-slow flex flex-col pt-10">
+              {[...col1, ...col1, ...col1].map((t, i) => <TestimonialCard key={i} t={t} />)}
+            </div>
+          </div>
+          {/* Col 2 — medium, pushed down */}
+          <div className="overflow-hidden">
+            <div className="animate-scroll-medium flex flex-col" style={{ marginTop: '-90px' }}>
+              {[...col2, ...col2, ...col2].map((t, i) => <TestimonialCard key={i} t={t} />)}
+            </div>
+          </div>
+          {/* Col 3 — fastest, slight push */}
+          <div className="overflow-hidden hidden md:block">
+            <div className="animate-scroll-fast flex flex-col" style={{ marginTop: '-50px' }}>
+              {[...col3, ...col3, ...col3].map((t, i) => <TestimonialCard key={i} t={t} />)}
+            </div>
+          </div>
+          {/* Col 4 — medium-alt, deepest push */}
+          <div className="overflow-hidden hidden md:block">
+            <div className="animate-scroll-medium-alt flex flex-col" style={{ marginTop: '-140px' }}>
+              {[...col4, ...col4, ...col4].map((t, i) => <TestimonialCard key={i} t={t} />)}
+            </div>
+          </div>
+        </div>
+
+        {/* Rating badge — floats absolutely centered over the scrolling columns */}
+        <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+          <div className="bg-[#111111]/90 backdrop-blur-2xl border border-white/[0.1] rounded-2xl px-7 py-4 flex items-center gap-5 shadow-[0_8px_60px_rgba(0,0,0,0.8)]">
+            <span className="text-5xl font-black text-white leading-none tabular-nums">4.9</span>
+            <div className="flex flex-col gap-1.5">
+              <div className="flex gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-5 h-5 text-[#f97316]" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <span className="text-white/40 text-[11px] font-medium">Based on 15+ projects</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// --- FAQ Data ---
+
+const faqs = [
+  {
+    q: "What kind of projects does Foremark take on?",
+    a: "We build custom websites, web applications, SaaS platforms, and automation systems. From early-stage startups that need an MVP to established businesses modernizing their tech stack — if it involves serious engineering, we're in."
+  },
+  {
+    q: "How long does a typical project take?",
+    a: "A landing site or marketing website typically takes 1–2 weeks. A full web application or SaaS product ranges from 4–12 weeks depending on scope. We give you a clear timeline upfront — no surprises."
+  },
+  {
+    q: "Do you work with clients outside India?",
+    a: "Yes. We work with clients across India, the US, UK, UAE, and beyond. Our team is fully remote-capable and used to async collaboration across timezones."
+  },
+  {
+    q: "What technologies do you use?",
+    a: "Our primary stack is React / Next.js on the frontend, Node.js / Python on the backend, PostgreSQL and MongoDB for databases, and AWS / Vercel for infrastructure. We choose the right tool for each job — not the trendy one."
+  },
+  {
+    q: "Can you take over an existing codebase?",
+    a: "Absolutely. We've stepped into messy codebases before and cleaned them up. We'll audit the existing code first, flag risks, and propose a clear path forward before touching anything."
+  },
+];
+
+const FAQSection = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(2);
+
+  return (
+    <section className="py-24">
+      <div className="bg-[#1a1a1a] rounded-[3rem] p-8 md:p-14 lg:p-16 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+        
+        {/* Left Column */}
+        <div className="lg:col-span-4 flex flex-col justify-start pt-2">
+          <span className="inline-block text-[10px] font-bold uppercase tracking-widest text-white/40 border border-white/10 rounded-full px-3 py-1 mb-8 w-fit">
+            FAQs
+          </span>
+          <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[1.0] text-white mb-6">
+            Frequently asked <br />
+            <span className="text-[#f97316]">questions</span>
+          </h2>
+          <p className="text-white/40 text-sm leading-relaxed max-w-xs">
+            Everything you need to know before we start building together.
+          </p>
+        </div>
+
+        {/* Right Column — Accordion */}
+        <div className="lg:col-span-8 flex flex-col divide-y divide-white/[0.07]">
+          {faqs.map((faq, i) => (
+            <div key={i} className="py-5">
+              <button
+                onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                className="w-full flex items-center justify-between gap-6 text-left group cursor-target"
+              >
+                <span className={`text-sm md:text-base font-semibold leading-snug transition-colors duration-300 ${openIndex === i ? 'text-white' : 'text-white/60 group-hover:text-white/90'}`}>
+                  {faq.q}
+                </span>
+                <div className={`w-7 h-7 rounded-full border flex items-center justify-center shrink-0 transition-all duration-300 ${openIndex === i ? 'border-[#f97316] bg-[#f97316]/10 rotate-45' : 'border-white/20 group-hover:border-white/40'}`}>
+                  <span className={`text-lg leading-none font-light transition-colors duration-300 ${openIndex === i ? 'text-[#f97316]' : 'text-white/50'}`}>+</span>
+                </div>
+              </button>
+
+              {/* Answer — animated open/close */}
+              <div
+                className={`overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.21,0.45,0.32,0.9)] ${openIndex === i ? 'max-h-48 opacity-100 mt-4' : 'max-h-0 opacity-0'}`}
+              >
+                <p className="text-white/45 text-sm leading-relaxed pr-12">
+                  {faq.a}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
 const Home = () => {
   return (
     <div className="max-w-[1280px] mx-auto px-8 md:px-16">
@@ -314,6 +533,8 @@ const Home = () => {
       <AboutSection />
       <ServicesGrid />
       <CuratedWork />
+      <TestimonialsSection />
+      <FAQSection />
       <CTASection />
     </div>
   );

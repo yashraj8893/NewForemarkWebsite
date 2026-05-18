@@ -16,10 +16,10 @@ const ProjectsPage = () => {
       {/* Subtle Background Texture */}
       <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1.5px,transparent_1.5px)] [background-size:24px_24px] opacity-60 pointer-events-none" />
       
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 pt-32 pb-40">
+      <div className="max-w-[1280px] mx-auto px-8 md:px-16 pt-16 pb-40">
         
         {/* Section Header */}
-        <div className="flex flex-col mb-16 relative z-10">
+        <div className="flex flex-col mb-10 relative z-10">
           <motion.span 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -34,7 +34,7 @@ const ProjectsPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-5xl md:text-7xl font-bold tracking-tight text-[#1a1a1a] max-w-3xl leading-[1.05]"
+              className="text-5xl md:text-7xl font-black tracking-tighter text-[#1a1a1a] max-w-3xl leading-[1.0]"
             >
               Examples of our work
             </motion.h2>

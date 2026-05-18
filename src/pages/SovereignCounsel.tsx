@@ -18,7 +18,7 @@ const SovereignCounselPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-3xl md:text-5xl font-bold tracking-tight mb-6"
+          className="text-4xl md:text-6xl font-black tracking-tighter mb-6"
         >
           Case Management <br /> for Law Firms
         </motion.h1>
