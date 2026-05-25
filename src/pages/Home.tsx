@@ -121,97 +121,6 @@ const Hero = () => {
   );
 };
 
-const AboutSection = () => (
-  <section id="about" className="py-32 pb-36">
-    <div className="flex flex-col">
-      <span className="text-sm md:text-base uppercase tracking-[0.25em] text-[#1a1a1a]/50 font-black mb-8 block">ABOUT US</span>
-      
-      {/* Unified Hero Card */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-        className="w-full bg-[#1a1a1a] text-white px-8 py-12 md:px-12 md:py-16 lg:px-16 lg:py-20 rounded-[2rem] flex flex-col lg:flex-row justify-between items-center gap-8 shadow-2xl relative overflow-hidden mb-6 lg:mb-8"
-      >
-        <div className="flex flex-col">
-          <div className="mb-6 w-12 h-12 md:w-16 md:h-16">
-            <img src="/Foremark_Logo_-removebg-preview.png" alt="Foremark Technologies" className="w-full h-full object-contain" />
-          </div>
-          <h2 className="text-5xl md:text-6xl lg:text-8xl font-black tracking-tighter leading-[0.9]">
-            Foremark <br/>
-            <span className="text-[#f97316]">Technologies</span>
-          </h2>
-        </div>
-
-        <div className="lg:w-[45%] flex flex-col">
-          <p className="text-base md:text-lg lg:text-xl font-medium leading-relaxed text-[#f5f5f5]/80">
-            We design and engineer intelligent digital systems that help companies build, scale, and automate modern technology platforms. Our expertise drives impactful gains and powerful results.
-          </p>
-        </div>
-      </motion.div>
-      
-      {/* Clean Stat Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 lg:gap-6 auto-rows-fr">
-        
-        {/* Card 1: 100% */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
-          className="bg-[#fcfcfc] border border-[#1a1a1a]/10 p-6 md:p-8 rounded-[1.5rem] flex flex-col justify-start group hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-[#1a1a1a]/20 transition-all duration-500 cursor-target"
-        >
-          <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-[#1a1a1a] leading-none mb-3">
-            100<span className="text-[#f97316]">%</span>
-          </h3>
-          <p className="text-[10px] uppercase tracking-[0.2em] text-[#f97316] font-bold mb-4">Client Retention</p>
-          <p className="text-[#1a1a1a]/70 text-sm leading-relaxed font-medium mt-auto">
-            We build long-term partnerships through consistent quality and technical excellence.
-          </p>
-        </motion.div>
-
-        {/* Card 2: 15+ */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
-          className="bg-[#fcfcfc] border border-[#1a1a1a]/10 p-6 md:p-8 rounded-[1.5rem] flex flex-col justify-start group hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-[#1a1a1a]/20 transition-all duration-500 cursor-target"
-        >
-          <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-[#1a1a1a] leading-none mb-3">
-            15<span className="text-[#f97316]">+</span>
-          </h3>
-          <p className="text-[10px] uppercase tracking-[0.2em] text-[#f97316] font-bold mb-4">Projects Delivered</p>
-          <p className="text-[#1a1a1a]/70 text-sm leading-relaxed font-medium mt-auto">
-            Successful delivery of web and mobile applications across various industries.
-          </p>
-        </motion.div>
-
-        {/* Card 3: 3x */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }}
-          className="bg-[#fcfcfc] border border-[#1a1a1a]/10 p-6 md:p-8 rounded-[1.5rem] flex flex-col justify-start group hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-[#1a1a1a]/20 transition-all duration-500 cursor-target"
-        >
-          <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-[#1a1a1a] leading-none mb-3">
-            3<span className="text-[#1a1a1a]">x</span>
-          </h3>
-          <p className="text-[10px] uppercase tracking-[0.2em] text-[#f97316] font-bold mb-4">Avg. Client Growth</p>
-          <p className="text-[#1a1a1a]/70 text-sm leading-relaxed font-medium mt-auto">
-            Our systems are designed to scale and drive measurable business impact.
-          </p>
-        </motion.div>
-
-        {/* Card 4: 5+ */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
-          className="bg-[#fcfcfc] border border-[#1a1a1a]/10 p-6 md:p-8 rounded-[1.5rem] flex flex-col justify-start group hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-[#1a1a1a]/20 transition-all duration-500 cursor-target"
-        >
-          <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-[#1a1a1a] leading-none mb-3">
-            5<span className="text-[#f97316]">+</span>
-          </h3>
-          <p className="text-[10px] uppercase tracking-[0.2em] text-[#f97316] font-bold mb-4">Industries Served</p>
-          <p className="text-[#1a1a1a]/70 text-sm leading-relaxed font-medium mt-auto">
-            Expertise across different domains from startups to established businesses.
-          </p>
-        </motion.div>
-
-      </div>
-    </div>
-  </section>
-);
-
 const CuratedWork = () => (
   <section id="projects" className="py-32">
     {/* Section Header */}
@@ -526,11 +435,63 @@ const FAQSection = () => {
   );
 };
 
+const MissionSection = () => (
+  <section className="py-16 md:py-20 lg:py-[96px] flex flex-col items-center text-center px-6">
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-[#1a1a1a]/[0.06] bg-[#1a1a1a]/[0.02] text-[10px] font-bold uppercase tracking-[0.25em] text-[#1a1a1a]/50 mb-8"
+    >
+      Our Mission
+    </motion.div>
+    
+    <motion.h2 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.1 }}
+      className="text-[40px] leading-[1.05] md:text-[56px] md:leading-[1.0] lg:text-[72px] lg:leading-[0.92] font-black tracking-[-0.03em] text-[#1a1a1a] max-w-[1100px] mb-8"
+    >
+      We Drive Businesses <br className="hidden md:block" />
+      To The Forefront Of The Industries <br className="hidden md:block" />
+      Through Comprehensive <br className="hidden md:block" />
+      <span className="text-[#737373]">Development & Automation.</span>
+    </motion.h2>
+
+    <motion.p 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.2 }}
+      className="text-[#1a1a1a]/60 text-[15px] md:text-[17px] lg:text-[19px] max-w-[640px] leading-[1.6] font-medium mb-10"
+    >
+      We solve complex technical problems through thoughtful <br className="hidden md:block" />
+      engineering, modern software architecture, and <br className="hidden md:block" />
+      intelligent automation. Building technology that scales.
+    </motion.p>
+
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.3 }}
+    >
+      <Link 
+        to="/contact" 
+        className="inline-flex items-center gap-1.5 text-[#1a1a1a] font-semibold text-[15px] hover:opacity-70 transition-opacity cursor-target group"
+      >
+        Book A Call <ArrowUpRight size={16} strokeWidth={2.5} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+      </Link>
+    </motion.div>
+  </section>
+);
+
 const Home = () => {
   return (
     <div className="max-w-[1280px] mx-auto px-8 md:px-16">
       <Hero />
-      <AboutSection />
+      <MissionSection />
       <ServicesGrid />
       <CuratedWork />
       <TestimonialsSection />

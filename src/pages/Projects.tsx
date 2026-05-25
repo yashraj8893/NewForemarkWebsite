@@ -1,14 +1,58 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 
+// Removed unused IndustryTag
 
-const IndustryTag = ({ text }: { text: string }) => (
-  <div className="absolute top-6 left-6 z-20">
-    <span className="px-4 py-2 rounded-full bg-[#1a1a1a]/90 backdrop-blur-md text-[10px] font-bold text-white uppercase tracking-widest shadow-lg border border-white/10">
-      {text}
-    </span>
-  </div>
-);
+const projectsData = [
+  {
+    title: "Revolutionizing Digital Healthcare",
+    client: "Regius Care",
+    meta: "Healthcare Automation",
+    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1200",
+    url: "https://regiuscare.com",
+    aspect: "aspect-[4/3]"
+  },
+  {
+    title: "Next-Gen Media Distribution",
+    client: "CenterSpread",
+    meta: "Media Platform",
+    image: "https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?auto=format&fit=crop&q=80&w=800",
+    url: "https://centerspread.in",
+    aspect: "aspect-[4/3]"
+  },
+  {
+    title: "Legal Tech Transformation",
+    client: "Sharma & Associates",
+    meta: "Secure Portal",
+    image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=800",
+    url: "https://sharmalaw.in",
+    aspect: "aspect-[4/3]"
+  },
+  {
+    title: "Fintech Innovation Hub",
+    client: "FinTrack Systems",
+    meta: "SaaS Infrastructure",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
+    url: "https://fintrack.app",
+    aspect: "aspect-[4/3]"
+  },
+  {
+    title: "E-commerce Experience Design",
+    client: "Luxe Wear",
+    meta: "Retail Platform",
+    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800",
+    url: "https://luxewear.com",
+    aspect: "aspect-[4/3]"
+  },
+  {
+    title: "SaaS Analytics Dashboard",
+    client: "DataFlow",
+    meta: "Enterprise Platform",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200",
+    url: "https://dataflow.io",
+    aspect: "aspect-[4/3]"
+  }
+];
 
 const ProjectsPage = () => {
   return (
@@ -112,140 +156,53 @@ const ProjectsPage = () => {
           </motion.div>
         </div>
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 relative z-10">
-          
-          {/* Card 1: Featured - Healthcare (Image Dominant) */}
-          <motion.a 
-            href="https://regiuscare.com" target="_blank"
-            initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8, delay: 0 }}
-            className="group/card relative flex flex-col justify-end col-span-1 md:col-span-12 lg:col-span-8 h-[500px] lg:h-[650px] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-out cursor-target bg-[#1a1a1a]"
-          >
-            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1200" alt="Healthcare" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover/card:scale-105 opacity-80 group-hover/card:opacity-100" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-[#1a1a1a]/40 to-transparent opacity-90 transition-opacity duration-500" />
-            <IndustryTag text="Healthcare" />
-            
-            <div className="relative z-20 p-8 md:p-12 w-full flex flex-col">
-              <div className="flex flex-col max-w-xl pr-16">
-                <span className="text-[11px] uppercase tracking-widest text-white/70 font-bold mb-3 block">Client: Regius Care</span>
-                <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-[1.1] group-hover/card:text-portfolio-gold transition-colors duration-400">Revolutionizing Digital Healthcare</h3>
-                <p className="text-white/80 text-base md:text-lg leading-relaxed">A comprehensive health management system focused on patient care and streamlined clinical workflows.</p>
+        {/* Editorial Project Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-20 md:gap-y-24 md:gap-x-12 lg:gap-x-16 items-start relative z-10 mt-10">
+          {projectsData.map((project, i) => (
+            <motion.a 
+              key={i}
+              href={project.url}
+              target="_blank"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.9, delay: (i % 2) * 0.15, ease: [0.16, 1, 0.3, 1] }}
+              className="group/card flex flex-col cursor-target"
+            >
+              {/* Outer Container with padding */}
+              <div className={`relative w-full ${project.aspect} rounded-[1.5rem] md:rounded-[2rem] bg-[#f0f0f0] mb-6 shadow-sm border border-black/[0.04] p-8 md:p-12 lg:p-16 overflow-hidden flex items-center justify-center`}>
+                
+                {/* Background decorative curved lines (similar to reference) */}
+                <div className="absolute inset-0 pointer-events-none opacity-[0.03]">
+                  <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <path d="M0,100 C30,80 70,80 100,50 L100,100 Z" fill="currentColor" />
+                    <path d="M0,0 C30,30 70,30 100,0 L0,0 Z" fill="currentColor" />
+                  </svg>
+                </div>
+
+                {/* Inner Image Container */}
+                <div className="relative w-full h-full rounded-xl overflow-hidden shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)] transition-transform duration-[1.2s] ease-[0.16,1,0.3,1] group-hover/card:scale-105 group-hover/card:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.3)] bg-white">
+                  <img 
+                    src={project.image} 
+                    alt={project.client} 
+                    className="w-full h-full object-cover object-top" 
+                  />
+                  {/* Soft inner depth */}
+                  <div className="absolute inset-0 ring-1 ring-inset ring-black/[0.05] rounded-xl pointer-events-none" />
+                </div>
               </div>
-            </div>
 
-            <div className="absolute bottom-6 right-6 w-12 h-12 rounded-full border border-white/20 text-white flex items-center justify-center bg-[#1a1a1a] group-hover/card:bg-portfolio-gold group-hover/card:border-portfolio-gold transition-all duration-400 ease-out z-30 shadow-lg">
-              <ArrowUpRight size={20} className="transform group-hover/card:scale-110 transition-transform duration-400" />
-            </div>
-          </motion.a>
-
-          {/* Card 2: Media (Dark Type-Dominant) */}
-          <motion.a 
-            href="https://centerspread.in" target="_blank"
-            initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8, delay: 0.1 }}
-            className="group/card relative flex flex-col col-span-1 md:col-span-6 lg:col-span-4 h-[500px] lg:h-[650px] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-out cursor-target bg-[#1a1a1a]"
-          >
-            <div className="relative h-[45%] w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?auto=format&fit=crop&q=80&w=800" alt="Media" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover/card:scale-105 opacity-90" />
-              <div className="absolute inset-0 bg-[#1a1a1a]/20 group-hover/card:bg-transparent transition-colors duration-400" />
-              <IndustryTag text="Media & Entertainment" />
-            </div>
-            <div className="relative z-20 p-8 flex flex-col flex-1 justify-center bg-[#1a1a1a] border-t border-white/10 pb-16">
-              <div className="pr-12">
-                <span className="text-[11px] uppercase tracking-widest text-white/50 font-bold mb-3 block">Client: CenterSpread</span>
-                <h3 className="text-2xl font-bold text-white mb-4 leading-tight group-hover/card:text-portfolio-gold transition-colors duration-400">Next-Gen Media Distribution</h3>
-                <p className="text-white/60 text-sm leading-relaxed">High-performance content platform delivering real-time news and media to millions of users globally.</p>
+              {/* Minimal Metadata Section */}
+              <div className="flex flex-row justify-between items-center gap-6 px-1 md:px-2">
+                <h3 className="text-xl md:text-2xl lg:text-[1.75rem] font-bold text-[#1a1a1a] tracking-tight leading-[1.2] group-hover/card:text-portfolio-gold transition-colors duration-400">
+                  {project.title}
+                </h3>
+                <span className="text-sm md:text-base font-medium text-portfolio-muted tracking-wide shrink-0">
+                  © 2024
+                </span>
               </div>
-            </div>
-
-            <div className="absolute bottom-6 right-6 w-12 h-12 rounded-full border border-white/20 text-white flex items-center justify-center bg-[#1a1a1a] group-hover/card:bg-portfolio-gold group-hover/card:border-portfolio-gold transition-all duration-400 ease-out z-30 shadow-lg">
-              <ArrowUpRight size={20} className="transform group-hover/card:scale-110 transition-transform duration-400" />
-            </div>
-          </motion.a>
-
-          {/* Card 3: Legal Tech (Image Dominant) */}
-          <motion.a 
-            href="https://sharmalaw.in" target="_blank"
-            initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8, delay: 0.2 }}
-            className="group/card relative flex flex-col justify-end col-span-1 md:col-span-6 lg:col-span-4 h-[500px] lg:h-[550px] rounded-3xl overflow-hidden shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-out cursor-target bg-[#1a1a1a]"
-          >
-            <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=800" alt="Legal" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover/card:scale-105 opacity-80 group-hover/card:opacity-100" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-[#1a1a1a]/60 to-transparent opacity-90 transition-opacity duration-400" />
-            <IndustryTag text="Legal Tech" />
-            <div className="relative z-20 p-8 w-full flex flex-col pt-16 pr-16">
-              <span className="text-[11px] uppercase tracking-widest text-white/70 font-bold mb-3 block">Client: Sharma & Associates</span>
-              <h3 className="text-2xl font-bold text-white mb-3 leading-tight group-hover/card:text-portfolio-gold transition-colors duration-400">Legal Tech Transformation</h3>
-              <p className="text-white/80 text-sm leading-relaxed">Automated legal document management and highly secure client portal for modern law practices.</p>
-            </div>
-
-            <div className="absolute bottom-6 right-6 w-12 h-12 rounded-full border border-white/20 text-white flex items-center justify-center bg-[#1a1a1a] group-hover/card:bg-portfolio-gold group-hover/card:border-portfolio-gold transition-all duration-400 ease-out z-30 shadow-lg">
-              <ArrowUpRight size={20} className="transform group-hover/card:scale-110 transition-transform duration-400" />
-            </div>
-          </motion.a>
-
-          {/* Card 4: Fintech (Image Dominant) */}
-          <motion.a 
-            href="https://fintrack.app" target="_blank"
-            initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8, delay: 0.3 }}
-            className="group/card relative flex flex-col justify-end col-span-1 md:col-span-6 lg:col-span-4 h-[500px] lg:h-[550px] rounded-3xl overflow-hidden shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-out cursor-target bg-[#1a1a1a]"
-          >
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Fintech" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover/card:scale-105 opacity-80 group-hover/card:opacity-100" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-[#1a1a1a]/60 to-transparent opacity-90 transition-opacity duration-400" />
-            <IndustryTag text="Fintech" />
-            <div className="relative z-20 p-8 w-full flex flex-col pr-16">
-              <span className="text-[11px] uppercase tracking-widest text-white/70 font-bold mb-3 block">Client: FinTrack Systems</span>
-              <h3 className="text-2xl font-bold text-white mb-3 leading-tight group-hover/card:text-portfolio-gold transition-colors duration-400">Fintech Innovation Hub</h3>
-              <p className="text-white/80 text-sm leading-relaxed mb-4">Secure financial dashboard with real-time analytics and cross-border payment integration.</p>
-            </div>
-
-            <div className="absolute bottom-6 right-6 w-12 h-12 rounded-full border border-white/20 text-white flex items-center justify-center bg-[#1a1a1a] group-hover/card:bg-portfolio-gold group-hover/card:border-portfolio-gold transition-all duration-400 ease-out z-30 shadow-lg">
-              <ArrowUpRight size={20} className="transform group-hover/card:scale-110 transition-transform duration-400" />
-            </div>
-          </motion.a>
-
-          {/* Card 5: Retail (Image Dominant) */}
-          <motion.a 
-            href="https://luxewear.com" target="_blank"
-            initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8, delay: 0.4 }}
-            className="group/card relative flex flex-col justify-end col-span-1 md:col-span-6 lg:col-span-4 h-[500px] lg:h-[550px] rounded-3xl overflow-hidden shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-out cursor-target bg-[#1a1a1a]"
-          >
-            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800" alt="Retail" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover/card:scale-105 opacity-80 group-hover/card:opacity-100" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-[#1a1a1a]/60 to-transparent opacity-90 transition-opacity duration-400" />
-            <IndustryTag text="Retail" />
-            <div className="relative z-20 p-8 w-full flex flex-col pr-16">
-              <span className="text-[11px] uppercase tracking-widest text-white/70 font-bold mb-3 block">Client: Luxe Wear</span>
-              <h3 className="text-2xl font-bold text-white mb-3 leading-tight group-hover/card:text-portfolio-gold transition-colors duration-400">E-commerce Experience Design</h3>
-              <p className="text-white/80 text-sm leading-relaxed mb-4">A luxury retail platform focused on immersive shopping experiences and high-conversion checkouts.</p>
-            </div>
-
-            <div className="absolute bottom-6 right-6 w-12 h-12 rounded-full border border-white/20 text-white flex items-center justify-center bg-[#1a1a1a] group-hover/card:bg-portfolio-gold group-hover/card:border-portfolio-gold transition-all duration-400 ease-out z-30 shadow-lg">
-              <ArrowUpRight size={20} className="transform group-hover/card:scale-110 transition-transform duration-400" />
-            </div>
-          </motion.a>
-
-          {/* Card 6: Enterprise (Split Layout) */}
-          <motion.a 
-            href="https://dataflow.io" target="_blank"
-            initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8, delay: 0.5 }}
-            className="group/card relative flex flex-col md:flex-row col-span-1 md:col-span-12 lg:col-span-12 h-auto md:h-[450px] lg:h-[500px] rounded-3xl overflow-hidden shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-out cursor-target bg-white border border-gray-200/60"
-          >
-            <div className="relative w-full md:w-1/2 h-[350px] md:h-full overflow-hidden order-2 md:order-1">
-              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200" alt="Enterprise" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover/card:scale-105" />
-              <div className="absolute inset-0 bg-[#1a1a1a]/5 group-hover/card:bg-[#1a1a1a]/20 transition-colors duration-400" />
-              <IndustryTag text="Enterprise" />
-            </div>
-            <div className="relative w-full md:w-1/2 p-10 md:p-16 flex flex-col justify-center order-1 md:order-2 bg-white pb-24 md:pb-24 pr-16 md:pr-20">
-              <div className="flex flex-col h-full justify-center">
-                <span className="text-[11px] uppercase tracking-widest text-portfolio-muted font-bold mb-6 block">Client: DataFlow</span>
-                <h3 className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-8 leading-tight group-hover/card:text-portfolio-gold transition-colors duration-400">SaaS Analytics Dashboard</h3>
-                <p className="text-gray-500 text-base md:text-lg leading-relaxed max-w-md">Powerful data visualization for enterprise-level marketing automation and lead tracking. Designed to handle millions of data points with zero latency.</p>
-              </div>
-            </div>
-
-            <div className="absolute bottom-6 right-6 w-12 h-12 rounded-full border border-white/20 text-white flex items-center justify-center bg-[#1a1a1a] group-hover/card:bg-portfolio-gold group-hover/card:border-portfolio-gold transition-all duration-400 ease-out z-30 shadow-lg">
-              <ArrowUpRight size={20} className="transform group-hover/card:scale-110 transition-transform duration-400" />
-            </div>
-          </motion.a>
-
+            </motion.a>
+          ))}
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ import ProjectsPage from './pages/Projects';
 import CareersPage from './pages/Careers';
 import ContactPage from './pages/Contact';
 import SovereignCounselPage from './pages/SovereignCounsel';
+import AboutPage from './pages/About';
 import Footer from './components/Footer';
 import { useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
@@ -13,7 +14,7 @@ const navLinks = [
   { label: 'Projects', href: '/projects' },
   { label: 'Careers', href: '/careers' },
   { label: 'Services', href: '/#services' },
-  { label: 'About', href: '/#about' },
+  { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ] as const;
 
@@ -98,6 +99,7 @@ function App() {
         <Route path="/careers" element={<CareersPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/sovereign-counsel" element={<SovereignCounselPage />} />
+        <Route path="/about" element={<AboutPage />} />
       </Routes>
       <Footer />
     </div>
