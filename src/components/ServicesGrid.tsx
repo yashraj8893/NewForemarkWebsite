@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { cn } from "../lib/utils";
 
 
@@ -192,21 +192,31 @@ const WebsiteAnimation = () => {
 
 const WebAppAnimation = () => {
   const [isHovered, setIsHovered] = useState(false);
+  const [gifKey, setGifKey] = useState(0);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const src = "/ar-vr-motion-graphics.gif";
 
-  const logs = [
-    { symbol: '▶', text: 'Building project...', symbolColor: 'text-[#f97316]' },
-    { symbol: '✓', text: 'Dependencies resolved', symbolColor: 'text-[#4ade80]' },
-    { symbol: '✓', text: 'TypeScript compiled', symbolColor: 'text-[#4ade80]' },
-    { symbol: '▶', text: 'Running tests...', symbolColor: 'text-[#f97316]' },
-    { symbol: '✓', text: '12/12 tests passed', symbolColor: 'text-[#4ade80]' },
-    { symbol: '▶', text: 'Deploying to production', symbolColor: 'text-[#f97316]' },
-    { symbol: '✓', text: 'Live at foremark.app', symbolColor: 'text-[#4ade80]', pulse: true },
-  ];
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    
+    const img = new Image();
+    img.src = src;
+    img.onload = () => {
+      canvas.width = img.naturalWidth || img.width;
+      canvas.height = img.naturalHeight || img.height;
+      const ctx = canvas.getContext('2d');
+      ctx?.drawImage(img, 0, 0);
+    };
+  }, []);
 
   return (
     <div 
-      className="w-full h-full flex items-center justify-center p-6 cursor-pointer"
-      onMouseEnter={() => setIsHovered(true)}
+      className="w-full h-full flex items-center justify-center p-4 cursor-pointer"
+      onMouseEnter={() => {
+        setIsHovered(true);
+        setGifKey(prev => prev + 1); // Forces the GIF to restart from frame 0
+      }}
       onMouseLeave={() => setIsHovered(false)}
     >
       <motion.div 
@@ -215,64 +225,25 @@ const WebAppAnimation = () => {
           y: isHovered ? -4 : 0,
         }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className="w-full max-w-[320px] bg-[#0d0d0d] rounded-2xl overflow-hidden border border-white/[0.08] relative shadow-xl"
+        className="w-full rounded-2xl overflow-hidden relative shadow-xl bg-white"
         style={{
           boxShadow: isHovered
-            ? '0 32px 64px -16px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06), 0 0 80px -20px rgba(249,115,22,0.1)'
-            : '0 8px 24px -4px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.04)',
+            ? '0 32px 64px -16px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05)'
+            : '0 8px 24px -4px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.04)',
         }}
       >
-        {/* Terminal Header */}
-        <div className="flex items-center justify-between px-4 py-3 border-b border-white/[0.08] bg-white/[0.02]">
-          <div className="flex gap-1.5">
-            <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
-            <div className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
-            <div className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
-          </div>
-          <span className="text-[10px] text-white/40 font-mono tracking-wide">deploy.sh</span>
-          <div className="w-4" /> {/* Spacer for centering */}
-        </div>
-
-        {/* Terminal Body */}
-        <div className="px-4 py-4 font-mono text-[11px] md:text-[12px] leading-relaxed relative min-h-[180px]">
-          {logs.map((log, i) => {
-            const isVisibleIdle = i < 3;
-            
-            return (
-              <motion.div 
-                key={i}
-                initial={{ opacity: isVisibleIdle ? 0.3 : 0, x: isVisibleIdle ? 0 : -10 }}
-                animate={{ 
-                  opacity: isHovered ? 1 : (isVisibleIdle ? 0.4 : 0),
-                  x: isHovered ? 0 : (isVisibleIdle ? 0 : -10)
-                }}
-                transition={{ 
-                  duration: 0.3, 
-                  delay: isHovered ? i * 0.15 : 0 
-                }}
-                className="flex items-center gap-3 mb-2"
-              >
-                <span className={log.symbolColor}>{log.symbol}</span>
-                <span className="text-white/80">{log.text}</span>
-                {log.pulse && isHovered && (
-                  <motion.div 
-                    animate={{ opacity: [1, 0.2, 1] }} 
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                    className="w-1.5 h-1.5 rounded-full bg-[#4ade80] ml-1"
-                    style={{ boxShadow: '0 0 8px rgba(74,222,128,0.8)' }}
-                  />
-                )}
-              </motion.div>
-            );
-          })}
-
-          {/* Blinking cursor */}
-          <motion.div 
-            animate={{ opacity: [1, 0] }}
-            transition={{ duration: 0.8, repeat: Infinity }}
-            className="w-[8px] h-[15px] bg-white/60 mt-2 ml-1"
-          />
-        </div>
+        <img 
+          key={gifKey}
+          src={isHovered ? `${src}?v=${gifKey}` : src} 
+          alt="AR/VR Motion Graphics" 
+          className="w-full h-auto object-cover block"
+          style={{ opacity: isHovered ? 1 : 0 }}
+        />
+        <canvas 
+          ref={canvasRef}
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none transition-opacity duration-300"
+          style={{ opacity: isHovered ? 0 : 1 }}
+        />
       </motion.div>
     </div>
   );
@@ -280,12 +251,25 @@ const WebAppAnimation = () => {
 
 const ServerAnimation = () => {
   const [isHovered, setIsHovered] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   return (
     <div 
-      className="w-full h-full flex items-center justify-center p-6 cursor-pointer"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className="w-full h-full flex items-center justify-center p-4 cursor-pointer"
+      onMouseEnter={() => {
+        setIsHovered(true);
+        if (videoRef.current) {
+          videoRef.current.currentTime = 0;
+          videoRef.current.play().catch(e => console.log(e));
+        }
+      }}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        if (videoRef.current) {
+          videoRef.current.pause();
+          videoRef.current.currentTime = 0;
+        }
+      }}
     >
       <motion.div 
         animate={{ 
@@ -293,87 +277,21 @@ const ServerAnimation = () => {
           y: isHovered ? -4 : 0,
         }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className="w-full max-w-[320px] bg-[#0d0d0d] rounded-2xl overflow-hidden border border-white/[0.08] relative shadow-xl font-mono"
+        className="w-full rounded-2xl overflow-hidden relative shadow-xl bg-white"
         style={{
           boxShadow: isHovered
-            ? '0 32px 64px -16px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06), 0 0 80px -20px rgba(74,222,128,0.08)'
-            : '0 8px 24px -4px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.04)',
+            ? '0 32px 64px -16px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05)'
+            : '0 8px 24px -4px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.04)',
         }}
       >
-        {/* Terminal Header */}
-        <div className="flex items-center justify-between px-4 py-3 border-b border-white/[0.08] bg-white/[0.02]">
-          <span className="text-[10px] text-white/40 tracking-wide">system.monitor</span>
-          <div className="flex items-center gap-2">
-            <span className="text-[9px] text-[#4ade80] tracking-wider uppercase">Live</span>
-            <motion.div 
-              animate={{ opacity: [1, 0.4, 1] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="w-2 h-2 rounded-full bg-[#4ade80]"
-              style={{ boxShadow: '0 0 8px rgba(74,222,128,0.6)' }}
-            />
-          </div>
-        </div>
-
-        {/* Body */}
-        <div className="p-5 flex flex-col gap-5">
-          {/* CPU Metric */}
-          <div className="flex items-center gap-4">
-            <span className="text-[10px] text-white/50 w-10">CPU</span>
-            <div className="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
-              <motion.div 
-                animate={{ 
-                  width: isHovered ? '67%' : '12%',
-                  backgroundColor: isHovered ? '#f97316' : '#4ade80'
-                }}
-                transition={{ duration: 1.5, ease: "easeOut" }}
-                className="h-full rounded-full"
-              />
-            </div>
-            <span className="text-[10px] text-white/80 w-8 text-right">{isHovered ? '67%' : '12%'}</span>
-          </div>
-
-          {/* Memory Metric */}
-          <div className="flex items-center gap-4">
-            <span className="text-[10px] text-white/50 w-10">MEM</span>
-            <div className="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
-              <motion.div 
-                animate={{ width: isHovered ? '43%' : '20%' }}
-                transition={{ duration: 1.2, ease: "easeOut", delay: 0.1 }}
-                className="h-full bg-[#4ade80] rounded-full"
-              />
-            </div>
-            <span className="text-[10px] text-white/80 w-8 text-right">{isHovered ? '43%' : '20%'}</span>
-          </div>
-
-          {/* Uptime */}
-          <div className="flex items-center justify-between border-t border-white/5 pt-4">
-            <span className="text-[10px] text-white/50">UPTIME</span>
-            <motion.span 
-              className="text-xl md:text-2xl text-white tracking-tight"
-            >
-              99.97%
-            </motion.span>
-          </div>
-
-          {/* Sparkline (REQ/S) */}
-          <div className="flex items-end justify-between gap-1 h-6">
-            <div className="text-[10px] text-white/50 flex-1">REQ/S</div>
-            <div className="flex gap-1 items-end h-full">
-              {[30, 45, 25, 60, 80, 40, 70, 90].map((h, i) => (
-                <motion.div 
-                  key={i}
-                  animate={{ height: isHovered ? `${h}%` : '20%' }}
-                  transition={{ 
-                    duration: 0.5, 
-                    delay: isHovered ? i * 0.05 : 0,
-                    ease: "easeOut" 
-                  }}
-                  className="w-1.5 bg-[#4ade80] rounded-sm"
-                />
-              ))}
-            </div>
-          </div>
-        </div>
+        <video 
+          ref={videoRef}
+          src="/web-server-animation.mp4#t=0.001"
+          className="w-full h-auto object-cover block pointer-events-none"
+          muted
+          loop
+          playsInline
+        />
       </motion.div>
     </div>
   );
@@ -381,23 +299,25 @@ const ServerAnimation = () => {
 
 const AutomationAnimation = () => {
   const [isHovered, setIsHovered] = useState(false);
-
-  // Generate fake events for scrolling log
-  const fakeEvents = [
-    { time: "12:04:31", id: "evt_082", status: "processed" },
-    { time: "12:04:33", id: "evt_083", status: "synced" },
-    { time: "12:04:35", id: "evt_084", status: "processed" },
-    { time: "12:04:36", id: "evt_085", status: "synced" },
-    { time: "12:04:38", id: "evt_086", status: "processed" },
-  ];
-  // Duplicate for seamless scroll
-  const scrollingEvents = [...fakeEvents, ...fakeEvents, ...fakeEvents];
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   return (
     <div 
-      className="w-full h-full flex items-center justify-center p-6 cursor-pointer"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className="w-full h-full flex items-center justify-center p-4 cursor-pointer"
+      onMouseEnter={() => {
+        setIsHovered(true);
+        if (videoRef.current) {
+          videoRef.current.currentTime = 0;
+          videoRef.current.play().catch(e => console.log(e));
+        }
+      }}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        if (videoRef.current) {
+          videoRef.current.pause();
+          videoRef.current.currentTime = 0;
+        }
+      }}
     >
       <motion.div 
         animate={{ 
@@ -405,84 +325,21 @@ const AutomationAnimation = () => {
           y: isHovered ? -4 : 0,
         }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className="w-full max-w-[340px] bg-[#0d0d0d] rounded-2xl overflow-hidden border border-white/[0.08] relative shadow-xl font-mono flex flex-col"
+        className="w-full rounded-2xl overflow-hidden relative shadow-xl bg-white"
         style={{
           boxShadow: isHovered
-            ? '0 32px 64px -16px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06), 0 0 80px -20px rgba(59,130,246,0.1)'
-            : '0 8px 24px -4px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.04)',
+            ? '0 32px 64px -16px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05)'
+            : '0 8px 24px -4px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.04)',
         }}
       >
-        {/* Terminal Header */}
-        <div className="flex items-center justify-between px-4 py-3 border-b border-white/[0.08] bg-white/[0.02]">
-          <span className="text-[10px] text-white/40 tracking-wide">event.pipeline</span>
-          <div className="w-2 h-2 rounded-full bg-white/20" />
-        </div>
-
-        <div className="p-4 md:p-5 flex flex-col">
-          {/* Horizontal Pipeline */}
-          <div className="flex items-center justify-between mb-6">
-            <motion.div 
-              className="px-2 py-1.5 border border-[#f97316] rounded-md bg-[#f97316]/10 flex flex-col items-center flex-1"
-              style={{ boxShadow: isHovered ? '0 0 12px rgba(249,115,22,0.3)' : 'none' }}
-              transition={{ duration: 0.3 }}
-            >
-              <span className="text-[9px] text-[#f97316] uppercase tracking-wider mb-1">Input</span>
-              <span className="text-[8px] text-[#f97316]/70 truncate max-w-full">webhook.receive</span>
-            </motion.div>
-            
-            <div className="text-white/20 px-1">→</div>
-
-            <motion.div 
-              className="px-2 py-1.5 border border-white rounded-md bg-white/10 flex flex-col items-center flex-1"
-              style={{ boxShadow: isHovered ? '0 0 12px rgba(255,255,255,0.2)' : 'none' }}
-              transition={{ duration: 0.3 }}
-            >
-              <span className="text-[9px] text-white uppercase tracking-wider mb-1">Transform</span>
-              <span className="text-[8px] text-white/70 truncate max-w-full">data.normalize</span>
-            </motion.div>
-
-            <div className="text-white/20 px-1">→</div>
-
-            <motion.div 
-              className="px-2 py-1.5 border border-[#4ade80] rounded-md bg-[#4ade80]/10 flex flex-col items-center flex-1"
-              style={{ boxShadow: isHovered ? '0 0 12px rgba(74,222,128,0.3)' : 'none' }}
-              transition={{ duration: 0.3 }}
-            >
-              <span className="text-[9px] text-[#4ade80] uppercase tracking-wider mb-1">Output</span>
-              <span className="text-[8px] text-[#4ade80]/70 truncate max-w-full">crm.sync</span>
-            </motion.div>
-          </div>
-
-          {/* Scrolling Event Log */}
-          <div className="h-[72px] overflow-hidden relative rounded bg-white/[0.02] border border-white/[0.05] p-2">
-            {/* Top/Bottom Fade Masks */}
-            <div className="absolute top-0 left-0 right-0 h-4 bg-gradient-to-b from-[#0d0d0d] to-transparent z-10 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 right-0 h-4 bg-gradient-to-t from-[#0d0d0d] to-transparent z-10 pointer-events-none" />
-            
-            <motion.div 
-              animate={{ 
-                y: [0, -120] 
-              }}
-              transition={{ 
-                duration: isHovered ? 4 : 8, 
-                repeat: Infinity, 
-                ease: "linear" 
-              }}
-              className="flex flex-col gap-1.5"
-            >
-              {scrollingEvents.map((evt, i) => (
-                <div key={i} className="text-[9px] text-white/50 flex gap-2">
-                  <span className="text-white/30">[{evt.time}]</span>
-                  <span className="text-white/70">{evt.id}</span>
-                  <span className="text-white/30">→</span>
-                  <span className={evt.status === 'synced' ? 'text-[#4ade80]' : 'text-white/50'}>
-                    {evt.status}
-                  </span>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-        </div>
+        <video 
+          ref={videoRef}
+          src="/project-management-animation.mp4#t=0.001"
+          className="w-full h-auto object-cover block pointer-events-none"
+          muted
+          loop
+          playsInline
+        />
       </motion.div>
     </div>
   );
