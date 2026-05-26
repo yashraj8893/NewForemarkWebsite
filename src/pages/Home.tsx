@@ -54,30 +54,30 @@ const Hero = () => {
         )}
       />
       <div className="relative z-10 flex flex-col items-center text-center mb-16">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}
           className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-portfolio-dark/10 bg-white/50 backdrop-blur-sm text-[10px] font-bold uppercase tracking-[0.2em] mb-6"
         >
           <span className="w-2 h-2 rounded-full bg-portfolio-gold animate-pulse" />
           Building digital solutions that drive growth
         </motion.div>
-        
-        <motion.h1 
+
+        <motion.h1
           initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.2 }}
           className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-8"
         >
-          We are a software <br /> 
+          We are a software <br />
           <span className="text-portfolio-muted">development company.</span>
         </motion.h1>
 
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
           className="text-portfolio-muted text-lg md:text-xl max-w-2xl mb-10"
         >
           We build scalable web applications, beautiful websites, <br /> and digital products that help businesses grow faster.
         </motion.p>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }}
           className="flex flex-col sm:flex-row gap-4"
         >
@@ -93,25 +93,25 @@ const Hero = () => {
       <div className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden mt-8 pb-16">
         <div className="absolute top-0 left-0 w-40 md:w-64 h-full bg-gradient-to-r from-portfolio-bg to-transparent z-10 pointer-events-none backdrop-blur-[2px]" />
         <div className="absolute top-0 right-0 w-40 md:w-64 h-full bg-gradient-to-l from-portfolio-bg to-transparent z-10 pointer-events-none backdrop-blur-[2px]" />
-        <motion.div 
+        <motion.div
           className="flex gap-4 whitespace-nowrap"
           animate={{ x: ["-50%", "0%"] }}
-          transition={{ 
-            duration: 45, 
-            repeat: Infinity, 
-            ease: "linear" 
+          transition={{
+            duration: 45,
+            repeat: Infinity,
+            ease: "linear"
           }}
           style={{ width: "fit-content" }}
         >
           {[...carouselImages, ...carouselImages].map((img, i) => (
-            <div 
-              key={i} 
+            <div
+              key={i}
               className="w-[400px] md:w-[600px] aspect-[16/10] rounded-2xl overflow-hidden shadow-xl border border-portfolio-dark/5 shrink-0 bg-white"
             >
-              <img 
-                src={img} 
-                alt={`Project ${i}`} 
-                className="w-full h-full object-cover transition-all duration-500" 
+              <img
+                src={img}
+                alt={`Project ${i}`}
+                className="w-full h-full object-cover transition-all duration-500"
               />
             </div>
           ))}
@@ -136,22 +136,21 @@ const CuratedWork = () => (
     {/* Editorial Project List */}
     <div className="flex flex-col gap-20 lg:gap-28">
       {curatedProjects.map((p, i) => (
-        <motion.div 
-          key={i} 
-          initial={{ opacity: 0, y: 40 }} 
-          whileInView={{ opacity: 1, y: 0 }} 
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.9, ease: [0.21, 0.45, 0.32, 0.9] }}
-          className={`group grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center cursor-target ${
-            i % 2 === 1 ? 'lg:[direction:rtl]' : ''
-          }`}
+          className={`group grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center cursor-target ${i % 2 === 1 ? 'lg:[direction:rtl]' : ''
+            }`}
         >
           {/* Image */}
           <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden shadow-lg lg:[direction:ltr]">
-            <img 
-              src={p.image} 
-              alt={p.title} 
-              className="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-[1.05]" 
+            <img
+              src={p.image}
+              alt={p.title}
+              className="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-[1.05]"
             />
             {/* Image overlay gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
@@ -167,16 +166,16 @@ const CuratedWork = () => (
               <span className="text-[10px] uppercase tracking-[0.2em] text-[#1a1a1a]/35 font-bold">CLIENT</span>
               <p className="text-sm font-semibold text-[#1a1a1a]/70 mt-1">{p.client}</p>
             </div>
-            
+
             <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-6 group-hover:text-[#f97316] transition-colors duration-500">
               {p.title}
             </h3>
-            
+
             <p className="text-[#1a1a1a]/55 text-base md:text-lg leading-relaxed max-w-lg mb-10">
               {p.desc}
             </p>
 
-            <Link 
+            <Link
               to="/projects"
               className="inline-flex items-center gap-4 self-start group/btn cursor-target"
             >
@@ -208,8 +207,8 @@ const CTASection = () => (
         <span className="text-portfolio-gold font-bold mb-6 text-xs tracking-widest block uppercase">Ready to start?</span>
         <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-8">Let's build something extraordinary together.</h2>
         <p className="text-lg text-white/60 mb-12">Whether you need a full application built from scratch or just want to explore how we can help your business grow.</p>
-        <Link 
-          to="/contact" 
+        <Link
+          to="/contact"
           className="inline-flex items-center gap-2 bg-portfolio-gold text-portfolio-dark font-bold px-10 py-5 rounded-full hover:scale-105 transition-transform uppercase tracking-widest text-sm shadow-xl shadow-portfolio-gold/20 cursor-target"
         >
           Contact Us <ArrowUpRight size={18} />
@@ -299,13 +298,13 @@ const TestimonialsSection = () => {
 
   return (
     <section className="py-36 w-screen relative left-1/2 -translate-x-1/2 flex items-center justify-center bg-[#080808]">
-      
+
       {/* Subconscious ambient warmth — highly transparent and wide */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#f97316]/[0.02] blur-[120px] rounded-full pointer-events-none" />
 
       {/* Grid Container — subtle card fade at the very edges to hide scrolling clip, no background fade */}
       <div className="relative w-full max-w-[1300px] mx-auto overflow-hidden h-[750px] [mask-image:linear-gradient(to_bottom,transparent_0%,black_5%,black_95%,transparent_100%)]">
-        
+
         {/* Scroll grid — slightly wider gap for more air */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-7 px-6 md:px-12 h-full opacity-100">
           {/* Col 1 */}
@@ -386,7 +385,7 @@ const FAQSection = () => {
   return (
     <section className="py-24">
       <div className="bg-[#1a1a1a] rounded-[3rem] p-8 md:p-14 lg:p-16 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-        
+
         {/* Left Column */}
         <div className="lg:col-span-4 flex flex-col justify-start pt-2">
           <span className="inline-block text-[10px] font-bold uppercase tracking-widest text-white/40 border border-white/10 rounded-full px-3 py-1 mb-8 w-fit">
@@ -434,57 +433,93 @@ const FAQSection = () => {
   );
 };
 
-const MissionSection = () => (
-  <section className="py-16 md:py-20 lg:py-[96px] flex flex-col items-center text-center px-6">
-    <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-[#1a1a1a]/[0.06] bg-[#1a1a1a]/[0.02] text-[10px] font-bold uppercase tracking-[0.25em] text-[#1a1a1a]/50 mb-8"
-    >
-      Our Mission
-    </motion.div>
-    
-    <motion.h2 
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.1 }}
-      className="text-[40px] leading-[1.05] md:text-[56px] md:leading-[1.0] lg:text-[72px] lg:leading-[0.92] font-black tracking-[-0.03em] text-[#1a1a1a] max-w-[1100px] mb-8"
-    >
-      We Drive Businesses <br className="hidden md:block" />
-      To The Forefront Of The Industries <br className="hidden md:block" />
-      Through Comprehensive <br className="hidden md:block" />
-      <span className="text-[#737373]">Development & Automation.</span>
-    </motion.h2>
+const MissionSection = () => {
+  const words = [
+    { text: 'We', orange: false },
+    { text: 'Drive', orange: false },
+    { text: 'Businesses', orange: true },
+    { text: 'To', orange: false },
+    { text: 'The', orange: false },
+    { text: 'Forefront', orange: true },
+    { text: 'Of', orange: false },
+    { text: 'The', orange: false },
+    { text: 'Industries', orange: false },
+    { text: 'Through', orange: false },
+    { text: 'Comprehensive', orange: false },
+    { text: 'Development', orange: true },
+    { text: '&', orange: false },
+    { text: 'Automation.', orange: true },
+  ];
 
-    <motion.p 
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.2 }}
-      className="text-[#1a1a1a]/60 text-[15px] md:text-[17px] lg:text-[19px] max-w-[640px] leading-[1.6] font-medium mb-10"
-    >
-      We solve complex technical problems through thoughtful <br className="hidden md:block" />
-      engineering, modern software architecture, and <br className="hidden md:block" />
-      intelligent automation. Building technology that scales.
-    </motion.p>
+  return (
+    <section className="w-screen relative left-1/2 -translate-x-1/2 bg-[#0a0a0a] py-20 md:py-28 flex flex-col items-center text-center px-6">
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full bg-[#f97316]/[0.05] blur-[140px] pointer-events-none" />
 
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.3 }}
-    >
-      <Link 
-        to="/contact" 
-        className="inline-flex items-center gap-1.5 text-[#1a1a1a] font-semibold text-[15px] hover:opacity-70 transition-opacity cursor-target group"
-      >
-        Book A Call <ArrowUpRight size={16} strokeWidth={2.5} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-      </Link>
-    </motion.div>
-  </section>
-);
+      <div className="relative z-10 flex flex-col items-center">
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+          className="inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-white/10 bg-white/[0.03] text-[10px] font-bold uppercase tracking-[0.25em] text-white/40 mb-10"
+        >
+          Our Mission
+        </motion.div>
+
+        <h2 className="text-[36px] leading-[1.14] md:text-[52px] md:leading-[1.1] lg:text-[68px] lg:leading-[1.06] font-bold tracking-[-0.02em] max-w-[1100px] mb-10 flex flex-wrap justify-center gap-x-[0.28em] gap-y-[0.08em]">
+          {words.map((word, i) => (
+            <motion.span
+              key={i}
+              initial={{ opacity: 0, y: 28, filter: 'blur(4px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true }}
+              transition={{
+                delay: 0.1 + i * 0.07,
+                duration: 0.55,
+                ease: [0.21, 0.45, 0.32, 0.9],
+              }}
+              className={word.orange ? 'text-[#f97316]' : 'text-white'}
+            >
+              {word.text}
+            </motion.span>
+          ))}
+        </h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 + words.length * 0.07 + 0.1, duration: 0.6 }}
+          className="text-white/40 text-[14px] md:text-[16px] max-w-[520px] leading-[1.75] font-medium mb-10"
+        >
+          We solve complex technical problems through thoughtful engineering, modern software
+          architecture, and intelligent automation. Building technology that scales.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 + words.length * 0.07 + 0.25, duration: 0.5 }}
+        >
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-1.5 text-[#f97316] font-semibold text-[15px] hover:opacity-60 transition-opacity cursor-target group"
+          >
+            Book A Call{' '}
+            <ArrowUpRight
+              size={16}
+              strokeWidth={2.5}
+              className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+            />
+          </Link>
+        </motion.div>
+
+      </div>
+    </section>
+  );
+};
 
 const Home = () => {
   return (
