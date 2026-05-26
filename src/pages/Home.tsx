@@ -279,13 +279,13 @@ const testimonials = [
 ];
 
 const TestimonialCard = ({ t }: { t: typeof testimonials[0] }) => (
-  <div className="bg-[#ffffff0a] border border-[#ffffff12] rounded-xl p-5 mb-3 flex flex-col gap-3 hover:bg-[#ffffff10] hover:border-[#ffffff20] transition-all duration-500">
-    <p className="text-white/65 text-[13px] leading-[1.7]">"{t.text}"</p>
-    <div className="flex items-center gap-2.5 pt-1 border-t border-white/[0.06]">
-      <img src={t.avatar} alt={t.name} className="w-8 h-8 rounded-full object-cover grayscale opacity-70 shrink-0" />
+  <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-7 mb-6 flex flex-col gap-4 hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-700">
+    <p className="text-white/75 text-[14px] leading-[1.7] font-normal tracking-wide">"{t.text}"</p>
+    <div className="flex items-center gap-4 pt-3 border-t border-white/[0.06]">
+      <img src={t.avatar} alt={t.name} className="w-9 h-9 rounded-full object-cover grayscale opacity-80 shrink-0" />
       <div>
-        <p className="text-white/90 text-[11px] font-bold leading-tight">{t.name}</p>
-        <p className="text-white/35 text-[10px] font-medium leading-tight mt-0.5">{t.role}</p>
+        <p className="text-white/90 text-[12px] font-bold leading-tight">{t.name}</p>
+        <p className="text-white/50 text-[11px] font-medium leading-tight mt-0.5">{t.role}</p>
       </div>
     </div>
   </div>
@@ -298,56 +298,55 @@ const TestimonialsSection = () => {
   const col4 = testimonials.filter((_, i) => i % 4 === 3);
 
   return (
-    <section className="py-24">
-      {/* Matches the site's dark card style: bg-[#1a1a1a] rounded-[3rem] */}
-      <div className="bg-[#1a1a1a] rounded-[3rem] relative overflow-hidden h-[600px]">
+    <section className="py-36 w-screen relative left-1/2 -translate-x-1/2 flex items-center justify-center bg-[#080808]">
+      
+      {/* Subconscious ambient warmth — highly transparent and wide */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#f97316]/[0.02] blur-[120px] rounded-full pointer-events-none" />
 
-        {/* Top fade — cards emerge from darkness */}
-        <div className="absolute top-0 inset-x-0 h-36 bg-gradient-to-b from-[#1a1a1a] to-transparent z-10 pointer-events-none" />
-        {/* Bottom fade — cards dissolve into darkness */}
-        <div className="absolute bottom-0 inset-x-0 h-36 bg-gradient-to-t from-[#1a1a1a] to-transparent z-10 pointer-events-none" />
-
-        {/* 4-column scroll grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 px-8 md:px-12 h-full">
-          {/* Col 1 — slowest, natural start */}
+      {/* Grid Container — subtle card fade at the very edges to hide scrolling clip, no background fade */}
+      <div className="relative w-full max-w-[1300px] mx-auto overflow-hidden h-[750px] [mask-image:linear-gradient(to_bottom,transparent_0%,black_5%,black_95%,transparent_100%)]">
+        
+        {/* Scroll grid — slightly wider gap for more air */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-7 px-6 md:px-12 h-full opacity-100">
+          {/* Col 1 */}
           <div className="overflow-hidden">
-            <div className="animate-scroll-slow flex flex-col pt-10">
+            <div className="animate-scroll-slow flex flex-col pt-12">
               {[...col1, ...col1, ...col1].map((t, i) => <TestimonialCard key={i} t={t} />)}
             </div>
           </div>
-          {/* Col 2 — medium, pushed down */}
+          {/* Col 2 */}
           <div className="overflow-hidden">
-            <div className="animate-scroll-medium flex flex-col" style={{ marginTop: '-90px' }}>
+            <div className="animate-scroll-medium flex flex-col" style={{ marginTop: '-120px' }}>
               {[...col2, ...col2, ...col2].map((t, i) => <TestimonialCard key={i} t={t} />)}
             </div>
           </div>
-          {/* Col 3 — fastest, slight push */}
+          {/* Col 3 */}
           <div className="overflow-hidden hidden md:block">
-            <div className="animate-scroll-fast flex flex-col" style={{ marginTop: '-50px' }}>
+            <div className="animate-scroll-fast flex flex-col" style={{ marginTop: '-60px' }}>
               {[...col3, ...col3, ...col3].map((t, i) => <TestimonialCard key={i} t={t} />)}
             </div>
           </div>
-          {/* Col 4 — medium-alt, deepest push */}
+          {/* Col 4 */}
           <div className="overflow-hidden hidden md:block">
-            <div className="animate-scroll-medium-alt flex flex-col" style={{ marginTop: '-140px' }}>
+            <div className="animate-scroll-medium-alt flex flex-col" style={{ marginTop: '-180px' }}>
               {[...col4, ...col4, ...col4].map((t, i) => <TestimonialCard key={i} t={t} />)}
             </div>
           </div>
         </div>
 
-        {/* Rating badge — floats absolutely centered over the scrolling columns */}
+        {/* Rating badge — maintains sharp contrast hierarchy */}
         <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
-          <div className="bg-[#111111]/90 backdrop-blur-2xl border border-white/[0.1] rounded-2xl px-7 py-4 flex items-center gap-5 shadow-[0_8px_60px_rgba(0,0,0,0.8)]">
-            <span className="text-5xl font-black text-white leading-none tabular-nums">4.9</span>
+          <div className="bg-[#080808]/80 backdrop-blur-3xl border border-white/[0.08] rounded-3xl px-9 py-7 flex items-center gap-7 shadow-[0_30px_100px_-20px_rgba(0,0,0,0.7)]">
+            <span className="text-6xl font-black text-white leading-none tabular-nums tracking-tighter">4.9</span>
             <div className="flex flex-col gap-1.5">
-              <div className="flex gap-1">
+              <div className="flex gap-1.5">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="w-5 h-5 text-[#f97316]" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
                 ))}
               </div>
-              <span className="text-white/40 text-[11px] font-medium">Based on 15+ projects</span>
+              <span className="text-white/50 text-[11px] font-semibold tracking-wider uppercase">Based on 15+ projects</span>
             </div>
           </div>
         </div>
