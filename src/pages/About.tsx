@@ -28,7 +28,7 @@ const AboutHero = () => (
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.22em] text-portfolio-muted mb-6"
+        className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-portfolio-gold mb-6"
       >
         <span className="w-1.5 h-1.5 rounded-full bg-[#ff5c00] inline-block" />
         About Us
@@ -39,7 +39,7 @@ const AboutHero = () => (
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.1 }}
-        className="text-[2.6rem] sm:text-[3.2rem] md:text-[4rem] lg:text-[4.8rem] font-black tracking-tight leading-[1.08] text-portfolio-dark mb-6"
+        className="text-3xl md:text-5xl font-bold tracking-tight text-portfolio-dark mb-6"
       >
         Hi. We're Foremark.
       </motion.h1>
@@ -106,38 +106,40 @@ const OurStory = () => (
       </div>
     </motion.div>
 
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16 lg:gap-24 items-start pb-20 md:pb-28">
-      <div className="lg:col-span-5 flex flex-col">
-        <span className="text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-[#ff5c00] font-bold mb-5 block">
-          How It Started
-        </span>
-        <h2 className="text-[3.5rem] md:text-[5rem] lg:text-[5.5rem] font-black tracking-tighter text-portfolio-text leading-[0.9]">
-          Our <br className="hidden lg:block" />
-          Story
-        </h2>
-      </div>
+    <div className="flex justify-center pb-20 md:pb-28">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-start w-full max-w-[1000px]">
+        <div className="md:col-span-4 flex flex-col">
+          <span className="text-xs font-bold uppercase tracking-widest text-portfolio-gold mb-5 block">
+            How It Started
+          </span>
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-portfolio-text">
+            Our <br className="hidden md:block" />
+            Story
+          </h2>
+        </div>
 
-      <motion.div
-        className="lg:col-span-7 flex flex-col gap-8 md:gap-10 max-w-[650px]"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.1 }}
-      >
-        <p className="text-gray-500 text-[15px] md:text-[17px] leading-[1.85] font-medium">
-          Foremark was born from a simple observation: too many businesses are held back by
-          technology that doesn't scale, doesn't perform, and doesn't solve real problems. We
-          saw teams struggling with bloated codebases, unreliable systems, and agencies that
-          prioritized speed over quality. We set out to change that.
-        </p>
-        <p className="text-gray-500 text-[15px] md:text-[17px] leading-[1.85] font-medium">
-          Soon, we set out to build what we believe will eventually go on to become
-          synonymous with everything{' '}
-          <span className="text-portfolio-text font-bold">Observability</span> — for
-          intricate, scalable technologies of the future. Be it modern web platforms,
-          scalable APIs, or cloud-native architecture.
-        </p>
-      </motion.div>
+        <motion.div
+          className="md:col-span-8 flex flex-col gap-8 md:gap-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+        >
+          <p className="text-gray-500 text-[15px] md:text-[17px] leading-[1.85] font-medium">
+            Foremark was born from a simple observation: too many businesses are held back by
+            technology that doesn't scale, doesn't perform, and doesn't solve real problems. We
+            saw teams struggling with bloated codebases, unreliable systems, and agencies that
+            prioritized speed over quality. We set out to change that.
+          </p>
+          <p className="text-gray-500 text-[15px] md:text-[17px] leading-[1.85] font-medium">
+            Soon, we set out to build what we believe will eventually go on to become
+            synonymous with everything{' '}
+            <span className="text-portfolio-text font-bold">Observability</span> — for
+            intricate, scalable technologies of the future. Be it modern web platforms,
+            scalable APIs, or cloud-native architecture.
+          </p>
+        </motion.div>
+      </div>
     </div>
   </section>
 );
@@ -155,7 +157,7 @@ const StatsGrid = () => (
   <section className="pb-24 md:pb-40">
     <div className="flex items-center gap-6 mb-16 opacity-70">
       <div className="w-8 md:w-20 h-[1px] bg-gray-200" />
-      <span className="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-bold">
+      <span className="text-xs font-bold uppercase tracking-widest text-portfolio-gold">
         By The Numbers
       </span>
       <div className="flex-1 h-[1px] bg-gray-200" />
@@ -171,7 +173,7 @@ const StatsGrid = () => (
           transition={{ delay: i * 0.1 }}
           className="bg-white border border-gray-100 rounded-[2rem] px-8 py-10 md:px-10 md:py-12 flex flex-col shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-gray-200/60 hover:-translate-y-1 transition-all duration-500 cursor-target"
         >
-          <h3 className="text-[3.5rem] md:text-[4.5rem] lg:text-[5rem] font-black tracking-tighter text-[#111] leading-none mb-8">
+          <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-[#111] mb-8">
             {stat.value}
             <span className={stat.accentColor}>{stat.accent}</span>
           </h3>

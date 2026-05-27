@@ -64,7 +64,7 @@ const Hero = () => {
 
         <motion.h1
           initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.2 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-8"
+          className="text-3xl md:text-5xl font-bold tracking-tight mb-8"
         >
           We are a software <br />
           <span className="text-portfolio-muted">development company.</span>
@@ -126,8 +126,8 @@ const CuratedWork = () => (
     {/* Section Header */}
     <div className="flex justify-between items-end mb-24">
       <div>
-        <span className="text-sm uppercase tracking-[0.25em] text-[#f97316] font-black mb-6 block">PROJECTS</span>
-        <h2 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.02]">
+        <span className="text-xs font-bold uppercase tracking-widest text-portfolio-gold mb-6 block">PROJECTS</span>
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
           A curated collection of <br /> websites designed with care
         </h2>
       </div>
@@ -167,7 +167,7 @@ const CuratedWork = () => (
               <p className="text-sm font-semibold text-[#1a1a1a]/70 mt-1">{p.client}</p>
             </div>
 
-            <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-6 group-hover:text-[#f97316] transition-colors duration-500">
+            <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-6 group-hover:text-[#f97316] transition-colors duration-500">
               {p.title}
             </h3>
 
@@ -197,7 +197,7 @@ const CuratedWork = () => (
 
 const CTASection = () => (
   <section className="py-32">
-    <div className="bg-portfolio-dark rounded-[3rem] p-12 md:p-24 text-white relative overflow-hidden flex flex-col items-center text-center">
+    <div className="bg-[#1a1a1a] rounded-[3rem] p-12 md:p-24 text-white relative overflow-hidden flex flex-col items-center text-center">
       <div className="absolute inset-0 opacity-20 pointer-events-none">
         <svg width="100%" height="100%" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full object-cover">
           <path d="M0 200C100 150 200 180 300 120C400 60 500 100 600 80C700 60 800 120 1000 100" stroke="white" strokeWidth="0.5" strokeDasharray="4 4" />
@@ -205,7 +205,7 @@ const CTASection = () => (
       </div>
       <div className="relative z-10 max-w-3xl">
         <span className="text-portfolio-gold font-bold mb-6 text-xs tracking-widest block uppercase">Ready to start?</span>
-        <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-8">Let's build something extraordinary together.</h2>
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-8">Let's build something extraordinary together.</h2>
         <p className="text-lg text-white/60 mb-12">Whether you need a full application built from scratch or just want to explore how we can help your business grow.</p>
         <Link
           to="/contact"
@@ -336,7 +336,7 @@ const TestimonialsSection = () => {
         {/* Rating badge — maintains sharp contrast hierarchy */}
         <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
           <div className="bg-[#080808]/80 backdrop-blur-3xl border border-white/[0.08] rounded-3xl px-9 py-7 flex items-center gap-7 shadow-[0_30px_100px_-20px_rgba(0,0,0,0.7)]">
-            <span className="text-6xl font-black text-white leading-none tabular-nums tracking-tighter">4.9</span>
+            <span className="text-5xl font-bold text-white leading-none tabular-nums tracking-tight">4.9</span>
             <div className="flex flex-col gap-1.5">
               <div className="flex gap-1.5">
                 {[...Array(5)].map((_, i) => (
@@ -391,7 +391,7 @@ const FAQSection = () => {
           <span className="inline-block text-[10px] font-bold uppercase tracking-widest text-white/40 border border-white/10 rounded-full px-3 py-1 mb-8 w-fit">
             FAQs
           </span>
-          <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[1.0] text-white mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-6">
             Frequently asked <br />
             <span className="text-[#f97316]">questions</span>
           </h2>
