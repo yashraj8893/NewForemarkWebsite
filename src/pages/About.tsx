@@ -106,8 +106,8 @@ const OurStory = () => (
       </div>
     </motion.div>
 
-    <div className="flex justify-center pb-20 md:pb-28">
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-start w-full max-w-[1000px]">
+    <div className="pb-20 md:pb-28">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-start w-full">
         <div className="md:col-span-4 flex flex-col">
           <span className="text-xs font-bold uppercase tracking-widest text-portfolio-gold mb-5 block">
             How It Started

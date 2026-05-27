@@ -64,7 +64,7 @@ const Hero = () => {
 
         <motion.h1
           initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.2 }}
-          className="text-3xl md:text-5xl font-bold tracking-tight mb-8"
+          className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-8"
         >
           We are a software <br />
           <span className="text-portfolio-muted">development company.</span>
@@ -90,9 +90,7 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      <div className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden mt-8 pb-16">
-        <div className="absolute top-0 left-0 w-40 md:w-64 h-full bg-gradient-to-r from-portfolio-bg to-transparent z-10 pointer-events-none backdrop-blur-[2px]" />
-        <div className="absolute top-0 right-0 w-40 md:w-64 h-full bg-gradient-to-l from-portfolio-bg to-transparent z-10 pointer-events-none backdrop-blur-[2px]" />
+      <div className="w-full relative overflow-hidden mt-8 pb-16 [mask-image:linear-gradient(to_right,transparent_0%,black_10%,black_90%,transparent_100%)]">
         <motion.div
           className="flex gap-4 whitespace-nowrap"
           animate={{ x: ["-50%", "0%"] }}
@@ -401,9 +399,9 @@ const FAQSection = () => {
         </div>
 
         {/* Right Column — Accordion */}
-        <div className="lg:col-span-8 flex flex-col divide-y divide-white/[0.07]">
+        <div className="lg:col-span-8 flex flex-col gap-4">
           {faqs.map((faq, i) => (
-            <div key={i} className="py-5">
+            <div key={i} className="bg-white/[0.03] border border-white/[0.08] hover:border-white/[0.15] hover:bg-white/[0.05] transition-colors duration-300 rounded-2xl p-6 md:p-7">
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                 className="w-full flex items-center justify-between gap-6 text-left group cursor-target"
@@ -467,7 +465,7 @@ const MissionSection = () => {
           Our Mission
         </motion.div>
 
-        <h2 className="text-[36px] leading-[1.14] md:text-[52px] md:leading-[1.1] lg:text-[68px] lg:leading-[1.06] font-bold tracking-[-0.02em] max-w-[1100px] mb-10 flex flex-wrap justify-center gap-x-[0.28em] gap-y-[0.08em]">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight max-w-[900px] mb-10 flex flex-wrap justify-center gap-x-[0.28em] gap-y-[0.08em]">
           {words.map((word, i) => (
             <motion.span
               key={i}

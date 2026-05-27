@@ -61,59 +61,55 @@ const ProjectsPage = () => {
       <div className="max-w-[1280px] mx-auto px-8 md:px-16 pt-16 pb-40">
 
         {/* Section Header */}
-        <div className="flex flex-col mb-10 relative z-10">
+        <div className="flex flex-col mb-16 relative z-10">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-portfolio-gold font-bold mb-6 text-xs tracking-widest uppercase"
+            className="text-portfolio-gold font-bold mb-3 text-xs tracking-widest uppercase block"
           >
             Case Studies
           </motion.span>
 
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-10 border-b border-[#1a1a1a]/10 pb-10">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-3xl md:text-5xl font-bold tracking-tight text-[#1a1a1a] max-w-3xl"
-            >
-              Examples of our work
-            </motion.h2>
-          </div>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-3xl md:text-5xl font-bold tracking-tight mb-6"
+          >
+            Examples of <br /> our work
+          </motion.h1>
 
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-lg md:text-xl text-portfolio-muted max-w-xl leading-relaxed"
-            >
-              These are our projects done till now. Simple and clear.
-            </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-base text-portfolio-muted max-w-xl leading-relaxed"
+          >
+            These are our projects done till now. Simple and clear.
+          </motion.p>
 
-            {/* Social Proof */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex items-center gap-4"
-            >
-              <div className="flex -space-x-3">
-                {[1, 2, 3].map((i) => (
-                  <div key={i} className="w-12 h-12 rounded-full border-[3px] border-[#f5f5f5] bg-white overflow-hidden shadow-sm">
-                    <img src={`https://i.pravatar.cc/150?u=acc${i}`} alt="Client" className="w-full h-full object-cover" />
-                  </div>
-                ))}
-              </div>
-              <div>
-                <p className="font-bold text-sm text-[#1a1a1a]">15+ happy clients!</p>
-                <button className="text-[12px] text-portfolio-muted hover:text-portfolio-gold font-bold flex items-center gap-1 transition-colors cursor-target mt-0.5">
-                  Join them now <ArrowUpRight size={14} />
-                </button>
-              </div>
-            </motion.div>
-          </div>
+          {/* Social Proof */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex items-center gap-4"
+          >
+            <div className="flex -space-x-3">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="w-12 h-12 rounded-full border-[3px] border-[#f5f5f5] bg-white overflow-hidden shadow-sm">
+                  <img src={`https://i.pravatar.cc/150?u=acc${i}`} alt="Client" className="w-full h-full object-cover" />
+                </div>
+              ))}
+            </div>
+            <div>
+              <p className="font-bold text-sm text-[#1a1a1a]">15+ happy clients!</p>
+              <button className="text-[12px] text-portfolio-muted hover:text-portfolio-gold font-bold flex items-center gap-1 transition-colors cursor-target mt-0.5">
+                Join them now <ArrowUpRight size={14} />
+              </button>
+            </div>
+          </motion.div>
         </div>
 
         {/* Brand Logos Row - Infinite Marquee */}
