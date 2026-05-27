@@ -108,7 +108,7 @@ const OurStory = () => (
 
     <div className="pb-20 md:pb-28">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-start w-full">
-        <div className="md:col-span-4 flex flex-col">
+        <div className="md:col-span-4 flex flex-col md:pl-10">
           <span className="text-xs font-bold uppercase tracking-widest text-portfolio-gold mb-5 block">
             How It Started
           </span>
@@ -155,9 +155,8 @@ const statsData = [
 
 const StatsGrid = () => (
   <section className="pb-24 md:pb-40">
-    <div className="flex items-center gap-6 mb-16 opacity-70">
-      <div className="w-8 md:w-20 h-[1px] bg-gray-200" />
-      <span className="text-xs font-bold uppercase tracking-widest text-portfolio-gold">
+    <div className="flex items-center gap-6 mb-16 opacity-70 md:pl-10">
+      <span className="text-xs font-bold uppercase tracking-widest text-portfolio-gold shrink-0">
         By The Numbers
       </span>
       <div className="flex-1 h-[1px] bg-gray-200" />

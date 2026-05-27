@@ -3,6 +3,12 @@ import { ArrowUpRight } from 'lucide-react';
 
 const projectsData = [
   {
+    title: "Nappa Dori",
+    image: "/projects/project1.png",
+    url: "https://www.nappadori.com/",
+    aspect: "aspect-[4/3]"
+  },
+  {
     title: "PDR",
     image: "/projects/project9.png",
     url: "#",
@@ -24,12 +30,6 @@ const projectsData = [
     title: "The CenterSpread",
     image: "/projects/project12.png",
     url: "https://www.thecenterspread.com",
-    aspect: "aspect-[4/3]"
-  },
-  {
-    title: "Nappa Dori",
-    image: "/projects/project1.png",
-    url: "https://www.nappadori.com/",
     aspect: "aspect-[4/3]"
   },
   {
@@ -107,7 +107,7 @@ const ProjectsPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-base text-portfolio-muted max-w-xl leading-relaxed"
+            className="text-base text-portfolio-muted max-w-xl leading-relaxed mb-6"
           >
             These are our projects done till now. Simple and clear.
           </motion.p>
