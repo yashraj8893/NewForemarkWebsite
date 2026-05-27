@@ -3,6 +3,30 @@ import { ArrowUpRight } from 'lucide-react';
 
 const projectsData = [
   {
+    title: "PDR",
+    image: "/projects/project9.png",
+    url: "#",
+    aspect: "aspect-[4/3]"
+  },
+  {
+    title: "Sharma & Associates",
+    image: "/projects/project10.png",
+    url: "https://www.advocatesharma.com",
+    aspect: "aspect-[4/3]"
+  },
+  {
+    title: "Regius",
+    image: "/projects/project11.png",
+    url: "#",
+    aspect: "aspect-[4/3]"
+  },
+  {
+    title: "The CenterSpread",
+    image: "/projects/project12.png",
+    url: "https://www.thecenterspread.com",
+    aspect: "aspect-[4/3]"
+  },
+  {
     title: "Nappa Dori",
     image: "/projects/project1.png",
     url: "https://www.nappadori.com/",
@@ -65,7 +89,6 @@ const ProjectsPage = () => {
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
             className="text-portfolio-gold font-bold mb-3 text-xs tracking-widest uppercase block"
           >
             Case Studies
@@ -74,7 +97,7 @@ const ProjectsPage = () => {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ delay: 0.1 }}
             className="text-3xl md:text-5xl font-bold tracking-tight mb-6"
           >
             Examples of <br /> our work
@@ -83,7 +106,7 @@ const ProjectsPage = () => {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ delay: 0.2 }}
             className="text-base text-portfolio-muted max-w-xl leading-relaxed"
           >
             These are our projects done till now. Simple and clear.
@@ -93,7 +116,7 @@ const ProjectsPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ delay: 0.3 }}
             className="flex items-center gap-4"
           >
             <div className="flex -space-x-3">

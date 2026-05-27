@@ -54,13 +54,6 @@ const Hero = () => {
         )}
       />
       <div className="relative z-10 flex flex-col items-center text-center mb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}
-          className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-portfolio-dark/10 bg-white/50 backdrop-blur-sm text-[10px] font-bold uppercase tracking-[0.2em] mb-6"
-        >
-          <span className="w-2 h-2 rounded-full bg-portfolio-gold animate-pulse" />
-          Building digital solutions that drive growth
-        </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.2 }}
@@ -90,7 +83,7 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      <div className="w-full relative overflow-hidden mt-8 pb-16 [mask-image:linear-gradient(to_right,transparent_0%,black_10%,black_90%,transparent_100%)]">
+      <div className="w-full relative overflow-hidden mt-8 pb-16 [mask-image:linear-gradient(to_right,transparent_0%,black_5%,black_95%,transparent_100%)]">
         <motion.div
           className="flex gap-4 whitespace-nowrap"
           animate={{ x: ["-50%", "0%"] }}
