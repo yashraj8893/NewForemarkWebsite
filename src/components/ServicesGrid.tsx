@@ -20,7 +20,7 @@ const ServiceCard = ({ title, desc, children, className }: { title: string, desc
       {children}
     </div>
     <div className="mt-auto">
-      <h3 className="text-xl font-bold mb-3 tracking-tight group-hover:text-portfolio-gold transition-colors duration-500">{title}</h3>
+      <h3 className="text-2xl md:text-3xl font-bold mb-3 tracking-tight group-hover:text-portfolio-gold transition-colors duration-500">{title}</h3>
       <p className="text-portfolio-muted text-sm leading-relaxed">{desc}</p>
     </div>
   </motion.div>
@@ -428,7 +428,7 @@ const ServicesGrid = () => {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="section-label mb-4"
+          className="text-xs font-bold tracking-widest uppercase text-portfolio-gold mb-4 block"
         >
           What We Offer
         </motion.span>
@@ -437,7 +437,7 @@ const ServicesGrid = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-5xl md:text-7xl font-black tracking-tighter mb-6"
+          className="text-3xl md:text-5xl font-bold tracking-tight mb-6"
         >
           Premium engineering <br /> for modern businesses
         </motion.h2>
@@ -452,7 +452,7 @@ const ServicesGrid = () => {
         </motion.p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-[1050px] mx-auto">
         <ServiceCard 
           title="Website Development" 
           desc="Crafting responsive, stunning websites tailored perfectly to your business goals."

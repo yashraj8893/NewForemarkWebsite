@@ -76,7 +76,7 @@ const ProjectsPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-5xl md:text-7xl font-black tracking-tighter text-[#1a1a1a] max-w-3xl leading-[1.0]"
+              className="text-3xl md:text-5xl font-bold tracking-tight text-[#1a1a1a] max-w-3xl"
             >
               Examples of our work
             </motion.h2>
@@ -150,7 +150,7 @@ const ProjectsPage = () => {
         </div>
 
         {/* Editorial Project Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-20 md:gap-y-24 md:gap-x-12 lg:gap-x-16 items-start relative z-10 mt-10">
+        <div className="max-w-[1050px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-y-16 md:gap-y-20 md:gap-x-12 lg:gap-x-16 items-start relative z-10 mt-10">
           {projectsData.map((project, i) => (
             <motion.a
               key={i}
@@ -172,7 +172,7 @@ const ProjectsPage = () => {
                   </svg>
                 </div>
 
-                <div className="relative w-full h-full rounded-t-xl overflow-hidden shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)] transition-transform duration-[1.2s] ease-[0.16,1,0.3,1] group-hover/card:scale-105 group-hover/card:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.3)] bg-white">
+                <div className="relative w-full h-full rounded-t-xl overflow-hidden shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)] transition-transform duration-[1.2s] ease-[0.16,1,0.3,1] group-hover/card:scale-110 group-hover/card:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.3)] bg-white">
                   <img
                     src={project.image}
                     alt={project.title}
@@ -184,7 +184,7 @@ const ProjectsPage = () => {
 
               {/* Title Only */}
               <div className="px-1 md:px-2">
-                <h3 className="text-xl md:text-2xl lg:text-[1.75rem] font-bold text-[#1a1a1a] tracking-tight leading-[1.2] group-hover/card:text-portfolio-gold transition-colors duration-400">
+                <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-[#1a1a1a] group-hover/card:text-portfolio-gold transition-colors duration-400">
                   {project.title}
                 </h3>
               </div>

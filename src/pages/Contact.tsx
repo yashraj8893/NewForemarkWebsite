@@ -17,7 +17,7 @@ const ContactPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-4xl md:text-6xl font-black tracking-tighter mb-6"
+          className="text-3xl md:text-5xl font-bold tracking-tight mb-6"
         >
           Let's talk about <br /> your project
         </motion.h1>
@@ -138,7 +138,7 @@ const ContactPage = () => {
               <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-portfolio-gold rounded-br-xl opacity-40" />
 
               <div className="flex items-center justify-between mb-10">
-                <h3 className="text-xl font-bold uppercase tracking-widest">Contact form</h3>
+                <h3 className="text-2xl md:text-3xl font-bold tracking-tight">Contact form</h3>
                 <div className="flex gap-1">
                   <div className="w-2 h-2 rounded-full bg-portfolio-gold" />
                   <div className="w-2 h-2 rounded-full bg-white/10" />
