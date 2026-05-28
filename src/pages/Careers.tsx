@@ -215,7 +215,7 @@ const CareersPage = () => {
         </div>
 
         {/* Quote Section */}
-        <div className="mt-32 pt-32 border-t border-portfolio-dark/10">
+        <div className="mt-16 pt-16 border-t border-portfolio-dark/10">
           <div className="flex flex-col items-center text-center">
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-12 max-w-4xl leading-tight">
               Foremark truly values work-life balance. We work hard and deliver, but at the end of the day you can switch off.

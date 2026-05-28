@@ -11,28 +11,28 @@ import { Link } from 'react-router-dom';
 
 const curatedProjects = [
   {
-    title: "Noto Café",
-    desc: "A cozy digital home for a neighborhood café, featuring seasonal menus, event updates, and warm visual storytelling",
-    client: "Noto Café & Bakery",
-    date: "Apr 29, 2025",
-    image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=1200",
-    accent: "#f59e0b"
+    title: "Nappa Dori",
+    desc: "An elegant e-commerce experience for a premium leather goods brand, focusing on high-quality visuals and a seamless checkout process.",
+    client: "Nappa Dori",
+    date: "2024",
+    image: "/projects/project1.png",
+    accent: "#4a3728"
   },
   {
-    title: "Aurora Legal",
-    desc: "A modern, trustworthy website for a boutique law firm, designed to convey professionalism with a human touch",
-    client: "Aurora Legal Group",
-    date: "May 3, 2025",
-    image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=1200",
-    accent: "#7c3aed"
+    title: "Regius Care",
+    desc: "A performant, scalable platform built to handle complex operational workflows with security and reliability at the core.",
+    client: "Regius Care",
+    date: "2024",
+    image: "/projects/project11.png",
+    accent: "#b45309"
   },
   {
-    title: "Field Journal Co.",
-    desc: "A blog-meets-shop experience for a travel writer, combining editorial storytelling with a curated gear collection",
-    client: "Lucy Rivera",
-    date: "Apr 4, 2025",
-    image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=1200",
-    accent: "#10b981"
+    title: "PDR",
+    desc: "A modern digital presence that brings clarity and professionalism, helping the business connect with its audience effortlessly.",
+    client: "PDR",
+    date: "2024",
+    image: "/projects/project9.png",
+    accent: "#1e3a8a"
   }
 ];
 
