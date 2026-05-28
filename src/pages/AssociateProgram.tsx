@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { SEO } from '../components/SEO';
 import { MessageCircle, Globe, Smartphone, Settings, Cpu, Handshake, Zap, Shield, TrendingUp, HeadphonesIcon, Building2 } from 'lucide-react';
 
 const AssociateProgramPage = () => {
@@ -24,16 +25,18 @@ const AssociateProgramPage = () => {
   };
 
   return (
-    <div className="max-w-[1280px] mx-auto px-8 md:px-16 pt-16 pb-32 bg-white overflow-hidden">
-      {/* Hero Section */}
-      <div className="flex flex-col mb-16">
-        <motion.span 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-portfolio-gold font-bold mb-3 text-xs tracking-widest uppercase block"
-        >
-          Associate Partner Program
-        </motion.span>
+    <>
+      <SEO title="Associate Program" description="Join the Foremark Associate Program to refer projects, collaborate, and earn." canonicalUrl="https://foremark.in/associate-program" />
+      <div className="max-w-[1280px] mx-auto px-8 md:px-16 pt-16 pb-32 overflow-hidden">
+        {/* Hero Section */}
+        <div className="flex flex-col mb-16">
+          <motion.span 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-portfolio-gold font-bold mb-3 text-xs tracking-widest uppercase block"
+          >
+            Associate Partner Program
+          </motion.span>
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -76,7 +79,7 @@ const AssociateProgramPage = () => {
       {/* What We Build Section */}
       <div className="mb-32">
         <motion.div {...fadeUp} className="mb-16">
-          <span className="text-sm font-bold uppercase tracking-widest text-portfolio-dark mb-4 block">
+          <span className="text-sm font-bold uppercase tracking-widest text-portfolio-gold mb-4 block">
             What We Build
           </span>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight max-w-4xl leading-tight mb-6">
@@ -100,7 +103,7 @@ const AssociateProgramPage = () => {
             { icon: Settings, title: "Business Automation", desc: "Automate repetitive workflows — CRMs, invoicing, lead management, and more — saving time and money." },
             { icon: Cpu, title: "AI-Powered Tools", desc: "Chatbots, AI integrations, and smart tools that give businesses a competitive edge." }
           ].map((service, i) => (
-            <motion.div key={i} variants={staggerItem} className="bg-white border border-gray-100 rounded-[2rem] px-6 py-8 md:px-8 md:py-10 flex flex-col shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-gray-200/60 hover:-translate-y-1 transition-all duration-500 cursor-target group">
+            <motion.div key={i} variants={staggerItem} className="bg-white border border-gray-100 rounded-3xl px-6 py-8 md:px-8 md:py-10 flex flex-col shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-gray-200/60 hover:-translate-y-1 transition-all duration-500 cursor-target group">
               <div className="mb-6 text-portfolio-dark group-hover:text-portfolio-gold transition-colors duration-300">
                 <service.icon size={24} strokeWidth={1.5} />
               </div>
@@ -114,7 +117,7 @@ const AssociateProgramPage = () => {
       {/* How it Works Section */}
       <div className="mb-32">
         <motion.div {...fadeUp} className="mb-16">
-          <span className="text-sm font-bold uppercase tracking-widest text-portfolio-dark mb-4 block">
+          <span className="text-sm font-bold uppercase tracking-widest text-portfolio-gold mb-4 block">
             The Process
           </span>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight max-w-4xl leading-tight">
@@ -151,7 +154,7 @@ const AssociateProgramPage = () => {
       {/* Earnings Section */}
       <div className="mb-32">
         <motion.div {...fadeUp} className="mb-16">
-          <span className="text-sm font-bold uppercase tracking-widest text-portfolio-dark mb-4 block">
+          <span className="text-sm font-bold uppercase tracking-widest text-portfolio-gold mb-4 block">
             Your Earnings
           </span>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight max-w-4xl leading-tight mb-6">
@@ -174,13 +177,13 @@ const AssociateProgramPage = () => {
             { range: "₹20K – ₹1 Lakh", pct: "12" },
             { range: "Above ₹1 Lakh", pct: "12" }
           ].map((tier, i) => (
-            <motion.div key={i} variants={staggerItem} className="border-t border-portfolio-dark/10 pt-8 flex flex-col group cursor-target">
+            <motion.div key={i} variants={staggerItem} className="bg-white border border-gray-100 rounded-3xl px-6 py-8 md:px-8 md:py-10 flex flex-col shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-gray-200/60 hover:-translate-y-1 transition-all duration-500 cursor-target group">
               <span className="text-sm font-bold uppercase tracking-widest text-portfolio-dark mb-4 group-hover:text-portfolio-gold transition-colors duration-300">
                 {tier.range}
               </span>
               <div className="flex items-baseline gap-1 mb-2">
                 <span className="text-4xl font-bold tracking-tight text-portfolio-dark">{tier.pct}</span>
-                <span className="text-xl font-bold text-[#ff5c00]">%</span>
+                <span className="text-xl font-bold text-portfolio-gold">%</span>
               </div>
               <span className="text-sm text-portfolio-muted font-medium">of deal value</span>
             </motion.div>
@@ -189,7 +192,7 @@ const AssociateProgramPage = () => {
 
         {/* Example Earnings */}
         <motion.div {...fadeUp} className="border-t border-portfolio-dark/10 pt-12">
-          <h4 className="text-sm font-bold uppercase tracking-widest text-portfolio-dark mb-8">Example Earnings</h4>
+          <h4 className="text-sm font-bold uppercase tracking-widest text-portfolio-gold mb-8">Example Earnings</h4>
           <div className="flex flex-col gap-0 max-w-3xl">
             {[
               { client: "₹15,000", pct: "8%", earn: "+₹1,200" },
@@ -219,7 +222,7 @@ const AssociateProgramPage = () => {
       {/* Why Partner With Us Section */}
       <div className="mb-32">
         <motion.div {...fadeUp} className="mb-16">
-          <span className="text-sm font-bold uppercase tracking-widest text-portfolio-dark mb-4 block">
+          <span className="text-sm font-bold uppercase tracking-widest text-portfolio-gold mb-4 block">
             Why Partner With Us
           </span>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight max-w-4xl leading-tight">
@@ -242,7 +245,7 @@ const AssociateProgramPage = () => {
             { icon: HeadphonesIcon, title: "We support you", desc: "Not sure how to pitch? We'll get on a call with you and your client together if needed." },
             { icon: Building2, title: "Any industry", desc: "Retail, education, food, healthcare, finance — we build for any industry, so any business is a potential client." }
           ].map((item, i) => (
-            <motion.div key={i} variants={staggerItem} className="bg-white border border-gray-100 rounded-[2rem] px-6 py-8 md:px-8 md:py-10 flex flex-col shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-gray-200/60 hover:-translate-y-1 transition-all duration-500 cursor-target group">
+            <motion.div key={i} variants={staggerItem} className="bg-white border border-gray-100 rounded-3xl px-6 py-8 md:px-8 md:py-10 flex flex-col shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-gray-200/60 hover:-translate-y-1 transition-all duration-500 cursor-target group">
               <div className="mb-4 text-portfolio-dark group-hover:text-portfolio-gold transition-colors duration-300">
                 <item.icon size={20} strokeWidth={2} />
               </div>
@@ -273,7 +276,7 @@ const AssociateProgramPage = () => {
           <MessageCircle size={16} />
           Chat on WhatsApp
         </a>
-        <div className="text-portfolio-muted text-[10px] font-bold uppercase tracking-widest flex flex-col md:flex-row items-center gap-4 md:gap-8">
+        <div className="text-portfolio-muted text-xxs font-bold uppercase tracking-widest flex flex-col md:flex-row items-center gap-4 md:gap-8">
           <span>foremark.in</span>
           <span className="hidden md:block w-1 h-1 rounded-full bg-portfolio-dark/20"></span>
           <span>Mumbai, India</span>
@@ -283,8 +286,9 @@ const AssociateProgramPage = () => {
         <p className="text-sm text-portfolio-muted mt-6 italic">
           Payment settled on contract signing. No experience needed. IST hours.
         </p>
-      </motion.div>
-    </div>
+        </motion.div>
+      </div>
+    </>
   );
 };
 

@@ -131,7 +131,19 @@ const TargetCursor = ({
 
     tickerFnRef.current = tickerFn;
 
-    const moveHandler = (e: MouseEvent) => moveCursor(e.clientX, e.clientY);
+    const moveHandler = (e: MouseEvent) => {
+      moveCursor(e.clientX, e.clientY);
+      const el = e.target as Element;
+      if (el && el.closest('.no-cursor')) {
+        gsap.to(cursorRef.current, { opacity: 0, duration: 0.2, overwrite: 'auto' });
+        document.body.style.cursor = 'auto';
+      } else {
+        gsap.to(cursorRef.current, { opacity: 1, duration: 0.2, overwrite: 'auto' });
+        if (hideDefaultCursor) {
+          document.body.style.cursor = 'none';
+        }
+      }
+    };
     window.addEventListener('mousemove', moveHandler);
 
     const scrollHandler = () => {

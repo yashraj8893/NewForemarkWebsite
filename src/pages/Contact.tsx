@@ -1,11 +1,14 @@
 import { motion } from 'framer-motion';
 import { Mail, MessageSquare, Globe, Share2, Info } from 'lucide-react';
 import mapImage from '../assets/map.png';
+import { SEO } from '../components/SEO';
 
 const ContactPage = () => {
   return (
-    <div className="max-w-[1280px] mx-auto px-8 md:px-16 pt-16 pb-32">
-      <div className="flex flex-col mb-16">
+    <>
+      <SEO title="Contact Us" description="Have a question or want to work together? Leave us a message and we'll get back to you as soon as possible." canonicalUrl="https://foremark.in/contact" />
+      <div className="max-w-[1280px] mx-auto px-8 md:px-16 pt-16 pb-32">
+        <div className="flex flex-col mb-16">
         <motion.span
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -49,28 +52,25 @@ const ContactPage = () => {
 
         {/* Horizontal fade — map disappears before reaching the form */}
         <div
-          className="absolute inset-y-0 left-0 pointer-events-none"
+          className="absolute inset-y-0 right-0 w-32 md:w-64 z-20 pointer-events-none"
           style={{
-            width: '65%',
-            background: 'linear-gradient(to right, transparent 0%, transparent 40%, #0d0d0d 100%)',
+            background: 'linear-gradient(to right, transparent 0%, transparent 40%, var(--color-portfolio-dark) 100%)',
           }}
         />
 
         {/* Top vignette */}
         <div
-          className="absolute inset-x-0 top-0 pointer-events-none"
+          className="absolute inset-x-0 top-0 h-24 md:h-40 z-20 pointer-events-none"
           style={{
-            height: '35%',
-            background: 'linear-gradient(to bottom, #0d0d0d 0%, transparent 100%)',
+            background: 'linear-gradient(to bottom, var(--color-portfolio-dark) 0%, transparent 100%)',
           }}
         />
 
         {/* Bottom vignette */}
         <div
-          className="absolute inset-x-0 bottom-0 pointer-events-none"
+          className="absolute inset-x-0 bottom-0 h-32 md:h-48 z-20 pointer-events-none"
           style={{
-            height: '35%',
-            background: 'linear-gradient(to top, #0d0d0d 0%, transparent 100%)',
+            background: 'linear-gradient(to top, var(--color-portfolio-dark) 0%, transparent 100%)',
           }}
         />
 
@@ -147,25 +147,34 @@ const ContactPage = () => {
 
               <form className="space-y-6">
                 <div className="space-y-2">
-                  <label className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-1">NAME *</label>
+                  <label htmlFor="contact-name" className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-1">NAME *</label>
                   <input
+                    id="contact-name"
+                    name="name"
                     type="text"
+                    required
                     placeholder="Your full name"
                     className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-portfolio-gold transition-colors placeholder:text-white/20 cursor-target"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-1">EMAIL *</label>
+                  <label htmlFor="contact-email" className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-1">EMAIL *</label>
                   <input
+                    id="contact-email"
+                    name="email"
                     type="email"
+                    required
                     placeholder="Your email address"
                     className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-portfolio-gold transition-colors placeholder:text-white/20 cursor-target"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-1">MESSAGE *</label>
+                  <label htmlFor="contact-message" className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-1">MESSAGE *</label>
                   <textarea
+                    id="contact-message"
+                    name="message"
                     rows={4}
+                    required
                     placeholder="How can we help you?"
                     className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-portfolio-gold transition-colors placeholder:text-white/20 resize-none cursor-target"
                   />
@@ -178,8 +187,9 @@ const ContactPage = () => {
           </div>
 
         </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

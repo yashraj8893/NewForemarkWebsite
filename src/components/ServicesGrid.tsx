@@ -11,7 +11,7 @@ const ServiceCard = ({ title, desc, children, className }: { title: string, desc
     transition={{ duration: 0.8, ease: [0.21, 0.45, 0.32, 0.9] }}
     className={cn("flex flex-col h-full group cursor-default", className)}
   >
-    <div className="w-full aspect-[16/10] min-h-[300px] sm:min-h-[340px] lg:min-h-[380px] overflow-hidden rounded-[1.5rem] bg-[#09090b] border border-white/10 relative flex items-center justify-center isolate ring-1 ring-white/5 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)] transition-all duration-700 group-hover:border-portfolio-gold/30 group-hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)] mb-6">
+    <div className="w-full aspect-[16/10] min-h-[300px] sm:min-h-[340px] lg:min-h-[380px] overflow-hidden rounded-[1.5rem] bg-[#09090b] border border-white/10 relative flex items-center justify-center isolate ring-1 ring-white/5 shadow-glow transition-all duration-700 group-hover:border-portfolio-gold/30 group-hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)] mb-6">
       {/* Global dark mode inner ambient glow */}
       <div className="absolute inset-0 bg-gradient-to-br from-portfolio-dark/20 to-transparent pointer-events-none" />
       <div className="absolute top-0 left-1/4 w-1/2 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
@@ -226,19 +226,19 @@ const ServerAnimation = () => {
           <path d="M130,90 L130,160" className="stroke-white/10 stroke-[1.5] fill-none" />
 
           {/* Animated Data Packets (Beams) */}
-          <motion.circle r="3" fill="#f97316" className="filter blur-[1px]">
+          <motion.circle r="3" fill="#e87811" className="filter blur-[1px]">
             <animateMotion dur="3s" repeatCount="indefinite" path="M130,90 L40,50" />
           </motion.circle>
           <motion.circle r="2" fill="#fff" className="filter blur-[1px]">
             <animateMotion dur="2s" repeatCount="indefinite" path="M40,130 L130,90" />
           </motion.circle>
-          <motion.circle r="3" fill="#f97316" className="filter blur-[1px]">
+          <motion.circle r="3" fill="#e87811" className="filter blur-[1px]">
             <animateMotion dur="4s" repeatCount="indefinite" path="M130,90 L220,130" />
           </motion.circle>
           <motion.circle r="2" fill="#fff" className="filter blur-[1px]">
             <animateMotion dur="2.5s" repeatCount="indefinite" path="M220,50 L130,90" />
           </motion.circle>
-          <motion.circle r="2.5" fill="#f97316" className="filter blur-[1px]">
+          <motion.circle r="2.5" fill="#e87811" className="filter blur-[1px]">
             <animateMotion dur="3.5s" repeatCount="indefinite" path="M130,160 L130,90" />
           </motion.circle>
         </svg>
@@ -248,7 +248,7 @@ const ServerAnimation = () => {
           {/* Central Node */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <motion.div 
-              animate={{ boxShadow: ['0 0 0 0 rgba(249,115,22,0.4)', '0 0 0 15px rgba(249,115,22,0)', '0 0 0 0 rgba(249,115,22,0)'] }}
+              animate={{ boxShadow: ['0 0 0 0 rgba(232,120,17,0.4)', '0 0 0 15px rgba(232,120,17,0)', '0 0 0 0 rgba(232,120,17,0)'] }}
               transition={{ duration: 2, repeat: Infinity }}
               className="w-10 h-10 bg-[#18181b] border border-portfolio-gold/50 rounded-xl flex items-center justify-center relative z-20 group-hover:border-portfolio-gold transition-colors"
             >
@@ -275,7 +275,7 @@ const ServerAnimation = () => {
                 animate={{ y: ["-50%", `calc(-50% - 3px)`, "-50%"] }}
                 transition={{ duration: 3, repeat: Infinity, delay: i * 0.4, ease: "easeInOut" }}
               >
-                <Icon className="w-3 h-3 text-white/50" />
+                <Icon className="w-3 h-3 text-portfolio-gold" />
                 <motion.div 
                   animate={{ opacity: [0.2, 0.8, 0.2] }}
                   transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
@@ -325,7 +325,7 @@ const AutomationAnimation = () => {
            <defs>
              <linearGradient id="flow-gradient-1" x1="0%" y1="0%" x2="100%" y2="0%">
                <stop offset="0%" stopColor="rgba(255,255,255,0.1)" />
-               <stop offset="50%" stopColor="#f97316" />
+               <stop offset="50%" stopColor="#e87811" />
                <stop offset="100%" stopColor="rgba(255,255,255,0.1)" />
              </linearGradient>
            </defs>
@@ -372,7 +372,7 @@ const AutomationAnimation = () => {
           {/* Start Node */}
           <div className="absolute top-1/2 left-[50px] -translate-x-1/2 -translate-y-1/2">
              <div className="w-10 h-10 bg-[#18181b] border border-white/20 rounded-xl flex items-center justify-center relative overflow-hidden shadow-lg group-hover:border-white/40 transition-colors">
-                <Zap className="w-4 h-4 text-white/70" />
+                <Zap className="w-4 h-4 text-portfolio-gold" />
                 <motion.div 
                   animate={{ left: ['-100%', '200%'] }}
                   transition={{ duration: 1.5, repeat: Infinity, ease: "linear", repeatDelay: 1 }}
@@ -386,7 +386,7 @@ const AutomationAnimation = () => {
              <motion.div 
                animate={{ y: [-2, 2, -2] }}
                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-               className="w-12 h-10 bg-[#18181b] border border-portfolio-gold/40 rounded-xl flex items-center justify-center relative shadow-[0_0_15px_rgba(249,115,22,0.15)] group-hover:border-portfolio-gold/70 group-hover:shadow-[0_0_20px_rgba(249,115,22,0.3)] transition-all"
+               className="w-12 h-10 bg-[#18181b] border border-portfolio-gold/40 rounded-xl flex items-center justify-center relative shadow-[0_0_15px_rgba(232,120,17,0.15)] group-hover:border-portfolio-gold/70 group-hover:shadow-[0_0_20px_rgba(232,120,17,0.3)] transition-all"
              >
                 <Code2 className="w-4 h-4 text-portfolio-gold" />
              </motion.div>
@@ -397,7 +397,7 @@ const AutomationAnimation = () => {
              <motion.div 
                animate={{ y: [2, -2, 2] }}
                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-               className="w-12 h-10 bg-[#18181b] border border-portfolio-gold/40 rounded-xl flex items-center justify-center relative shadow-[0_0_15px_rgba(249,115,22,0.15)] group-hover:border-portfolio-gold/70 group-hover:shadow-[0_0_20px_rgba(249,115,22,0.3)] transition-all"
+               className="w-12 h-10 bg-[#18181b] border border-portfolio-gold/40 rounded-xl flex items-center justify-center relative shadow-[0_0_15px_rgba(232,120,17,0.15)] group-hover:border-portfolio-gold/70 group-hover:shadow-[0_0_20px_rgba(232,120,17,0.3)] transition-all"
              >
                 <Database className="w-4 h-4 text-portfolio-gold" />
              </motion.div>
@@ -406,7 +406,7 @@ const AutomationAnimation = () => {
           {/* End Node */}
           <div className="absolute top-1/2 left-[230px] -translate-x-1/2 -translate-y-1/2">
              <motion.div 
-               animate={{ scale: [1, 1.05, 1], boxShadow: ['0 0 0 0 rgba(249,115,22,0)', '0 0 0 10px rgba(249,115,22,0.1)', '0 0 0 0 rgba(249,115,22,0)'] }}
+               animate={{ scale: [1, 1.05, 1], boxShadow: ['0 0 0 0 rgba(232,120,17,0)', '0 0 0 10px rgba(232,120,17,0.1)', '0 0 0 0 rgba(232,120,17,0)'] }}
                transition={{ duration: 2, repeat: Infinity }}
                className="w-10 h-10 bg-[#18181b] border border-portfolio-gold/60 rounded-full flex items-center justify-center relative z-20 group-hover:border-portfolio-gold transition-colors"
              >
@@ -422,7 +422,7 @@ const AutomationAnimation = () => {
 
 const ServicesGrid = () => {
   return (
-    <section id="services-grid" className="py-32">
+    <section id="services" className="py-24 md:py-32 w-full max-w-[1280px] mx-auto px-8 md:px-16 overflow-hidden">
       <div className="text-center mb-20">
         <motion.span 
           initial={{ opacity: 0, y: 10 }}

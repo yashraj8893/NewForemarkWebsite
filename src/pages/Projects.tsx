@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 const projectsData = [
   {
@@ -78,21 +79,23 @@ const projectsData = [
 
 const ProjectsPage = () => {
   return (
-    <div className="relative w-full bg-[#f5f5f5] overflow-hidden">
-      {/* Subtle Background Texture */}
-      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1.5px,transparent_1.5px)] [background-size:24px_24px] opacity-60 pointer-events-none" />
+    <>
+      <SEO title="Projects" description="Explore our portfolio of premium web applications, websites, and digital products built for modern businesses." canonicalUrl="https://foremark.in/projects" />
+      <div className="relative w-full bg-portfolio-bg overflow-hidden">
+        {/* Subtle Background Texture */}
+        <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1.5px,transparent_1.5px)] [background-size:24px_24px] opacity-60 pointer-events-none" />
 
-      <div className="max-w-[1280px] mx-auto px-8 md:px-16 pt-16 pb-40">
+        <div className="max-w-[1280px] mx-auto px-8 md:px-16 pt-16 pb-40">
 
-        {/* Section Header */}
-        <div className="flex flex-col mb-16 relative z-10">
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-portfolio-gold font-bold mb-3 text-xs tracking-widest uppercase block"
-          >
-            Case Studies
-          </motion.span>
+          {/* Section Header */}
+          <div className="flex flex-col mb-16 relative z-10">
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-portfolio-gold font-bold mb-3 text-xs tracking-widest uppercase block"
+            >
+              Case Studies
+            </motion.span>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -121,13 +124,13 @@ const ProjectsPage = () => {
           >
             <div className="flex -space-x-3">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="w-12 h-12 rounded-full border-[3px] border-[#f5f5f5] bg-white overflow-hidden shadow-sm">
+                <div key={i} className="w-12 h-12 rounded-full border-[3px] border-portfolio-bg bg-white overflow-hidden shadow-sm">
                   <img src={`https://i.pravatar.cc/150?u=acc${i}`} alt="Client" className="w-full h-full object-cover" />
                 </div>
               ))}
             </div>
             <div>
-              <p className="font-bold text-sm text-[#1a1a1a]">15+ happy clients!</p>
+              <p className="font-bold text-sm text-portfolio-dark">15+ happy clients!</p>
               <button className="text-[12px] text-portfolio-muted hover:text-portfolio-gold font-bold flex items-center gap-1 transition-colors cursor-target mt-0.5">
                 Join them now <ArrowUpRight size={14} />
               </button>
@@ -136,9 +139,9 @@ const ProjectsPage = () => {
         </div>
 
         {/* Brand Logos Row - Infinite Marquee */}
-        <div className="w-full border-b border-[#1a1a1a]/10 pb-16 mb-24 overflow-hidden relative z-10">
-          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#f5f5f5] to-transparent z-20 pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#f5f5f5] to-transparent z-20 pointer-events-none" />
+        <div className="w-full border-b border-portfolio-dark/10 pb-16 mb-24 overflow-hidden relative z-10">
+          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-portfolio-bg to-transparent z-20 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-portfolio-bg to-transparent z-20 pointer-events-none" />
 
           <motion.div
             className="flex gap-16 md:gap-24 items-center w-max"
@@ -148,16 +151,16 @@ const ProjectsPage = () => {
             {[...Array(4)].map((_, i) => (
               <div key={i} className="flex gap-16 md:gap-24 shrink-0">
                 {[
-                  { name: "Nappa Dori", font: "font-serif italic text-2xl", color: "#4a3728" },
-                  { name: "PDR", font: "font-black tracking-tighter text-3xl", color: "#1e3a8a" },
-                  { name: "Regius", font: "font-sans font-bold tracking-[0.2em] uppercase text-xl", color: "#b45309" },
+                  { name: "Nappa Dori", font: "font-medium text-2xl tracking-tight", color: "#4a3728" },
+                  { name: "PDR", font: "font-black tracking-tight text-3xl", color: "#1e3a8a" },
+                  { name: "Regius", font: "font-bold tracking-widest uppercase text-xl", color: "#b45309" },
                   { name: "CenterSpread", font: "font-bold tracking-tight text-2xl", color: "#dc2626" },
-                  { name: "GetVantage", font: "font-black italic tracking-tighter text-3xl", color: "#6d28d9" },
+                  { name: "GetVantage", font: "font-black tracking-tight text-3xl", color: "#6d28d9" },
                   { name: "Samruddhi", font: "font-medium tracking-widest uppercase text-lg", color: "#059669" },
-                  { name: "Tech Guru", font: "font-mono font-bold tracking-tight text-2xl", color: "#2563eb" },
-                  { name: "Athena", font: "font-serif font-semibold text-3xl tracking-wide", color: "#0f766e" },
-                  { name: "Mainstay", font: "font-sans font-black uppercase text-xl", color: "#334155" },
-                  { name: "Karma", font: "font-serif italic tracking-widest text-2xl", color: "#991b1b" },
+                  { name: "Tech Guru", font: "font-bold tracking-tight text-2xl", color: "#2563eb" },
+                  { name: "Athena", font: "font-semibold text-3xl tracking-wide", color: "#0f766e" },
+                  { name: "Mainstay", font: "font-black uppercase text-xl", color: "#334155" },
+                  { name: "Karma", font: "font-medium tracking-widest text-2xl", color: "#991b1b" },
                 ].map((brand, j) => (
                   <div key={j} className="flex items-center justify-center min-w-[120px]">
                     <span
@@ -187,7 +190,7 @@ const ProjectsPage = () => {
               className="group/card flex flex-col cursor-target"
             >
               {/* Outer Container */}
-              <div className={`relative w-full ${project.aspect} rounded-[1.5rem] md:rounded-[2rem] bg-[#f0f0f0] mb-6 shadow-sm border border-black/[0.04] pt-8 px-8 md:pt-12 md:px-12 lg:pt-16 lg:px-16 overflow-hidden flex items-center justify-center`}>
+              <div className={`relative w-full ${project.aspect} rounded-3xl bg-white mb-6 shadow-sm border border-black/[0.04] pt-8 px-8 md:pt-12 md:px-12 lg:pt-16 lg:px-16 overflow-hidden flex items-center justify-center`}>
 
                 <div className="absolute inset-0 pointer-events-none opacity-[0.03]">
                   <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -208,15 +211,16 @@ const ProjectsPage = () => {
 
               {/* Title Only */}
               <div className="px-1 md:px-2">
-                <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-[#1a1a1a] group-hover/card:text-portfolio-gold transition-colors duration-400">
+                <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-portfolio-dark group-hover/card:text-portfolio-gold transition-colors duration-400">
                   {project.title}
                 </h3>
               </div>
             </motion.a>
           ))}
         </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

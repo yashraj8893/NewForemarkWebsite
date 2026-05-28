@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { ArrowUpRight, Mail, MessageSquare } from 'lucide-react';
 import { InteractiveGridPattern } from "../components/magicui/interactive-grid-pattern";
 import ServicesGrid from '../components/ServicesGrid';
+import { SEO } from '../components/SEO';
 import { cn } from "../lib/utils";
 import { Link } from 'react-router-dom';
 
@@ -36,10 +37,10 @@ const curatedProjects = [
 ];
 
 const carouselImages = [
-  "/projects/project1.png", // Nappa Dori
-  "/projects/project11.png", // Regius
-  "/projects/project12.png", // Center Spread
-  "/projects/project9.png", // PDR
+  { src: "/projects/project1.png", alt: "Nappa Dori" },
+  { src: "/projects/project11.png", alt: "Regius" },
+  { src: "/projects/project12.png", alt: "Center Spread" },
+  { src: "/projects/project9.png", alt: "PDR" },
 ];
 
 const Hero = () => {
@@ -81,7 +82,7 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      <div className="w-full relative overflow-hidden mt-8 pb-16 [mask-image:linear-gradient(to_right,transparent_0%,black_5%,black_95%,transparent_100%)]">
+      <div className="w-full relative overflow-hidden mt-8 pb-16 [mask-image:linear-gradient(to_right,transparent_0%,black_5%,black_95%,transparent_100%)] no-cursor">
         <motion.div
           className="flex gap-4 whitespace-nowrap"
           animate={{ x: ["-50%", "0%"] }}
@@ -92,14 +93,15 @@ const Hero = () => {
           }}
           style={{ width: "fit-content" }}
         >
-          {[...carouselImages, ...carouselImages, ...carouselImages, ...carouselImages].map((img, i) => (
+          {[...carouselImages, ...carouselImages].map((item, i) => (
             <div
               key={i}
               className="w-[400px] md:w-[600px] aspect-[16/10] rounded-2xl overflow-hidden shadow-xl border border-portfolio-dark/5 shrink-0 bg-white"
             >
               <img
-                src={img}
-                alt={`Project ${i}`}
+                src={item.src}
+                alt={item.alt}
+                loading="lazy"
                 className="w-full h-full object-cover object-top transition-all duration-500"
               />
             </div>
@@ -135,7 +137,7 @@ const CuratedWork = () => (
             }`}
         >
           {/* Image */}
-          <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden shadow-lg lg:[direction:ltr]">
+          <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-lg lg:[direction:ltr]">
             <img
               src={p.image}
               alt={p.title}
@@ -145,22 +147,22 @@ const CuratedWork = () => (
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             {/* Project number */}
             <div className="absolute top-6 left-6 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center">
-              <span className="text-xs font-bold text-[#1a1a1a]">0{i + 1}</span>
+              <span className="text-xs font-bold text-portfolio-dark">0{i + 1}</span>
             </div>
           </div>
 
           {/* Content */}
           <div className="flex flex-col justify-center lg:[direction:ltr]">
             <div className="mb-6">
-              <span className="text-[10px] uppercase tracking-[0.2em] text-[#1a1a1a]/35 font-bold">CLIENT</span>
-              <p className="text-sm font-semibold text-[#1a1a1a]/70 mt-1">{p.client}</p>
+              <span className="text-xxs uppercase tracking-widest text-portfolio-dark/35 font-bold">CLIENT</span>
+              <p className="text-sm font-semibold text-portfolio-dark/70 mt-1">{p.client}</p>
             </div>
 
-            <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-6 group-hover:text-[#f97316] transition-colors duration-500">
+            <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-6 group-hover:text-portfolio-gold transition-colors duration-500">
               {p.title}
             </h3>
 
-            <p className="text-[#1a1a1a]/55 text-base md:text-lg leading-relaxed max-w-lg mb-10">
+            <p className="text-portfolio-dark/55 text-base md:text-lg leading-relaxed max-w-lg mb-10">
               {p.desc}
             </p>
 
@@ -168,10 +170,10 @@ const CuratedWork = () => (
               to="/projects"
               className="inline-flex items-center gap-4 self-start group/btn cursor-target"
             >
-              <div className="w-14 h-14 rounded-full border-2 border-[#1a1a1a]/10 flex items-center justify-center group-hover/btn:bg-[#1a1a1a] group-hover/btn:border-[#1a1a1a] transition-all duration-500">
-                <ArrowUpRight size={20} className="text-[#1a1a1a]/60 group-hover/btn:text-white transition-colors duration-500" />
+              <div className="w-14 h-14 rounded-full border-2 border-portfolio-dark/10 flex items-center justify-center group-hover/btn:bg-portfolio-dark group-hover/btn:border-portfolio-dark transition-all duration-500">
+                <ArrowUpRight size={20} className="text-portfolio-dark/60 group-hover/btn:text-white transition-colors duration-500" />
               </div>
-              <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#1a1a1a]/50 group-hover/btn:text-[#1a1a1a] transition-colors">
+              <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-portfolio-dark/50 group-hover/btn:text-portfolio-dark transition-colors">
                 View Project
               </span>
             </Link>
@@ -186,7 +188,7 @@ const CuratedWork = () => (
 
 const CTASection = () => (
   <section className="py-32">
-    <div className="bg-[#1a1a1a] rounded-[3rem] p-12 md:p-24 text-white relative overflow-hidden flex flex-col items-center text-center">
+    <div className="bg-portfolio-dark rounded-4xl p-12 md:p-24 text-white relative overflow-hidden flex flex-col items-center text-center">
       <div className="absolute inset-0 opacity-20 pointer-events-none">
         <svg width="100%" height="100%" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full object-cover">
           <path d="M0 200C100 150 200 180 300 120C400 60 500 100 600 80C700 60 800 120 1000 100" stroke="white" strokeWidth="0.5" strokeDasharray="4 4" />
@@ -198,7 +200,7 @@ const CTASection = () => (
         <p className="text-lg text-white/60 mb-12">Whether you need a full application built from scratch or just want to explore how we can help your business grow.</p>
         <Link
           to="/contact"
-          className="inline-flex items-center gap-2 bg-portfolio-gold text-portfolio-dark font-bold px-10 py-5 rounded-full hover:scale-105 transition-transform uppercase tracking-widest text-sm shadow-xl shadow-portfolio-gold/20 cursor-target"
+          className="btn-primary inline-flex items-center gap-2 px-10 py-5 uppercase tracking-widest text-sm cursor-target border border-transparent hover:border-portfolio-gold/50"
         >
           Contact Us <ArrowUpRight size={18} />
         </Link>
@@ -286,13 +288,13 @@ const TestimonialsSection = () => {
   const col4 = testimonials.filter((_, i) => i % 4 === 3);
 
   return (
-    <section className="py-36 w-screen relative left-1/2 -translate-x-1/2 flex items-center justify-center bg-[#080808]">
+    <section className="py-36 w-screen relative left-1/2 -translate-x-1/2 flex items-center justify-center bg-portfolio-dark/95">
 
       {/* Subconscious ambient warmth — highly transparent and wide */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#f97316]/[0.02] blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-portfolio-gold/[0.02] blur-[120px] rounded-full pointer-events-none" />
 
       {/* Grid Container — subtle card fade at the very edges to hide scrolling clip, no background fade */}
-      <div className="relative w-full max-w-[1300px] mx-auto overflow-hidden h-[750px] [mask-image:linear-gradient(to_bottom,transparent_0%,black_5%,black_95%,transparent_100%)]">
+      <div className="relative w-full max-w-[1280px] mx-auto overflow-hidden h-[750px] [mask-image:linear-gradient(to_bottom,transparent_0%,black_5%,black_95%,transparent_100%)]">
 
         {/* Scroll grid — slightly wider gap for more air */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-7 px-6 md:px-12 h-full opacity-100">
@@ -304,19 +306,19 @@ const TestimonialsSection = () => {
           </div>
           {/* Col 2 */}
           <div className="overflow-hidden">
-            <div className="animate-scroll-medium flex flex-col" style={{ marginTop: '-120px' }}>
+            <div className="animate-scroll-medium flex flex-col -mt-24">
               {[...col2, ...col2, ...col2].map((t, i) => <TestimonialCard key={i} t={t} />)}
             </div>
           </div>
           {/* Col 3 */}
           <div className="overflow-hidden hidden md:block">
-            <div className="animate-scroll-fast flex flex-col" style={{ marginTop: '-60px' }}>
+            <div className="animate-scroll-fast flex flex-col -mt-12">
               {[...col3, ...col3, ...col3].map((t, i) => <TestimonialCard key={i} t={t} />)}
             </div>
           </div>
           {/* Col 4 */}
           <div className="overflow-hidden hidden md:block">
-            <div className="animate-scroll-medium-alt flex flex-col" style={{ marginTop: '-180px' }}>
+            <div className="animate-scroll-medium-alt flex flex-col -mt-32">
               {[...col4, ...col4, ...col4].map((t, i) => <TestimonialCard key={i} t={t} />)}
             </div>
           </div>
@@ -324,12 +326,12 @@ const TestimonialsSection = () => {
 
         {/* Rating badge — maintains sharp contrast hierarchy */}
         <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
-          <div className="bg-[#080808]/80 backdrop-blur-3xl border border-white/[0.08] rounded-3xl px-9 py-7 flex items-center gap-7 shadow-[0_30px_100px_-20px_rgba(0,0,0,0.7)]">
+          <div className="bg-portfolio-dark/80 backdrop-blur-3xl border border-white/[0.08] rounded-3xl px-9 py-7 flex items-center gap-7 shadow-deep">
             <span className="text-5xl font-bold text-white leading-none tabular-nums tracking-tight">4.9</span>
             <div className="flex flex-col gap-1.5">
               <div className="flex gap-1.5">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 text-[#f97316]" fill="currentColor" viewBox="0 0 20 20">
+                  <svg key={i} className="w-5 h-5 text-portfolio-gold" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
                 ))}
@@ -373,16 +375,16 @@ const FAQSection = () => {
 
   return (
     <section className="py-24">
-      <div className="bg-[#1a1a1a] rounded-[3rem] p-8 md:p-14 lg:p-16 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+      <div className="bg-portfolio-dark rounded-4xl p-8 md:p-14 lg:p-16 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
 
         {/* Left Column */}
         <div className="lg:col-span-4 flex flex-col justify-start pt-2">
-          <span className="inline-block text-[10px] font-bold uppercase tracking-widest text-white/40 border border-white/10 rounded-full px-3 py-1 mb-8 w-fit">
+          <span className="inline-block text-xxs font-bold uppercase tracking-widest text-white/40 border border-white/10 rounded-full px-3 py-1 mb-8 w-fit">
             FAQs
           </span>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-6">
             Frequently asked <br />
-            <span className="text-[#f97316]">questions</span>
+            <span className="text-portfolio-gold">questions</span>
           </h2>
           <p className="text-white/40 text-sm leading-relaxed max-w-xs">
             Everything you need to know before we start building together.
@@ -400,8 +402,8 @@ const FAQSection = () => {
                 <span className={`text-sm md:text-base font-semibold leading-snug transition-colors duration-300 ${openIndex === i ? 'text-white' : 'text-white/60 group-hover:text-white/90'}`}>
                   {faq.q}
                 </span>
-                <div className={`w-7 h-7 rounded-full border flex items-center justify-center shrink-0 transition-all duration-300 ${openIndex === i ? 'border-[#f97316] bg-[#f97316]/10 rotate-45' : 'border-white/20 group-hover:border-white/40'}`}>
-                  <span className={`text-lg leading-none font-light transition-colors duration-300 ${openIndex === i ? 'text-[#f97316]' : 'text-white/50'}`}>+</span>
+                <div className={`w-7 h-7 rounded-full border flex items-center justify-center shrink-0 transition-all duration-300 ${openIndex === i ? 'border-portfolio-gold bg-portfolio-gold/10 rotate-45' : 'border-white/20 group-hover:border-white/40'}`}>
+                  <span className={`text-lg leading-none font-light transition-colors duration-300 ${openIndex === i ? 'text-portfolio-gold' : 'text-white/50'}`}>+</span>
                 </div>
               </button>
 
@@ -441,8 +443,8 @@ const MissionSection = () => {
   ];
 
   return (
-    <section className="w-screen relative left-1/2 -translate-x-1/2 bg-[#0a0a0a] py-20 md:py-28 flex flex-col items-center text-center px-6">
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full bg-[#f97316]/[0.05] blur-[140px] pointer-events-none" />
+    <section className="w-screen relative left-1/2 -translate-x-1/2 bg-portfolio-dark py-20 md:py-28 flex flex-col items-center text-center px-6">
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full bg-portfolio-gold/[0.05] blur-[140px] pointer-events-none" />
 
       <div className="relative z-10 flex flex-col items-center">
 
@@ -451,7 +453,7 @@ const MissionSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
-          className="inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-white/10 bg-white/[0.03] text-[10px] font-bold uppercase tracking-[0.25em] text-white/40 mb-10"
+          className="inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-white/10 bg-white/[0.03] text-xxs font-bold uppercase tracking-widest text-white/40 mb-10"
         >
           Our Mission
         </motion.div>
@@ -468,7 +470,7 @@ const MissionSection = () => {
                 duration: 0.55,
                 ease: [0.21, 0.45, 0.32, 0.9],
               }}
-              className={word.orange ? 'text-[#f97316]' : 'text-white'}
+              className={word.orange ? 'text-portfolio-gold' : 'text-white'}
             >
               {word.text}
             </motion.span>
@@ -494,7 +496,7 @@ const MissionSection = () => {
         >
           <Link
             to="/contact"
-            className="inline-flex items-center gap-1.5 text-[#f97316] font-semibold text-[15px] hover:opacity-60 transition-opacity cursor-target group"
+            className="inline-flex items-center gap-1.5 text-portfolio-gold font-semibold text-[15px] hover:opacity-60 transition-opacity cursor-target group"
           >
             Book A Call{' '}
             <ArrowUpRight
@@ -512,15 +514,18 @@ const MissionSection = () => {
 
 const Home = () => {
   return (
-    <div className="max-w-[1280px] mx-auto px-8 md:px-16">
-      <Hero />
+    <>
+      <SEO />
+      <div className="max-w-[1280px] mx-auto px-8 md:px-16">
+        <Hero />
       <MissionSection />
       <ServicesGrid />
       <CuratedWork />
       <TestimonialsSection />
-      <FAQSection />
-      <CTASection />
-    </div>
+        <FAQSection />
+        <CTASection />
+      </div>
+    </>
   );
 };
 

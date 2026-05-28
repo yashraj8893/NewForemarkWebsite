@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { SEO } from '../components/SEO';
 
 // ─── Section A: About Hero ───────────────────────────────────────────────────
 
@@ -9,7 +10,7 @@ const AboutHero = () => (
     <div className="absolute inset-0 pointer-events-none">
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[320px] rounded-full opacity-[0.06]"
-        style={{ background: 'radial-gradient(ellipse, #ff5c00 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(ellipse, var(--color-portfolio-gold) 0%, transparent 70%)' }}
       />
       <div
         className="absolute inset-0 opacity-[0.025]"
@@ -28,9 +29,8 @@ const AboutHero = () => (
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-portfolio-gold mb-6"
+        className="flex items-center gap-2 text-xxs font-bold uppercase tracking-widest text-portfolio-gold mb-6"
       >
-        <span className="w-1.5 h-1.5 rounded-full bg-[#ff5c00] inline-block" />
         About Us
       </motion.p>
 
@@ -49,7 +49,7 @@ const AboutHero = () => (
         initial={{ opacity: 0, scaleX: 0 }}
         animate={{ opacity: 1, scaleX: 1 }}
         transition={{ duration: 0.6, delay: 0.22 }}
-        className="w-14 h-[2px] bg-[#ff5c00] mb-8 rounded-full"
+        className="w-14 h-[2px] bg-portfolio-gold mb-8 rounded-full"
       />
 
       {/* Para 1 */}
@@ -97,7 +97,7 @@ const OurStory = () => (
       transition={{ duration: 0.8 }}
       className="flex justify-center mb-24 md:mb-36"
     >
-      <div className="relative rounded-[2rem] overflow-hidden cursor-target group w-full max-w-[600px] md:max-w-[760px] aspect-[16/10] shadow-xl hover:shadow-2xl transition-shadow duration-500">
+      <div className="relative rounded-3xl overflow-hidden cursor-target group w-full max-w-[600px] md:max-w-[760px] aspect-[16/10] shadow-xl hover:shadow-2xl transition-shadow duration-500">
         <img
           src="/Hexture-10-1.webp"
           alt="Foremark team at work"
@@ -147,10 +147,10 @@ const OurStory = () => (
 // ─── Section C: Stats ────────────────────────────────────────────────────────
 
 const statsData = [
-  { value: '100', accent: '%', label: 'Client Retention', desc: 'We build long-term partnerships through consistent quality and technical excellence.', accentColor: 'text-[#f97316]' },
-  { value: '15', accent: '+', label: 'Projects Delivered', desc: 'Successful delivery of web and mobile applications across various industries.', accentColor: 'text-[#111]' },
-  { value: '3', accent: 'x', label: 'Avg. Client Growth', desc: 'Our systems are designed to scale and drive measurable business impact.', accentColor: 'text-[#111]' },
-  { value: '5', accent: '+', label: 'Industries Served', desc: 'Expertise across different domains from startups to established businesses.', accentColor: 'text-[#111]' },
+  { value: '100', accent: '%', label: 'Client Retention', desc: 'We build long-term partnerships through consistent quality and technical excellence.', accentColor: 'text-portfolio-gold' },
+  { value: '15', accent: '+', label: 'Projects Delivered', desc: 'Successful delivery of web and mobile applications across various industries.', accentColor: 'text-portfolio-text' },
+  { value: '3', accent: 'x', label: 'Avg. Client Growth', desc: 'Our systems are designed to scale and drive measurable business impact.', accentColor: 'text-portfolio-text' },
+  { value: '5', accent: '+', label: 'Industries Served', desc: 'Expertise across different domains from startups to established businesses.', accentColor: 'text-portfolio-text' },
 ];
 
 const StatsGrid = () => (
@@ -170,13 +170,13 @@ const StatsGrid = () => (
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: i * 0.1 }}
-          className="bg-white border border-gray-100 rounded-[2rem] px-8 py-10 md:px-10 md:py-12 flex flex-col shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-gray-200/60 hover:-translate-y-1 transition-all duration-500 cursor-target"
+          className="bg-white border border-gray-100 rounded-3xl px-8 py-10 md:px-10 md:py-12 flex flex-col shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-gray-200/60 hover:-translate-y-1 transition-all duration-500 cursor-target"
         >
-          <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-[#111] mb-8">
+          <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-portfolio-text mb-8">
             {stat.value}
             <span className={stat.accentColor}>{stat.accent}</span>
           </h3>
-          <p className="text-[10px] md:text-[11px] uppercase tracking-[0.15em] text-[#f97316] font-bold mb-3">
+          <p className="text-xxs uppercase tracking-[0.15em] text-portfolio-gold font-bold mb-3">
             {stat.label}
           </p>
           <p className="text-gray-500 text-[13px] md:text-[14px] leading-[1.7] font-medium">
@@ -191,11 +191,14 @@ const StatsGrid = () => (
 // ─── Page ────────────────────────────────────────────────────────────────────
 
 const About = () => (
-  <div className="max-w-[1280px] mx-auto px-6 md:px-12">
-    <AboutHero />
+  <>
+    <SEO title="About Us" description="Foremark is a team of passionate developers, solution architects, and automation specialists who leverage modern software to transform how businesses operate." canonicalUrl="https://foremark.in/about" />
+    <div className="max-w-[1280px] mx-auto px-6 md:px-12">
+      <AboutHero />
     <OurStory />
-    <StatsGrid />
-  </div>
+      <StatsGrid />
+    </div>
+  </>
 );
 
 export default About;

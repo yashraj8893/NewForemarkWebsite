@@ -22,6 +22,9 @@ export default {
       fontFamily: {
         geist: ["Geist", "sans-serif"],
       },
+      fontSize: {
+        xxs: ['0.625rem', { lineHeight: '0.875rem' }],
+      },
       borderRadius: {
         '3xl': '24px',
         '4xl': '32px',
