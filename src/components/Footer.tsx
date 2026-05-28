@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Mail, MessageSquare, Globe, ArrowUpRight } from 'lucide-react';
+import { Mail, MessageSquare, Globe, ArrowUpRight, Linkedin, Instagram, MessageCircle } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -16,14 +16,14 @@ const Footer = () => {
               We design and engineer intelligent digital systems that help companies build, scale, and automate modern technology platforms.
             </p>
             <div className="flex items-center gap-4">
-              <a href="mailto:hello@foremark.in" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-portfolio-gold hover:border-portfolio-gold transition-all duration-300">
-                <Mail size={16} />
+              <a href="https://www.linkedin.com/company/foremark-technologies/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-portfolio-gold hover:border-portfolio-gold transition-all duration-300">
+                <Linkedin size={16} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-portfolio-gold hover:border-portfolio-gold transition-all duration-300">
-                <MessageSquare size={16} />
+              <a href="https://www.instagram.com/foremarktechnologies.official/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-portfolio-gold hover:border-portfolio-gold transition-all duration-300">
+                <Instagram size={16} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-portfolio-gold hover:border-portfolio-gold transition-all duration-300">
-                <Globe size={16} />
+              <a href="https://wa.me/918605671941" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-portfolio-gold hover:border-portfolio-gold transition-all duration-300">
+                <MessageCircle size={16} />
               </a>
             </div>
           </div>
