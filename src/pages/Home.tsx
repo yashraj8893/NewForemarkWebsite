@@ -188,7 +188,7 @@ const CuratedWork = () => (
 
 const CTASection = () => (
   <section className="py-32">
-    <div className="bg-portfolio-dark rounded-4xl p-12 md:p-24 text-white relative overflow-hidden flex flex-col items-center text-center">
+    <div className="bg-[#1a1a1a] rounded-4xl p-12 md:p-24 text-white relative overflow-hidden flex flex-col items-center text-center">
       <div className="absolute inset-0 opacity-20 pointer-events-none">
         <svg width="100%" height="100%" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full object-cover">
           <path d="M0 200C100 150 200 180 300 120C400 60 500 100 600 80C700 60 800 120 1000 100" stroke="white" strokeWidth="0.5" strokeDasharray="4 4" />
@@ -375,7 +375,7 @@ const FAQSection = () => {
 
   return (
     <section className="py-24">
-      <div className="bg-portfolio-dark rounded-4xl p-8 md:p-14 lg:p-16 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+      <div className="bg-[#1a1a1a] rounded-4xl p-8 md:p-14 lg:p-16 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
 
         {/* Left Column */}
         <div className="lg:col-span-4 flex flex-col justify-start pt-2">

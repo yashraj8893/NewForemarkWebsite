@@ -42,7 +42,7 @@ const SovereignCounselPage = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="relative bg-portfolio-dark rounded-4xl p-12 md:p-24 text-white overflow-hidden flex flex-col items-center text-center min-h-[500px] justify-center"
+          className="relative bg-[#1a1a1a] rounded-4xl p-12 md:p-24 text-white overflow-hidden flex flex-col items-center text-center min-h-[500px] justify-center"
         >
           <InteractiveGridPattern
             className={cn(
