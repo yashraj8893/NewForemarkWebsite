@@ -144,7 +144,7 @@ const ProjectsPage = () => {
           <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-portfolio-bg to-transparent z-20 pointer-events-none" />
 
           <motion.div
-            className="flex gap-16 md:gap-24 items-center w-max"
+            className="flex gap-16 md:gap-24 items-center w-max mix-blend-multiply"
             animate={{ x: ["0%", "-50%"] }}
             transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
           >
