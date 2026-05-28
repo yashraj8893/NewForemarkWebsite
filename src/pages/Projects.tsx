@@ -151,24 +151,20 @@ const ProjectsPage = () => {
             {[...Array(4)].map((_, i) => (
               <div key={i} className="flex gap-16 md:gap-24 shrink-0">
                 {[
-                  { name: "Nappa Dori", font: "font-medium text-2xl tracking-tight", color: "#4a3728" },
-                  { name: "PDR", font: "font-black tracking-tight text-3xl", color: "#1e3a8a" },
-                  { name: "Regius", font: "font-bold tracking-widest uppercase text-xl", color: "#b45309" },
-                  { name: "CenterSpread", font: "font-bold tracking-tight text-2xl", color: "#dc2626" },
-                  { name: "GetVantage", font: "font-black tracking-tight text-3xl", color: "#6d28d9" },
-                  { name: "Samruddhi", font: "font-medium tracking-widest uppercase text-lg", color: "#059669" },
-                  { name: "Tech Guru", font: "font-bold tracking-tight text-2xl", color: "#2563eb" },
-                  { name: "Athena", font: "font-semibold text-3xl tracking-wide", color: "#0f766e" },
-                  { name: "Mainstay", font: "font-black uppercase text-xl", color: "#334155" },
-                  { name: "Karma", font: "font-medium tracking-widest text-2xl", color: "#991b1b" },
+                  { name: "Anju Smriti", logo: "/anjusmritilogo.png" },
+                  { name: "PDR", logo: "/pdrlogo.png" },
+                  { name: "Samruddhi", logo: "/samruddhilogo.png" },
+                  { name: "Tech Guru", logo: "/techgurulogo.png" },
+                  { name: "Athena", logo: "/athenalogo.png" },
+                  { name: "Mainstay", logo: "/mainstaylogo.png" },
+                  { name: "Karma", logo: "/karmalogo.png" },
                 ].map((brand, j) => (
-                  <div key={j} className="flex items-center justify-center min-w-[120px]">
-                    <span
-                      className={`${brand.font} opacity-50 hover:opacity-100 hover:scale-105 transition-all duration-400 whitespace-nowrap`}
-                      style={{ color: brand.color }}
-                    >
-                      {brand.name}
-                    </span>
+                  <div key={j} className="flex items-center justify-center gap-3 min-w-[120px] group cursor-default">
+                    <img 
+                      src={brand.logo} 
+                      alt={`${brand.name} logo`} 
+                      className="h-10 md:h-12 w-auto object-contain transition-transform duration-400 group-hover:scale-105"
+                    />
                   </div>
                 ))}
               </div>

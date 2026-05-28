@@ -9,7 +9,7 @@ interface SEOProps {
 }
 
 export const SEO = ({ 
-  title = "Foremark - Engineering First | Premium Software Development",
+  title = "Foremark Technologies",
   description = "Foremark is a premium software engineering company crafting scalable web applications, beautiful websites, and digital products that help businesses grow faster.",
   type = "website",
   canonicalUrl = "https://foremark.in",
