@@ -148,19 +148,24 @@ const ProjectsPage = () => {
             {[...Array(4)].map((_, i) => (
               <div key={i} className="flex gap-16 md:gap-24 shrink-0">
                 {[
-                  { name: "Google", url: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg", h: "h-8" },
-                  { name: "Meta", url: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg", h: "h-5" },
-                  { name: "Netflix", url: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg", h: "h-7" },
-                  { name: "Amazon", url: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg", h: "h-8" },
-                  { name: "Microsoft", url: "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg", h: "h-6" },
-                  { name: "Spotify", url: "https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg", h: "h-8" }
+                  { name: "Nappa Dori", font: "font-serif italic text-2xl", color: "#4a3728" },
+                  { name: "PDR", font: "font-black tracking-tighter text-3xl", color: "#1e3a8a" },
+                  { name: "Regius", font: "font-sans font-bold tracking-[0.2em] uppercase text-xl", color: "#b45309" },
+                  { name: "CenterSpread", font: "font-bold tracking-tight text-2xl", color: "#dc2626" },
+                  { name: "GetVantage", font: "font-black italic tracking-tighter text-3xl", color: "#6d28d9" },
+                  { name: "Samruddhi", font: "font-medium tracking-widest uppercase text-lg", color: "#059669" },
+                  { name: "Tech Guru", font: "font-mono font-bold tracking-tight text-2xl", color: "#2563eb" },
+                  { name: "Athena", font: "font-serif font-semibold text-3xl tracking-wide", color: "#0f766e" },
+                  { name: "Mainstay", font: "font-sans font-black uppercase text-xl", color: "#334155" },
+                  { name: "Karma", font: "font-serif italic tracking-widest text-2xl", color: "#991b1b" },
                 ].map((brand, j) => (
                   <div key={j} className="flex items-center justify-center min-w-[120px]">
-                    <img
-                      src={brand.url}
-                      alt={brand.name}
-                      className={`${brand.h} w-auto object-contain opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-400 cursor-target`}
-                    />
+                    <span
+                      className={`${brand.font} opacity-50 hover:opacity-100 hover:scale-105 transition-all duration-400 whitespace-nowrap`}
+                      style={{ color: brand.color }}
+                    >
+                      {brand.name}
+                    </span>
                   </div>
                 ))}
               </div>

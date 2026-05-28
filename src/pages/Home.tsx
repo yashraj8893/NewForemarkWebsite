@@ -36,12 +36,10 @@ const curatedProjects = [
 ];
 
 const carouselImages = [
-  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800",
+  "/projects/project1.png", // Nappa Dori
+  "/projects/project11.png", // Regius
+  "/projects/project12.png", // Center Spread
+  "/projects/project9.png", // PDR
 ];
 
 const Hero = () => {
@@ -94,7 +92,7 @@ const Hero = () => {
           }}
           style={{ width: "fit-content" }}
         >
-          {[...carouselImages, ...carouselImages].map((img, i) => (
+          {[...carouselImages, ...carouselImages, ...carouselImages, ...carouselImages].map((img, i) => (
             <div
               key={i}
               className="w-[400px] md:w-[600px] aspect-[16/10] rounded-2xl overflow-hidden shadow-xl border border-portfolio-dark/5 shrink-0 bg-white"
@@ -102,7 +100,7 @@ const Hero = () => {
               <img
                 src={img}
                 alt={`Project ${i}`}
-                className="w-full h-full object-cover transition-all duration-500"
+                className="w-full h-full object-cover object-top transition-all duration-500"
               />
             </div>
           ))}
