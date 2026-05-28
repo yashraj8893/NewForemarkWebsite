@@ -5,6 +5,7 @@ import CareersPage from './pages/Careers';
 import ContactPage from './pages/Contact';
 import SovereignCounselPage from './pages/SovereignCounsel';
 import AboutPage from './pages/About';
+import AssociateProgramPage from './pages/AssociateProgram';
 import Footer from './components/Footer';
 import { useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
@@ -100,6 +101,7 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/sovereign-counsel" element={<SovereignCounselPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/associate-program" element={<AssociateProgramPage />} />
       </Routes>
       <Footer />
     </div>
