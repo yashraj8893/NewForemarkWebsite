@@ -9,7 +9,8 @@ const Footer = () => {
           {/* Brand Column */}
           <div className="flex flex-col col-span-1 md:col-span-2 lg:col-span-1">
             <Link to="/" className="flex flex-col cursor-pointer mb-6">
-              <img src="/Foremark_Logo_-removebg-preview.png" alt="Foremark" className="h-10 md:h-12 w-auto object-contain" />
+              <span className="text-white font-bold tracking-tighter text-2xl">Foremark</span>
+              <span className="text-white/40 text-[10px] uppercase tracking-widest mt-1">Engineering First</span>
             </Link>
             <p className="text-white/60 text-sm leading-relaxed max-w-xs mb-8">
               We design and engineer intelligent digital systems that help companies build, scale, and automate modern technology platforms.
