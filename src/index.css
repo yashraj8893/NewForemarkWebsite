@@ -108,3 +108,49 @@ html {
     animation-play-state: paused;
   }
 }
+
+/* ─── Mobile Performance: Services Section ──────────────────────────── */
+@media (max-width: 767px) {
+  /* CSS containment on each service card — isolates paint/layout so
+     animating one card doesn't repaint siblings or the rest of the page */
+  .service-card-perf {
+    contain: content;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 420px;
+  }
+
+  /* Kill all backdrop-filter on mobile — the single biggest GPU drain
+     on Mobile Safari. Solid backgrounds replace the blur visually. */
+  .service-anim-perf * {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  /* Tone down heavy blur() radii that create enormous paint areas */
+  .service-anim-perf .blur-heavy {
+    filter: blur(25px) !important;
+    -webkit-filter: blur(25px) !important;
+  }
+  .service-anim-perf .blur-med {
+    filter: blur(8px) !important;
+    -webkit-filter: blur(8px) !important;
+  }
+
+  /* Promote animated children to their own GPU layers */
+  .service-anim-perf {
+    will-change: transform;
+    transform: translateZ(0);
+  }
+}
+
+/* When the section is off-screen on mobile, freeze everything.
+   Applied via JS (useInView + useIsMobile) in ServicesGrid. */
+.service-paused .service-anim-perf {
+  visibility: hidden;
+}
+.service-paused .service-anim-perf *,
+.service-paused .service-anim-perf *::before,
+.service-paused .service-anim-perf *::after {
+  animation-play-state: paused !important;
+  transition: none !important;
+}

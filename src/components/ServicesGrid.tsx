@@ -1,6 +1,20 @@
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+import { useRef, useEffect, useState } from 'react';
 import { cn } from "../lib/utils";
 import { Terminal, Database, Activity, Server, Zap, Cpu, Code2, Globe2, Layers, Workflow } from 'lucide-react';
+
+// Hook: true when viewport is ≤767px (mobile)
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mql = window.matchMedia('(max-width: 767px)');
+    setIsMobile(mql.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mql.addEventListener('change', handler);
+    return () => mql.removeEventListener('change', handler);
+  }, []);
+  return isMobile;
+};
 
 
 const ServiceCard = ({ title, desc, children, className }: { title: string, desc: string, children: React.ReactNode, className?: string }) => (
@@ -9,9 +23,9 @@ const ServiceCard = ({ title, desc, children, className }: { title: string, desc
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: "-100px" }}
     transition={{ duration: 0.8, ease: [0.21, 0.45, 0.32, 0.9] }}
-    className={cn("flex flex-col h-full group cursor-default", className)}
+    className={cn("flex flex-col h-full group cursor-default service-card-perf", className)}
   >
-    <div className="w-full aspect-[16/10] min-h-[300px] sm:min-h-[340px] lg:min-h-[380px] overflow-hidden rounded-[1.5rem] bg-[#09090b] border border-white/10 relative flex items-center justify-center isolate ring-1 ring-white/5 shadow-glow transition-all duration-700 group-hover:border-portfolio-gold/30 group-hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)] mb-6">
+    <div className="w-full aspect-[16/10] min-h-[300px] sm:min-h-[340px] lg:min-h-[380px] overflow-hidden rounded-[1.5rem] bg-[#09090b] border border-white/10 relative flex items-center justify-center isolate ring-1 ring-white/5 shadow-glow transition-all duration-700 group-hover:border-portfolio-gold/30 group-hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)] mb-6 service-anim-perf">
       {/* Global dark mode inner ambient glow */}
       <div className="absolute inset-0 bg-gradient-to-br from-portfolio-dark/20 to-transparent pointer-events-none" />
       <div className="absolute top-0 left-1/4 w-1/2 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
@@ -43,7 +57,7 @@ const WebsiteAnimation = () => {
             x: ["0%", "-20%", "0%"]
           }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute inset-y-0 left-1/2 -translate-x-1/2 bg-[#18181b]/80 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden shadow-2xl flex flex-col z-20"
+          className="absolute inset-y-0 left-1/2 -translate-x-1/2 bg-[#1a1a1a] md:bg-[#18181b]/80 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden shadow-2xl flex flex-col z-20"
         >
           {/* Browser Header */}
           <div className="h-6 bg-white/5 border-b border-white/5 flex items-center px-3 gap-1.5 shrink-0">
@@ -83,7 +97,7 @@ const WebsiteAnimation = () => {
             opacity: [0.5, 1, 0.5]
           }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -right-4 top-12 w-24 h-32 bg-[#27272a]/90 backdrop-blur-xl border border-white/15 rounded-lg shadow-[0_0_30px_rgba(0,0,0,0.5)] p-2 flex flex-col gap-2 z-30 group-hover:translate-z-[40px] transition-transform duration-700"
+          className="absolute -right-4 top-12 w-24 h-32 bg-[#2a2a2a] md:bg-[#27272a]/90 backdrop-blur-xl border border-white/15 rounded-lg shadow-[0_0_30px_rgba(0,0,0,0.5)] p-2 flex flex-col gap-2 z-30 group-hover:translate-z-[40px] transition-transform duration-700"
         >
           <div className="w-full h-12 bg-white/5 rounded border border-white/5 flex items-center justify-center">
             <Globe2 className="w-4 h-4 text-white/40" />
@@ -162,8 +176,8 @@ const WebAppAnimation = () => {
 
         {/* Status Dashboard Stack */}
         <div className="flex-[2] flex flex-col gap-2 z-10 group-hover:translate-z-[30px] transition-transform duration-700">
-          <div className="flex-1 bg-[#18181b]/80 backdrop-blur-md border border-white/10 rounded-xl p-2.5 shadow-xl flex flex-col justify-between relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-16 h-16 bg-portfolio-gold/20 blur-xl rounded-full" />
+          <div className="flex-1 bg-[#1a1a1a] md:bg-[#18181b]/80 backdrop-blur-md border border-white/10 rounded-xl p-2.5 shadow-xl flex flex-col justify-between relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-16 h-16 bg-portfolio-gold/20 blur-xl rounded-full blur-med" />
             <div className="flex items-center justify-between">
               <Activity className="w-3.5 h-3.5 text-white/50" />
               <motion.div 
@@ -184,7 +198,7 @@ const WebAppAnimation = () => {
             </div>
           </div>
           
-          <div className="h-12 bg-[#18181b]/80 backdrop-blur-md border border-white/10 rounded-xl p-2 shadow-xl flex items-center gap-2">
+          <div className="h-12 bg-[#1a1a1a] md:bg-[#18181b]/80 backdrop-blur-md border border-white/10 rounded-xl p-2 shadow-xl flex items-center gap-2">
             <div className="w-6 h-6 rounded bg-white/5 flex items-center justify-center shrink-0 border border-white/5">
               <Database className="w-3 h-3 text-portfolio-gold" />
             </div>
@@ -212,7 +226,7 @@ const ServerAnimation = () => {
       <motion.div 
         animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute w-64 h-64 bg-portfolio-gold/20 rounded-full blur-[80px]"
+        className="absolute w-64 h-64 bg-portfolio-gold/20 rounded-full blur-[80px] blur-heavy"
       />
 
       <div className="relative w-full max-w-[260px] h-[180px] group-hover:scale-105 transition-transform duration-700 ease-out z-10 scale-[0.75] sm:scale-100 origin-center">
@@ -253,7 +267,7 @@ const ServerAnimation = () => {
               className="w-10 h-10 bg-[#18181b] border border-portfolio-gold/50 rounded-xl flex items-center justify-center relative z-20 group-hover:border-portfolio-gold transition-colors"
             >
               <Server className="w-4 h-4 text-portfolio-gold" />
-              <div className="absolute inset-0 bg-portfolio-gold/20 rounded-xl blur-md -z-10" />
+              <div className="absolute inset-0 bg-portfolio-gold/20 rounded-xl blur-md -z-10 blur-med" />
             </motion.div>
           </div>
           
@@ -279,7 +293,7 @@ const ServerAnimation = () => {
                 <motion.div 
                   animate={{ opacity: [0.2, 0.8, 0.2] }}
                   transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
-                  className="absolute inset-0 bg-portfolio-gold/10 rounded-lg blur -z-10"
+                  className="absolute inset-0 bg-portfolio-gold/10 rounded-lg blur -z-10 blur-med"
                 />
               </motion.div>
             )
@@ -421,8 +435,19 @@ const AutomationAnimation = () => {
 };
 
 const ServicesGrid = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { margin: "200px" });
+  const isMobile = useIsMobile();
+
+  // On mobile, pause all animations when section is off-screen
+  const shouldPause = isMobile && !isInView;
+
   return (
-    <section id="services" className="py-24 md:py-32 w-full max-w-[1280px] mx-auto px-8 md:px-16 overflow-hidden">
+    <section
+      ref={sectionRef}
+      id="services"
+      className="py-24 md:py-32 w-full max-w-[1280px] mx-auto px-8 md:px-16 overflow-hidden"
+    >
       <div className="text-center mb-20">
         <motion.span 
           initial={{ opacity: 0, y: 10 }}
@@ -452,7 +477,15 @@ const ServicesGrid = () => {
         </motion.p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-[1050px] mx-auto">
+      {/*
+        When shouldPause is true (mobile + off-screen), the service-paused
+        class is added. The CSS rule in index.css will hide animation
+        containers and pause CSS animations, freeing GPU/CPU resources.
+      */}
+      <div className={cn(
+        "grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-[1050px] mx-auto",
+        shouldPause && "service-paused"
+      )}>
         <ServiceCard 
           title="Website Development" 
           desc="Crafting responsive, stunning websites tailored perfectly to your business goals."
