@@ -115,13 +115,14 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-white/95 backdrop-blur-lg flex flex-col items-center justify-center pt-20 pb-10 px-8"
+            className="fixed inset-0 z-[60] bg-white/95 backdrop-blur-lg flex flex-col items-center justify-center pt-20 pb-10 px-8"
           >
             <div className="flex flex-col items-center gap-8 text-xl font-bold tracking-tight">
               {navLinks.map((link) => (
                 <Link 
                   key={link.label} 
                   to={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className="hover:text-portfolio-gold transition-colors cursor-target"
                 >
                   {link.label}
@@ -131,12 +132,14 @@ const Navbar = () => {
               <span className="text-sm font-semibold text-portfolio-muted uppercase tracking-widest">Products</span>
               <Link 
                 to="/sovereign-counsel" 
+                onClick={() => setIsMobileMenuOpen(false)}
                 className="hover:text-portfolio-gold transition-colors cursor-target"
               >
                 Sovereign Counsel
               </Link>
               <Link 
                 to="/associate-program" 
+                onClick={() => setIsMobileMenuOpen(false)}
                 className="hover:text-portfolio-gold transition-colors cursor-target"
               >
                 Associate Program
@@ -144,6 +147,7 @@ const Navbar = () => {
               <div className="w-12 h-px bg-portfolio-dark/10 my-2" />
               <Link 
                 to="/contact" 
+                onClick={() => setIsMobileMenuOpen(false)}
                 className="mt-4 text-portfolio-gold uppercase tracking-widest text-sm hover:opacity-80 transition-opacity cursor-target"
               >
                 Contact Us

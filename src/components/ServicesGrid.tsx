@@ -207,7 +207,7 @@ const WebAppAnimation = () => {
 
 const ServerAnimation = () => {
   return (
-    <div className="relative w-full h-full flex items-center justify-center p-6 overflow-hidden">
+    <div className="relative w-full h-full flex items-center justify-center p-4 sm:p-6 overflow-hidden">
       {/* Deep Background Glow */}
       <motion.div 
         animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
@@ -215,7 +215,7 @@ const ServerAnimation = () => {
         className="absolute w-64 h-64 bg-portfolio-gold/20 rounded-full blur-[80px]"
       />
 
-      <div className="relative w-full max-w-[260px] h-[180px] group-hover:scale-105 transition-transform duration-700 ease-out z-10">
+      <div className="relative w-full max-w-[260px] h-[180px] group-hover:scale-105 transition-transform duration-700 ease-out z-10 scale-[0.75] sm:scale-100 origin-center">
         <svg viewBox="0 0 260 180" className="w-full h-full absolute inset-0 overflow-visible">
           {/* Network Paths */}
           <path d="M130,90 L40,50 L40,130 Z" className="stroke-white/10 stroke-[1.5] fill-none" />
@@ -292,7 +292,7 @@ const ServerAnimation = () => {
 
 const AutomationAnimation = () => {
   return (
-    <div className="relative w-full h-full flex items-center justify-center p-6 overflow-hidden">
+    <div className="relative w-full h-full flex items-center justify-center p-4 sm:p-6 overflow-hidden">
       {/* Intelligent Background Particles */}
       <div className="absolute inset-0">
         {[...Array(15)].map((_, i) => (
@@ -319,7 +319,7 @@ const AutomationAnimation = () => {
         ))}
       </div>
 
-      <div className="relative w-full max-w-[280px] h-[180px] group-hover:scale-105 transition-transform duration-700 ease-out z-10">
+      <div className="relative w-full max-w-[280px] h-[180px] group-hover:scale-105 transition-transform duration-700 ease-out z-10 scale-[0.75] sm:scale-100 origin-center">
         {/* Animated Workflow Graph Lines */}
         <svg viewBox="0 0 280 180" className="absolute inset-0 w-full h-full overflow-visible z-0">
            <defs>
