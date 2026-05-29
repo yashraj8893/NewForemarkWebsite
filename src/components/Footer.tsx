@@ -24,9 +24,14 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand Column */}
           <div className="flex flex-col col-span-1 md:col-span-2 lg:col-span-1">
-            <Link to="/" className="flex flex-col cursor-pointer mb-6">
-              <span className="text-white font-bold tracking-tighter text-2xl">Foremark</span>
-              <span className="text-white/40 text-[10px] uppercase tracking-widest mt-1">Engineering First</span>
+            <Link to="/" className="flex items-center gap-4 cursor-pointer mb-6 group cursor-target w-max">
+              <div className="flex-shrink-0">
+                <img src="/Foremark_Logo_-removebg-preview.png" alt="Foremark Logo" className="w-10 h-10 object-contain" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-white font-bold tracking-tighter text-2xl group-hover:text-white/90 transition-colors">Foremark</span>
+                <span className="text-white/40 text-[10px] uppercase tracking-widest mt-1">Engineering First</span>
+              </div>
             </Link>
             <p className="text-white/60 text-sm leading-relaxed max-w-xs mb-8">
               We design and engineer intelligent digital systems that help companies build, scale, and automate modern technology platforms.
