@@ -52,9 +52,10 @@ const ContactPage = () => {
 
         {/* Horizontal fade — map disappears before reaching the form */}
         <div
-          className="absolute inset-y-0 right-0 w-32 md:w-64 z-20 pointer-events-none"
+          className="absolute inset-y-0 left-0 z-20 pointer-events-none"
           style={{
-            background: 'linear-gradient(to right, transparent 0%, transparent 40%, var(--color-portfolio-dark) 100%)',
+            width: '58%',
+            background: 'linear-gradient(to right, transparent 0%, transparent 50%, var(--color-portfolio-dark) 100%)',
           }}
         />
 

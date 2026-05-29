@@ -96,7 +96,7 @@ const Hero = () => {
           {[...carouselImages, ...carouselImages].map((item, i) => (
             <div
               key={i}
-              className="w-[400px] md:w-[600px] aspect-[16/10] rounded-2xl overflow-hidden shadow-xl border border-portfolio-dark/5 shrink-0 bg-white"
+              className="w-[85vw] sm:w-[400px] md:w-[600px] aspect-[16/10] rounded-2xl overflow-hidden shadow-xl border border-portfolio-dark/5 shrink-0 bg-white"
             >
               <img
                 src={item.src}
@@ -297,7 +297,7 @@ const TestimonialsSection = () => {
       <div className="relative w-full max-w-[1280px] mx-auto overflow-hidden h-[750px] [mask-image:linear-gradient(to_bottom,transparent_0%,black_5%,black_95%,transparent_100%)]">
 
         {/* Scroll grid — slightly wider gap for more air */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-7 px-6 md:px-12 h-full opacity-100">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-7 px-6 md:px-12 h-full opacity-100">
           {/* Col 1 */}
           <div className="overflow-hidden">
             <div className="animate-scroll-slow flex flex-col pt-12">
@@ -305,7 +305,7 @@ const TestimonialsSection = () => {
             </div>
           </div>
           {/* Col 2 */}
-          <div className="overflow-hidden">
+          <div className="overflow-hidden hidden md:block">
             <div className="animate-scroll-medium flex flex-col -mt-24">
               {[...col2, ...col2, ...col2].map((t, i) => <TestimonialCard key={i} t={t} />)}
             </div>

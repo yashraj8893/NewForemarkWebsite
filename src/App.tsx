@@ -46,6 +46,18 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
   }, [pathname]);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
   return (
     <>
       <nav className="relative z-50 flex items-center justify-between px-8 md:px-16 py-8 pointer-events-auto max-w-[1280px] mx-auto w-full">
@@ -147,7 +159,7 @@ const Navbar = () => {
 function App() {
   const location = useLocation();
   return (
-    <div className="relative min-h-screen bg-portfolio-bg selection:bg-portfolio-gold/30 font-geist">
+    <div className="relative min-h-screen bg-portfolio-bg selection:bg-portfolio-gold/30 font-geist overflow-x-hidden">
       <TargetCursor 
         key={location.pathname} 
         targetSelector=".cursor-target, a, button, input, textarea"
