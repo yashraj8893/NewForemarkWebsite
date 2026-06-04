@@ -2,6 +2,7 @@ import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import ProjectsPage from './pages/Projects';
 import CareersPage from './pages/Careers';
+import JobDetail from './pages/JobDetail';
 import ContactPage from './pages/Contact';
 import SovereignCounselPage from './pages/SovereignCounsel';
 import AboutPage from './pages/About';
@@ -64,13 +65,13 @@ const Navbar = () => {
         <Link to="/" className="flex flex-col cursor-pointer cursor-target z-50">
           <img src="/Foremark_Logo_-removebg-preview.png" alt="Foremark" className="h-10 md:h-12 w-auto object-contain" />
         </Link>
-        
+
         {/* Desktop Nav */}
         <div className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center gap-10 text-portfolio-muted text-sm font-medium w-max">
           {navLinks.map((link) => (
-            <Link 
-              key={link.label} 
-              to={link.href} 
+            <Link
+              key={link.label}
+              to={link.href}
               className="hover:text-portfolio-dark transition-colors cursor-target"
             >
               {link.label}
@@ -91,14 +92,14 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        
+
         <div className="flex items-center gap-4 z-50">
           <Link to="/contact" className="hidden md:inline-flex text-portfolio-dark text-sm font-bold uppercase tracking-widest border border-portfolio-dark/20 px-8 py-3 rounded-full hover:bg-portfolio-dark hover:text-white transition-all cursor-target">
             Contact us
           </Link>
-          
+
           {/* Mobile Menu Toggle */}
-          <button 
+          <button
             className="md:hidden p-2 text-portfolio-dark cursor-target"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
@@ -119,8 +120,8 @@ const Navbar = () => {
           >
             <div className="flex flex-col items-center gap-8 text-xl font-bold tracking-tight">
               {navLinks.map((link) => (
-                <Link 
-                  key={link.label} 
+                <Link
+                  key={link.label}
                   to={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="hover:text-portfolio-gold transition-colors cursor-target"
@@ -130,23 +131,23 @@ const Navbar = () => {
               ))}
               <div className="w-12 h-px bg-portfolio-dark/10 my-2" />
               <span className="text-sm font-semibold text-portfolio-muted uppercase tracking-widest">Products</span>
-              <Link 
-                to="/sovereign-counsel" 
+              <Link
+                to="/sovereign-counsel"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="hover:text-portfolio-gold transition-colors cursor-target"
               >
                 Sovereign Counsel
               </Link>
-              <Link 
-                to="/associate-program" 
+              <Link
+                to="/associate-program"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="hover:text-portfolio-gold transition-colors cursor-target"
               >
                 Associate Program
               </Link>
               <div className="w-12 h-px bg-portfolio-dark/10 my-2" />
-              <Link 
-                to="/contact" 
+              <Link
+                to="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="mt-4 text-portfolio-gold uppercase tracking-widest text-sm hover:opacity-80 transition-opacity cursor-target"
               >
@@ -164,13 +165,13 @@ function App() {
   const location = useLocation();
   return (
     <div className="relative min-h-screen bg-portfolio-bg selection:bg-portfolio-gold/30 font-geist overflow-x-hidden">
-      <TargetCursor 
-        key={location.pathname} 
+      <TargetCursor
+        key={location.pathname}
         targetSelector=".cursor-target, a, button, input, textarea"
-        spinDuration={2} 
-        hideDefaultCursor={true} 
-        parallaxOn={true} 
-        hoverDuration={0.5} 
+        spinDuration={2}
+        hideDefaultCursor={true}
+        parallaxOn={true}
+        hoverDuration={0.5}
       />
       <ScrollToHash />
       <div className="grainy-overlay" />
@@ -179,6 +180,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/careers" element={<CareersPage />} />
+        <Route path="/careers/:slug" element={<JobDetail />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/sovereign-counsel" element={<SovereignCounselPage />} />
         <Route path="/about" element={<AboutPage />} />
