@@ -50,24 +50,26 @@ const JobDetail = () => {
                     <span className="text-portfolio-gold font-bold text-xs tracking-widest uppercase block mb-4">
                         {job.category}
                     </span>
-                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-                        <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-                            {job.title}
-                        </h1>
+                    <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 md:gap-8">
+                        <div className="flex flex-col gap-6">
+                            <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
+                                {job.title}
+                            </h1>
+                            <div className="flex flex-wrap gap-3">
+                                <div className="flex items-center gap-1.5 text-portfolio-muted font-bold text-[10px] uppercase tracking-widest border border-portfolio-dark/10 px-2.5 py-1 rounded-full bg-portfolio-dark/[0.02]">
+                                    <MapPin size={10} /> {job.location}
+                                </div>
+                                <div className="flex items-center gap-1.5 text-portfolio-muted font-bold text-[10px] uppercase tracking-widest border border-portfolio-dark/10 px-2.5 py-1 rounded-full bg-portfolio-dark/[0.02]">
+                                    <Clock size={10} /> {job.type}
+                                </div>
+                            </div>
+                        </div>
                         <a
                             href={(job as any).applyLink} target="_blank" rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 bg-portfolio-dark text-white font-bold text-sm uppercase tracking-widest px-8 py-4 rounded-full hover:bg-portfolio-dark/80 transition-all cursor-target whitespace-nowrap"
+                            className="inline-flex justify-center items-center gap-2 bg-portfolio-dark text-white font-bold text-xs md:text-sm uppercase tracking-widest px-6 py-3 md:px-8 md:py-4 rounded-full hover:bg-portfolio-dark/80 transition-all cursor-target whitespace-nowrap w-fit mt-2 md:mt-0"
                         >
                             Apply Now <ArrowUpRight size={16} />
                         </a>
-                    </div>
-                    <div className="flex flex-wrap gap-3 mt-8">
-                        <div className="flex items-center gap-1.5 text-portfolio-muted font-bold text-xxs uppercase tracking-widest border border-portfolio-dark/10 px-3 py-1 rounded-full bg-portfolio-dark/[0.02]">
-                            <MapPin size={10} /> {job.location}
-                        </div>
-                        <div className="flex items-center gap-1.5 text-portfolio-muted font-bold text-xxs uppercase tracking-widest border border-portfolio-dark/10 px-3 py-1 rounded-full bg-portfolio-dark/[0.02]">
-                            <Clock size={10} /> {job.type}
-                        </div>
                     </div>
                 </motion.div>
 

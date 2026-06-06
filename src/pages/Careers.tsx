@@ -73,7 +73,7 @@ const CareersPage = () => {
               key={type}
               onClick={() => setActiveType(type)}
               className={cn(
-                "px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-300 cursor-target",
+                "px-4 py-2 text-xs md:px-5 md:py-2.5 md:text-sm rounded-full font-bold transition-all duration-300 cursor-target",
                 activeType === type
                   ? "bg-portfolio-dark text-white"
                   : "border border-portfolio-dark/10 text-portfolio-muted hover:bg-portfolio-dark/5"
@@ -91,7 +91,7 @@ const CareersPage = () => {
               key={category}
               onClick={() => setActiveCategory(category)}
               className={cn(
-                "px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-300 cursor-target",
+                "px-4 py-2 text-xs md:px-5 md:py-2.5 md:text-sm rounded-full font-bold transition-all duration-300 cursor-target",
                 activeCategory === category
                   ? "bg-portfolio-dark text-white"
                   : "border border-portfolio-dark/10 text-portfolio-muted hover:bg-portfolio-dark/5"

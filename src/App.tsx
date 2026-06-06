@@ -16,7 +16,6 @@ import TargetCursor from './components/TargetCursor';
 const navLinks = [
   { label: 'Projects', href: '/projects' },
   { label: 'Careers', href: '/careers' },
-  { label: 'Services', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ] as const;
