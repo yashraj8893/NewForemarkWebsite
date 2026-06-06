@@ -127,7 +127,7 @@ const ContactPage = () => {
                 ))}
               </div>
 
-              <div className="flex gap-4 mt-8 lg:mt-16">
+              <div className="flex gap-4 mt-4 lg:mt-16">
                 {[Share2, Globe, Info].map((Icon, i) => (
                   <motion.a
                     key={i}
@@ -141,7 +141,7 @@ const ContactPage = () => {
               </div>
             </div>
 
-            <div className="lg:col-span-7 mt-8 lg:mt-0">
+            <div className="lg:col-span-7 mt-2 lg:mt-0">
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -150,7 +150,7 @@ const ContactPage = () => {
                 <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-portfolio-gold rounded-tl-xl opacity-40 hidden sm:block" />
                 <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-portfolio-gold rounded-br-xl opacity-40 hidden sm:block" />
 
-                <div className="flex items-center justify-between mb-6 lg:mb-10">
+                <div className="flex items-center justify-between mb-4 lg:mb-10">
                   <h3 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight">Contact form</h3>
                   <div className="flex gap-1">
                     <div className="w-2 h-2 rounded-full bg-portfolio-gold" />
@@ -158,7 +158,7 @@ const ContactPage = () => {
                   </div>
                 </div>
 
-                <form className="space-y-4 sm:space-y-6">
+                <form className="space-y-3 sm:space-y-6">
                   <div className="space-y-1.5 sm:space-y-2">
                     <label htmlFor="contact-name" className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-1">NAME *</label>
                     <input
