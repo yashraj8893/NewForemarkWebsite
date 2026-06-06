@@ -187,20 +187,20 @@ const CuratedWork = () => (
 );
 
 const CTASection = () => (
-  <section className="py-32">
-    <div className="bg-[#1a1a1a] rounded-4xl p-12 md:p-24 text-white relative overflow-hidden flex flex-col items-center text-center">
+  <section className="py-16 md:py-32">
+    <div className="bg-[#1a1a1a] rounded-3xl md:rounded-4xl p-8 sm:p-12 md:p-24 text-white relative overflow-hidden flex flex-col items-center text-center">
       <div className="absolute inset-0 opacity-20 pointer-events-none">
         <svg width="100%" height="100%" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full object-cover">
           <path d="M0 200C100 150 200 180 300 120C400 60 500 100 600 80C700 60 800 120 1000 100" stroke="white" strokeWidth="0.5" strokeDasharray="4 4" />
         </svg>
       </div>
       <div className="relative z-10 max-w-3xl">
-        <span className="text-portfolio-gold font-bold mb-6 text-xs tracking-widest block uppercase">Ready to start?</span>
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-8">Let's build something extraordinary together.</h2>
-        <p className="text-lg text-white/60 mb-12">Whether you need a full application built from scratch or just want to explore how we can help your business grow.</p>
+        <span className="text-portfolio-gold font-bold mb-4 md:mb-6 text-xs tracking-widest block uppercase">Ready to start?</span>
+        <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-5 md:mb-8">Let's build something extraordinary together.</h2>
+        <p className="text-sm sm:text-base md:text-lg text-white/60 mb-8 md:mb-12">Whether you need a full application built from scratch or just want to explore how we can help your business grow.</p>
         <Link
           to="/contact"
-          className="btn-primary inline-flex items-center gap-2 px-10 py-5 uppercase tracking-widest text-sm cursor-target border border-transparent hover:border-portfolio-gold/50"
+          className="btn-primary inline-flex items-center gap-2 px-8 py-4 md:px-10 md:py-5 uppercase tracking-widest text-xs sm:text-sm cursor-target border border-transparent hover:border-portfolio-gold/50"
         >
           Contact Us <ArrowUpRight size={18} />
         </Link>
@@ -374,15 +374,15 @@ const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(2);
 
   return (
-    <section className="py-24">
-      <div className="bg-[#1a1a1a] rounded-4xl p-8 md:p-14 lg:p-16 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+    <section className="py-16 md:py-24">
+      <div className="bg-[#1a1a1a] rounded-3xl md:rounded-4xl p-5 sm:p-8 md:p-14 lg:p-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
 
         {/* Left Column */}
         <div className="lg:col-span-4 flex flex-col justify-start pt-2">
-          <span className="inline-block text-xxs font-bold uppercase tracking-widest text-white/40 border border-white/10 rounded-full px-3 py-1 mb-8 w-fit">
+          <span className="inline-block text-xxs font-bold uppercase tracking-widest text-white/40 border border-white/10 rounded-full px-3 py-1 mb-6 md:mb-8 w-fit">
             FAQs
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight text-white mb-4 md:mb-6">
             Frequently asked <br />
             <span className="text-portfolio-gold">questions</span>
           </h2>
@@ -392,12 +392,12 @@ const FAQSection = () => {
         </div>
 
         {/* Right Column — Accordion */}
-        <div className="lg:col-span-8 flex flex-col gap-4">
+        <div className="lg:col-span-8 flex flex-col gap-3 sm:gap-4">
           {faqs.map((faq, i) => (
-            <div key={i} className="bg-white/[0.03] border border-white/[0.08] hover:border-white/[0.15] hover:bg-white/[0.05] transition-colors duration-300 rounded-2xl p-6 md:p-7">
+            <div key={i} className="bg-white/[0.03] border border-white/[0.08] hover:border-white/[0.15] hover:bg-white/[0.05] transition-colors duration-300 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-7">
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full flex items-center justify-between gap-6 text-left group cursor-target"
+                className="w-full flex items-center justify-between gap-4 sm:gap-6 text-left group cursor-target"
               >
                 <span className={`text-sm md:text-base font-semibold leading-snug transition-colors duration-300 ${openIndex === i ? 'text-white' : 'text-white/60 group-hover:text-white/90'}`}>
                   {faq.q}
@@ -409,9 +409,9 @@ const FAQSection = () => {
 
               {/* Answer — animated open/close */}
               <div
-                className={`overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.21,0.45,0.32,0.9)] ${openIndex === i ? 'max-h-48 opacity-100 mt-4' : 'max-h-0 opacity-0'}`}
+                className={`overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.21,0.45,0.32,0.9)] ${openIndex === i ? 'max-h-[500px] opacity-100 mt-3 sm:mt-4' : 'max-h-0 opacity-0'}`}
               >
-                <p className="text-white/45 text-sm leading-relaxed pr-12">
+                <p className="text-white/45 text-xs sm:text-sm leading-relaxed pr-4 sm:pr-12">
                   {faq.a}
                 </p>
               </div>
