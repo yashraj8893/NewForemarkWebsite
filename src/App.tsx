@@ -60,7 +60,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="relative z-50 flex items-center justify-between px-8 md:px-16 py-8 pointer-events-auto max-w-[1280px] mx-auto w-full">
+      <nav className="relative z-50 flex items-center justify-between px-4 sm:px-8 md:px-16 py-6 sm:py-8 pointer-events-auto max-w-[1280px] mx-auto w-full">
         <Link to="/" className="flex flex-col cursor-pointer cursor-target z-50 -ml-2">
           <img src="/Foremark_Logo_-removebg-preview.png" alt="Foremark" className="h-10 md:h-12 w-auto object-contain" />
         </Link>

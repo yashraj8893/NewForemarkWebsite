@@ -10,7 +10,7 @@ const JobDetail = () => {
 
     if (!job) {
         return (
-            <div className="max-w-[1280px] mx-auto px-8 md:px-16 pt-16 pb-32">
+            <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pt-12 sm:pt-16 pb-20 sm:pb-32">
                 <p className="text-portfolio-muted">Job not found.</p>
                 <Link to="/careers" className="text-portfolio-dark font-bold underline mt-4 inline-block cursor-target">
                     Back to Careers
@@ -26,7 +26,7 @@ const JobDetail = () => {
                 description={job.shortDesc}
                 canonicalUrl={"https://foremark.in/careers/" + job.slug}
             />
-            <div className="max-w-[1280px] mx-auto px-8 md:px-16 pt-16 pb-32">
+            <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pt-12 sm:pt-16 pb-20 sm:pb-32">
 
                 <motion.div
                     initial={{ opacity: 0, y: 10 }}

@@ -27,7 +27,7 @@ const AssociateProgramPage = () => {
   return (
     <>
       <SEO title="Associate Program" description="Join the Foremark Associate Program to refer projects, collaborate, and earn." canonicalUrl="https://foremark.in/associate-program" />
-      <div className="max-w-[1280px] mx-auto px-8 md:px-16 pt-16 pb-32 overflow-hidden">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pt-12 sm:pt-16 pb-20 sm:pb-32 overflow-hidden">
         {/* Hero Section */}
         <div className="flex flex-col mb-16">
           <motion.span 
@@ -41,7 +41,7 @@ const AssociateProgramPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-3xl md:text-5xl font-bold tracking-tight mb-6"
+          className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-4 sm:mb-6"
         >
           Refer a client.<br />
           We close it.<br />
@@ -77,12 +77,12 @@ const AssociateProgramPage = () => {
       </div>
 
       {/* What We Build Section */}
-      <div className="mb-32">
+      <div className="mb-20 sm:mb-32">
         <motion.div {...fadeUp} className="mb-16">
           <span className="text-sm font-bold uppercase tracking-widest text-portfolio-gold mb-4 block">
             What We Build
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight max-w-4xl leading-tight mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight max-w-4xl leading-tight mb-4 sm:mb-6">
             We turn business ideas into digital products.
           </h2>
           <p className="text-base text-portfolio-muted max-w-xl leading-relaxed">
@@ -115,12 +115,12 @@ const AssociateProgramPage = () => {
       </div>
 
       {/* How it Works Section */}
-      <div className="mb-32">
+      <div className="mb-20 sm:mb-32">
         <motion.div {...fadeUp} className="mb-16">
           <span className="text-sm font-bold uppercase tracking-widest text-portfolio-gold mb-4 block">
             The Process
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight max-w-4xl leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight max-w-4xl leading-tight">
             Simple as 3 steps.
           </h2>
         </motion.div>
@@ -152,12 +152,12 @@ const AssociateProgramPage = () => {
       </div>
 
       {/* Earnings Section */}
-      <div className="mb-32">
+      <div className="mb-20 sm:mb-32">
         <motion.div {...fadeUp} className="mb-16">
           <span className="text-sm font-bold uppercase tracking-widest text-portfolio-gold mb-4 block">
             Your Earnings
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight max-w-4xl leading-tight mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight max-w-4xl leading-tight mb-4 sm:mb-6">
             The more the deal,<br />the more you earn.
           </h2>
           <p className="text-base text-portfolio-muted max-w-xl leading-relaxed">
@@ -209,7 +209,7 @@ const AssociateProgramPage = () => {
                 className="group flex flex-row items-center justify-between py-6 border-b border-portfolio-dark/10 last:border-0 hover:bg-portfolio-dark/[0.02] transition-colors -mx-4 px-4 rounded-xl cursor-target"
               >
                 <span className="text-base text-portfolio-muted group-hover:text-portfolio-gold transition-colors duration-300">Client pays {row.client}</span>
-                <div className="flex items-center gap-12 md:gap-24">
+                <div className="flex items-center gap-6 sm:gap-12 md:gap-24">
                   <span className="text-sm text-portfolio-muted uppercase tracking-widest group-hover:text-portfolio-gold transition-colors duration-300">{row.pct}</span>
                   <span className="text-lg font-bold text-portfolio-dark w-24 text-right group-hover:text-portfolio-gold transition-colors duration-300">{row.earn}</span>
                 </div>
@@ -220,12 +220,12 @@ const AssociateProgramPage = () => {
       </div>
 
       {/* Why Partner With Us Section */}
-      <div className="mb-32">
+      <div className="mb-20 sm:mb-32">
         <motion.div {...fadeUp} className="mb-16">
           <span className="text-sm font-bold uppercase tracking-widest text-portfolio-gold mb-4 block">
             Why Partner With Us
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight max-w-4xl leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight max-w-4xl leading-tight">
             We make you look good.
           </h2>
         </motion.div>
@@ -259,9 +259,9 @@ const AssociateProgramPage = () => {
       {/* Footer CTA */}
       <motion.div 
         {...fadeUp}
-        className="mt-32 pt-32 border-t border-portfolio-dark/10 flex flex-col items-center text-center"
+        className="mt-20 sm:mt-32 pt-20 sm:pt-32 border-t border-portfolio-dark/10 flex flex-col items-center text-center"
       >
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight max-w-4xl leading-tight mb-6">
+        <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight max-w-4xl leading-tight mb-4 sm:mb-6">
           Ready to start earning?
         </h2>
         <p className="text-base text-portfolio-muted max-w-xl leading-relaxed mb-12">

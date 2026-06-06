@@ -27,10 +27,10 @@ const InstagramIcon = ({ size = 16 }) => (
 const Footer = () => {
   return (
     <footer className="bg-portfolio-dark text-white pt-20 pb-10 mt-auto w-full">
-      <div className="max-w-[1280px] mx-auto px-8 md:px-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-12 sm:mb-16">
           {/* Brand Column */}
-          <div className="flex flex-col col-span-1 md:col-span-2 lg:col-span-1">
+          <div className="flex flex-col col-span-1 sm:col-span-2 lg:col-span-1">
             <Link to="/" className="block cursor-pointer mb-6 group cursor-target w-44 h-11 relative ml-2">
               <img src="/foremark-logo.png" alt="Foremark Logo" className="w-full h-full object-cover object-center mix-blend-lighten scale-[1.2] origin-center" />
             </Link>

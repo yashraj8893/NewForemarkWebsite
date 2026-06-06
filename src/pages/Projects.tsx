@@ -86,7 +86,7 @@ const ProjectsPage = () => {
         {/* Subtle Background Texture */}
         <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1.5px,transparent_1.5px)] [background-size:24px_24px] opacity-60 pointer-events-none" />
 
-        <div className="max-w-[1280px] mx-auto px-8 md:px-16 pt-16 pb-40">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pt-12 sm:pt-16 pb-24 sm:pb-40">
 
           {/* Section Header */}
           <div className="flex flex-col mb-16 relative z-10">
@@ -102,7 +102,7 @@ const ProjectsPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-bold tracking-tight mb-6"
+            className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-4 sm:mb-6"
           >
             Examples of <br /> our work
           </motion.h1>
@@ -125,7 +125,7 @@ const ProjectsPage = () => {
           >
             <div className="flex -space-x-3">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="w-12 h-12 rounded-full border-[3px] border-portfolio-bg bg-white overflow-hidden shadow-sm">
+                <div key={i} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-[3px] border-portfolio-bg bg-white overflow-hidden shadow-sm">
                   <img src={`https://i.pravatar.cc/150?u=acc${i}`} alt="Client" className="w-full h-full object-cover" />
                 </div>
               ))}
@@ -140,7 +140,7 @@ const ProjectsPage = () => {
         </div>
 
         {/* Brand Logos Row - Infinite Marquee */}
-        <div className="w-full border-b border-portfolio-dark/10 pb-16 mb-24 overflow-hidden relative z-10">
+        <div className="w-full border-b border-portfolio-dark/10 pb-12 sm:pb-16 mb-16 sm:mb-24 overflow-hidden relative z-10">
           <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-portfolio-bg to-transparent z-20 pointer-events-none" />
           <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-portfolio-bg to-transparent z-20 pointer-events-none" />
 
@@ -174,7 +174,7 @@ const ProjectsPage = () => {
         </div>
 
         {/* Editorial Project Grid */}
-        <div className="max-w-[1050px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-y-16 md:gap-y-20 md:gap-x-12 lg:gap-x-16 items-start relative z-10 mt-10">
+        <div className="max-w-[1050px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-y-10 sm:gap-y-16 md:gap-y-20 md:gap-x-12 lg:gap-x-16 items-start relative z-10 mt-6 sm:mt-10">
           {projectsData.map((project, i) => (
             <motion.div
               key={i}
@@ -185,7 +185,7 @@ const ProjectsPage = () => {
               className="group/card flex flex-col cursor-target"
             >
               {/* Outer Container */}
-              <div className={`relative w-full ${project.aspect} rounded-3xl bg-white mb-6 shadow-sm border border-black/[0.04] pt-8 px-8 md:pt-12 md:px-12 lg:pt-16 lg:px-16 overflow-hidden flex items-center justify-center`}>
+              <div className={`relative w-full ${project.aspect} rounded-2xl sm:rounded-3xl bg-white mb-4 sm:mb-6 shadow-sm border border-black/[0.04] pt-6 px-6 sm:pt-8 sm:px-8 md:pt-12 md:px-12 lg:pt-16 lg:px-16 overflow-hidden flex items-center justify-center`}>
 
                 <div className="absolute inset-0 pointer-events-none opacity-[0.03]">
                   <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">

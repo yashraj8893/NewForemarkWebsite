@@ -37,7 +37,7 @@ const CareersPage = () => {
   return (
     <>
       <SEO title="Careers" description="Join Foremark. We're always looking for talented engineers and designers who care about their craft." canonicalUrl="https://foremark.in/careers" />
-      <div className="max-w-[1280px] mx-auto px-8 md:px-16 pt-16 pb-32">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pt-12 sm:pt-16 pb-20 sm:pb-32">
 
         {/* Hero Section */}
         <div className="flex flex-col mb-16">
@@ -52,7 +52,7 @@ const CareersPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-bold tracking-tight mb-6"
+            className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-4 sm:mb-6"
           >
             Be part of <br /> our mission
           </motion.h1>
@@ -106,15 +106,15 @@ const CareersPage = () => {
         <div className="space-y-0">
           {filteredJobs.map((job) => (
             <div key={job.id} className="border-t border-portfolio-dark/10 first:border-t-0">
-              <div className="py-12 group">
+              <div className="py-8 sm:py-12 group">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
                   <div className="flex-1">
                     <Link to={`/careers/${job.slug}`} className="inline-block w-fit mb-4">
-                      <h3 className="text-2xl md:text-3xl font-bold tracking-tight hover:text-portfolio-gold transition-colors">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight hover:text-portfolio-gold transition-colors">
                         {job.title}
                       </h3>
                     </Link>
-                    <p className="text-portfolio-muted text-base mb-6 max-w-2xl">
+                    <p className="text-portfolio-muted text-sm sm:text-base mb-4 sm:mb-6 max-w-2xl">
                       {job.shortDesc}
                     </p>
                     <div className="flex flex-wrap gap-2">
@@ -144,7 +144,7 @@ const CareersPage = () => {
         {/* Quote Section */}
         <div className="mt-16 pt-16 border-t border-portfolio-dark/10">
           <div className="flex flex-col items-center text-center px-4 md:px-12">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight max-w-4xl leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight max-w-4xl leading-tight">
               <span className="text-portfolio-gold font-serif">“</span>
               Foremark truly values work-life balance. We work hard and deliver, but at the end of the day you can switch off.
               <span className="text-portfolio-gold font-serif">”</span>
@@ -153,7 +153,7 @@ const CareersPage = () => {
         </div>
 
         {/* Drop Resume Section */}
-        <div className="mt-24 pt-16 border-t border-portfolio-dark/10 mb-8">
+        <div className="mt-16 sm:mt-24 pt-12 sm:pt-16 border-t border-portfolio-dark/10 mb-8">
           <div className="flex flex-col items-center text-center px-4 md:px-12">
             <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-4">
               Don't see a perfect fit?

@@ -45,7 +45,7 @@ const carouselImages = [
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-start pt-12 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col items-center justify-start pt-8 sm:pt-12 overflow-hidden">
       <InteractiveGridPattern
         className={cn(
           "[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]",
@@ -56,7 +56,7 @@ const Hero = () => {
 
         <motion.h1
           initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.2 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-8"
+          className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 sm:mb-8 px-2"
         >
           We build digital products <br />
           <span className="text-portfolio-muted">that drive growth.</span>
@@ -64,7 +64,7 @@ const Hero = () => {
 
         <motion.p
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-portfolio-muted text-lg md:text-xl max-w-2xl mb-10"
+          className="text-portfolio-muted text-base sm:text-lg md:text-xl max-w-2xl mb-8 sm:mb-10 px-2"
         >
           From scalable applications to stunning websites, <br /> we engineer software that transforms ambitious businesses.
         </motion.p>
@@ -113,19 +113,19 @@ const Hero = () => {
 };
 
 const CuratedWork = () => (
-  <section id="projects" className="py-32">
+  <section id="projects" className="py-16 sm:py-24 md:py-32">
     {/* Section Header */}
-    <div className="flex justify-between items-end mb-24">
+    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 sm:mb-16 md:mb-24">
       <div>
-        <span className="text-xs font-bold uppercase tracking-widest text-portfolio-gold mb-6 block">PROJECTS</span>
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
+        <span className="text-xs font-bold uppercase tracking-widest text-portfolio-gold mb-4 sm:mb-6 block">PROJECTS</span>
+        <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-4 sm:mb-6">
           A curated collection of <br /> websites designed with care
         </h2>
       </div>
     </div>
 
     {/* Editorial Project List */}
-    <div className="flex flex-col gap-20 lg:gap-28">
+    <div className="flex flex-col gap-12 sm:gap-16 lg:gap-28">
       {curatedProjects.map((p, i) => (
         <motion.div
           key={i}
@@ -162,7 +162,7 @@ const CuratedWork = () => (
               {p.title}
             </h3>
 
-            <p className="text-portfolio-dark/55 text-base md:text-lg leading-relaxed max-w-lg mb-10">
+            <p className="text-portfolio-dark/55 text-sm sm:text-base md:text-lg leading-relaxed max-w-lg mb-6 sm:mb-10">
               {p.desc}
             </p>
 
@@ -288,16 +288,16 @@ const TestimonialsSection = () => {
   const col4 = testimonials.filter((_, i) => i % 4 === 3);
 
   return (
-    <section className="py-36 w-screen relative left-1/2 -translate-x-1/2 flex items-center justify-center bg-portfolio-dark/95">
+    <section className="py-20 sm:py-28 md:py-36 w-screen relative left-1/2 -translate-x-1/2 flex items-center justify-center bg-portfolio-dark/95">
 
       {/* Subconscious ambient warmth — highly transparent and wide */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-portfolio-gold/[0.02] blur-[120px] rounded-full pointer-events-none" />
 
       {/* Grid Container — subtle card fade at the very edges to hide scrolling clip, no background fade */}
-      <div className="relative w-full max-w-[1280px] mx-auto overflow-hidden h-[750px] [mask-image:linear-gradient(to_bottom,transparent_0%,black_5%,black_95%,transparent_100%)]">
+      <div className="relative w-full max-w-[1280px] mx-auto overflow-hidden h-[500px] sm:h-[600px] md:h-[750px] [mask-image:linear-gradient(to_bottom,transparent_0%,black_5%,black_95%,transparent_100%)]">
 
         {/* Scroll grid — slightly wider gap for more air */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-7 px-6 md:px-12 h-full opacity-100">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5 md:gap-7 px-4 sm:px-6 md:px-12 h-full opacity-100">
           {/* Col 1 */}
           <div className="overflow-hidden">
             <div className="animate-scroll-slow flex flex-col pt-12">
@@ -305,7 +305,7 @@ const TestimonialsSection = () => {
             </div>
           </div>
           {/* Col 2 */}
-          <div className="overflow-hidden hidden md:block">
+          <div className="overflow-hidden hidden sm:block">
             <div className="animate-scroll-medium flex flex-col -mt-24">
               {[...col2, ...col2, ...col2].map((t, i) => <TestimonialCard key={i} t={t} />)}
             </div>
@@ -326,12 +326,12 @@ const TestimonialsSection = () => {
 
         {/* Rating badge — maintains sharp contrast hierarchy */}
         <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
-          <div className="bg-portfolio-dark/80 backdrop-blur-3xl border border-white/[0.08] rounded-3xl px-9 py-7 flex items-center gap-7 shadow-deep">
-            <span className="text-5xl font-bold text-white leading-none tabular-nums tracking-tight">4.9</span>
+          <div className="bg-portfolio-dark/80 backdrop-blur-3xl border border-white/[0.08] rounded-2xl sm:rounded-3xl px-6 py-5 sm:px-9 sm:py-7 flex items-center gap-4 sm:gap-7 shadow-deep">
+            <span className="text-3xl sm:text-5xl font-bold text-white leading-none tabular-nums tracking-tight">4.9</span>
             <div className="flex flex-col gap-1.5">
               <div className="flex gap-1.5">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 text-portfolio-gold" fill="currentColor" viewBox="0 0 20 20">
+                  <svg key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-portfolio-gold" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
                 ))}
@@ -516,7 +516,7 @@ const Home = () => {
   return (
     <>
       <SEO />
-      <div className="max-w-[1280px] mx-auto px-8 md:px-16">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
         <Hero />
       <MissionSection />
       <ServicesGrid />
