@@ -7,206 +7,206 @@ const ContactPage = () => {
   return (
     <>
       <SEO title="Contact Us" description="Have a question or want to work together? Leave us a message and we'll get back to you as soon as possible." canonicalUrl="https://foremark.in/contact" />
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pt-16 pb-32">
-        <div className="flex flex-col mb-16">
-        <motion.span
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-portfolio-gold font-bold mb-3 text-xs tracking-widest uppercase block"
-        >
-          CONTACT
-        </motion.span>
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="text-3xl md:text-5xl font-bold tracking-tight mb-6"
-        >
-          Let's talk about <br /> your project
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="text-base text-portfolio-muted max-w-xl leading-relaxed"
-        >
-          Have a question or want to work together? Leave us a message below and we'll get back to you as soon as possible.
-        </motion.p>
-      </div>
-
-      <div className="bg-portfolio-dark rounded-[2rem] lg:rounded-[3rem] p-6 sm:p-8 md:p-16 lg:p-24 text-white relative overflow-hidden flex items-center">
-
-        {/* Map image — hidden on mobile, left side only on desktop */}
-        <div
-          className="absolute inset-y-0 left-0 pointer-events-none hidden lg:block"
-          style={{ width: '58%' }}
-        >
-          <img
-            src={mapImage}
-            alt=""
-            aria-hidden="true"
-            className="w-full h-full object-cover object-center"
-            style={{ opacity: 0.10 }}
-          />
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pt-8 pb-16 lg:pt-16 lg:pb-32">
+        <div className="flex flex-col mb-8 lg:mb-16">
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-portfolio-gold font-bold mb-3 text-xs tracking-widest uppercase block"
+          >
+            CONTACT
+          </motion.span>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-3xl md:text-5xl font-bold tracking-tight mb-6"
+          >
+            Let's talk about <br /> your project
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-base text-portfolio-muted max-w-xl leading-relaxed"
+          >
+            Have a question or want to work together? Leave us a message below and we'll get back to you as soon as possible.
+          </motion.p>
         </div>
 
-        {/* Horizontal fade — hidden on mobile */}
-        <div
-          className="absolute inset-y-0 left-0 z-20 pointer-events-none hidden lg:block"
-          style={{
-            width: '58%',
-            background: 'linear-gradient(to right, transparent 0%, transparent 50%, var(--color-portfolio-dark) 100%)',
-          }}
-        />
+        <div className="bg-portfolio-dark rounded-[2rem] lg:rounded-[3rem] p-6 sm:p-8 md:p-16 lg:p-24 text-white relative overflow-hidden flex items-center">
 
-        {/* Top vignette — hidden on mobile */}
-        <div
-          className="absolute inset-x-0 top-0 h-24 md:h-40 z-20 pointer-events-none hidden lg:block"
-          style={{
-            background: 'linear-gradient(to bottom, var(--color-portfolio-dark) 0%, transparent 100%)',
-          }}
-        />
-
-        {/* Bottom vignette — hidden on mobile */}
-        <div
-          className="absolute inset-x-0 bottom-0 h-32 md:h-48 z-20 pointer-events-none hidden lg:block"
-          style={{
-            background: 'linear-gradient(to top, var(--color-portfolio-dark) 0%, transparent 100%)',
-          }}
-        />
-
-        {/* Subtle orange brand glow — hidden on mobile */}
-        <div
-          className="absolute inset-y-0 left-0 pointer-events-none hidden lg:block"
-          style={{
-            width: '40%',
-            background: 'radial-gradient(ellipse at 20% 60%, rgba(255,92,0,0.06) 0%, transparent 70%)',
-          }}
-        />
-
-        {/* Content */}
-        <div className="relative z-30 w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-
-          {/* Left: Contact Info */}
-          <div className="lg:col-span-5 flex flex-col pt-0 lg:pt-8">
-            <div className="space-y-6 lg:space-y-10">
-              {[
-                { icon: Mail, label: "MAIL US", value1: "hello@foremark.in", value2: "careers@foremark.in" },
-                { icon: MessageSquare, label: "CALL US", value1: "+91 8605671941", value2: "" },
-                { 
-                  icon: Globe, 
-                  label: "LOCATION", 
-                  value1: "Innov8 Times Square, Andheri East", 
-                  value2: "Unit No. 2, 4th Floor, A-Wing, Times Square Building, Marol, Andheri (E), Mumbai – 400059",
-                  link: "https://maps.app.goo.gl/B9dZpsf7i1K1B54t7" 
-                }
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.3 + i * 0.1 }}
-                  className="flex gap-4 sm:gap-6 group"
-                >
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-portfolio-gold group-hover:bg-portfolio-gold group-hover:text-portfolio-dark transition-all duration-500 shrink-0">
-                    <item.icon size={22} />
-                  </div>
-                  <div className="flex flex-col min-w-0 pt-1">
-                    <span className="text-[10px] uppercase tracking-widest text-white/40 font-bold mb-1">{item.label}</span>
-                    <p className="text-sm sm:text-base font-bold text-white/90 break-all sm:break-normal">{item.value1}</p>
-                    {item.value2 && (
-                      <p className="text-xs sm:text-sm font-medium text-white/70 break-all sm:break-normal mt-1 leading-relaxed max-w-sm">{item.value2}</p>
-                    )}
-                    {item.link && (
-                      <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-xs sm:text-sm font-bold text-portfolio-gold hover:text-white transition-colors mt-2">
-                        View on Google Maps
-                      </a>
-                    )}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="flex gap-4 mt-8 lg:mt-16">
-              {[Share2, Globe, Info].map((Icon, i) => (
-                <motion.a
-                  key={i}
-                  href="#"
-                  whileHover={{ y: -5 }}
-                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white transition-all cursor-target"
-                >
-                  <Icon size={18} />
-                </motion.a>
-              ))}
-            </div>
+          {/* Map image — hidden on mobile, left side only on desktop */}
+          <div
+            className="absolute inset-y-0 left-0 pointer-events-none hidden lg:block"
+            style={{ width: '58%' }}
+          >
+            <img
+              src={mapImage}
+              alt=""
+              aria-hidden="true"
+              className="w-full h-full object-cover object-center"
+              style={{ opacity: 0.10 }}
+            />
           </div>
 
-          <div className="lg:col-span-7 mt-8 lg:mt-0">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="relative bg-white/[0.03] backdrop-blur-xl border border-white/10 p-5 sm:p-8 md:p-12 rounded-[1.25rem] sm:rounded-[2.5rem] shadow-2xl"
-            >
-              <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-portfolio-gold rounded-tl-xl opacity-40 hidden sm:block" />
-              <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-portfolio-gold rounded-br-xl opacity-40 hidden sm:block" />
+          {/* Horizontal fade — hidden on mobile */}
+          <div
+            className="absolute inset-y-0 left-0 z-20 pointer-events-none hidden lg:block"
+            style={{
+              width: '58%',
+              background: 'linear-gradient(to right, transparent 0%, transparent 50%, var(--color-portfolio-dark) 100%)',
+            }}
+          />
 
-              <div className="flex items-center justify-between mb-6 lg:mb-10">
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight">Contact form</h3>
-                <div className="flex gap-1">
-                  <div className="w-2 h-2 rounded-full bg-portfolio-gold" />
-                  <div className="w-2 h-2 rounded-full bg-white/10" />
-                </div>
+          {/* Top vignette — hidden on mobile */}
+          <div
+            className="absolute inset-x-0 top-0 h-24 md:h-40 z-20 pointer-events-none hidden lg:block"
+            style={{
+              background: 'linear-gradient(to bottom, var(--color-portfolio-dark) 0%, transparent 100%)',
+            }}
+          />
+
+          {/* Bottom vignette — hidden on mobile */}
+          <div
+            className="absolute inset-x-0 bottom-0 h-32 md:h-48 z-20 pointer-events-none hidden lg:block"
+            style={{
+              background: 'linear-gradient(to top, var(--color-portfolio-dark) 0%, transparent 100%)',
+            }}
+          />
+
+          {/* Subtle orange brand glow — hidden on mobile */}
+          <div
+            className="absolute inset-y-0 left-0 pointer-events-none hidden lg:block"
+            style={{
+              width: '40%',
+              background: 'radial-gradient(ellipse at 20% 60%, rgba(255,92,0,0.06) 0%, transparent 70%)',
+            }}
+          />
+
+          {/* Content */}
+          <div className="relative z-30 w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+
+            {/* Left: Contact Info */}
+            <div className="lg:col-span-5 flex flex-col pt-0 lg:pt-8">
+              <div className="space-y-4 lg:space-y-10">
+                {[
+                  { icon: Mail, label: "MAIL US", value1: "hello@foremark.in", value2: "careers@foremark.in" },
+                  { icon: MessageSquare, label: "CALL US", value1: "+91 8605671941", value2: "" },
+                  {
+                    icon: Globe,
+                    label: "LOCATION",
+                    value1: "Innov8 Times Square, Andheri East",
+                    value2: "Unit No. 2, 4th Floor, A-Wing, Times Square Building, Marol, Andheri (E), Mumbai – 400059",
+                    link: "https://maps.app.goo.gl/B9dZpsf7i1K1B54t7"
+                  }
+                ].map((item, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.3 + i * 0.1 }}
+                    className="flex gap-3 sm:gap-6 group items-start"
+                  >
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-portfolio-gold group-hover:bg-portfolio-gold group-hover:text-portfolio-dark transition-all duration-500 shrink-0">
+                      <item.icon size={22} />
+                    </div>
+                    <div className="flex flex-col min-w-0 pt-1">
+                      <span className="text-[10px] uppercase tracking-widest text-white/40 font-bold mb-1">{item.label}</span>
+                      <p className="text-sm font-bold text-white/90 break-all sm:break-normal">{item.value1}</p>
+                      {item.value2 && (
+                        <p className="text-sm font-bold text-white/90 break-all sm:break-normal mt-1 leading-relaxed max-w-sm">{item.value2}</p>
+                      )}
+                      {item.link && (
+                        <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-xs sm:text-sm font-bold text-portfolio-gold hover:text-white transition-colors mt-2">
+                          View on Google Maps
+                        </a>
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
               </div>
 
-              <form className="space-y-4 sm:space-y-6">
-                <div className="space-y-1.5 sm:space-y-2">
-                  <label htmlFor="contact-name" className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-1">NAME *</label>
-                  <input
-                    id="contact-name"
-                    name="name"
-                    type="text"
-                    required
-                    placeholder="Your full name"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-2.5 sm:py-4 text-white text-sm sm:text-base focus:outline-none focus:border-portfolio-gold transition-colors placeholder:text-white/20 cursor-target"
-                  />
-                </div>
-                <div className="space-y-1.5 sm:space-y-2">
-                  <label htmlFor="contact-email" className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-1">EMAIL *</label>
-                  <input
-                    id="contact-email"
-                    name="email"
-                    type="email"
-                    required
-                    placeholder="Your email address"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-2.5 sm:py-4 text-white text-sm sm:text-base focus:outline-none focus:border-portfolio-gold transition-colors placeholder:text-white/20 cursor-target"
-                  />
-                </div>
-                <div className="space-y-1.5 sm:space-y-2">
-                  <label htmlFor="contact-message" className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-1">MESSAGE *</label>
-                  <textarea
-                    id="contact-message"
-                    name="message"
-                    required
-                    placeholder="How can we help you?"
-                    rows={4}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-white text-sm sm:text-base focus:outline-none focus:border-portfolio-gold transition-colors placeholder:text-white/20 resize-none cursor-target"
-                  />
-                </div>
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  type="submit"
-                  className="w-full bg-portfolio-gold text-portfolio-dark font-bold py-3 sm:py-4 rounded-xl sm:rounded-2xl mt-4 sm:mt-6 hover:bg-portfolio-gold/90 transition-colors text-sm sm:text-base cursor-target"
-                >
-                  SEND MESSAGE
-                </motion.button>
-              </form>
-            </motion.div>
-          </div>
+              <div className="flex gap-4 mt-8 lg:mt-16">
+                {[Share2, Globe, Info].map((Icon, i) => (
+                  <motion.a
+                    key={i}
+                    href="#"
+                    whileHover={{ y: -5 }}
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white transition-all cursor-target"
+                  >
+                    <Icon size={18} />
+                  </motion.a>
+                ))}
+              </div>
+            </div>
 
+            <div className="lg:col-span-7 mt-8 lg:mt-0">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="relative bg-white/[0.03] backdrop-blur-xl border border-white/10 p-5 sm:p-8 md:p-12 rounded-[1.25rem] sm:rounded-[2.5rem] shadow-2xl"
+              >
+                <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-portfolio-gold rounded-tl-xl opacity-40 hidden sm:block" />
+                <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-portfolio-gold rounded-br-xl opacity-40 hidden sm:block" />
+
+                <div className="flex items-center justify-between mb-6 lg:mb-10">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight">Contact form</h3>
+                  <div className="flex gap-1">
+                    <div className="w-2 h-2 rounded-full bg-portfolio-gold" />
+                    <div className="w-2 h-2 rounded-full bg-white/10" />
+                  </div>
+                </div>
+
+                <form className="space-y-4 sm:space-y-6">
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <label htmlFor="contact-name" className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-1">NAME *</label>
+                    <input
+                      id="contact-name"
+                      name="name"
+                      type="text"
+                      required
+                      placeholder="Your full name"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-2.5 sm:py-4 text-white text-sm sm:text-base focus:outline-none focus:border-portfolio-gold transition-colors placeholder:text-white/20 cursor-target"
+                    />
+                  </div>
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <label htmlFor="contact-email" className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-1">EMAIL *</label>
+                    <input
+                      id="contact-email"
+                      name="email"
+                      type="email"
+                      required
+                      placeholder="Your email address"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-2.5 sm:py-4 text-white text-sm sm:text-base focus:outline-none focus:border-portfolio-gold transition-colors placeholder:text-white/20 cursor-target"
+                    />
+                  </div>
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <label htmlFor="contact-message" className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-1">MESSAGE *</label>
+                    <textarea
+                      id="contact-message"
+                      name="message"
+                      required
+                      placeholder="How can we help you?"
+                      rows={4}
+                      className="w-full bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-white text-sm sm:text-base focus:outline-none focus:border-portfolio-gold transition-colors placeholder:text-white/20 resize-none cursor-target"
+                    />
+                  </div>
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    type="submit"
+                    className="w-full bg-portfolio-gold text-portfolio-dark font-bold py-3 sm:py-4 rounded-xl sm:rounded-2xl mt-4 sm:mt-6 hover:bg-portfolio-gold/90 transition-colors text-sm sm:text-base cursor-target"
+                  >
+                    SEND MESSAGE
+                  </motion.button>
+                </form>
+              </motion.div>
+            </div>
+
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 };
