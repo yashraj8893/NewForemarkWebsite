@@ -55,7 +55,7 @@ const JobDetail = () => {
                             {job.title}
                         </h1>
                         <a
-                            href="#apply"
+                            href={(job as any).applyLink} target="_blank" rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 bg-portfolio-dark text-white font-bold text-sm uppercase tracking-widest px-8 py-4 rounded-full hover:bg-portfolio-dark/80 transition-all cursor-target whitespace-nowrap"
                         >
                             Apply Now <ArrowUpRight size={16} />
@@ -75,48 +75,47 @@ const JobDetail = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
-                    className="grid grid-cols-1 md:grid-cols-3 gap-16"
+                    className="max-w-4xl space-y-16"
                 >
-                    <div className="md:col-span-2 space-y-14">
-                        <div>
-                            <h2 className="text-xs font-bold uppercase tracking-widest text-portfolio-dark mb-6">About the Role</h2>
-                            <p className="text-portfolio-muted leading-relaxed text-lg">{job.about}</p>
-                        </div>
-                        <div>
-                            <h2 className="text-xs font-bold uppercase tracking-widest text-portfolio-dark mb-6">Responsibilities</h2>
-                            <ul className="space-y-4">
-                                {job.responsibilities.map((item, i) => (
-                                    <li key={i} className="flex items-start gap-3 text-portfolio-muted text-base leading-relaxed">
-                                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-portfolio-dark/30 shrink-0" />
-                                        {item}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                    <div>
+                        <h2 className="text-sm font-bold uppercase tracking-widest text-portfolio-dark mb-6">About the Role</h2>
+                        <p className="text-portfolio-muted leading-relaxed text-lg">{job.about}</p>
                     </div>
-                    <div className="space-y-14">
-                        <div>
-                            <h2 className="text-xs font-bold uppercase tracking-widest text-portfolio-dark mb-6">Requirements</h2>
-                            <ul className="space-y-4">
-                                {job.requirements.map((item, i) => (
-                                    <li key={i} className="flex items-start gap-3 text-portfolio-muted text-sm leading-relaxed">
-                                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-portfolio-dark/30 shrink-0" />
-                                        {item}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                        <div>
-                            <h2 className="text-xs font-bold uppercase tracking-widest text-portfolio-dark mb-6">Benefits</h2>
-                            <ul className="space-y-4">
-                                {job.benefits.map((item, i) => (
-                                    <li key={i} className="flex items-start gap-3 text-portfolio-muted text-sm leading-relaxed">
-                                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-portfolio-dark/30 shrink-0" />
-                                        {item}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                    
+                    <div>
+                        <h2 className="text-sm font-bold uppercase tracking-widest text-portfolio-dark mb-6">Responsibilities</h2>
+                        <ul className="space-y-4">
+                            {job.responsibilities.map((item, i) => (
+                                <li key={i} className="flex items-start gap-4 text-portfolio-muted text-lg leading-relaxed">
+                                    <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-portfolio-dark shrink-0" />
+                                    {item}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h2 className="text-sm font-bold uppercase tracking-widest text-portfolio-dark mb-6">Requirements</h2>
+                        <ul className="space-y-4">
+                            {job.requirements.map((item, i) => (
+                                <li key={i} className="flex items-start gap-4 text-portfolio-muted text-lg leading-relaxed">
+                                    <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-portfolio-dark shrink-0" />
+                                    {item}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h2 className="text-sm font-bold uppercase tracking-widest text-portfolio-dark mb-6">Benefits</h2>
+                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {job.benefits.map((item, i) => (
+                                <li key={i} className="flex items-center gap-4 text-portfolio-dark font-medium text-base p-5 border border-portfolio-dark/10 rounded-2xl bg-portfolio-dark/[0.02] hover:bg-portfolio-dark/[0.04] transition-colors">
+                                    <div className="w-2 h-2 rounded-full bg-portfolio-dark shrink-0" />
+                                    {item}
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </motion.div>
 
@@ -135,14 +134,14 @@ const JobDetail = () => {
                         </p>
                         <div className="border border-portfolio-dark/10 rounded-2xl p-8 bg-portfolio-dark/[0.02]">
                             <p className="text-portfolio-muted text-sm font-medium mb-6">
-                                Application form coming soon. In the meantime, reach out to us directly.
+                                Ready to take the next step? Fill out our application form directly.
                             </p>
-                            <Link
-                                to="/contact"
+                            <a
+                                href={(job as any).applyLink} target="_blank" rel="noopener noreferrer"
                                 className="inline-flex items-center gap-2 bg-portfolio-dark text-white font-bold text-sm uppercase tracking-widest px-8 py-4 rounded-full hover:bg-portfolio-dark/80 transition-all cursor-target"
                             >
-                                Contact Us <ArrowUpRight size={16} />
-                            </Link>
+                                Apply Here <ArrowUpRight size={16} />
+                            </a>
                         </div>
                     </div>
                 </motion.div>

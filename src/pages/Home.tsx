@@ -58,15 +58,15 @@ const Hero = () => {
           initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.2 }}
           className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-8"
         >
-          We are a software <br />
-          <span className="text-portfolio-muted">development company.</span>
+          We build digital products <br />
+          <span className="text-portfolio-muted">that drive growth.</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
           className="text-portfolio-muted text-lg md:text-xl max-w-2xl mb-10"
         >
-          We build scalable web applications, beautiful websites, <br /> and digital products that help businesses grow faster.
+          From scalable applications to stunning websites, <br /> we engineer software that transforms ambitious businesses.
         </motion.p>
 
         <motion.div

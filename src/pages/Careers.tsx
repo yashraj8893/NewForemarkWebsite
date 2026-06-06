@@ -17,12 +17,22 @@ const jobCategories = [
   "Management"
 ];
 
+const jobTypes = [
+  "All Types",
+  "Full-time",
+  "Part-time",
+  "Internship"
+];
+
 const CareersPage = () => {
   const [activeCategory, setActiveCategory] = useState("View all");
+  const [activeType, setActiveType] = useState("All Types");
 
-  const filteredJobs = activeCategory === "View all"
-    ? jobs
-    : jobs.filter(job => job.category === activeCategory);
+  const filteredJobs = jobs.filter(job => {
+    const categoryMatch = activeCategory === "View all" || job.category === activeCategory;
+    const typeMatch = activeType === "All Types" || job.type === activeType;
+    return categoryMatch && typeMatch;
+  });
 
   return (
     <>
@@ -56,6 +66,24 @@ const CareersPage = () => {
           </motion.p>
         </div>
 
+        {/* Type Filter */}
+        <div className="flex flex-wrap gap-3 mb-6">
+          {jobTypes.map((type) => (
+            <button
+              key={type}
+              onClick={() => setActiveType(type)}
+              className={cn(
+                "px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-300 cursor-target",
+                activeType === type
+                  ? "bg-portfolio-dark text-white"
+                  : "border border-portfolio-dark/10 text-portfolio-muted hover:bg-portfolio-dark/5"
+              )}
+            >
+              {type}
+            </button>
+          ))}
+        </div>
+
         {/* Categories Filter */}
         <div className="flex flex-wrap gap-3 mb-16">
           {jobCategories.map((category) => (
@@ -81,28 +109,31 @@ const CareersPage = () => {
               <div className="py-12 group">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
                   <div className="flex-1">
-                    <Link to={`/careers/${job.slug}`}>
-                      <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-6 hover:text-portfolio-gold transition-colors cursor-target">
+                    <Link to={`/careers/${job.slug}`} className="inline-block w-fit mb-4">
+                      <h3 className="text-2xl md:text-3xl font-bold tracking-tight hover:text-portfolio-gold transition-colors">
                         {job.title}
                       </h3>
                     </Link>
-                    <div className="flex flex-wrap gap-3">
-                      <div className="flex items-center gap-1.5 text-portfolio-muted font-bold text-xxs uppercase tracking-widest border border-portfolio-dark/10 px-3 py-1 rounded-full bg-portfolio-dark/[0.02]">
-                        <MapPin size={10} /> {job.location}
+                    <p className="text-portfolio-muted text-base mb-6 max-w-2xl">
+                      {job.shortDesc}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <div className="flex items-center gap-1.5 text-portfolio-muted font-semibold text-[10px] uppercase tracking-widest border border-portfolio-dark/10 px-2.5 py-1 rounded-full bg-portfolio-dark/[0.02]">
+                        <MapPin size={12} /> {job.location}
                       </div>
-                      <div className="flex items-center gap-1.5 text-portfolio-muted font-bold text-xxs uppercase tracking-widest border border-portfolio-dark/10 px-3 py-1 rounded-full bg-portfolio-dark/[0.02]">
-                        <Clock size={10} /> {job.type}
+                      <div className="flex items-center gap-1.5 text-portfolio-muted font-semibold text-[10px] uppercase tracking-widest border border-portfolio-dark/10 px-2.5 py-1 rounded-full bg-portfolio-dark/[0.02]">
+                        <Clock size={12} /> {job.type}
                       </div>
                     </div>
                   </div>
 
                   <div className="flex items-center">
-                    <Link
-                      to={`/careers/${job.slug}`}
+                    <a
+                      href={(job as any).applyLink} target="_blank" rel="noopener noreferrer"
                       className="flex items-center gap-2 text-portfolio-dark font-bold text-lg group/apply whitespace-nowrap cursor-target hover:text-portfolio-gold transition-colors"
                     >
                       Apply <ArrowUpRight size={20} className="transition-transform group-hover/apply:translate-x-0.5 group-hover/apply:-translate-y-0.5" />
-                    </Link>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -112,17 +143,30 @@ const CareersPage = () => {
 
         {/* Quote Section */}
         <div className="mt-16 pt-16 border-t border-portfolio-dark/10">
-          <div className="flex flex-col items-center text-center">
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-12 max-w-4xl leading-tight">
+          <div className="flex flex-col items-center text-center px-4 md:px-12">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight max-w-4xl leading-tight">
+              <span className="text-portfolio-gold font-serif">“</span>
               Foremark truly values work-life balance. We work hard and deliver, but at the end of the day you can switch off.
+              <span className="text-portfolio-gold font-serif">”</span>
             </h2>
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 rounded-full overflow-hidden mb-4 grayscale">
-                <img src="https://i.pravatar.cc/150?u=acc9" alt="Employee" className="w-full h-full object-cover" />
-              </div>
-              <p className="font-bold text-portfolio-dark">Rahul Sharma</p>
-              <p className="text-sm text-portfolio-muted font-medium">Lead Developer, Foremark</p>
-            </div>
+          </div>
+        </div>
+
+        {/* Drop Resume Section */}
+        <div className="mt-24 pt-16 border-t border-portfolio-dark/10 mb-8">
+          <div className="flex flex-col items-center text-center px-4 md:px-12">
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-4">
+              Don't see a perfect fit?
+            </h2>
+            <p className="text-portfolio-muted text-lg max-w-2xl mb-8">
+              Drop your resume and portfolio if you think you can join our team. We're always on the lookout for talented individuals.
+            </p>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 bg-portfolio-dark text-white font-bold text-sm uppercase tracking-widest px-8 py-4 rounded-full hover:bg-portfolio-dark/80 transition-all cursor-target"
+            >
+              Submit Resume <ArrowUpRight size={16} />
+            </Link>
           </div>
         </div>
 

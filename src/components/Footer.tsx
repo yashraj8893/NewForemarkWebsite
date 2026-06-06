@@ -1,5 +1,12 @@
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, MessageCircle } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
+
+const WhatsappIcon = ({ size = 16 }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9l-5.05.9" />
+    <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
+  </svg>
+);
 
 const LinkedinIcon = ({ size = 16 }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -24,14 +31,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand Column */}
           <div className="flex flex-col col-span-1 md:col-span-2 lg:col-span-1">
-            <Link to="/" className="flex items-center gap-4 cursor-pointer mb-6 group cursor-target w-max">
-              <div className="flex-shrink-0">
-                <img src="/Foremark_Logo_-removebg-preview.png" alt="Foremark Logo" className="w-10 h-10 object-contain" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-white font-bold tracking-tighter text-2xl group-hover:text-white/90 transition-colors">Foremark</span>
-                <span className="text-white/40 text-[10px] uppercase tracking-widest mt-1">Engineering First</span>
-              </div>
+            <Link to="/" className="block cursor-pointer mb-6 group cursor-target w-44 h-11 relative ml-2">
+              <img src="/foremark-logo.png" alt="Foremark Logo" className="w-full h-full object-cover object-center mix-blend-lighten scale-[1.2] origin-center" />
             </Link>
             <p className="text-white/60 text-sm leading-relaxed max-w-xs mb-8">
               We design and engineer intelligent digital systems that help companies build, scale, and automate modern technology platforms.
@@ -44,7 +45,7 @@ const Footer = () => {
                 <InstagramIcon size={16} />
               </a>
               <a href="https://wa.me/918605671941" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-portfolio-gold hover:border-portfolio-gold transition-all duration-300">
-                <MessageCircle size={16} />
+                <WhatsappIcon size={16} />
               </a>
             </div>
           </div>
@@ -52,7 +53,7 @@ const Footer = () => {
           {/* Links Column 1 */}
           <div className="flex flex-col">
             <h4 className="text-[10px] font-bold uppercase tracking-widest text-portfolio-gold mb-6">Quick Links</h4>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 items-start">
               <Link to="/projects" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Projects</Link>
               <Link to="/careers" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Careers</Link>
               <Link to="/" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Services</Link>
@@ -63,7 +64,7 @@ const Footer = () => {
           {/* Links Column 2 */}
           <div className="flex flex-col">
             <h4 className="text-[10px] font-bold uppercase tracking-widest text-portfolio-gold mb-6">Company</h4>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 items-start">
               <Link to="/contact" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Contact Us</Link>
               <Link to="/associate-program" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Associate Program</Link>
               <a href="#" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Privacy Policy</a>
@@ -75,8 +76,19 @@ const Footer = () => {
           <div className="flex flex-col">
             <h4 className="text-[10px] font-bold uppercase tracking-widest text-portfolio-gold mb-6">Get in touch</h4>
             <div className="flex flex-col gap-4">
-              <p className="text-white/60 text-sm font-medium">Cyber Hub, DLF Phase 3<br />Gurgaon, India 122002</p>
-              <p className="text-white/60 text-sm font-medium mt-2">hello@foremark.in<br />+91 98765 43210</p>
+              <p className="text-white/60 text-sm font-medium leading-relaxed">
+                Innov8 Times Square, Andheri East<br />
+                Unit No. 2, 4th Floor, A-Wing, Times Square Building,<br />
+                Marol, Andheri (E), Mumbai – 400059<br />
+                <a href="https://maps.app.goo.gl/KruJhjPSm2YM46zp8" target="_blank" rel="noopener noreferrer" className="text-portfolio-gold hover:text-white transition-colors">
+                  Google Maps
+                </a>
+              </p>
+              <p className="text-white/60 text-sm font-medium mt-2">
+                hello@foremark.in<br />
+                careers@foremark.in<br />
+                +91 8605671941
+              </p>
               
               <Link to="/contact" className="inline-flex items-center gap-2 text-white text-sm font-bold mt-4 hover:text-portfolio-gold transition-colors group w-max">
                 Start a project <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

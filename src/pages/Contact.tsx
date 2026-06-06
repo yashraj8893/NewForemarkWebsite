@@ -85,30 +85,43 @@ const ContactPage = () => {
         />
 
         {/* Content */}
-        <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+        <div className="relative z-30 w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
 
           {/* Left: Contact Info */}
           <div className="lg:col-span-5 flex flex-col pt-0 lg:pt-8">
             <div className="space-y-8 lg:space-y-10">
               {[
-                { icon: Mail, label: "MAIL US", value1: "hello@foremark.in", value2: "support@foremark.in" },
-                { icon: MessageSquare, label: "CALL US", value1: "+91 98765 43210", value2: "+91 98765 43211" },
-                { icon: Globe, label: "LOCATION", value1: "Cyber Hub, DLF Phase 3", value2: "Gurgaon, India 122002" }
+                { icon: Mail, label: "MAIL US", value1: "hello@foremark.in", value2: "careers@foremark.in" },
+                { icon: MessageSquare, label: "CALL US", value1: "+91 8605671941", value2: "" },
+                { 
+                  icon: Globe, 
+                  label: "LOCATION", 
+                  value1: "Innov8 Times Square, Andheri East", 
+                  value2: "Unit No. 2, 4th Floor, A-Wing, Times Square Building, Marol, Andheri (E), Mumbai – 400059",
+                  link: "https://maps.app.goo.gl/KruJhjPSm2YM46zp8" 
+                }
               ].map((item, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.1 }}
-                  className="flex items-center gap-4 sm:gap-6 group"
+                  className="flex items-start gap-4 sm:gap-6 group"
                 >
                   <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-portfolio-gold group-hover:bg-portfolio-gold group-hover:text-portfolio-dark transition-all duration-500 shrink-0">
                     <item.icon size={22} />
                   </div>
-                  <div className="flex flex-col min-w-0">
+                  <div className="flex flex-col min-w-0 pt-1">
                     <span className="text-[10px] uppercase tracking-widest text-white/40 font-bold mb-1">{item.label}</span>
                     <p className="text-sm sm:text-base font-bold text-white/90 break-all sm:break-normal">{item.value1}</p>
-                    <p className="text-sm sm:text-base font-bold text-white/90 break-all sm:break-normal">{item.value2}</p>
+                    {item.value2 && (
+                      <p className="text-xs sm:text-sm font-medium text-white/70 break-all sm:break-normal mt-1 leading-relaxed max-w-sm">{item.value2}</p>
+                    )}
+                    {item.link && (
+                      <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-xs sm:text-sm font-bold text-portfolio-gold hover:text-white transition-colors mt-2">
+                        View on Google Maps
+                      </a>
+                    )}
                   </div>
                 </motion.div>
               ))}

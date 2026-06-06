@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 
 const projectsData = [
@@ -130,10 +131,10 @@ const ProjectsPage = () => {
               ))}
             </div>
             <div>
-              <p className="font-bold text-sm text-portfolio-dark">15+ happy clients!</p>
-              <button className="text-[12px] text-portfolio-muted hover:text-portfolio-gold font-bold flex items-center gap-1 transition-colors cursor-target mt-0.5">
+              <p className="font-bold text-sm text-portfolio-dark">50+ happy clients!</p>
+              <Link to="/contact" className="text-[12px] text-portfolio-muted hover:text-portfolio-gold font-bold flex items-center gap-1 transition-colors cursor-target mt-0.5">
                 Join them now <ArrowUpRight size={14} />
-              </button>
+              </Link>
             </div>
           </motion.div>
         </div>
@@ -175,10 +176,8 @@ const ProjectsPage = () => {
         {/* Editorial Project Grid */}
         <div className="max-w-[1050px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-y-16 md:gap-y-20 md:gap-x-12 lg:gap-x-16 items-start relative z-10 mt-10">
           {projectsData.map((project, i) => (
-            <motion.a
+            <motion.div
               key={i}
-              href={project.url}
-              target="_blank"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
@@ -207,11 +206,11 @@ const ProjectsPage = () => {
 
               {/* Title Only */}
               <div className="px-1 md:px-2">
-                <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-portfolio-dark group-hover/card:text-portfolio-gold transition-colors duration-400">
+                <h3 className="text-xl md:text-2xl font-bold tracking-tight text-portfolio-dark group-hover/card:text-portfolio-gold transition-colors duration-400">
                   {project.title}
                 </h3>
               </div>
-            </motion.a>
+            </motion.div>
           ))}
         </div>
         </div>

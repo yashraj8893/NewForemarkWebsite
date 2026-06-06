@@ -39,7 +39,7 @@ const AboutHero = () => (
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.1 }}
-        className="text-3xl md:text-5xl font-bold tracking-tight text-portfolio-dark mb-6"
+        className="text-4xl md:text-6xl font-bold tracking-tight text-portfolio-dark mb-6"
       >
         Hi. We're Foremark.
       </motion.h1>
@@ -57,7 +57,7 @@ const AboutHero = () => (
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="text-portfolio-muted text-[14px] md:text-[15px] max-w-[520px] text-center leading-[1.8] font-medium mb-4"
+        className="text-portfolio-muted text-[15px] md:text-[17px] max-w-[640px] text-center leading-[1.8] font-medium mb-4"
       >
         We are a team of passionate developers, solution architects, and automation
         specialists who leverage the power of modern software to transform how businesses
@@ -70,7 +70,7 @@ const AboutHero = () => (
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
-        className="text-portfolio-muted text-[14px] md:text-[15px] max-w-[520px] text-center leading-[1.8] font-medium"
+        className="text-portfolio-muted text-[15px] md:text-[17px] max-w-[640px] text-center leading-[1.8] font-medium"
       >
         Foremark is our endeavor to help{' '}
         <span className="text-portfolio-dark font-bold">Developers</span> spend less time
@@ -148,9 +148,9 @@ const OurStory = () => (
 
 const statsData = [
   { value: '100', accent: '%', label: 'Client Retention', desc: 'We build long-term partnerships through consistent quality and technical excellence.', accentColor: 'text-portfolio-gold' },
-  { value: '15', accent: '+', label: 'Projects Delivered', desc: 'Successful delivery of web and mobile applications across various industries.', accentColor: 'text-portfolio-text' },
+  { value: '50', accent: '+', label: 'Projects Delivered', desc: 'Successful delivery of web and mobile applications across various industries.', accentColor: 'text-portfolio-text' },
   { value: '3', accent: 'x', label: 'Avg. Client Growth', desc: 'Our systems are designed to scale and drive measurable business impact.', accentColor: 'text-portfolio-text' },
-  { value: '5', accent: '+', label: 'Industries Served', desc: 'Expertise across different domains from startups to established businesses.', accentColor: 'text-portfolio-text' },
+  { value: '12', accent: '+', label: 'Industries Served', desc: 'Expertise across different domains from startups to established businesses.', accentColor: 'text-portfolio-text' },
 ];
 
 const StatsGrid = () => (

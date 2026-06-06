@@ -62,7 +62,7 @@ const AssociateProgramPage = () => {
           className="flex flex-col sm:flex-row items-start sm:items-center gap-6"
         >
           <a 
-            href="https://wa.me/917588713909"
+            href="https://wa.me/918605671941"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-portfolio-dark text-sm font-bold uppercase tracking-widest border border-portfolio-dark/20 px-8 py-3 rounded-full hover:bg-portfolio-dark hover:text-white transition-all cursor-target group"
@@ -71,7 +71,7 @@ const AssociateProgramPage = () => {
             Join on WhatsApp
           </a>
           <div className="flex items-center text-sm text-portfolio-muted font-medium border border-portfolio-dark/20 px-8 py-3 rounded-full cursor-target">
-            Message us at <span className="text-portfolio-dark font-bold ml-1">+91 75887 13909</span>
+            Message us at <span className="text-portfolio-dark font-bold ml-1">+91 86056 71941</span>
           </div>
         </motion.div>
       </div>
@@ -129,7 +129,7 @@ const AssociateProgramPage = () => {
           {[
             { num: "01", title: "You bring the lead", desc: "Know a business owner, startup, or brand that needs a website, app, or automation? Just introduce us. A WhatsApp forward or a quick intro call is enough." },
             { num: "02", title: "We pitch, build & close", desc: "We take it from there — the proposal, the demo, the negotiation, the project delivery. You don't have to know anything about tech. We'll even help you pitch if you want to be involved." },
-            { num: "03", title: "Contract signs → You get paid", desc: "The moment the contract is signed, your commission is settled. No waiting for project completion. Clean and simple." }
+            { num: "03", title: "Client pays → You get paid", desc: "The moment we receive the client's payment, your commission is settled. No waiting for project completion. Clean and simple." }
           ].map((step, i) => (
             <motion.div 
               key={i} 
@@ -161,7 +161,7 @@ const AssociateProgramPage = () => {
             The more the deal,<br />the more you earn.
           </h2>
           <p className="text-base text-portfolio-muted max-w-xl leading-relaxed">
-            No cap on earnings. Every closed deal puts money in your pocket — on contract signing, not after delivery.
+            No cap on earnings. Every closed deal puts money in your pocket — the moment the client pays, not after delivery.
           </p>
         </motion.div>
 
@@ -239,7 +239,7 @@ const AssociateProgramPage = () => {
         >
           {[
             { icon: Handshake, title: "You bring, we close", desc: "No sales pressure on you. We'll handle the entire pitch and negotiation process ourselves." },
-            { icon: Zap, title: "Paid on contract", desc: "Your commission is settled the moment the contract is signed — not after months of project delivery." },
+            { icon: Zap, title: "Paid on payment receipt", desc: "Your commission is settled the moment the client pays — not after months of project delivery." },
             { icon: Shield, title: "Team of 15", desc: "A dedicated team of professionals handles every project with a dedicated project manager assigned." },
             { icon: TrendingUp, title: "No cap on income", desc: "Refer 1 client or 10 — there's no limit. Every deal you bring closes is money in your pocket." },
             { icon: HeadphonesIcon, title: "We support you", desc: "Not sure how to pitch? We'll get on a call with you and your client together if needed." },
@@ -268,7 +268,7 @@ const AssociateProgramPage = () => {
           Message us on WhatsApp and we'll set everything up in minutes.
         </p>
         <a 
-          href="https://wa.me/917588713909"
+          href="https://wa.me/918605671941"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 text-portfolio-dark text-sm font-bold uppercase tracking-widest border border-portfolio-dark/20 px-8 py-3 rounded-full hover:bg-portfolio-dark hover:text-white transition-all cursor-target group mb-12"
@@ -281,10 +281,10 @@ const AssociateProgramPage = () => {
           <span className="hidden md:block w-1 h-1 rounded-full bg-portfolio-dark/20"></span>
           <span>Mumbai, India</span>
           <span className="hidden md:block w-1 h-1 rounded-full bg-portfolio-dark/20"></span>
-          <span>+91 75887 13909</span>
+          <span>+91 86056 71941</span>
         </div>
         <p className="text-sm text-portfolio-muted mt-6 italic">
-          Payment settled on contract signing. No experience needed. IST hours.
+          Payment settled on client payment receipt. No experience needed. IST hours.
         </p>
         </motion.div>
       </div>
