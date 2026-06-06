@@ -75,6 +75,36 @@ const projectsData = [
     image: "/projects/project8.png",
     url: "https://www.anjusmriti.com/",
     aspect: "aspect-[4/3]"
+  },
+  {
+    title: "Vertex Business Solutions",
+    image: "/projects/project13.png",
+    url: "https://vertexbiz.com",
+    aspect: "aspect-[4/3]"
+  },
+  {
+    title: "Truecable",
+    image: "/projects/project14.png",
+    url: "#",
+    aspect: "aspect-[4/3]"
+  },
+  {
+    title: "Scooboo",
+    image: "/projects/project15.png",
+    url: "#",
+    aspect: "aspect-[4/3]"
+  },
+  {
+    title: "Soulflower",
+    image: "/projects/project16.png",
+    url: "#",
+    aspect: "aspect-[4/3]"
+  },
+  {
+    title: "Glassybaby",
+    image: "/projects/project17.png",
+    url: "#",
+    aspect: "aspect-[4/3]"
   }
 ];
 
@@ -98,121 +128,121 @@ const ProjectsPage = () => {
               Case Studies
             </motion.span>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-4 sm:mb-6"
-          >
-            Examples of <br /> our work
-          </motion.h1>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-4 sm:mb-6"
+            >
+              Examples of <br /> our work
+            </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-base text-portfolio-muted max-w-xl leading-relaxed mb-6"
-          >
-            These are our projects done till now. Simple and clear.
-          </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-base text-portfolio-muted max-w-xl leading-relaxed mb-6"
+            >
+              These are our projects done till now. Simple and clear.
+            </motion.p>
 
-          {/* Social Proof */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="flex items-center gap-4"
-          >
-            <div className="flex -space-x-3">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-[3px] border-portfolio-bg bg-white overflow-hidden shadow-sm">
-                  <img src={`https://i.pravatar.cc/150?u=acc${i}`} alt="Client" className="w-full h-full object-cover" />
-                </div>
-              ))}
-            </div>
-            <div>
-              <p className="font-bold text-sm text-portfolio-dark">50+ happy clients!</p>
-              <Link to="/contact" className="text-[12px] text-portfolio-muted hover:text-portfolio-gold font-bold flex items-center gap-1 transition-colors cursor-target mt-0.5">
-                Join them now <ArrowUpRight size={14} />
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Brand Logos Row - Infinite Marquee */}
-        <div className="w-full border-b border-portfolio-dark/10 pb-12 sm:pb-16 mb-16 sm:mb-24 overflow-hidden relative z-10">
-          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-portfolio-bg to-transparent z-20 pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-portfolio-bg to-transparent z-20 pointer-events-none" />
-
-          <motion.div
-            className="flex gap-16 md:gap-24 items-center w-max mix-blend-multiply"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          >
-            {[...Array(4)].map((_, i) => (
-              <div key={i} className="flex gap-16 md:gap-24 shrink-0">
-                {[
-                  { name: "Anju Smriti", logo: "/anjusmritilogo.png" },
-                  { name: "PDR", logo: "/pdrlogo.png" },
-                  { name: "Samruddhi", logo: "/samruddhilogo.png" },
-                  { name: "Tech Guru", logo: "/techgurulogo.png" },
-                  { name: "Athena", logo: "/athenalogo.png" },
-                  { name: "Mainstay", logo: "/mainstaylogo.png" },
-                  { name: "Karma", logo: "/karmalogo.png" },
-                ].map((brand, j) => (
-                  <div key={j} className="flex items-center justify-center gap-3 min-w-[120px] group cursor-default">
-                    <img 
-                      src={brand.logo} 
-                      alt={`${brand.name} logo`} 
-                      className="h-10 md:h-12 w-auto object-contain transition-transform duration-400 group-hover:scale-105"
-                    />
+            {/* Social Proof */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="flex items-center gap-4"
+            >
+              <div className="flex -space-x-3">
+                {[1, 2, 3].map((i) => (
+                  <div key={i} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-[3px] border-portfolio-bg bg-white overflow-hidden shadow-sm">
+                    <img src={`https://i.pravatar.cc/150?u=acc${i}`} alt="Client" className="w-full h-full object-cover" />
                   </div>
                 ))}
               </div>
-            ))}
-          </motion.div>
-        </div>
-
-        {/* Editorial Project Grid */}
-        <div className="max-w-[1050px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-y-10 sm:gap-y-16 md:gap-y-20 md:gap-x-12 lg:gap-x-16 items-start relative z-10 mt-6 sm:mt-10">
-          {projectsData.map((project, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.9, delay: (i % 2) * 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="group/card flex flex-col cursor-target"
-            >
-              {/* Outer Container */}
-              <div className={`relative w-full ${project.aspect} rounded-2xl sm:rounded-3xl bg-white mb-4 sm:mb-6 shadow-sm border border-black/[0.04] pt-6 px-6 sm:pt-8 sm:px-8 md:pt-12 md:px-12 lg:pt-16 lg:px-16 overflow-hidden flex items-center justify-center`}>
-
-                <div className="absolute inset-0 pointer-events-none opacity-[0.03]">
-                  <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
-                    <path d="M0,100 C30,80 70,80 100,50 L100,100 Z" fill="currentColor" />
-                    <path d="M0,0 C30,30 70,30 100,0 L0,0 Z" fill="currentColor" />
-                  </svg>
-                </div>
-
-                <div className="relative w-full h-full rounded-t-xl overflow-hidden shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)] transition-transform duration-[1.2s] ease-[0.16,1,0.3,1] group-hover/card:scale-110 group-hover/card:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.3)] bg-white">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover object-top"
-                  />
-                  <div className="absolute inset-0 ring-1 ring-inset ring-black/[0.05] rounded-xl pointer-events-none" />
-                </div>
-              </div>
-
-              {/* Title Only */}
-              <div className="px-1 md:px-2">
-                <h3 className="text-xl md:text-2xl font-bold tracking-tight text-portfolio-dark group-hover/card:text-portfolio-gold transition-colors duration-400">
-                  {project.title}
-                </h3>
+              <div>
+                <p className="font-bold text-sm text-portfolio-dark">50+ happy clients!</p>
+                <Link to="/contact" className="text-[12px] text-portfolio-muted hover:text-portfolio-gold font-bold flex items-center gap-1 transition-colors cursor-target mt-0.5">
+                  Join them now <ArrowUpRight size={14} />
+                </Link>
               </div>
             </motion.div>
-          ))}
-        </div>
+          </div>
+
+          {/* Brand Logos Row - Infinite Marquee */}
+          <div className="w-full border-b border-portfolio-dark/10 pb-12 sm:pb-16 mb-16 sm:mb-24 overflow-hidden relative z-10">
+            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-portfolio-bg to-transparent z-20 pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-portfolio-bg to-transparent z-20 pointer-events-none" />
+
+            <motion.div
+              className="flex gap-16 md:gap-24 items-center w-max mix-blend-multiply"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+            >
+              {[...Array(4)].map((_, i) => (
+                <div key={i} className="flex gap-16 md:gap-24 shrink-0">
+                  {[
+                    { name: "Anju Smriti", logo: "/anjusmritilogo.png" },
+                    { name: "PDR", logo: "/pdrlogo.png" },
+                    { name: "Samruddhi", logo: "/samruddhilogo.png" },
+                    { name: "Tech Guru", logo: "/techgurulogo.png" },
+                    { name: "Athena", logo: "/athenalogo.png" },
+                    { name: "Mainstay", logo: "/mainstaylogo.png" },
+                    { name: "Karma", logo: "/karmalogo.png" },
+                  ].map((brand, j) => (
+                    <div key={j} className="flex items-center justify-center gap-3 min-w-[120px] group cursor-default">
+                      <img
+                        src={brand.logo}
+                        alt={`${brand.name} logo`}
+                        className="h-10 md:h-12 w-auto object-contain transition-transform duration-400 group-hover:scale-105"
+                      />
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Editorial Project Grid */}
+          <div className="max-w-[1050px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-y-10 sm:gap-y-16 md:gap-y-20 md:gap-x-12 lg:gap-x-16 items-start relative z-10 mt-6 sm:mt-10">
+            {projectsData.map((project, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.9, delay: (i % 2) * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                className="group/card flex flex-col cursor-target"
+              >
+                {/* Outer Container */}
+                <div className={`relative w-full ${project.aspect} rounded-2xl sm:rounded-3xl bg-white mb-4 sm:mb-6 shadow-sm border border-black/[0.04] pt-6 px-6 sm:pt-8 sm:px-8 md:pt-12 md:px-12 lg:pt-16 lg:px-16 overflow-hidden flex items-center justify-center`}>
+
+                  <div className="absolute inset-0 pointer-events-none opacity-[0.03]">
+                    <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+                      <path d="M0,100 C30,80 70,80 100,50 L100,100 Z" fill="currentColor" />
+                      <path d="M0,0 C30,30 70,30 100,0 L0,0 Z" fill="currentColor" />
+                    </svg>
+                  </div>
+
+                  <div className="relative w-full h-full rounded-t-xl overflow-hidden shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)] transition-transform duration-[1.2s] ease-[0.16,1,0.3,1] group-hover/card:scale-110 group-hover/card:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.3)] bg-white">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover object-top"
+                    />
+                    <div className="absolute inset-0 ring-1 ring-inset ring-black/[0.05] rounded-xl pointer-events-none" />
+                  </div>
+                </div>
+
+                {/* Title Only */}
+                <div className="px-1 md:px-2">
+                  <h3 className="text-xl md:text-2xl font-bold tracking-tight text-portfolio-dark group-hover/card:text-portfolio-gold transition-colors duration-400">
+                    {project.title}
+                  </h3>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </>
