@@ -89,7 +89,7 @@ const ContactPage = () => {
 
           {/* Left: Contact Info */}
           <div className="lg:col-span-5 flex flex-col pt-0 lg:pt-8">
-            <div className="space-y-8 lg:space-y-10">
+            <div className="space-y-6 lg:space-y-10">
               {[
                 { icon: Mail, label: "MAIL US", value1: "hello@foremark.in", value2: "careers@foremark.in" },
                 { icon: MessageSquare, label: "CALL US", value1: "+91 8605671941", value2: "" },
@@ -98,15 +98,15 @@ const ContactPage = () => {
                   label: "LOCATION", 
                   value1: "Innov8 Times Square, Andheri East", 
                   value2: "Unit No. 2, 4th Floor, A-Wing, Times Square Building, Marol, Andheri (E), Mumbai – 400059",
-                  link: "https://maps.app.goo.gl/KruJhjPSm2YM46zp8" 
+                  link: "https://maps.app.goo.gl/B9dZpsf7i1K1B54t7" 
                 }
               ].map((item, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  className="flex items-start gap-4 sm:gap-6 group"
+                  transition={{ delay: 0.3 + i * 0.1 }}
+                  className="flex gap-4 sm:gap-6 group"
                 >
                   <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-portfolio-gold group-hover:bg-portfolio-gold group-hover:text-portfolio-dark transition-all duration-500 shrink-0">
                     <item.icon size={22} />
@@ -127,7 +127,7 @@ const ContactPage = () => {
               ))}
             </div>
 
-            <div className="flex gap-4 mt-10 lg:mt-16">
+            <div className="flex gap-4 mt-8 lg:mt-16">
               {[Share2, Globe, Info].map((Icon, i) => (
                 <motion.a
                   key={i}
@@ -141,17 +141,16 @@ const ContactPage = () => {
             </div>
           </div>
 
-          {/* Right: Form */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 mt-8 lg:mt-0">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="relative bg-white/[0.03] backdrop-blur-xl border border-white/10 p-6 sm:p-8 md:p-12 rounded-[1.5rem] sm:rounded-[2.5rem] shadow-2xl"
+              className="relative bg-white/[0.03] backdrop-blur-xl border border-white/10 p-5 sm:p-8 md:p-12 rounded-[1.25rem] sm:rounded-[2.5rem] shadow-2xl"
             >
               <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-portfolio-gold rounded-tl-xl opacity-40 hidden sm:block" />
               <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-portfolio-gold rounded-br-xl opacity-40 hidden sm:block" />
 
-              <div className="flex items-center justify-between mb-8 lg:mb-10">
+              <div className="flex items-center justify-between mb-6 lg:mb-10">
                 <h3 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight">Contact form</h3>
                 <div className="flex gap-1">
                   <div className="w-2 h-2 rounded-full bg-portfolio-gold" />
@@ -159,8 +158,8 @@ const ContactPage = () => {
                 </div>
               </div>
 
-              <form className="space-y-5 sm:space-y-6">
-                <div className="space-y-2">
+              <form className="space-y-4 sm:space-y-6">
+                <div className="space-y-1.5 sm:space-y-2">
                   <label htmlFor="contact-name" className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-1">NAME *</label>
                   <input
                     id="contact-name"
@@ -168,10 +167,10 @@ const ContactPage = () => {
                     type="text"
                     required
                     placeholder="Your full name"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-white text-sm sm:text-base focus:outline-none focus:border-portfolio-gold transition-colors placeholder:text-white/20 cursor-target"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-2.5 sm:py-4 text-white text-sm sm:text-base focus:outline-none focus:border-portfolio-gold transition-colors placeholder:text-white/20 cursor-target"
                   />
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-1.5 sm:space-y-2">
                   <label htmlFor="contact-email" className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-1">EMAIL *</label>
                   <input
                     id="contact-email"
@@ -179,30 +178,36 @@ const ContactPage = () => {
                     type="email"
                     required
                     placeholder="Your email address"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-white text-sm sm:text-base focus:outline-none focus:border-portfolio-gold transition-colors placeholder:text-white/20 cursor-target"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-2.5 sm:py-4 text-white text-sm sm:text-base focus:outline-none focus:border-portfolio-gold transition-colors placeholder:text-white/20 cursor-target"
                   />
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-1.5 sm:space-y-2">
                   <label htmlFor="contact-message" className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-1">MESSAGE *</label>
                   <textarea
                     id="contact-message"
                     name="message"
-                    rows={4}
                     required
                     placeholder="How can we help you?"
+                    rows={4}
                     className="w-full bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-white text-sm sm:text-base focus:outline-none focus:border-portfolio-gold transition-colors placeholder:text-white/20 resize-none cursor-target"
                   />
                 </div>
-                <button className="w-full bg-portfolio-gold text-portfolio-dark font-bold py-4 sm:py-5 rounded-xl sm:rounded-2xl hover:scale-[1.02] transition-all shadow-lg shadow-portfolio-gold/10 uppercase tracking-widest text-xs sm:text-sm mt-2 sm:mt-4 cursor-target">
-                  Send Message
-                </button>
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  type="submit"
+                  className="w-full bg-portfolio-gold text-portfolio-dark font-bold py-3 sm:py-4 rounded-xl sm:rounded-2xl mt-4 sm:mt-6 hover:bg-portfolio-gold/90 transition-colors text-sm sm:text-base cursor-target"
+                >
+                  SEND MESSAGE
+                </motion.button>
               </form>
             </motion.div>
           </div>
 
         </div>
-        </div>
       </div>
+    </main>
+    <Footer />
     </>
   );
 };

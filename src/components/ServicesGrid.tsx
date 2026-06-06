@@ -25,7 +25,7 @@ const ServiceCard = ({ title, desc, children, className }: { title: string, desc
     transition={{ duration: 0.8, ease: [0.21, 0.45, 0.32, 0.9] }}
     className={cn("flex flex-col h-full group cursor-default service-card-perf", className)}
   >
-    <div className="w-full aspect-[16/10] min-h-[300px] sm:min-h-[340px] lg:min-h-[380px] overflow-hidden rounded-[1.5rem] bg-[#09090b] border border-white/10 relative flex items-center justify-center isolate ring-1 ring-white/5 shadow-glow transition-all duration-700 group-hover:border-portfolio-gold/30 group-hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)] mb-6 service-anim-perf">
+    <div className="w-full aspect-[16/10] min-h-[220px] sm:min-h-[340px] lg:min-h-[380px] overflow-hidden rounded-[1.5rem] bg-[#09090b] border border-white/10 relative flex items-center justify-center isolate ring-1 ring-white/5 shadow-glow transition-all duration-700 group-hover:border-portfolio-gold/30 group-hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)] mb-4 sm:mb-6 service-anim-perf">
       {/* Global dark mode inner ambient glow */}
       <div className="absolute inset-0 bg-gradient-to-br from-portfolio-dark/20 to-transparent pointer-events-none" />
       <div className="absolute top-0 left-1/4 w-1/2 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
@@ -33,8 +33,8 @@ const ServiceCard = ({ title, desc, children, className }: { title: string, desc
       
       {children}
     </div>
-    <div className="mt-auto">
-      <h3 className="text-xl md:text-2xl font-bold mb-2 tracking-tight group-hover:text-portfolio-gold transition-colors duration-500">{title}</h3>
+    <div className="mt-auto px-1 sm:px-0">
+      <h3 className="text-lg md:text-2xl font-bold mb-1 sm:mb-2 tracking-tight group-hover:text-portfolio-gold transition-colors duration-500">{title}</h3>
       <p className="text-portfolio-muted text-sm leading-relaxed">{desc}</p>
     </div>
   </motion.div>
@@ -446,7 +446,7 @@ const ServicesGrid = () => {
     <section
       ref={sectionRef}
       id="services"
-      className="py-24 md:py-32 w-full max-w-[1280px] mx-auto px-8 md:px-16 overflow-hidden"
+      className="py-16 md:py-32 w-full max-w-[1280px] mx-auto px-5 sm:px-8 md:px-16 overflow-hidden"
     >
       <div className="text-center mb-20">
         <motion.span 
