@@ -7,6 +7,7 @@ import ContactPage from './pages/Contact';
 import SovereignCounselPage from './pages/SovereignCounsel';
 import AboutPage from './pages/About';
 import AssociateProgramPage from './pages/AssociateProgram';
+import BlogPage from './pages/Blog';
 import Footer from './components/Footer';
 import { useEffect, useState } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
@@ -16,6 +17,7 @@ import TargetCursor from './components/TargetCursor';
 const navLinks = [
   { label: 'Projects', href: '/projects' },
   { label: 'Careers', href: '/careers' },
+  { label: 'Blog', href: '/blog' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ] as const;
@@ -184,6 +186,7 @@ function App() {
         <Route path="/sovereign-counsel" element={<SovereignCounselPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/associate-program" element={<AssociateProgramPage />} />
+        <Route path="/blog" element={<BlogPage />} />
       </Routes>
       <Footer />
     </div>

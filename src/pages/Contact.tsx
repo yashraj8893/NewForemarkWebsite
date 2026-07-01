@@ -92,7 +92,7 @@ const ContactPage = () => {
               <div className="space-y-4 lg:space-y-10">
                 {[
                   { icon: Mail, label: "MAIL US", value1: "hello@foremark.in", value2: "careers@foremark.in" },
-                  { icon: MessageSquare, label: "CALL US", value1: "+91 8605671941", value2: "" },
+                  { icon: MessageSquare, label: "CALL US", value1: "+91 7666809812", value2: "" },
                   {
                     icon: Globe,
                     label: "LOCATION",

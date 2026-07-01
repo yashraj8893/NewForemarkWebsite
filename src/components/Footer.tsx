@@ -31,8 +31,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-12 sm:mb-16">
           {/* Brand Column */}
           <div className="flex flex-col col-span-1 sm:col-span-2 lg:col-span-1">
-            <Link to="/" className="block cursor-pointer mb-6 group cursor-target w-44 h-11 relative ml-2">
-              <img src="/foremark-logo.png" alt="Foremark Logo" className="w-full h-full object-cover object-center mix-blend-lighten scale-[1.2] origin-center" />
+            <Link to="/" className="block cursor-pointer mb-6 group cursor-target w-[253px] h-[64px] relative">
+              <img src="/foremark-logo.png" alt="Foremark Logo" className="w-full h-full object-cover object-center mix-blend-lighten" />
             </Link>
             <p className="text-white/60 text-sm leading-relaxed max-w-xs mb-8">
               We design and engineer intelligent digital systems that help companies build, scale, and automate modern technology platforms.
@@ -44,7 +44,7 @@ const Footer = () => {
               <a href="https://www.instagram.com/foremarktechnologies.official/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-portfolio-gold hover:border-portfolio-gold transition-all duration-300">
                 <InstagramIcon size={16} />
               </a>
-              <a href="https://wa.me/918605671941" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-portfolio-gold hover:border-portfolio-gold transition-all duration-300">
+              <a href="https://wa.me/917666809812" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-portfolio-gold hover:border-portfolio-gold transition-all duration-300">
                 <WhatsappIcon size={16} />
               </a>
             </div>
@@ -56,6 +56,7 @@ const Footer = () => {
             <div className="flex flex-col gap-4 items-start">
               <Link to="/projects" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Projects</Link>
               <Link to="/careers" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Careers</Link>
+              <Link to="/blog" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Blog</Link>
               <Link to="/" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Services</Link>
               <Link to="/about" className="text-white/60 hover:text-white text-sm font-medium transition-colors">About</Link>
             </div>
@@ -87,9 +88,9 @@ const Footer = () => {
               <p className="text-white/60 text-sm font-medium mt-2">
                 hello@foremark.in<br />
                 careers@foremark.in<br />
-                +91 8605671941
+                +91 7666809812
               </p>
-              
+
               <Link to="/contact" className="inline-flex items-center gap-2 text-white text-sm font-bold mt-4 hover:text-portfolio-gold transition-colors group w-max">
                 Start a project <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Link>
@@ -99,7 +100,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-white/40 text-xs font-medium">© {new Date().getFullYear()} Foremark Technologies. All rights reserved.</p>
+          <p className="text-white/40 text-xs font-medium">© {new Date().getFullYear()} Foremark Technologies LLP. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <span className="text-white/40 text-xs font-medium flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-portfolio-green animate-pulse"></span> All systems operational
