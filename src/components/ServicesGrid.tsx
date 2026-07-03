@@ -40,7 +40,7 @@ const ServiceCard = ({ title, desc, children, className }: { title: string, desc
   </motion.div>
 );
 
-const WebsiteAnimation = () => {
+export const WebsiteAnimation = () => {
   return (
     <div className="relative w-full h-full flex items-center justify-center p-6 perspective-[1000px]">
       {/* Ambient Grid Background */}
@@ -121,7 +121,7 @@ const WebsiteAnimation = () => {
   );
 };
 
-const WebAppAnimation = () => {
+export const WebAppAnimation = () => {
   return (
     <div className="relative w-full h-full flex items-center justify-center p-6 perspective-[1000px] overflow-hidden">
       {/* Moving Background Data Streams */}
@@ -219,7 +219,7 @@ const WebAppAnimation = () => {
   );
 };
 
-const ServerAnimation = () => {
+export const ServerAnimation = () => {
   return (
     <div className="relative w-full h-full flex items-center justify-center p-4 sm:p-6 overflow-hidden">
       {/* Deep Background Glow */}
@@ -304,7 +304,7 @@ const ServerAnimation = () => {
   );
 };
 
-const AutomationAnimation = () => {
+export const AutomationAnimation = () => {
   return (
     <div className="relative w-full h-full flex items-center justify-center p-4 sm:p-6 overflow-hidden">
       {/* Intelligent Background Particles */}

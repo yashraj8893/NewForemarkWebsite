@@ -1,6 +1,7 @@
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import ProjectsPage from './pages/Projects';
+import ServicesPage from './pages/Services';
 import CareersPage from './pages/Careers';
 import JobDetail from './pages/JobDetail';
 import ContactPage from './pages/Contact';
@@ -15,6 +16,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import TargetCursor from './components/TargetCursor';
 
 const navLinks = [
+  { label: 'Services', href: '/services' },
   { label: 'Projects', href: '/projects' },
   { label: 'Careers', href: '/careers' },
   { label: 'Blog', href: '/blog' },
@@ -180,6 +182,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/services" element={<ServicesPage />} />
         <Route path="/careers" element={<CareersPage />} />
         <Route path="/careers/:slug" element={<JobDetail />} />
         <Route path="/contact" element={<ContactPage />} />

@@ -93,7 +93,7 @@ const BlogPage = () => {
                     {/* Eyebrow Label */}
                     <motion.span
                         variants={itemFade}
-                        className="text-portfolio-gold font-bold mb-3 text-xs tracking-[0.2em] uppercase block"
+                        className="text-portfolio-gold font-bold mb-3 text-xs tracking-widest uppercase block"
                     >
                         The Foremark Journal
                     </motion.span>
@@ -101,7 +101,7 @@ const BlogPage = () => {
                     {/* Heading */}
                     <motion.h1
                         variants={itemFade}
-                        className="text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-tight text-portfolio-dark mb-4 sm:mb-6 leading-none"
+                        className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight text-portfolio-dark mb-4 sm:mb-6"
                     >
                         Stories, Insights <br /> & Inspiration
                     </motion.h1>
@@ -109,7 +109,7 @@ const BlogPage = () => {
                     {/* Paragraph */}
                     <motion.p
                         variants={itemFade}
-                        className="text-portfolio-muted text-base sm:text-lg max-w-2xl leading-relaxed mb-12"
+                        className="text-base text-portfolio-muted max-w-xl leading-relaxed mb-12"
                     >
                         Thoughts on building with an engineering first mentality, designing scalable platforms,
                         and creating robust technology solutions that drive digital transformation.
