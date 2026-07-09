@@ -1,7 +1,7 @@
 import { motion, useInView, useMotionValue, useSpring, useTransform, useMotionTemplate } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import { cn } from "../lib/utils";
-import { Smartphone, Layout, MousePointer2, Terminal, Server, Database, Cloud, HardDrive, GitMerge, FileCheck, Zap, Mail, Bot, Network, ChevronRight } from 'lucide-react';
+import { Smartphone, MousePointer2, Terminal, Server, Database, Cloud, HardDrive, GitMerge, FileCheck, Zap, Mail, Bot, Network, Monitor } from 'lucide-react';
 
 // Hook: true when viewport is ≤767px (mobile)
 const useIsMobile = () => {
@@ -108,94 +108,195 @@ const ServiceCard = ({ title, desc, children, className }: { title: string, desc
 
 export const WebsiteAnimation = () => {
   return (
-    <div className="relative w-full h-full flex items-center justify-center p-6 perspective-[1000px]">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#E5E7EB_1px,transparent_1px),linear-gradient(to_bottom,#E5E7EB_1px,transparent_1px)] bg-[size:16px_16px] opacity-40 [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_40%,transparent_100%)]" />
+    <div className="relative w-full h-full flex items-center justify-center p-6 overflow-hidden">
+      {/* Premium minimal dot background */}
+      <div className="absolute inset-0 bg-[radial-gradient(#E5E7EB_1px,transparent_1px)] bg-[size:16px_16px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]" />
 
-      <motion.div 
-        className="relative w-full max-w-[340px] h-[220px] flex gap-4 z-10"
-        style={{ transformStyle: "preserve-3d" }}
-      >
-        {/* Toolbar sidebar */}
-        <div className="w-16 h-full bg-white border border-[#E5E7EB] rounded-xl flex flex-col items-center py-4 gap-4 shadow-sm z-20 shrink-0">
-           <Layout className="w-5 h-5 text-[#3A3A3A] mb-2" />
-           <div className="w-10 h-8 rounded-md border border-[#D1D5DB] bg-[#F9FAFB] flex flex-col items-center justify-center gap-1">
-             <div className="w-6 h-1 bg-[#D1D5DB] rounded-full" />
-             <div className="w-4 h-1 bg-[#D1D5DB] rounded-full" />
-           </div>
-           <div className="w-10 h-8 rounded-md border border-[#D1D5DB] bg-[#F9FAFB] flex items-center justify-center">
-             <div className="w-6 h-4 bg-[#D1D5DB] rounded-sm" />
-           </div>
-           <div className="w-10 h-8 rounded-md border border-[#D1D5DB] bg-[#F9FAFB] grid grid-cols-2 gap-1 p-1">
-             <div className="bg-[#D1D5DB] rounded-sm" />
-             <div className="bg-[#D1D5DB] rounded-sm" />
-             <div className="bg-[#D1D5DB] rounded-sm" />
-             <div className="bg-[#D1D5DB] rounded-sm" />
-           </div>
-        </div>
-
-        {/* Builder Canvas (Responsive) */}
-        <div className="flex-1 flex justify-center items-center relative">
-           <motion.div 
-             animate={{ width: ["100%", "45%", "100%"] }}
-             transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-             className="h-[90%] bg-white border border-[#E5E7EB] rounded-xl shadow-md flex flex-col p-3 overflow-hidden relative origin-left"
-           >
-              {/* Responsive Header */}
-              <div className="w-full flex justify-between items-center mb-3 pb-2 border-b border-[#E5E7EB] shrink-0">
-                 <div className="w-10 h-2 bg-[#D1D5DB] rounded-full" />
-                 <div className="flex gap-1.5 hidden sm:flex">
-                    <div className="w-2.5 h-2.5 bg-[#6B7280] rounded-full" />
-                    <div className="w-2.5 h-2.5 bg-[#D1D5DB] rounded-full" />
-                 </div>
-              </div>
-              
-              {/* Layout Content */}
-              <div className="flex-1 flex flex-col gap-3 min-w-[120px]">
-                 {/* Hero section */}
-                 <div className="w-full h-16 bg-[#1F1F1F] rounded-lg flex items-center p-3 relative overflow-hidden shrink-0 shadow-inner">
-                    <div className="w-2/3 flex flex-col gap-1.5 z-10">
-                      <div className="w-full h-2 bg-[#6B7280] rounded-full" />
-                      <div className="w-2/3 h-1.5 bg-[#3A3A3A] rounded-full" />
-                    </div>
-                 </div>
-                 
-                 {/* Grid that reflows */}
-                 <div className="flex flex-wrap gap-2">
-                    <div className="flex-1 min-w-[40%] h-12 bg-[#F9FAFB] rounded-md border border-[#D1D5DB]" />
-                    <div className="flex-1 min-w-[40%] h-12 bg-[#F9FAFB] rounded-md border border-[#D1D5DB]" />
-                 </div>
-
-                 {/* Dynamically placed block via cursor */}
-                 <motion.div 
-                   animate={{ opacity: [0.2, 0.2, 1, 1, 0.2], scale: [0.95, 0.95, 1, 1, 0.95], borderColor: ["#D1D5DB", "#D1D5DB", "#3A3A3A", "#3A3A3A", "#D1D5DB"] }}
-                   transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-                   className="w-full h-10 border-2 border-dashed rounded-md bg-[#F9FAFB]" 
-                 />
-              </div>
-           </motion.div>
-
-           {/* Animated Cursor Dragging Component */}
-           <motion.div
-             animate={{
-               x: [-110, -110, -10, -10, -110],
-               y: [30, 90, 90, 30, 30],
-               scale: [1, 0.9, 1, 1, 1]
-             }}
-             transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-             className="absolute z-30 pointer-events-none"
-           >
-             <MousePointer2 className="w-6 h-6 text-[#1F1F1F] drop-shadow-[0_4px_8px_rgba(0,0,0,0.2)]" fill="white" />
-             {/* Dragged block attached to cursor */}
+      {/* Main Browser Window */}
+      <div className="relative w-full max-w-[360px] h-[240px] bg-white border border-[#E5E7EB] rounded-xl shadow-[0_12px_24px_-8px_rgba(0,0,0,0.08)] overflow-hidden flex flex-col z-10">
+        
+        {/* Browser Top Bar */}
+        <div className="h-8 border-b border-[#E5E7EB] bg-[#F9FAFB] flex items-center px-3 gap-2 shrink-0 relative z-20">
+          <div className="flex gap-1.5">
+            <div className="w-2.5 h-2.5 rounded-full bg-[#E5E7EB]" />
+            <div className="w-2.5 h-2.5 rounded-full bg-[#E5E7EB]" />
+            <div className="w-2.5 h-2.5 rounded-full bg-[#E5E7EB]" />
+          </div>
+          <div className="flex-1 flex justify-center">
+             <div className="w-32 h-4 bg-white border border-[#E5E7EB] rounded flex items-center justify-center">
+                <div className="w-16 h-1.5 bg-[#E5E7EB] rounded-full" />
+             </div>
+          </div>
+          {/* Responsive toggles */}
+          <div className="flex gap-1.5 items-center">
+             {/* Desktop Toggle */}
              <motion.div 
-               animate={{ opacity: [0, 1, 1, 0, 0] }}
-               transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-               className="absolute top-6 left-4 w-20 h-10 border border-[#1F1F1F] bg-white rounded shadow-lg flex items-center justify-center"
+                animate={{ 
+                  backgroundColor: ["#F3F4F6", "#F3F4F6", "#F3F4F6", "#E5E7EB", "#E5E7EB", "#F3F4F6"],
+                  color: ["#9CA3AF", "#9CA3AF", "#9CA3AF", "#1F1F1F", "#1F1F1F", "#9CA3AF"]
+                }} 
+                transition={{ duration: 16, times: [0, 0.47, 0.5, 0.5, 0.9, 0.93], repeat: Infinity }} 
+                className="w-5 h-4 rounded-[3px] border border-[#E5E7EB] flex items-center justify-center bg-[#F3F4F6] text-[#9CA3AF]"
              >
-                <div className="w-12 h-2 bg-[#E5E7EB] rounded-full" />
+                <Monitor className="w-2.5 h-2.5" />
              </motion.div>
-           </motion.div>
+             {/* Tablet Toggle */}
+             <motion.div 
+                animate={{ 
+                  backgroundColor: ["#E5E7EB", "#E5E7EB", "#E5E7EB", "#F3F4F6", "#F3F4F6", "#E5E7EB"],
+                  color: ["#1F1F1F", "#1F1F1F", "#1F1F1F", "#9CA3AF", "#9CA3AF", "#1F1F1F"]
+                }} 
+                transition={{ duration: 16, times: [0, 0.47, 0.5, 0.5, 0.9, 0.93], repeat: Infinity }} 
+                className="w-3.5 h-4 rounded-[3px] border border-[#E5E7EB] flex items-center justify-center bg-[#E5E7EB] text-[#1F1F1F]"
+             >
+                <Smartphone className="w-2 h-2" />
+             </motion.div>
+          </div>
         </div>
-      </motion.div>
+
+        {/* Browser Body */}
+        <div className="flex-1 flex relative">
+          
+          {/* Left Sidebar (Components Panel) */}
+          <div className="w-16 h-full border-r border-[#E5E7EB] bg-[#F9FAFB] flex flex-col items-center py-3 gap-3 shrink-0 z-20">
+             {/* Header Component icon */}
+             <div className="w-10 h-8 border border-[#E5E7EB] rounded flex flex-col items-center justify-center gap-1 bg-white">
+                <div className="w-5 h-1 bg-[#D1D5DB] rounded-full" />
+                <div className="w-3 h-1 bg-[#D1D5DB] rounded-full" />
+             </div>
+             
+             {/* Hero Component */}
+             <motion.div 
+               animate={{ 
+                 borderColor: ["#E5E7EB", "#1F1F1F", "#E5E7EB", "#E5E7EB", "#E5E7EB"],
+                 backgroundColor: ["#FFFFFF", "#F3F4F6", "#FFFFFF", "#FFFFFF", "#FFFFFF"]
+               }}
+               transition={{ duration: 16, times: [0, 0.06, 0.1, 0.12, 1], repeat: Infinity }}
+               className="w-10 h-10 border border-[#E5E7EB] rounded flex flex-col items-center justify-center gap-1.5 bg-white relative"
+             >
+                <div className="w-6 h-1.5 bg-[#1F1F1F] rounded-sm" />
+                <div className="w-4 h-1 bg-[#9CA3AF] rounded-full" />
+             </motion.div>
+             
+             {/* Cards Component */}
+             <motion.div 
+               animate={{ 
+                 borderColor: ["#E5E7EB", "#E5E7EB", "#E5E7EB", "#1F1F1F", "#E5E7EB", "#E5E7EB"],
+                 backgroundColor: ["#FFFFFF", "#FFFFFF", "#FFFFFF", "#F3F4F6", "#FFFFFF", "#FFFFFF"]
+               }}
+               transition={{ duration: 16, times: [0, 0.6, 0.62, 0.65, 0.7, 1], repeat: Infinity }}
+               className="w-10 h-10 border border-[#E5E7EB] rounded grid grid-cols-2 gap-1 p-1 bg-white"
+             >
+                <div className="bg-[#D1D5DB] rounded-[2px]" />
+                <div className="bg-[#D1D5DB] rounded-[2px]" />
+                <div className="bg-[#D1D5DB] rounded-[2px]" />
+                <div className="bg-[#D1D5DB] rounded-[2px]" />
+             </motion.div>
+          </div>
+
+          {/* Canvas Area */}
+          <div className="flex-1 bg-[#F3F4F6] flex justify-center items-start pt-4 overflow-hidden relative">
+             
+             {/* Responsive Canvas Container */}
+             <motion.div 
+               animate={{ width: ["100%", "100%", "65%", "65%", "100%"] }}
+               transition={{ duration: 16, times: [0, 0.47, 0.52, 0.9, 0.95], repeat: Infinity, ease: "easeInOut" }}
+               className="h-[180px] w-full bg-white border border-[#E5E7EB] rounded-t-lg shadow-sm flex flex-col relative overflow-hidden origin-top"
+             >
+                {/* Navbar */}
+                <div className="h-8 border-b border-[#E5E7EB] flex items-center justify-between px-3 shrink-0">
+                   <div className="w-12 h-2.5 bg-[#1F1F1F] rounded-full" />
+                   <div className="flex gap-2">
+                      <div className="w-4 h-1.5 bg-[#D1D5DB] rounded-full" />
+                      <div className="w-4 h-1.5 bg-[#D1D5DB] rounded-full" />
+                   </div>
+                </div>
+
+                {/* Content Area */}
+                <div className="flex-1 p-3 flex flex-col gap-3 overflow-hidden">
+                   {/* Dropped Hero Component */}
+                   <motion.div 
+                     initial={{ opacity: 0 }}
+                     animate={{ opacity: [0, 0, 1, 1, 1], scale: [0.95, 0.95, 1, 1, 1] }}
+                     transition={{ duration: 16, times: [0, 0.24, 0.25, 0.28, 1], repeat: Infinity }}
+                     className="p-4 rounded-md border border-[#E5E7EB] bg-[#F9FAFB] flex flex-col items-center justify-center gap-2 relative overflow-hidden shrink-0"
+                   >
+                       {/* Text Loading Animation */}
+                       <motion.div animate={{ width: ["0%", "0%", "60%", "60%", "60%"] }} transition={{ duration: 16, times: [0, 0.28, 0.32, 0.35, 1], repeat: Infinity, ease: "easeOut" }} className="h-3 bg-[#1F1F1F] rounded-full" />
+                       <motion.div animate={{ width: ["0%", "0%", "40%", "40%", "40%"] }} transition={{ duration: 16, times: [0, 0.3, 0.34, 0.37, 1], repeat: Infinity, ease: "easeOut" }} className="h-2 bg-[#9CA3AF] rounded-full" />
+                       {/* Button fading in */}
+                       <motion.div animate={{ opacity: [0, 0, 1, 1, 1], y: [4, 4, 0, 0, 0] }} transition={{ duration: 16, times: [0, 0.34, 0.37, 0.4, 1], repeat: Infinity, ease: "easeOut" }} className="mt-1 w-16 h-5 bg-[#1F1F1F] rounded-[4px]" />
+                   </motion.div>
+
+                   {/* Dropped Grid Component */}
+                   <motion.div 
+                     initial={{ opacity: 0 }}
+                     animate={{ opacity: [0, 0, 1, 1, 1], scale: [0.95, 0.95, 1, 1, 1], height: [0, 0, "auto", "auto", "auto"] }}
+                     transition={{ duration: 16, times: [0, 0.77, 0.78, 0.81, 1], repeat: Infinity }}
+                     className="flex flex-wrap gap-2"
+                   >
+                      <div className="flex-1 min-w-[45%] h-12 bg-[#F9FAFB] border border-[#E5E7EB] rounded-md" />
+                      <div className="flex-1 min-w-[45%] h-12 bg-[#F9FAFB] border border-[#E5E7EB] rounded-md" />
+                   </motion.div>
+                </div>
+
+                {/* Smart Alignment Guides */}
+                {/* Guide for Hero */}
+                <motion.div 
+                  animate={{ opacity: [0, 0, 1, 0, 0] }}
+                  transition={{ duration: 16, times: [0, 0.22, 0.23, 0.25, 1], repeat: Infinity }}
+                  className="absolute top-0 bottom-0 left-[calc(50%-0.5px)] w-[1px] bg-[#3B82F6] z-10"
+                />
+                {/* Guide for Grid */}
+                <motion.div 
+                  animate={{ opacity: [0, 0, 1, 0, 0] }}
+                  transition={{ duration: 16, times: [0, 0.75, 0.76, 0.78, 1], repeat: Infinity }}
+                  className="absolute left-3 right-3 top-[118px] h-[1px] bg-[#3B82F6] z-10"
+                />
+             </motion.div>
+          </div>
+
+          {/* The Animated Cursor */}
+          <motion.div
+            animate={{
+              x:     [212, 32, 32,  212, 212, 260, 325, 325, 325, 32,  32,  212, 212, 300, 300, 300, 212],
+              y:     [110, 95, 95,  90,  90,  120, 16,  16,  16,  150, 150, 160, 160, 16,  16,  16,  110],
+              scale: [1,   1,  0.8, 1,   0.8, 1,   1,   0.8, 1,   1,   0.8, 1,   0.8, 1,   0.8, 1,   1]
+            }}
+            transition={{ 
+              duration: 16, 
+              times: [0, 0.06, 0.09, 0.22, 0.25, 0.28, 0.44, 0.47, 0.5, 0.62, 0.65, 0.75, 0.78, 0.87, 0.9, 0.93, 1], 
+              repeat: Infinity, 
+              ease: "easeInOut" 
+            }}
+            className="absolute z-50 pointer-events-none origin-top-left"
+            style={{ top: 0, left: 0 }}
+          >
+            <MousePointer2 className="w-5 h-5 text-[#1F1F1F] drop-shadow-[0_4px_8px_rgba(0,0,0,0.3)]" fill="white" />
+            
+            {/* Dragged Hero Ghost */}
+            <motion.div 
+              animate={{ opacity: [0, 0, 1, 1, 0, 0], scale: [0.9, 0.9, 1, 1, 0.9, 0.9] }}
+              transition={{ duration: 16, times: [0, 0.09, 0.1, 0.24, 0.25, 1], repeat: Infinity }}
+              className="absolute top-4 left-4 w-32 h-16 bg-white/95 backdrop-blur-sm border-2 border-[#1F1F1F] border-dashed rounded-md shadow-xl flex flex-col items-center justify-center gap-1.5"
+            >
+               <div className="w-12 h-2 bg-[#D1D5DB] rounded-full" />
+               <div className="w-8 h-1.5 bg-[#E5E7EB] rounded-full" />
+            </motion.div>
+
+            {/* Dragged Grid Ghost */}
+            <motion.div 
+              animate={{ opacity: [0, 0, 1, 1, 0, 0], scale: [0.9, 0.9, 1, 1, 0.9, 0.9] }}
+              transition={{ duration: 16, times: [0, 0.65, 0.66, 0.77, 0.78, 1], repeat: Infinity }}
+              className="absolute top-4 left-4 w-32 h-12 bg-white/95 backdrop-blur-sm border-2 border-[#1F1F1F] border-dashed rounded-md shadow-xl grid grid-cols-2 gap-1.5 p-1.5"
+            >
+               <div className="bg-[#E5E7EB] rounded-sm" />
+               <div className="bg-[#E5E7EB] rounded-sm" />
+            </motion.div>
+          </motion.div>
+
+        </div>
+      </div>
     </div>
   );
 };
@@ -208,7 +309,7 @@ export const WebAppAnimation = () => {
 
        {/* CI/CD Pipeline on the left */}
        <div className="absolute left-6 top-1/2 -translate-y-1/2 w-8 flex flex-col gap-3 z-10">
-          {[1, 2, 3, 4].map((step, i) => (
+          {[1, 2, 3, 4].map((_step, i) => (
              <motion.div 
                key={i}
                animate={{ 
