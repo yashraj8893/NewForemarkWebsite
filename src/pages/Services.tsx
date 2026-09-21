@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
@@ -31,6 +32,7 @@ const fadeUp: Variants = {
 
 const services = [
     {
+        slug: 'website-development',
         title: 'Website Development',
         description:
             "We design and build bespoke, high-performance websites that capture your brand's essence and drive meaningful user action. Our sites are engineered for speed, responsiveness, and SEO optimization to convert visitors into customers.",
@@ -39,6 +41,7 @@ const services = [
         animation: WebsiteAnimation,
     },
     {
+        slug: 'software-development',
         title: 'Web App / Software Development',
         description:
             'From internal tools to customer-facing platforms, we design and engineer full-stack software that streamlines operations and scales with demand. Our team handles everything from system architecture to deployment, so your product is fast, secure, and built to last.',
@@ -47,6 +50,7 @@ const services = [
         animation: WebAppAnimation,
     },
     {
+        slug: 'cloud-hosting',
         title: 'Web Servers & Hosting',
         description:
             "We deploy and manage secure, high-availability cloud infrastructure and managed hosting architectures tailored to your application's needs. With robust security monitoring, scalable designs, and reliable backups, we ensure your platforms remain online and performant under load.",
@@ -55,6 +59,7 @@ const services = [
         animation: ServerAnimation,
     },
     {
+        slug: 'business-automation',
         title: 'Business Automation',
         description:
             'We audit your existing workflows and identify where manual, repetitive work is costing you time. Then we build intelligent automations — integrating your tools and systems — so your team can focus on the work that actually needs a human.',
@@ -125,28 +130,8 @@ const process = [
     },
 ];
 
-export const testimonials = [
-    {
-        name: 'Rohan Mehta',
-        role: 'Founder, Northbridge Logistics',
-        quote:
-            'Foremark rebuilt our internal dispatch platform from the ground up. What used to take our team hours now happens in minutes.',
-    },
-    {
-        name: 'Ayesha Kapoor',
-        role: 'COO, Larkspur Retail Group',
-        quote:
-            'The website they delivered didn\u2019t just look premium — it converted. Our inquiry rate doubled within the first month.',
-    },
-    {
-        name: 'Daniel Fernandes',
-        role: 'CTO, Vantage Health Systems',
-        quote:
-            'Clear communication, solid architecture decisions, and a team that actually understood our constraints. Rare combination.',
-    },
-];
 
-export const faqs = [
+const faqs = [
     {
         question: 'How long does a typical website or web app project take?',
         answer:
@@ -174,7 +159,7 @@ export const faqs = [
     },
 ];
 
-export const FaqItem = ({ question, answer, isOpen, onClick }: { question: string; answer: string; isOpen: boolean; onClick: () => void }) => (
+const FaqItem = ({ question, answer, isOpen, onClick }: { question: string; answer: string; isOpen: boolean; onClick: () => void }) => (
     <div className="border-b border-portfolio-dark/10 py-6">
         <button
             onClick={onClick}
@@ -197,9 +182,8 @@ export const FaqItem = ({ question, answer, isOpen, onClick }: { question: strin
     </div>
 );
 
-export const RocketIcon = Rocket;
-
 const ServicesPage = () => {
+    const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
     return (
         <main className="relative w-full overflow-hidden bg-portfolio-bg">
             {/* ─── Hero ─────────────────────────────────────────────── */}
@@ -316,28 +300,41 @@ const ServicesPage = () => {
                                         </div>
 
                                         <h3 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
-                                            {service.title}
+                                            <Link to={`/services/${service.slug}`} className="hover:text-portfolio-gold transition-colors">
+                                                {service.title}
+                                            </Link>
                                         </h3>
 
                                         <p className="text-white/60 text-base leading-relaxed mb-10 max-w-xl">
                                             {service.description}
                                         </p>
 
-                                        <Link
-                                            to="/contact"
-                                            className="inline-flex items-center gap-2 bg-white text-portfolio-dark text-sm font-bold uppercase tracking-widest rounded-full px-8 py-4 w-max hover:scale-105 transition-transform duration-300 shadow-md"
-                                        >
-                                            Get a quote <ArrowRight size={16} />
-                                        </Link>
+                                        <div className="flex items-center gap-4 flex-wrap">
+                                            <Link
+                                                to={`/services/${service.slug}`}
+                                                className="inline-flex items-center gap-2 bg-portfolio-gold text-white text-sm font-bold uppercase tracking-widest rounded-full px-8 py-4 w-max hover:scale-105 hover:shadow-[0_0_24px_rgba(212,175,55,0.4)] transition-all duration-300 shadow-md cursor-target"
+                                            >
+                                                Explore Service <ArrowRight size={16} />
+                                            </Link>
+                                            <Link
+                                                to={`/contact?service=${service.slug}`}
+                                                className="inline-flex items-center gap-2 border border-white/20 text-white text-sm font-bold uppercase tracking-widest rounded-full px-8 py-4 w-max hover:bg-white/10 hover:border-white/40 transition-all duration-300 cursor-target"
+                                            >
+                                                Get a quote
+                                            </Link>
+                                        </div>
                                     </div>
 
                                     {/* Live Animation side (45% split width) */}
-                                    <div className="flex-1 lg:flex-[0.8] bg-[#070708] border-t lg:border-t-0 lg:border-l border-white/5 relative flex items-center justify-center p-6 min-h-[300px] md:min-h-[380px] overflow-hidden">
+                                    <Link
+                                        to={`/services/${service.slug}`}
+                                        className="flex-1 lg:flex-[0.8] bg-[#070708] border-t lg:border-t-0 lg:border-l border-white/5 relative flex items-center justify-center p-6 min-h-[300px] md:min-h-[380px] overflow-hidden group/visual cursor-target"
+                                    >
                                         <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]" />
-                                        <div className="w-full h-full flex items-center justify-center scale-90 sm:scale-100">
+                                        <div className="w-full h-full flex items-center justify-center scale-90 sm:scale-100 group-hover/visual:scale-105 transition-transform duration-500">
                                             <Visual />
                                         </div>
-                                    </div>
+                                    </Link>
                                 </div>
                             </motion.div>
                         );
@@ -431,6 +428,28 @@ const ServicesPage = () => {
                             );
                         })}
                     </div>
+                </div>
+            </section>
+
+            {/* ─── Frequently Asked Questions ───────────────────────────── */}
+            <section className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 py-20 sm:py-28 relative z-10">
+                <div className="text-center mb-14 max-w-2xl mx-auto">
+                    <span className="section-label text-portfolio-gold">Got Questions?</span>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-portfolio-dark mt-2 leading-[1.15]">
+                        Frequently Asked Questions
+                    </h2>
+                </div>
+
+                <div className="max-w-3xl mx-auto divide-y divide-portfolio-dark/10">
+                    {faqs.map((faq, index) => (
+                        <FaqItem
+                            key={faq.question}
+                            question={faq.question}
+                            answer={faq.answer}
+                            isOpen={openFaqIndex === index}
+                            onClick={() => setOpenFaqIndex(openFaqIndex === index ? null : index)}
+                        />
+                    ))}
                 </div>
             </section>
 

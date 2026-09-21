@@ -1,9 +1,28 @@
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Mail, MessageSquare, Globe, Share2, Info } from 'lucide-react';
 import mapImage from '../assets/map.png';
 import { SEO } from '../components/SEO';
 
+const serviceOptions = [
+  { value: 'website-development', label: 'Website Development' },
+  { value: 'software-development', label: 'Web App / Software Development' },
+  { value: 'cloud-hosting', label: 'Web Servers & Hosting' },
+  { value: 'business-automation', label: 'Business Automation' },
+  { value: 'other', label: 'Other / General Inquiry' },
+];
+
 const ContactPage = () => {
+  const [searchParams] = useSearchParams();
+  const serviceParam = searchParams.get('service') || '';
+  const [selectedService, setSelectedService] = useState(serviceParam);
+
+  useEffect(() => {
+    if (serviceParam) {
+      setSelectedService(serviceParam);
+    }
+  }, [serviceParam]);
   return (
     <>
       <SEO title="Contact Us" description="Have a question or want to work together? Leave us a message and we'll get back to you as soon as possible." canonicalUrl="https://foremark.in/contact" />
@@ -180,6 +199,23 @@ const ContactPage = () => {
                       placeholder="Your email address"
                       className="w-full bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-2.5 sm:py-4 text-white text-sm sm:text-base focus:outline-none focus:border-portfolio-gold transition-colors placeholder:text-white/20 cursor-target"
                     />
+                  </div>
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <label htmlFor="contact-service" className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-1">SERVICE OF INTEREST</label>
+                    <select
+                      id="contact-service"
+                      name="service"
+                      value={selectedService}
+                      onChange={(e) => setSelectedService(e.target.value)}
+                      className="w-full bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-2.5 sm:py-4 text-white text-sm sm:text-base focus:outline-none focus:border-portfolio-gold transition-colors cursor-target [&>option]:bg-[#1a1a1a] [&>option]:text-white"
+                    >
+                      <option value="">Select a service (Optional)</option>
+                      {serviceOptions.map((opt) => (
+                        <option key={opt.value} value={opt.value}>
+                          {opt.label}
+                        </option>
+                      ))}
+                    </select>
                   </div>
                   <div className="space-y-1.5 sm:space-y-2">
                     <label htmlFor="contact-message" className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-1">MESSAGE *</label>

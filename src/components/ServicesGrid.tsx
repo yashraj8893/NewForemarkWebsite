@@ -1,7 +1,8 @@
 import { motion, useInView, useMotionValue, useSpring, useTransform, useMotionTemplate } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { cn } from "../lib/utils";
-import { Smartphone, MousePointer2, Terminal, Server, Database, Cloud, HardDrive, GitMerge, FileCheck, Zap, Mail, Bot, Network, Monitor } from 'lucide-react';
+import { Smartphone, MousePointer2, Terminal, Server, Database, Cloud, HardDrive, GitMerge, FileCheck, Zap, Mail, Bot, Network, Monitor, ArrowRight } from 'lucide-react';
 
 // Hook: true when viewport is ≤767px (mobile)
 const useIsMobile = () => {
@@ -16,7 +17,7 @@ const useIsMobile = () => {
   return isMobile;
 };
 
-const ServiceCard = ({ title, desc, children, className }: { title: string, desc: string, children: React.ReactNode, className?: string }) => {
+const ServiceCard = ({ title, desc, href, children, className }: { title: string, desc: string, href?: string, children: React.ReactNode, className?: string }) => {
   const isMobile = useIsMobile();
   const cardRef = useRef<HTMLDivElement>(null);
   const [isHovering, setIsHovering] = useState(false);
@@ -109,7 +110,15 @@ const ServiceCard = ({ title, desc, children, className }: { title: string, desc
         {children}
       </motion.div>
       <div className="mt-auto px-1 sm:px-0">
-        <h3 className="text-lg md:text-2xl font-bold mb-1 sm:mb-2 tracking-tight group-hover:text-portfolio-gold transition-colors duration-500">{title}</h3>
+        <h3 className="text-lg md:text-2xl font-bold mb-1 sm:mb-2 tracking-tight transition-colors duration-500">
+          {href ? (
+            <Link to={href} className="cursor-target inline-flex items-center gap-1.5 group-hover:text-portfolio-gold transition-colors">
+              {title} <ArrowRight size={18} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-portfolio-gold" />
+            </Link>
+          ) : (
+            title
+          )}
+        </h3>
         <p className="text-portfolio-muted text-sm leading-relaxed">{desc}</p>
       </div>
     </motion.div>
@@ -614,6 +623,7 @@ const ServicesGrid = () => {
         shouldPause && "service-paused"
       )}>
         <ServiceCard 
+          href="/services/website-development"
           title="Website Development" 
           desc="Crafting responsive, stunning websites tailored perfectly to your business goals."
         >
@@ -621,6 +631,7 @@ const ServicesGrid = () => {
         </ServiceCard>
 
         <ServiceCard 
+          href="/services/software-development"
           title="Web App / Software Development" 
           desc="Creating powerful web apps streamlining workflows, enhancing experiences."
         >
@@ -628,6 +639,7 @@ const ServicesGrid = () => {
         </ServiceCard>
 
         <ServiceCard 
+          href="/services/cloud-hosting"
           title="Web Servers & Hosting" 
           desc="Secure, scalable infrastructure and managed hosting for high-performance applications."
         >
@@ -635,6 +647,7 @@ const ServicesGrid = () => {
         </ServiceCard>
 
         <ServiceCard 
+          href="/services/business-automation"
           title="Business Automation" 
           desc="We map your business processes and build intelligent automations that save time."
         >

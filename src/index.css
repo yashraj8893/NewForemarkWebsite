@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
 
 @import "tailwindcss";
+@import "lenis/dist/lenis.css";
 
 @theme {
   --color-portfolio-bg: #f5f5f3;
@@ -58,9 +59,10 @@ body {
   }
 }
 
-/* Custom smooth scroll */
-html {
-  scroll-behavior: smooth;
+/* Lenis smooth scroll optimization */
+html.lenis,
+html.lenis body {
+  height: auto;
 }
 
 /* Grainy texture overlay */

@@ -50,26 +50,27 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Links Column 1 */}
+          {/* Services Column */}
           <div className="flex flex-col">
-            <h4 className="text-[10px] font-bold uppercase tracking-widest text-portfolio-gold mb-6">Quick Links</h4>
+            <h4 className="text-[10px] font-bold uppercase tracking-widest text-portfolio-gold mb-6">Services</h4>
             <div className="flex flex-col gap-4 items-start">
-              <Link to="/projects" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Projects</Link>
-              <Link to="/careers" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Careers</Link>
-              <Link to="/blog" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Blog</Link>
-              <Link to="/services" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Services</Link>
-              <Link to="/about" className="text-white/60 hover:text-white text-sm font-medium transition-colors">About</Link>
+              <Link to="/services/website-development" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Website Development</Link>
+              <Link to="/services/software-development" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Web App / Software</Link>
+              <Link to="/services/cloud-hosting" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Web Servers & Hosting</Link>
+              <Link to="/services/business-automation" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Business Automation</Link>
+              <Link to="/services" className="text-portfolio-gold/80 hover:text-portfolio-gold text-xs font-semibold transition-colors mt-1">All Services Overview →</Link>
             </div>
           </div>
 
-          {/* Links Column 2 */}
+          {/* Links Column 1 */}
           <div className="flex flex-col">
             <h4 className="text-[10px] font-bold uppercase tracking-widest text-portfolio-gold mb-6">Company</h4>
             <div className="flex flex-col gap-4 items-start">
-              <Link to="/contact" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Contact Us</Link>
+              <Link to="/projects" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Projects</Link>
+              <Link to="/about" className="text-white/60 hover:text-white text-sm font-medium transition-colors">About Us</Link>
+              <Link to="/careers" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Careers</Link>
+              <Link to="/blog" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Blog</Link>
               <Link to="/associate-program" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Associate Program</Link>
-              <a href="#" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Privacy Policy</a>
-              <a href="#" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Terms of Service</a>
             </div>
           </div>
 

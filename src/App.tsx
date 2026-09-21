@@ -2,6 +2,7 @@ import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import ProjectsPage from './pages/Projects';
 import ServicesPage from './pages/Services';
+import ServiceDetail from './pages/ServiceDetail';
 import CareersPage from './pages/Careers';
 import JobDetail from './pages/JobDetail';
 import ContactPage from './pages/Contact';
@@ -14,6 +15,7 @@ import { useEffect, useState } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import TargetCursor from './components/TargetCursor';
+import { SmoothScrollProvider, useLenis } from './components/SmoothScroll';
 
 const navLinks = [
   { label: 'Services', href: '/services' },
@@ -24,43 +26,30 @@ const navLinks = [
   { label: 'Contact', href: '/contact' },
 ] as const;
 
-const ScrollToHash = () => {
-  const { pathname, hash } = useLocation();
-
-  useEffect(() => {
-    if (hash) {
-      const element = document.getElementById(hash.replace('#', ''));
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  }, [pathname, hash]);
-
-  return null;
-};
-
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { pathname } = useLocation();
+  const { lenis } = useLenis();
 
   // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [pathname]);
 
-  // Lock body scroll when mobile menu is open
+  // Lock body scroll and pause Lenis when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
+      lenis?.stop();
       document.body.style.overflow = 'hidden';
     } else {
+      lenis?.start();
       document.body.style.overflow = '';
     }
     return () => {
+      lenis?.start();
       document.body.style.overflow = '';
     };
-  }, [isMobileMenuOpen]);
+  }, [isMobileMenuOpen, lenis]);
 
   return (
     <>
@@ -80,12 +69,13 @@ const Navbar = () => {
               {link.label}
             </Link>
           ))}
+
           {/* Dropdown for Products */}
           <div className="relative group">
             <button className="flex items-center gap-1 hover:text-portfolio-dark transition-colors py-2 cursor-target">
               Products <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300" />
             </button>
-            <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[340px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50">
+            <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[340px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50 pointer-events-none group-hover:pointer-events-auto">
               <div className="bg-white border border-portfolio-dark/10 rounded-2xl p-3 shadow-2xl">
                 <Link to="/sovereign-counsel" className="flex flex-col p-4 rounded-xl hover:bg-portfolio-dark/5 transition-colors group/item cursor-target">
                   <span className="text-portfolio-dark font-bold text-sm mb-1 group-hover/item:text-portfolio-gold transition-colors">Sovereign Counsel</span>
@@ -167,32 +157,40 @@ const Navbar = () => {
 function App() {
   const location = useLocation();
   return (
-    <div className="relative min-h-screen bg-portfolio-bg selection:bg-portfolio-gold/30 font-geist overflow-x-hidden">
-      <TargetCursor
-        key={location.pathname}
-        targetSelector=".cursor-target, a, button, input, textarea"
-        spinDuration={2}
-        hideDefaultCursor={true}
-        parallaxOn={true}
-        hoverDuration={0.5}
-      />
-      <ScrollToHash />
-      <div className="grainy-overlay" />
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/projects" element={<ProjectsPage />} />
-        <Route path="/services" element={<ServicesPage />} />
-        <Route path="/careers" element={<CareersPage />} />
-        <Route path="/careers/:slug" element={<JobDetail />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/sovereign-counsel" element={<SovereignCounselPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/associate-program" element={<AssociateProgramPage />} />
-        <Route path="/blog" element={<BlogPage />} />
-      </Routes>
-      <Footer />
-    </div>
+    <SmoothScrollProvider>
+      <div className="relative min-h-screen bg-portfolio-bg selection:bg-portfolio-gold/30 font-geist overflow-x-hidden">
+        <TargetCursor
+          key={location.pathname}
+          targetSelector=".cursor-target, a, button, input, textarea"
+          spinDuration={2}
+          hideDefaultCursor={true}
+          parallaxOn={true}
+          hoverDuration={0.5}
+        />
+        <div className="grainy-overlay" />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/services/:slug" element={<ServiceDetail />} />
+          <Route path="/services/website-development" element={<ServiceDetail slug="website-development" />} />
+          <Route path="/services/software-development" element={<ServiceDetail slug="software-development" />} />
+          <Route path="/services/cloud-hosting" element={<ServiceDetail slug="cloud-hosting" />} />
+          <Route path="/services/business-automation" element={<ServiceDetail slug="business-automation" />} />
+          <Route path="/services/web-servers-hosting" element={<ServiceDetail slug="cloud-hosting" />} />
+          <Route path="/services/web-app-development" element={<ServiceDetail slug="software-development" />} />
+          <Route path="/careers" element={<CareersPage />} />
+          <Route path="/careers/:slug" element={<JobDetail />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/sovereign-counsel" element={<SovereignCounselPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/associate-program" element={<AssociateProgramPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+        </Routes>
+        <Footer />
+      </div>
+    </SmoothScrollProvider>
   );
 }
 
