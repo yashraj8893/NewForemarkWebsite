@@ -24,7 +24,7 @@ import {
     Repeat,
     type LucideIcon,
 } from 'lucide-react';
-import { WebAppAnimation, ServerAnimation, AutomationAnimation } from '../components/ServicesGrid';
+import { WebAndSoftwareAnimation, ServerAnimation, AutomationAnimation } from '../components/ServicesGrid';
 
 export interface DeliverableItem {
     title: string;
@@ -92,48 +92,48 @@ export const servicesData: Record<string, ServiceData> = {
         shortDesc:
             'From brand-defining digital flagships to full-stack web applications and custom software platforms, we design and engineer scalable digital systems that streamline operations, elevate your brand, and drive measurable business growth.',
         overview:
-            'At Foremark, we engineer bespoke digital experiences and mission-critical software systems tailored to modern businesses. Whether you require a brand-defining corporate website, a high-converting headless e-commerce store, a multi-tenant SaaS platform, or an internal operational system, our solutions are architected from the ground up with zero bloat, enterprise-grade type safety, sub-second load speeds, and zero-compromise security.',
+            'At Foremark, we engineer bespoke digital experiences and mission-critical software systems tailored to modern businesses with sub-second performance, strict type safety, and zero bloat.',
         icon: Code2,
-        animation: WebAppAnimation,
+        animation: WebAndSoftwareAnimation,
         howWeDoItTitle: 'The Foremark Standard: How We Build Websites & Software',
         howWeDoItSubtitle:
-            'We combine Swiss-style typographic precision with modern full-stack architecture, clean domain boundaries, and end-to-end type safety to deliver systems that outperform competition and scale without technical debt.',
+            'We combine Swiss-style typographic precision with modern full-stack architecture, clean domain boundaries, and end-to-end type safety.',
         philosophy: [
             {
                 icon: Layout,
-                title: 'Component-Driven Architecture & Design Systems',
+                title: 'Component-Driven Design Systems',
                 description:
-                    'We craft bespoke design systems and modular React/Next.js components that guarantee visual cohesion, fluid responsive scaling across every device, and effortless long-term maintainability.',
+                    'Bespoke design tokens and modular React components guaranteeing visual cohesion, fluid responsive scaling, and effortless maintainability.',
             },
             {
                 icon: Zap,
-                title: 'Sub-Second Performance SLA & Core Web Vitals',
+                title: 'Sub-Second Performance SLA',
                 description:
-                    'Every asset, script, and database query is optimized with server-side caching, edge delivery, and modern bundling to achieve 98+ Google Lighthouse scores and instant user responsiveness.',
+                    'Edge delivery, server-side caching, and modern bundling achieving 98+ Google Lighthouse scores and instant responsiveness.',
             },
             {
                 icon: Database,
                 title: 'Domain-Driven Full-Stack Architecture',
                 description:
-                    'We decouple frontends, APIs, and background job workers using modular architectures, ensuring each layer can scale independently and handle high concurrency without cascading failures.',
+                    'Decoupled frontends, typed API contracts, and scalable databases ensuring each layer scales independently without cascading failures.',
             },
             {
                 icon: ShieldCheck,
                 title: 'Zero-Trust Security & Type Safety',
                 description:
-                    'From database schemas to API contracts and frontend views, full TypeScript/tRPC typing prevents runtime regressions, while role-based access controls and encrypted sessions safeguard user data.',
+                    'End-to-end TypeScript typing, encrypted sessions, and granular role-based access controls to safeguard your proprietary data.',
             },
             {
                 icon: Search,
-                title: 'Technical SEO & Search Engine Dominance',
+                title: 'Technical SEO & Search Dominance',
                 description:
-                    'Semantic HTML5, automated OpenGraph generation, schema.org structured data, and edge-rendered metadata ensure search engines rank and understand your digital platforms effortlessly.',
+                    'Semantic HTML5, automated OpenGraph metadata, and structured JSON-LD schema so search engines rank your platform effortlessly.',
             },
             {
                 icon: Layers,
-                title: 'Headless CMS Flexibility & Cloud Scale',
+                title: 'Headless CMS & Cloud Scale',
                 description:
-                    'We integrate client-friendly headless CMS platforms (Sanity, Strapi) and modern databases so your marketing team can publish updates freely while engineering scales seamlessly.',
+                    'Client-friendly headless CMS setups (Sanity, Strapi) empowering marketing teams to publish updates freely without developer help.',
             },
         ],
         deliverables: [
@@ -147,11 +147,11 @@ export const servicesData: Record<string, ServiceData> = {
                 icon: Layers,
                 title: 'Custom SaaS Platforms & Web Applications',
                 description:
-                    'Multi-tenant subscription web applications with integrated payment billing, team seats, role permissions, and analytics dashboards.',
+                    'Multi-tenant subscription web applications with integrated payment billing, team seats, role permissions, and analytics.',
             },
             {
                 icon: Sliders,
-                title: 'Client Portals & Internal Operations Systems',
+                title: 'Client Portals & Operations Systems',
                 description:
                     'Secure authenticated workspaces, custom ERPs, and workflow dashboards tailored to your exact operational processes.',
             },
@@ -165,7 +165,7 @@ export const servicesData: Record<string, ServiceData> = {
                 icon: Terminal,
                 title: 'High-Throughput APIs & Integrations',
                 description:
-                    'REST, GraphQL, and tRPC endpoints with rate limiting, Swagger documentation, and deep third-party CRM/payment integrations.',
+                    'REST, GraphQL, and tRPC endpoints with rate limiting, Swagger documentation, and deep CRM/payment integrations.',
             },
             {
                 icon: FileText,
