@@ -6,9 +6,7 @@ import {
     Code2,
     Server,
     Workflow,
-    Cpu,
     ArrowRight,
-    ChevronDown,
     ShieldCheck,
     Users,
     Sparkles,
@@ -19,7 +17,7 @@ import {
     LifeBuoy,
     Rocket,
 } from 'lucide-react';
-import { WebsiteAnimation, WebAppAnimation, ServerAnimation, AutomationAnimation } from '../components/ServicesGrid';
+import { WebAndSoftwareAnimation, ServerAnimation, AutomationAnimation } from '../components/ServicesGrid';
 
 const fadeUp: Variants = {
     hidden: { opacity: 0, y: 24 },
@@ -32,22 +30,13 @@ const fadeUp: Variants = {
 
 const services = [
     {
-        slug: 'website-development',
-        title: 'Website Development',
+        slug: 'website-software-development',
+        title: 'Website & Software Development',
         description:
-            "We design and build bespoke, high-performance websites that capture your brand's essence and drive meaningful user action. Our sites are engineered for speed, responsiveness, and SEO optimization to convert visitors into customers.",
-        tag: 'Core service',
+            'From bespoke, brand-defining websites to full-stack web applications and scalable software platforms, we engineer high-performance digital systems that streamline operations, elevate your brand, and convert visitors into loyal customers.',
+        tag: 'Core Engineering',
         icon: Code2,
-        animation: WebsiteAnimation,
-    },
-    {
-        slug: 'software-development',
-        title: 'Web App / Software Development',
-        description:
-            'From internal tools to customer-facing platforms, we design and engineer full-stack software that streamlines operations and scales with demand. Our team handles everything from system architecture to deployment, so your product is fast, secure, and built to last.',
-        tag: 'Most requested',
-        icon: Cpu,
-        animation: WebAppAnimation,
+        animation: WebAndSoftwareAnimation,
     },
     {
         slug: 'cloud-hosting',
@@ -158,29 +147,6 @@ const faqs = [
             'Pricing depends on scope and complexity. After an initial consultation, we provide a fixed-scope quote or a retainer structure, whichever fits your engagement best.',
     },
 ];
-
-const FaqItem = ({ question, answer, isOpen, onClick }: { question: string; answer: string; isOpen: boolean; onClick: () => void }) => (
-    <div className="border-b border-portfolio-dark/10 py-6">
-        <button
-            onClick={onClick}
-            className="w-full flex items-center justify-between text-left gap-4 cursor-target"
-        >
-            <span className="text-base sm:text-lg font-bold text-portfolio-dark">{question}</span>
-            <ChevronDown
-                size={20}
-                className={`flex-shrink-0 text-portfolio-gold transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
-            />
-        </button>
-        <motion.div
-            initial={false}
-            animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="overflow-hidden"
-        >
-            <p className="text-portfolio-muted text-sm sm:text-base leading-relaxed pt-4 pr-8">{answer}</p>
-        </motion.div>
-    </div>
-);
 
 const ServicesPage = () => {
     const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
@@ -431,25 +397,71 @@ const ServicesPage = () => {
                 </div>
             </section>
 
-            {/* ─── Frequently Asked Questions ───────────────────────────── */}
+            {/* ─── Frequently Asked Questions (Signature Home Style) ────── */}
             <section className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 py-20 sm:py-28 relative z-10">
-                <div className="text-center mb-14 max-w-2xl mx-auto">
-                    <span className="section-label text-portfolio-gold">Got Questions?</span>
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-portfolio-dark mt-2 leading-[1.15]">
-                        Frequently Asked Questions
-                    </h2>
-                </div>
+                <div className="bg-[#1a1a1a] rounded-3xl md:rounded-4xl p-5 sm:p-8 md:p-14 lg:p-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
+                    {/* Left Column */}
+                    <div className="lg:col-span-4 flex flex-col justify-start pt-2">
+                        <span className="inline-block text-xxs font-bold uppercase tracking-widest text-white/40 border border-white/10 rounded-full px-3 py-1 mb-6 md:mb-8 w-fit">
+                            FAQs
+                        </span>
+                        <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight text-white mb-4 md:mb-6">
+                            Frequently asked <br />
+                            <span className="text-portfolio-gold">questions</span>
+                        </h2>
+                        <p className="text-white/40 text-sm leading-relaxed max-w-xs">
+                            Everything you need to know before we start building together.
+                        </p>
+                    </div>
 
-                <div className="max-w-3xl mx-auto divide-y divide-portfolio-dark/10">
-                    {faqs.map((faq, index) => (
-                        <FaqItem
-                            key={faq.question}
-                            question={faq.question}
-                            answer={faq.answer}
-                            isOpen={openFaqIndex === index}
-                            onClick={() => setOpenFaqIndex(openFaqIndex === index ? null : index)}
-                        />
-                    ))}
+                    {/* Right Column — Accordion */}
+                    <div className="lg:col-span-8 flex flex-col gap-3 sm:gap-4">
+                        {faqs.map((faq, i) => (
+                            <div
+                                key={i}
+                                className="bg-white/[0.03] border border-white/[0.08] hover:border-white/[0.15] hover:bg-white/[0.05] transition-colors duration-300 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-7"
+                            >
+                                <button
+                                    onClick={() => setOpenFaqIndex(openFaqIndex === i ? null : i)}
+                                    className="w-full flex items-center justify-between gap-4 sm:gap-6 text-left group cursor-target"
+                                >
+                                    <span
+                                        className={`text-sm md:text-base font-semibold leading-snug transition-colors duration-300 ${
+                                            openFaqIndex === i ? 'text-white' : 'text-white/60 group-hover:text-white/90'
+                                        }`}
+                                    >
+                                        {faq.question}
+                                    </span>
+                                    <div
+                                        className={`w-7 h-7 rounded-full border flex items-center justify-center shrink-0 transition-all duration-300 ${
+                                            openFaqIndex === i
+                                                ? 'border-portfolio-gold bg-portfolio-gold/10 rotate-45'
+                                                : 'border-white/20 group-hover:border-white/40'
+                                        }`}
+                                    >
+                                        <span
+                                            className={`text-lg leading-none font-light transition-colors duration-300 ${
+                                                openFaqIndex === i ? 'text-portfolio-gold' : 'text-white/50'
+                                            }`}
+                                        >
+                                            +
+                                        </span>
+                                    </div>
+                                </button>
+
+                                {/* Answer — animated open/close */}
+                                <div
+                                    className={`overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.21,0.45,0.32,0.9)] ${
+                                        openFaqIndex === i ? 'max-h-[500px] opacity-100 mt-3 sm:mt-4' : 'max-h-0 opacity-0'
+                                    }`}
+                                >
+                                    <p className="text-white/45 text-xs sm:text-sm leading-relaxed pr-4 sm:pr-12">
+                                        {faq.answer}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </section>
 

@@ -54,8 +54,7 @@ const Footer = () => {
           <div className="flex flex-col">
             <h4 className="text-[10px] font-bold uppercase tracking-widest text-portfolio-gold mb-6">Services</h4>
             <div className="flex flex-col gap-4 items-start">
-              <Link to="/services/website-development" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Website Development</Link>
-              <Link to="/services/software-development" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Web App / Software</Link>
+              <Link to="/services/website-software-development" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Website & Software Development</Link>
               <Link to="/services/cloud-hosting" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Web Servers & Hosting</Link>
               <Link to="/services/business-automation" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Business Automation</Link>
               <Link to="/services" className="text-portfolio-gold/80 hover:text-portfolio-gold text-xs font-semibold transition-colors mt-1">All Services Overview →</Link>

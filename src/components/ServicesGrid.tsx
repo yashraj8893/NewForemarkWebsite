@@ -575,6 +575,141 @@ export const AutomationAnimation = () => {
   );
 };
 
+export const WebAndSoftwareAnimation = () => {
+  const isMobile = useIsMobile();
+  const d = isMobile ? 16 : 12;
+  const scaleClasses = "scale-[0.65] min-[360px]:scale-[0.75] sm:scale-[0.85] md:scale-[0.75] lg:scale-100";
+  return (
+    <div className="relative w-full h-full flex items-center justify-center p-6 overflow-hidden">
+      {/* Premium minimal dot background */}
+      <div className="absolute inset-0 bg-[radial-gradient(#E5E7EB_1px,transparent_1px)] bg-[size:16px_16px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]" />
+
+      {/* Main Container */}
+      <div className={cn("relative w-full max-w-[360px] h-[240px] bg-white border border-[#E5E7EB] rounded-xl shadow-[0_12px_24px_-8px_rgba(0,0,0,0.08)] overflow-hidden flex flex-col z-10 origin-center transition-transform duration-300", scaleClasses)}>
+        
+        {/* Browser / App Top Bar */}
+        <div className="h-8 border-b border-[#E5E7EB] bg-[#F9FAFB] flex items-center justify-between px-3 gap-2 shrink-0 relative z-20">
+          <div className="flex items-center gap-1.5">
+            <div className="w-2.5 h-2.5 rounded-full bg-[#E5E7EB]" />
+            <div className="w-2.5 h-2.5 rounded-full bg-[#E5E7EB]" />
+            <div className="w-2.5 h-2.5 rounded-full bg-[#E5E7EB]" />
+          </div>
+          
+          {/* Address / Route badge */}
+          <div className="flex-1 max-w-[170px] h-4 bg-white border border-[#E5E7EB] rounded flex items-center justify-center px-2 gap-1.5">
+             <div className="w-1.5 h-1.5 rounded-full bg-[#22C55E]" />
+             <span className="text-[8px] font-mono text-[#6B7280] tracking-tight truncate">foremark.in/app</span>
+          </div>
+
+          {/* Viewport / Fullstack badge */}
+          <div className="flex gap-1 items-center">
+             <div className="px-1.5 py-0.5 rounded-[3px] border border-[#E5E7EB] bg-[#1F1F1F] text-white text-[7px] font-bold uppercase tracking-wider">
+                Full-Stack
+             </div>
+          </div>
+        </div>
+
+        {/* App & Web Canvas */}
+        <div className="flex-1 flex relative bg-[#F9FAFB]">
+          
+          {/* Left Sidebar (Components & APIs) */}
+          <div className="w-14 h-full border-r border-[#E5E7EB] bg-[#FFFFFF] flex flex-col items-center py-2.5 gap-2 shrink-0 z-20">
+             {/* UI Module */}
+             <div className="w-9 h-7 border border-[#E5E7EB] rounded flex flex-col items-center justify-center gap-1 bg-[#F9FAFB]">
+                <div className="w-5 h-1 bg-[#1F1F1F] rounded-full" />
+                <div className="w-3 h-0.5 bg-[#9CA3AF] rounded-full" />
+             </div>
+             
+             {/* API / Backend Module */}
+             <motion.div 
+               animate={{ 
+                 borderColor: ["#E5E7EB", "#1F1F1F", "#E5E7EB", "#E5E7EB"],
+                 backgroundColor: ["#FFFFFF", "#F3F4F6", "#FFFFFF", "#FFFFFF"]
+               }}
+               transition={{ duration: d, times: [0, 0.2, 0.4, 1], repeat: Infinity }}
+               className="w-9 h-7 border border-[#E5E7EB] rounded flex flex-col items-center justify-center gap-0.5 bg-white"
+             >
+                <div className="w-4 h-1 bg-[#3B82F6] rounded-sm" />
+                <div className="w-3 h-0.5 bg-[#9CA3AF] rounded-full" />
+             </motion.div>
+             
+             {/* Database / Cloud */}
+             <div className="w-9 h-7 border border-[#E5E7EB] rounded flex flex-col items-center justify-center gap-0.5 bg-white">
+                <Database className="w-3 h-3 text-[#6B7280]" />
+             </div>
+          </div>
+
+          {/* Center Canvas Area */}
+          <div className="flex-1 bg-[#F3F4F6] p-2.5 flex flex-col gap-2 overflow-hidden relative">
+             
+             {/* Dynamic Hero / UI Bar */}
+             <div className="bg-white border border-[#E5E7EB] rounded-lg p-2.5 shadow-sm flex items-center justify-between">
+                <div className="flex flex-col gap-1 flex-1">
+                   <motion.div 
+                     animate={{ width: ["40%", "70%", "70%", "40%"] }} 
+                     transition={{ duration: d, repeat: Infinity, ease: "easeInOut" }} 
+                     className="h-2.5 bg-[#1F1F1F] rounded-full" 
+                   />
+                   <div className="w-24 h-1.5 bg-[#D1D5DB] rounded-full" />
+                </div>
+                <div className="w-12 h-5 bg-[#1F1F1F] rounded text-white flex items-center justify-center text-[7px] font-bold">
+                   PROD
+                </div>
+             </div>
+
+             {/* Split Grid: Live Data Cards & Microservices Pulse */}
+             <div className="grid grid-cols-2 gap-2 flex-1">
+                {/* Metric Card */}
+                <div className="bg-white border border-[#E5E7EB] rounded-lg p-2 flex flex-col justify-between shadow-xs">
+                   <div className="flex items-center justify-between">
+                      <span className="text-[8px] font-bold text-[#6B7280]">Speed Score</span>
+                      <span className="text-[8px] font-bold text-[#22C55E]">100</span>
+                   </div>
+                   <div className="flex items-end gap-1 h-6 pt-1">
+                      <div className="flex-1 bg-[#E5E7EB] h-3 rounded-xs" />
+                      <div className="flex-1 bg-[#E5E7EB] h-4 rounded-xs" />
+                      <div className="flex-1 bg-[#1F1F1F] h-6 rounded-xs" />
+                      <div className="flex-1 bg-[#22C55E] h-5 rounded-xs" />
+                   </div>
+                </div>
+
+                {/* API & Data Stream Card */}
+                <div className="bg-[#1F1F1F] border border-[#374151] rounded-lg p-2 flex flex-col justify-between text-white shadow-xs overflow-hidden relative">
+                   <div className="flex items-center justify-between">
+                      <span className="text-[7px] font-mono text-[#9CA3AF]">API Gateway</span>
+                      <motion.div 
+                        animate={{ opacity: [0.3, 1, 0.3] }} 
+                        transition={{ duration: 1.5, repeat: Infinity }} 
+                        className="w-1.5 h-1.5 rounded-full bg-[#22C55E]" 
+                      />
+                   </div>
+                   <div className="font-mono text-[7px] text-[#D1D5DB] flex flex-col gap-0.5">
+                      <span className="text-[#60A5FA]">GET /api/v1/data</span>
+                      <span className="text-[#34D399]">200 OK • 12ms</span>
+                   </div>
+                </div>
+             </div>
+
+             {/* Animated interactive cursor */}
+             <motion.div
+                animate={{
+                  x: [180, 50, 50, 140, 140, 180],
+                  y: [80, 20, 20, 70, 70, 80],
+                  scale: [1, 1, 0.85, 1, 0.85, 1]
+                }}
+                transition={{ duration: d, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute z-40 pointer-events-none"
+             >
+                <MousePointer2 className="w-4 h-4 text-[#1F1F1F] drop-shadow-md" fill="white" />
+             </motion.div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const ServicesGrid = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { margin: "200px" });
@@ -619,23 +754,15 @@ const ServicesGrid = () => {
       </div>
 
       <div className={cn(
-        "grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-[1050px] mx-auto",
+        "grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-[1240px] mx-auto",
         shouldPause && "service-paused"
       )}>
         <ServiceCard 
-          href="/services/website-development"
-          title="Website Development" 
-          desc="Crafting responsive, stunning websites tailored perfectly to your business goals."
+          href="/services/website-software-development"
+          title="Website & Software Development" 
+          desc="Crafting bespoke websites, scalable web applications, and modern software systems tailored to your business goals."
         >
-          <WebsiteAnimation />
-        </ServiceCard>
-
-        <ServiceCard 
-          href="/services/software-development"
-          title="Web App / Software Development" 
-          desc="Creating powerful web apps streamlining workflows, enhancing experiences."
-        >
-          <WebAppAnimation />
+          <WebAndSoftwareAnimation />
         </ServiceCard>
 
         <ServiceCard 

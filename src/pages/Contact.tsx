@@ -6,16 +6,23 @@ import mapImage from '../assets/map.png';
 import { SEO } from '../components/SEO';
 
 const serviceOptions = [
-  { value: 'website-development', label: 'Website Development' },
-  { value: 'software-development', label: 'Web App / Software Development' },
+  { value: 'website-software-development', label: 'Website & Software Development' },
   { value: 'cloud-hosting', label: 'Web Servers & Hosting' },
   { value: 'business-automation', label: 'Business Automation' },
   { value: 'other', label: 'Other / General Inquiry' },
 ];
 
+const normalizeServiceParam = (param: string) => {
+  if (param === 'website-development' || param === 'software-development' || param === 'web-app-development') {
+    return 'website-software-development';
+  }
+  return param;
+};
+
 const ContactPage = () => {
   const [searchParams] = useSearchParams();
-  const serviceParam = searchParams.get('service') || '';
+  const rawServiceParam = searchParams.get('service') || '';
+  const serviceParam = normalizeServiceParam(rawServiceParam);
   const [selectedService, setSelectedService] = useState(serviceParam);
 
   useEffect(() => {

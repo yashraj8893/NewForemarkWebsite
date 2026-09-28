@@ -174,12 +174,14 @@ function App() {
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/services/:slug" element={<ServiceDetail />} />
-          <Route path="/services/website-development" element={<ServiceDetail slug="website-development" />} />
-          <Route path="/services/software-development" element={<ServiceDetail slug="software-development" />} />
+          <Route path="/services/website-software-development" element={<ServiceDetail slug="website-software-development" />} />
+          <Route path="/services/website-development" element={<ServiceDetail slug="website-software-development" />} />
+          <Route path="/services/software-development" element={<ServiceDetail slug="website-software-development" />} />
+          <Route path="/services/web-app-development" element={<ServiceDetail slug="website-software-development" />} />
+          <Route path="/services/web-software-development" element={<ServiceDetail slug="website-software-development" />} />
           <Route path="/services/cloud-hosting" element={<ServiceDetail slug="cloud-hosting" />} />
           <Route path="/services/business-automation" element={<ServiceDetail slug="business-automation" />} />
           <Route path="/services/web-servers-hosting" element={<ServiceDetail slug="cloud-hosting" />} />
-          <Route path="/services/web-app-development" element={<ServiceDetail slug="software-development" />} />
           <Route path="/careers" element={<CareersPage />} />
           <Route path="/careers/:slug" element={<JobDetail />} />
           <Route path="/contact" element={<ContactPage />} />

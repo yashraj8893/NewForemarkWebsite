@@ -87,82 +87,94 @@ export interface ServiceData {
 }
 
 export const servicesData: Record<string, ServiceData> = {
-    'website-development': {
-        slug: 'website-development',
-        title: 'Website Development',
-        heroTag: 'Core Service',
-        tagline: 'Bespoke digital flagships engineered for speed, conversion, and enduring brand prestige.',
+    'website-software-development': {
+        slug: 'website-software-development',
+        title: 'Website & Software Development',
+        heroTag: 'Core & Flagship Engineering',
+        tagline: 'Bespoke digital flagships, high-performance web applications, and scalable custom software systems.',
         shortDesc:
-            "We design and build bespoke, high-performance websites that capture your brand's essence and drive meaningful user action. Our sites are engineered for speed, responsiveness, and SEO optimization to convert visitors into customers.",
+            'From brand-defining digital flagships to full-stack web applications and custom software platforms, we design and engineer scalable digital systems that streamline operations, elevate your brand, and drive measurable business growth.',
         overview:
-            'At Foremark, a website is never treated as a static digital brochure. It is the primary engine of your brand’s digital presence, authority, and revenue. We build custom-engineered web experiences from the ground up — zero bloat, no generic templates, and obsessively tuned for performance, responsive beauty, and technical SEO.',
+            'At Foremark, we engineer bespoke digital experiences and mission-critical software systems tailored to modern businesses. Whether you require a brand-defining corporate website, a high-converting headless e-commerce store, a multi-tenant SaaS platform, or an internal operational system, our solutions are architected from the ground up with zero bloat, enterprise-grade type safety, sub-second load speeds, and zero-compromise security.',
         icon: Code2,
-        animation: WebsiteAnimation,
-        howWeDoItTitle: 'The Foremark Standard: How We Build Websites',
+        animation: WebAppAnimation,
+        howWeDoItTitle: 'The Foremark Standard: How We Build Websites & Software',
         howWeDoItSubtitle:
-            'We combine Swiss-style typographic precision with modern frontend engineering to deliver websites that outperform your competition on every dimension.',
+            'We combine Swiss-style typographic precision with modern full-stack architecture, clean domain boundaries, and end-to-end type safety to deliver systems that outperform competition and scale without technical debt.',
         philosophy: [
             {
                 icon: Layout,
-                title: 'Component-Driven Architecture',
+                title: 'Component-Driven Architecture & Design Systems',
                 description:
-                    'We craft bespoke design systems and modular React/Next.js components that guarantee visual cohesion, fluid responsive scaling across every screen, and effortless maintainability.',
+                    'We craft bespoke design systems and modular React/Next.js components that guarantee visual cohesion, fluid responsive scaling across every device, and effortless long-term maintainability.',
             },
             {
                 icon: Zap,
-                title: 'Sub-Second Performance SLA',
+                title: 'Sub-Second Performance SLA & Core Web Vitals',
                 description:
-                    'Every asset, script, and font is optimized with server-side caching, edge delivery, and modern image compression to achieve 98+ Google Lighthouse scores and instant user responsiveness.',
+                    'Every asset, script, and database query is optimized with server-side caching, edge delivery, and modern bundling to achieve 98+ Google Lighthouse scores and instant user responsiveness.',
+            },
+            {
+                icon: Database,
+                title: 'Domain-Driven Full-Stack Architecture',
+                description:
+                    'We decouple frontends, APIs, and background job workers using modular architectures, ensuring each layer can scale independently and handle high concurrency without cascading failures.',
+            },
+            {
+                icon: ShieldCheck,
+                title: 'Zero-Trust Security & Type Safety',
+                description:
+                    'From database schemas to API contracts and frontend views, full TypeScript/tRPC typing prevents runtime regressions, while role-based access controls and encrypted sessions safeguard user data.',
             },
             {
                 icon: Search,
-                title: 'Search Engine Dominance',
+                title: 'Technical SEO & Search Engine Dominance',
                 description:
-                    'Semantic HTML5, automated dynamic OpenGraph cards, schema.org structured data, and edge-rendered metadata ensure search engines rank and understand your site effortlessly.',
+                    'Semantic HTML5, automated OpenGraph generation, schema.org structured data, and edge-rendered metadata ensure search engines rank and understand your digital platforms effortlessly.',
             },
             {
                 icon: Layers,
-                title: 'Headless CMS Flexibility',
+                title: 'Headless CMS Flexibility & Cloud Scale',
                 description:
-                    'We integrate client-friendly headless CMS platforms (Sanity, Strapi, Contentful) so your marketing team can publish updates in seconds without breaking design integrity.',
+                    'We integrate client-friendly headless CMS platforms (Sanity, Strapi) and modern databases so your marketing team can publish updates freely while engineering scales seamlessly.',
             },
         ],
         deliverables: [
             {
                 icon: Globe,
-                title: 'Custom Corporate Websites',
+                title: 'Custom Corporate Websites & Flagships',
                 description:
                     'Brand-defining digital flagships crafted with custom typography, bespoke layouts, and interactive brand storytelling.',
             },
             {
-                icon: Smartphone,
-                title: 'Responsive Web Experiences',
+                icon: Layers,
+                title: 'Custom SaaS Platforms & Web Applications',
                 description:
-                    'Flawless cross-device touch interactions, adaptive mobile viewports, and native-feeling gesture support.',
-            },
-            {
-                icon: DollarSign,
-                title: 'Headless E-Commerce',
-                description:
-                    'High-converting storefronts built on Shopify Plus or custom engines with sub-second checkout speeds.',
-            },
-            {
-                icon: Sparkles,
-                title: 'Interactive Landing Pages',
-                description:
-                    'High-impact campaign pages with dynamic 3D elements, micro-interactions, and targeted conversion funnels.',
-            },
-            {
-                icon: FileText,
-                title: 'Technical SEO & Schema',
-                description:
-                    'Complete structured data setup, XML sitemaps, semantic hierarchy, and crawl budget optimization.',
+                    'Multi-tenant subscription web applications with integrated payment billing, team seats, role permissions, and analytics dashboards.',
             },
             {
                 icon: Sliders,
-                title: 'CMS Setup & Client Training',
+                title: 'Client Portals & Internal Operations Systems',
                 description:
-                    'Tailored editor dashboards with role permissions, preview environments, and step-by-step team training.',
+                    'Secure authenticated workspaces, custom ERPs, and workflow dashboards tailored to your exact operational processes.',
+            },
+            {
+                icon: DollarSign,
+                title: 'Headless E-Commerce Solutions',
+                description:
+                    'High-converting storefronts built on Shopify Plus or custom headless engines with sub-second checkout speeds.',
+            },
+            {
+                icon: Terminal,
+                title: 'High-Throughput APIs & Integrations',
+                description:
+                    'REST, GraphQL, and tRPC endpoints with rate limiting, Swagger documentation, and deep third-party CRM/payment integrations.',
+            },
+            {
+                icon: FileText,
+                title: 'Technical SEO & Performance Optimization',
+                description:
+                    'Complete structured data setup, XML sitemaps, semantic hierarchy, and Core Web Vitals optimization.',
             },
         ],
         metrics: [
@@ -172,19 +184,19 @@ export const servicesData: Record<string, ServiceData> = {
                 description: 'Industry-leading Core Web Vitals across mobile & desktop devices',
             },
             {
+                value: '99.9%',
+                label: 'Crash-Free Sessions',
+                description: 'Rigorous test coverage and defensive error boundaries in production',
+            },
+            {
                 value: '98+',
                 label: 'Lighthouse Score',
                 description: 'Audited across performance, accessibility, SEO, and engineering standards',
             },
             {
-                value: '2x+',
-                label: 'Avg. Conversion Uplift',
-                description: 'Measured across client redesigns within the first 60 days of launch',
-            },
-            {
                 value: '100%',
-                label: 'Codebase Ownership',
-                description: 'Complete intellectual property transfer with clean, documented TypeScript repository',
+                label: 'Codebase & IP Ownership',
+                description: 'Complete intellectual property transfer with clean, documented TypeScript repositories',
             },
         ],
         techStack: [
@@ -193,265 +205,86 @@ export const servicesData: Record<string, ServiceData> = {
                 items: ['Next.js 15', 'React 19', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'GSAP'],
             },
             {
-                category: 'Headless CMS',
-                items: ['Sanity.io', 'Strapi', 'Contentful', 'MDX'],
+                category: 'Backend & Services',
+                items: ['Node.js', 'Express / NestJS', 'Go', 'Python', 'tRPC', 'GraphQL', 'REST APIs'],
             },
             {
-                category: 'Edge & Infrastructure',
-                items: ['Vercel Edge Network', 'Cloudflare CDN', 'AWS S3', 'GitHub Actions CI/CD'],
+                category: 'Databases & CMS',
+                items: ['PostgreSQL', 'Supabase', 'Redis', 'Prisma ORM', 'Sanity.io', 'Strapi'],
             },
             {
-                category: 'Analytics & Optimization',
-                items: ['Google Tag Manager', 'PostHog', 'Schema.org', 'Lighthouse CI'],
+                category: 'DevOps & Infrastructure',
+                items: ['Docker', 'AWS ECS / S3', 'Vercel Edge', 'Clerk Auth', 'GitHub Actions CI/CD'],
             },
         ],
         processSteps: [
             {
                 step: '01',
-                title: 'Discovery & Brand Positioning',
+                title: 'Discovery & Technical Scoping',
                 description:
-                    'We unpack your target audience, commercial positioning, conversion objectives, and competitive landscape before touching Figma or code.',
+                    'We unpack your target audience, commercial positioning, data models, API specs, and technical constraints before writing code.',
             },
             {
                 step: '02',
-                title: 'Wireframing & UI/UX Design',
+                title: 'Wireframing & UI/UX Prototyping',
                 description:
                     'Iterative design sprints crafting interactive layout prototypes, design tokens, typography, and micro-interactions in Figma.',
             },
             {
                 step: '03',
-                title: 'Modern Full-Stack Engineering',
+                title: 'Agile Full-Stack Engineering',
                 description:
-                    'Writing clean, typed TypeScript and React components with atomic CSS, headless CMS schema hooks, and smooth animation triggers.',
+                    'Writing clean, typed TypeScript and React components with atomic CSS, typed API contracts, and database schema migrations in focused sprints.',
             },
             {
                 step: '04',
-                title: 'Cross-Device QA & Core Web Vitals',
+                title: 'QA, Security Audit & Web Vitals',
                 description:
-                    'Rigorous cross-browser, responsive, accessibility (WCAG 2.1), and Core Web Vitals stress tests under simulated throttled networks.',
+                    'Rigorous cross-device testing, penetration audits, database query optimization, accessibility (WCAG 2.1), and Core Web Vitals stress tests.',
             },
             {
                 step: '05',
                 title: 'Launch & Hypercare Support',
                 description:
-                    'Zero-downtime DNS deployment, team CMS onboarding, production analytics verification, and 30-day dedicated hypercare support.',
+                    'Zero-downtime production deployment, CI/CD pipeline automation, team CMS onboarding, and dedicated 30-day hypercare support.',
             },
         ],
         faqs: [
             {
-                question: 'How long does a website development project take?',
+                question: 'How long does a website or software development project take?',
                 answer:
-                    'Most marketing websites take between 3 to 6 weeks from kickoff to final launch. Larger multi-page portals or headless e-commerce builds typically take 6 to 10 weeks depending on custom integrations.',
+                    'Marketing websites typically take between 3 to 5 weeks from kickoff to final launch. Full-stack web applications and custom software platforms range from 6 to 14 weeks depending on architectural scope and custom integrations.',
             },
             {
-                question: 'Do we get full ownership of the code and design?',
+                question: 'Do we get full ownership of the code and intellectual property?',
                 answer:
                     'Yes, 100%. Once completed and launched, all intellectual property, Figma design files, source code repositories, and deployment configurations are fully transferred to your organization.',
             },
             {
                 question: 'Can our team update content without developer assistance?',
                 answer:
-                    'Absolutely. We integrate visual headless CMS setups like Sanity or Strapi, configured so your marketing and editorial team members can easily edit copy, update images, and publish blog posts without breaking layouts.',
+                    'Absolutely. We integrate visual headless CMS setups like Sanity or Strapi, configured so your marketing and editorial team members can easily edit copy, update images, and publish pages without breaking layouts.',
             },
             {
-                question: 'Will the site be optimized for mobile devices and search engines?',
+                question: 'Can you modernize or rebuild our existing legacy software or website?',
                 answer:
-                    'Mobile responsiveness and technical SEO are built into our core engineering standards. Every site we ship adheres to mobile-first UX, Core Web Vitals targets, and schema markup best practices.',
+                    'Yes. We frequently audit and refactor existing legacy applications and websites, either incrementally modernizing components with modern microservices or engineering clean greenfield rebuilds.',
             },
             {
-                question: 'What happens after the website is launched?',
+                question: 'How do you ensure data security, performance, and SEO?',
                 answer:
-                    'We provide a 30-day warranty and hypercare period post-launch. Following that, we offer ongoing maintenance and continuous improvement retainers to support your growth.',
+                    'We implement industry-standard encryption (TLS 1.3 / AES-256), strict role-based access control, automated vulnerability scanning, semantic HTML5 hierarchy, and sub-second Core Web Vitals optimization.',
+            },
+            {
+                question: 'What happens after the project is launched?',
+                answer:
+                    'We provide a dedicated 30-day warranty and hypercare period post-launch. Following that, we offer ongoing maintenance and continuous improvement retainers to support your growth.',
             },
         ],
         seo: {
-            title: 'Website Development Services | Foremark Technologies',
+            title: 'Website & Software Development Services | Foremark Technologies',
             description:
-                'Bespoke, high-performance websites engineered for speed, SEO, and conversion by Foremark Technologies.',
-        },
-    },
-
-    'software-development': {
-        slug: 'software-development',
-        title: 'Web App / Software Development',
-        heroTag: 'Most Requested',
-        tagline: 'Scalable full-stack software, custom SaaS platforms, and high-concurrency internal systems.',
-        shortDesc:
-            'From internal tools to customer-facing platforms, we design and engineer full-stack software that streamlines operations and scales with demand. Our team handles everything from system architecture to deployment, so your product is fast, secure, and built to last.',
-        overview:
-            'Foremark builds mission-critical web applications and software systems designed to solve complex business bottlenecks. Whether engineering a multi-tenant SaaS application, a bespoke client portal, or an internal operational platform, our software is architected with enterprise-grade type safety, high concurrency, and zero-compromise security.',
-        icon: Cpu,
-        animation: WebAppAnimation,
-        howWeDoItTitle: 'The Foremark Standard: How We Build Software',
-        howWeDoItSubtitle:
-            'We adhere to rigorous architectural design patterns, end-to-end type safety, and clean domain boundaries to create platforms that scale without technical debt.',
-        philosophy: [
-            {
-                icon: Database,
-                title: 'Domain-Driven System Architecture',
-                description:
-                    'We decouple frontends, APIs, and background job workers using modular architectures, ensuring each layer can scale independently without cascading failures.',
-            },
-            {
-                icon: ShieldCheck,
-                title: 'End-to-End Type Safety',
-                description:
-                    'From database schemas to API contracts and frontend views, full TypeScript/tRPC typing prevents runtime regressions and accelerates feature velocity.',
-            },
-            {
-                icon: Lock,
-                title: 'Zero-Trust Security & RBAC',
-                description:
-                    'Granular role-based access control, encrypted sessions, strict data isolation, and automated security checks protect your company and user data.',
-            },
-            {
-                icon: GitBranch,
-                title: 'Automated CI/CD & Staging',
-                description:
-                    'Every pull request triggers automated linting, unit tests, and ephemeral staging previews, ensuring production deployments are completely predictable.',
-            },
-        ],
-        deliverables: [
-            {
-                icon: Layers,
-                title: 'Custom SaaS Platforms',
-                description:
-                    'Multi-tenant subscription web applications with integrated payment billing, team seats, and analytics dashboards.',
-            },
-            {
-                icon: Lock,
-                title: 'Client & Vendor Portals',
-                description:
-                    'Secure authenticated workspaces for document sharing, automated workflows, and customer onboarding.',
-            },
-            {
-                icon: Sliders,
-                title: 'Internal Operations Systems',
-                description:
-                    'Custom ERPs, inventory managers, and dispatch dashboards tailored to your exact operational workflows.',
-            },
-            {
-                icon: Terminal,
-                title: 'REST & GraphQL APIs',
-                description:
-                    'High-throughput API services with rate limiting, Swagger/OpenAPI documentation, and webhooks.',
-            },
-            {
-                icon: Database,
-                title: 'Database Architecture & Cache',
-                description:
-                    'Normalized relational and NoSQL databases with indexing, replication, Redis caching, and backup strategies.',
-            },
-            {
-                icon: Zap,
-                title: 'Third-Party Integrations',
-                description:
-                    'Deep two-way integrations with payment gateways, banking APIs, CRMs, and accounting software.',
-            },
-        ],
-        metrics: [
-            {
-                value: '99.9%',
-                label: 'Crash-Free Sessions',
-                description: 'Rigorous test coverage and defensive error boundaries in production',
-            },
-            {
-                value: '2-Week',
-                label: 'Sprint Cadence',
-                description: 'Transparent progress demos and rapid incremental feature shipping',
-            },
-            {
-                value: '10x',
-                label: 'Concurrency Scalability',
-                description: 'Architected to handle sudden traffic spikes without degraded latency',
-            },
-            {
-                value: '100%',
-                label: 'Clean IP Transfer',
-                description: 'Fully documented code, Dockerized environments, and architecture diagrams',
-            },
-        ],
-        techStack: [
-            {
-                category: 'Frontend & State',
-                items: ['React 19', 'Next.js', 'TypeScript', 'Tailwind CSS', 'TanStack Query', 'Zustand'],
-            },
-            {
-                category: 'Backend & Services',
-                items: ['Node.js', 'Express / NestJS', 'Go', 'Python', 'tRPC', 'GraphQL', 'REST'],
-            },
-            {
-                category: 'Databases & Storage',
-                items: ['PostgreSQL', 'Supabase', 'Redis', 'Prisma ORM', 'AWS S3'],
-            },
-            {
-                category: 'DevOps & Auth',
-                items: ['Docker', 'AWS ECS', 'Clerk Auth', 'NextAuth', 'GitHub Actions'],
-            },
-        ],
-        processSteps: [
-            {
-                step: '01',
-                title: 'Technical Scoping & Architecture',
-                description:
-                    'We define domain entities, database schemas, API specs, authentication rules, and technical constraints.',
-            },
-            {
-                step: '02',
-                title: 'Interactive Prototyping',
-                description:
-                    'Clickable prototypes and user journey validation to confirm UX flows before writing backend code.',
-            },
-            {
-                step: '03',
-                title: 'Agile Development Sprints',
-                description:
-                    'Two-week sprints with bi-weekly staging builds, code reviews, and transparent demo walkthroughs.',
-            },
-            {
-                step: '04',
-                title: 'Security Audit & Stress QA',
-                description:
-                    'Penetration audits, stress load testing, database query optimization, and user acceptance testing.',
-            },
-            {
-                step: '05',
-                title: 'Production Cutover & Handover',
-                description:
-                    'Orchestrated database migration, production cutover, observability setup, and team documentation.',
-            },
-        ],
-        faqs: [
-            {
-                question: 'How do you handle project management and communication?',
-                answer:
-                    'We run in 2-week sprints with weekly or bi-weekly video check-ins. You get direct Slack/WhatsApp access to our engineers and staging environments to test features as they are built.',
-            },
-            {
-                question: 'Can you modernize or rebuild our existing legacy software?',
-                answer:
-                    'Yes. We frequently audit and refactor existing legacy applications, either incrementally replacing components with modern microservices or engineering clean greenfield rebuilds.',
-            },
-            {
-                question: 'How do you ensure data security and privacy?',
-                answer:
-                    'We implement industry-standard encryption in transit (TLS 1.3) and at rest (AES-256), strict role-based authorization, sanitization against SQL injection/XSS, and audit logs.',
-            },
-            {
-                question: 'What is your typical engagement model?',
-                answer:
-                    'We work on fixed-scope milestone projects for well-defined specifications, or dedicated monthly retainer squads for evolving software roadmaps.',
-            },
-            {
-                question: 'Who owns the software and intellectual property?',
-                answer:
-                    'You retain 100% ownership of all source code, database architectures, and assets from day one.',
-            },
-        ],
-        seo: {
-            title: 'Custom Web App & Software Development | Foremark Technologies',
-            description:
-                'Full-stack web application and software development services built for scale, performance, and security by Foremark.',
+                'Bespoke websites, custom web applications, and scalable full-stack software engineered for performance, security, and growth by Foremark.',
         },
     },
 
@@ -823,5 +656,11 @@ export const servicesData: Record<string, ServiceData> = {
         },
     },
 };
+
+// Aliases for seamless backwards compatibility with older links / bookmarks
+servicesData['website-development'] = servicesData['website-software-development'];
+servicesData['software-development'] = servicesData['website-software-development'];
+servicesData['web-app-development'] = servicesData['website-software-development'];
+servicesData['web-software-development'] = servicesData['website-software-development'];
 
 export const serviceSlugs = Object.keys(servicesData);
