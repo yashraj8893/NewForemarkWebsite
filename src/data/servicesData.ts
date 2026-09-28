@@ -1,11 +1,9 @@
 import {
     Code2,
-    Cpu,
     Server,
     Workflow,
     Globe,
     Layout,
-    Smartphone,
     Search,
     Database,
     Layers,
@@ -18,7 +16,6 @@ import {
     FileCheck,
     Bot,
     ShieldCheck,
-    Sparkles,
     Shield,
     MessageSquare,
     DollarSign,
@@ -27,7 +24,7 @@ import {
     Repeat,
     type LucideIcon,
 } from 'lucide-react';
-import { WebsiteAnimation, WebAppAnimation, ServerAnimation, AutomationAnimation } from '../components/ServicesGrid';
+import { WebAppAnimation, ServerAnimation, AutomationAnimation } from '../components/ServicesGrid';
 
 export interface DeliverableItem {
     title: string;
