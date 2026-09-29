@@ -71,7 +71,7 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, isOpen, onClose })
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
             onClick={onClose}
-            className="fixed inset-0 bg-portfolio-dark/75 backdrop-blur-md cursor-pointer"
+            className="fixed inset-0 bg-[#000000]/85 backdrop-blur-xl cursor-pointer"
             aria-hidden="true"
           />
 
@@ -85,13 +85,13 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, isOpen, onClose })
               ease: [0.16, 1, 0.3, 1]
             }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-4xl max-h-[92vh] bg-portfolio-bg rounded-2xl sm:rounded-3xl shadow-[0_30px_90px_rgba(0,0,0,0.45),0_0_0_1px_rgba(255,255,255,0.08)] border border-portfolio-dark/10 flex flex-col overflow-hidden z-10"
+            className="relative w-full max-w-4xl max-h-[92vh] bg-[#0a0805] text-[#f9f5f1] rounded-2xl sm:rounded-3xl shadow-[0_30px_90px_rgba(0,0,0,0.8),0_0_0_1px_rgba(234,112,8,0.15)] border border-white/10 flex flex-col overflow-hidden z-10"
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-article-title"
           >
             {/* Live Reading Progress Indicator Bar */}
-            <div className="absolute top-0 left-0 right-0 h-1 bg-portfolio-dark/5 z-30">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-white/5 z-30">
               <div
                 className="h-full bg-portfolio-gold transition-all duration-150 ease-out"
                 style={{ width: `${scrollProgress}%` }}
@@ -99,21 +99,21 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, isOpen, onClose })
             </div>
 
             {/* Frosted Glass Sticky HUD Controls */}
-            <div className="sticky top-0 left-0 right-0 z-20 flex items-center justify-between px-4 sm:px-6 py-3.5 bg-portfolio-bg/85 backdrop-blur-md border-b border-portfolio-dark/10">
+            <div className="sticky top-0 left-0 right-0 z-20 flex items-center justify-between px-4 sm:px-6 py-3.5 bg-[#0a0805]/90 backdrop-blur-md border-b border-white/10">
               {/* Left: Back Button */}
               <button
                 onClick={onClose}
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-portfolio-dark/10 text-portfolio-dark text-[11px] font-bold uppercase tracking-wider hover:bg-portfolio-dark hover:text-white transition-all shadow-xs group cursor-pointer"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#140f0a] border border-white/10 text-white text-[11px] font-bold uppercase tracking-wider hover:bg-portfolio-gold hover:text-white transition-all shadow-xs group cursor-pointer font-mono"
               >
                 <ArrowLeft size={13} className="transition-transform group-hover:-translate-x-0.5" />
                 <span>Back</span>
               </button>
 
               {/* Center: Live Post Breadcrumb / Category */}
-              <div className="hidden sm:flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-portfolio-muted">
+              <div className="hidden sm:flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-[#a3998e] font-mono">
                 <span className="w-1.5 h-1.5 rounded-full bg-portfolio-gold" />
-                <span className="text-portfolio-dark">{post.category}</span>
-                <span className="text-portfolio-dark/20">•</span>
+                <span className="text-white">{post.category}</span>
+                <span className="text-white/20">•</span>
                 <span>{post.readTime}</span>
               </div>
 
@@ -122,12 +122,12 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, isOpen, onClose })
                 <button
                   onClick={handleShare}
                   title="Copy link"
-                  className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 border border-portfolio-dark/10 text-portfolio-muted hover:text-portfolio-dark text-[11px] font-bold uppercase tracking-wider transition-all shadow-xs cursor-pointer"
+                  className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#140f0a] border border-white/10 text-[#a3998e] hover:text-white text-[11px] font-bold uppercase tracking-wider transition-all shadow-xs cursor-pointer font-mono"
                 >
                   {copied ? (
                     <>
-                      <Check size={13} className="text-emerald-600" />
-                      <span className="text-emerald-600">Copied</span>
+                      <Check size={13} className="text-emerald-400" />
+                      <span className="text-emerald-400">Copied</span>
                     </>
                   ) : (
                     <>
@@ -137,14 +137,14 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, isOpen, onClose })
                   )}
                 </button>
 
-                <span className="hidden md:inline-block text-[10px] uppercase font-mono tracking-widest text-portfolio-muted/60 bg-portfolio-dark/5 px-2 py-1 rounded border border-portfolio-dark/5">
+                <span className="hidden md:inline-block text-[10px] uppercase font-mono tracking-widest text-[#a3998e] bg-white/5 px-2 py-1 rounded border border-white/5">
                   ESC
                 </span>
 
                 <button
                   onClick={onClose}
                   aria-label="Close reader"
-                  className="w-8 h-8 rounded-full bg-white/90 border border-portfolio-dark/10 flex items-center justify-center text-portfolio-dark hover:bg-portfolio-dark hover:text-white transition-all shadow-xs cursor-pointer"
+                  className="w-8 h-8 rounded-full bg-[#140f0a] border border-white/10 flex items-center justify-center text-white hover:bg-portfolio-gold transition-all shadow-xs cursor-pointer"
                 >
                   <X size={15} />
                 </button>
@@ -160,13 +160,13 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, isOpen, onClose })
               tabIndex={0}
             >
               {/* Cinematic Cover Banner */}
-              <div className="relative w-full aspect-[21/9] sm:aspect-[24/8] md:aspect-[21/7] bg-portfolio-dark overflow-hidden flex items-center justify-center">
+              <div className="relative w-full aspect-[21/9] sm:aspect-[24/8] md:aspect-[21/7] bg-[#070503] overflow-hidden flex items-center justify-center">
                 <BlogCover theme={post.coverTheme} className="h-full w-full object-cover scale-[1.02]" />
-                <div className="absolute inset-0 bg-gradient-to-t from-portfolio-bg via-portfolio-bg/25 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0805] via-[#0a0805]/30 to-transparent pointer-events-none" />
 
                 {/* Floating category badge on banner */}
                 <div className="absolute bottom-4 left-6 sm:left-10 md:left-14 z-10">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-portfolio-gold bg-portfolio-dark/90 backdrop-blur-md border border-portfolio-gold/30 px-3.5 py-1 rounded-full shadow-md">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-portfolio-gold bg-[#0a0805]/95 backdrop-blur-md border border-portfolio-gold/30 px-3.5 py-1 rounded-full shadow-md font-mono">
                     {post.category}
                   </span>
                 </div>
@@ -177,29 +177,29 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, isOpen, onClose })
                 {/* Article Headline */}
                 <h1
                   id="modal-article-title"
-                  className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-portfolio-dark mb-6 leading-tight"
+                  className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white mb-6 leading-tight"
                 >
                   {post.title}
                 </h1>
 
                 {/* Author & Publishing Metadata */}
-                <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-portfolio-dark/10 mb-8">
+                <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/10 mb-8">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-portfolio-gold/15 border border-portfolio-gold/30 flex items-center justify-center text-portfolio-gold font-bold text-sm">
                       {post.author.charAt(0)}
                     </div>
                     <div>
-                      <div className="text-sm font-bold text-portfolio-dark">{post.author}</div>
-                      <div className="text-[11px] text-portfolio-muted uppercase tracking-wider font-semibold">Technical Dispatch</div>
+                      <div className="text-sm font-bold text-white">{post.author}</div>
+                      <div className="text-[11px] text-portfolio-gold uppercase tracking-wider font-semibold font-mono">Technical Dispatch</div>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4 text-xs text-portfolio-muted font-bold uppercase tracking-wider">
+                  <div className="flex items-center gap-4 text-xs text-[#a3998e] font-bold uppercase tracking-wider font-mono">
                     <span className="flex items-center gap-1.5">
                       <Calendar size={13} className="text-portfolio-gold" />
                       {post.date}
                     </span>
-                    <span className="text-portfolio-dark/20">•</span>
+                    <span className="text-white/20">•</span>
                     <span className="flex items-center gap-1.5">
                       <Clock size={13} className="text-portfolio-gold" />
                       {post.readTime}
@@ -208,14 +208,14 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, isOpen, onClose })
                 </div>
 
                 {/* Pull-quote / Excerpt Lead */}
-                <div className="bg-portfolio-card/50 rounded-2xl p-6 sm:p-7 border-l-4 border-portfolio-gold mb-10 shadow-xs">
-                  <p className="text-portfolio-dark/85 text-base sm:text-lg italic font-medium leading-relaxed">
+                <div className="bg-[#140f0a] rounded-2xl p-6 sm:p-7 border-l-4 border-portfolio-gold mb-10 shadow-lg border border-white/[0.04]">
+                  <p className="text-white/90 text-base sm:text-lg italic font-medium leading-relaxed">
                     "{post.excerpt}"
                   </p>
                 </div>
 
                 {/* Formatted Article Body */}
-                <div className="space-y-6 text-portfolio-text/90 text-[15px] sm:text-[17px] leading-[1.85] font-normal text-justify sm:text-left">
+                <div className="space-y-6 text-[#d4c9bf] text-[15px] sm:text-[17px] leading-[1.85] font-normal text-justify sm:text-left">
                   {post.content.map((paragraph, index) => (
                     <p key={index}>
                       {paragraph}
@@ -224,22 +224,22 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, isOpen, onClose })
                 </div>
 
                 {/* Bottom Architectural Callout Banner */}
-                <div className="mt-14 pt-10 border-t border-portfolio-dark/10">
-                  <div className="bg-portfolio-dark rounded-2xl sm:rounded-3xl p-6 sm:p-10 text-white relative overflow-hidden flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
+                <div className="mt-14 pt-10 border-t border-white/10">
+                  <div className="bg-[#130f0a] border border-amber-500/20 rounded-2xl sm:rounded-3xl p-6 sm:p-10 text-white relative overflow-hidden flex flex-col sm:flex-row items-center justify-between gap-6 shadow-2xl">
                     <div className="absolute inset-0 opacity-10 pointer-events-none">
                       <svg width="100%" height="100%" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full object-cover">
-                        <path d="M0 200C100 150 200 180 300 120C400 60 500 100 600 80C700 60 800 120 1000 100" stroke="white" strokeWidth="0.5" strokeDasharray="4 4" />
+                        <path d="M0 200C100 150 200 180 300 120C400 60 500 100 600 80C700 60 800 120 1000 100" stroke="#ea7008" strokeWidth="0.8" strokeDasharray="4 4" />
                       </svg>
                     </div>
 
                     <div className="relative z-10 text-center sm:text-left max-w-md">
-                      <span className="text-portfolio-gold font-bold mb-2 text-[10px] tracking-widest block uppercase">
+                      <span className="text-portfolio-gold font-bold mb-2 text-[10px] tracking-widest block uppercase font-mono">
                         Engineering Partner
                       </span>
-                      <h4 className="text-lg sm:text-xl font-bold tracking-tight mb-2">
+                      <h4 className="text-lg sm:text-xl font-bold tracking-tight mb-2 text-white">
                         Let's build scalable digital systems together
                       </h4>
-                      <p className="text-xs sm:text-sm text-white/60">
+                      <p className="text-xs sm:text-sm text-[#a3998e]">
                         Have an engineering or product design challenge? Foremark creates performant software for ambitious teams.
                       </p>
                     </div>
@@ -247,7 +247,7 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, isOpen, onClose })
                     <Link
                       to="/contact"
                       onClick={onClose}
-                      className="relative z-10 inline-flex items-center gap-2 bg-portfolio-gold text-white font-bold text-xs uppercase tracking-widest px-6 py-3.5 rounded-full hover:bg-white hover:text-portfolio-dark transition-all shrink-0 shadow-lg cursor-pointer"
+                      className="btn-primary relative z-10 inline-flex items-center gap-2 text-xs uppercase tracking-widest px-6 py-3.5 rounded-full shrink-0 shadow-lg cursor-pointer"
                     >
                       <span>Start Conversation</span>
                       <ArrowUpRight size={14} />
@@ -258,7 +258,7 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, isOpen, onClose })
                   <div className="flex items-center justify-between mt-8 pt-4">
                     <button
                       onClick={onClose}
-                      className="inline-flex items-center gap-2 text-portfolio-muted hover:text-portfolio-dark text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-2 text-[#a3998e] hover:text-portfolio-gold text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer font-mono"
                     >
                       <ArrowLeft size={13} /> Back to all dispatches
                     </button>
@@ -267,7 +267,7 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, isOpen, onClose })
                       onClick={() => {
                         contentRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
                       }}
-                      className="text-[11px] text-portfolio-gold hover:underline font-bold uppercase tracking-wider cursor-pointer"
+                      className="text-[11px] text-portfolio-gold hover:underline font-bold uppercase tracking-wider cursor-pointer font-mono"
                     >
                       Back to top ↑
                     </button>

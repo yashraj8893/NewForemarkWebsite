@@ -124,7 +124,7 @@ const faqs = [
     {
         question: 'How long does a typical website or web app project take?',
         answer:
-            'Most marketing websites take 3–5 weeks from kickoff to launch. Web applications vary more depending on scope, typically ranging from 6–16 weeks. We\u2019ll give you a concrete timeline after the discovery phase.',
+            'Most marketing websites take 3–5 weeks from kickoff to launch. Web applications vary more depending on scope, typically ranging from 6–16 weeks. We’ll give you a concrete timeline after the discovery phase.',
     },
     {
         question: 'Do you offer support after the project launches?',
@@ -139,7 +139,7 @@ const faqs = [
     {
         question: 'Can you help scale or improve an existing product?',
         answer:
-            'Absolutely. We regularly step into existing codebases to audit performance, fix technical debt, and extend functionality — you don\u2019t need to start from scratch.',
+            'Absolutely. We regularly step into existing codebases to audit performance, fix technical debt, and extend functionality — you don’t need to start from scratch.',
     },
     {
         question: 'How do you price a project?',
@@ -151,14 +151,14 @@ const faqs = [
 const ServicesPage = () => {
     const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
     return (
-        <main className="relative w-full overflow-hidden bg-portfolio-bg">
+        <main className="relative w-full overflow-hidden bg-[#0a0805] text-[#f9f5f1]">
             {/* ─── Hero ─────────────────────────────────────────────── */}
             <section className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pt-12 sm:pt-16 pb-20 sm:pb-32">
                 <div className="flex flex-col mb-16">
                     <motion.span
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-portfolio-gold font-bold mb-3 text-xs tracking-widest uppercase block"
+                        className="text-portfolio-gold font-bold mb-3 text-xs tracking-widest uppercase block font-mono"
                     >
                         What we do
                     </motion.span>
@@ -166,7 +166,7 @@ const ServicesPage = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-4 sm:mb-6"
+                        className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-4 sm:mb-6 text-white"
                     >
                         Services built for <br /> modern businesses
                     </motion.h1>
@@ -174,7 +174,7 @@ const ServicesPage = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="text-base text-portfolio-muted max-w-xl leading-relaxed"
+                        className="text-base text-[#a3998e] max-w-xl leading-relaxed"
                     >
                         From concept to code, we design, build, and maintain the digital systems that help
                         companies run better — websites, software, infrastructure, and automation.
@@ -185,10 +185,10 @@ const ServicesPage = () => {
                         transition={{ delay: 0.3 }}
                         className="flex items-center gap-4 flex-wrap mt-8"
                     >
-                        <Link to="/contact" className="btn-primary flex items-center gap-2 px-10 cursor-target border border-transparent hover:border-portfolio-gold transition-colors">
+                        <Link to="/contact" className="btn-primary flex items-center gap-2 px-10 cursor-target">
                             Start a project
                         </Link>
-                        <Link to="/projects" className="btn-ghost flex items-center gap-2 px-10 cursor-target hover:bg-portfolio-dark/5 transition-all">
+                        <Link to="/projects" className="btn-ghost flex items-center gap-2 px-10 cursor-target">
                             View our work
                         </Link>
                     </motion.div>
@@ -197,24 +197,23 @@ const ServicesPage = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 }}
-                        className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-12 max-w-6xl"
+                        className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-12 max-w-6xl"
                     >
                         {[
-                            { icon: Rocket, title: 'Launch-ready builds', text: 'Not just prototypes — production-grade software .' },
-                            { icon: ShieldCheck, title: 'Senior engineers', text: 'Every project is led by experienced hands, end to end.' },
-                            { icon: Clock, title: 'Clear timelines', text: 'Honest scopes and dates you can actually plan around.' },
+                            { title: 'Launch-ready builds', text: 'Not just prototypes — production-grade software.' },
+                            { title: 'Senior engineers', text: 'Every project is led by experienced hands, end to end.' },
+                            { title: 'Clear timelines', text: 'Honest scopes and dates you can actually plan around.' },
                         ].map((item) => (
                             <div
                                 key={item.title}
-                                className="p-4 flex items-center gap-4 rounded-2xl border border-portfolio-dark/10 bg-white/60 hover:bg-white hover:border-portfolio-gold/30 hover:-translate-y-1 transition-all duration-300 cursor-target"
+                                className="p-6 sm:p-7 flex flex-col justify-center rounded-2xl border border-white/[0.08] bg-[#140f0a] hover:bg-[#18120b] hover:border-amber-500/40 hover:-translate-y-1 transition-all duration-300 shadow-xl group"
                             >
-                                <div className="w-11 h-11 rounded-xl bg-portfolio-gold/10 border border-portfolio-gold/20 flex items-center justify-center shrink-0">
-                                    <item.icon size={18} className="text-portfolio-gold" />
-                                </div>
-                                <div>
-                                    <p className="text-portfolio-dark text-sm font-bold mb-1">{item.title}</p>
-                                    <p className="text-portfolio-muted text-xs leading-relaxed">{item.text}</p>
-                                </div>
+                                <h3 className="text-white text-base sm:text-lg font-bold tracking-tight mb-2">
+                                    {item.title}
+                                </h3>
+                                <p className="text-[#a3998e] text-sm leading-relaxed">
+                                    {item.text}
+                                </p>
                             </div>
                         ))}
                     </motion.div>
@@ -225,7 +224,7 @@ const ServicesPage = () => {
             <section className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pb-28 sm:pb-36 relative z-10">
                 <div className="text-center mb-16 sm:mb-20">
                     <span className="section-label text-portfolio-gold">Our services</span>
-                    <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-portfolio-dark max-w-3xl mx-auto mt-2 leading-[1.1]">
+                    <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-white max-w-3xl mx-auto mt-2 leading-[1.1]">
                         Everything you need to build and run modern software
                     </h2>
                 </div>
@@ -242,7 +241,7 @@ const ServicesPage = () => {
                                 whileInView="visible"
                                 viewport={{ once: true, margin: '-80px' }}
                                 custom={i}
-                                className="group relative bg-[#0e0e10]/95 border border-white/10 rounded-[2.5rem] overflow-hidden shadow-deep cursor-target"
+                                className="group relative bg-[#140f0a] border border-portfolio-gold/35 hover:border-portfolio-gold/65 rounded-[2.5rem] overflow-hidden shadow-[0_0_40px_rgba(234,112,8,0.08)] hover:shadow-[0_0_55px_rgba(234,112,8,0.18)] cursor-target transition-all duration-500"
                             >
                                 {/* Subtle inner glow gradient */}
                                 <div className="absolute inset-0 bg-gradient-to-br from-portfolio-gold/5 via-transparent to-transparent pointer-events-none" />
@@ -251,7 +250,7 @@ const ServicesPage = () => {
                                     {/* Text Content Area */}
                                     <div className="flex-1 lg:flex-[1.2] p-8 sm:p-12 md:p-16 flex flex-col justify-center">
                                         <div className="flex items-center gap-4 mb-6">
-                                            <div className="w-10 h-10 rounded-xl bg-portfolio-gold/10 border border-portfolio-gold/30 flex items-center justify-center text-portfolio-gold shrink-0">
+                                            <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-portfolio-gold shrink-0">
                                                 <service.icon size={18} />
                                             </div>
                                             <div className="flex items-center gap-2">
@@ -259,7 +258,7 @@ const ServicesPage = () => {
                                                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-portfolio-gold opacity-75"></span>
                                                     <span className="relative inline-flex rounded-full h-2 w-2 bg-portfolio-gold"></span>
                                                 </span>
-                                                <span className="text-[10px] font-bold uppercase tracking-widest text-portfolio-gold">
+                                                <span className="text-[10px] font-bold uppercase tracking-widest text-portfolio-gold font-mono">
                                                     {service.tag}
                                                 </span>
                                             </div>
@@ -271,30 +270,30 @@ const ServicesPage = () => {
                                             </Link>
                                         </h3>
 
-                                        <p className="text-white/60 text-base leading-relaxed mb-10 max-w-xl">
+                                        <p className="text-[#a3998e] text-base leading-relaxed mb-10 max-w-xl">
                                             {service.description}
                                         </p>
 
                                         <div className="flex items-center gap-4 flex-wrap">
                                             <Link
                                                 to={`/services/${service.slug}`}
-                                                className="inline-flex items-center gap-2 bg-portfolio-gold text-white text-sm font-bold uppercase tracking-widest rounded-full px-8 py-4 w-max hover:scale-105 hover:shadow-[0_0_24px_rgba(212,175,55,0.4)] transition-all duration-300 shadow-md cursor-target"
+                                                className="btn-primary inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest rounded-full px-8 py-4 w-max cursor-target"
                                             >
                                                 Explore Service <ArrowRight size={16} />
                                             </Link>
                                             <Link
                                                 to={`/contact?service=${service.slug}`}
-                                                className="inline-flex items-center gap-2 border border-white/20 text-white text-sm font-bold uppercase tracking-widest rounded-full px-8 py-4 w-max hover:bg-white/10 hover:border-white/40 transition-all duration-300 cursor-target"
+                                                className="btn-ghost inline-flex items-center gap-2 text-white text-sm font-bold uppercase tracking-widest rounded-full px-8 py-4 w-max cursor-target"
                                             >
                                                 Get a quote
                                             </Link>
                                         </div>
                                     </div>
 
-                                    {/* Live Animation side (45% split width) */}
+                                    {/* Live Animation side */}
                                     <Link
                                         to={`/services/${service.slug}`}
-                                        className="flex-1 lg:flex-[0.8] bg-[#070708] border-t lg:border-t-0 lg:border-l border-white/5 relative flex items-center justify-center p-6 min-h-[300px] md:min-h-[380px] overflow-hidden group/visual cursor-target"
+                                        className="flex-1 lg:flex-[0.8] bg-[#070503] border-t lg:border-t-0 lg:border-l border-white/5 relative flex items-center justify-center p-6 min-h-[300px] md:min-h-[380px] overflow-hidden group/visual cursor-target"
                                     >
                                         <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]" />
                                         <div className="w-full h-full flex items-center justify-center scale-90 sm:scale-100 group-hover/visual:scale-105 transition-transform duration-500">
@@ -309,11 +308,11 @@ const ServicesPage = () => {
             </section>
 
             {/* ─── Why Choose Us ────────────────────────────────────── */}
-            <section className="bg-portfolio-white/60 border-y border-portfolio-dark/5 relative z-10">
+            <section className="bg-[#070503]/60 border-y border-white/[0.06] relative z-10">
                 <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 py-24 sm:py-32">
                     <div className="text-center mb-16">
                         <span className="section-label text-portfolio-gold">Why choose us</span>
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-portfolio-dark max-w-2xl mx-auto mt-2 leading-[1.15]">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white max-w-2xl mx-auto mt-2 leading-[1.15]">
                             Engineering you can actually depend on
                         </h2>
                     </div>
@@ -327,13 +326,13 @@ const ServicesPage = () => {
                                 whileInView="visible"
                                 viewport={{ once: true, margin: '-60px' }}
                                 custom={i}
-                                className="p-8 rounded-3xl bg-white border border-portfolio-dark/5 hover:border-portfolio-gold/30 hover:-translate-y-1.5 hover:shadow-lg transition-all duration-300 group cursor-target"
+                                className="p-8 rounded-3xl bg-[#140f0a] border border-white/[0.08] hover:border-amber-500/30 hover:-translate-y-1.5 hover:shadow-2xl transition-all duration-300 group cursor-target shadow-xl"
                             >
-                                <div className="w-12 h-12 rounded-2xl bg-portfolio-gold/5 border border-portfolio-gold/10 flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-portfolio-gold/10">
-                                    <item.icon size={22} className="text-portfolio-gold" />
+                                <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-portfolio-gold group-hover:text-white text-portfolio-gold">
+                                    <item.icon size={22} />
                                 </div>
-                                <h3 className="text-xl font-bold text-portfolio-dark mb-3 tracking-tight">{item.title}</h3>
-                                <p className="text-portfolio-muted text-sm leading-relaxed">{item.description}</p>
+                                <h3 className="text-xl font-bold text-white mb-3 tracking-tight group-hover:text-portfolio-gold transition-colors">{item.title}</h3>
+                                <p className="text-[#a3998e] text-sm leading-relaxed">{item.description}</p>
                             </motion.div>
                         ))}
                     </div>
@@ -343,15 +342,15 @@ const ServicesPage = () => {
             {/* ─── Our Process ──────────────────────────────────────── */}
             <section className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 py-24 sm:py-32 relative z-10">
                 <div className="text-center mb-20">
-                    <span className="section-label">Our process</span>
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-portfolio-dark max-w-2xl mx-auto mt-2 leading-[1.15]">
+                    <span className="section-label text-portfolio-gold">Our process</span>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white max-w-2xl mx-auto mt-2 leading-[1.15]">
                         How an engagement with us works
                     </h2>
                 </div>
 
                 <div className="relative max-w-5xl mx-auto">
                     {/* Central Connecting Timeline Line */}
-                    <div className="absolute left-6 md:left-1/2 -translate-x-1/2 top-4 bottom-4 w-0.5 bg-gradient-to-b from-portfolio-dark/5 via-portfolio-gold/35 to-portfolio-dark/5 pointer-events-none" />
+                    <div className="absolute left-6 md:left-1/2 -translate-x-1/2 top-4 bottom-4 w-0.5 bg-gradient-to-b from-transparent via-portfolio-gold/35 to-transparent pointer-events-none" />
 
                     <div className="flex flex-col gap-12 md:gap-16">
                         {process.map((step, i) => {
@@ -368,23 +367,23 @@ const ServicesPage = () => {
                                         }`}
                                 >
                                     {/* timeline pulse indicator */}
-                                    <div className="absolute left-6 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-portfolio-gold border-4 border-portfolio-bg z-20 shadow-glow" />
+                                    <div className="absolute left-6 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-portfolio-gold border-4 border-[#0a0805] z-20 shadow-[0_0_15px_rgba(234,112,8,0.5)]" />
 
                                     {/* timeline card */}
                                     <div className={`w-full md:w-[45%] pl-14 md:pl-0 ${isEven ? 'md:pr-8' : 'md:pl-8'}`}>
-                                        <div className="bg-white border border-portfolio-dark/5 p-8 rounded-3xl shadow-sm hover:shadow-md hover:border-portfolio-gold/20 transition-all duration-300 group cursor-target">
+                                        <div className="bg-[#140f0a] border border-white/[0.08] p-8 rounded-3xl shadow-xl hover:border-amber-500/30 transition-all duration-300 group cursor-target">
                                             <div className="flex items-center gap-4 mb-4">
-                                                <div className="w-12 h-12 rounded-2xl bg-portfolio-dark flex items-center justify-center shrink-0">
+                                                <div className="w-12 h-12 rounded-2xl bg-[#1c150e] border border-amber-500/20 flex items-center justify-center shrink-0">
                                                     <step.icon size={18} className="text-portfolio-gold" />
                                                 </div>
                                                 <div>
-                                                    <span className="text-[10px] font-bold uppercase tracking-widest text-portfolio-gold">
+                                                    <span className="text-[10px] font-bold uppercase tracking-widest text-portfolio-gold font-mono">
                                                         Step 0{i + 1}
                                                     </span>
-                                                    <h3 className="text-xl font-bold text-portfolio-dark mt-0.5">{step.title}</h3>
+                                                    <h3 className="text-xl font-bold text-white mt-0.5">{step.title}</h3>
                                                 </div>
                                             </div>
-                                            <p className="text-portfolio-muted text-sm leading-relaxed">{step.description}</p>
+                                            <p className="text-[#a3998e] text-sm leading-relaxed">{step.description}</p>
                                         </div>
                                     </div>
 
@@ -397,19 +396,19 @@ const ServicesPage = () => {
                 </div>
             </section>
 
-            {/* ─── Frequently Asked Questions (Signature Home Style) ────── */}
+            {/* ─── Frequently Asked Questions ────── */}
             <section className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 py-20 sm:py-28 relative z-10">
-                <div className="bg-[#1a1a1a] rounded-3xl md:rounded-4xl p-5 sm:p-8 md:p-14 lg:p-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
+                <div className="bg-[#0a0805] border border-portfolio-gold/35 hover:border-portfolio-gold/60 shadow-[0_0_50px_rgba(234,112,8,0.12)] rounded-3xl md:rounded-4xl p-5 sm:p-8 md:p-14 lg:p-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 transition-all duration-500">
                     {/* Left Column */}
                     <div className="lg:col-span-4 flex flex-col justify-start pt-2">
-                        <span className="inline-block text-xxs font-bold uppercase tracking-widest text-white/40 border border-white/10 rounded-full px-3 py-1 mb-6 md:mb-8 w-fit">
+                        <span className="inline-block text-xxs font-bold uppercase tracking-widest text-portfolio-gold border border-portfolio-gold/30 bg-portfolio-gold/5 rounded-full px-3 py-1 mb-6 md:mb-8 w-fit font-mono">
                             FAQs
                         </span>
                         <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight text-white mb-4 md:mb-6">
                             Frequently asked <br />
                             <span className="text-portfolio-gold">questions</span>
                         </h2>
-                        <p className="text-white/40 text-sm leading-relaxed max-w-xs">
+                        <p className="text-[#a3998e] text-sm leading-relaxed max-w-xs">
                             Everything you need to know before we start building together.
                         </p>
                     </div>
@@ -419,7 +418,11 @@ const ServicesPage = () => {
                         {faqs.map((faq, i) => (
                             <div
                                 key={i}
-                                className="bg-white/[0.03] border border-white/[0.08] hover:border-white/[0.15] hover:bg-white/[0.05] transition-colors duration-300 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-7"
+                                className={`transition-all duration-300 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-7 border ${
+                                    openFaqIndex === i
+                                        ? 'bg-portfolio-gold/[0.05] border-portfolio-gold/50 shadow-[0_0_20px_rgba(234,112,8,0.1)]'
+                                        : 'bg-white/[0.02] border-portfolio-gold/20 hover:border-portfolio-gold/45 hover:bg-white/[0.04]'
+                                }`}
                             >
                                 <button
                                     onClick={() => setOpenFaqIndex(openFaqIndex === i ? null : i)}
@@ -427,7 +430,7 @@ const ServicesPage = () => {
                                 >
                                     <span
                                         className={`text-sm md:text-base font-semibold leading-snug transition-colors duration-300 ${
-                                            openFaqIndex === i ? 'text-white' : 'text-white/60 group-hover:text-white/90'
+                                            openFaqIndex === i ? 'text-portfolio-gold' : 'text-white/80 group-hover:text-white'
                                         }`}
                                     >
                                         {faq.question}
@@ -435,8 +438,8 @@ const ServicesPage = () => {
                                     <div
                                         className={`w-7 h-7 rounded-full border flex items-center justify-center shrink-0 transition-all duration-300 ${
                                             openFaqIndex === i
-                                                ? 'border-portfolio-gold bg-portfolio-gold/10 rotate-45'
-                                                : 'border-white/20 group-hover:border-white/40'
+                                                ? 'border-portfolio-gold bg-portfolio-gold/15 rotate-45'
+                                                : 'border-portfolio-gold/30 group-hover:border-portfolio-gold'
                                         }`}
                                     >
                                         <span
@@ -455,7 +458,7 @@ const ServicesPage = () => {
                                         openFaqIndex === i ? 'max-h-[500px] opacity-100 mt-3 sm:mt-4' : 'max-h-0 opacity-0'
                                     }`}
                                 >
-                                    <p className="text-white/45 text-xs sm:text-sm leading-relaxed pr-4 sm:pr-12">
+                                    <p className="text-[#a3998e] text-xs sm:text-sm leading-relaxed pr-4 sm:pr-12">
                                         {faq.answer}
                                     </p>
                                 </div>
@@ -472,18 +475,17 @@ const ServicesPage = () => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: '-60px' }}
-                    className="relative bg-[#0d0d0d] border border-white/10 rounded-[2.5rem] px-8 sm:px-16 py-20 sm:py-28 text-center overflow-hidden shadow-deep"
+                    className="relative bg-[#0a0805] border border-portfolio-gold/35 hover:border-portfolio-gold/60 rounded-[2.5rem] px-8 sm:px-16 py-20 sm:py-28 text-center overflow-hidden shadow-[0_0_50px_rgba(234,112,8,0.12)] transition-all duration-500"
                 >
                     {/* Enhanced background glow layers */}
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-portfolio-gold/10 rounded-full blur-[100px] pointer-events-none" />
-                    <div className="absolute bottom-0 right-1/4 w-[300px] h-[200px] bg-portfolio-blue/5 rounded-full blur-[80px] pointer-events-none" />
 
                     <div className="relative z-10 max-w-3xl mx-auto">
                         <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-none">
                             Ready to build something that lasts?
                         </h2>
 
-                        <p className="text-white/60 text-base sm:text-lg max-w-xl mx-auto mb-10 leading-relaxed">
+                        <p className="text-[#a3998e] text-base sm:text-lg max-w-xl mx-auto mb-10 leading-relaxed">
                             Tell us about your project and we&rsquo;ll get back to you with next steps — no
                             obligation, just a conversation.
                         </p>
@@ -491,14 +493,14 @@ const ServicesPage = () => {
                         <div className="flex items-center justify-center gap-4 flex-wrap">
                             <Link
                                 to="/contact"
-                                className="inline-flex items-center gap-2 bg-portfolio-gold text-white text-sm font-bold uppercase tracking-widest rounded-full px-8 py-4 hover:scale-105 hover:shadow-[0_0_30px_rgba(232,120,17,0.4)] transition-all duration-300 cursor-target"
+                                className="btn-primary inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest rounded-full px-8 py-4 cursor-target"
                             >
                                 Request a quote <ArrowRight size={16} />
                             </Link>
 
                             <Link
                                 to="/contact"
-                                className="inline-flex items-center gap-2 border border-white/20 text-white text-sm font-bold uppercase tracking-widest rounded-full px-8 py-4 hover:bg-white/10 hover:border-white/40 transition-all duration-300 cursor-target"
+                                className="btn-ghost inline-flex items-center gap-2 text-white text-sm font-bold uppercase tracking-widest rounded-full px-8 py-4 cursor-target"
                             >
                                 Book a consultation
                             </Link>

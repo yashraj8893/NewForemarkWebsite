@@ -49,22 +49,22 @@ const Hero = () => {
       <InteractiveGridPattern
         className={cn(
           "[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]",
-          "inset-x-0 inset-y-[-30%] h-[160%] skew-y-12",
+          "inset-x-0 inset-y-[-30%] h-[160%] skew-y-12 opacity-20",
         )}
       />
       <div className="relative z-10 flex flex-col items-center text-center mb-16">
 
         <motion.h1
           initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.2 }}
-          className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 sm:mb-8 px-2"
+          className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 sm:mb-8 px-2 text-white"
         >
           We build digital products <br />
-          <span className="text-portfolio-muted">that drive growth.</span>
+          <span className="text-portfolio-gold">that drive growth.</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-portfolio-muted text-base sm:text-lg md:text-xl max-w-2xl mb-8 sm:mb-10 px-2"
+          className="text-[#a3998e] text-base sm:text-lg md:text-xl max-w-2xl mb-8 sm:mb-10 px-2"
         >
           From scalable applications to stunning websites, <br /> we engineer software that transforms ambitious businesses.
         </motion.p>
@@ -73,7 +73,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }}
           className="flex flex-col sm:flex-row gap-4"
         >
-          <Link to="/contact" className="btn-primary flex items-center gap-2 px-10 border border-transparent hover:border-portfolio-gold transition-colors cursor-target">
+          <Link to="/contact" className="btn-primary flex items-center gap-2 px-10 border border-amber-400/30 hover:border-portfolio-gold transition-all cursor-target">
             <MessageSquare size={18} /> Let's Talk
           </Link>
           <a href="mailto:hello@foremark.in" className="btn-ghost flex items-center gap-2 px-10 cursor-target">
@@ -96,13 +96,13 @@ const Hero = () => {
           {[...carouselImages, ...carouselImages].map((item, i) => (
             <div
               key={i}
-              className="w-[85vw] sm:w-[400px] md:w-[600px] aspect-[16/10] rounded-2xl overflow-hidden shadow-xl border border-portfolio-dark/5 shrink-0 bg-white"
+              className="w-[85vw] sm:w-[400px] md:w-[600px] aspect-[16/10] rounded-2xl overflow-hidden border border-portfolio-gold/35 hover:border-portfolio-gold/60 shrink-0 bg-[#140f0a] transition-all duration-300 shadow-[0_0_35px_rgba(234,112,8,0.1)]"
             >
               <img
                 src={item.src}
                 alt={item.alt}
                 loading="lazy"
-                className="w-full h-full object-cover object-top transition-all duration-500"
+                className="w-full h-full object-cover object-top transition-all duration-500 opacity-90 hover:opacity-100"
               />
             </div>
           ))}
@@ -117,8 +117,8 @@ const CuratedWork = () => (
     {/* Section Header */}
     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 sm:mb-16 md:mb-24">
       <div>
-        <span className="text-xs font-bold uppercase tracking-widest text-portfolio-gold mb-4 sm:mb-6 block">PROJECTS</span>
-        <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-4 sm:mb-6">
+        <span className="text-xs font-bold uppercase tracking-widest text-portfolio-gold mb-4 sm:mb-6 block font-mono">PROJECTS</span>
+        <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-4 sm:mb-6 text-white">
           A curated collection of <br /> websites designed with care
         </h2>
       </div>
@@ -137,32 +137,32 @@ const CuratedWork = () => (
             }`}
         >
           {/* Image */}
-          <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-lg lg:[direction:ltr]">
+          <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-portfolio-gold/35 group-hover:border-portfolio-gold/60 bg-[#140f0a] lg:[direction:ltr] transition-all duration-500 shadow-[0_0_35px_rgba(234,112,8,0.08)]">
             <img
               src={p.image}
               alt={p.title}
               className="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-[1.05]"
             />
             {/* Image overlay gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0805]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             {/* Project number */}
-            <div className="absolute top-6 left-6 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center">
-              <span className="text-xs font-bold text-portfolio-dark">0{i + 1}</span>
+            <div className="absolute top-6 left-6 w-10 h-10 rounded-full bg-[#140f0a]/90 border border-amber-500/20 backdrop-blur-sm flex items-center justify-center shadow-lg">
+              <span className="text-xs font-bold text-white font-mono">0{i + 1}</span>
             </div>
           </div>
 
           {/* Content */}
           <div className="flex flex-col justify-center lg:[direction:ltr]">
             <div className="mb-6">
-              <span className="text-xxs uppercase tracking-widest text-portfolio-dark/35 font-bold">CLIENT</span>
-              <p className="text-sm font-semibold text-portfolio-dark/70 mt-1">{p.client}</p>
+              <span className="text-xxs uppercase tracking-widest text-white/40 font-bold font-mono">CLIENT</span>
+              <p className="text-sm font-semibold text-white/90 mt-1">{p.client}</p>
             </div>
 
-            <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-6 group-hover:text-portfolio-gold transition-colors duration-500">
+            <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-6 text-white group-hover:text-portfolio-gold transition-colors duration-500">
               {p.title}
             </h3>
 
-            <p className="text-portfolio-dark/55 text-sm sm:text-base md:text-lg leading-relaxed max-w-lg mb-6 sm:mb-10">
+            <p className="text-[#a3998e] text-sm sm:text-base md:text-lg leading-relaxed max-w-lg mb-6 sm:mb-10 font-normal">
               {p.desc}
             </p>
 
@@ -170,10 +170,10 @@ const CuratedWork = () => (
               to="/projects"
               className="inline-flex items-center gap-4 self-start group/btn cursor-target"
             >
-              <div className="w-14 h-14 rounded-full border-2 border-portfolio-dark/10 flex items-center justify-center group-hover/btn:bg-portfolio-dark group-hover/btn:border-portfolio-dark transition-all duration-500">
-                <ArrowUpRight size={20} className="text-portfolio-dark/60 group-hover/btn:text-white transition-colors duration-500" />
+              <div className="w-14 h-14 rounded-full border border-white/15 bg-white/[0.03] flex items-center justify-center group-hover/btn:bg-[#ea7008] group-hover/btn:border-[#ea7008] transition-all duration-500 shadow-md">
+                <ArrowUpRight size={20} className="text-white/70 group-hover/btn:text-white transition-colors duration-500" />
               </div>
-              <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-portfolio-dark/50 group-hover/btn:text-portfolio-dark transition-colors">
+              <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-white/60 group-hover/btn:text-portfolio-gold transition-colors font-mono">
                 View Project
               </span>
             </Link>
@@ -188,19 +188,20 @@ const CuratedWork = () => (
 
 const CTASection = () => (
   <section className="py-16 md:py-32">
-    <div className="bg-[#1a1a1a] rounded-3xl md:rounded-4xl p-8 sm:p-12 md:p-24 text-white relative overflow-hidden flex flex-col items-center text-center">
-      <div className="absolute inset-0 opacity-20 pointer-events-none">
+    <div className="bg-[#0a0805] border border-portfolio-gold/35 hover:border-portfolio-gold/60 shadow-[0_0_50px_rgba(234,112,8,0.12)] rounded-3xl md:rounded-4xl p-8 sm:p-12 md:p-24 text-white relative overflow-hidden flex flex-col items-center text-center transition-all duration-500">
+      <div className="absolute inset-0 opacity-15 pointer-events-none">
         <svg width="100%" height="100%" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full object-cover">
-          <path d="M0 200C100 150 200 180 300 120C400 60 500 100 600 80C700 60 800 120 1000 100" stroke="white" strokeWidth="0.5" strokeDasharray="4 4" />
+          <path d="M0 200C100 150 200 180 300 120C400 60 500 100 600 80C700 60 800 120 1000 100" stroke="#ea7008" strokeWidth="0.8" strokeDasharray="4 4" />
         </svg>
       </div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-portfolio-gold/[0.08] blur-[120px] rounded-full pointer-events-none" />
       <div className="relative z-10 max-w-3xl">
-        <span className="text-portfolio-gold font-bold mb-4 md:mb-6 text-xs tracking-widest block uppercase">Ready to start?</span>
-        <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-5 md:mb-8">Let's build something extraordinary together.</h2>
-        <p className="text-sm sm:text-base md:text-lg text-white/60 mb-8 md:mb-12">Whether you need a full application built from scratch or just want to explore how we can help your business grow.</p>
+        <span className="text-portfolio-gold font-bold mb-4 md:mb-6 text-xs tracking-widest block uppercase font-mono">Ready to start?</span>
+        <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-5 md:mb-8 text-white">Let's build something extraordinary together.</h2>
+        <p className="text-sm sm:text-base md:text-lg text-[#a3998e] mb-8 md:mb-12">Whether you need a full application built from scratch or just want to explore how we can help your business grow.</p>
         <Link
           to="/contact"
-          className="btn-primary inline-flex items-center gap-2 px-8 py-4 md:px-10 md:py-5 uppercase tracking-widest text-xs sm:text-sm cursor-target border border-transparent hover:border-portfolio-gold/50"
+          className="btn-primary inline-flex items-center gap-2 px-8 py-4 md:px-10 md:py-5 uppercase tracking-widest text-xs sm:text-sm cursor-target"
         >
           Contact Us <ArrowUpRight size={18} />
         </Link>
@@ -269,13 +270,13 @@ const testimonials = [
 ];
 
 const TestimonialCard = ({ t }: { t: typeof testimonials[0] }) => (
-  <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-7 mb-6 flex flex-col gap-4 hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-700">
-    <p className="text-white/75 text-[14px] leading-[1.7] font-normal tracking-wide">"{t.text}"</p>
+  <div className="bg-[#140f0a] border border-white/[0.08] rounded-2xl p-7 mb-6 flex flex-col gap-4 hover:bg-[#1a140d] hover:border-amber-500/30 transition-all duration-700 shadow-xl">
+    <p className="text-white/80 text-[14px] leading-[1.7] font-normal tracking-wide">"{t.text}"</p>
     <div className="flex items-center gap-4 pt-3 border-t border-white/[0.06]">
       <img src={t.avatar} alt={t.name} className="w-9 h-9 rounded-full object-cover grayscale opacity-80 shrink-0" />
       <div>
         <p className="text-white/90 text-[12px] font-bold leading-tight">{t.name}</p>
-        <p className="text-white/50 text-[11px] font-medium leading-tight mt-0.5">{t.role}</p>
+        <p className="text-[#a3998e] text-[11px] font-medium leading-tight mt-0.5">{t.role}</p>
       </div>
     </div>
   </div>
@@ -288,15 +289,15 @@ const TestimonialsSection = () => {
   const col4 = testimonials.filter((_, i) => i % 4 === 3);
 
   return (
-    <section className="py-20 sm:py-28 md:py-36 w-screen relative left-1/2 -translate-x-1/2 flex items-center justify-center bg-portfolio-dark/95">
+    <section className="py-20 sm:py-28 md:py-36 w-screen relative left-1/2 -translate-x-1/2 flex items-center justify-center bg-[#0a0805] border-y border-white/[0.04]">
 
-      {/* Subconscious ambient warmth — highly transparent and wide */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-portfolio-gold/[0.02] blur-[120px] rounded-full pointer-events-none" />
+      {/* Subconscious ambient warmth */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-portfolio-gold/[0.04] blur-[120px] rounded-full pointer-events-none" />
 
-      {/* Grid Container — subtle card fade at the very edges to hide scrolling clip, no background fade */}
+      {/* Grid Container */}
       <div className="relative w-full max-w-[1280px] mx-auto overflow-hidden h-[500px] sm:h-[600px] md:h-[750px] [mask-image:linear-gradient(to_bottom,transparent_0%,black_5%,black_95%,transparent_100%)]">
 
-        {/* Scroll grid — slightly wider gap for more air */}
+        {/* Scroll grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5 md:gap-7 px-4 sm:px-6 md:px-12 h-full opacity-100">
           {/* Col 1 */}
           <div className="overflow-hidden">
@@ -324,10 +325,10 @@ const TestimonialsSection = () => {
           </div>
         </div>
 
-        {/* Rating badge — maintains sharp contrast hierarchy */}
+        {/* Rating badge */}
         <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
-          <div className="bg-portfolio-dark/80 backdrop-blur-3xl border border-white/[0.08] rounded-2xl sm:rounded-3xl px-6 py-5 sm:px-9 sm:py-7 flex items-center gap-4 sm:gap-7 shadow-deep">
-            <span className="text-3xl sm:text-5xl font-bold text-white leading-none tabular-nums tracking-tight">4.9</span>
+          <div className="bg-[#130f0a]/90 backdrop-blur-3xl border border-amber-500/20 rounded-2xl sm:rounded-3xl px-6 py-5 sm:px-9 sm:py-7 flex items-center gap-4 sm:gap-7 shadow-2xl">
+            <span className="text-3xl sm:text-5xl font-bold text-white leading-none tabular-nums tracking-tight font-mono">4.9</span>
             <div className="flex flex-col gap-1.5">
               <div className="flex gap-1.5">
                 {[...Array(5)].map((_, i) => (
@@ -336,7 +337,7 @@ const TestimonialsSection = () => {
                   </svg>
                 ))}
               </div>
-              <span className="text-white/50 text-[11px] font-semibold tracking-wider uppercase">Based on 15+ projects</span>
+              <span className="text-white/60 text-[11px] font-semibold tracking-wider uppercase font-mono">Based on 15+ projects</span>
             </div>
           </div>
         </div>
@@ -375,18 +376,18 @@ const FAQSection = () => {
 
   return (
     <section className="py-16 md:py-24">
-      <div className="bg-[#1a1a1a] rounded-3xl md:rounded-4xl p-5 sm:p-8 md:p-14 lg:p-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
+      <div className="bg-[#0a0805] border border-portfolio-gold/35 hover:border-portfolio-gold/60 shadow-[0_0_50px_rgba(234,112,8,0.12)] rounded-3xl md:rounded-4xl p-5 sm:p-8 md:p-14 lg:p-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 transition-all duration-500">
 
         {/* Left Column */}
         <div className="lg:col-span-4 flex flex-col justify-start pt-2">
-          <span className="inline-block text-xxs font-bold uppercase tracking-widest text-white/40 border border-white/10 rounded-full px-3 py-1 mb-6 md:mb-8 w-fit">
+          <span className="inline-block text-xxs font-bold uppercase tracking-widest text-portfolio-gold border border-portfolio-gold/30 bg-portfolio-gold/5 rounded-full px-3 py-1 mb-6 md:mb-8 w-fit font-mono">
             FAQs
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight text-white mb-4 md:mb-6">
             Frequently asked <br />
             <span className="text-portfolio-gold">questions</span>
           </h2>
-          <p className="text-white/40 text-sm leading-relaxed max-w-xs">
+          <p className="text-[#a3998e] text-sm leading-relaxed max-w-xs">
             Everything you need to know before we start building together.
           </p>
         </div>
@@ -394,15 +395,22 @@ const FAQSection = () => {
         {/* Right Column — Accordion */}
         <div className="lg:col-span-8 flex flex-col gap-3 sm:gap-4">
           {faqs.map((faq, i) => (
-            <div key={i} className="bg-white/[0.03] border border-white/[0.08] hover:border-white/[0.15] hover:bg-white/[0.05] transition-colors duration-300 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-7">
+            <div
+              key={i}
+              className={`transition-all duration-300 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-7 border ${
+                openIndex === i
+                  ? 'bg-portfolio-gold/[0.05] border-portfolio-gold/50 shadow-[0_0_20px_rgba(234,112,8,0.1)]'
+                  : 'bg-white/[0.02] border-portfolio-gold/20 hover:border-portfolio-gold/45 hover:bg-white/[0.04]'
+              }`}
+            >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                 className="w-full flex items-center justify-between gap-4 sm:gap-6 text-left group cursor-target"
               >
-                <span className={`text-sm md:text-base font-semibold leading-snug transition-colors duration-300 ${openIndex === i ? 'text-white' : 'text-white/60 group-hover:text-white/90'}`}>
+                <span className={`text-sm md:text-base font-semibold leading-snug transition-colors duration-300 ${openIndex === i ? 'text-portfolio-gold' : 'text-white/80 group-hover:text-white'}`}>
                   {faq.q}
                 </span>
-                <div className={`w-7 h-7 rounded-full border flex items-center justify-center shrink-0 transition-all duration-300 ${openIndex === i ? 'border-portfolio-gold bg-portfolio-gold/10 rotate-45' : 'border-white/20 group-hover:border-white/40'}`}>
+                <div className={`w-7 h-7 rounded-full border flex items-center justify-center shrink-0 transition-all duration-300 ${openIndex === i ? 'border-portfolio-gold bg-portfolio-gold/15 rotate-45' : 'border-portfolio-gold/30 group-hover:border-portfolio-gold'}`}>
                   <span className={`text-lg leading-none font-light transition-colors duration-300 ${openIndex === i ? 'text-portfolio-gold' : 'text-white/50'}`}>+</span>
                 </div>
               </button>
@@ -411,7 +419,7 @@ const FAQSection = () => {
               <div
                 className={`overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.21,0.45,0.32,0.9)] ${openIndex === i ? 'max-h-[500px] opacity-100 mt-3 sm:mt-4' : 'max-h-0 opacity-0'}`}
               >
-                <p className="text-white/45 text-xs sm:text-sm leading-relaxed pr-4 sm:pr-12">
+                <p className="text-[#a3998e] text-xs sm:text-sm leading-relaxed pr-4 sm:pr-12">
                   {faq.a}
                 </p>
               </div>
@@ -443,70 +451,68 @@ const MissionSection = () => {
   ];
 
   return (
-    <section className="w-screen relative left-1/2 -translate-x-1/2 bg-portfolio-dark py-20 md:py-28 flex flex-col items-center text-center px-6">
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full bg-portfolio-gold/[0.05] blur-[140px] pointer-events-none" />
-
-      <div className="relative z-10 flex flex-col items-center">
-
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-          className="inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-white/10 bg-white/[0.03] text-xxs font-bold uppercase tracking-widest text-white/40 mb-10"
-        >
-          Our Mission
-        </motion.div>
-
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight max-w-[900px] mb-10 flex flex-wrap justify-center gap-x-[0.28em] gap-y-[0.08em]">
-          {words.map((word, i) => (
-            <motion.span
-              key={i}
-              initial={{ opacity: 0, y: 28, filter: 'blur(4px)' }}
-              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              viewport={{ once: true }}
-              transition={{
-                delay: 0.1 + i * 0.07,
-                duration: 0.55,
-                ease: [0.21, 0.45, 0.32, 0.9],
-              }}
-              className={word.orange ? 'text-portfolio-gold' : 'text-white'}
-            >
-              {word.text}
-            </motion.span>
-          ))}
-        </h2>
-
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 + words.length * 0.07 + 0.1, duration: 0.6 }}
-          className="text-white/40 text-[14px] md:text-[16px] max-w-[520px] leading-[1.75] font-medium mb-10"
-        >
-          We solve complex technical problems through thoughtful engineering, modern software
-          architecture, and intelligent automation. Building technology that scales.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 + words.length * 0.07 + 0.25, duration: 0.5 }}
-        >
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-1.5 text-portfolio-gold font-semibold text-[15px] hover:opacity-60 transition-opacity cursor-target group"
+    <section className="py-16 md:py-28">
+      <div className="bg-[#0a0805] border border-portfolio-gold/35 hover:border-portfolio-gold/60 shadow-[0_0_50px_rgba(234,112,8,0.12)] rounded-3xl md:rounded-4xl p-8 sm:p-14 md:p-20 text-white relative flex flex-col items-center text-center transition-all duration-500">
+        <div className="relative z-10 flex flex-col items-center max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/5 text-xxs font-bold uppercase tracking-widest text-portfolio-gold mb-8 sm:mb-10 font-mono"
           >
-            Book A Call{' '}
-            <ArrowUpRight
-              size={16}
-              strokeWidth={2.5}
-              className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
-            />
-          </Link>
-        </motion.div>
+            Our Mission
+          </motion.div>
 
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight max-w-[850px] mb-8 sm:mb-10 flex flex-wrap justify-center gap-x-[0.28em] gap-y-[0.08em] leading-tight">
+            {words.map((word, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, y: 24, filter: 'blur(4px)' }}
+                whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                viewport={{ once: true }}
+                transition={{
+                  delay: 0.1 + i * 0.05,
+                  duration: 0.5,
+                  ease: [0.21, 0.45, 0.32, 0.9],
+                }}
+                className={word.orange ? 'text-portfolio-gold' : 'text-white'}
+              >
+                {word.text}
+              </motion.span>
+            ))}
+          </h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 + words.length * 0.05 + 0.1, duration: 0.5 }}
+            className="text-[#a3998e] text-sm md:text-base max-w-[560px] leading-relaxed font-normal mb-8 sm:mb-10"
+          >
+            We solve complex technical problems through thoughtful engineering, modern software
+            architecture, and intelligent automation. Building technology that scales.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 + words.length * 0.05 + 0.2, duration: 0.5 }}
+          >
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 text-portfolio-gold font-semibold text-sm sm:text-base hover:brightness-125 transition-all cursor-target group font-mono border border-amber-500/30 hover:border-amber-500/60 bg-amber-500/5 px-6 py-2.5 rounded-full"
+            >
+              Book A Call{' '}
+              <ArrowUpRight
+                size={16}
+                strokeWidth={2.5}
+                className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+              />
+            </Link>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -518,10 +524,10 @@ const Home = () => {
       <SEO />
       <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
         <Hero />
-      <MissionSection />
-      <ServicesGrid />
-      <CuratedWork />
-      <TestimonialsSection />
+        <MissionSection />
+        <ServicesGrid />
+        <CuratedWork />
+        <TestimonialsSection />
         <FAQSection />
         <CTASection />
       </div>

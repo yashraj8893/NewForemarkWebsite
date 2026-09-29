@@ -9,7 +9,7 @@ const AboutHero = () => (
     {/* Background effects */}
     <div className="absolute inset-0 pointer-events-none">
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[320px] rounded-full opacity-[0.06]"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[320px] rounded-full opacity-[0.08]"
         style={{ background: 'radial-gradient(ellipse, var(--color-portfolio-gold) 0%, transparent 70%)' }}
       />
       <div
@@ -19,27 +19,27 @@ const AboutHero = () => (
           backgroundSize: '60px 60px',
         }}
       />
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-portfolio-bg" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-[#0a0805]" />
     </div>
 
     <div className="relative z-10 max-w-[1280px] mx-auto px-6 md:px-12 flex flex-col items-center text-center">
 
-      {/* Plain text label — no box, no border */}
+      {/* Plain text label */}
       <motion.p
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="flex items-center gap-2 text-xxs font-bold uppercase tracking-widest text-portfolio-gold mb-6"
+        className="flex items-center gap-2 text-xxs font-bold uppercase tracking-widest text-portfolio-gold mb-6 font-mono"
       >
         About Us
       </motion.p>
 
-      {/* Heading — smaller, tighter, like KloudMate */}
+      {/* Heading */}
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.1 }}
-        className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-portfolio-dark mb-6"
+        className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-white mb-6"
       >
         Hi. We're Foremark.
       </motion.h1>
@@ -57,12 +57,12 @@ const AboutHero = () => (
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="text-portfolio-muted text-[15px] md:text-[17px] max-w-[640px] text-center leading-[1.8] font-medium mb-4"
+        className="text-[#a3998e] text-[15px] md:text-[17px] max-w-[640px] text-center leading-[1.8] font-medium mb-4"
       >
         We are a team of passionate developers, solution architects, and automation
         specialists who leverage the power of modern software to transform how businesses
         operate.{' '}
-        <span className="text-portfolio-dark font-bold">#EngineeringFirst.</span>
+        <span className="text-white font-bold">#EngineeringFirst.</span>
       </motion.p>
 
       {/* Para 2 */}
@@ -70,15 +70,15 @@ const AboutHero = () => (
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
-        className="text-portfolio-muted text-[15px] md:text-[17px] max-w-[640px] text-center leading-[1.8] font-medium"
+        className="text-[#a3998e] text-[15px] md:text-[17px] max-w-[640px] text-center leading-[1.8] font-medium"
       >
         Foremark is our endeavor to help{' '}
-        <span className="text-portfolio-dark font-bold">Developers</span> spend less time
+        <span className="text-white font-bold">Developers</span> spend less time
         debugging, so they can do more of what they do best —{' '}
-        <span className="text-portfolio-dark font-bold">Write Quality Code</span>. The
+        <span className="text-white font-bold">Write Quality Code</span>. The
         platform also empowers{' '}
-        <span className="text-portfolio-dark font-bold">SREs</span> and{' '}
-        <span className="text-portfolio-dark font-bold">DevOps engineers</span> who build,
+        <span className="text-white font-bold">SREs</span> and{' '}
+        <span className="text-white font-bold">DevOps engineers</span> who build,
         deploy &amp; manage applications on modern cloud architecture.
       </motion.p>
 
@@ -97,11 +97,11 @@ const OurStory = () => (
       transition={{ duration: 0.8 }}
       className="flex justify-center mb-16 sm:mb-24 md:mb-36"
     >
-      <div className="relative rounded-3xl overflow-hidden cursor-target group w-full max-w-[600px] md:max-w-[760px] aspect-[16/10] shadow-xl hover:shadow-2xl transition-shadow duration-500">
+      <div className="relative rounded-3xl overflow-hidden cursor-target group w-full max-w-[600px] md:max-w-[760px] aspect-[16/10] border border-portfolio-gold/35 group-hover:border-portfolio-gold/65 shadow-[0_0_35px_rgba(234,112,8,0.1)] bg-[#140f0a] transition-all duration-500">
         <img
           src="/Hexture-10-1.webp"
           alt="Foremark team at work"
-          className="w-full h-full object-cover opacity-95 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105"
+          className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105"
         />
       </div>
     </motion.div>
@@ -109,10 +109,10 @@ const OurStory = () => (
     <div className="pb-20 md:pb-28">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-10 md:gap-16 items-start w-full">
         <div className="md:col-span-4 flex flex-col md:pl-10">
-          <span className="text-xs font-bold uppercase tracking-widest text-portfolio-gold mb-5 block">
+          <span className="text-xs font-bold uppercase tracking-widest text-portfolio-gold mb-5 block font-mono">
             How It Started
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight text-portfolio-text">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight text-white">
             Our <br className="hidden md:block" />
             Story
           </h2>
@@ -125,16 +125,16 @@ const OurStory = () => (
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
         >
-          <p className="text-gray-500 text-[15px] md:text-[17px] leading-[1.85] font-medium">
+          <p className="text-[#a3998e] text-[15px] md:text-[17px] leading-[1.85] font-medium">
             Foremark was born from a simple observation: too many businesses are held back by
             technology that doesn't scale, doesn't perform, and doesn't solve real problems. We
             saw teams struggling with bloated codebases, unreliable systems, and agencies that
             prioritized speed over quality. We set out to change that.
           </p>
-          <p className="text-gray-500 text-[15px] md:text-[17px] leading-[1.85] font-medium">
+          <p className="text-[#a3998e] text-[15px] md:text-[17px] leading-[1.85] font-medium">
             Soon, we set out to build what we believe will eventually go on to become
             synonymous with everything{' '}
-            <span className="text-portfolio-text font-bold">Observability</span> — for
+            <span className="text-white font-bold">Observability</span> — for
             intricate, scalable technologies of the future. Be it modern web platforms,
             scalable APIs, or cloud-native architecture.
           </p>
@@ -148,18 +148,18 @@ const OurStory = () => (
 
 const statsData = [
   { value: '100', accent: '%', label: 'Client Retention', desc: 'We build long-term partnerships through consistent quality and technical excellence.', accentColor: 'text-portfolio-gold' },
-  { value: '50', accent: '+', label: 'Projects Delivered', desc: 'Successful delivery of web and mobile applications across various industries.', accentColor: 'text-portfolio-text' },
-  { value: '3', accent: 'x', label: 'Avg. Client Growth', desc: 'Our systems are designed to scale and drive measurable business impact.', accentColor: 'text-portfolio-text' },
-  { value: '12', accent: '+', label: 'Industries Served', desc: 'Expertise across different domains from startups to established businesses.', accentColor: 'text-portfolio-text' },
+  { value: '50', accent: '+', label: 'Projects Delivered', desc: 'Successful delivery of web and mobile applications across various industries.', accentColor: 'text-white' },
+  { value: '3', accent: 'x', label: 'Avg. Client Growth', desc: 'Our systems are designed to scale and drive measurable business impact.', accentColor: 'text-white' },
+  { value: '12', accent: '+', label: 'Industries Served', desc: 'Expertise across different domains from startups to established businesses.', accentColor: 'text-white' },
 ];
 
 const StatsGrid = () => (
   <section className="pb-16 sm:pb-24 md:pb-40">
     <div className="flex items-center gap-4 sm:gap-6 mb-10 sm:mb-16 opacity-70 md:pl-10">
-      <span className="text-xs font-bold uppercase tracking-widest text-portfolio-gold shrink-0">
+      <span className="text-xs font-bold uppercase tracking-widest text-portfolio-gold shrink-0 font-mono">
         By The Numbers
       </span>
-      <div className="flex-1 h-[1px] bg-gray-200" />
+      <div className="flex-1 h-[1px] bg-white/10" />
     </div>
 
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
@@ -170,16 +170,16 @@ const StatsGrid = () => (
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: i * 0.1 }}
-          className="bg-white border border-gray-100 rounded-2xl sm:rounded-3xl px-6 py-8 sm:px-8 sm:py-10 md:px-10 md:py-12 flex flex-col shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-gray-200/60 hover:-translate-y-1 transition-all duration-500 cursor-target"
+          className="bg-[#140f0a] border border-portfolio-gold/35 hover:border-portfolio-gold/65 rounded-2xl sm:rounded-3xl px-6 py-8 sm:px-8 sm:py-10 md:px-10 md:py-12 flex flex-col shadow-[0_0_30px_rgba(234,112,8,0.08)] hover:shadow-[0_0_45px_rgba(234,112,8,0.18)] hover:-translate-y-1 transition-all duration-500 cursor-target"
         >
-          <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-portfolio-text mb-6 sm:mb-8">
+          <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-6 sm:mb-8 font-mono">
             {stat.value}
             <span className={stat.accentColor}>{stat.accent}</span>
           </h3>
-          <p className="text-xxs uppercase tracking-[0.15em] text-portfolio-gold font-bold mb-3">
+          <p className="text-xxs uppercase tracking-[0.15em] text-portfolio-gold font-bold mb-3 font-mono">
             {stat.label}
           </p>
-          <p className="text-gray-500 text-[13px] md:text-[14px] leading-[1.7] font-medium">
+          <p className="text-[#a3998e] text-[13px] md:text-[14px] leading-[1.7] font-medium">
             {stat.desc}
           </p>
         </motion.div>
@@ -193,9 +193,9 @@ const StatsGrid = () => (
 const About = () => (
   <>
     <SEO title="About Us" description="Foremark is a team of passionate developers, solution architects, and automation specialists who leverage modern software to transform how businesses operate." canonicalUrl="https://foremark.in/about" />
-    <div className="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-12">
+    <div className="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-12 bg-[#0a0805] text-[#f9f5f1]">
       <AboutHero />
-    <OurStory />
+      <OurStory />
       <StatsGrid />
     </div>
   </>

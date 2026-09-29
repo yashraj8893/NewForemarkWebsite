@@ -65,13 +65,13 @@ const AssociateProgramPage = () => {
             href="https://wa.me/918605671941"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-portfolio-dark text-sm font-bold uppercase tracking-widest border border-portfolio-dark/20 px-8 py-3 rounded-full hover:bg-portfolio-dark hover:text-white transition-all cursor-target group"
+            className="flex items-center gap-2 bg-portfolio-gold text-portfolio-dark text-sm font-bold uppercase tracking-widest px-8 py-3 rounded-full hover:bg-portfolio-gold/90 transition-all cursor-target group"
           >
             <MessageCircle size={16} />
             Join on WhatsApp
           </a>
-          <div className="flex items-center text-sm text-portfolio-muted font-medium border border-portfolio-dark/20 px-8 py-3 rounded-full cursor-target">
-            Message us at <span className="text-portfolio-dark font-bold ml-1">+91 86056 71941</span>
+          <div className="flex items-center text-sm text-portfolio-muted font-medium border border-white/10 px-8 py-3 rounded-full cursor-target">
+            Message us at <span className="text-white font-bold ml-1">+91 86056 71941</span>
           </div>
         </motion.div>
       </div>
@@ -103,11 +103,11 @@ const AssociateProgramPage = () => {
             { icon: Settings, title: "Business Automation", desc: "Automate repetitive workflows — CRMs, invoicing, lead management, and more — saving time and money." },
             { icon: Cpu, title: "AI-Powered Tools", desc: "Chatbots, AI integrations, and smart tools that give businesses a competitive edge." }
           ].map((service, i) => (
-            <motion.div key={i} variants={staggerItem} className="bg-white border border-gray-100 rounded-3xl px-6 py-8 md:px-8 md:py-10 flex flex-col shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-gray-200/60 hover:-translate-y-1 transition-all duration-500 cursor-target group">
-              <div className="mb-6 text-portfolio-dark group-hover:text-portfolio-gold transition-colors duration-300">
+            <motion.div key={i} variants={staggerItem} className="bg-[#140f0a] border border-white/10 hover:border-portfolio-gold/40 rounded-3xl px-6 py-8 md:px-8 md:py-10 flex flex-col shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:-translate-y-1 transition-all duration-500 cursor-target group">
+              <div className="mb-6 text-portfolio-gold">
                 <service.icon size={24} strokeWidth={1.5} />
               </div>
-              <h3 className="text-xl font-bold tracking-tight mb-3">{service.title}</h3>
+              <h3 className="text-xl font-bold tracking-tight mb-3 text-portfolio-dark">{service.title}</h3>
               <p className="text-base text-portfolio-muted leading-relaxed">{service.desc}</p>
             </motion.div>
           ))}
@@ -177,8 +177,8 @@ const AssociateProgramPage = () => {
             { range: "₹20K – ₹1 Lakh", pct: "12" },
             { range: "Above ₹1 Lakh", pct: "12" }
           ].map((tier, i) => (
-            <motion.div key={i} variants={staggerItem} className="bg-white border border-gray-100 rounded-3xl px-6 py-8 md:px-8 md:py-10 flex flex-col shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-gray-200/60 hover:-translate-y-1 transition-all duration-500 cursor-target group">
-              <span className="text-sm font-bold uppercase tracking-widest text-portfolio-dark mb-4 group-hover:text-portfolio-gold transition-colors duration-300">
+            <motion.div key={i} variants={staggerItem} className="bg-[#140f0a] border border-white/10 hover:border-portfolio-gold/40 rounded-3xl px-6 py-8 md:px-8 md:py-10 flex flex-col shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:-translate-y-1 transition-all duration-500 cursor-target group">
+              <span className="text-sm font-bold uppercase tracking-widest text-portfolio-muted mb-4 group-hover:text-portfolio-gold transition-colors duration-300">
                 {tier.range}
               </span>
               <div className="flex items-baseline gap-1 mb-2">
@@ -206,7 +206,7 @@ const AssociateProgramPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="group flex flex-row items-center justify-between py-6 border-b border-portfolio-dark/10 last:border-0 hover:bg-portfolio-dark/[0.02] transition-colors -mx-4 px-4 rounded-xl cursor-target"
+                className="group flex flex-row items-center justify-between py-6 border-b border-portfolio-dark/10 last:border-0 hover:bg-white/[0.02] transition-colors -mx-4 px-4 rounded-xl cursor-target"
               >
                 <span className="text-base text-portfolio-muted group-hover:text-portfolio-gold transition-colors duration-300">Client pays {row.client}</span>
                 <div className="flex items-center gap-6 sm:gap-12 md:gap-24">
@@ -245,11 +245,11 @@ const AssociateProgramPage = () => {
             { icon: HeadphonesIcon, title: "We support you", desc: "Not sure how to pitch? We'll get on a call with you and your client together if needed." },
             { icon: Building2, title: "Any industry", desc: "Retail, education, food, healthcare, finance — we build for any industry, so any business is a potential client." }
           ].map((item, i) => (
-            <motion.div key={i} variants={staggerItem} className="bg-white border border-gray-100 rounded-3xl px-6 py-8 md:px-8 md:py-10 flex flex-col shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-gray-200/60 hover:-translate-y-1 transition-all duration-500 cursor-target group">
-              <div className="mb-4 text-portfolio-dark group-hover:text-portfolio-gold transition-colors duration-300">
+            <motion.div key={i} variants={staggerItem} className="bg-[#140f0a] border border-white/10 hover:border-portfolio-gold/40 rounded-3xl px-6 py-8 md:px-8 md:py-10 flex flex-col shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:-translate-y-1 transition-all duration-500 cursor-target group">
+              <div className="mb-4 text-portfolio-gold">
                 <item.icon size={20} strokeWidth={2} />
               </div>
-              <h4 className="text-lg font-bold tracking-tight mb-2">{item.title}</h4>
+              <h4 className="text-lg font-bold tracking-tight mb-2 text-portfolio-dark">{item.title}</h4>
               <p className="text-base text-portfolio-muted leading-relaxed">{item.desc}</p>
             </motion.div>
           ))}
@@ -271,7 +271,7 @@ const AssociateProgramPage = () => {
           href="https://wa.me/918605671941"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 text-portfolio-dark text-sm font-bold uppercase tracking-widest border border-portfolio-dark/20 px-8 py-3 rounded-full hover:bg-portfolio-dark hover:text-white transition-all cursor-target group mb-12"
+          className="flex items-center gap-2 bg-portfolio-gold text-portfolio-dark text-sm font-bold uppercase tracking-widest px-8 py-3 rounded-full hover:bg-portfolio-gold/90 transition-all cursor-target group mb-12"
         >
           <MessageCircle size={16} />
           Chat on WhatsApp

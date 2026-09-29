@@ -34,7 +34,7 @@ const ServiceCard = ({ title, desc, href, children, className }: { title: string
   
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["3deg", "-3deg"]);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-3deg", "3deg"]);
-  const backgroundTemplate = useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(0,0,0,0.03), transparent 40%)`;
+  const backgroundTemplate = useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(234,112,8,0.12), transparent 50%)`;
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (isMobile || !cardRef.current) return;
@@ -81,26 +81,12 @@ const ServiceCard = ({ title, desc, href, children, className }: { title: string
         }}
         animate={{ y: (isHovering && !isMobile) ? -6 : 0, scale: (isHovering && !isMobile) ? 1.01 : 1 }}
         transition={{ type: "spring", stiffness: 400, damping: 40 }}
-        className="w-full aspect-[16/10] min-h-[220px] sm:min-h-[340px] lg:min-h-[380px] overflow-hidden rounded-[1.5rem] bg-[#FFFFFF] relative flex items-center justify-center isolate mb-4 sm:mb-6 service-anim-perf transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[0_8px_24px_rgba(0,0,0,0.04)] group-hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)]"
+        className="w-full aspect-[16/10] min-h-[220px] sm:min-h-[340px] lg:min-h-[380px] overflow-hidden rounded-[1.5rem] bg-[#140f0a] border border-portfolio-gold/35 group-hover:border-portfolio-gold/60 relative flex items-center justify-center isolate mb-4 sm:mb-6 service-anim-perf transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[0_0_35px_rgba(234,112,8,0.08)] group-hover:shadow-[0_0_45px_rgba(234,112,8,0.18)]"
       >
-        {/* Subtle premium 1px light grey border with soft white-to-grey gradient */}
-        <div 
-          className="absolute inset-0 rounded-[1.5rem] p-[1px] bg-gradient-to-br from-white via-[#E5E7EB] to-[#D1D5DB] pointer-events-none z-40" 
-          style={{ 
-            mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)', 
-            WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)', 
-            maskComposite: 'exclude', 
-            WebkitMaskComposite: 'xor' 
-          }} 
-        />
-
-        {/* Elegant inner highlight */}
-        <div className="absolute inset-0 rounded-[1.5rem] shadow-[inset_0_1px_2px_rgba(255,255,255,1)] pointer-events-none z-30" />
-
         {/* Soft shadow spotlight following cursor */}
         {!isMobile && (
           <motion.div 
-            className="pointer-events-none absolute -inset-px rounded-[1.5rem] opacity-0 transition duration-500 group-hover:opacity-100 z-50 mix-blend-multiply"
+            className="pointer-events-none absolute -inset-px rounded-[1.5rem] opacity-0 transition duration-500 group-hover:opacity-100 z-50"
             style={{
               background: backgroundTemplate
             }}
@@ -110,7 +96,7 @@ const ServiceCard = ({ title, desc, href, children, className }: { title: string
         {children}
       </motion.div>
       <div className="mt-auto px-1 sm:px-0">
-        <h3 className="text-lg md:text-2xl font-bold mb-1 sm:mb-2 tracking-tight transition-colors duration-500">
+        <h3 className="text-lg md:text-2xl font-bold mb-1 sm:mb-2 tracking-tight transition-colors duration-500 text-white">
           {href ? (
             <Link to={href} className="cursor-target inline-flex items-center gap-1.5 group-hover:text-portfolio-gold transition-colors">
               {title} <ArrowRight size={18} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-portfolio-gold" />
@@ -119,7 +105,7 @@ const ServiceCard = ({ title, desc, href, children, className }: { title: string
             title
           )}
         </h3>
-        <p className="text-portfolio-muted text-sm leading-relaxed">{desc}</p>
+        <p className="text-[#a3998e] text-sm leading-relaxed">{desc}</p>
       </div>
     </motion.div>
   );

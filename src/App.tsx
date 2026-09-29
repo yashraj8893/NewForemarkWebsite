@@ -14,7 +14,6 @@ import Footer from './components/Footer';
 import { useEffect, useState } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import TargetCursor from './components/TargetCursor';
 import { SmoothScrollProvider, useLenis } from './components/SmoothScroll';
 
 const navLinks = [
@@ -64,7 +63,7 @@ const Navbar = () => {
             <Link
               key={link.label}
               to={link.href}
-              className="hover:text-portfolio-dark transition-colors cursor-target"
+              className="hover:text-portfolio-gold transition-colors cursor-target"
             >
               {link.label}
             </Link>
@@ -72,13 +71,13 @@ const Navbar = () => {
 
           {/* Dropdown for Products */}
           <div className="relative group">
-            <button className="flex items-center gap-1 hover:text-portfolio-dark transition-colors py-2 cursor-target">
+            <button className="flex items-center gap-1 hover:text-portfolio-gold transition-colors py-2 cursor-target">
               Products <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300" />
             </button>
             <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[340px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50 pointer-events-none group-hover:pointer-events-auto">
-              <div className="bg-white border border-portfolio-dark/10 rounded-2xl p-3 shadow-2xl">
-                <Link to="/sovereign-counsel" className="flex flex-col p-4 rounded-xl hover:bg-portfolio-dark/5 transition-colors group/item cursor-target">
-                  <span className="text-portfolio-dark font-bold text-sm mb-1 group-hover/item:text-portfolio-gold transition-colors">Sovereign Counsel</span>
+              <div className="bg-[#140f0a] border border-amber-500/20 rounded-2xl p-3 shadow-2xl backdrop-blur-xl">
+                <Link to="/sovereign-counsel" className="flex flex-col p-4 rounded-xl hover:bg-amber-500/10 transition-colors group/item cursor-target">
+                  <span className="text-white font-bold text-sm mb-1 group-hover/item:text-portfolio-gold transition-colors">Sovereign Counsel</span>
                   <span className="text-portfolio-muted text-xs leading-relaxed">Case Management web app for Law firms</span>
                 </Link>
               </div>
@@ -87,13 +86,13 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-4 z-50">
-          <Link to="/contact" className="hidden md:inline-flex text-portfolio-dark text-sm font-bold uppercase tracking-widest border border-portfolio-dark/20 px-8 py-3 rounded-full hover:bg-portfolio-dark hover:text-white transition-all cursor-target">
+          <Link to="/contact" className="hidden md:inline-flex text-white text-sm font-bold uppercase tracking-widest border border-amber-500/30 bg-[#140f0a] px-8 py-3 rounded-full hover:bg-portfolio-gold hover:text-white transition-all cursor-target shadow-[0_0_20px_rgba(234,112,8,0.15)]">
             Contact us
           </Link>
 
           {/* Mobile Menu Toggle */}
           <button
-            className="md:hidden p-2 text-portfolio-dark cursor-target"
+            className="md:hidden p-2 text-white cursor-target"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -109,7 +108,7 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[60] bg-white/95 backdrop-blur-lg flex flex-col items-center justify-center pt-20 pb-10 px-8"
+            className="fixed inset-0 z-[60] bg-[#0a0805]/98 backdrop-blur-2xl flex flex-col items-center justify-center pt-20 pb-10 px-8 text-white"
           >
             <div className="flex flex-col items-center gap-8 text-xl font-bold tracking-tight">
               {navLinks.map((link) => (
@@ -122,7 +121,7 @@ const Navbar = () => {
                   {link.label}
                 </Link>
               ))}
-              <div className="w-12 h-px bg-portfolio-dark/10 my-2" />
+              <div className="w-12 h-px bg-white/10 my-2" />
               <span className="text-sm font-semibold text-portfolio-muted uppercase tracking-widest">Products</span>
               <Link
                 to="/sovereign-counsel"
@@ -138,7 +137,7 @@ const Navbar = () => {
               >
                 Associate Program
               </Link>
-              <div className="w-12 h-px bg-portfolio-dark/10 my-2" />
+              <div className="w-12 h-px bg-white/10 my-2" />
               <Link
                 to="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -155,18 +154,9 @@ const Navbar = () => {
 };
 
 function App() {
-  const location = useLocation();
   return (
     <SmoothScrollProvider>
-      <div className="relative min-h-screen bg-portfolio-bg selection:bg-portfolio-gold/30 font-geist overflow-x-hidden">
-        <TargetCursor
-          key={location.pathname}
-          targetSelector=".cursor-target, a, button, input, textarea"
-          spinDuration={2}
-          hideDefaultCursor={true}
-          parallaxOn={true}
-          hoverDuration={0.5}
-        />
+      <div className="relative min-h-screen bg-[#0a0805] text-[#f9f5f1] selection:bg-[#ea7008] selection:text-white font-geist overflow-x-hidden">
         <div className="grainy-overlay" />
         <Navbar />
         <Routes>

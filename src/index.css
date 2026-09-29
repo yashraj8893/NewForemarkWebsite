@@ -4,14 +4,16 @@
 @import "lenis/dist/lenis.css";
 
 @theme {
-  --color-portfolio-bg: #f5f5f3;
-  --color-portfolio-white: #ffffff;
-  --color-portfolio-dark: #0d0d0d;
-  --color-portfolio-text: #111111;
-  --color-portfolio-muted: #666666;
-  --color-portfolio-gray: #999999;
-  --color-portfolio-orange: #e87811;
-  --color-portfolio-gold: var(--color-portfolio-orange);
+  --color-portfolio-bg: #0a0805;
+  --color-portfolio-white: #140f0a;
+  --color-portfolio-dark: #f9f5f1;
+  --color-portfolio-text: #f9f5f1;
+  --color-portfolio-muted: #a3998e;
+  --color-portfolio-gray: #d4c9bf;
+  --color-portfolio-orange: #ea7008;
+  --color-portfolio-gold: #ea7008;
+  --color-portfolio-surface: #140f0a;
+  --color-portfolio-surface-hover: #1c150e;
   --color-portfolio-blue: #7f98fa;
   --color-portfolio-green: #63c58f;
   
@@ -20,42 +22,50 @@
   --radius-3xl: 24px;
   --radius-4xl: 32px;
   
-  --shadow-glow: 0 20px 50px -12px rgba(0,0,0,0.5);
-  --shadow-glow-hover: 0 25px 60px -15px rgba(0,0,0,0.6);
-  --shadow-deep: 0 30px 100px -20px rgba(0,0,0,0.7);
+  --shadow-glow: 0 20px 50px -12px rgba(234,112,8,0.15);
+  --shadow-glow-hover: 0 25px 60px -15px rgba(234,112,8,0.25);
+  --shadow-deep: 0 30px 100px -20px rgba(0,0,0,0.8);
 }
 
 :root {
   font-family: var(--font-geist);
-  background-color: var(--color-portfolio-bg);
-  color: var(--color-portfolio-text);
+  background-color: #0a0805;
+  color: #f9f5f1;
+  color-scheme: dark;
 }
 
 body {
   margin: 0;
   overflow-x: hidden;
+  background-color: #0a0805;
+  color: #f9f5f1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+::selection {
+  background-color: #ea7008;
+  color: #ffffff;
+}
+
 @layer base {
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold tracking-tight;
+    @apply font-bold tracking-tight text-[#f9f5f1];
     line-height: 1.1;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply rounded-full px-8 py-4 font-medium transition-all duration-300 bg-portfolio-dark text-white hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl;
+    @apply rounded-full px-8 py-4 font-medium transition-all duration-300 bg-gradient-to-r from-[#ea7008] via-[#d97706] to-[#b45309] text-white hover:brightness-110 hover:scale-105 active:scale-95 shadow-[0_0_25px_rgba(234,112,8,0.35)] border border-amber-400/20;
   }
   
   .btn-ghost {
-    @apply rounded-full px-8 py-4 font-medium transition-all duration-300 bg-transparent border border-portfolio-dark/10 text-portfolio-dark hover:bg-portfolio-dark/5;
+    @apply rounded-full px-8 py-4 font-medium transition-all duration-300 bg-white/[0.04] border border-white/[0.12] text-white hover:bg-amber-500/[0.08] hover:border-amber-500/[0.3];
   }
   
   .section-label {
-    @apply uppercase tracking-[0.2em] text-xs md:text-sm font-semibold text-portfolio-muted mb-4 block;
+    @apply uppercase tracking-[0.2em] text-xs md:text-sm font-semibold text-[#ea7008] mb-4 block font-mono;
   }
 }
 

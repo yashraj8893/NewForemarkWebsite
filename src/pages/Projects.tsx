@@ -112,9 +112,9 @@ const ProjectsPage = () => {
   return (
     <>
       <SEO title="Projects" description="Explore our portfolio of premium web applications, websites, and digital products built for modern businesses." canonicalUrl="https://foremark.in/projects" />
-      <div className="relative w-full bg-portfolio-bg overflow-hidden">
+      <div className="relative w-full bg-[#0a0805] text-[#f9f5f1] overflow-hidden">
         {/* Subtle Background Texture */}
-        <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1.5px,transparent_1.5px)] [background-size:24px_24px] opacity-60 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(#ea7008_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none" />
 
         <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pt-12 sm:pt-16 pb-24 sm:pb-40">
 
@@ -123,7 +123,7 @@ const ProjectsPage = () => {
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-portfolio-gold font-bold mb-3 text-xs tracking-widest uppercase block"
+              className="text-portfolio-gold font-bold mb-3 text-xs tracking-widest uppercase block font-mono"
             >
               Case Studies
             </motion.span>
@@ -132,7 +132,7 @@ const ProjectsPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-4 sm:mb-6"
+              className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-4 sm:mb-6 text-white"
             >
               Examples of <br /> our work
             </motion.h1>
@@ -141,7 +141,7 @@ const ProjectsPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-base text-portfolio-muted max-w-xl leading-relaxed mb-6"
+              className="text-base text-[#a3998e] max-w-xl leading-relaxed mb-6 font-normal"
             >
               These are our projects done till now. Simple and clear.
             </motion.p>
@@ -155,14 +155,14 @@ const ProjectsPage = () => {
             >
               <div className="flex -space-x-3">
                 {[1, 2, 3].map((i) => (
-                  <div key={i} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-[3px] border-portfolio-bg bg-white overflow-hidden shadow-sm">
+                  <div key={i} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-[3px] border-[#0a0805] bg-[#140f0a] overflow-hidden shadow-lg">
                     <img src={`https://i.pravatar.cc/150?u=acc${i}`} alt="Client" className="w-full h-full object-cover" />
                   </div>
                 ))}
               </div>
               <div>
-                <p className="font-bold text-sm text-portfolio-dark">50+ happy clients!</p>
-                <Link to="/contact" className="text-[12px] text-portfolio-muted hover:text-portfolio-gold font-bold flex items-center gap-1 transition-colors cursor-target mt-0.5">
+                <p className="font-bold text-sm text-white">50+ happy clients!</p>
+                <Link to="/contact" className="text-[12px] text-portfolio-gold hover:brightness-125 font-bold flex items-center gap-1 transition-all cursor-target mt-0.5 font-mono">
                   Join them now <ArrowUpRight size={14} />
                 </Link>
               </div>
@@ -170,12 +170,12 @@ const ProjectsPage = () => {
           </div>
 
           {/* Brand Logos Row - Infinite Marquee */}
-          <div className="w-full border-b border-portfolio-dark/10 pb-12 sm:pb-16 mb-16 sm:mb-24 overflow-hidden relative z-10">
-            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-portfolio-bg to-transparent z-20 pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-portfolio-bg to-transparent z-20 pointer-events-none" />
+          <div className="w-full border-b border-white/10 pb-12 sm:pb-16 mb-16 sm:mb-24 overflow-hidden relative z-10">
+            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#0a0805] to-transparent z-20 pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#0a0805] to-transparent z-20 pointer-events-none" />
 
             <motion.div
-              className="flex gap-16 md:gap-24 items-center w-max mix-blend-multiply"
+              className="flex gap-16 md:gap-24 items-center w-max opacity-80"
               animate={{ x: ["0%", "-50%"] }}
               transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
             >
@@ -194,7 +194,7 @@ const ProjectsPage = () => {
                       <img
                         src={brand.logo}
                         alt={`${brand.name} logo`}
-                        className="h-10 md:h-12 w-auto object-contain transition-transform duration-400 group-hover:scale-105"
+                        className="h-10 md:h-12 w-auto object-contain transition-transform duration-400 group-hover:scale-105 filter brightness-125"
                       />
                     </div>
                   ))}
@@ -215,7 +215,7 @@ const ProjectsPage = () => {
                 className="group/card flex flex-col cursor-target"
               >
                 {/* Outer Container */}
-                <div className={`relative w-full ${project.aspect} rounded-2xl sm:rounded-3xl bg-white mb-4 sm:mb-6 shadow-sm border border-black/[0.04] pt-6 px-6 sm:pt-8 sm:px-8 md:pt-12 md:px-12 lg:pt-16 lg:px-16 overflow-hidden flex items-center justify-center`}>
+                <div className={`relative w-full ${project.aspect} rounded-2xl sm:rounded-3xl bg-[#140f0a] mb-4 sm:mb-6 border border-portfolio-gold/35 group-hover/card:border-portfolio-gold/65 shadow-[0_0_35px_rgba(234,112,8,0.08)] group-hover:shadow-[0_0_45px_rgba(234,112,8,0.18)] pt-6 px-6 sm:pt-8 sm:px-8 md:pt-12 md:px-12 lg:pt-16 lg:px-16 overflow-hidden flex items-center justify-center transition-all duration-500`}>
 
                   <div className="absolute inset-0 pointer-events-none opacity-[0.03]">
                     <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -224,19 +224,19 @@ const ProjectsPage = () => {
                     </svg>
                   </div>
 
-                  <div className="relative w-full h-full rounded-t-xl overflow-hidden shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)] transition-transform duration-[1.2s] ease-[0.16,1,0.3,1] group-hover/card:scale-110 group-hover/card:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.3)] bg-white">
+                  <div className="relative w-full h-full rounded-t-xl overflow-hidden shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] transition-transform duration-[1.2s] ease-[0.16,1,0.3,1] group-hover/card:scale-110 bg-[#140f0a]">
                     <img
                       src={project.image}
                       alt={project.title}
                       className="w-full h-full object-cover object-top"
                     />
-                    <div className="absolute inset-0 ring-1 ring-inset ring-black/[0.05] rounded-xl pointer-events-none" />
+                    <div className="absolute inset-0 ring-1 ring-inset ring-white/[0.1] rounded-xl pointer-events-none" />
                   </div>
                 </div>
 
                 {/* Title Only */}
                 <div className="px-1 md:px-2">
-                  <h3 className="text-xl md:text-2xl font-bold tracking-tight text-portfolio-dark group-hover/card:text-portfolio-gold transition-colors duration-400">
+                  <h3 className="text-xl md:text-2xl font-bold tracking-tight text-white group-hover/card:text-portfolio-gold transition-colors duration-400">
                     {project.title}
                   </h3>
                 </div>

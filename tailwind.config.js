@@ -8,13 +8,15 @@ export default {
     extend: {
       colors: {
         portfolio: {
-          bg: "#f5f5f3",
-          white: "#ffffff",
-          dark: "#0d0d0d",
-          text: "#111111",
-          muted: "#666666",
-          gray: "#999999",
-          gold: "#d4af37",
+          bg: "#0a0805",
+          white: "#140f0a",
+          dark: "#f9f5f1",
+          text: "#f9f5f1",
+          muted: "#a3998e",
+          gray: "#d4c9bf",
+          gold: "#ea7008",
+          orange: "#ea7008",
+          surface: "#140f0a",
           blue: "#7f98fa",
           green: "#63c58f",
         }

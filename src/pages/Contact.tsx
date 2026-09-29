@@ -214,7 +214,7 @@ const ContactPage = () => {
                       name="service"
                       value={selectedService}
                       onChange={(e) => setSelectedService(e.target.value)}
-                      className="w-full bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-2.5 sm:py-4 text-white text-sm sm:text-base focus:outline-none focus:border-portfolio-gold transition-colors cursor-target [&>option]:bg-[#1a1a1a] [&>option]:text-white"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-2.5 sm:py-4 text-white text-sm sm:text-base focus:outline-none focus:border-portfolio-gold transition-colors cursor-target [&>option]:bg-[#140f0a] [&>option]:text-white"
                     >
                       <option value="">Select a service (Optional)</option>
                       {serviceOptions.map((opt) => (
