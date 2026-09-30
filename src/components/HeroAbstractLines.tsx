@@ -12,16 +12,16 @@ import { motion } from 'framer-motion';
  * - GPU-accelerated, locked 60-120 FPS
  */
 export const HeroAbstractLines: React.FC = () => {
-  // Refined track palette: increased inter-strip spacing (step of 28px) and crisp, elegant stroke widths
+  // Refined track palette for white and orange theme
   const trackPalette = [
-    { offset: -84, stroke: '#e4d5be', width: 8, opacity: 0.38, id: 'cream-1' },
-    { offset: -56, stroke: '#6c6953', width: 9, opacity: 0.52, id: 'olive-1' },
-    { offset: -28, stroke: '#444e3d', width: 10, opacity: 0.68, id: 'moss-1' },
+    { offset: -84, stroke: '#fed7aa', width: 7, opacity: 0.5, id: 'peach-1' },
+    { offset: -56, stroke: '#fb923c', width: 8, opacity: 0.4, id: 'orange-tint-1' },
+    { offset: -28, stroke: '#ea580c', width: 9, opacity: 0.6, id: 'amber-1' },
     { offset: 0,   stroke: 'url(#hero-orange-grad)', width: 16, opacity: 1.0, isOrange: true, id: 'orange-hero' },
-    { offset: 28,  stroke: '#444e3d', width: 10, opacity: 0.68, id: 'moss-2' },
-    { offset: 56,  stroke: '#6c6953', width: 9, opacity: 0.52, id: 'olive-2' },
-    { offset: 84,  stroke: '#e4d5be', width: 8, opacity: 0.38, id: 'cream-2' },
-    { offset: 112, stroke: '#e4d5be', width: 2.5, opacity: 0.22, id: 'hairline' },
+    { offset: 28,  stroke: '#ea580c', width: 9, opacity: 0.6, id: 'amber-2' },
+    { offset: 56,  stroke: '#fb923c', width: 8, opacity: 0.4, id: 'orange-tint-2' },
+    { offset: 84,  stroke: '#fed7aa', width: 7, opacity: 0.5, id: 'peach-2' },
+    { offset: 112, stroke: '#ffedd5', width: 2.5, opacity: 0.4, id: 'hairline' },
   ];
 
   // --- 1. Diagonal Highway (Positioned further left to frame the left flank & clear the headline) ---
@@ -76,25 +76,25 @@ export const HeroAbstractLines: React.FC = () => {
         aria-hidden="true"
       >
         <defs>
-          {/* Shaded Foremark Orange Gradient (Highlights to deep shaded burnt tone) */}
+          {/* Shaded Foremark Orange Gradient */}
           <linearGradient id="hero-orange-grad" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#ffaa44" />
             <stop offset="28%" stopColor="#ea7008" />
             <stop offset="72%" stopColor="#f37312" />
-            <stop offset="100%" stopColor="#9c3200" />
+            <stop offset="100%" stopColor="#c2410c" />
           </linearGradient>
 
           {/* Ambient radial glows behind the curves */}
           <radialGradient id="ubend-ambient-glow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#ea7008" stopOpacity="0.28" />
-            <stop offset="60%" stopColor="#ea7008" stopOpacity="0.07" />
-            <stop offset="100%" stopColor="#0a0805" stopOpacity="0" />
+            <stop offset="0%" stopColor="#ea7008" stopOpacity="0.18" />
+            <stop offset="60%" stopColor="#ea7008" stopOpacity="0.04" />
+            <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
           </radialGradient>
 
           <radialGradient id="tl-ambient-glow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#ea7008" stopOpacity="0.24" />
-            <stop offset="60%" stopColor="#ea7008" stopOpacity="0.06" />
-            <stop offset="100%" stopColor="#0a0805" stopOpacity="0" />
+            <stop offset="0%" stopColor="#ea7008" stopOpacity="0.15" />
+            <stop offset="60%" stopColor="#ea7008" stopOpacity="0.03" />
+            <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
           </radialGradient>
         </defs>
 
@@ -131,11 +131,11 @@ export const HeroAbstractLines: React.FC = () => {
                 {/* Physical under-path shadow casting down */}
                 <path
                   d={getDiagonalPath(t.offset)}
-                  stroke="#000000"
-                  strokeWidth={t.width + 6}
-                  strokeOpacity={0.70}
+                  stroke="#ea7008"
+                  strokeWidth={t.width + 4}
+                  strokeOpacity={0.16}
                   strokeLinecap="round"
-                  transform="translate(0, 8)"
+                  transform="translate(0, 6)"
                 />
                 {/* Standout Glowing Shaded Orange Line */}
                 <motion.path
@@ -144,7 +144,7 @@ export const HeroAbstractLines: React.FC = () => {
                   strokeWidth={t.width}
                   strokeLinecap="round"
                   style={{
-                    filter: 'drop-shadow(0 8px 16px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 16px rgba(234, 112, 8, 0.75))',
+                    filter: 'drop-shadow(0 6px 18px rgba(234, 112, 8, 0.35)) drop-shadow(0 0 10px rgba(234, 112, 8, 0.25))',
                   }}
                   initial={{ pathLength: 0, opacity: 0 }}
                   animate={{ pathLength: 1, opacity: 1 }}
@@ -180,11 +180,11 @@ export const HeroAbstractLines: React.FC = () => {
               <React.Fragment key={`frag-scoop-${t.id}`}>
                 <path
                   d={getScoopPath(t.offset)}
-                  stroke="#000000"
-                  strokeWidth={t.width + 6}
-                  strokeOpacity={0.70}
+                  stroke="#ea7008"
+                  strokeWidth={t.width + 4}
+                  strokeOpacity={0.16}
                   strokeLinecap="round"
-                  transform="translate(0, 8)"
+                  transform="translate(0, 6)"
                 />
                 <motion.path
                   d={getScoopPath(t.offset)}
@@ -192,7 +192,7 @@ export const HeroAbstractLines: React.FC = () => {
                   strokeWidth={t.width}
                   strokeLinecap="round"
                   style={{
-                    filter: 'drop-shadow(0 8px 16px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 16px rgba(234, 112, 8, 0.70))',
+                    filter: 'drop-shadow(0 6px 18px rgba(234, 112, 8, 0.35)) drop-shadow(0 0 10px rgba(234, 112, 8, 0.25))',
                   }}
                   initial={{ pathLength: 0, opacity: 0 }}
                   animate={{ pathLength: 1, opacity: 1 }}

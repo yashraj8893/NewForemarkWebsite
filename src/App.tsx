@@ -58,7 +58,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center gap-8 text-[#d4c9bf] text-[13px] font-medium w-max px-7 py-2.5 rounded-full border border-white/[0.08] bg-[#120e09]/85 backdrop-blur-xl shadow-2xl">
+        <div className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center gap-8 text-[#4b453f] text-[13px] font-medium w-max px-7 py-2.5 rounded-full border border-[#ebe5df] bg-white/90 backdrop-blur-xl shadow-lg shadow-black/[0.04]">
           {navLinks.map((link) => (
             <Link
               key={link.label}
@@ -75,9 +75,9 @@ const Navbar = () => {
               Products <ChevronDown size={13} className="group-hover:rotate-180 transition-transform duration-300" />
             </button>
             <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[340px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50 pointer-events-none group-hover:pointer-events-auto">
-              <div className="bg-[#120e09] border border-portfolio-gold/35 rounded-2xl p-3 shadow-2xl backdrop-blur-xl relative overflow-hidden before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent">
+              <div className="bg-white border border-portfolio-gold/35 rounded-2xl p-3 shadow-2xl backdrop-blur-xl relative overflow-hidden before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent">
                 <Link to="/sovereign-counsel" className="flex flex-col p-4 rounded-xl hover:bg-portfolio-gold/10 transition-colors group/item cursor-target">
-                  <span className="text-white font-bold text-sm mb-1 group-hover/item:text-portfolio-gold transition-colors font-display">Sovereign Counsel</span>
+                  <span className="text-[#121110] font-bold text-sm mb-1 group-hover/item:text-portfolio-gold transition-colors font-display">Sovereign Counsel</span>
                   <span className="text-portfolio-muted text-xs leading-relaxed">Case Management web app for Law firms</span>
                 </Link>
               </div>
@@ -86,13 +86,13 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-4 z-50">
-          <Link to="/contact" className="hidden md:inline-flex text-[#0a0805] bg-[#ea7008] hover:bg-[#ff7e15] text-[11px] font-mono font-bold uppercase tracking-[0.18em] px-6 py-2.5 rounded-full transition-all cursor-target shadow-[0_0_25px_rgba(234,112,8,0.25)] border border-[#ff9d47]/40 hover:scale-[1.02]">
+          <Link to="/contact" className="hidden md:inline-flex text-white bg-[#ea7008] hover:bg-[#ff7e15] text-[11px] font-mono font-bold uppercase tracking-[0.18em] px-6 py-2.5 rounded-full transition-all cursor-target shadow-[0_4px_20px_rgba(234,112,8,0.28)] border border-[#ea7008] hover:scale-[1.02]">
             Contact us
           </Link>
 
           {/* Mobile Menu Toggle */}
           <button
-            className="md:hidden p-2 text-white cursor-target"
+            className="md:hidden p-2 text-[#121110] cursor-target"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -108,7 +108,7 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[60] bg-[#0a0805]/98 backdrop-blur-2xl flex flex-col items-center justify-center pt-20 pb-10 px-8 text-white"
+            className="fixed inset-0 z-[60] bg-white/98 backdrop-blur-2xl flex flex-col items-center justify-center pt-20 pb-10 px-8 text-[#121110]"
           >
             <div className="flex flex-col items-center gap-8 text-xl font-bold tracking-tight">
               {navLinks.map((link) => (
@@ -121,7 +121,7 @@ const Navbar = () => {
                   {link.label}
                 </Link>
               ))}
-              <div className="w-12 h-px bg-white/10 my-2" />
+              <div className="w-12 h-px bg-black/10 my-2" />
               <span className="text-sm font-semibold text-portfolio-muted uppercase tracking-widest">Products</span>
               <Link
                 to="/sovereign-counsel"
@@ -137,7 +137,7 @@ const Navbar = () => {
               >
                 Associate Program
               </Link>
-              <div className="w-12 h-px bg-white/10 my-2" />
+              <div className="w-12 h-px bg-black/10 my-2" />
               <Link
                 to="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -156,13 +156,13 @@ const Navbar = () => {
 function App() {
   return (
     <SmoothScrollProvider>
-      <div className="relative min-h-screen bg-[#0a0805] text-[#f9f5f1] selection:bg-[#ea7008] selection:text-white font-geist overflow-x-hidden">
+      <div className="relative min-h-screen bg-white text-[#1a1816] selection:bg-[#ea7008] selection:text-white font-geist overflow-x-hidden">
         <div className="grainy-overlay" />
         
         {/* Global Ambient Orange Light Spots */}
-        <div className="fixed -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[550px] bg-[#ea7008]/[0.08] blur-[160px] rounded-full pointer-events-none -z-10" />
-        <div className="fixed top-1/3 -left-48 w-[650px] h-[650px] bg-[#ea7008]/[0.06] blur-[160px] rounded-full pointer-events-none -z-10" />
-        <div className="fixed bottom-0 -right-48 w-[700px] h-[650px] bg-[#ea7008]/[0.06] blur-[170px] rounded-full pointer-events-none -z-10" />
+        <div className="fixed -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[550px] bg-[#ea7008]/[0.06] blur-[160px] rounded-full pointer-events-none -z-10" />
+        <div className="fixed top-1/3 -left-48 w-[650px] h-[650px] bg-[#ea7008]/[0.04] blur-[160px] rounded-full pointer-events-none -z-10" />
+        <div className="fixed bottom-0 -right-48 w-[700px] h-[650px] bg-[#ea7008]/[0.04] blur-[170px] rounded-full pointer-events-none -z-10" />
 
         <Navbar />
         <Routes>

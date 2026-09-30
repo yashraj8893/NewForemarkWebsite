@@ -87,12 +87,12 @@ const ContactPage = () => {
           </motion.p>
         </div>
 
-        <div className="bg-[#0a0805] border border-portfolio-gold/35 hover:border-portfolio-gold/60 shadow-[0_0_50px_rgba(234,112,8,0.15)] rounded-[2rem] lg:rounded-[3rem] p-6 sm:p-8 md:p-16 lg:p-24 text-white relative overflow-hidden flex items-center transition-all duration-500 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/50 before:to-transparent">
+        <div className="bg-[#faf8f5] border border-portfolio-gold/35 hover:border-portfolio-gold/60 shadow-[0_4px_30px_rgba(234,112,8,0.1)] rounded-[2rem] lg:rounded-[3rem] p-6 sm:p-8 md:p-16 lg:p-24 text-[#121110] relative overflow-hidden flex items-center transition-all duration-500 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/50 before:to-transparent">
 
           {/* Luminous Orange Spot Halos inside the container */}
-          <div className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-gradient-to-bl from-[#ea7008]/28 via-[#ea7008]/12 to-transparent blur-[120px] pointer-events-none" />
-          <div className="absolute -bottom-24 -left-20 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-[#ea7008]/22 via-[#ea7008]/08 to-transparent blur-[110px] pointer-events-none" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] rounded-full bg-[#ea7008]/[0.10] blur-[100px] pointer-events-none" />
+          <div className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-gradient-to-bl from-[#ea7008]/20 via-[#ea7008]/08 to-transparent blur-[120px] pointer-events-none" />
+          <div className="absolute -bottom-24 -left-20 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-[#ea7008]/18 via-[#ea7008]/05 to-transparent blur-[110px] pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] rounded-full bg-[#ea7008]/[0.06] blur-[100px] pointer-events-none" />
 
           {/* Dynamic Technical Grid inside the card */}
           <div className="absolute inset-0 bg-[radial-gradient(rgba(234,112,8,0.18)_1.2px,transparent_1.2px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_at_center,black_45%,transparent_85%)] pointer-events-none opacity-60" />
@@ -107,7 +107,7 @@ const ContactPage = () => {
               alt=""
               aria-hidden="true"
               className="w-full h-full object-cover object-center"
-              style={{ opacity: 0.15 }}
+              style={{ opacity: 0.1 }}
             />
           </div>
 
@@ -116,7 +116,7 @@ const ContactPage = () => {
             className="absolute inset-y-0 left-0 z-20 pointer-events-none hidden lg:block"
             style={{
               width: '58%',
-              background: 'linear-gradient(to right, transparent 0%, transparent 50%, #0a0805 100%)',
+              background: 'linear-gradient(to right, transparent 0%, transparent 50%, #faf8f5 100%)',
             }}
           />
 
@@ -124,7 +124,7 @@ const ContactPage = () => {
           <div
             className="absolute inset-x-0 top-0 h-24 md:h-40 z-20 pointer-events-none hidden lg:block"
             style={{
-              background: 'linear-gradient(to bottom, #0a0805 0%, transparent 100%)',
+              background: 'linear-gradient(to bottom, #faf8f5 0%, transparent 100%)',
             }}
           />
 
@@ -132,7 +132,7 @@ const ContactPage = () => {
           <div
             className="absolute inset-x-0 bottom-0 h-32 md:h-48 z-20 pointer-events-none hidden lg:block"
             style={{
-              background: 'linear-gradient(to top, #0a0805 0%, transparent 100%)',
+              background: 'linear-gradient(to top, #faf8f5 0%, transparent 100%)',
             }}
           />
 
@@ -141,7 +141,7 @@ const ContactPage = () => {
             className="absolute inset-y-0 left-0 pointer-events-none hidden lg:block"
             style={{
               width: '40%',
-              background: 'radial-gradient(ellipse at 20% 60%, rgba(234,112,8,0.12) 0%, transparent 70%)',
+              background: 'radial-gradient(ellipse at 20% 60%, rgba(234,112,8,0.08) 0%, transparent 70%)',
             }}
           />
 
@@ -169,17 +169,17 @@ const ContactPage = () => {
                     transition={{ delay: 0.3 + i * 0.1 }}
                     className="flex gap-3 sm:gap-6 group items-start"
                   >
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#120e09] border border-portfolio-gold/30 flex items-center justify-center text-portfolio-gold group-hover:bg-portfolio-gold group-hover:text-[#0a0805] transition-all duration-500 shrink-0 shadow-lg">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white border border-portfolio-gold/30 flex items-center justify-center text-portfolio-gold group-hover:bg-portfolio-gold group-hover:text-white transition-all duration-500 shrink-0 shadow-sm">
                       <item.icon size={22} />
                     </div>
                     <div className="flex flex-col min-w-0 pt-1">
                       <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-portfolio-gold font-bold mb-1">{item.label}</span>
-                      <p className="text-sm sm:text-base font-bold text-white/90 break-all sm:break-normal">{item.value1}</p>
+                      <p className="text-sm sm:text-base font-bold text-[#121110] break-all sm:break-normal">{item.value1}</p>
                       {item.value2 && (
-                        <p className="text-sm font-normal text-[#a3998e] break-all sm:break-normal mt-1 leading-relaxed max-w-sm">{item.value2}</p>
+                        <p className="text-sm font-normal text-[#5c544d] break-all sm:break-normal mt-1 leading-relaxed max-w-sm">{item.value2}</p>
                       )}
                       {item.link && (
-                        <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-xs sm:text-sm font-bold font-mono text-portfolio-gold hover:text-white transition-colors mt-2">
+                        <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-xs sm:text-sm font-bold font-mono text-portfolio-gold hover:text-[#121110] transition-colors mt-2">
                           View on Google Maps →
                         </a>
                       )}
@@ -194,7 +194,7 @@ const ContactPage = () => {
                     key={i}
                     href="#"
                     whileHover={{ y: -4 }}
-                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/15 bg-white/[0.02] flex items-center justify-center text-white/60 hover:text-portfolio-gold hover:border-portfolio-gold transition-all cursor-target"
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#e5e0da] bg-white flex items-center justify-center text-[#5c544d] hover:text-portfolio-gold hover:border-portfolio-gold transition-all cursor-target shadow-xs"
                   >
                     <Icon size={18} />
                   </motion.a>
@@ -204,18 +204,18 @@ const ContactPage = () => {
 
             {/* Right: Contact Form */}
             <div className="lg:col-span-7 mt-2 lg:mt-0 relative">
-              <div className="absolute -inset-3 bg-gradient-to-r from-[#ea7008]/25 via-[#ea7008]/10 to-[#ea7008]/20 blur-2xl rounded-[3rem] -z-10 opacity-70 pointer-events-none" />
+              <div className="absolute -inset-3 bg-gradient-to-r from-[#ea7008]/20 via-[#ea7008]/08 to-[#ea7008]/15 blur-2xl rounded-[3rem] -z-10 opacity-70 pointer-events-none" />
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="relative bg-[#120e09] border border-portfolio-gold/35 hover:border-portfolio-gold/60 shadow-[0_0_40px_rgba(234,112,8,0.12)] p-5 sm:p-8 md:p-12 rounded-[1.25rem] sm:rounded-[2.5rem] transition-all duration-500 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent"
+                className="relative bg-white border border-portfolio-gold/35 hover:border-portfolio-gold/60 shadow-[0_4px_30px_rgba(0,0,0,0.06)] p-5 sm:p-8 md:p-12 rounded-[1.25rem] sm:rounded-[2.5rem] transition-all duration-500 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent"
               >
                 <div className="flex items-center justify-between mb-6 lg:mb-8">
                   <div>
                     <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-portfolio-gold font-bold block mb-1">
                       // DIRECT LINE
                     </span>
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold font-display tracking-tight text-white">Contact form</h3>
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold font-display tracking-tight text-[#121110]">Contact form</h3>
                   </div>
                 </div>
 
@@ -228,7 +228,7 @@ const ContactPage = () => {
                       type="text"
                       required
                       placeholder="Your full name"
-                      className="w-full bg-[#18120b] border border-portfolio-gold/30 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-[#f9f5f1] text-sm sm:text-base focus:outline-none focus:border-portfolio-gold focus:ring-1 focus:ring-portfolio-gold/50 transition-all placeholder:text-[#a3998e]/50 cursor-target shadow-inner"
+                      className="w-full bg-[#faf8f5] border border-[#e5e0da] focus:border-portfolio-gold rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-[#121110] text-sm sm:text-base focus:outline-none focus:ring-1 focus:ring-portfolio-gold/50 transition-all placeholder:text-[#5c544d]/60 cursor-target shadow-inner"
                     />
                   </div>
                   <div className="space-y-1.5 sm:space-y-2">
@@ -239,7 +239,7 @@ const ContactPage = () => {
                       type="email"
                       required
                       placeholder="Your email address"
-                      className="w-full bg-[#18120b] border border-portfolio-gold/30 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-[#f9f5f1] text-sm sm:text-base focus:outline-none focus:border-portfolio-gold focus:ring-1 focus:ring-portfolio-gold/50 transition-all placeholder:text-[#a3998e]/50 cursor-target shadow-inner"
+                      className="w-full bg-[#faf8f5] border border-[#e5e0da] focus:border-portfolio-gold rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-[#121110] text-sm sm:text-base focus:outline-none focus:ring-1 focus:ring-portfolio-gold/50 transition-all placeholder:text-[#5c544d]/60 cursor-target shadow-inner"
                     />
                   </div>
                   <div className="space-y-1.5 sm:space-y-2">
@@ -250,7 +250,7 @@ const ContactPage = () => {
                         name="service"
                         value={selectedService}
                         onChange={(e) => setSelectedService(e.target.value)}
-                        className="w-full appearance-none bg-[#18120b] border border-portfolio-gold/30 rounded-xl sm:rounded-2xl pl-4 pr-12 sm:pl-6 sm:pr-14 py-3 sm:py-4 text-[#f9f5f1] text-sm sm:text-base focus:outline-none focus:border-portfolio-gold focus:ring-1 focus:ring-portfolio-gold/50 transition-all cursor-pointer [&>option]:bg-[#120e09] [&>option]:text-[#f9f5f1]"
+                        className="w-full appearance-none bg-[#faf8f5] border border-[#e5e0da] focus:border-portfolio-gold rounded-xl sm:rounded-2xl pl-4 pr-12 sm:pl-6 sm:pr-14 py-3 sm:py-4 text-[#121110] text-sm sm:text-base focus:outline-none focus:ring-1 focus:ring-portfolio-gold/50 transition-all cursor-pointer [&>option]:bg-white [&>option]:text-[#121110]"
                       >
                         <option value="">Select a service (Optional)</option>
                         {serviceOptions.map((opt) => (
@@ -272,14 +272,14 @@ const ContactPage = () => {
                       required
                       placeholder="How can we help you?"
                       rows={4}
-                      className="w-full bg-[#18120b] border border-portfolio-gold/30 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-[#f9f5f1] text-sm sm:text-base focus:outline-none focus:border-portfolio-gold focus:ring-1 focus:ring-portfolio-gold/50 transition-all placeholder:text-[#a3998e]/50 resize-none cursor-target shadow-inner"
+                      className="w-full bg-[#faf8f5] border border-[#e5e0da] focus:border-portfolio-gold rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-[#121110] text-sm sm:text-base focus:outline-none focus:ring-1 focus:ring-portfolio-gold/50 transition-all placeholder:text-[#5c544d]/60 resize-none cursor-target shadow-inner"
                     />
                   </div>
                   <motion.button
                     whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.98 }}
                     type="submit"
-                    className="w-full bg-[#ea7008] text-[#0a0805] font-bold py-3.5 sm:py-4 rounded-xl sm:rounded-2xl mt-4 sm:mt-6 hover:bg-[#ff7e15] transition-all text-sm sm:text-base cursor-target shadow-[0_0_25px_rgba(234,112,8,0.25)] border border-[#ff9d47]/40 tracking-wider font-mono"
+                    className="w-full bg-[#ea7008] text-white font-bold py-3.5 sm:py-4 rounded-xl sm:rounded-2xl mt-4 sm:mt-6 hover:bg-[#ff7e15] transition-all text-sm sm:text-base cursor-target shadow-[0_4px_20px_rgba(234,112,8,0.28)] border border-[#ea7008] tracking-wider font-mono"
                   >
                     SEND MESSAGE
                   </motion.button>

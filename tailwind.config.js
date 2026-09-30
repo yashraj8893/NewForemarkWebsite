@@ -8,17 +8,18 @@ export default {
     extend: {
       colors: {
         portfolio: {
-          bg: "#0a0805",
-          white: "#140f0a",
-          dark: "#f9f5f1",
-          text: "#f9f5f1",
-          muted: "#a3998e",
-          gray: "#d4c9bf",
+          bg: "#ffffff",
+          white: "#ffffff",
+          dark: "#121110",
+          text: "#1a1816",
+          muted: "#6b635b",
+          gray: "#4b453f",
           gold: "#ea7008",
           orange: "#ea7008",
-          surface: "#140f0a",
-          blue: "#7f98fa",
-          green: "#63c58f",
+          surface: "#ffffff",
+          surfaceHover: "#f7f5f2",
+          blue: "#4f6ff6",
+          green: "#16a34a",
         }
       },
       fontFamily: {

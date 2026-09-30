@@ -81,7 +81,7 @@ const ServiceCard = ({ title, desc, href, index, children, className }: { title:
         }}
         animate={{ y: (isHovering && !isMobile) ? -6 : 0, scale: (isHovering && !isMobile) ? 1.01 : 1 }}
         transition={{ type: "spring", stiffness: 400, damping: 40 }}
-        className="w-full aspect-[16/10] min-h-[220px] sm:min-h-[340px] lg:min-h-[380px] overflow-hidden rounded-[1.5rem] bg-[#120e09] border border-portfolio-gold/35 group-hover:border-portfolio-gold/60 relative flex items-center justify-center isolate mb-4 sm:mb-6 service-anim-perf transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[0_0_35px_rgba(234,112,8,0.08)] group-hover:shadow-[0_0_45px_rgba(234,112,8,0.18)] before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent before:z-30"
+        className="w-full aspect-[16/10] min-h-[220px] sm:min-h-[340px] lg:min-h-[380px] overflow-hidden rounded-[1.5rem] bg-white border border-portfolio-gold/35 group-hover:border-portfolio-gold/60 relative flex items-center justify-center isolate mb-4 sm:mb-6 service-anim-perf transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[0_4px_30px_rgba(234,112,8,0.08)] group-hover:shadow-[0_4px_40px_rgba(234,112,8,0.18)] before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent before:z-30"
       >
         {/* Soft shadow spotlight following cursor */}
         {!isMobile && (
@@ -101,7 +101,7 @@ const ServiceCard = ({ title, desc, href, index, children, className }: { title:
             [ {index} // CAPABILITY ]
           </span>
         )}
-        <h3 className="text-lg md:text-2xl font-bold font-display mb-1 sm:mb-2 tracking-tight transition-colors duration-500 text-white">
+        <h3 className="text-lg md:text-2xl font-bold font-display mb-1 sm:mb-2 tracking-tight transition-colors duration-500 text-[#121110]">
           {href ? (
             <Link to={href} className="cursor-target inline-flex items-center gap-1.5 group-hover:text-portfolio-gold transition-colors">
               {title} <ArrowRight size={18} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-portfolio-gold" />
@@ -110,7 +110,7 @@ const ServiceCard = ({ title, desc, href, index, children, className }: { title:
             title
           )}
         </h3>
-        <p className="text-[#a3998e] text-sm leading-relaxed">{desc}</p>
+        <p className="text-[#5c544d] text-sm leading-relaxed">{desc}</p>
       </div>
     </motion.div>
   );
@@ -729,7 +729,7 @@ const ServicesGrid = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-3xl md:text-5xl lg:text-6xl font-bold font-display tracking-tight mb-5 sm:mb-6 text-white leading-tight"
+          className="text-3xl md:text-5xl lg:text-6xl font-bold font-display tracking-tight mb-5 sm:mb-6 text-[#121110] leading-tight"
         >
           Engineered systems <br /> for modern scale
         </motion.h2>
@@ -738,7 +738,7 @@ const ServicesGrid = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="text-[#a3998e] text-base sm:text-lg max-w-2xl mx-auto leading-relaxed"
+          className="text-[#5c544d] text-base sm:text-lg max-w-2xl mx-auto leading-relaxed"
         >
           From concept to production code, we engineer resilient software architectures, high-availability hosting, and autonomous business workflows.
         </motion.p>

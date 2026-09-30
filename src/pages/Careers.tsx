@@ -37,7 +37,7 @@ const CareersPage = () => {
   return (
     <>
       <SEO title="Careers" description="Join Foremark. We're always looking for talented engineers and designers who care about their craft." canonicalUrl="https://foremark.in/careers" />
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pt-12 sm:pt-16 pb-20 sm:pb-32 bg-[#0a0805] text-[#f9f5f1]">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pt-12 sm:pt-16 pb-20 sm:pb-32 bg-white text-[#1a1816]">
 
         {/* Hero Section */}
         <div className="flex flex-col mb-16">
@@ -52,7 +52,7 @@ const CareersPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-4 sm:mb-6 text-white"
+            className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-4 sm:mb-6 text-[#121110]"
           >
             Be part of <br /> our mission
           </motion.h1>
@@ -60,7 +60,7 @@ const CareersPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-base text-[#a3998e] max-w-xl leading-relaxed"
+            className="text-base text-[#5c544d] max-w-xl leading-relaxed"
           >
             We're looking for passionate people to join us on our mission. We value flat hierarchies, clear communication, and full ownership and responsibility.
           </motion.p>
@@ -75,8 +75,8 @@ const CareersPage = () => {
               className={cn(
                 "px-4 py-2 text-xs md:px-5 md:py-2.5 md:text-sm rounded-full font-bold transition-all duration-300 cursor-target font-mono",
                 activeType === type
-                  ? "bg-portfolio-gold text-white shadow-[0_0_15px_rgba(234,112,8,0.3)]"
-                  : "border border-white/10 text-[#a3998e] hover:text-white hover:bg-white/5"
+                  ? "bg-portfolio-gold text-white shadow-[0_4px_15px_rgba(234,112,8,0.25)]"
+                  : "border border-[#e5e0da] text-[#5c544d] hover:text-[#121110] hover:bg-[#faf8f5]"
               )}
             >
               {type}
@@ -93,8 +93,8 @@ const CareersPage = () => {
               className={cn(
                 "px-4 py-2 text-xs md:px-5 md:py-2.5 md:text-sm rounded-full font-bold transition-all duration-300 cursor-target font-mono",
                 activeCategory === category
-                  ? "bg-portfolio-gold text-white shadow-[0_0_15px_rgba(234,112,8,0.3)]"
-                  : "border border-white/10 text-[#a3998e] hover:text-white hover:bg-white/5"
+                  ? "bg-portfolio-gold text-white shadow-[0_4px_15px_rgba(234,112,8,0.25)]"
+                  : "border border-[#e5e0da] text-[#5c544d] hover:text-[#121110] hover:bg-[#faf8f5]"
               )}
             >
               {category}
@@ -105,23 +105,23 @@ const CareersPage = () => {
         {/* Jobs List */}
         <div className="space-y-0">
           {filteredJobs.map((job) => (
-            <div key={job.id} className="border-t border-white/10 first:border-t-0">
+            <div key={job.id} className="border-t border-[#e5e0da] first:border-t-0">
               <div className="py-8 sm:py-12 group">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
                   <div className="flex-1">
                     <Link to={`/careers/${job.slug}`} className="inline-block w-fit mb-4">
-                      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-white hover:text-portfolio-gold transition-colors">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[#121110] hover:text-portfolio-gold transition-colors">
                         {job.title}
                       </h3>
                     </Link>
-                    <p className="text-[#a3998e] text-sm sm:text-base mb-4 sm:mb-6 max-w-2xl">
+                    <p className="text-[#5c544d] text-sm sm:text-base mb-4 sm:mb-6 max-w-2xl">
                       {job.shortDesc}
                     </p>
                     <div className="flex flex-wrap gap-2">
                       <div className="flex items-center gap-1.5 text-portfolio-gold font-semibold text-[10px] uppercase tracking-widest border border-amber-500/20 px-2.5 py-1 rounded-full bg-amber-500/5 font-mono">
                         <MapPin size={12} /> {job.location}
                       </div>
-                      <div className="flex items-center gap-1.5 text-[#a3998e] font-semibold text-[10px] uppercase tracking-widest border border-white/10 px-2.5 py-1 rounded-full bg-white/5 font-mono">
+                      <div className="flex items-center gap-1.5 text-[#5c544d] font-semibold text-[10px] uppercase tracking-widest border border-[#e5e0da] px-2.5 py-1 rounded-full bg-[#faf8f5] font-mono">
                         <Clock size={12} /> {job.type}
                       </div>
                     </div>
@@ -142,9 +142,9 @@ const CareersPage = () => {
         </div>
 
         {/* Quote Section */}
-        <div className="mt-16 pt-16 border-t border-white/10">
+        <div className="mt-16 pt-16 border-t border-[#e5e0da]">
           <div className="flex flex-col items-center text-center px-4 md:px-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight max-w-4xl leading-tight text-white">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight max-w-4xl leading-tight text-[#121110]">
               <span className="text-portfolio-gold font-serif">“</span>
               Foremark truly values work-life balance. We work hard and deliver, but at the end of the day you can switch off.
               <span className="text-portfolio-gold font-serif">”</span>
@@ -153,12 +153,12 @@ const CareersPage = () => {
         </div>
 
         {/* Drop Resume Section */}
-        <div className="mt-16 sm:mt-24 pt-12 sm:pt-16 border-t border-white/10 mb-8">
+        <div className="mt-16 sm:mt-24 pt-12 sm:pt-16 border-t border-[#e5e0da] mb-8">
           <div className="flex flex-col items-center text-center px-4 md:px-12">
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-white">
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-[#121110]">
               Don't see a perfect fit?
             </h2>
-            <p className="text-[#a3998e] text-lg max-w-2xl mb-8">
+            <p className="text-[#5c544d] text-lg max-w-2xl mb-8">
               Drop your resume and portfolio if you think you can join our team. We're always on the lookout for talented individuals.
             </p>
             <Link

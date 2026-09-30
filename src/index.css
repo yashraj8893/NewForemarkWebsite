@@ -4,18 +4,18 @@
 @import "lenis/dist/lenis.css";
 
 @theme {
-  --color-portfolio-bg: #0a0805;
-  --color-portfolio-white: #140f0a;
-  --color-portfolio-dark: #f9f5f1;
-  --color-portfolio-text: #f9f5f1;
-  --color-portfolio-muted: #a3998e;
-  --color-portfolio-gray: #d4c9bf;
+  --color-portfolio-bg: #ffffff;
+  --color-portfolio-white: #ffffff;
+  --color-portfolio-dark: #121110;
+  --color-portfolio-text: #1a1816;
+  --color-portfolio-muted: #6b635b;
+  --color-portfolio-gray: #4b453f;
   --color-portfolio-orange: #ea7008;
   --color-portfolio-gold: #ea7008;
-  --color-portfolio-surface: #140f0a;
-  --color-portfolio-surface-hover: #1c150e;
-  --color-portfolio-blue: #7f98fa;
-  --color-portfolio-green: #63c58f;
+  --color-portfolio-surface: #ffffff;
+  --color-portfolio-surface-hover: #f7f5f2;
+  --color-portfolio-blue: #4f6ff6;
+  --color-portfolio-green: #16a34a;
   
   --font-geist: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: "Syne", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -26,34 +26,34 @@
   
   --shadow-glow: 0 20px 50px -12px rgba(234,112,8,0.15);
   --shadow-glow-hover: 0 25px 60px -15px rgba(234,112,8,0.25);
-  --shadow-deep: 0 30px 100px -20px rgba(0,0,0,0.8);
+  --shadow-deep: 0 20px 60px -15px rgba(0,0,0,0.08);
 }
 
 :root {
   font-family: var(--font-geist);
-  background-color: #0a0805;
-  color: #f9f5f1;
-  color-scheme: dark;
+  background-color: #ffffff;
+  color: #1a1816;
+  color-scheme: light;
 }
 
 body {
   margin: 0;
   overflow-x: hidden;
-  background-color: #0a0805;
-  color: #f9f5f1;
+  background-color: #ffffff;
+  color: #1a1816;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
   background-color: #ea7008;
-  color: #0a0805;
+  color: #ffffff;
 }
 
 @layer base {
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    @apply font-bold tracking-tight text-[#f9f5f1];
+    @apply font-bold tracking-tight text-[#121110];
     letter-spacing: -0.03em;
     line-height: 1.1;
   }
@@ -61,11 +61,11 @@ body {
 
 @layer components {
   .btn-primary {
-    @apply rounded-full px-8 py-3.5 sm:px-9 sm:py-4 font-semibold text-sm transition-all duration-300 bg-[#ea7008] text-[#0a0805] hover:bg-[#ff7e15] hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_25px_rgba(234,112,8,0.25)] border border-[#ff9d47]/40 cursor-pointer;
+    @apply rounded-full px-8 py-3.5 sm:px-9 sm:py-4 font-semibold text-sm transition-all duration-300 bg-[#ea7008] text-white hover:bg-[#ff7e15] hover:scale-[1.02] active:scale-[0.98] shadow-[0_4px_20px_rgba(234,112,8,0.28)] border border-[#ea7008] cursor-pointer;
   }
   
   .btn-ghost {
-    @apply rounded-full px-8 py-3.5 sm:px-9 sm:py-4 font-medium text-sm transition-all duration-300 bg-[#140f0a] border border-white/[0.14] text-[#f9f5f1] hover:bg-[#ea7008]/[0.08] hover:border-[#ea7008]/50 hover:text-white hover:scale-[1.02] active:scale-[0.98] cursor-pointer;
+    @apply rounded-full px-8 py-3.5 sm:px-9 sm:py-4 font-medium text-sm transition-all duration-300 bg-white border border-[#e5e0da] text-[#1a1816] hover:bg-[#ea7008]/[0.06] hover:border-[#ea7008]/50 hover:text-[#ea7008] hover:scale-[1.02] active:scale-[0.98] shadow-sm cursor-pointer;
   }
   
   .section-label {
@@ -73,7 +73,7 @@ body {
   }
 
   .tag-badge {
-    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono uppercase tracking-[0.18em] border border-portfolio-gold/30 bg-portfolio-gold/5 text-portfolio-gold;
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono uppercase tracking-[0.18em] border border-portfolio-gold/30 bg-portfolio-gold/10 text-portfolio-gold;
   }
 }
 
@@ -89,7 +89,7 @@ html.lenis body {
   inset: 0;
   pointer-events: none;
   z-index: 50;
-  opacity: 0.03;
+  opacity: 0.012;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 

@@ -83,7 +83,7 @@ const BlogPage = () => {
                 canonicalUrl="https://foremark.in/blog"
             />
 
-            <main className="relative w-full overflow-hidden bg-[#0a0805] text-[#f9f5f1] selection:bg-[#ea7008] selection:text-white">
+            <main className="relative w-full overflow-hidden bg-white text-[#1a1816] selection:bg-[#ea7008] selection:text-white">
                 <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pt-8 sm:pt-12 pb-20 sm:pb-32">
 
 
@@ -105,7 +105,7 @@ const BlogPage = () => {
                         {/* Heading */}
                         <motion.h1
                             variants={itemFade}
-                            className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight text-white mb-4 sm:mb-6"
+                            className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight text-[#121110] mb-4 sm:mb-6"
                         >
                             Stories, Insights <br /> & Inspiration
                         </motion.h1>
@@ -113,7 +113,7 @@ const BlogPage = () => {
                         {/* Paragraph */}
                         <motion.p
                             variants={itemFade}
-                            className="text-base text-[#a3998e] max-w-xl leading-relaxed mb-8"
+                            className="text-base text-[#5c544d] max-w-xl leading-relaxed mb-8"
                         >
                             Thoughts on building with an engineering first mentality, designing scalable platforms,
                             and creating robust technology solutions that drive digital transformation.
@@ -131,12 +131,12 @@ const BlogPage = () => {
                             </div>
 
                             {/* Right Column (5 cols): Curated Field Notes Stack */}
-                            <div className="lg:col-span-5 flex flex-col justify-between bg-[#140f0a] border border-portfolio-gold/35 hover:border-portfolio-gold/65 shadow-[0_0_40px_rgba(234,112,8,0.1)] rounded-[2rem] p-6 sm:p-8 transition-all duration-500">
+                            <div className="lg:col-span-5 flex flex-col justify-between bg-[#faf8f5] border border-portfolio-gold/35 hover:border-portfolio-gold/65 shadow-[0_4px_30px_rgba(234,112,8,0.08)] rounded-[2rem] p-6 sm:p-8 transition-all duration-500">
                                 <div>
-                                    <div className="flex items-center justify-between pb-4 mb-2 border-b border-white/[0.08]">
+                                    <div className="flex items-center justify-between pb-4 mb-2 border-b border-[#e5e0da]">
                                         <div className="flex items-center gap-2">
                                             <Sparkles size={14} className="text-portfolio-gold" />
-                                            <h2 className="text-xs font-bold uppercase tracking-widest text-white font-mono">
+                                            <h2 className="text-xs font-bold uppercase tracking-widest text-[#121110] font-mono">
                                                 Curated Field Notes
                                             </h2>
                                         </div>
@@ -146,7 +146,7 @@ const BlogPage = () => {
                                     </div>
 
                                     {/* Stacked Field Notes with Hairline Dividers */}
-                                    <div className="divide-y divide-white/[0.08]">
+                                    <div className="divide-y divide-[#e5e0da]">
                                         {fieldNotesPosts.map((post, index) => (
                                             <FieldNoteCard
                                                 key={post.id}
@@ -158,8 +158,8 @@ const BlogPage = () => {
                                     </div>
                                 </div>
 
-                                <div className="pt-5 mt-4 border-t border-white/[0.08] flex items-center justify-between text-xs">
-                                    <span className="text-[#a3998e] font-medium">
+                                <div className="pt-5 mt-4 border-t border-[#e5e0da] flex items-center justify-between text-xs">
+                                    <span className="text-[#5c544d] font-medium">
                                         Deep technical articles & case notes
                                     </span>
                                     <a
@@ -175,7 +175,7 @@ const BlogPage = () => {
 
                     {/* ─── ARCHITECTURAL MASTHEAD FILTER & SEARCH BAR ─────────── */}
                     <section id="dispatches-archive" className="scroll-mt-8 mb-12 sm:mb-16">
-                        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 py-4 border-y border-white/[0.08]">
+                        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 py-4 border-y border-[#e5e0da]">
 
                             {/* Category Filter Tabs with Live Counters */}
                             <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none -mx-4 px-4 md:mx-0 md:px-0">
@@ -189,8 +189,8 @@ const BlogPage = () => {
                                             className={cn(
                                                 "inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all duration-200 cursor-target shrink-0 font-mono",
                                                 isSelected
-                                                    ? "bg-portfolio-gold text-white shadow-[0_0_15px_rgba(234,112,8,0.3)]"
-                                                    : "text-[#a3998e] hover:text-white hover:bg-white/5 border border-transparent"
+                                                    ? "bg-portfolio-gold text-white shadow-[0_4px_15px_rgba(234,112,8,0.25)]"
+                                                    : "text-[#5c544d] hover:text-[#121110] hover:bg-[#faf8f5] border border-transparent"
                                             )}
                                         >
                                             <span>{category}</span>
@@ -198,7 +198,7 @@ const BlogPage = () => {
                                                 "text-[10px] px-1.5 py-0.5 rounded-full font-mono",
                                                 isSelected
                                                     ? "bg-white/20 text-white"
-                                                    : "bg-white/5 text-[#a3998e]"
+                                                    : "bg-[#faf8f5] text-[#5c544d]"
                                             )}>
                                                 {count}
                                             </span>
@@ -209,18 +209,18 @@ const BlogPage = () => {
 
                             {/* Minimalist Inline Search */}
                             <div className="relative w-full md:w-72 shrink-0">
-                                <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#a3998e]" />
+                                <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#5c544d]" />
                                 <input
                                     type="text"
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                     placeholder="Search articles, tags..."
-                                    className="w-full pl-10 pr-8 py-2 rounded-full border border-white/10 bg-[#140f0a] text-xs text-white placeholder:text-white/40 focus:outline-none focus:border-portfolio-gold transition-all cursor-target"
+                                    className="w-full pl-10 pr-8 py-2 rounded-full border border-[#e5e0da] bg-white text-xs text-[#121110] placeholder:text-[#6b635b]/60 focus:outline-none focus:border-portfolio-gold transition-all cursor-target shadow-sm"
                                 />
                                 {searchQuery && (
                                     <button
                                         onClick={() => setSearchQuery("")}
-                                        className="absolute right-3 top-1/2 -translate-y-1/2 text-[#a3998e] hover:text-white"
+                                        className="absolute right-3 top-1/2 -translate-y-1/2 text-[#5c544d] hover:text-[#121110]"
                                     >
                                         <X size={13} />
                                     </button>
@@ -280,10 +280,10 @@ const BlogPage = () => {
                             </div>
                         ) : (
                             /* Empty Search State */
-                            <div className="text-center py-20 bg-[#140f0a] border border-white/[0.08] rounded-3xl p-8 max-w-xl mx-auto shadow-2xl">
+                            <div className="text-center py-20 bg-[#faf8f5] border border-portfolio-gold/35 rounded-3xl p-8 max-w-xl mx-auto shadow-sm">
                                 <SlidersHorizontal size={28} className="mx-auto text-portfolio-gold mb-4" />
-                                <h3 className="text-lg font-bold text-white mb-2">No publications matched your filter</h3>
-                                <p className="text-[#a3998e] text-sm mb-6">
+                                <h3 className="text-lg font-bold text-[#121110] mb-2">No publications matched your filter</h3>
+                                <p className="text-[#5c544d] text-sm mb-6">
                                     Try broadening your search term or selecting another category.
                                 </p>
                                 <button
@@ -298,9 +298,9 @@ const BlogPage = () => {
 
                     {/* ─── EDITORIAL DISPATCH TERMINAL (NEWSLETTER) ───────────── */}
                     <section className="mb-20 sm:mb-28">
-                        <div className="bg-[#0a0805] text-white rounded-[2.5rem] p-8 sm:p-12 md:p-16 relative overflow-hidden border border-portfolio-gold/35 hover:border-portfolio-gold/60 shadow-[0_0_50px_rgba(234,112,8,0.12)] transition-all duration-500">
+                        <div className="bg-[#faf8f5] text-[#121110] rounded-[2.5rem] p-8 sm:p-12 md:p-16 relative overflow-hidden border border-portfolio-gold/35 hover:border-portfolio-gold/60 shadow-[0_4px_35px_rgba(234,112,8,0.08)] transition-all duration-500">
                             {/* Blueprint grid background */}
-                            <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
+                            <div className="absolute inset-0 opacity-[0.04] bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
                             <div className="absolute top-0 right-1/4 w-[400px] h-[250px] bg-portfolio-gold/10 rounded-full blur-[100px] pointer-events-none" />
 
                             <div className="relative z-10 max-w-2xl mx-auto text-center flex flex-col items-center">
@@ -312,11 +312,11 @@ const BlogPage = () => {
                                     The Foremark Dispatch
                                 </span>
 
-                                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-4 leading-tight">
+                                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#121110] mb-4 leading-tight">
                                     Engineering Notes Delivered Monthly
                                 </h2>
 
-                                <p className="text-[#a3998e] text-sm sm:text-base max-w-md mb-8 leading-relaxed">
+                                <p className="text-[#5c544d] text-sm sm:text-base max-w-md mb-8 leading-relaxed">
                                     Direct architectural analyses, performance case studies, and modern tooling breakdowns. No fluff, no sponsored spam.
                                 </p>
 
@@ -328,7 +328,7 @@ const BlogPage = () => {
                                         type="email"
                                         required
                                         placeholder="Enter your email address"
-                                        className="flex-1 px-5 py-3.5 rounded-full bg-white/5 border border-white/15 text-white placeholder:text-white/40 text-sm focus:outline-none focus:border-portfolio-gold transition-colors cursor-target"
+                                        className="flex-1 px-5 py-3.5 rounded-full bg-white border border-[#e5e0da] text-[#121110] placeholder:text-[#6b635b]/60 text-sm focus:outline-none focus:border-portfolio-gold transition-colors cursor-target shadow-sm"
                                     />
                                     <button
                                         type="submit"
@@ -342,12 +342,12 @@ const BlogPage = () => {
                     </section>
 
                     {/* ─── PROJECT INQUIRY CLOSER ─────────────────────────────── */}
-                    <section className="pt-12 sm:pt-16 border-t border-white/[0.08] text-center">
+                    <section className="pt-12 sm:pt-16 border-t border-[#e5e0da] text-center">
                         <div className="max-w-xl mx-auto flex flex-col items-center">
-                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
+                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#121110] mb-4">
                                 Have a project in mind?
                             </h2>
-                            <p className="text-[#a3998e] text-sm sm:text-base leading-relaxed mb-8">
+                            <p className="text-[#5c544d] text-sm sm:text-base leading-relaxed mb-8">
                                 Let’s partner up to build, optimize, or scale your digital platforms with engineering excellence.
                             </p>
                             <Link

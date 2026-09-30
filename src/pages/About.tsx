@@ -13,13 +13,13 @@ const AboutHero = () => (
         style={{ background: 'radial-gradient(ellipse, var(--color-portfolio-gold) 0%, transparent 70%)' }}
       />
       <div
-        className="absolute inset-0 opacity-[0.025]"
+        className="absolute inset-0 opacity-[0.03]"
         style={{
-          backgroundImage: 'linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px)',
+          backgroundImage: 'linear-gradient(rgba(0,0,0,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.12) 1px, transparent 1px)',
           backgroundSize: '60px 60px',
         }}
       />
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-[#0a0805]" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-white" />
     </div>
 
     <div className="relative z-10 max-w-[1280px] mx-auto px-6 md:px-12 flex flex-col items-center text-center">
@@ -39,7 +39,7 @@ const AboutHero = () => (
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.1 }}
-        className="text-3xl sm:text-4xl md:text-6xl font-bold font-display tracking-tight text-white mb-6 leading-tight"
+        className="text-3xl sm:text-4xl md:text-6xl font-bold font-display tracking-tight text-[#121110] mb-6 leading-tight"
       >
         Hi. We're Foremark.
       </motion.h1>
@@ -57,12 +57,12 @@ const AboutHero = () => (
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="text-[#a3998e] text-[15px] md:text-[17px] max-w-[640px] text-center leading-[1.8] font-medium mb-4"
+        className="text-[#5c544d] text-[15px] md:text-[17px] max-w-[640px] text-center leading-[1.8] font-medium mb-4"
       >
         We are a team of passionate developers, solution architects, and automation
         specialists who leverage the power of modern software to transform how businesses
         operate.{' '}
-        <span className="text-white font-bold">#EngineeringFirst.</span>
+        <span className="text-[#121110] font-bold">#EngineeringFirst.</span>
       </motion.p>
 
       {/* Para 2 */}
@@ -70,15 +70,15 @@ const AboutHero = () => (
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
-        className="text-[#a3998e] text-[15px] md:text-[17px] max-w-[640px] text-center leading-[1.8] font-medium"
+        className="text-[#5c544d] text-[15px] md:text-[17px] max-w-[640px] text-center leading-[1.8] font-medium"
       >
         Foremark is our endeavor to help{' '}
-        <span className="text-white font-bold">Developers</span> spend less time
+        <span className="text-[#121110] font-bold">Developers</span> spend less time
         debugging, so they can do more of what they do best —{' '}
-        <span className="text-white font-bold">Write Quality Code</span>. The
+        <span className="text-[#121110] font-bold">Write Quality Code</span>. The
         platform also empowers{' '}
-        <span className="text-white font-bold">SREs</span> and{' '}
-        <span className="text-white font-bold">DevOps engineers</span> who build,
+        <span className="text-[#121110] font-bold">SREs</span> and{' '}
+        <span className="text-[#121110] font-bold">DevOps engineers</span> who build,
         deploy &amp; manage applications on modern cloud architecture.
       </motion.p>
 
@@ -97,11 +97,11 @@ const OurStory = () => (
       transition={{ duration: 0.8 }}
       className="flex justify-center mb-16 sm:mb-24 md:mb-36"
     >
-      <div className="relative rounded-3xl overflow-hidden cursor-target group w-full max-w-[600px] md:max-w-[760px] aspect-[16/10] border border-portfolio-gold/35 group-hover:border-portfolio-gold/65 shadow-[0_0_35px_rgba(234,112,8,0.1)] bg-[#120e09] transition-all duration-500 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent before:z-10">
+      <div className="relative rounded-3xl overflow-hidden cursor-target group w-full max-w-[600px] md:max-w-[760px] aspect-[16/10] border border-portfolio-gold/35 group-hover:border-portfolio-gold/65 shadow-[0_4px_30px_rgba(234,112,8,0.1)] bg-white transition-all duration-500 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent before:z-10">
         <img
           src="/Hexture-10-1.webp"
           alt="Foremark team at work"
-          className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105"
+          className="w-full h-full object-cover opacity-95 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105"
         />
       </div>
     </motion.div>
@@ -112,7 +112,7 @@ const OurStory = () => (
           <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-portfolio-gold mb-4 block font-mono">
             // OUR GENESIS
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold font-display tracking-tight text-white leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold font-display tracking-tight text-[#121110] leading-tight">
             Our <br className="hidden md:block" />
             Story
           </h2>
@@ -125,16 +125,16 @@ const OurStory = () => (
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
         >
-          <p className="text-[#a3998e] text-[15px] md:text-[17px] leading-[1.85] font-medium">
+          <p className="text-[#5c544d] text-[15px] md:text-[17px] leading-[1.85] font-medium">
             Foremark was born from a simple observation: too many businesses are held back by
             technology that doesn't scale, doesn't perform, and doesn't solve real problems. We
             saw teams struggling with bloated codebases, unreliable systems, and agencies that
             prioritized speed over quality. We set out to change that.
           </p>
-          <p className="text-[#a3998e] text-[15px] md:text-[17px] leading-[1.85] font-medium">
+          <p className="text-[#5c544d] text-[15px] md:text-[17px] leading-[1.85] font-medium">
             Soon, we set out to build what we believe will eventually go on to become
             synonymous with everything{' '}
-            <span className="text-white font-bold">Observability</span> — for
+            <span className="text-[#121110] font-bold">Observability</span> — for
             intricate, scalable technologies of the future. Be it modern web platforms,
             scalable APIs, or cloud-native architecture.
           </p>
@@ -148,9 +148,9 @@ const OurStory = () => (
 
 const statsData = [
   { value: '100', accent: '%', label: 'Client Retention', desc: 'We build long-term partnerships through consistent quality and technical excellence.', accentColor: 'text-portfolio-gold' },
-  { value: '50', accent: '+', label: 'Projects Delivered', desc: 'Successful delivery of web and mobile applications across various industries.', accentColor: 'text-white' },
-  { value: '3', accent: 'x', label: 'Avg. Client Growth', desc: 'Our systems are designed to scale and drive measurable business impact.', accentColor: 'text-white' },
-  { value: '12', accent: '+', label: 'Industries Served', desc: 'Expertise across different domains from startups to established businesses.', accentColor: 'text-white' },
+  { value: '50', accent: '+', label: 'Projects Delivered', desc: 'Successful delivery of web and mobile applications across various industries.', accentColor: 'text-[#121110]' },
+  { value: '3', accent: 'x', label: 'Avg. Client Growth', desc: 'Our systems are designed to scale and drive measurable business impact.', accentColor: 'text-[#121110]' },
+  { value: '12', accent: '+', label: 'Industries Served', desc: 'Expertise across different domains from startups to established businesses.', accentColor: 'text-[#121110]' },
 ];
 
 const StatsGrid = () => (
@@ -159,7 +159,7 @@ const StatsGrid = () => (
       <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-portfolio-gold shrink-0 font-mono">
         // BY THE NUMBERS
       </span>
-      <div className="flex-1 h-[1px] bg-white/10" />
+      <div className="flex-1 h-[1px] bg-[#e5e0da]" />
     </div>
 
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
@@ -170,16 +170,16 @@ const StatsGrid = () => (
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: i * 0.1 }}
-          className="bg-[#120e09] border border-portfolio-gold/35 hover:border-portfolio-gold/65 rounded-2xl sm:rounded-3xl px-6 py-8 sm:px-8 sm:py-10 md:px-10 md:py-12 flex flex-col shadow-[0_0_30px_rgba(234,112,8,0.08)] hover:shadow-[0_0_45px_rgba(234,112,8,0.18)] hover:-translate-y-1 transition-all duration-500 cursor-target relative overflow-hidden before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent before:z-10"
+          className="bg-[#faf8f5] border border-portfolio-gold/35 hover:border-portfolio-gold/65 rounded-2xl sm:rounded-3xl px-6 py-8 sm:px-8 sm:py-10 md:px-10 md:py-12 flex flex-col shadow-[0_4px_25px_rgba(234,112,8,0.06)] hover:shadow-[0_8px_35px_rgba(234,112,8,0.15)] hover:-translate-y-1 transition-all duration-500 cursor-target relative overflow-hidden before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent before:z-10"
         >
-          <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-6 sm:mb-8 font-mono">
+          <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#121110] mb-6 sm:mb-8 font-mono">
             {stat.value}
             <span className={stat.accentColor}>{stat.accent}</span>
           </h3>
           <p className="text-[11px] uppercase tracking-[0.2em] text-portfolio-gold font-bold mb-3 font-mono">
             {stat.label}
           </p>
-          <p className="text-[#a3998e] text-[13px] md:text-[14px] leading-[1.7] font-medium">
+          <p className="text-[#5c544d] text-[13px] md:text-[14px] leading-[1.7] font-medium">
             {stat.desc}
           </p>
         </motion.div>
@@ -193,7 +193,7 @@ const StatsGrid = () => (
 const About = () => (
   <>
     <SEO title="About Us" description="Foremark is a team of passionate developers, solution architects, and automation specialists who leverage modern software to transform how businesses operate." canonicalUrl="https://foremark.in/about" />
-    <div className="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-12 bg-[#0a0805] text-[#f9f5f1]">
+    <div className="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-12 bg-white text-[#1a1816]">
       <AboutHero />
       <OurStory />
       <StatsGrid />

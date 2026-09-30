@@ -45,19 +45,19 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
     return (
         <>
             <SEO title={service.seo.title} description={service.seo.description} />
-            <main className="relative w-full overflow-hidden bg-[#0a0805] text-[#f9f5f1] selection:bg-[#ea7008] selection:text-white">
+            <main className="relative w-full overflow-hidden bg-white text-[#1a1816] selection:bg-[#ea7008] selection:text-white">
                 {/* ─── Top Breadcrumb Navigation ────────────────────────────── */}
                 <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pt-8 sm:pt-12">
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="flex items-center pb-4 border-b border-white/10"
+                        className="flex items-center pb-4 border-b border-[#e5e0da]"
                     >
-                        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#a3998e] font-mono">
-                            <Link to="/services" className="hover:text-white flex items-center gap-1.5 transition-colors cursor-target">
+                        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#5c544d] font-mono">
+                            <Link to="/services" className="hover:text-[#121110] flex items-center gap-1.5 transition-colors cursor-target">
                                 <ArrowLeft size={14} /> Services
                             </Link>
-                            <span className="text-white/20">/</span>
+                            <span className="text-[#6b635b]/30">/</span>
                             <span className="text-portfolio-gold">{service.title}</span>
                         </div>
                     </motion.div>
@@ -87,7 +87,7 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.05 }}
-                                className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-white mb-6 leading-[1.08]"
+                                className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-[#121110] mb-6 leading-[1.08]"
                             >
                                 {service.title}
                             </motion.h1>
@@ -96,7 +96,7 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.1 }}
-                                className="text-base sm:text-lg md:text-xl text-[#a3998e] mb-8 leading-relaxed max-w-xl font-normal"
+                                className="text-base sm:text-lg md:text-xl text-[#5c544d] mb-8 leading-relaxed max-w-xl font-normal"
                             >
                                 {service.tagline}
                             </motion.p>
@@ -111,7 +111,7 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                                 {service.deliverables.slice(0, 4).map((feat) => (
                                     <span
                                         key={feat.title}
-                                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-medium text-white/90"
+                                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-portfolio-gold/5 border border-portfolio-gold/25 text-xs font-medium text-[#121110]"
                                     >
                                         <CheckCircle2 size={13} className="text-portfolio-gold shrink-0" />
                                         {feat.title}
@@ -148,10 +148,10 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                             transition={{ delay: 0.2, duration: 0.7 }}
                             className="lg:col-span-6 relative"
                         >
-                            <div className="relative w-full aspect-[4/3] rounded-[2rem] bg-[#140f0a] border border-portfolio-gold/35 group-hover:border-portfolio-gold/65 overflow-hidden shadow-[0_0_40px_rgba(234,112,8,0.1)] flex items-center justify-center isolate group cursor-target transition-all duration-500">
+                            <div className="relative w-full aspect-[4/3] rounded-[2rem] bg-white border border-portfolio-gold/35 group-hover:border-portfolio-gold/65 overflow-hidden shadow-[0_4px_30px_rgba(234,112,8,0.1)] flex items-center justify-center isolate group cursor-target transition-all duration-500">
                                 {/* Subtle internal glow & background grid */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-portfolio-gold/15 via-transparent to-transparent pointer-events-none" />
-                                <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]" />
+                                <div className="absolute inset-0 bg-gradient-to-br from-portfolio-gold/10 via-transparent to-transparent pointer-events-none" />
+                                <div className="absolute inset-0 opacity-[0.04] bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px]" />
 
                                 <div className="w-full h-full flex items-center justify-center scale-95 sm:scale-100 p-4">
                                     <Visual />
@@ -162,7 +162,7 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                 </section>
 
                 {/* ─── Metrics / SLAs ──────────────────────────────────────── */}
-                <section className="bg-[#070503] text-white py-14 sm:py-18 relative z-10 border-y border-white/10">
+                <section className="bg-[#faf8f5] text-[#121110] py-14 sm:py-18 relative z-10 border-y border-[#e5e0da]">
                     <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
                             {service.metrics.map((metric, i) => (
@@ -178,8 +178,8 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                                     <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-portfolio-gold tracking-tight mb-1 font-mono">
                                         {metric.value}
                                     </span>
-                                    <span className="text-sm sm:text-base font-bold text-white mb-1">{metric.label}</span>
-                                    <span className="text-xs text-[#a3998e] leading-relaxed">{metric.description}</span>
+                                    <span className="text-sm sm:text-base font-bold text-[#121110] mb-1">{metric.label}</span>
+                                    <span className="text-xs text-[#5c544d] leading-relaxed">{metric.description}</span>
                                 </motion.div>
                             ))}
                         </div>
@@ -190,10 +190,10 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                 <section className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 py-20 sm:py-32 relative z-10">
                     <div className="text-center mb-16 sm:mb-20 max-w-3xl mx-auto">
                         <span className="section-label text-portfolio-gold">Engineering Discipline</span>
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mt-2 mb-4 leading-tight">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#121110] mt-2 mb-4 leading-tight">
                             {service.howWeDoItTitle}
                         </h2>
-                        <p className="text-base sm:text-lg text-[#a3998e] leading-relaxed">
+                        <p className="text-base sm:text-lg text-[#5c544d] leading-relaxed">
                             {service.howWeDoItSubtitle}
                         </p>
                     </div>
@@ -207,16 +207,16 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                                 whileInView="visible"
                                 viewport={{ once: true, margin: '-60px' }}
                                 custom={i}
-                                className="p-8 sm:p-9 rounded-3xl bg-[#140f0a] border border-portfolio-gold/35 hover:border-portfolio-gold/65 shadow-[0_0_35px_rgba(234,112,8,0.08)] hover:shadow-[0_0_50px_rgba(234,112,8,0.18)] hover:-translate-y-1.5 transition-all duration-300 group cursor-target flex flex-col justify-between"
+                                className="p-8 sm:p-9 rounded-3xl bg-[#faf8f5] border border-portfolio-gold/35 hover:border-portfolio-gold/65 shadow-[0_4px_25px_rgba(234,112,8,0.06)] hover:shadow-[0_8px_35px_rgba(234,112,8,0.15)] hover:-translate-y-1.5 transition-all duration-300 group cursor-target flex flex-col justify-between"
                             >
                                 <div>
                                     <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-6 text-portfolio-gold group-hover:scale-110 group-hover:bg-portfolio-gold group-hover:text-white transition-all duration-300">
                                         <item.icon size={22} />
                                     </div>
-                                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 tracking-tight group-hover:text-portfolio-gold transition-colors">
+                                    <h3 className="text-xl sm:text-2xl font-bold text-[#121110] mb-3 tracking-tight group-hover:text-portfolio-gold transition-colors">
                                         {item.title}
                                     </h3>
-                                    <p className="text-[#a3998e] text-sm sm:text-base leading-relaxed">
+                                    <p className="text-[#5c544d] text-sm sm:text-base leading-relaxed">
                                         {item.description}
                                     </p>
                                 </div>
@@ -226,14 +226,14 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                 </section>
 
                 {/* ─── Key Deliverables & What We Build ─────────────────────── */}
-                <section className="bg-[#070503]/60 border-y border-white/[0.06] py-20 sm:py-32 relative z-10">
+                <section className="bg-[#faf8f5] border-y border-[#e5e0da] py-20 sm:py-32 relative z-10">
                     <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
                         <div className="text-center mb-16 max-w-2xl mx-auto">
                             <span className="section-label text-portfolio-gold">Deliverables</span>
-                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mt-2 leading-[1.15]">
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#121110] mt-2 leading-[1.15]">
                                 What We Build & Deliver
                             </h2>
-                            <p className="text-[#a3998e] text-sm sm:text-base mt-4 leading-relaxed">
+                            <p className="text-[#5c544d] text-sm sm:text-base mt-4 leading-relaxed">
                                 Production-grade assets, scalable architectures, and fully documented systems engineered for your business.
                             </p>
                         </div>
@@ -247,20 +247,20 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                                     whileInView="visible"
                                     viewport={{ once: true, margin: '-60px' }}
                                     custom={i}
-                                    className="p-8 rounded-3xl bg-[#140f0a] border border-portfolio-gold/35 hover:border-portfolio-gold/65 shadow-[0_0_35px_rgba(234,112,8,0.08)] hover:shadow-[0_0_50px_rgba(234,112,8,0.18)] hover:-translate-y-1 transition-all duration-300 group cursor-target flex flex-col justify-between"
+                                    className="p-8 rounded-3xl bg-white border border-portfolio-gold/35 hover:border-portfolio-gold/65 shadow-[0_4px_25px_rgba(234,112,8,0.06)] hover:shadow-[0_8px_35px_rgba(234,112,8,0.15)] hover:-translate-y-1 transition-all duration-300 group cursor-target flex flex-col justify-between"
                                 >
                                     <div>
-                                        <div className="w-12 h-12 rounded-2xl bg-[#1c150e] border border-amber-500/20 flex items-center justify-center mb-6 text-portfolio-gold group-hover:bg-portfolio-gold group-hover:text-white transition-colors duration-300">
+                                        <div className="w-12 h-12 rounded-2xl bg-portfolio-gold/10 border border-amber-500/20 flex items-center justify-center mb-6 text-portfolio-gold group-hover:bg-portfolio-gold group-hover:text-white transition-colors duration-300">
                                             <item.icon size={22} />
                                         </div>
-                                        <h3 className="text-lg sm:text-xl font-bold text-white mb-2.5 tracking-tight group-hover:text-portfolio-gold transition-colors">
+                                        <h3 className="text-lg sm:text-xl font-bold text-[#121110] mb-2.5 tracking-tight group-hover:text-portfolio-gold transition-colors">
                                             {item.title}
                                         </h3>
-                                        <p className="text-[#a3998e] text-sm leading-relaxed mb-6">
+                                        <p className="text-[#5c544d] text-sm leading-relaxed mb-6">
                                             {item.description}
                                         </p>
                                     </div>
-                                    <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-portfolio-gold pt-4 border-t border-white/[0.06] font-mono">
+                                    <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-portfolio-gold pt-4 border-t border-[#e5e0da] font-mono">
                                         <CheckCircle2 size={14} /> Production Ready
                                     </div>
                                 </motion.div>
@@ -273,10 +273,10 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                 <section className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 py-20 sm:py-28 relative z-10">
                     <div className="text-center mb-16 max-w-2xl mx-auto">
                         <span className="section-label text-portfolio-gold">Tooling & Infrastructure</span>
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mt-2 leading-[1.15]">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#121110] mt-2 leading-[1.15]">
                             Technology Stack
                         </h2>
-                        <p className="text-[#a3998e] text-sm sm:text-base mt-3 leading-relaxed">
+                        <p className="text-[#5c544d] text-sm sm:text-base mt-3 leading-relaxed">
                             We select modern, battle-tested technologies that eliminate vendor lock-in and optimize for developer velocity.
                         </p>
                     </div>
@@ -290,7 +290,7 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                                 whileInView="visible"
                                 viewport={{ once: true }}
                                 custom={i}
-                                className="p-6 rounded-2xl bg-[#140f0a] border border-white/[0.08] shadow-xl hover:border-amber-500/30 transition-all duration-300"
+                                className="p-6 rounded-2xl bg-[#faf8f5] border border-portfolio-gold/35 shadow-sm hover:border-portfolio-gold/65 transition-all duration-300"
                             >
                                 <h3 className="text-xs font-bold uppercase tracking-widest text-portfolio-gold mb-4 flex items-center gap-2 font-mono">
                                     <Terminal size={14} /> {category.category}
@@ -299,7 +299,7 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                                     {category.items.map((tech) => (
                                         <span
                                             key={tech}
-                                            className="px-3 py-1.5 rounded-lg bg-white/[0.04] text-white/90 text-xs font-semibold border border-white/10"
+                                            className="px-3 py-1.5 rounded-lg bg-white text-[#121110] text-xs font-semibold border border-[#e5e0da]"
                                         >
                                             {tech}
                                         </span>
@@ -311,14 +311,14 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                 </section>
 
                 {/* ─── Delivery Process (Original Central Timeline) ─────────── */}
-                <section className="bg-[#070503]/60 border-y border-white/[0.06] py-24 sm:py-32 relative z-10">
+                <section className="bg-white border-y border-[#e5e0da] py-24 sm:py-32 relative z-10">
                     <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
                         <div className="text-center mb-20 max-w-2xl mx-auto">
                             <span className="section-label text-portfolio-gold">Step-by-Step</span>
-                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mt-2 leading-[1.15]">
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#121110] mt-2 leading-[1.15]">
                                 How We Deliver
                             </h2>
-                            <p className="text-[#a3998e] text-sm sm:text-base mt-3 leading-relaxed">
+                            <p className="text-[#5c544d] text-sm sm:text-base mt-3 leading-relaxed">
                                 A transparent, phased lifecycle with constant feedback loops and zero surprises.
                             </p>
                         </div>
@@ -343,18 +343,18 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                                             }`}
                                         >
                                             {/* Pulse indicator */}
-                                            <div className="absolute left-6 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-portfolio-gold border-4 border-[#0a0805] z-20 shadow-[0_0_15px_rgba(234,112,8,0.5)]" />
+                                            <div className="absolute left-6 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-portfolio-gold border-4 border-white z-20 shadow-[0_0_15px_rgba(234,112,8,0.5)]" />
 
                                             {/* Card */}
                                             <div className={`w-full md:w-[46%] pl-14 md:pl-0 ${isEven ? 'md:pr-6' : 'md:pl-6'}`}>
-                                                <div className="bg-[#140f0a] border border-white/[0.08] p-7 rounded-3xl shadow-xl hover:border-amber-500/30 transition-all duration-300 group cursor-target">
+                                                <div className="bg-[#faf8f5] border border-portfolio-gold/35 p-7 rounded-3xl shadow-sm hover:border-portfolio-gold/65 transition-all duration-300 group cursor-target">
                                                     <span className="text-[10px] font-bold uppercase tracking-widest text-portfolio-gold mb-1 block font-mono">
                                                         Phase {step.step}
                                                     </span>
-                                                    <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
+                                                    <h3 className="text-lg sm:text-xl font-bold text-[#121110] mb-2">
                                                         {step.title}
                                                     </h3>
-                                                    <p className="text-[#a3998e] text-sm leading-relaxed">
+                                                    <p className="text-[#5c544d] text-sm leading-relaxed">
                                                         {step.description}
                                                     </p>
                                                 </div>
@@ -370,19 +370,19 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                     </div>
                 </section>
 
-                {/* ─── Frequently Asked Questions (Signature Dark Container) ── */}
+                {/* ─── Frequently Asked Questions (Signature Container) ── */}
                 <section className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 py-20 sm:py-28 relative z-10">
-                    <div className="bg-[#130f0a] border border-white/[0.08] shadow-2xl rounded-3xl md:rounded-4xl p-5 sm:p-8 md:p-14 lg:p-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
+                    <div className="bg-[#faf8f5] border border-portfolio-gold/35 shadow-xl rounded-3xl md:rounded-4xl p-5 sm:p-8 md:p-14 lg:p-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
                         {/* Left Column */}
                         <div className="lg:col-span-4 flex flex-col justify-start pt-2">
                             <span className="text-xs font-bold tracking-widest uppercase text-portfolio-gold mb-4 block font-mono">
                                 FAQs
                             </span>
-                            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight text-white mb-4 md:mb-6">
+                            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight text-[#121110] mb-4 md:mb-6">
                                 Frequently asked <br />
                                 <span className="text-portfolio-gold">questions</span>
                             </h2>
-                            <p className="text-[#a3998e] text-sm leading-relaxed max-w-xs">
+                            <p className="text-[#5c544d] text-sm leading-relaxed max-w-xs">
                                 Everything you need to know before we start building together.
                             </p>
                         </div>
@@ -392,7 +392,7 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                             {service.faqs.map((faq, i) => (
                                 <div
                                     key={i}
-                                    className="bg-white/[0.02] border border-white/[0.08] hover:border-amber-500/30 hover:bg-white/[0.04] transition-colors duration-300 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-7"
+                                    className="bg-white border border-[#e5e0da] hover:border-portfolio-gold/40 hover:bg-[#faf8f5] transition-colors duration-300 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-7"
                                 >
                                     <button
                                         onClick={() => setOpenFaqIndex(openFaqIndex === i ? null : i)}
@@ -400,7 +400,7 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                                     >
                                         <span
                                             className={`text-sm md:text-base font-semibold leading-snug transition-colors duration-300 ${
-                                                openFaqIndex === i ? 'text-portfolio-gold' : 'text-white/80 group-hover:text-white'
+                                                openFaqIndex === i ? 'text-portfolio-gold' : 'text-[#121110] group-hover:text-portfolio-gold'
                                             }`}
                                         >
                                             {faq.question}
@@ -409,12 +409,12 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                                             className={`w-7 h-7 rounded-full border flex items-center justify-center shrink-0 transition-all duration-300 ${
                                                 openFaqIndex === i
                                                     ? 'border-portfolio-gold bg-portfolio-gold/10 rotate-45'
-                                                    : 'border-white/20 group-hover:border-white/40'
+                                                    : 'border-[#e5e0da] group-hover:border-portfolio-gold/40'
                                             }`}
                                         >
                                             <span
                                                 className={`text-lg leading-none font-light transition-colors duration-300 ${
-                                                    openFaqIndex === i ? 'text-portfolio-gold' : 'text-white/50'
+                                                    openFaqIndex === i ? 'text-portfolio-gold' : 'text-[#6b635b]'
                                                 }`}
                                             >
                                                 +
@@ -428,7 +428,7 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                                             openFaqIndex === i ? 'max-h-[500px] opacity-100 mt-3 sm:mt-4' : 'max-h-0 opacity-0'
                                         }`}
                                     >
-                                        <p className="text-[#a3998e] text-xs sm:text-sm leading-relaxed pr-4 sm:pr-12">
+                                        <p className="text-[#5c544d] text-xs sm:text-sm leading-relaxed pr-4 sm:pr-12">
                                             {faq.answer}
                                         </p>
                                     </div>
@@ -439,18 +439,18 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                 </section>
 
                 {/* ─── Explore Other Services ───────────────────────────────── */}
-                <section className="bg-[#070503]/60 border-t border-white/[0.06] py-16 sm:py-24 relative z-10">
+                <section className="bg-white border-t border-[#e5e0da] py-16 sm:py-24 relative z-10">
                     <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
                         <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-10">
                             <div>
                                 <span className="section-label text-portfolio-gold">Expand Your Capabilities</span>
-                                <h2 className="text-2xl sm:text-3xl font-bold text-white mt-1">
+                                <h2 className="text-2xl sm:text-3xl font-bold text-[#121110] mt-1">
                                     Explore Other Services
                                 </h2>
                             </div>
                             <Link
                                 to="/services"
-                                className="text-xs font-bold uppercase tracking-widest text-[#a3998e] hover:text-portfolio-gold flex items-center gap-1 mt-4 sm:mt-0 transition-colors cursor-target font-mono"
+                                className="text-xs font-bold uppercase tracking-widest text-[#5c544d] hover:text-portfolio-gold flex items-center gap-1 mt-4 sm:mt-0 transition-colors cursor-target font-mono"
                             >
                                 View all services <ArrowRight size={14} />
                             </Link>
@@ -461,7 +461,7 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                                 <Link
                                     key={other.slug}
                                     to={`/services/${other.slug}`}
-                                    className="p-8 rounded-3xl bg-[#140f0a] border border-portfolio-gold/35 hover:border-portfolio-gold/65 shadow-[0_0_35px_rgba(234,112,8,0.08)] hover:shadow-[0_0_50px_rgba(234,112,8,0.18)] hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between cursor-target"
+                                    className="p-8 rounded-3xl bg-[#faf8f5] border border-portfolio-gold/35 hover:border-portfolio-gold/65 shadow-[0_4px_25px_rgba(234,112,8,0.06)] hover:shadow-[0_8px_35px_rgba(234,112,8,0.15)] hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between cursor-target"
                                 >
                                     <div>
                                         <div className="flex items-center gap-3 mb-4">
@@ -472,14 +472,14 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                                                 {other.heroTag}
                                             </span>
                                         </div>
-                                        <h3 className="text-xl font-bold text-white mb-2 group-hover:text-portfolio-gold transition-colors">
+                                        <h3 className="text-xl font-bold text-[#121110] mb-2 group-hover:text-portfolio-gold transition-colors">
                                             {other.title}
                                         </h3>
-                                        <p className="text-[#a3998e] text-sm leading-relaxed mb-6 line-clamp-3">
+                                        <p className="text-[#5c544d] text-sm leading-relaxed mb-6 line-clamp-3">
                                             {other.shortDesc}
                                         </p>
                                     </div>
-                                    <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-white/60 group-hover:text-portfolio-gold transition-colors pt-4 border-t border-white/[0.06] font-mono">
+                                    <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[#6b635b] group-hover:text-portfolio-gold transition-colors pt-4 border-t border-[#e5e0da] font-mono">
                                         Explore details <ArrowRight size={14} />
                                     </span>
                                 </Link>
@@ -495,20 +495,20 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true, margin: '-60px' }}
-                        className="bg-[#130f0a] border border-amber-500/20 rounded-3xl md:rounded-4xl p-8 sm:p-14 lg:p-16 text-center relative overflow-hidden shadow-2xl"
+                        className="bg-[#faf8f5] border border-portfolio-gold/35 rounded-3xl md:rounded-4xl p-8 sm:p-14 lg:p-16 text-center relative overflow-hidden shadow-xl"
                     >
                         {/* Glow blur background */}
-                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-portfolio-gold/15 rounded-full blur-[100px] pointer-events-none" />
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-portfolio-gold/10 rounded-full blur-[100px] pointer-events-none" />
 
                         <div className="relative z-10 max-w-2xl mx-auto">
                             <span className="text-portfolio-gold text-xs font-bold uppercase tracking-widest block mb-4 font-mono">
                                 Start Your Project
                             </span>
-                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight leading-tight">
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#121110] mb-4 tracking-tight leading-tight">
                                 Ready to build your <br />
                                 <span className="text-portfolio-gold">{service.title}?</span>
                             </h2>
-                            <p className="text-[#a3998e] text-sm sm:text-base mb-10 leading-relaxed max-w-lg mx-auto">
+                            <p className="text-[#5c544d] text-sm sm:text-base mb-10 leading-relaxed max-w-lg mx-auto">
                                 Let's discuss your scope, timeline, and architectural requirements. No commitment, just an honest technical conversation.
                             </p>
 

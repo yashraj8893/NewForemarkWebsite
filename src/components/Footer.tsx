@@ -26,25 +26,25 @@ const InstagramIcon = ({ size = 16 }) => (
 
 const Footer = () => {
   return (
-    <footer className="bg-[#070503] border-t border-portfolio-gold/20 text-white pt-20 pb-10 mt-auto w-full relative before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent">
+    <footer className="bg-[#faf8f5] border-t border-[#ebe5df] text-[#121110] pt-20 pb-10 mt-auto w-full relative before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-12 sm:mb-16">
           {/* Brand Column */}
           <div className="flex flex-col col-span-1 sm:col-span-2 lg:col-span-1">
-            <Link to="/" className="block cursor-pointer mb-6 group cursor-target w-[253px] h-[64px] relative">
-              <img src="/foremark-logo.png" alt="Foremark Logo" className="w-full h-full object-cover object-center mix-blend-lighten" />
+            <Link to="/" className="block cursor-pointer mb-6 group cursor-target w-[220px] h-[55px] relative">
+              <img src="/Foremark_Logo_-removebg-preview.png" alt="Foremark Logo" className="w-full h-full object-contain object-left" />
             </Link>
-            <p className="text-white/60 text-sm leading-relaxed max-w-xs mb-8">
+            <p className="text-[#5c544d] text-sm leading-relaxed max-w-xs mb-8">
               We design and engineer intelligent digital systems that help companies build, scale, and automate modern technology platforms.
             </p>
             <div className="flex items-center gap-4">
-              <a href="https://www.linkedin.com/company/foremark-technologies/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/15 bg-white/[0.02] flex items-center justify-center text-white/60 hover:text-portfolio-gold hover:border-portfolio-gold transition-all duration-300">
+              <a href="https://www.linkedin.com/company/foremark-technologies/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-[#e5e0da] bg-white flex items-center justify-center text-[#5c544d] hover:text-portfolio-gold hover:border-portfolio-gold transition-all duration-300 shadow-xs">
                 <LinkedinIcon size={16} />
               </a>
-              <a href="https://www.instagram.com/foremarktechnologies.official/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/15 bg-white/[0.02] flex items-center justify-center text-white/60 hover:text-portfolio-gold hover:border-portfolio-gold transition-all duration-300">
+              <a href="https://www.instagram.com/foremarktechnologies.official/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-[#e5e0da] bg-white flex items-center justify-center text-[#5c544d] hover:text-portfolio-gold hover:border-portfolio-gold transition-all duration-300 shadow-xs">
                 <InstagramIcon size={16} />
               </a>
-              <a href="https://wa.me/917666809812" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/15 bg-white/[0.02] flex items-center justify-center text-white/60 hover:text-portfolio-gold hover:border-portfolio-gold transition-all duration-300">
+              <a href="https://wa.me/917666809812" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-[#e5e0da] bg-white flex items-center justify-center text-[#5c544d] hover:text-portfolio-gold hover:border-portfolio-gold transition-all duration-300 shadow-xs">
                 <WhatsappIcon size={16} />
               </a>
             </div>
@@ -54,9 +54,9 @@ const Footer = () => {
           <div className="flex flex-col">
             <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] text-portfolio-gold mb-6 font-mono">// SERVICES</h4>
             <div className="flex flex-col gap-4 items-start">
-              <Link to="/services/website-software-development" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Website &amp; Software Development</Link>
-              <Link to="/services/cloud-hosting" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Web Servers &amp; Hosting</Link>
-              <Link to="/services/business-automation" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Business Automation</Link>
+              <Link to="/services/website-software-development" className="text-[#5c544d] hover:text-portfolio-gold text-sm font-medium transition-colors">Website &amp; Software Development</Link>
+              <Link to="/services/cloud-hosting" className="text-[#5c544d] hover:text-portfolio-gold text-sm font-medium transition-colors">Web Servers &amp; Hosting</Link>
+              <Link to="/services/business-automation" className="text-[#5c544d] hover:text-portfolio-gold text-sm font-medium transition-colors">Business Automation</Link>
               <Link to="/services" className="text-portfolio-gold hover:brightness-125 text-xs font-semibold transition-colors mt-1 font-mono">All Services Overview →</Link>
             </div>
           </div>
@@ -65,11 +65,11 @@ const Footer = () => {
           <div className="flex flex-col">
             <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] text-portfolio-gold mb-6 font-mono">// COMPANY</h4>
             <div className="flex flex-col gap-4 items-start">
-              <Link to="/projects" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Projects</Link>
-              <Link to="/about" className="text-white/60 hover:text-white text-sm font-medium transition-colors">About Us</Link>
-              <Link to="/careers" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Careers</Link>
-              <Link to="/blog" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Blog</Link>
-              <Link to="/associate-program" className="text-white/60 hover:text-white text-sm font-medium transition-colors">Associate Program</Link>
+              <Link to="/projects" className="text-[#5c544d] hover:text-portfolio-gold text-sm font-medium transition-colors">Projects</Link>
+              <Link to="/about" className="text-[#5c544d] hover:text-portfolio-gold text-sm font-medium transition-colors">About Us</Link>
+              <Link to="/careers" className="text-[#5c544d] hover:text-portfolio-gold text-sm font-medium transition-colors">Careers</Link>
+              <Link to="/blog" className="text-[#5c544d] hover:text-portfolio-gold text-sm font-medium transition-colors">Blog</Link>
+              <Link to="/associate-program" className="text-[#5c544d] hover:text-portfolio-gold text-sm font-medium transition-colors">Associate Program</Link>
             </div>
           </div>
 
@@ -77,15 +77,15 @@ const Footer = () => {
           <div className="flex flex-col">
             <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] text-portfolio-gold mb-6 font-mono">// CONTACT</h4>
             <div className="flex flex-col gap-4">
-              <p className="text-white/60 text-sm font-medium leading-relaxed">
+              <p className="text-[#5c544d] text-sm font-medium leading-relaxed">
                 Innov8 Times Square, Andheri East<br />
                 Unit No. 2, 4th Floor, A-Wing, Times Square Building,<br />
                 Marol, Andheri (E), Mumbai – 400059<br />
-                <a href="https://maps.app.goo.gl/KruJhjPSm2YM46zp8" target="_blank" rel="noopener noreferrer" className="text-portfolio-gold hover:text-white transition-colors font-mono text-xs">
+                <a href="https://maps.app.goo.gl/KruJhjPSm2YM46zp8" target="_blank" rel="noopener noreferrer" className="text-portfolio-gold hover:text-[#121110] transition-colors font-mono text-xs">
                   Google Maps →
                 </a>
               </p>
-              <p className="text-white/60 text-sm font-mono mt-2 leading-relaxed">
+              <p className="text-[#5c544d] text-sm font-mono mt-2 leading-relaxed">
                 hello@foremark.in<br />
                 careers@foremark.in<br />
                 +91 7666809812
@@ -99,10 +99,10 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-white/40 text-xs font-mono">© {new Date().getFullYear()} Foremark Technologies LLP. All rights reserved.</p>
+        <div className="border-t border-[#ebe5df] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-[#786f66] text-xs font-mono">© {new Date().getFullYear()} Foremark Technologies LLP. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <span className="text-[#d4c9bf] text-xs font-mono flex items-center gap-2">
+            <span className="text-[#5c544d] text-xs font-mono flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-portfolio-green animate-pulse"></span> All systems operational
             </span>
           </div>
