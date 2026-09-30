@@ -129,7 +129,7 @@ const CareersPage = () => {
 
                   <div className="flex items-center">
                     <a
-                      href={(job as any).applyLink} target="_blank" rel="noopener noreferrer"
+                      href={job.applyLink} target="_blank" rel="noopener noreferrer"
                       className="flex items-center gap-2 text-portfolio-gold font-bold text-lg group/apply whitespace-nowrap cursor-target hover:brightness-125 transition-all font-mono"
                     >
                       Apply <ArrowUpRight size={20} className="transition-transform group-hover/apply:translate-x-0.5 group-hover/apply:-translate-y-0.5" />

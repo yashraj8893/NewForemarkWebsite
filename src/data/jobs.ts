@@ -1,4 +1,19 @@
-export const jobs = [
+export interface Job {
+    id: number;
+    slug: string;
+    title: string;
+    shortDesc: string;
+    category: string;
+    location: string;
+    type: string;
+    applyLink: string;
+    about: string;
+    responsibilities: string[];
+    requirements: string[];
+    benefits: string[];
+}
+
+export const jobs: Job[] = [
     {
         id: 1,
         slug: "tech-lead",

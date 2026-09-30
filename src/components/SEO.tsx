@@ -5,7 +5,7 @@ interface SEOProps {
   description?: string;
   type?: string;
   canonicalUrl?: string;
-  structuredData?: Record<string, any>;
+  structuredData?: Record<string, unknown>;
 }
 
 export const SEO = ({ 

@@ -8,6 +8,7 @@ interface LenisContextValue {
 
 const LenisContext = createContext<LenisContextValue>({ lenis: null });
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useLenis = () => useContext(LenisContext);
 
 interface SmoothScrollProviderProps {

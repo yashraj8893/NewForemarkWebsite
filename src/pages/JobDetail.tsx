@@ -65,7 +65,7 @@ const JobDetail = () => {
                             </div>
                         </div>
                         <a
-                            href={(job as any).applyLink} target="_blank" rel="noopener noreferrer"
+                            href={job.applyLink} target="_blank" rel="noopener noreferrer"
                             className="btn-primary inline-flex justify-center items-center gap-2 font-bold text-xs md:text-sm uppercase tracking-widest px-6 py-3 md:px-8 md:py-4 rounded-full cursor-target whitespace-nowrap w-fit mt-2 md:mt-0 font-mono"
                         >
                             Apply Now <ArrowUpRight size={16} />
@@ -139,7 +139,7 @@ const JobDetail = () => {
                                 Ready to take the next step? Fill out our application form directly.
                             </p>
                             <a
-                                href={(job as any).applyLink} target="_blank" rel="noopener noreferrer"
+                                href={job.applyLink} target="_blank" rel="noopener noreferrer"
                                 className="btn-primary inline-flex items-center gap-2 text-sm uppercase tracking-widest px-8 py-4 rounded-full cursor-target font-mono"
                             >
                                 Apply Here <ArrowUpRight size={16} />
