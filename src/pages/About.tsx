@@ -29,9 +29,9 @@ const AboutHero = () => (
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="flex items-center gap-2 text-xxs font-bold uppercase tracking-widest text-portfolio-gold mb-6 font-mono"
+        className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-portfolio-gold mb-6 font-mono"
       >
-        About Us
+        // 01 · ABOUT FOREMARK
       </motion.p>
 
       {/* Heading */}
@@ -39,7 +39,7 @@ const AboutHero = () => (
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.1 }}
-        className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-white mb-6"
+        className="text-3xl sm:text-4xl md:text-6xl font-bold font-display tracking-tight text-white mb-6 leading-tight"
       >
         Hi. We're Foremark.
       </motion.h1>
@@ -97,7 +97,7 @@ const OurStory = () => (
       transition={{ duration: 0.8 }}
       className="flex justify-center mb-16 sm:mb-24 md:mb-36"
     >
-      <div className="relative rounded-3xl overflow-hidden cursor-target group w-full max-w-[600px] md:max-w-[760px] aspect-[16/10] border border-portfolio-gold/35 group-hover:border-portfolio-gold/65 shadow-[0_0_35px_rgba(234,112,8,0.1)] bg-[#140f0a] transition-all duration-500">
+      <div className="relative rounded-3xl overflow-hidden cursor-target group w-full max-w-[600px] md:max-w-[760px] aspect-[16/10] border border-portfolio-gold/35 group-hover:border-portfolio-gold/65 shadow-[0_0_35px_rgba(234,112,8,0.1)] bg-[#120e09] transition-all duration-500 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent before:z-10">
         <img
           src="/Hexture-10-1.webp"
           alt="Foremark team at work"
@@ -109,10 +109,10 @@ const OurStory = () => (
     <div className="pb-20 md:pb-28">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-10 md:gap-16 items-start w-full">
         <div className="md:col-span-4 flex flex-col md:pl-10">
-          <span className="text-xs font-bold uppercase tracking-widest text-portfolio-gold mb-5 block font-mono">
-            How It Started
+          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-portfolio-gold mb-4 block font-mono">
+            // OUR GENESIS
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight text-white">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold font-display tracking-tight text-white leading-tight">
             Our <br className="hidden md:block" />
             Story
           </h2>
@@ -156,8 +156,8 @@ const statsData = [
 const StatsGrid = () => (
   <section className="pb-16 sm:pb-24 md:pb-40">
     <div className="flex items-center gap-4 sm:gap-6 mb-10 sm:mb-16 opacity-70 md:pl-10">
-      <span className="text-xs font-bold uppercase tracking-widest text-portfolio-gold shrink-0 font-mono">
-        By The Numbers
+      <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-portfolio-gold shrink-0 font-mono">
+        // BY THE NUMBERS
       </span>
       <div className="flex-1 h-[1px] bg-white/10" />
     </div>
@@ -170,13 +170,13 @@ const StatsGrid = () => (
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: i * 0.1 }}
-          className="bg-[#140f0a] border border-portfolio-gold/35 hover:border-portfolio-gold/65 rounded-2xl sm:rounded-3xl px-6 py-8 sm:px-8 sm:py-10 md:px-10 md:py-12 flex flex-col shadow-[0_0_30px_rgba(234,112,8,0.08)] hover:shadow-[0_0_45px_rgba(234,112,8,0.18)] hover:-translate-y-1 transition-all duration-500 cursor-target"
+          className="bg-[#120e09] border border-portfolio-gold/35 hover:border-portfolio-gold/65 rounded-2xl sm:rounded-3xl px-6 py-8 sm:px-8 sm:py-10 md:px-10 md:py-12 flex flex-col shadow-[0_0_30px_rgba(234,112,8,0.08)] hover:shadow-[0_0_45px_rgba(234,112,8,0.18)] hover:-translate-y-1 transition-all duration-500 cursor-target relative overflow-hidden before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent before:z-10"
         >
           <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-6 sm:mb-8 font-mono">
             {stat.value}
             <span className={stat.accentColor}>{stat.accent}</span>
           </h3>
-          <p className="text-xxs uppercase tracking-[0.15em] text-portfolio-gold font-bold mb-3 font-mono">
+          <p className="text-[11px] uppercase tracking-[0.2em] text-portfolio-gold font-bold mb-3 font-mono">
             {stat.label}
           </p>
           <p className="text-[#a3998e] text-[13px] md:text-[14px] leading-[1.7] font-medium">

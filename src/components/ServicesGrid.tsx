@@ -17,7 +17,7 @@ const useIsMobile = () => {
   return isMobile;
 };
 
-const ServiceCard = ({ title, desc, href, children, className }: { title: string, desc: string, href?: string, children: React.ReactNode, className?: string }) => {
+const ServiceCard = ({ title, desc, href, index, children, className }: { title: string, desc: string, href?: string, index?: string, children: React.ReactNode, className?: string }) => {
   const isMobile = useIsMobile();
   const cardRef = useRef<HTMLDivElement>(null);
   const [isHovering, setIsHovering] = useState(false);
@@ -81,7 +81,7 @@ const ServiceCard = ({ title, desc, href, children, className }: { title: string
         }}
         animate={{ y: (isHovering && !isMobile) ? -6 : 0, scale: (isHovering && !isMobile) ? 1.01 : 1 }}
         transition={{ type: "spring", stiffness: 400, damping: 40 }}
-        className="w-full aspect-[16/10] min-h-[220px] sm:min-h-[340px] lg:min-h-[380px] overflow-hidden rounded-[1.5rem] bg-[#140f0a] border border-portfolio-gold/35 group-hover:border-portfolio-gold/60 relative flex items-center justify-center isolate mb-4 sm:mb-6 service-anim-perf transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[0_0_35px_rgba(234,112,8,0.08)] group-hover:shadow-[0_0_45px_rgba(234,112,8,0.18)]"
+        className="w-full aspect-[16/10] min-h-[220px] sm:min-h-[340px] lg:min-h-[380px] overflow-hidden rounded-[1.5rem] bg-[#120e09] border border-portfolio-gold/35 group-hover:border-portfolio-gold/60 relative flex items-center justify-center isolate mb-4 sm:mb-6 service-anim-perf transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[0_0_35px_rgba(234,112,8,0.08)] group-hover:shadow-[0_0_45px_rgba(234,112,8,0.18)] before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent before:z-30"
       >
         {/* Soft shadow spotlight following cursor */}
         {!isMobile && (
@@ -96,7 +96,12 @@ const ServiceCard = ({ title, desc, href, children, className }: { title: string
         {children}
       </motion.div>
       <div className="mt-auto px-1 sm:px-0">
-        <h3 className="text-lg md:text-2xl font-bold mb-1 sm:mb-2 tracking-tight transition-colors duration-500 text-white">
+        {index && (
+          <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-portfolio-gold font-semibold block mb-1.5">
+            [ {index} // CAPABILITY ]
+          </span>
+        )}
+        <h3 className="text-lg md:text-2xl font-bold font-display mb-1 sm:mb-2 tracking-tight transition-colors duration-500 text-white">
           {href ? (
             <Link to={href} className="cursor-target inline-flex items-center gap-1.5 group-hover:text-portfolio-gold transition-colors">
               {title} <ArrowRight size={18} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-portfolio-gold" />
@@ -710,32 +715,32 @@ const ServicesGrid = () => {
       id="services"
       className="py-16 md:py-32 w-full max-w-[1280px] mx-auto px-5 sm:px-8 md:px-16 overflow-hidden"
     >
-      <div className="text-center mb-20">
+      <div className="text-center mb-16 sm:mb-20">
         <motion.span 
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-xs font-bold tracking-widest uppercase text-portfolio-gold mb-4 block"
+          className="text-[11px] font-bold font-mono tracking-[0.2em] uppercase text-portfolio-gold mb-3 sm:mb-4 block"
         >
-          What We Offer
+          // 02 · CORE CAPABILITIES
         </motion.span>
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-3xl md:text-5xl font-bold tracking-tight mb-6"
+          className="text-3xl md:text-5xl lg:text-6xl font-bold font-display tracking-tight mb-5 sm:mb-6 text-white leading-tight"
         >
-          Premium engineering <br /> for modern businesses
+          Engineered systems <br /> for modern scale
         </motion.h2>
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="text-portfolio-muted text-lg max-w-2xl mx-auto"
+          className="text-[#a3998e] text-base sm:text-lg max-w-2xl mx-auto leading-relaxed"
         >
-          From concept to code, we craft functional, high-performing websites and digital products.
+          From concept to production code, we engineer resilient software architectures, high-availability hosting, and autonomous business workflows.
         </motion.p>
       </div>
 
@@ -744,6 +749,7 @@ const ServicesGrid = () => {
         shouldPause && "service-paused"
       )}>
         <ServiceCard 
+          index="01"
           href="/services/website-software-development"
           title="Website & Software Development" 
           desc="Crafting bespoke websites, scalable web applications, and modern software systems tailored to your business goals."
@@ -752,6 +758,7 @@ const ServicesGrid = () => {
         </ServiceCard>
 
         <ServiceCard 
+          index="02"
           href="/services/cloud-hosting"
           title="Web Servers & Hosting" 
           desc="Secure, scalable infrastructure and managed hosting for high-performance applications."
@@ -760,6 +767,7 @@ const ServicesGrid = () => {
         </ServiceCard>
 
         <ServiceCard 
+          index="03"
           href="/services/business-automation"
           title="Business Automation" 
           desc="We map your business processes and build intelligent automations that save time."

@@ -58,7 +58,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center gap-10 text-portfolio-muted text-sm font-medium w-max">
+        <div className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center gap-8 text-[#d4c9bf] text-[13px] font-medium w-max px-7 py-2.5 rounded-full border border-white/[0.08] bg-[#120e09]/85 backdrop-blur-xl shadow-2xl">
           {navLinks.map((link) => (
             <Link
               key={link.label}
@@ -71,13 +71,13 @@ const Navbar = () => {
 
           {/* Dropdown for Products */}
           <div className="relative group">
-            <button className="flex items-center gap-1 hover:text-portfolio-gold transition-colors py-2 cursor-target">
-              Products <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300" />
+            <button className="flex items-center gap-1 hover:text-portfolio-gold transition-colors py-1 cursor-target">
+              Products <ChevronDown size={13} className="group-hover:rotate-180 transition-transform duration-300" />
             </button>
             <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[340px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50 pointer-events-none group-hover:pointer-events-auto">
-              <div className="bg-[#140f0a] border border-amber-500/20 rounded-2xl p-3 shadow-2xl backdrop-blur-xl">
-                <Link to="/sovereign-counsel" className="flex flex-col p-4 rounded-xl hover:bg-amber-500/10 transition-colors group/item cursor-target">
-                  <span className="text-white font-bold text-sm mb-1 group-hover/item:text-portfolio-gold transition-colors">Sovereign Counsel</span>
+              <div className="bg-[#120e09] border border-portfolio-gold/35 rounded-2xl p-3 shadow-2xl backdrop-blur-xl relative overflow-hidden before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent">
+                <Link to="/sovereign-counsel" className="flex flex-col p-4 rounded-xl hover:bg-portfolio-gold/10 transition-colors group/item cursor-target">
+                  <span className="text-white font-bold text-sm mb-1 group-hover/item:text-portfolio-gold transition-colors font-display">Sovereign Counsel</span>
                   <span className="text-portfolio-muted text-xs leading-relaxed">Case Management web app for Law firms</span>
                 </Link>
               </div>
@@ -86,7 +86,7 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-4 z-50">
-          <Link to="/contact" className="hidden md:inline-flex text-white text-sm font-bold uppercase tracking-widest border border-amber-500/30 bg-[#140f0a] px-8 py-3 rounded-full hover:bg-portfolio-gold hover:text-white transition-all cursor-target shadow-[0_0_20px_rgba(234,112,8,0.15)]">
+          <Link to="/contact" className="hidden md:inline-flex text-[#0a0805] bg-[#ea7008] hover:bg-[#ff7e15] text-[11px] font-mono font-bold uppercase tracking-[0.18em] px-6 py-2.5 rounded-full transition-all cursor-target shadow-[0_0_25px_rgba(234,112,8,0.25)] border border-[#ff9d47]/40 hover:scale-[1.02]">
             Contact us
           </Link>
 
@@ -158,6 +158,12 @@ function App() {
     <SmoothScrollProvider>
       <div className="relative min-h-screen bg-[#0a0805] text-[#f9f5f1] selection:bg-[#ea7008] selection:text-white font-geist overflow-x-hidden">
         <div className="grainy-overlay" />
+        
+        {/* Global Ambient Orange Light Spots */}
+        <div className="fixed -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[550px] bg-[#ea7008]/[0.08] blur-[160px] rounded-full pointer-events-none -z-10" />
+        <div className="fixed top-1/3 -left-48 w-[650px] h-[650px] bg-[#ea7008]/[0.06] blur-[160px] rounded-full pointer-events-none -z-10" />
+        <div className="fixed bottom-0 -right-48 w-[700px] h-[650px] bg-[#ea7008]/[0.06] blur-[170px] rounded-full pointer-events-none -z-10" />
+
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

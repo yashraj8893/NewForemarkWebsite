@@ -123,27 +123,27 @@ const ProjectsPage = () => {
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-portfolio-gold font-bold mb-3 text-xs tracking-widest uppercase block font-mono"
+              className="text-portfolio-gold font-bold mb-3 text-[11px] tracking-[0.2em] uppercase block font-mono"
             >
-              Case Studies
+              // 01 · PRODUCTION RELEASES
             </motion.span>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-4 sm:mb-6 text-white"
+              className="text-3xl sm:text-4xl md:text-6xl font-bold font-display tracking-tight mb-4 sm:mb-6 text-white leading-tight"
             >
-              Examples of <br /> our work
+              Engineered platforms <br /> and digital products
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-base text-[#a3998e] max-w-xl leading-relaxed mb-6 font-normal"
+              className="text-base sm:text-lg text-[#a3998e] max-w-xl leading-relaxed mb-6 font-normal"
             >
-              These are our projects done till now. Simple and clear.
+              A curated index of production web applications, high-concurrency commerce systems, and bespoke digital platforms delivered for forward-thinking brands.
             </motion.p>
 
             {/* Social Proof */}
@@ -215,7 +215,7 @@ const ProjectsPage = () => {
                 className="group/card flex flex-col cursor-target"
               >
                 {/* Outer Container */}
-                <div className={`relative w-full ${project.aspect} rounded-2xl sm:rounded-3xl bg-[#140f0a] mb-4 sm:mb-6 border border-portfolio-gold/35 group-hover/card:border-portfolio-gold/65 shadow-[0_0_35px_rgba(234,112,8,0.08)] group-hover:shadow-[0_0_45px_rgba(234,112,8,0.18)] pt-6 px-6 sm:pt-8 sm:px-8 md:pt-12 md:px-12 lg:pt-16 lg:px-16 overflow-hidden flex items-center justify-center transition-all duration-500`}>
+                <div className={`relative w-full ${project.aspect} rounded-2xl sm:rounded-3xl bg-[#120e09] mb-4 sm:mb-6 border border-portfolio-gold/35 group-hover/card:border-portfolio-gold/65 shadow-[0_0_35px_rgba(234,112,8,0.08)] group-hover:shadow-[0_0_45px_rgba(234,112,8,0.18)] pt-6 px-6 sm:pt-8 sm:px-8 md:pt-12 md:px-12 lg:pt-16 lg:px-16 overflow-hidden flex items-center justify-center transition-all duration-500 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent before:z-20`}>
 
                   <div className="absolute inset-0 pointer-events-none opacity-[0.03]">
                     <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -234,10 +234,11 @@ const ProjectsPage = () => {
                   </div>
                 </div>
 
-                {/* Title Only */}
+                {/* Title */}
                 <div className="px-1 md:px-2">
-                  <h3 className="text-xl md:text-2xl font-bold tracking-tight text-white group-hover/card:text-portfolio-gold transition-colors duration-400">
-                    {project.title}
+                  <h3 className="text-xl md:text-2xl font-bold font-display tracking-tight text-white group-hover/card:text-portfolio-gold transition-colors duration-400 flex items-center justify-between">
+                    <span>{project.title}</span>
+                    <ArrowUpRight size={18} className="opacity-0 group-hover/card:opacity-100 group-hover/card:translate-x-0.5 group-hover/card:-translate-y-0.5 transition-all text-portfolio-gold" />
                   </h3>
                 </div>
               </motion.div>

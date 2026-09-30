@@ -158,26 +158,26 @@ const ServicesPage = () => {
                     <motion.span
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-portfolio-gold font-bold mb-3 text-xs tracking-widest uppercase block font-mono"
+                        className="text-portfolio-gold font-bold mb-3 text-[11px] tracking-[0.2em] uppercase block font-mono"
                     >
-                        What we do
+                        // CAPABILITIES &amp; SYSTEMS
                     </motion.span>
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-4 sm:mb-6 text-white"
+                        className="text-3xl sm:text-4xl md:text-6xl font-bold font-display tracking-tight mb-4 sm:mb-6 text-white leading-tight"
                     >
-                        Services built for <br /> modern businesses
+                        Services engineered for <br /> modern enterprises
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="text-base text-[#a3998e] max-w-xl leading-relaxed"
+                        className="text-base sm:text-lg text-[#a3998e] max-w-xl leading-relaxed"
                     >
-                        From concept to code, we design, build, and maintain the digital systems that help
-                        companies run better — websites, software, infrastructure, and automation.
+                        From architecture to production code, we design, build, and maintain the mission-critical
+                        digital platforms that help modern companies scale with velocity.
                     </motion.p>
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -200,15 +200,18 @@ const ServicesPage = () => {
                         className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-12 max-w-6xl"
                     >
                         {[
-                            { title: 'Launch-ready builds', text: 'Not just prototypes — production-grade software.' },
-                            { title: 'Senior engineers', text: 'Every project is led by experienced hands, end to end.' },
-                            { title: 'Clear timelines', text: 'Honest scopes and dates you can actually plan around.' },
+                            { index: '01', title: 'Launch-ready builds', text: 'Production-grade software engineered for high availability and zero runtime compromise.' },
+                            { index: '02', title: 'Senior engineers', text: 'Direct engagement with seasoned architects and engineers from kickoff to deployment.' },
+                            { index: '03', title: 'Deterministic timelines', text: 'Transparent sprint cadences, honest scopes, and delivery dates you can rely on.' },
                         ].map((item) => (
                             <div
                                 key={item.title}
-                                className="p-6 sm:p-7 flex flex-col justify-center rounded-2xl border border-white/[0.08] bg-[#140f0a] hover:bg-[#18120b] hover:border-amber-500/40 hover:-translate-y-1 transition-all duration-300 shadow-xl group"
+                                className="p-6 sm:p-7 flex flex-col justify-center rounded-2xl border border-portfolio-gold/30 bg-[#120e09] hover:bg-[#16110b] hover:border-portfolio-gold/60 hover:-translate-y-1 transition-all duration-300 shadow-xl group relative overflow-hidden before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent"
                             >
-                                <h3 className="text-white text-base sm:text-lg font-bold tracking-tight mb-2">
+                                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-portfolio-gold font-semibold mb-2">
+                                    [ {item.index} // CAPABILITY ]
+                                </span>
+                                <h3 className="text-white text-base sm:text-lg font-bold font-display tracking-tight mb-2">
                                     {item.title}
                                 </h3>
                                 <p className="text-[#a3998e] text-sm leading-relaxed">

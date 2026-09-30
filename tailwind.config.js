@@ -23,6 +23,8 @@ export default {
       },
       fontFamily: {
         geist: ["Geist", "sans-serif"],
+        display: ["'Syne'", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+        mono: ["'JetBrains Mono'", "monospace"],
       },
       fontSize: {
         xxs: ['0.625rem', { lineHeight: '0.875rem' }],
