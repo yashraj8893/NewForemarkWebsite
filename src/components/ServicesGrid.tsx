@@ -67,7 +67,7 @@ const ServiceCard = ({ title, desc, href, index, children, className }: { title:
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-      className={cn("flex flex-col h-full group cursor-default service-card-perf perspective-[1400px]", className)}
+      className={cn("flex flex-col h-full group cursor-default service-card-perf perspective-[1400px] overflow-visible", className)}
     >
       <motion.div 
         ref={cardRef}
@@ -81,7 +81,7 @@ const ServiceCard = ({ title, desc, href, index, children, className }: { title:
         }}
         animate={{ y: (isHovering && !isMobile) ? -6 : 0, scale: (isHovering && !isMobile) ? 1.01 : 1 }}
         transition={{ type: "spring", stiffness: 400, damping: 40 }}
-        className="w-full aspect-[16/10] min-h-[220px] sm:min-h-[340px] lg:min-h-[380px] overflow-hidden rounded-[1.5rem] bg-white border border-portfolio-gold/35 group-hover:border-portfolio-gold/60 relative flex items-center justify-center isolate mb-4 sm:mb-6 service-anim-perf transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[0_4px_30px_rgba(234,112,8,0.08)] group-hover:shadow-[0_4px_40px_rgba(234,112,8,0.18)] before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent before:z-30"
+        className="w-full aspect-[16/11] sm:aspect-[16/10] lg:aspect-[16/10.5] min-h-[220px] sm:min-h-[280px] lg:min-h-[300px] overflow-hidden rounded-[1.5rem] bg-white border border-portfolio-gold/35 group-hover:border-portfolio-gold/60 relative flex items-center justify-center isolate mb-4 sm:mb-6 service-anim-perf transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[0_4px_30px_rgba(234,112,8,0.08)] group-hover:shadow-[0_4px_40px_rgba(234,112,8,0.18)] before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent before:z-30"
       >
         {/* Soft shadow spotlight following cursor */}
         {!isMobile && (
@@ -101,13 +101,13 @@ const ServiceCard = ({ title, desc, href, index, children, className }: { title:
             [ {index} // CAPABILITY ]
           </span>
         )}
-        <h3 className="text-lg md:text-2xl font-bold font-display mb-1 sm:mb-2 tracking-tight transition-colors duration-500 text-[#121110]">
+        <h3 className="text-sm sm:text-base md:text-[1.1rem] lg:text-[1.05rem] xl:text-[1.2rem] 2xl:text-[1.32rem] font-bold font-display mb-1 sm:mb-2 tracking-tight transition-colors duration-500 text-[#121110]">
           {href ? (
-            <Link to={href} className="cursor-target inline-flex items-center gap-1.5 group-hover:text-portfolio-gold transition-colors">
-              {title} <ArrowRight size={18} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-portfolio-gold" />
+            <Link to={href} className="cursor-target inline-flex items-center gap-1.5 group-hover:text-portfolio-gold transition-colors whitespace-nowrap">
+              <span className="whitespace-nowrap">{title}</span> <ArrowRight size={18} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-portfolio-gold shrink-0" />
             </Link>
           ) : (
-            title
+            <span className="whitespace-nowrap">{title}</span>
           )}
         </h3>
         <p className="text-[#5c544d] text-sm leading-relaxed">{desc}</p>
@@ -433,9 +433,9 @@ export const WebAppAnimation = () => {
 export const ServerAnimation = () => {
   const isMobile = useIsMobile();
   const d = isMobile ? 1.3 : 1;
-  const scaleClasses = "scale-[0.65] min-[360px]:scale-[0.75] sm:scale-[0.85] md:scale-[0.75] lg:scale-100";
+  const scaleClasses = "scale-[0.7] min-[360px]:scale-[0.76] sm:scale-[0.82] md:scale-[0.78] lg:scale-[0.84] xl:scale-[0.92] 2xl:scale-100";
   return (
-    <div className="relative w-full h-full flex items-center justify-center p-6 overflow-hidden">
+    <div className="relative w-full h-full flex items-center justify-center p-3.5 sm:p-4 md:p-5 lg:p-4 xl:p-5 overflow-hidden">
        {/* Cloud Infrastructure Background */}
        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#D1D5DB_1px,transparent_1px)] bg-[size:16px_16px] opacity-30" />
 
@@ -506,36 +506,36 @@ export const ServerAnimation = () => {
 export const AutomationAnimation = () => {
   const isMobile = useIsMobile();
   const d = isMobile ? 1.3 : 1;
-  const scaleClasses = "scale-[0.65] min-[360px]:scale-[0.75] sm:scale-[0.85] md:scale-[0.75] lg:scale-100";
+  const scaleClasses = "scale-[0.7] min-[360px]:scale-[0.75] sm:scale-[0.8] md:scale-[0.75] lg:scale-[0.8] xl:scale-[0.85] 2xl:scale-[0.9]";
   return (
-    <div className="relative w-full h-full flex items-center justify-center p-6 overflow-hidden">
+    <div className="relative w-full h-full flex items-center justify-center p-3.5 sm:p-4 overflow-hidden">
        {/* Pipeline canvas */}
-       <div className={cn("w-[320px] h-[180px] relative z-10 origin-center transition-transform duration-300", scaleClasses)}>
+       <div className={cn("w-[330px] h-[170px] relative z-10 origin-center transition-transform duration-300", scaleClasses)}>
           
           {/* Pipeline Vector Paths */}
           <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
-             <path d="M30,90 L90,90" className="stroke-[#D1D5DB] stroke-2 fill-none" />
-             <path d="M120,90 L160,90" className="stroke-[#D1D5DB] stroke-2 fill-none" />
-             <path d="M190,90 L220,40 L260,40" className="stroke-[#D1D5DB] stroke-2 fill-none" />
-             <path d="M190,90 L220,140 L260,140" className="stroke-[#D1D5DB] stroke-2 fill-none" />
+             <path d="M22,85 L74,85" className="stroke-[#D1D5DB] stroke-2 fill-none" />
+             <path d="M118,85 L148,85" className="stroke-[#D1D5DB] stroke-2 fill-none" />
+             <path d="M176,85 L202,36 L228,36" className="stroke-[#D1D5DB] stroke-2 fill-none" />
+             <path d="M176,85 L202,132 L228,132" className="stroke-[#D1D5DB] stroke-2 fill-none" />
 
              {/* Moving task signals */}
-             <motion.circle r="4" fill="#6B7280" initial={{ cx: 30, cy: 90 }} animate={{ cx: [30, 90], cy: [90, 90], opacity: [0, 1, 0] }} transition={{ duration: 1.5 * d, repeat: Infinity, ease: "linear" }} />
-             <motion.circle r="4" fill="#3A3A3A" initial={{ cx: 120, cy: 90 }} animate={{ cx: [120, 160], cy: [90, 90], opacity: [0, 1, 0] }} transition={{ duration: 1.5 * d, repeat: Infinity, ease: "linear", delay: 1.5 * d }} />
+             <motion.circle r="3.5" fill="#6B7280" initial={{ cx: 22, cy: 85 }} animate={{ cx: [22, 74], cy: [85, 85], opacity: [0, 1, 0] }} transition={{ duration: 1.5 * d, repeat: Infinity, ease: "linear" }} />
+             <motion.circle r="3.5" fill="#3A3A3A" initial={{ cx: 118, cy: 85 }} animate={{ cx: [118, 148], cy: [85, 85], opacity: [0, 1, 0] }} transition={{ duration: 1.5 * d, repeat: Infinity, ease: "linear", delay: 1.5 * d }} />
              
              {/* Branching signals */}
-             <motion.circle r="4" fill="#1F1F1F" initial={{ cx: 190, cy: 90 }} animate={{ cx: [190, 220, 260], cy: [90, 40, 40], opacity: [0, 1, 0] }} transition={{ duration: 2 * d, repeat: Infinity, ease: "linear", delay: 3 * d }} />
-             <motion.circle r="4" fill="#D1D5DB" initial={{ cx: 190, cy: 90 }} animate={{ cx: [190, 220, 260], cy: [90, 140, 140], opacity: [0, 1, 0] }} transition={{ duration: 2 * d, repeat: Infinity, ease: "linear", delay: 3 * d }} />
+             <motion.circle r="3.5" fill="#1F1F1F" initial={{ cx: 176, cy: 85 }} animate={{ cx: [176, 202, 228], cy: [85, 36, 36], opacity: [0, 1, 0] }} transition={{ duration: 2 * d, repeat: Infinity, ease: "linear", delay: 3 * d }} />
+             <motion.circle r="3.5" fill="#D1D5DB" initial={{ cx: 176, cy: 85 }} animate={{ cx: [176, 202, 228], cy: [85, 132, 132], opacity: [0, 1, 0] }} transition={{ duration: 2 * d, repeat: Infinity, ease: "linear", delay: 3 * d }} />
           </svg>
 
           {/* Nodes */}
           {/* 1. Input Node */}
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-[#E5E7EB] rounded-lg shadow-sm flex items-center justify-center z-10">
-             <Mail className="w-5 h-5 text-[#6B7280]" />
+          <div className="absolute left-[4px] top-1/2 -translate-y-1/2 w-9 h-9 bg-white border border-[#E5E7EB] rounded-lg shadow-sm flex items-center justify-center z-10">
+             <Mail className="w-4 h-4 text-[#6B7280]" />
           </div>
 
           {/* 2. AI Processing Node */}
-          <div className="absolute left-[90px] top-1/2 -translate-y-1/2 w-12 h-12 bg-[#1F1F1F] border border-[#3A3A3A] rounded-xl shadow-lg flex items-center justify-center z-10 relative">
+          <div className="absolute left-[74px] top-1/2 -translate-y-1/2 w-11 h-11 bg-[#1F1F1F] border border-[#3A3A3A] rounded-xl shadow-lg flex items-center justify-center z-10 relative">
              <motion.div animate={{ rotate: 360 }} transition={{ duration: 8 * d, repeat: Infinity, ease: "linear" }}>
                 <Bot className="w-6 h-6 text-white" />
              </motion.div>
@@ -546,18 +546,18 @@ export const AutomationAnimation = () => {
           </div>
 
           {/* 3. Decision Node (Diamond) */}
-          <div className="absolute left-[160px] top-1/2 -translate-y-1/2 w-10 h-10 bg-white border-2 border-[#D1D5DB] rounded transform rotate-45 shadow-sm flex items-center justify-center z-10">
-             <GitMerge className="w-4 h-4 text-[#3A3A3A] -rotate-45" />
+          <div className="absolute left-[144px] top-1/2 -translate-y-1/2 w-9 h-9 bg-white border-2 border-[#D1D5DB] rounded transform rotate-45 shadow-sm flex items-center justify-center z-10">
+             <GitMerge className="w-3.5 h-3.5 text-[#3A3A3A] -rotate-45" />
           </div>
 
           {/* 4. Action A: Approval (Top) */}
-          <div className="absolute left-[260px] top-[20px] w-24 h-10 bg-white border border-[#1F1F1F] rounded-lg shadow-md flex items-center justify-center gap-1.5 z-10">
+          <div className="absolute left-[228px] top-[18px] w-[94px] h-9 bg-white border border-[#1F1F1F] rounded-lg shadow-md flex items-center justify-center gap-1.5 z-10">
              <FileCheck className="w-4 h-4 text-[#1F1F1F]" />
              <span className="text-[10px] font-bold text-[#1F1F1F]">APPROVAL</span>
           </div>
 
           {/* 5. Action B: System (Bottom) */}
-          <div className="absolute left-[260px] top-[120px] w-24 h-10 bg-[#F9FAFB] border border-[#E5E7EB] rounded-lg shadow-sm flex items-center justify-center gap-1.5 z-10">
+          <div className="absolute left-[228px] top-[114px] w-[94px] h-9 bg-[#F9FAFB] border border-[#E5E7EB] rounded-lg shadow-sm flex items-center justify-center gap-1.5 z-10">
              <Zap className="w-4 h-4 text-[#6B7280]" />
              <span className="text-[10px] font-bold text-[#6B7280]">PROCESS</span>
           </div>
@@ -569,9 +569,9 @@ export const AutomationAnimation = () => {
 export const WebAndSoftwareAnimation = () => {
   const isMobile = useIsMobile();
   const d = isMobile ? 16 : 12;
-  const scaleClasses = "scale-[0.65] min-[360px]:scale-[0.75] sm:scale-[0.85] md:scale-[0.75] lg:scale-100";
+  const scaleClasses = "scale-[0.7] min-[360px]:scale-[0.76] sm:scale-[0.82] md:scale-[0.78] lg:scale-[0.84] xl:scale-[0.92] 2xl:scale-100";
   return (
-    <div className="relative w-full h-full flex items-center justify-center p-6 overflow-hidden">
+    <div className="relative w-full h-full flex items-center justify-center p-3.5 sm:p-4 md:p-5 lg:p-4 xl:p-5 overflow-hidden">
       {/* Premium minimal dot background */}
       <div className="absolute inset-0 bg-[radial-gradient(#E5E7EB_1px,transparent_1px)] bg-[size:16px_16px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]" />
 
@@ -713,7 +713,7 @@ const ServicesGrid = () => {
     <section
       ref={sectionRef}
       id="services"
-      className="py-16 md:py-32 w-full max-w-[1280px] mx-auto px-5 sm:px-8 md:px-16 overflow-hidden"
+      className="py-16 md:py-28 w-full mx-auto overflow-visible"
     >
       <div className="text-center mb-16 sm:mb-20">
         <motion.span 
@@ -745,7 +745,7 @@ const ServicesGrid = () => {
       </div>
 
       <div className={cn(
-        "grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-[1240px] mx-auto",
+        "grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 w-full mx-auto p-2 overflow-visible",
         shouldPause && "service-paused"
       )}>
         <ServiceCard 

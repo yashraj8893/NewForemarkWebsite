@@ -97,44 +97,31 @@ const ContactPage = () => {
           {/* Dynamic Technical Grid inside the card */}
           <div className="absolute inset-0 bg-[radial-gradient(rgba(234,112,8,0.18)_1.2px,transparent_1.2px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_at_center,black_45%,transparent_85%)] pointer-events-none opacity-60" />
 
-          {/* Map image — hidden on mobile, left side only on desktop */}
+          {/* Map image with gradient fade — clearly visible on left, fading gracefully like a gradient */}
           <div
-            className="absolute inset-y-0 left-0 pointer-events-none hidden lg:block"
-            style={{ width: '58%' }}
+            className="absolute inset-y-0 left-0 pointer-events-none hidden lg:block overflow-hidden"
+            style={{
+              width: '66%',
+              maskImage: 'radial-gradient(ellipse 95% 85% at 18% 50%, black 40%, rgba(0,0,0,0.65) 65%, rgba(0,0,0,0.15) 85%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(ellipse 95% 85% at 18% 50%, black 40%, rgba(0,0,0,0.65) 65%, rgba(0,0,0,0.15) 85%, transparent 100%)',
+            }}
           >
             <img
               src={mapImage}
               alt=""
               aria-hidden="true"
-              className="w-full h-full object-cover object-center"
-              style={{ opacity: 0.1 }}
+              className="w-full h-full object-cover object-left"
+              style={{ opacity: 0.38, filter: 'contrast(1.12) saturate(1.15)' }}
+            />
+            {/* Subtle warm amber brand gradient over the map */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: 'linear-gradient(135deg, rgba(234,112,8,0.12) 0%, rgba(245,158,11,0.06) 50%, transparent 100%)',
+                mixBlendMode: 'color-burn',
+              }}
             />
           </div>
-
-          {/* Horizontal fade — hidden on mobile */}
-          <div
-            className="absolute inset-y-0 left-0 z-20 pointer-events-none hidden lg:block"
-            style={{
-              width: '58%',
-              background: 'linear-gradient(to right, transparent 0%, transparent 50%, #faf8f5 100%)',
-            }}
-          />
-
-          {/* Top vignette — hidden on mobile */}
-          <div
-            className="absolute inset-x-0 top-0 h-24 md:h-40 z-20 pointer-events-none hidden lg:block"
-            style={{
-              background: 'linear-gradient(to bottom, #faf8f5 0%, transparent 100%)',
-            }}
-          />
-
-          {/* Bottom vignette — hidden on mobile */}
-          <div
-            className="absolute inset-x-0 bottom-0 h-32 md:h-48 z-20 pointer-events-none hidden lg:block"
-            style={{
-              background: 'linear-gradient(to top, #faf8f5 0%, transparent 100%)',
-            }}
-          />
 
           {/* Subtle orange brand glow — hidden on mobile */}
           <div

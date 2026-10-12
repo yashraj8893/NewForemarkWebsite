@@ -58,36 +58,107 @@ const services = [
     },
 ];
 
-const whyChooseUs = [
+const getHexPoints = (hx: number, hy: number, r: number, alpha: number) => {
+    const pts: string[] = [];
+    for (let k = 0; k < 6; k++) {
+        const a = alpha + k * (Math.PI / 3);
+        const x = hx + r * Math.cos(a);
+        const y = hy - r * Math.sin(a);
+        pts.push(`${x.toFixed(1)},${y.toFixed(1)}`);
+    }
+    return pts.join(' ');
+};
+
+const getChevronPoints = (hx: number, hy: number, r: number, alpha: number, gap = 7, th = 8) => {
+    const p1_x = hx + (r + gap) * Math.cos(alpha - Math.PI / 3);
+    const p1_y = hy - (r + gap) * Math.sin(alpha - Math.PI / 3);
+    const p2_x = hx + (r + gap) * Math.cos(alpha);
+    const p2_y = hy - (r + gap) * Math.sin(alpha);
+    const p3_x = hx + (r + gap) * Math.cos(alpha + Math.PI / 3);
+    const p3_y = hy - (r + gap) * Math.sin(alpha + Math.PI / 3);
+
+    const p4_x = hx + (r + gap + th) * Math.cos(alpha + Math.PI / 3);
+    const p4_y = hy - (r + gap + th) * Math.sin(alpha + Math.PI / 3);
+    const p5_x = hx + (r + gap + th) * Math.cos(alpha);
+    const p5_y = hy - (r + gap + th) * Math.sin(alpha);
+    const p6_x = hx + (r + gap + th) * Math.cos(alpha - Math.PI / 3);
+    const p6_y = hy - (r + gap + th) * Math.sin(alpha - Math.PI / 3);
+
+    return `${p1_x.toFixed(1)},${p1_y.toFixed(1)} ${p2_x.toFixed(1)},${p2_y.toFixed(1)} ${p3_x.toFixed(1)},${p3_y.toFixed(1)} ${p4_x.toFixed(1)},${p4_y.toFixed(1)} ${p5_x.toFixed(1)},${p5_y.toFixed(1)} ${p6_x.toFixed(1)},${p6_y.toFixed(1)}`;
+};
+
+const whyChooseUsNodes = [
     {
-        icon: ShieldCheck,
+        id: 'technical-excellence',
         title: 'Technical Excellence',
         description: 'Every build follows rigorous engineering standards, from architecture to code review.',
+        type: 'orange' as const,
+        color: '#ea7008',
+        borderColor: '#ea7008',
+        accentClass: 'text-[#ea7008]',
+        angle: 120,
+        side: 'left' as const,
+        icon: ShieldCheck,
     },
     {
-        icon: Users,
+        id: 'dedicated-team',
         title: 'Dedicated Team',
         description: 'A senior team stays with your project end-to-end — no hand-offs, no lost context.',
+        type: 'white' as const,
+        color: '#ffffff',
+        borderColor: '#e5e0da',
+        accentClass: 'text-[#121110]',
+        angle: 180,
+        side: 'left' as const,
+        icon: Users,
     },
     {
-        icon: Sparkles,
-        title: 'Tailored Solutions',
-        description: 'We design around your workflow, not the other way around. Nothing off-the-shelf.',
-    },
-    {
-        icon: Rocket,
-        title: 'Innovation-Led',
-        description: 'We bring modern tooling and automation into every engagement, not just the trendy ones.',
-    },
-    {
-        icon: Clock,
+        id: 'reliable-delivery',
         title: 'Reliable Delivery',
         description: 'Clear timelines, honest updates, and milestones we actually hit.',
+        type: 'orange' as const,
+        color: '#ea7008',
+        borderColor: '#ea7008',
+        accentClass: 'text-[#ea7008]',
+        angle: 240,
+        side: 'left' as const,
+        icon: Clock,
     },
     {
-        icon: HeartHandshake,
+        id: 'tailored-solutions',
+        title: 'Tailored Solutions',
+        description: 'We design around your workflow, not the other way around. Nothing off-the-shelf.',
+        type: 'white' as const,
+        color: '#ffffff',
+        borderColor: '#e5e0da',
+        accentClass: 'text-[#121110]',
+        angle: 60,
+        side: 'right' as const,
+        icon: Sparkles,
+    },
+    {
+        id: 'innovation-led',
+        title: 'Innovation-Led',
+        description: 'We bring modern tooling and automation into every engagement, not just the trendy ones.',
+        type: 'orange' as const,
+        color: '#ea7008',
+        borderColor: '#ea7008',
+        accentClass: 'text-[#ea7008]',
+        angle: 0,
+        side: 'right' as const,
+        icon: Rocket,
+    },
+    {
+        id: 'long-term-partnership',
         title: 'Long-Term Partnership',
         description: 'We stay on after launch — supporting, maintaining, and scaling what we build together.',
+        type: 'white' as const,
+        color: '#ffffff',
+        borderColor: '#e5e0da',
+        accentClass: 'text-[#121110]',
+        angle: 300,
+        side: 'right' as const,
+        icon: HeartHandshake,
     },
 ];
 
@@ -150,6 +221,7 @@ const faqs = [
 
 const ServicesPage = () => {
     const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+    const [hoveredWhyNode, setHoveredWhyNode] = useState<string | null>(null);
     return (
         <main className="relative w-full overflow-hidden bg-white text-[#1a1816]">
             {/* ─── Hero ─────────────────────────────────────────────── */}
@@ -310,34 +382,161 @@ const ServicesPage = () => {
                 </div>
             </section>
 
-            {/* ─── Why Choose Us ────────────────────────────────────── */}
-            <section className="bg-[#faf8f5] border-y border-[#ebe5df] relative z-10">
-                <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 py-24 sm:py-32">
-                    <div className="text-center mb-16">
-                        <span className="section-label text-portfolio-gold">Why choose us</span>
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#121110] max-w-2xl mx-auto mt-2 leading-[1.15]">
+            {/* ─── Why Choose Us (Radial Hexagon Matrix) ─────────────── */}
+            <section className="bg-white relative z-10 overflow-hidden">
+                <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 py-20 sm:py-28 relative z-10">
+                    <div className="text-center mb-12 sm:mb-16">
+                        <span className="font-mono text-[11px] font-bold uppercase tracking-[0.24em] text-portfolio-gold block mb-2">
+                            // WHY CHOOSE US
+                        </span>
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[#121110] max-w-3xl mx-auto tracking-tight leading-[1.15]">
                             Engineering you can actually depend on
                         </h2>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                        {whyChooseUs.map((item, i) => (
-                            <motion.div
-                                key={item.title}
-                                variants={fadeUp}
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ once: true, margin: '-60px' }}
-                                custom={i}
-                                className="p-8 rounded-3xl bg-white border border-[#ebe5df] hover:border-amber-500/30 hover:-translate-y-1.5 hover:shadow-xl transition-all duration-300 group cursor-target shadow-sm"
-                            >
-                                <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-portfolio-gold group-hover:text-white text-portfolio-gold">
-                                    <item.icon size={22} />
-                                </div>
-                                <h3 className="text-xl font-bold text-[#121110] mb-3 tracking-tight group-hover:text-portfolio-gold transition-colors">{item.title}</h3>
-                                <p className="text-[#5c544d] text-sm leading-relaxed">{item.description}</p>
-                            </motion.div>
-                        ))}
+                    {/* Desktop Radial Layout (matches reference screenshot) */}
+                    <div className="hidden lg:grid lg:grid-cols-12 items-center gap-6 max-w-6xl mx-auto">
+                        {/* Left 3 items */}
+                        <div className="lg:col-span-4 flex flex-col justify-between h-[450px] text-right pr-4">
+                            {whyChooseUsNodes.filter((n) => n.side === 'left').map((item) => {
+                                const isHovered = hoveredWhyNode === item.id;
+                                return (
+                                    <div
+                                        key={item.id}
+                                        onMouseEnter={() => setHoveredWhyNode(item.id)}
+                                        onMouseLeave={() => setHoveredWhyNode(null)}
+                                        className={`transition-all duration-300 cursor-pointer p-4 rounded-2xl ${
+                                            isHovered ? 'bg-white shadow-md border border-[#e5e0da] scale-[1.02]' : 'border border-transparent'
+                                        }`}
+                                    >
+                                        <h3 className={`text-xl font-bold font-display mb-1.5 transition-colors ${item.accentClass}`}>
+                                            {item.title}
+                                        </h3>
+                                        <p className="text-[#5c544d] text-sm leading-relaxed max-w-xs ml-auto">
+                                            {item.description}
+                                        </p>
+                                    </div>
+                                );
+                            })}
+                        </div>
+
+                        {/* Center Hexagonal Wheel */}
+                        <div className="lg:col-span-4 flex items-center justify-center">
+                            <svg width="440" height="440" viewBox="0 0 460 460" className="w-full h-auto select-none overflow-visible">
+                                {whyChooseUsNodes.map((item) => {
+                                    const alpha = (item.angle * Math.PI) / 180;
+                                    const hx = 230 + 98 * Math.cos(alpha);
+                                    const hy = 230 - 98 * Math.sin(alpha);
+                                    const hexPts = getHexPoints(hx, hy, 44, alpha);
+                                    const chevPts = getChevronPoints(hx, hy, 44, alpha, 7, 8);
+                                    const isHovered = hoveredWhyNode === item.id;
+
+                                    return (
+                                        <g
+                                            key={item.id}
+                                            onMouseEnter={() => setHoveredWhyNode(item.id)}
+                                            onMouseLeave={() => setHoveredWhyNode(null)}
+                                            className="cursor-pointer transition-all duration-300"
+                                            style={{
+                                                transform: isHovered ? 'scale(1.06)' : 'scale(1)',
+                                                transformOrigin: `${hx}px ${hy}px`,
+                                                filter: isHovered
+                                                    ? (item.type === 'orange' ? 'drop-shadow(0 4px 16px rgba(234,112,8,0.5))' : 'drop-shadow(0 4px 16px rgba(18,17,16,0.18))')
+                                                    : (item.type === 'white' ? 'drop-shadow(0 2px 8px rgba(0,0,0,0.06))' : 'drop-shadow(0 2px 10px rgba(234,112,8,0.25))'),
+                                            }}
+                                        >
+                                            <polygon points={hexPts} fill={item.color} stroke={item.borderColor} strokeWidth="1.5" className="transition-all duration-300" />
+                                            <polygon points={chevPts} fill={item.color} stroke={item.borderColor} strokeWidth="1.5" className="transition-all duration-300" />
+                                        </g>
+                                    );
+                                })}
+                            </svg>
+                        </div>
+
+                        {/* Right 3 items */}
+                        <div className="lg:col-span-4 flex flex-col justify-between h-[450px] text-left pl-4">
+                            {whyChooseUsNodes.filter((n) => n.side === 'right').map((item) => {
+                                const isHovered = hoveredWhyNode === item.id;
+                                return (
+                                    <div
+                                        key={item.id}
+                                        onMouseEnter={() => setHoveredWhyNode(item.id)}
+                                        onMouseLeave={() => setHoveredWhyNode(null)}
+                                        className={`transition-all duration-300 cursor-pointer p-4 rounded-2xl ${
+                                            isHovered ? 'bg-white shadow-md border border-[#e5e0da] scale-[1.02]' : 'border border-transparent'
+                                        }`}
+                                    >
+                                        <h3 className={`text-xl font-bold font-display mb-1.5 transition-colors ${item.accentClass}`}>
+                                            {item.title}
+                                        </h3>
+                                        <p className="text-[#5c544d] text-sm leading-relaxed max-w-xs">
+                                            {item.description}
+                                        </p>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+
+                    {/* Mobile & Tablet Layout */}
+                    <div className="lg:hidden flex flex-col items-center gap-10">
+                        <div className="w-full max-w-[340px] flex justify-center">
+                            <svg width="340" height="340" viewBox="0 0 460 460" className="w-full h-auto select-none overflow-visible">
+                                {whyChooseUsNodes.map((item) => {
+                                    const alpha = (item.angle * Math.PI) / 180;
+                                    const hx = 230 + 98 * Math.cos(alpha);
+                                    const hy = 230 - 98 * Math.sin(alpha);
+                                    const hexPts = getHexPoints(hx, hy, 44, alpha);
+                                    const chevPts = getChevronPoints(hx, hy, 44, alpha, 7, 8);
+                                    const isHovered = hoveredWhyNode === item.id;
+
+                                    return (
+                                        <g
+                                            key={item.id}
+                                            onClick={() => setHoveredWhyNode(hoveredWhyNode === item.id ? null : item.id)}
+                                            className="cursor-pointer transition-all duration-300"
+                                            style={{
+                                                transform: isHovered ? 'scale(1.06)' : 'scale(1)',
+                                                transformOrigin: `${hx}px ${hy}px`,
+                                                filter: isHovered
+                                                    ? (item.type === 'orange' ? 'drop-shadow(0 4px 16px rgba(234,112,8,0.5))' : 'drop-shadow(0 4px 16px rgba(18,17,16,0.18))')
+                                                    : (item.type === 'white' ? 'drop-shadow(0 2px 8px rgba(0,0,0,0.06))' : 'drop-shadow(0 2px 10px rgba(234,112,8,0.25))'),
+                                            }}
+                                        >
+                                            <polygon points={hexPts} fill={item.color} stroke={item.borderColor} strokeWidth="1.5" />
+                                            <polygon points={chevPts} fill={item.color} stroke={item.borderColor} strokeWidth="1.5" />
+                                        </g>
+                                    );
+                                })}
+                            </svg>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+                            {whyChooseUsNodes.map((item) => {
+                                const isHovered = hoveredWhyNode === item.id;
+                                return (
+                                    <div
+                                        key={item.id}
+                                        onClick={() => setHoveredWhyNode(hoveredWhyNode === item.id ? null : item.id)}
+                                        className={`p-5 rounded-2xl border transition-all duration-300 cursor-pointer ${
+                                            isHovered
+                                                ? 'bg-white border-[#e5e0da] shadow-md'
+                                                : 'bg-white/70 border-[#ebe5df]'
+                                        }`}
+                                    >
+                                        <div className="flex items-center gap-2 mb-2">
+                                            <span className="w-3 h-3 rounded-full border border-[#e5e0da]" style={{ backgroundColor: item.color }}></span>
+                                            <h3 className={`text-lg font-bold font-display ${item.accentClass}`}>
+                                                {item.title}
+                                            </h3>
+                                        </div>
+                                        <p className="text-[#5c544d] text-sm leading-relaxed">
+                                            {item.description}
+                                        </p>
+                                    </div>
+                                );
+                            })}
+                        </div>
                     </div>
                 </div>
             </section>

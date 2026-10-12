@@ -86,7 +86,7 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-4 z-50">
-          <Link to="/contact" className="hidden md:inline-flex text-white bg-[#ea7008] hover:bg-[#ff7e15] text-[11px] font-mono font-bold uppercase tracking-[0.18em] px-6 py-2.5 rounded-full transition-all cursor-target shadow-[0_4px_20px_rgba(234,112,8,0.28)] border border-[#ea7008] hover:scale-[1.02]">
+          <Link to="/contact" className="hidden md:inline-flex text-white bg-[#121110] hover:bg-[#252320] text-[11px] font-mono font-bold uppercase tracking-[0.18em] px-6 py-2.5 rounded-full transition-all cursor-target shadow-[0_4px_20px_rgba(0,0,0,0.18)] border border-[#121110] hover:scale-[1.02]">
             Contact us
           </Link>
 

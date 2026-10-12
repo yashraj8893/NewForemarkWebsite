@@ -54,25 +54,14 @@ const Hero = () => {
       {/* Handcrafted Retro-Modern Geometric Shaded Lines Background */}
       <HeroAbstractLines />
 
-      <div className="relative z-10 flex flex-col items-center text-center mb-8 sm:mb-10 max-w-4xl mx-auto px-4 w-full">
-
-        {/* Handcrafted Status Pill */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-portfolio-gold/30 bg-portfolio-gold/5 mb-6 text-[11px] font-mono uppercase tracking-[0.2em] text-portfolio-gold shadow-[0_0_20px_rgba(234,112,8,0.12)]"
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-portfolio-gold animate-pulse" />
-          <span>Systems Architecture &amp; Digital Engineering</span>
-        </motion.div>
+      <div className="relative z-10 flex flex-col items-center text-center mt-4 sm:mt-8 md:mt-10 mb-8 sm:mb-10 max-w-5xl mx-auto px-4 w-full">
 
         <motion.h1
           initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.2 }}
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-bold font-display tracking-tight mb-5 sm:mb-6 text-[#121110] leading-[1.12]"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] xl:text-[4.6rem] font-bold font-display tracking-tight mb-5 sm:mb-6 text-[#121110] leading-[1.1]"
         >
-          We build digital products <br />
-          <span className="text-portfolio-gold">that drive growth.</span>
+          <span className="inline-block">We build digital products</span> <br />
+          <span className="inline-block">that drive growth.</span>
         </motion.h1>
 
         <motion.p
@@ -87,7 +76,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }}
           className="flex flex-col sm:flex-row gap-3.5 mb-8 sm:mb-10"
         >
-          <Link to="/contact" className="btn-primary flex items-center justify-center gap-2 px-8 py-3 text-sm sm:text-base cursor-target">
+          <Link to="/contact" className="rounded-full flex items-center justify-center gap-2 px-8 py-3 text-sm sm:text-base cursor-target font-semibold text-white bg-[#121110] hover:bg-[#252320] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.18)] border border-[#121110]">
             <MessageSquare size={17} /> Let's Talk
           </Link>
           <a href="mailto:hello@foremark.in" className="btn-ghost flex items-center justify-center gap-2 px-8 py-3 text-sm sm:text-base cursor-target">
@@ -95,19 +84,6 @@ const Hero = () => {
           </a>
         </motion.div>
 
-        {/* Technical stack credibility ticker */}
-        <motion.div
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.7 }}
-          className="flex items-center gap-3 sm:gap-6 text-[11px] font-mono uppercase tracking-[0.16em] text-[#786f66] flex-wrap justify-center px-4"
-        >
-          <span>REACT / NEXT.JS</span>
-          <span className="text-portfolio-gold/50">·</span>
-          <span>DISTRIBUTED SYSTEMS</span>
-          <span className="text-portfolio-gold/50">·</span>
-          <span>CLOUD ARCHITECTURE</span>
-          <span className="text-portfolio-gold/50">·</span>
-          <span>ENTERPRISE AUTOMATION</span>
-        </motion.div>
       </div>
 
       {/* The Signature: Real Product Showcase Carousel */}
@@ -209,7 +185,7 @@ const CuratedWork = () => (
               <span className="text-[11px] font-mono text-[#6b635b]">{p.date}</span>
             </div>
 
-            <h3 className="text-2xl md:text-4xl font-bold font-display tracking-tight mb-4 text-[#121110] group-hover:text-portfolio-gold transition-colors duration-500">
+            <h3 className="text-2xl md:text-4xl font-bold font-display tracking-tight mb-4 text-[#121110]">
               {p.title}
             </h3>
 
@@ -259,9 +235,9 @@ const CTASection = () => (
         <p className="text-sm sm:text-base md:text-lg text-[#5c544d] mb-8 md:mb-12 leading-relaxed">Whether you need a high-performance web platform built from scratch or want to explore how intelligent automation can transform your operations.</p>
         <Link
           to="/contact"
-          className="btn-primary inline-flex items-center gap-2 px-9 py-4 uppercase tracking-[0.16em] text-xs sm:text-sm cursor-target"
+          className="inline-flex items-center gap-2 px-9 py-4 uppercase tracking-[0.16em] text-xs sm:text-sm cursor-target rounded-full font-bold text-white bg-[#121110] hover:bg-[#252320] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.18)] border border-[#121110] group"
         >
-          Start A Project <ArrowUpRight size={18} />
+          Start A Project <ArrowUpRight size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
         </Link>
       </div>
     </div>
@@ -568,7 +544,7 @@ const MissionSection = () => {
           >
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 text-portfolio-gold font-semibold text-sm sm:text-base hover:brightness-125 transition-all cursor-target group font-mono border border-portfolio-gold/30 hover:border-portfolio-gold/60 bg-portfolio-gold/5 px-6 py-2.5 rounded-full"
+              className="inline-flex items-center gap-2 text-white bg-[#121110] hover:bg-[#252320] font-semibold text-sm sm:text-base hover:scale-[1.02] transition-all cursor-target group font-mono border border-[#121110] shadow-[0_4px_20px_rgba(0,0,0,0.18)] px-6 py-2.5 rounded-full"
             >
               Book A Call{' '}
               <ArrowUpRight
@@ -591,8 +567,8 @@ const Home = () => {
       {/* Full-bleed Hero section spanning 100% of viewport width end-to-end */}
       <Hero />
 
-      {/* Content sections contained within max-w-[1280px] */}
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
+      {/* Content sections */}
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-10">
         <MissionSection />
         <ServicesGrid />
         <CuratedWork />
