@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 
 // --- Technology Definition ---
 interface TechItem {
@@ -333,7 +332,6 @@ const techItems: TechItem[] = [
 
 export const TechStackLaptopVisual = () => {
   const [activeCategory, setActiveCategory] = useState<'all' | 'frontend' | 'backend' | 'database' | 'devops'>('all');
-  const [hoveredTech, setHoveredTech] = useState<TechItem | null>(null);
 
   const categories = [
     { id: 'all', label: 'All Stacks (16)' },
@@ -344,7 +342,7 @@ export const TechStackLaptopVisual = () => {
   ] as const;
 
   return (
-    <section className="py-12 sm:py-16 border-t border-[#ebe5df] relative overflow-hidden bg-transparent">
+    <section className="py-12 sm:py-16 relative overflow-hidden bg-transparent">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-8 md:px-12 relative z-10 flex flex-col items-center text-center">
         
         {/* Header Block matching User Reference */}
@@ -527,8 +525,6 @@ export const TechStackLaptopVisual = () => {
                   top: tech.posDesktop.top,
                   bottom: tech.posDesktop.bottom,
                 }}
-                onMouseEnter={() => setHoveredTech(tech)}
-                onMouseLeave={() => setHoveredTech(null)}
                 className={`absolute z-30 transition-all duration-500 cursor-pointer ${tech.floatClass} ${
                   isFiltered
                     ? 'opacity-25 grayscale scale-90'
@@ -567,28 +563,6 @@ export const TechStackLaptopVisual = () => {
             );
           })}
 
-        </div>
-
-        {/* ─── Hovered Tech Live Tooltip Banner ─── */}
-        <div className="min-h-[36px] flex items-center justify-center relative z-20 mt-2">
-          {hoveredTech ? (
-            <motion.div
-              initial={{ opacity: 0, y: 4 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white border border-portfolio-gold/50 shadow-[0_4px_16px_rgba(234,112,8,0.12)] text-[11px] font-mono"
-            >
-              <span className="text-portfolio-gold font-bold">ACTIVE INSPECTOR:</span>
-              <span className="text-[#121110] font-semibold">{hoveredTech.name}</span>
-              <span className="text-[#6b635b]">({hoveredTech.role})</span>
-              <span className="text-portfolio-gold uppercase font-bold text-[9px] tracking-wider px-2 py-0.5 bg-portfolio-gold/10 border border-portfolio-gold/20 rounded-md">
-                {hoveredTech.category}
-              </span>
-            </motion.div>
-          ) : (
-            <span className="text-[#8a8077] text-[11px] font-mono tracking-wider">
-              Hover over any technology node to inspect architectural role
-            </span>
-          )}
         </div>
 
       </div>

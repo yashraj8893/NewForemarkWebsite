@@ -12,6 +12,7 @@ import { SEO } from '../components/SEO';
 import { FAQSection } from '../components/FAQSection';
 import { TechStackLaptopVisual } from '../components/TechStackLaptopVisual';
 import { CinematicProcessWalkthrough } from '../components/CinematicProcessWalkthrough';
+import { WhatWeBuildDeliver3D } from '../components/WhatWeBuildDeliver3D';
 
 const fadeUp: Variants = {
     hidden: { opacity: 0, y: 18 },
@@ -223,47 +224,51 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                 </section>
 
                 {/* ─── Deliverables ───────────────────────────────────── */}
-                <section className="py-20 sm:py-28 border-t border-[#ebe5df]">
-                    <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
-                        <div className="max-w-2xl mb-14">
-                            <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3">
-                                Deliverables
-                            </span>
-                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#121110] tracking-tight leading-tight mb-4">
-                                What We Build & Deliver
-                            </h2>
-                            <p className="text-[#5c544d] text-base leading-relaxed">
-                                Production-grade assets, scalable architectures, and fully documented systems engineered for your business.
-                            </p>
-                        </div>
+                {activeSlug === 'website-software-development' ? (
+                    <WhatWeBuildDeliver3D />
+                ) : (
+                    <section className="py-20 sm:py-28 border-t border-[#ebe5df]">
+                        <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
+                            <div className="max-w-2xl mb-14">
+                                <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3">
+                                    Deliverables
+                                </span>
+                                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#121110] tracking-tight leading-tight mb-4">
+                                    What We Build & Deliver
+                                </h2>
+                                <p className="text-[#5c544d] text-base leading-relaxed">
+                                    Production-grade assets, scalable architectures, and fully documented systems engineered for your business.
+                                </p>
+                            </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                            {service.deliverables.map((item, i) => (
-                                <motion.div
-                                    key={item.title}
-                                    variants={fadeUp}
-                                    initial="hidden"
-                                    whileInView="visible"
-                                    viewport={{ once: true, margin: '-40px' }}
-                                    custom={i}
-                                    className="p-7 rounded-2xl border border-[#ebe5df] hover:border-[#ea7008]/30 transition-all duration-300 group flex flex-col justify-between"
-                                >
-                                    <div>
-                                        <div className="w-10 h-10 rounded-xl bg-[#faf8f5] border border-[#ebe5df] flex items-center justify-center mb-5 text-[#ea7008] group-hover:bg-[#ea7008] group-hover:text-white group-hover:border-[#ea7008] transition-all duration-300">
-                                            <item.icon size={18} />
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                                {service.deliverables.map((item, i) => (
+                                    <motion.div
+                                        key={item.title}
+                                        variants={fadeUp}
+                                        initial="hidden"
+                                        whileInView="visible"
+                                        viewport={{ once: true, margin: '-40px' }}
+                                        custom={i}
+                                        className="p-7 rounded-2xl border border-[#ebe5df] hover:border-[#ea7008]/30 transition-all duration-300 group flex flex-col justify-between"
+                                    >
+                                        <div>
+                                            <div className="w-10 h-10 rounded-xl bg-[#faf8f5] border border-[#ebe5df] flex items-center justify-center mb-5 text-[#ea7008] group-hover:bg-[#ea7008] group-hover:text-white group-hover:border-[#ea7008] transition-all duration-300">
+                                                <item.icon size={18} />
+                                            </div>
+                                            <h3 className="text-lg font-bold text-[#121110] mb-2 tracking-tight">
+                                                {item.title}
+                                            </h3>
+                                            <p className="text-[#5c544d] text-sm leading-relaxed">
+                                                {item.description}
+                                            </p>
                                         </div>
-                                        <h3 className="text-lg font-bold text-[#121110] mb-2 tracking-tight">
-                                            {item.title}
-                                        </h3>
-                                        <p className="text-[#5c544d] text-sm leading-relaxed">
-                                            {item.description}
-                                        </p>
-                                    </div>
-                                </motion.div>
-                            ))}
+                                    </motion.div>
+                                ))}
+                            </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                )}
 
                 {/* ─── Technology Stack ───────────────────────────────── */}
                 {activeSlug === 'website-software-development' ? (
