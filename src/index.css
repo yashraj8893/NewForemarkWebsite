@@ -174,3 +174,59 @@ html.lenis body {
   animation-play-state: paused !important;
   transition: none !important;
 }
+
+/* ─── Tech Stack Laptop Visual Animations ───────────────────────────── */
+@keyframes tech-float-1 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(1.5deg); }
+}
+@keyframes tech-float-2 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(14px) rotate(-2deg); }
+}
+@keyframes tech-float-3 {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  50% { transform: translateY(-10px) translateX(6px); }
+}
+@keyframes tech-float-4 {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  50% { transform: translateY(11px) translateX(-5px); }
+}
+@keyframes tech-float-5 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(-1.5deg); }
+}
+@keyframes tech-float-6 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(9px) rotate(2deg); }
+}
+@keyframes tech-spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes tech-spin-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+@keyframes tech-scan-beam {
+  0% { transform: translateX(-100%); opacity: 0; }
+  30% { opacity: 0.6; }
+  70% { opacity: 0.6; }
+  100% { transform: translateX(350%); opacity: 0; }
+}
+@keyframes tech-cursor-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.animate-tech-float-1 { animation: tech-float-1 4.2s ease-in-out infinite; }
+.animate-tech-float-2 { animation: tech-float-2 4.8s ease-in-out infinite; }
+.animate-tech-float-3 { animation: tech-float-3 5.3s ease-in-out infinite; }
+.animate-tech-float-4 { animation: tech-float-4 3.9s ease-in-out infinite; }
+.animate-tech-float-5 { animation: tech-float-5 4.5s ease-in-out infinite; }
+.animate-tech-float-6 { animation: tech-float-6 5.6s ease-in-out infinite; }
+.animate-tech-spin-slow { animation: tech-spin-slow 50s linear infinite; }
+.animate-tech-spin-reverse { animation: tech-spin-reverse 40s linear infinite; }
+.animate-tech-scan { animation: tech-scan-beam 4s ease-in-out infinite; }
+.animate-tech-cursor { animation: tech-cursor-blink 1s infinite; }
+

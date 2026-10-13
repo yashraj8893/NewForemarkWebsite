@@ -745,7 +745,7 @@ const ServicesGrid = () => {
       </div>
 
       <div className={cn(
-        "grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 w-full mx-auto p-2 overflow-visible",
+        "grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 xl:gap-8 w-auto md:-mx-4 lg:-mx-8 xl:-mx-12 p-2 overflow-visible",
         shouldPause && "service-paused"
       )}>
         <ServiceCard 

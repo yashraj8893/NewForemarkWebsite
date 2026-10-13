@@ -18,6 +18,7 @@ import {
     Rocket,
 } from 'lucide-react';
 import { WebAndSoftwareAnimation, ServerAnimation, AutomationAnimation } from '../components/ServicesGrid';
+import { FAQSection } from '../components/FAQSection';
 
 const fadeUp: Variants = {
     hidden: { opacity: 0, y: 24 },
@@ -191,36 +192,7 @@ const process = [
 ];
 
 
-const faqs = [
-    {
-        question: 'How long does a typical website or web app project take?',
-        answer:
-            'Most marketing websites take 3–5 weeks from kickoff to launch. Web applications vary more depending on scope, typically ranging from 6–16 weeks. We’ll give you a concrete timeline after the discovery phase.',
-    },
-    {
-        question: 'Do you offer support after the project launches?',
-        answer:
-            'Yes. Every engagement includes a post-launch support window, and most clients continue with us on an ongoing maintenance or retainer basis for updates, monitoring, and improvements.',
-    },
-    {
-        question: 'What technologies do you work with?',
-        answer:
-            'We work primarily with modern JavaScript/TypeScript stacks — React, Next.js, and Node.js — alongside cloud infrastructure like AWS and Vercel. For automation, we integrate with the tools you already use.',
-    },
-    {
-        question: 'Can you help scale or improve an existing product?',
-        answer:
-            'Absolutely. We regularly step into existing codebases to audit performance, fix technical debt, and extend functionality — you don’t need to start from scratch.',
-    },
-    {
-        question: 'How do you price a project?',
-        answer:
-            'Pricing depends on scope and complexity. After an initial consultation, we provide a fixed-scope quote or a retainer structure, whichever fits your engagement best.',
-    },
-];
-
 const ServicesPage = () => {
-    const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
     const [hoveredWhyNode, setHoveredWhyNode] = useState<string | null>(null);
     return (
         <main className="relative w-full overflow-hidden bg-white text-[#1a1816]">
@@ -599,76 +571,7 @@ const ServicesPage = () => {
             </section>
 
             {/* ─── Frequently Asked Questions ────── */}
-            <section className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 py-20 sm:py-28 relative z-10">
-                <div className="bg-white border border-portfolio-gold/35 hover:border-portfolio-gold/60 shadow-[0_4px_30px_rgba(234,112,8,0.06)] rounded-3xl md:rounded-4xl p-5 sm:p-8 md:p-14 lg:p-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 transition-all duration-500">
-                    {/* Left Column */}
-                    <div className="lg:col-span-4 flex flex-col justify-start pt-2">
-                        <span className="inline-block text-xxs font-bold uppercase tracking-widest text-portfolio-gold border border-portfolio-gold/30 bg-portfolio-gold/5 rounded-full px-3 py-1 mb-6 md:mb-8 w-fit font-mono">
-                            FAQs
-                        </span>
-                        <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight text-[#121110] mb-4 md:mb-6">
-                            Frequently asked <br />
-                            <span className="text-portfolio-gold">questions</span>
-                        </h2>
-                        <p className="text-[#5c544d] text-sm leading-relaxed max-w-xs">
-                            Everything you need to know before we start building together.
-                        </p>
-                    </div>
-
-                    {/* Right Column — Accordion */}
-                    <div className="lg:col-span-8 flex flex-col gap-3 sm:gap-4">
-                        {faqs.map((faq, i) => (
-                            <div
-                                key={i}
-                                className={`transition-all duration-300 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-7 border ${
-                                    openFaqIndex === i
-                                        ? 'bg-portfolio-gold/[0.05] border-portfolio-gold/50 shadow-[0_4px_20px_rgba(234,112,8,0.1)]'
-                                        : 'bg-[#faf8f5] border-[#ebe5df] hover:border-portfolio-gold/45 hover:bg-portfolio-gold/[0.02]'
-                                }`}
-                            >
-                                <button
-                                    onClick={() => setOpenFaqIndex(openFaqIndex === i ? null : i)}
-                                    className="w-full flex items-center justify-between gap-4 sm:gap-6 text-left group cursor-target"
-                                >
-                                    <span
-                                        className={`text-sm md:text-base font-semibold leading-snug transition-colors duration-300 ${
-                                            openFaqIndex === i ? 'text-portfolio-gold' : 'text-[#121110] group-hover:text-portfolio-gold'
-                                        }`}
-                                    >
-                                        {faq.question}
-                                    </span>
-                                    <div
-                                        className={`w-7 h-7 rounded-full border flex items-center justify-center shrink-0 transition-all duration-300 ${
-                                            openFaqIndex === i
-                                                ? 'border-portfolio-gold bg-portfolio-gold/15 rotate-45'
-                                                : 'border-portfolio-gold/30 group-hover:border-portfolio-gold'
-                                        }`}
-                                    >
-                                        <span
-                                            className={`text-lg leading-none font-light transition-colors duration-300 ${
-                                                openFaqIndex === i ? 'text-portfolio-gold' : 'text-[#5c544d]'
-                                            }`}
-                                        >
-                                            +
-                                        </span>
-                                    </div>
-                                </button>
-
-                                {/* Answer — animated open/close */}
-                                <div
-                                    className={`overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.21,0.45,0.32,0.9)] ${
-                                        openFaqIndex === i ? 'max-h-[500px] opacity-100 mt-3 sm:mt-4' : 'max-h-0 opacity-0'
-                                    }`}
-                                >
-                                    <p className="text-[#4b453f] text-xs sm:text-sm leading-relaxed pr-4 sm:pr-12">
-                                        {faq.answer}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            <FAQSection withOuterContainer className="py-20 sm:py-28" />
 
             {/* ─── Final CTA ─────────────────────────────────────────── */}
             <section className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pb-24 sm:pb-32 relative z-10">
