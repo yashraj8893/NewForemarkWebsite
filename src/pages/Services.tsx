@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useLayoutEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
@@ -163,6 +163,24 @@ const whyChooseUsNodes = [
     },
 ];
 
+const getCubicPath = (x1: number, y1: number, x2: number, y2: number, side: 'left' | 'right') => {
+    const dx = Math.max(30, Math.abs(x2 - x1) * 0.52);
+    if (side === 'left') {
+        return `M ${x1.toFixed(1)} ${y1.toFixed(1)} C ${(x1 + dx).toFixed(1)} ${y1.toFixed(1)}, ${(x2 - dx * 0.45).toFixed(1)} ${y2.toFixed(1)}, ${x2.toFixed(1)} ${y2.toFixed(1)}`;
+    } else {
+        return `M ${x1.toFixed(1)} ${y1.toFixed(1)} C ${(x1 - dx).toFixed(1)} ${y1.toFixed(1)}, ${(x2 + dx * 0.45).toFixed(1)} ${y2.toFixed(1)}, ${x2.toFixed(1)} ${y2.toFixed(1)}`;
+    }
+};
+
+const fallbackWhyCoords: Record<string, { x1: number; y1: number; x2: number; y2: number }> = {
+    'technical-excellence': { x1: 360, y1: 75, x2: 498, y2: 124 },
+    'dedicated-team': { x1: 360, y1: 250, x2: 419, y2: 250 },
+    'reliable-delivery': { x1: 360, y1: 425, x2: 498, y2: 376 },
+    'tailored-solutions': { x1: 792, y1: 75, x2: 654, y2: 124 },
+    'innovation-led': { x1: 792, y1: 250, x2: 733, y2: 250 },
+    'long-term-partnership': { x1: 792, y1: 425, x2: 654, y2: 376 },
+};
+
 const process = [
     {
         icon: Search,
@@ -194,6 +212,64 @@ const process = [
 
 const ServicesPage = () => {
     const [hoveredWhyNode, setHoveredWhyNode] = useState<string | null>(null);
+    const hasAnyHover = hoveredWhyNode !== null;
+
+    const whyStageRef = useRef<HTMLDivElement>(null);
+    const whyCardRefs = useRef<Record<string, HTMLDivElement | null>>({});
+    const whyPinRefs = useRef<Record<string, HTMLDivElement | null>>({});
+    const whyHexTipRefs = useRef<Record<string, SVGElement | null>>({});
+    const [whyCoords, setWhyCoords] = useState<Record<string, { x1: number; y1: number; x2: number; y2: number }>>(fallbackWhyCoords);
+
+    const updateWhyCoords = useCallback(() => {
+        if (!whyStageRef.current) return;
+        const stageRect = whyStageRef.current.getBoundingClientRect();
+        if (stageRect.width === 0 || stageRect.height === 0) return;
+
+        const newCoords: Record<string, { x1: number; y1: number; x2: number; y2: number }> = {};
+
+        whyChooseUsNodes.forEach((node) => {
+            const pinEl = whyPinRefs.current[node.id] || whyCardRefs.current[node.id];
+            const hexTipEl = whyHexTipRefs.current[node.id];
+
+            if (pinEl && hexTipEl) {
+                const pinRect = pinEl.getBoundingClientRect();
+                const hexTipRect = hexTipEl.getBoundingClientRect();
+
+                const x1 = node.side === 'left'
+                    ? pinRect.right - stageRect.left
+                    : pinRect.left - stageRect.left;
+                const y1 = pinRect.top + pinRect.height / 2 - stageRect.top;
+
+                const x2 = hexTipRect.left + hexTipRect.width / 2 - stageRect.left;
+                const y2 = hexTipRect.top + hexTipRect.height / 2 - stageRect.top;
+
+                newCoords[node.id] = { x1, y1, x2, y2 };
+            }
+        });
+
+        if (Object.keys(newCoords).length === whyChooseUsNodes.length) {
+            setWhyCoords(newCoords);
+        }
+    }, []);
+
+    useLayoutEffect(() => {
+        updateWhyCoords();
+        const handleResize = () => updateWhyCoords();
+        window.addEventListener('resize', handleResize);
+
+        let ro: ResizeObserver | null = null;
+        if (whyStageRef.current && typeof ResizeObserver !== 'undefined') {
+            ro = new ResizeObserver(() => updateWhyCoords());
+            ro.observe(whyStageRef.current);
+        }
+
+        const timer = setTimeout(updateWhyCoords, 100);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+            if (ro) ro.disconnect();
+            clearTimeout(timer);
+        };
+    }, [updateWhyCoords]);
     return (
         <main className="relative w-full overflow-hidden bg-white text-[#1a1816]">
             {/* ─── Hero ─────────────────────────────────────────────── */}
@@ -366,21 +442,161 @@ const ServicesPage = () => {
                         </h2>
                     </div>
 
-                    {/* Desktop Radial Layout (matches reference screenshot) */}
-                    <div className="hidden lg:grid lg:grid-cols-12 items-center gap-6 max-w-6xl mx-auto">
+                    {/* Desktop Radial Layout (with Interactive Sleek Strings & Spotlight Pop-Up) */}
+                    <div
+                        ref={whyStageRef}
+                        className="relative hidden lg:grid lg:grid-cols-12 items-center gap-6 max-w-6xl mx-auto min-h-[500px]"
+                    >
+                        {/* Connecting Strings SVG Overlay */}
+                        <svg
+                            className="absolute inset-0 w-full h-full pointer-events-none z-10 overflow-visible"
+                            aria-hidden="true"
+                        >
+                            <defs>
+                                <filter id="why-string-glow" x="-30%" y="-30%" width="160%" height="160%">
+                                    <feGaussianBlur stdDeviation="3.5" result="blur" />
+                                    <feMerge>
+                                        <feMergeNode in="blur" />
+                                        <feMergeNode in="SourceGraphic" />
+                                    </feMerge>
+                                </filter>
+                            </defs>
+
+                            {whyChooseUsNodes.map((item) => {
+                                const c = whyCoords[item.id] || fallbackWhyCoords[item.id];
+                                if (!c) return null;
+                                const isHovered = hoveredWhyNode === item.id;
+                                const isOtherHovered = hasAnyHover && !isHovered;
+                                const pathD = getCubicPath(c.x1, c.y1, c.x2, c.y2, item.side);
+
+                                return (
+                                    <g
+                                        key={`string-${item.id}`}
+                                        style={{
+                                            opacity: isHovered ? 1 : isOtherHovered ? 0.12 : 0.45,
+                                            filter: isOtherHovered ? 'blur(1.5px)' : 'none',
+                                            transition: 'all 350ms cubic-bezier(0.16, 1, 0.3, 1)',
+                                        }}
+                                    >
+                                        {/* Invisible wide hit area for hovering the string directly */}
+                                        <path
+                                            d={pathD}
+                                            fill="none"
+                                            stroke="transparent"
+                                            strokeWidth="24"
+                                            className="pointer-events-auto cursor-pointer"
+                                            onMouseEnter={() => setHoveredWhyNode(item.id)}
+                                            onMouseLeave={() => setHoveredWhyNode(null)}
+                                        />
+
+                                        {/* Outer soft glow stroke on hover */}
+                                        {isHovered && (
+                                            <path
+                                                d={pathD}
+                                                fill="none"
+                                                stroke="#ea7008"
+                                                strokeWidth="7"
+                                                strokeOpacity="0.35"
+                                                filter="url(#why-string-glow)"
+                                            />
+                                        )}
+
+                                        {/* Main sleek line */}
+                                        <path
+                                            d={pathD}
+                                            fill="none"
+                                            stroke={isHovered ? '#ea7008' : item.type === 'orange' ? '#ea7008' : '#d0c8c0'}
+                                            strokeWidth={isHovered ? 2.5 : 1.5}
+                                            strokeDasharray={isHovered ? 'none' : '4 4'}
+                                            strokeLinecap="round"
+                                            className="transition-all duration-300"
+                                        />
+
+                                        {/* Terminal anchor pin at Card */}
+                                        <circle
+                                            cx={c.x1}
+                                            cy={c.y1}
+                                            r={isHovered ? 4.5 : 3}
+                                            fill={isHovered ? '#ea7008' : '#ffffff'}
+                                            stroke="#ea7008"
+                                            strokeWidth="2"
+                                            className="transition-all duration-300"
+                                        />
+                                        {isHovered && (
+                                            <circle
+                                                cx={c.x1}
+                                                cy={c.y1}
+                                                r="8"
+                                                fill="none"
+                                                stroke="#ea7008"
+                                                strokeWidth="1.5"
+                                                opacity="0.35"
+                                                className="animate-ping"
+                                            />
+                                        )}
+
+                                        {/* Terminal anchor pin at Hexagon Chevron tip */}
+                                        <circle
+                                            cx={c.x2}
+                                            cy={c.y2}
+                                            r={isHovered ? 4 : 2.5}
+                                            fill={isHovered ? '#ea7008' : '#ffffff'}
+                                            stroke={isHovered ? '#ea7008' : '#b8aea5'}
+                                            strokeWidth="1.5"
+                                            className="transition-all duration-300"
+                                        />
+
+                                        {/* Animated energy pulse traveling along the string when hovered */}
+                                        {isHovered && (
+                                            <circle r="3.5" fill="#ffffff" stroke="#ea7008" strokeWidth="2">
+                                                <animateMotion
+                                                    dur="1.5s"
+                                                    repeatCount="indefinite"
+                                                    path={pathD}
+                                                />
+                                            </circle>
+                                        )}
+                                    </g>
+                                );
+                            })}
+                        </svg>
+
                         {/* Left 3 items */}
-                        <div className="lg:col-span-4 flex flex-col justify-between h-[450px] text-right pr-4">
+                        <div className="lg:col-span-4 flex flex-col justify-between h-[480px] text-right pr-4 z-20">
                             {whyChooseUsNodes.filter((n) => n.side === 'left').map((item) => {
                                 const isHovered = hoveredWhyNode === item.id;
+                                const isOtherHovered = hasAnyHover && !isHovered;
+
                                 return (
                                     <div
                                         key={item.id}
+                                        ref={(el) => { whyCardRefs.current[item.id] = el; }}
                                         onMouseEnter={() => setHoveredWhyNode(item.id)}
                                         onMouseLeave={() => setHoveredWhyNode(null)}
-                                        className={`transition-all duration-300 cursor-pointer p-4 rounded-2xl ${
-                                            isHovered ? 'bg-white shadow-md border border-[#e5e0da] scale-[1.02]' : 'border border-transparent'
+                                        className={`relative cursor-pointer p-5 rounded-2xl transition-all duration-300 ${
+                                            isHovered
+                                                ? 'bg-white shadow-[0_20px_45px_-10px_rgba(234,112,8,0.25),0_6px_18px_rgba(0,0,0,0.06)] border border-[#ea7008]/60 scale-[1.05] -translate-y-1 z-30'
+                                                : isOtherHovered
+                                                ? 'bg-white/30 border border-transparent scale-[0.98] opacity-35'
+                                                : 'bg-white/80 hover:bg-white border border-[#ebe5df] shadow-xs scale-100 opacity-100'
                                         }`}
+                                        style={{
+                                            filter: isOtherHovered ? 'blur(1.8px)' : 'none',
+                                            transition: 'all 350ms cubic-bezier(0.16, 1, 0.3, 1)',
+                                        }}
                                     >
+                                        {/* Visible anchor connector pin */}
+                                        <div
+                                            ref={(el) => { whyPinRefs.current[item.id] = el; }}
+                                            className={`absolute -right-2 top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full border-2 transition-all duration-300 flex items-center justify-center ${
+                                                isHovered
+                                                    ? 'bg-[#ea7008] border-[#ea7008] shadow-[0_0_12px_#ea7008] scale-125'
+                                                    : 'bg-white border-[#d5cdc5]'
+                                            }`}
+                                        >
+                                            <div className={`w-1.5 h-1.5 rounded-full ${isHovered ? 'bg-white' : 'bg-[#ea7008]'}`} />
+                                        </div>
+
                                         <h3 className={`text-xl font-bold font-display mb-1.5 transition-colors ${item.accentClass}`}>
                                             {item.title}
                                         </h3>
@@ -393,7 +609,18 @@ const ServicesPage = () => {
                         </div>
 
                         {/* Center Hexagonal Wheel */}
-                        <div className="lg:col-span-4 flex items-center justify-center">
+                        <div className="lg:col-span-4 flex items-center justify-center relative z-20">
+                            {/* Ambient glowing core */}
+                            <div
+                                className="absolute w-[220px] h-[220px] rounded-full pointer-events-none transition-all duration-500"
+                                style={{
+                                    background: hasAnyHover
+                                        ? 'radial-gradient(circle, rgba(234,112,8,0.35) 0%, rgba(234,112,8,0.1) 45%, transparent 70%)'
+                                        : 'radial-gradient(circle, rgba(234,112,8,0.2) 0%, rgba(234,112,8,0.05) 45%, transparent 70%)',
+                                    filter: 'blur(22px)',
+                                }}
+                            />
+
                             <svg width="440" height="440" viewBox="0 0 460 460" className="w-full h-auto select-none overflow-visible">
                                 {whyChooseUsNodes.map((item) => {
                                     const alpha = (item.angle * Math.PI) / 180;
@@ -402,23 +629,56 @@ const ServicesPage = () => {
                                     const hexPts = getHexPoints(hx, hy, 44, alpha);
                                     const chevPts = getChevronPoints(hx, hy, 44, alpha, 7, 8);
                                     const isHovered = hoveredWhyNode === item.id;
+                                    const isOtherHovered = hasAnyHover && !isHovered;
+
+                                    const tip_x = hx + 59 * Math.cos(alpha);
+                                    const tip_y = hy - 59 * Math.sin(alpha);
 
                                     return (
                                         <g
                                             key={item.id}
                                             onMouseEnter={() => setHoveredWhyNode(item.id)}
                                             onMouseLeave={() => setHoveredWhyNode(null)}
-                                            className="cursor-pointer transition-all duration-300"
+                                            className="cursor-pointer"
                                             style={{
-                                                transform: isHovered ? 'scale(1.06)' : 'scale(1)',
+                                                transform: isHovered ? 'scale(1.18)' : isOtherHovered ? 'scale(0.95)' : 'scale(1)',
                                                 transformOrigin: `${hx}px ${hy}px`,
+                                                opacity: isOtherHovered ? 0.3 : 1,
                                                 filter: isHovered
-                                                    ? (item.type === 'orange' ? 'drop-shadow(0 4px 16px rgba(234,112,8,0.5))' : 'drop-shadow(0 4px 16px rgba(18,17,16,0.18))')
-                                                    : (item.type === 'white' ? 'drop-shadow(0 2px 8px rgba(0,0,0,0.06))' : 'drop-shadow(0 2px 10px rgba(234,112,8,0.25))'),
+                                                    ? (item.type === 'orange'
+                                                        ? 'drop-shadow(0 0 24px rgba(234,112,8,0.85)) drop-shadow(0 8px 18px rgba(234,112,8,0.45))'
+                                                        : 'drop-shadow(0 0 20px rgba(234,112,8,0.5)) drop-shadow(0 8px 18px rgba(0,0,0,0.18))')
+                                                    : isOtherHovered
+                                                    ? 'blur(1.8px)'
+                                                    : (item.type === 'white'
+                                                        ? 'drop-shadow(0 2px 8px rgba(0,0,0,0.06))'
+                                                        : 'drop-shadow(0 2px 10px rgba(234,112,8,0.25))'),
+                                                transition: 'all 350ms cubic-bezier(0.16, 1, 0.3, 1)',
                                             }}
                                         >
-                                            <polygon points={hexPts} fill={item.color} stroke={item.borderColor} strokeWidth="1.5" className="transition-all duration-300" />
-                                            <polygon points={chevPts} fill={item.color} stroke={item.borderColor} strokeWidth="1.5" className="transition-all duration-300" />
+                                            <polygon
+                                                points={hexPts}
+                                                fill={item.color}
+                                                stroke={isHovered ? '#ea7008' : item.borderColor}
+                                                strokeWidth={isHovered ? '2.5' : '1.5'}
+                                                className="transition-all duration-300"
+                                            />
+                                            <polygon
+                                                points={chevPts}
+                                                fill={item.color}
+                                                stroke={isHovered ? '#ea7008' : item.borderColor}
+                                                strokeWidth={isHovered ? '2.5' : '1.5'}
+                                                className="transition-all duration-300"
+                                            />
+                                            {/* Chevron tip ref for exact string connection */}
+                                            <circle
+                                                ref={(el) => { whyHexTipRefs.current[item.id] = el; }}
+                                                cx={tip_x}
+                                                cy={tip_y}
+                                                r="2"
+                                                opacity="0"
+                                                className="pointer-events-none"
+                                            />
                                         </g>
                                     );
                                 })}
@@ -426,18 +686,41 @@ const ServicesPage = () => {
                         </div>
 
                         {/* Right 3 items */}
-                        <div className="lg:col-span-4 flex flex-col justify-between h-[450px] text-left pl-4">
+                        <div className="lg:col-span-4 flex flex-col justify-between h-[480px] text-left pl-4 z-20">
                             {whyChooseUsNodes.filter((n) => n.side === 'right').map((item) => {
                                 const isHovered = hoveredWhyNode === item.id;
+                                const isOtherHovered = hasAnyHover && !isHovered;
+
                                 return (
                                     <div
                                         key={item.id}
+                                        ref={(el) => { whyCardRefs.current[item.id] = el; }}
                                         onMouseEnter={() => setHoveredWhyNode(item.id)}
                                         onMouseLeave={() => setHoveredWhyNode(null)}
-                                        className={`transition-all duration-300 cursor-pointer p-4 rounded-2xl ${
-                                            isHovered ? 'bg-white shadow-md border border-[#e5e0da] scale-[1.02]' : 'border border-transparent'
+                                        className={`relative cursor-pointer p-5 rounded-2xl transition-all duration-300 ${
+                                            isHovered
+                                                ? 'bg-white shadow-[0_20px_45px_-10px_rgba(234,112,8,0.25),0_6px_18px_rgba(0,0,0,0.06)] border border-[#ea7008]/60 scale-[1.05] -translate-y-1 z-30'
+                                                : isOtherHovered
+                                                ? 'bg-white/30 border border-transparent scale-[0.98] opacity-35'
+                                                : 'bg-white/80 hover:bg-white border border-[#ebe5df] shadow-xs scale-100 opacity-100'
                                         }`}
+                                        style={{
+                                            filter: isOtherHovered ? 'blur(1.8px)' : 'none',
+                                            transition: 'all 350ms cubic-bezier(0.16, 1, 0.3, 1)',
+                                        }}
                                     >
+                                        {/* Visible anchor connector pin */}
+                                        <div
+                                            ref={(el) => { whyPinRefs.current[item.id] = el; }}
+                                            className={`absolute -left-2 top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full border-2 transition-all duration-300 flex items-center justify-center ${
+                                                isHovered
+                                                    ? 'bg-[#ea7008] border-[#ea7008] shadow-[0_0_12px_#ea7008] scale-125'
+                                                    : 'bg-white border-[#d5cdc5]'
+                                            }`}
+                                        >
+                                            <div className={`w-1.5 h-1.5 rounded-full ${isHovered ? 'bg-white' : 'bg-[#ea7008]'}`} />
+                                        </div>
+
                                         <h3 className={`text-xl font-bold font-display mb-1.5 transition-colors ${item.accentClass}`}>
                                             {item.title}
                                         </h3>
@@ -461,22 +744,27 @@ const ServicesPage = () => {
                                     const hexPts = getHexPoints(hx, hy, 44, alpha);
                                     const chevPts = getChevronPoints(hx, hy, 44, alpha, 7, 8);
                                     const isHovered = hoveredWhyNode === item.id;
+                                    const isOtherHovered = hasAnyHover && !isHovered;
 
                                     return (
                                         <g
                                             key={item.id}
                                             onClick={() => setHoveredWhyNode(hoveredWhyNode === item.id ? null : item.id)}
-                                            className="cursor-pointer transition-all duration-300"
+                                            className="cursor-pointer"
                                             style={{
-                                                transform: isHovered ? 'scale(1.06)' : 'scale(1)',
+                                                transform: isHovered ? 'scale(1.15)' : isOtherHovered ? 'scale(0.96)' : 'scale(1)',
                                                 transformOrigin: `${hx}px ${hy}px`,
+                                                opacity: isOtherHovered ? 0.35 : 1,
                                                 filter: isHovered
-                                                    ? (item.type === 'orange' ? 'drop-shadow(0 4px 16px rgba(234,112,8,0.5))' : 'drop-shadow(0 4px 16px rgba(18,17,16,0.18))')
+                                                    ? (item.type === 'orange' ? 'drop-shadow(0 4px 20px rgba(234,112,8,0.7))' : 'drop-shadow(0 4px 16px rgba(18,17,16,0.22))')
+                                                    : isOtherHovered
+                                                    ? 'blur(1.5px)'
                                                     : (item.type === 'white' ? 'drop-shadow(0 2px 8px rgba(0,0,0,0.06))' : 'drop-shadow(0 2px 10px rgba(234,112,8,0.25))'),
+                                                transition: 'all 350ms cubic-bezier(0.16, 1, 0.3, 1)',
                                             }}
                                         >
-                                            <polygon points={hexPts} fill={item.color} stroke={item.borderColor} strokeWidth="1.5" />
-                                            <polygon points={chevPts} fill={item.color} stroke={item.borderColor} strokeWidth="1.5" />
+                                            <polygon points={hexPts} fill={item.color} stroke={isHovered ? '#ea7008' : item.borderColor} strokeWidth={isHovered ? '2' : '1.5'} />
+                                            <polygon points={chevPts} fill={item.color} stroke={isHovered ? '#ea7008' : item.borderColor} strokeWidth={isHovered ? '2' : '1.5'} />
                                         </g>
                                     );
                                 })}
@@ -486,14 +774,17 @@ const ServicesPage = () => {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
                             {whyChooseUsNodes.map((item) => {
                                 const isHovered = hoveredWhyNode === item.id;
+                                const isOtherHovered = hasAnyHover && !isHovered;
                                 return (
                                     <div
                                         key={item.id}
                                         onClick={() => setHoveredWhyNode(hoveredWhyNode === item.id ? null : item.id)}
                                         className={`p-5 rounded-2xl border transition-all duration-300 cursor-pointer ${
                                             isHovered
-                                                ? 'bg-white border-[#e5e0da] shadow-md'
-                                                : 'bg-white/70 border-[#ebe5df]'
+                                                ? 'bg-white border-[#ea7008]/60 shadow-lg scale-[1.02]'
+                                                : isOtherHovered
+                                                ? 'bg-white/40 border-transparent opacity-35 blur-[1.5px]'
+                                                : 'bg-white/80 border-[#ebe5df]'
                                         }`}
                                     >
                                         <div className="flex items-center gap-2 mb-2">
