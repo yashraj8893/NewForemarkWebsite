@@ -156,7 +156,7 @@ const Navbar = () => {
 function App() {
   return (
     <SmoothScrollProvider>
-      <div className="relative min-h-screen bg-white text-[#1a1816] selection:bg-[#ea7008] selection:text-white font-geist overflow-x-hidden">
+      <div className="relative min-h-screen bg-white text-[#1a1816] selection:bg-[#ea7008] selection:text-white font-sans overflow-x-hidden">
         <div className="grainy-overlay" />
         
         {/* Global Ambient Orange Light Spots */}

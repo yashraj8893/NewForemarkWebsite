@@ -96,18 +96,26 @@ const ServiceCard = ({ title, desc, href, index, children, className }: { title:
         {children}
       </motion.div>
       <div className="mt-auto px-1 sm:px-0">
-        {index && (
-          <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-portfolio-gold font-semibold block mb-1.5">
-            [ {index} // CAPABILITY ]
-          </span>
-        )}
-        <h3 className="text-sm sm:text-base md:text-[1.1rem] lg:text-[1.05rem] xl:text-[1.2rem] 2xl:text-[1.32rem] font-bold font-display mb-1 sm:mb-2 tracking-tight transition-colors duration-500 text-[#121110]">
+        <h3 className="text-sm sm:text-[15px] md:text-[0.92rem] lg:text-[1.02rem] xl:text-[1.14rem] 2xl:text-[1.24rem] font-bold font-display mb-1.5 sm:mb-2 tracking-tight transition-colors duration-500 text-[#121110] whitespace-nowrap">
           {href ? (
-            <Link to={href} className="cursor-target inline-flex items-center gap-1.5 group-hover:text-portfolio-gold transition-colors whitespace-nowrap">
-              <span className="whitespace-nowrap">{title}</span> <ArrowRight size={18} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-portfolio-gold shrink-0" />
+            <Link to={href} className="cursor-target inline-flex items-center gap-1.5 sm:gap-2 group-hover:text-portfolio-gold transition-colors whitespace-nowrap">
+              {index && (
+                <span className="text-[#ea7008] font-mono text-[0.88em] font-bold shrink-0">
+                  {index}
+                </span>
+              )}
+              <span className="whitespace-nowrap">{title}</span>
+              <ArrowRight size={17} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-portfolio-gold shrink-0 inline-block" />
             </Link>
           ) : (
-            <span className="whitespace-nowrap">{title}</span>
+            <span className="inline-flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
+              {index && (
+                <span className="text-[#ea7008] font-mono text-[0.88em] font-bold shrink-0">
+                  {index}
+                </span>
+              )}
+              <span className="whitespace-nowrap">{title}</span>
+            </span>
           )}
         </h3>
         <p className="text-[#5c544d] text-sm leading-relaxed">{desc}</p>
@@ -720,9 +728,9 @@ const ServicesGrid = () => {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-[11px] font-bold font-mono tracking-[0.2em] uppercase text-portfolio-gold mb-3 sm:mb-4 block"
+          className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3 sm:mb-4"
         >
-          // 02 · CORE CAPABILITIES
+          Core Capabilities
         </motion.span>
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}

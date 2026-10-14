@@ -657,8 +657,8 @@ export const CinematicProcessWalkthrough = () => {
         {/* Section Header with Phase Jump Indicators */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10">
           <div className="max-w-2xl text-left">
-            <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-2 font-mono">
-              // DELIVERY LIFECYCLE
+            <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3">
+              Delivery Lifecycle
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#121110] tracking-tight leading-tight mb-2">
               How We Deliver <span className="text-[#ea7008]">High-Impact Software</span>

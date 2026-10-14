@@ -43,8 +43,8 @@ export const FAQSection = ({
     <div className="bg-[#121110] border border-portfolio-gold/35 hover:border-portfolio-gold/60 shadow-[0_4px_30px_rgba(234,112,8,0.12)] rounded-3xl md:rounded-4xl p-5 sm:p-8 md:p-14 lg:p-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 transition-all duration-500 relative before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent">
       {/* Left Column */}
       <div className="lg:col-span-4 flex flex-col justify-start pt-2">
-        <span className="inline-block text-[11px] font-bold uppercase tracking-[0.2em] text-portfolio-gold border border-portfolio-gold/30 bg-portfolio-gold/10 rounded-full px-3.5 py-1 mb-6 md:mb-8 w-fit font-mono">
-          // 03 · INQUIRIES &amp; FAQ
+        <span className="text-portfolio-gold text-xs font-semibold uppercase tracking-widest block mb-4 md:mb-6">
+          Inquiries &amp; FAQ
         </span>
         <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold font-display tracking-tight text-white mb-4 md:mb-6 leading-tight">
           Frequently asked <br />

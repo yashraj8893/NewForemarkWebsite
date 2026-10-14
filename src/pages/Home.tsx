@@ -142,7 +142,7 @@ const CuratedWork = () => (
     {/* Section Header */}
     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 sm:mb-16 md:mb-24">
       <div>
-        <span className="text-xs font-bold uppercase tracking-widest text-portfolio-gold mb-4 sm:mb-6 block font-mono">// 02 · CURATED WORK</span>
+        <span className="text-portfolio-gold text-xs font-semibold uppercase tracking-widest block mb-4 sm:mb-6">Curated Work</span>
         <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold font-display tracking-tight mb-4 sm:mb-6 text-[#121110] leading-tight">
           A curated collection of <br /> websites designed with care
         </h2>
@@ -225,7 +225,6 @@ const CTASection = () => (
     <div className="bg-[#121110] border border-portfolio-gold/35 hover:border-portfolio-gold/60 shadow-[0_4px_30px_rgba(234,112,8,0.12)] rounded-3xl md:rounded-4xl p-8 sm:p-12 md:p-24 text-white relative overflow-hidden flex flex-col items-center text-center transition-all duration-500 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-portfolio-gold/[0.08] blur-[120px] rounded-full pointer-events-none" />
       <div className="relative z-10 max-w-3xl">
-        <span className="text-portfolio-gold font-bold mb-4 md:mb-6 text-[11px] tracking-[0.2em] block uppercase font-mono">// COMMISSIONS &amp; PARTNERSHIPS</span>
         <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold font-display tracking-tight mb-5 md:mb-8 text-white leading-tight">Let's build something extraordinary together.</h2>
         <p className="text-sm sm:text-base md:text-lg text-[#a89f91] mb-8 md:mb-12 leading-relaxed">Whether you need a high-performance web platform built from scratch or want to explore how intelligent automation can transform your operations.</p>
         <Link
@@ -320,7 +319,7 @@ const TestimonialsSection = () => {
   const col4 = testimonials.filter((_, i) => i % 4 === 3);
 
   return (
-    <section className="py-20 sm:py-28 md:py-36 w-screen relative left-1/2 -translate-x-1/2 flex items-center justify-center bg-[#faf8f5] border-y border-[#ebe5df]">
+    <section className="py-20 sm:py-28 md:py-36 w-screen relative left-1/2 -translate-x-1/2 flex items-center justify-center bg-transparent">
 
       {/* Subconscious ambient warmth */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-portfolio-gold/[0.04] blur-[120px] rounded-full pointer-events-none" />
@@ -368,7 +367,7 @@ const TestimonialsSection = () => {
                   </svg>
                 ))}
               </div>
-              <span className="text-[#5c544d] text-[11px] font-semibold tracking-wider uppercase font-mono">VERIFIED CLIENT REVIEWS · 15+ COMMISSIONS</span>
+              <span className="text-[#5c544d] text-[11px] font-semibold tracking-wider uppercase font-mono">VERIFIED CLIENT REVIEWS</span>
             </div>
           </div>
         </div>
@@ -401,15 +400,15 @@ const MissionSection = () => {
     <section className="py-16 md:py-28">
       <div className="bg-[#121110] border border-portfolio-gold/35 hover:border-portfolio-gold/60 shadow-[0_4px_30px_rgba(234,112,8,0.12)] rounded-3xl md:rounded-4xl p-8 sm:p-14 md:p-20 text-white relative flex flex-col items-center text-center transition-all duration-500 overflow-hidden before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent">
         <div className="relative z-10 flex flex-col items-center max-w-4xl">
-          <motion.div
+          <motion.span
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-portfolio-gold/30 bg-portfolio-gold/5 text-[11px] font-bold uppercase tracking-[0.2em] text-portfolio-gold mb-8 sm:mb-10 font-mono shadow-[0_0_15px_rgba(234,112,8,0.1)]"
+            className="text-portfolio-gold text-xs font-semibold uppercase tracking-widest block mb-8 sm:mb-10 text-center"
           >
-            // 01 · OUR MISSION
-          </motion.div>
+            Our Mission
+          </motion.span>
 
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-display tracking-tight max-w-[850px] mb-8 sm:mb-10 flex flex-wrap justify-center gap-x-[0.28em] gap-y-[0.08em] leading-tight">
             {words.map((word, i) => (

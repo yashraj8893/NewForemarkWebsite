@@ -52,7 +52,7 @@ const Footer = () => {
 
           {/* Services Column */}
           <div className="flex flex-col">
-            <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] text-portfolio-gold mb-6 font-mono">// SERVICES</h4>
+            <h4 className="text-xs font-semibold uppercase tracking-widest text-portfolio-gold mb-6">SERVICES</h4>
             <div className="flex flex-col gap-4 items-start">
               <Link to="/services/website-software-development" className="text-[#a89f91] hover:text-portfolio-gold text-sm font-medium transition-colors">Website &amp; Software Development</Link>
               <Link to="/services/cloud-hosting" className="text-[#a89f91] hover:text-portfolio-gold text-sm font-medium transition-colors">Web Servers &amp; Hosting</Link>
@@ -63,7 +63,7 @@ const Footer = () => {
 
           {/* Links Column 1 */}
           <div className="flex flex-col">
-            <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] text-portfolio-gold mb-6 font-mono">// COMPANY</h4>
+            <h4 className="text-xs font-semibold uppercase tracking-widest text-portfolio-gold mb-6">COMPANY</h4>
             <div className="flex flex-col gap-4 items-start">
               <Link to="/projects" className="text-[#a89f91] hover:text-portfolio-gold text-sm font-medium transition-colors">Projects</Link>
               <Link to="/about" className="text-[#a89f91] hover:text-portfolio-gold text-sm font-medium transition-colors">About Us</Link>
@@ -75,7 +75,7 @@ const Footer = () => {
 
           {/* Contact Column */}
           <div className="flex flex-col">
-            <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] text-portfolio-gold mb-6 font-mono">// CONTACT</h4>
+            <h4 className="text-xs font-semibold uppercase tracking-widest text-portfolio-gold mb-6">CONTACT</h4>
             <div className="flex flex-col gap-4">
               <p className="text-[#a89f91] text-sm font-medium leading-relaxed">
                 Innov8 Times Square, Andheri East<br />

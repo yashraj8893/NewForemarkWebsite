@@ -199,8 +199,8 @@ const ContactPage = () => {
               >
                 <div className="flex items-center justify-between mb-6 lg:mb-8">
                   <div>
-                    <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-portfolio-gold font-bold block mb-1">
-                      // DIRECT LINE
+                    <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-2">
+                      Direct Line
                     </span>
                     <h3 className="text-xl sm:text-2xl md:text-3xl font-bold font-display tracking-tight text-[#121110]">Contact form</h3>
                   </div>

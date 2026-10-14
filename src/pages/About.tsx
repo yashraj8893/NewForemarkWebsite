@@ -29,9 +29,9 @@ const AboutHero = () => (
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-portfolio-gold mb-6 font-mono"
+        className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest mb-6 block text-center"
       >
-        // 01 · ABOUT FOREMARK
+        About Foremark
       </motion.p>
 
       {/* Heading */}
@@ -109,8 +109,8 @@ const OurStory = () => (
     <div className="pb-20 md:pb-28">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-10 md:gap-16 items-start w-full">
         <div className="md:col-span-4 flex flex-col md:pl-10">
-          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-portfolio-gold mb-4 block font-mono">
-            // OUR GENESIS
+          <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest mb-4 block">
+            Our Genesis
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold font-display tracking-tight text-[#121110] leading-tight">
             Our <br className="hidden md:block" />
@@ -156,8 +156,8 @@ const statsData = [
 const StatsGrid = () => (
   <section className="pb-16 sm:pb-24 md:pb-40">
     <div className="flex items-center gap-4 sm:gap-6 mb-10 sm:mb-16 opacity-70 md:pl-10">
-      <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-portfolio-gold shrink-0 font-mono">
-        // BY THE NUMBERS
+      <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest shrink-0">
+        By The Numbers
       </span>
       <div className="flex-1 h-[1px] bg-[#e5e0da]" />
     </div>

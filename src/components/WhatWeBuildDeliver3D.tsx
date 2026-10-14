@@ -7,8 +7,7 @@ import {
   ShoppingBag,
   Terminal,
   Gauge,
-  ArrowRight,
-  Sparkles
+  ArrowRight
 } from 'lucide-react';
 
 interface DeliverableItem {
@@ -33,10 +32,9 @@ const deliverablesData: DeliverableItem[] = [
   {
     id: '01',
     number: '01',
-    title: 'Custom Corporate Websites & Flagships',
-    category: 'Brand Experience',
-    description:
-      'Brand-defining digital flagships crafted with custom typography, bespoke layouts, and interactive brand storytelling.',
+    title: 'Corporate Websites & Flagships',
+    category: 'Brand Flagships',
+    description: 'Bespoke digital flagships with custom interactive storytelling.',
     icon: Globe,
     topColor: '#ea7008', // Foremark Orange
     sideLeftColor: '#d66205',
@@ -50,10 +48,9 @@ const deliverablesData: DeliverableItem[] = [
   {
     id: '02',
     number: '02',
-    title: 'Custom SaaS Platforms & Web Applications',
+    title: 'SaaS & Web Applications',
     category: 'Cloud Software',
-    description:
-      'Multi-tenant subscription web applications with integrated payment billing, team seats, role permissions, and analytics.',
+    description: 'Scalable cloud platforms with billing, auth, and analytics.',
     icon: Layers,
     topColor: '#121110', // Brand Black
     sideLeftColor: '#1d1b19',
@@ -67,10 +64,9 @@ const deliverablesData: DeliverableItem[] = [
   {
     id: '03',
     number: '03',
-    title: 'Client Portals & Operations Systems',
+    title: 'Client Portals & Operations',
     category: 'Internal Systems',
-    description:
-      'Secure authenticated workspaces, custom ERPs, and workflow dashboards tailored to your exact operational processes.',
+    description: 'Secure client portals, custom ERPs, and automated workflows.',
     icon: Sliders,
     topColor: '#ea7008', // Foremark Orange
     sideLeftColor: '#d66205',
@@ -84,10 +80,9 @@ const deliverablesData: DeliverableItem[] = [
   {
     id: '04',
     number: '04',
-    title: 'Headless E-Commerce Solutions',
+    title: 'Headless E-Commerce',
     category: 'Commerce Engine',
-    description:
-      'High-converting storefronts built on Shopify Plus or custom headless engines with sub-second checkout speeds.',
+    description: 'High-converting storefronts engineered for sub-second checkouts.',
     icon: ShoppingBag,
     topColor: '#ffffff', // Crisp White
     sideLeftColor: '#e8e2db',
@@ -101,10 +96,9 @@ const deliverablesData: DeliverableItem[] = [
   {
     id: '05',
     number: '05',
-    title: 'High-Throughput APIs & Integrations',
-    category: 'Backend Architecture',
-    description:
-      'REST, GraphQL, and tRPC endpoints with rate limiting, Swagger documentation, and deep CRM/payment integrations.',
+    title: 'APIs & Microservices',
+    category: 'API Architecture',
+    description: 'High-scale REST & GraphQL endpoints with robust integrations.',
     icon: Terminal,
     topColor: '#ea7008', // Foremark Orange
     sideLeftColor: '#d66205',
@@ -118,10 +112,9 @@ const deliverablesData: DeliverableItem[] = [
   {
     id: '06',
     number: '06',
-    title: 'Technical SEO & Performance Optimization',
+    title: 'Technical SEO & Performance',
     category: 'Core Web Vitals',
-    description:
-      'Complete structured data setup, XML sitemaps, semantic hierarchy, and Core Web Vitals sub-second optimization.',
+    description: 'Sub-second load times, 100/100 Vitals, and structured schemas.',
     icon: Gauge,
     topColor: '#121110', // Brand Black with Orange accent
     sideLeftColor: '#1d1b19',
@@ -143,7 +136,7 @@ export const WhatWeBuildDeliver3D = () => {
   const RADIUS_Y = 24; // half height of isometric top rhombus
 
   return (
-    <section className="py-20 sm:py-28 relative overflow-hidden bg-transparent select-none">
+    <section className="py-16 sm:py-24 relative overflow-hidden bg-transparent">
       {/* Ambient Radial Orange Lighting */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-r from-[#ea7008]/[0.06] via-[#ea7008]/[0.03] to-transparent blur-[120px] pointer-events-none rounded-full z-0" />
 
@@ -152,8 +145,8 @@ export const WhatWeBuildDeliver3D = () => {
         {/* ─── SECTION HEADER ─── */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16">
           <div className="max-w-2xl text-left">
-            <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-2.5 font-mono">
-              // ARCHITECTURAL DELIVERABLES
+            <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3">
+              Deliverables
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#121110] tracking-tight leading-tight mb-3">
               What We Build & <span className="text-[#ea7008]">Deliver</span>
@@ -164,21 +157,14 @@ export const WhatWeBuildDeliver3D = () => {
           </div>
 
           {/* Isometric 3D Legend Pill */}
-          <div className="hidden sm:flex items-center gap-2 self-start sm:self-auto px-3.5 py-1.5 rounded-full border border-[#ebe5df] bg-white/80 shadow-xs backdrop-blur-xs font-mono text-xs text-[#6b635b]">
+          <div className="hidden sm:flex items-center gap-2 self-start sm:self-auto px-3.5 py-1.5 rounded-full border border-[#ebe5df] bg-white shadow-xs font-mono text-xs text-[#6b635b]">
             <span className="w-2 h-2 rounded-full bg-[#ea7008] animate-pulse" />
             <span>Interactive 3D Pedestals (01 — 06)</span>
           </div>
         </div>
 
         {/* ─── DESKTOP PANORAMA: 3D ISOMETRIC STAIRCASE STAGE (>= 1024px) ─── */}
-        <div 
-          className="hidden lg:block relative w-full h-[680px] rounded-[32px] border border-[#ebe5df]/90 bg-white/40 backdrop-blur-xs shadow-[0_12px_45px_rgba(0,0,0,0.02)] overflow-visible"
-        >
-          {/* Subtle Ambient Guidelines in Background */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-[32px]">
-            <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#ebe5df]/60 to-transparent" />
-            <div className="absolute -bottom-20 -right-20 w-[400px] h-[300px] bg-[#ea7008]/[0.08] blur-[80px] rounded-full pointer-events-none" />
-          </div>
+        <div className="hidden lg:block relative w-full h-[660px] overflow-visible">
 
           {/* SVG Canvas for the 6 Isometric Cubes & Dotted Guidelines */}
           <svg
@@ -233,10 +219,8 @@ export const WhatWeBuildDeliver3D = () => {
               const rightFacePoints = `${pBottom} ${pRight} ${cx + RADIUS_X},${cyBase} ${cx},${cyBase + RADIUS_Y}`;
 
               // Connection line coordinates
-              // If position === 'top': line runs from top Callout (y ~ 190) down to top center dot (cx, topY)
-              // If position === 'bottom': line runs from bottom center of cube (cx, cyBase + RADIUS_Y) or top face down to bottom Callout (y ~ 440)
-              const lineStartY = item.position === 'top' ? 200 : topY + RADIUS_Y;
-              const lineEndY = item.position === 'top' ? topY - RADIUS_Y : 445;
+              const lineStartY = item.position === 'top' ? 165 : topY + RADIUS_Y;
+              const lineEndY = item.position === 'top' ? topY - RADIUS_Y : 448;
 
               return (
                 <g key={item.id} className="transition-all duration-300">
@@ -361,23 +345,36 @@ export const WhatWeBuildDeliver3D = () => {
                 onMouseLeave={() => setHoveredId(null)}
                 style={{
                   left: leftOffset,
-                  top: isTop ? '32px' : '450px',
+                  top: isTop ? '28px' : '460px',
                   transform: 'translateX(-50%)',
                 }}
-                className={`absolute w-[185px] z-20 cursor-pointer transition-all duration-300 ${
-                  isHovered ? '-translate-y-2' : ''
+                className={`absolute w-[192px] z-20 cursor-pointer transition-all duration-300 ${
+                  isHovered ? (isTop ? '-translate-y-1.5' : 'translate-y-1.5') : ''
                 }`}
               >
+                {/* Connection Line Indicator Dot on Top of Bottom Cards */}
+                {!isTop && (
+                  <div className="flex justify-center mb-1.5">
+                    <div
+                      className={`w-2 h-2 rounded-full border transition-all duration-300 ${
+                        isHovered
+                          ? 'bg-[#ea7008] border-white ring-2 ring-[#ea7008]'
+                          : 'bg-white border-[#d2cbbf]'
+                      }`}
+                    />
+                  </div>
+                )}
+
                 {/* Callout Card */}
                 <div
                   className={`p-3.5 rounded-2xl border transition-all duration-300 text-left ${
                     isHovered
-                      ? 'bg-white border-[#ea7008] shadow-[0_10px_30px_rgba(234,112,8,0.18)] scale-[1.03]'
-                      : 'bg-white/90 border-[#ebe5df] shadow-[0_4px_16px_rgba(0,0,0,0.03)] hover:border-[#ea7008]/50'
+                      ? 'bg-white border-[#ea7008] shadow-[0_10px_30px_rgba(234,112,8,0.2)] scale-[1.02]'
+                      : 'bg-white border-[#dcd6ce] shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:border-[#ea7008]/60'
                   }`}
                 >
                   {/* Top Bar: Icon + Step Number */}
-                  <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center justify-between mb-2.5">
                     <div
                       className={`w-8 h-8 rounded-xl flex items-center justify-center transition-colors ${
                         isHovered
@@ -392,34 +389,36 @@ export const WhatWeBuildDeliver3D = () => {
                       className={`text-xs font-mono font-bold px-2 py-0.5 rounded-full border transition-colors ${
                         isHovered
                           ? 'bg-[#ea7008] text-white border-[#ea7008]'
-                          : 'bg-[#ea7008]/10 text-[#ea7008] border-[#ea7008]/25'
+                          : 'bg-[#ea7008]/10 text-[#ea7008] border-[#ea7008]/30'
                       }`}
                     >
                       {item.number}
                     </span>
                   </div>
 
-                  {/* Title */}
-                  <h4 className="text-xs font-bold text-[#121110] leading-snug tracking-tight mb-1 font-display line-clamp-2">
+                  {/* Title (High-contrast solid dark black font) */}
+                  <h4 className="text-[13px] font-bold text-[#121110] leading-snug tracking-tight mb-1 font-sans">
                     {item.title}
                   </h4>
 
-                  {/* Description */}
-                  <p className="text-[11px] text-[#6b635b] leading-relaxed line-clamp-3 font-sans">
+                  {/* Description (Dark, high-contrast readable font) */}
+                  <p className="text-[12px] text-[#2d2824] leading-relaxed font-sans font-medium">
                     {item.description}
                   </p>
                 </div>
 
-                {/* Connection Line Indicator Dot on Card */}
-                <div className="flex justify-center mt-1">
-                  <div
-                    className={`w-2 h-2 rounded-full border transition-all duration-300 ${
-                      isHovered
-                        ? 'bg-[#ea7008] border-white ring-2 ring-[#ea7008]'
-                        : 'bg-white border-[#d2cbbf]'
-                    }`}
-                  />
-                </div>
+                {/* Connection Line Indicator Dot on Bottom of Top Cards */}
+                {isTop && (
+                  <div className="flex justify-center mt-1.5">
+                    <div
+                      className={`w-2 h-2 rounded-full border transition-all duration-300 ${
+                        isHovered
+                          ? 'bg-[#ea7008] border-white ring-2 ring-[#ea7008]'
+                          : 'bg-white border-[#d2cbbf]'
+                      }`}
+                    />
+                  </div>
+                )}
               </div>
             );
           })}
@@ -440,7 +439,7 @@ export const WhatWeBuildDeliver3D = () => {
                     : 'bg-white text-[#6b635b] border border-[#ebe5df] hover:border-[#ea7008]/40'
                 }`}
               >
-                {item.number} // {item.category}
+                {item.number} · {item.category}
               </button>
             ))}
           </div>
@@ -521,18 +520,6 @@ export const WhatWeBuildDeliver3D = () => {
             ))}
           </div>
 
-        </div>
-
-        {/* ─── SECTION FOOTER BANNER ─── */}
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-3 text-xs font-mono text-[#6b635b]">
-          <span className="inline-flex items-center gap-1 text-[#ea7008] font-bold">
-            <Sparkles size={13} />
-            <span>Full IP & Source Code Ownership</span>
-          </span>
-          <span className="text-[#ebe5df]">•</span>
-          <span>Zero Vendor Lock-in</span>
-          <span className="text-[#ebe5df]">•</span>
-          <span>Automated CI/CD Deployment</span>
         </div>
 
       </div>

@@ -347,8 +347,8 @@ export const TechStackLaptopVisual = () => {
         
         {/* Header Block matching User Reference */}
         <div className="flex flex-col items-center max-w-2xl mb-4 sm:mb-6 relative z-20">
-          <span className="inline-block text-[10px] font-bold uppercase tracking-[0.2em] text-portfolio-gold border border-portfolio-gold/30 bg-portfolio-gold/10 rounded-full px-3 py-0.5 mb-2.5 font-mono">
-            // TECH STACK ARCHITECTURE
+          <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3">
+            Technology Stack
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-display tracking-tight text-[#121110] mb-2.5 leading-tight">
             Right Technology Stacks For{' '}

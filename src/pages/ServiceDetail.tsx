@@ -424,7 +424,6 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                     <div className="bg-[#121110] border border-portfolio-gold/35 hover:border-portfolio-gold/60 shadow-[0_4px_30px_rgba(234,112,8,0.12)] rounded-3xl md:rounded-4xl p-8 sm:p-12 md:p-24 text-white relative overflow-hidden flex flex-col items-center text-center transition-all duration-500 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent">
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-portfolio-gold/[0.08] blur-[120px] rounded-full pointer-events-none" />
                         <div className="relative z-10 max-w-3xl">
-                            <span className="text-portfolio-gold font-bold mb-4 md:mb-6 text-[11px] tracking-[0.2em] block uppercase font-mono">// COMMISSIONS &amp; PARTNERSHIPS</span>
                             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold font-display tracking-tight mb-5 md:mb-8 text-white leading-tight">Let's build something extraordinary together.</h2>
                             <p className="text-sm sm:text-base md:text-lg text-[#a89f91] mb-8 md:mb-12 leading-relaxed">Whether you need a high-performance web platform built from scratch or want to explore how intelligent automation can transform your operations.</p>
                             <Link

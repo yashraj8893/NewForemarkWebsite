@@ -202,9 +202,9 @@ const ServicesPage = () => {
                     <motion.span
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-portfolio-gold font-bold mb-3 text-[11px] tracking-[0.2em] uppercase block font-mono"
+                        className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3"
                     >
-                        // CAPABILITIES &amp; SYSTEMS
+                        Capabilities &amp; Systems
                     </motion.span>
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
@@ -252,11 +252,11 @@ const ServicesPage = () => {
                                 key={item.title}
                                 className="p-6 sm:p-7 flex flex-col justify-center rounded-2xl border border-portfolio-gold/30 bg-white hover:bg-[#faf8f5] hover:border-portfolio-gold/60 hover:-translate-y-1 transition-all duration-300 shadow-md shadow-black/[0.03] group relative overflow-hidden before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent"
                             >
-                                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-portfolio-gold font-semibold mb-2">
-                                    [ {item.index} // CAPABILITY ]
-                                </span>
-                                <h3 className="text-[#121110] text-base sm:text-lg font-bold font-display tracking-tight mb-2">
-                                    {item.title}
+                                <h3 className="text-[#121110] text-base sm:text-lg font-bold font-display tracking-tight mb-2 flex items-baseline gap-2">
+                                    <span className="text-[#ea7008] text-sm font-semibold font-mono shrink-0">
+                                        {item.index}
+                                    </span>
+                                    <span>{item.title}</span>
                                 </h3>
                                 <p className="text-[#5c544d] text-sm leading-relaxed">
                                     {item.text}
@@ -358,8 +358,8 @@ const ServicesPage = () => {
             <section className="bg-white relative z-10 overflow-hidden">
                 <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 py-20 sm:py-28 relative z-10">
                     <div className="text-center mb-12 sm:mb-16">
-                        <span className="font-mono text-[11px] font-bold uppercase tracking-[0.24em] text-portfolio-gold block mb-2">
-                            // WHY CHOOSE US
+                        <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3">
+                            Why Choose Us
                         </span>
                         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[#121110] max-w-3xl mx-auto tracking-tight leading-[1.15]">
                             Engineering you can actually depend on
