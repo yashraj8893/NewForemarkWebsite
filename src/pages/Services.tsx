@@ -468,13 +468,14 @@ const ServicesPage = () => {
                                 const isHovered = hoveredWhyNode === item.id;
                                 const isOtherHovered = hasAnyHover && !isHovered;
                                 const pathD = getCubicPath(c.x1, c.y1, c.x2, c.y2, item.side);
+                                const isOrange = item.type === 'orange';
 
                                 return (
                                     <g
                                         key={`string-${item.id}`}
                                         style={{
-                                            opacity: isHovered ? 1 : isOtherHovered ? 0.12 : 0.45,
-                                            filter: isOtherHovered ? 'blur(1.5px)' : 'none',
+                                            opacity: isHovered ? 1 : isOtherHovered ? 0.2 : 0.88,
+                                            filter: isOtherHovered ? 'blur(1.2px)' : 'none',
                                             transition: 'all 350ms cubic-bezier(0.16, 1, 0.3, 1)',
                                         }}
                                     >
@@ -494,57 +495,50 @@ const ServicesPage = () => {
                                             <path
                                                 d={pathD}
                                                 fill="none"
-                                                stroke="#ea7008"
-                                                strokeWidth="7"
-                                                strokeOpacity="0.35"
+                                                stroke={isOrange ? '#ea7008' : '#9c9489'}
+                                                strokeWidth="6"
+                                                strokeOpacity="0.3"
                                                 filter="url(#why-string-glow)"
                                             />
                                         )}
 
-                                        {/* Main sleek line */}
+                                        {/* Main sleek line - 100% SOLID (no dotted strokeDasharray) */}
                                         <path
                                             d={pathD}
                                             fill="none"
-                                            stroke={isHovered ? '#ea7008' : item.type === 'orange' ? '#ea7008' : '#d0c8c0'}
-                                            strokeWidth={isHovered ? 2.5 : 1.5}
-                                            strokeDasharray={isHovered ? 'none' : '4 4'}
+                                            stroke={isHovered ? '#ea7008' : isOrange ? '#ea7008' : '#b0a89f'}
+                                            strokeWidth={isHovered ? 2.6 : 1.8}
                                             strokeLinecap="round"
                                             className="transition-all duration-300"
                                         />
 
-                                        {/* Terminal anchor pin at Card */}
-                                        <circle
-                                            cx={c.x1}
-                                            cy={c.y1}
-                                            r={isHovered ? 4.5 : 3}
-                                            fill={isHovered ? '#ea7008' : '#ffffff'}
-                                            stroke="#ea7008"
-                                            strokeWidth="2"
-                                            className="transition-all duration-300"
-                                        />
-                                        {isHovered && (
+                                        {/* Terminal anchor pin at Card - EXACTLY ONE PIN */}
+                                        <g>
+                                            {isHovered && (
+                                                <circle
+                                                    cx={c.x1}
+                                                    cy={c.y1}
+                                                    r="12"
+                                                    fill={isOrange ? 'rgba(234,112,8,0.22)' : 'rgba(107,99,91,0.18)'}
+                                                />
+                                            )}
                                             <circle
                                                 cx={c.x1}
                                                 cy={c.y1}
-                                                r="8"
-                                                fill="none"
-                                                stroke="#ea7008"
+                                                r="7"
+                                                fill="#ffffff"
+                                                stroke={isHovered ? '#ea7008' : isOrange ? '#ea7008' : '#b0a89f'}
                                                 strokeWidth="1.5"
-                                                opacity="0.35"
-                                                className="animate-ping"
+                                                className="transition-all duration-300"
                                             />
-                                        )}
-
-                                        {/* Terminal anchor pin at Hexagon Chevron tip */}
-                                        <circle
-                                            cx={c.x2}
-                                            cy={c.y2}
-                                            r={isHovered ? 4 : 2.5}
-                                            fill={isHovered ? '#ea7008' : '#ffffff'}
-                                            stroke={isHovered ? '#ea7008' : '#b8aea5'}
-                                            strokeWidth="1.5"
-                                            className="transition-all duration-300"
-                                        />
+                                            <circle
+                                                cx={c.x1}
+                                                cy={c.y1}
+                                                r={isHovered ? 4 : 3}
+                                                fill={isOrange ? '#ea7008' : '#8c8275'}
+                                                className="transition-all duration-300"
+                                            />
+                                        </g>
 
                                         {/* Animated energy pulse traveling along the string when hovered */}
                                         {isHovered && (
@@ -577,25 +571,19 @@ const ServicesPage = () => {
                                             isHovered
                                                 ? 'bg-white shadow-[0_20px_45px_-10px_rgba(234,112,8,0.25),0_6px_18px_rgba(0,0,0,0.06)] border border-[#ea7008]/60 scale-[1.05] -translate-y-1 z-30'
                                                 : isOtherHovered
-                                                ? 'bg-white/30 border border-transparent scale-[0.98] opacity-35'
-                                                : 'bg-white/80 hover:bg-white border border-[#ebe5df] shadow-xs scale-100 opacity-100'
+                                                ? 'bg-white/40 border border-transparent scale-[0.98] opacity-40'
+                                                : 'bg-white hover:bg-white border border-[#ebe5df] shadow-[0_4px_20px_rgba(0,0,0,0.03)] scale-100 opacity-100'
                                         }`}
                                         style={{
-                                            filter: isOtherHovered ? 'blur(1.8px)' : 'none',
+                                            filter: isOtherHovered ? 'blur(1.5px)' : 'none',
                                             transition: 'all 350ms cubic-bezier(0.16, 1, 0.3, 1)',
                                         }}
                                     >
-                                        {/* Visible anchor connector pin */}
+                                        {/* Invisible anchor connector pin measurement point */}
                                         <div
                                             ref={(el) => { whyPinRefs.current[item.id] = el; }}
-                                            className={`absolute -right-2 top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full border-2 transition-all duration-300 flex items-center justify-center ${
-                                                isHovered
-                                                    ? 'bg-[#ea7008] border-[#ea7008] shadow-[0_0_12px_#ea7008] scale-125'
-                                                    : 'bg-white border-[#d5cdc5]'
-                                            }`}
-                                        >
-                                            <div className={`w-1.5 h-1.5 rounded-full ${isHovered ? 'bg-white' : 'bg-[#ea7008]'}`} />
-                                        </div>
+                                            className="absolute -right-1 top-1/2 -translate-y-1/2 w-1 h-1 pointer-events-none opacity-0"
+                                        />
 
                                         <h3 className={`text-xl font-bold font-display mb-1.5 transition-colors ${item.accentClass}`}>
                                             {item.title}
@@ -612,16 +600,57 @@ const ServicesPage = () => {
                         <div className="lg:col-span-4 flex items-center justify-center relative z-20">
                             {/* Ambient glowing core */}
                             <div
-                                className="absolute w-[220px] h-[220px] rounded-full pointer-events-none transition-all duration-500"
+                                className="absolute w-[240px] h-[240px] rounded-full pointer-events-none transition-all duration-500"
                                 style={{
                                     background: hasAnyHover
-                                        ? 'radial-gradient(circle, rgba(234,112,8,0.35) 0%, rgba(234,112,8,0.1) 45%, transparent 70%)'
-                                        : 'radial-gradient(circle, rgba(234,112,8,0.2) 0%, rgba(234,112,8,0.05) 45%, transparent 70%)',
-                                    filter: 'blur(22px)',
+                                        ? 'radial-gradient(circle, rgba(234,112,8,0.38) 0%, rgba(234,112,8,0.12) 45%, transparent 70%)'
+                                        : 'radial-gradient(circle, rgba(234,112,8,0.22) 0%, rgba(234,112,8,0.06) 45%, transparent 70%)',
+                                    filter: 'blur(24px)',
                                 }}
                             />
 
                             <svg width="440" height="440" viewBox="0 0 460 460" className="w-full h-auto select-none overflow-visible">
+                                <defs>
+                                    {/* Orange Hexagon Gradient */}
+                                    <linearGradient id="why-hex-orange" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stopColor="#f77810" />
+                                        <stop offset="50%" stopColor="#ea7008" />
+                                        <stop offset="100%" stopColor="#cf5e02" />
+                                    </linearGradient>
+
+                                    {/* White Hexagon 3D Faceted Gradient */}
+                                    <linearGradient id="why-hex-white" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stopColor="#ffffff" />
+                                        <stop offset="50%" stopColor="#fdfbf9" />
+                                        <stop offset="100%" stopColor="#ebe4db" />
+                                    </linearGradient>
+
+                                    {/* Orange Chevron Gradient */}
+                                    <linearGradient id="why-chev-orange" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stopColor="#ff8a29" />
+                                        <stop offset="100%" stopColor="#ea7008" />
+                                    </linearGradient>
+
+                                    {/* White Chevron Gradient */}
+                                    <linearGradient id="why-chev-white" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stopColor="#ffffff" />
+                                        <stop offset="100%" stopColor="#f2ede6" />
+                                    </linearGradient>
+
+                                    {/* 3D Drop Shadows */}
+                                    <filter id="why-hex-shadow-white" x="-30%" y="-30%" width="160%" height="160%">
+                                        <feDropShadow dx="0" dy="6" stdDeviation="6" floodColor="#1a1816" floodOpacity="0.09" />
+                                    </filter>
+                                    <filter id="why-hex-shadow-orange" x="-30%" y="-30%" width="160%" height="160%">
+                                        <feDropShadow dx="0" dy="8" stdDeviation="8" floodColor="#ea7008" floodOpacity="0.4" />
+                                    </filter>
+                                </defs>
+
+                                {/* Concentric Faint Orbital Rings Matching Reference */}
+                                <circle cx="230" cy="230" r="54" fill="none" stroke="#ea7008" strokeOpacity="0.16" strokeDasharray="3 3" />
+                                <circle cx="230" cy="230" r="148" fill="none" stroke="#ea7008" strokeOpacity="0.12" />
+                                <circle cx="230" cy="230" r="195" fill="none" stroke="#ea7008" strokeOpacity="0.08" strokeDasharray="5 5" />
+
                                 {whyChooseUsNodes.map((item) => {
                                     const alpha = (item.angle * Math.PI) / 180;
                                     const hx = 230 + 98 * Math.cos(alpha);
@@ -630,6 +659,7 @@ const ServicesPage = () => {
                                     const chevPts = getChevronPoints(hx, hy, 44, alpha, 7, 8);
                                     const isHovered = hoveredWhyNode === item.id;
                                     const isOtherHovered = hasAnyHover && !isHovered;
+                                    const isOrange = item.type === 'orange';
 
                                     const tip_x = hx + 59 * Math.cos(alpha);
                                     const tip_y = hy - 59 * Math.sin(alpha);
@@ -641,35 +671,44 @@ const ServicesPage = () => {
                                             onMouseLeave={() => setHoveredWhyNode(null)}
                                             className="cursor-pointer"
                                             style={{
-                                                transform: isHovered ? 'scale(1.18)' : isOtherHovered ? 'scale(0.95)' : 'scale(1)',
+                                                transform: isHovered ? 'scale(1.15)' : isOtherHovered ? 'scale(0.96)' : 'scale(1)',
                                                 transformOrigin: `${hx}px ${hy}px`,
-                                                opacity: isOtherHovered ? 0.3 : 1,
-                                                filter: isHovered
-                                                    ? (item.type === 'orange'
-                                                        ? 'drop-shadow(0 0 24px rgba(234,112,8,0.85)) drop-shadow(0 8px 18px rgba(234,112,8,0.45))'
-                                                        : 'drop-shadow(0 0 20px rgba(234,112,8,0.5)) drop-shadow(0 8px 18px rgba(0,0,0,0.18))')
-                                                    : isOtherHovered
-                                                    ? 'blur(1.8px)'
-                                                    : (item.type === 'white'
-                                                        ? 'drop-shadow(0 2px 8px rgba(0,0,0,0.06))'
-                                                        : 'drop-shadow(0 2px 10px rgba(234,112,8,0.25))'),
+                                                opacity: isOtherHovered ? 0.35 : 1,
                                                 transition: 'all 350ms cubic-bezier(0.16, 1, 0.3, 1)',
                                             }}
                                         >
-                                            <polygon
-                                                points={hexPts}
-                                                fill={item.color}
-                                                stroke={isHovered ? '#ea7008' : item.borderColor}
-                                                strokeWidth={isHovered ? '2.5' : '1.5'}
-                                                className="transition-all duration-300"
-                                            />
+                                            {/* Outer Chevron Bracket Accent */}
                                             <polygon
                                                 points={chevPts}
-                                                fill={item.color}
-                                                stroke={isHovered ? '#ea7008' : item.borderColor}
+                                                fill={isOrange ? 'url(#why-chev-orange)' : 'url(#why-chev-white)'}
+                                                stroke={isHovered ? '#ea7008' : isOrange ? '#ea7008' : '#ded6cb'}
                                                 strokeWidth={isHovered ? '2.5' : '1.5'}
+                                                filter={isOrange ? 'url(#why-hex-shadow-orange)' : 'url(#why-hex-shadow-white)'}
                                                 className="transition-all duration-300"
                                             />
+
+                                            {/* Hexagon Body with 3D gradient fill and shadow */}
+                                            <polygon
+                                                points={hexPts}
+                                                fill={isOrange ? 'url(#why-hex-orange)' : 'url(#why-hex-white)'}
+                                                stroke={isHovered ? '#ea7008' : isOrange ? '#ea7008' : '#ded6cb'}
+                                                strokeWidth={isHovered ? '2.5' : '1.5'}
+                                                filter={isOrange ? 'url(#why-hex-shadow-orange)' : 'url(#why-hex-shadow-white)'}
+                                                className="transition-all duration-300"
+                                            />
+
+                                            {/* Subtle 3D Center Facet Ridge Line */}
+                                            <line
+                                                x1={hx}
+                                                y1={hy}
+                                                x2={tip_x}
+                                                y2={tip_y}
+                                                stroke={isOrange ? '#ffffff' : '#d2c9bd'}
+                                                strokeWidth="1.2"
+                                                strokeOpacity={isHovered ? 0.5 : 0.28}
+                                                pointerEvents="none"
+                                            />
+
                                             {/* Chevron tip ref for exact string connection */}
                                             <circle
                                                 ref={(el) => { whyHexTipRefs.current[item.id] = el; }}
@@ -701,25 +740,19 @@ const ServicesPage = () => {
                                             isHovered
                                                 ? 'bg-white shadow-[0_20px_45px_-10px_rgba(234,112,8,0.25),0_6px_18px_rgba(0,0,0,0.06)] border border-[#ea7008]/60 scale-[1.05] -translate-y-1 z-30'
                                                 : isOtherHovered
-                                                ? 'bg-white/30 border border-transparent scale-[0.98] opacity-35'
-                                                : 'bg-white/80 hover:bg-white border border-[#ebe5df] shadow-xs scale-100 opacity-100'
+                                                ? 'bg-white/40 border border-transparent scale-[0.98] opacity-40'
+                                                : 'bg-white hover:bg-white border border-[#ebe5df] shadow-[0_4px_20px_rgba(0,0,0,0.03)] scale-100 opacity-100'
                                         }`}
                                         style={{
-                                            filter: isOtherHovered ? 'blur(1.8px)' : 'none',
+                                            filter: isOtherHovered ? 'blur(1.5px)' : 'none',
                                             transition: 'all 350ms cubic-bezier(0.16, 1, 0.3, 1)',
                                         }}
                                     >
-                                        {/* Visible anchor connector pin */}
+                                        {/* Invisible anchor connector pin measurement point */}
                                         <div
                                             ref={(el) => { whyPinRefs.current[item.id] = el; }}
-                                            className={`absolute -left-2 top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full border-2 transition-all duration-300 flex items-center justify-center ${
-                                                isHovered
-                                                    ? 'bg-[#ea7008] border-[#ea7008] shadow-[0_0_12px_#ea7008] scale-125'
-                                                    : 'bg-white border-[#d5cdc5]'
-                                            }`}
-                                        >
-                                            <div className={`w-1.5 h-1.5 rounded-full ${isHovered ? 'bg-white' : 'bg-[#ea7008]'}`} />
-                                        </div>
+                                            className="absolute -left-1 top-1/2 -translate-y-1/2 w-1 h-1 pointer-events-none opacity-0"
+                                        />
 
                                         <h3 className={`text-xl font-bold font-display mb-1.5 transition-colors ${item.accentClass}`}>
                                             {item.title}
@@ -735,8 +768,43 @@ const ServicesPage = () => {
 
                     {/* Mobile & Tablet Layout */}
                     <div className="lg:hidden flex flex-col items-center gap-10">
-                        <div className="w-full max-w-[340px] flex justify-center">
-                            <svg width="340" height="340" viewBox="0 0 460 460" className="w-full h-auto select-none overflow-visible">
+                        <div className="w-full max-w-[340px] flex justify-center relative">
+                            {/* Ambient glow */}
+                            <div
+                                className="absolute w-[200px] h-[200px] rounded-full pointer-events-none"
+                                style={{
+                                    background: 'radial-gradient(circle, rgba(234,112,8,0.25) 0%, rgba(234,112,8,0.06) 45%, transparent 70%)',
+                                    filter: 'blur(20px)',
+                                }}
+                            />
+
+                            <svg width="340" height="340" viewBox="0 0 460 460" className="w-full h-auto select-none overflow-visible relative z-10">
+                                <defs>
+                                    <linearGradient id="why-m-hex-orange" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stopColor="#f77810" />
+                                        <stop offset="50%" stopColor="#ea7008" />
+                                        <stop offset="100%" stopColor="#cf5e02" />
+                                    </linearGradient>
+                                    <linearGradient id="why-m-hex-white" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stopColor="#ffffff" />
+                                        <stop offset="50%" stopColor="#fdfbf9" />
+                                        <stop offset="100%" stopColor="#ebe4db" />
+                                    </linearGradient>
+                                    <linearGradient id="why-m-chev-orange" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stopColor="#ff8a29" />
+                                        <stop offset="100%" stopColor="#ea7008" />
+                                    </linearGradient>
+                                    <linearGradient id="why-m-chev-white" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stopColor="#ffffff" />
+                                        <stop offset="100%" stopColor="#f2ede6" />
+                                    </linearGradient>
+                                </defs>
+
+                                {/* Concentric orbital guide circles */}
+                                <circle cx="230" cy="230" r="54" fill="none" stroke="#ea7008" strokeOpacity="0.16" strokeDasharray="3 3" />
+                                <circle cx="230" cy="230" r="148" fill="none" stroke="#ea7008" strokeOpacity="0.12" />
+                                <circle cx="230" cy="230" r="195" fill="none" stroke="#ea7008" strokeOpacity="0.08" strokeDasharray="5 5" />
+
                                 {whyChooseUsNodes.map((item) => {
                                     const alpha = (item.angle * Math.PI) / 180;
                                     const hx = 230 + 98 * Math.cos(alpha);
@@ -745,6 +813,10 @@ const ServicesPage = () => {
                                     const chevPts = getChevronPoints(hx, hy, 44, alpha, 7, 8);
                                     const isHovered = hoveredWhyNode === item.id;
                                     const isOtherHovered = hasAnyHover && !isHovered;
+                                    const isOrange = item.type === 'orange';
+
+                                    const tip_x = hx + 59 * Math.cos(alpha);
+                                    const tip_y = hy - 59 * Math.sin(alpha);
 
                                     return (
                                         <g
@@ -755,16 +827,33 @@ const ServicesPage = () => {
                                                 transform: isHovered ? 'scale(1.15)' : isOtherHovered ? 'scale(0.96)' : 'scale(1)',
                                                 transformOrigin: `${hx}px ${hy}px`,
                                                 opacity: isOtherHovered ? 0.35 : 1,
-                                                filter: isHovered
-                                                    ? (item.type === 'orange' ? 'drop-shadow(0 4px 20px rgba(234,112,8,0.7))' : 'drop-shadow(0 4px 16px rgba(18,17,16,0.22))')
-                                                    : isOtherHovered
-                                                    ? 'blur(1.5px)'
-                                                    : (item.type === 'white' ? 'drop-shadow(0 2px 8px rgba(0,0,0,0.06))' : 'drop-shadow(0 2px 10px rgba(234,112,8,0.25))'),
                                                 transition: 'all 350ms cubic-bezier(0.16, 1, 0.3, 1)',
                                             }}
                                         >
-                                            <polygon points={hexPts} fill={item.color} stroke={isHovered ? '#ea7008' : item.borderColor} strokeWidth={isHovered ? '2' : '1.5'} />
-                                            <polygon points={chevPts} fill={item.color} stroke={isHovered ? '#ea7008' : item.borderColor} strokeWidth={isHovered ? '2' : '1.5'} />
+                                            <polygon
+                                                points={chevPts}
+                                                fill={isOrange ? 'url(#why-m-chev-orange)' : 'url(#why-m-chev-white)'}
+                                                stroke={isHovered ? '#ea7008' : isOrange ? '#ea7008' : '#ded6cb'}
+                                                strokeWidth={isHovered ? '2' : '1.5'}
+                                                filter="drop-shadow(0 4px 8px rgba(0,0,0,0.08))"
+                                            />
+                                            <polygon
+                                                points={hexPts}
+                                                fill={isOrange ? 'url(#why-m-hex-orange)' : 'url(#why-m-hex-white)'}
+                                                stroke={isHovered ? '#ea7008' : isOrange ? '#ea7008' : '#ded6cb'}
+                                                strokeWidth={isHovered ? '2' : '1.5'}
+                                                filter="drop-shadow(0 4px 10px rgba(0,0,0,0.08))"
+                                            />
+                                            <line
+                                                x1={hx}
+                                                y1={hy}
+                                                x2={tip_x}
+                                                y2={tip_y}
+                                                stroke={isOrange ? '#ffffff' : '#d2c9bd'}
+                                                strokeWidth="1.2"
+                                                strokeOpacity={isHovered ? 0.5 : 0.28}
+                                                pointerEvents="none"
+                                            />
                                         </g>
                                     );
                                 })}

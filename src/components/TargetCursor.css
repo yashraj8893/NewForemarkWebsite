@@ -55,3 +55,12 @@
   border-right: none;
   border-top: none;
 }
+
+@media (hover: hover) and (pointer: fine) {
+  body, a, button, input, textarea, [role="button"], .cursor-pointer, .cursor-target {
+    cursor: none !important;
+  }
+  .no-cursor, .no-cursor * {
+    cursor: auto !important;
+  }
+}

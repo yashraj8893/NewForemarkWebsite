@@ -38,13 +38,13 @@ const Footer = () => {
               We design and engineer intelligent digital systems that help companies build, scale, and automate modern technology platforms.
             </p>
             <div className="flex items-center gap-4">
-              <a href="https://www.linkedin.com/company/foremark-technologies/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-[#a89f91] hover:text-portfolio-gold hover:border-portfolio-gold hover:bg-white/10 transition-all duration-300 shadow-xs">
+              <a href="https://www.linkedin.com/company/foremark-technologies/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-[#a89f91] hover:text-portfolio-gold hover:border-portfolio-gold hover:bg-white/10 transition-all duration-300 shadow-xs cursor-target">
                 <LinkedinIcon size={16} />
               </a>
-              <a href="https://www.instagram.com/foremarktechnologies.official/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-[#a89f91] hover:text-portfolio-gold hover:border-portfolio-gold hover:bg-white/10 transition-all duration-300 shadow-xs">
+              <a href="https://www.instagram.com/foremarktechnologies.official/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-[#a89f91] hover:text-portfolio-gold hover:border-portfolio-gold hover:bg-white/10 transition-all duration-300 shadow-xs cursor-target">
                 <InstagramIcon size={16} />
               </a>
-              <a href="https://wa.me/917666809812" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-[#a89f91] hover:text-portfolio-gold hover:border-portfolio-gold hover:bg-white/10 transition-all duration-300 shadow-xs">
+              <a href="https://wa.me/917666809812" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-[#a89f91] hover:text-portfolio-gold hover:border-portfolio-gold hover:bg-white/10 transition-all duration-300 shadow-xs cursor-target">
                 <WhatsappIcon size={16} />
               </a>
             </div>
@@ -57,7 +57,7 @@ const Footer = () => {
               <Link to="/services/website-software-development" className="text-[#a89f91] hover:text-portfolio-gold text-sm font-medium transition-colors">Website &amp; Software Development</Link>
               <Link to="/services/cloud-hosting" className="text-[#a89f91] hover:text-portfolio-gold text-sm font-medium transition-colors">Web Servers &amp; Hosting</Link>
               <Link to="/services/business-automation" className="text-[#a89f91] hover:text-portfolio-gold text-sm font-medium transition-colors">Business Automation</Link>
-              <Link to="/services" className="text-portfolio-gold hover:brightness-125 text-xs font-semibold transition-colors mt-1 font-mono">All Services Overview →</Link>
+              <Link to="/services" className="text-portfolio-gold hover:brightness-125 text-xs font-semibold transition-colors mt-1">All Services Overview →</Link>
             </div>
           </div>
 
@@ -81,17 +81,17 @@ const Footer = () => {
                 Innov8 Times Square, Andheri East<br />
                 Unit No. 2, 4th Floor, A-Wing, Times Square Building,<br />
                 Marol, Andheri (E), Mumbai – 400059<br />
-                <a href="https://maps.app.goo.gl/KruJhjPSm2YM46zp8" target="_blank" rel="noopener noreferrer" className="text-portfolio-gold hover:text-white transition-colors font-mono text-xs">
+                <a href="https://maps.app.goo.gl/KruJhjPSm2YM46zp8" target="_blank" rel="noopener noreferrer" className="text-portfolio-gold hover:text-white transition-colors text-xs font-medium">
                   Google Maps →
                 </a>
               </p>
-              <p className="text-[#a89f91] text-sm font-mono mt-2 leading-relaxed">
+              <p className="text-[#a89f91] text-sm mt-2 leading-relaxed">
                 hello@foremark.in<br />
                 careers@foremark.in<br />
                 +91 7666809812
               </p>
 
-              <Link to="/contact" className="inline-flex items-center gap-2 text-portfolio-gold text-xs font-mono font-bold uppercase tracking-[0.16em] mt-4 hover:brightness-125 transition-colors group w-max">
+              <Link to="/contact" className="inline-flex items-center gap-2 text-portfolio-gold text-xs font-bold uppercase tracking-[0.16em] mt-4 hover:brightness-125 transition-colors group w-max">
                 Start a project <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Link>
             </div>
@@ -99,10 +99,32 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-[#8c8275] text-xs font-mono">© {new Date().getFullYear()} Foremark Technologies LLP. All rights reserved.</p>
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-[#8c8275] text-xs">© {new Date().getFullYear()} Foremark Technologies LLP. All rights reserved.</p>
+
+          {/* Startup India Accreditation */}
+          <a
+            href="https://www.startupindia.gov.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Recognized by Startup India - DPIIT Certified"
+            className="group cursor-target inline-flex items-center gap-3 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 hover:border-portfolio-gold/40 hover:bg-white/[0.06] transition-all duration-300"
+          >
+            <img
+              src="/startup-india-badge.png"
+              alt="Startup India Recognized Startup"
+              className="h-7 w-auto object-contain drop-shadow group-hover:scale-105 transition-transform duration-300"
+            />
+            <span className="text-xs text-[#a89f91] group-hover:text-white transition-colors flex items-center gap-1.5">
+              Recognized by <span className="text-white font-semibold">Startup India</span>
+              <span className="text-white/20">|</span>
+              <span className="text-portfolio-gold font-medium">DPIIT Certified</span>
+              <ArrowUpRight size={12} className="text-[#a89f91] group-hover:text-portfolio-gold transition-colors ml-0.5" />
+            </span>
+          </a>
+
           <div className="flex items-center gap-6">
-            <span className="text-[#a89f91] text-xs font-mono flex items-center gap-2">
+            <span className="text-[#a89f91] text-xs flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-portfolio-green animate-pulse"></span> All systems operational
             </span>
           </div>

@@ -11,6 +11,7 @@ import AboutPage from './pages/About';
 import AssociateProgramPage from './pages/AssociateProgram';
 import BlogPage from './pages/Blog';
 import Footer from './components/Footer';
+import TargetCursor from './components/TargetCursor';
 import { useEffect, useState } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -154,9 +155,18 @@ const Navbar = () => {
 };
 
 function App() {
+  const location = useLocation();
   return (
     <SmoothScrollProvider>
       <div className="relative min-h-screen bg-white text-[#1a1816] selection:bg-[#ea7008] selection:text-white font-sans overflow-x-hidden">
+        <TargetCursor
+          key={location.pathname}
+          targetSelector=".cursor-target, a, button, input, textarea"
+          spinDuration={2}
+          hideDefaultCursor={true}
+          parallaxOn={true}
+          hoverDuration={0.5}
+        />
         <div className="grainy-overlay" />
         
         {/* Global Ambient Orange Light Spots */}
