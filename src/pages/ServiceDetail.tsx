@@ -11,6 +11,7 @@ import { servicesData } from '../data/servicesData';
 import { SEO } from '../components/SEO';
 import { FAQSection } from '../components/FAQSection';
 import { TechStackLaptopVisual } from '../components/TechStackLaptopVisual';
+import { TechStackServerRackVisual } from '../components/TechStackServerRackVisual';
 import { CinematicProcessWalkthrough } from '../components/CinematicProcessWalkthrough';
 import { WhatWeBuildDeliver3D } from '../components/WhatWeBuildDeliver3D';
 
@@ -273,6 +274,8 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                 {/* ─── Technology Stack ───────────────────────────────── */}
                 {activeSlug === 'website-software-development' ? (
                     <TechStackLaptopVisual />
+                ) : activeSlug === 'business-automation' ? (
+                    <TechStackServerRackVisual />
                 ) : (
                     <section className="py-20 sm:py-28 border-t border-[#ebe5df]">
                         <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
