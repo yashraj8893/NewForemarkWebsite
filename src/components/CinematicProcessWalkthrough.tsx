@@ -317,70 +317,79 @@ const DiscoveryCockpit = () => (
   </div>
 );
 
-// Phase 02: Figma Interactive Prototype & Token Canvas
+// Phase 02: Design System & Tokens Architecture (Clean & Aesthetic)
 const DesignCockpit = () => (
   <div className="space-y-3">
     <div className="p-3.5 rounded-xl border border-[#ebe5df] bg-[#faf8f5]/60 space-y-2.5">
       <div className="flex items-center justify-between font-mono text-xs">
         <span className="text-[11px] font-bold tracking-wider text-[#121110]">
-          FIGMA PROTOTYPE CANVAS
+          DESIGN SYSTEM ARCHITECTURE
         </span>
         <span className="text-[10px] text-[#ea7008] font-bold bg-[#ea7008]/10 px-2 py-0.5 rounded border border-[#ea7008]/20">
-          48 / 48 TOKENS
+          FIGMA TOKENS v2.4
         </span>
       </div>
 
-      {/* Wireframe Mockup Canvas */}
-      <div className="p-3 rounded-lg bg-white border border-[#ebe5df] shadow-xs space-y-2">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#ea7008]" />
-            <span className="w-1.5 h-1.5 rounded-full bg-[#121110]/30" />
-            <span className="w-1.5 h-1.5 rounded-full bg-[#ebe5df]" />
+      {/* 2x2 Clean Aesthetic Token Pillars */}
+      <div className="grid grid-cols-2 gap-2">
+        {/* Token 1: Color Palette */}
+        <div className="p-2.5 rounded-lg bg-white border border-[#ebe5df] flex flex-col justify-between gap-1.5 shadow-xs hover:border-[#ea7008]/40 transition-colors">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-mono text-[#8a8077] uppercase tracking-wider font-semibold">
+              Color Tokens
+            </span>
+            <span className="text-[9px] font-mono text-[#ea7008] font-bold">LOCKED</span>
           </div>
-          <span className="text-[9px] font-mono text-[#8a8077]">1440px / auto-layout</span>
+          <div className="flex items-center gap-1.5 py-0.5">
+            <div className="w-4 h-4 rounded-full bg-[#ea7008] shadow-xs ring-1 ring-black/5" title="Primary Orange" />
+            <div className="w-4 h-4 rounded-full bg-[#121110] shadow-xs ring-1 ring-black/5" title="Obsidian Black" />
+            <div className="w-4 h-4 rounded-full bg-[#faf8f5] border border-[#ebe5df] shadow-xs" title="Warm Surface" />
+            <div className="w-4 h-4 rounded-full bg-[#ffffff] border border-[#ebe5df] shadow-xs" title="Pure Surface" />
+          </div>
+          <span className="text-[10px] text-[#6b635b] font-medium">48 Atomic Variables</span>
         </div>
 
-        {/* Mockup layout */}
-        <div className="flex items-center justify-between p-1.5 bg-[#faf8f5] rounded border border-[#ebe5df]">
-          <div className="w-12 h-2 bg-[#ea7008]/30 rounded" />
-          <div className="flex gap-1">
-            <div className="w-6 h-1.5 bg-[#121110]/20 rounded" />
-            <div className="w-6 h-1.5 bg-[#121110]/20 rounded" />
-            <div className="w-8 h-2 bg-[#ea7008] rounded" />
+        {/* Token 2: Typography Hierarchy */}
+        <div className="p-2.5 rounded-lg bg-white border border-[#ebe5df] flex flex-col justify-between gap-1.5 shadow-xs hover:border-[#ea7008]/40 transition-colors">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-mono text-[#8a8077] uppercase tracking-wider font-semibold">
+              Type Scale
+            </span>
+            <span className="text-[9px] font-mono text-[#ea7008] font-bold">FLUID</span>
           </div>
+          <div className="text-[12px] font-bold text-[#121110] font-display tracking-tight leading-tight">
+            Syne &amp; Jakarta
+          </div>
+          <span className="text-[10px] text-[#6b635b] font-medium">1.25 Modular Ratio</span>
         </div>
 
-        <div className="grid grid-cols-3 gap-1.5 pt-1">
-          <div className="h-8 rounded bg-[#faf8f5] border border-[#ebe5df] flex flex-col justify-center items-center">
-            <span className="text-[8px] font-mono text-[#8a8077]">HERO</span>
-            <div className="w-6 h-1 bg-[#ea7008]/40 rounded mt-0.5" />
+        {/* Token 3: Spatial Architecture */}
+        <div className="p-2.5 rounded-lg bg-white border border-[#ebe5df] flex flex-col justify-between gap-1.5 shadow-xs hover:border-[#ea7008]/40 transition-colors">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-mono text-[#8a8077] uppercase tracking-wider font-semibold">
+              Spatial Grid
+            </span>
+            <span className="text-[9px] font-mono text-[#ea7008] font-bold">8PT SYSTEM</span>
           </div>
-          <div className="h-8 rounded bg-[#121110] text-white flex flex-col justify-center items-center shadow-xs">
-            <span className="text-[8px] font-mono text-white/80">CTA</span>
-            <div className="w-6 h-1 bg-[#ea7008] rounded mt-0.5" />
+          <div className="text-[12px] font-bold text-[#121110] font-sans leading-tight">
+            Auto-Layout 5.0
           </div>
-          <div className="h-8 rounded bg-[#faf8f5] border border-[#ebe5df] flex flex-col justify-center items-center">
-            <span className="text-[8px] font-mono text-[#8a8077]">METRICS</span>
-            <div className="w-6 h-1 bg-[#121110]/30 rounded mt-0.5" />
-          </div>
+          <span className="text-[10px] text-[#6b635b] font-medium">Responsive Bounds</span>
         </div>
-      </div>
 
-      {/* Design Token Swatches */}
-      <div className="flex items-center justify-between px-1 text-[9px] font-mono text-[#6b635b]">
-        <span className="flex items-center gap-1.5">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#ea7008] inline-block" />
-          Brand Orange
-        </span>
-        <span className="flex items-center gap-1.5">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#121110] inline-block" />
-          Dark Contrast
-        </span>
-        <span className="flex items-center gap-1.5">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#faf8f5] border border-[#ebe5df] inline-block" />
-          Pure Surface
-        </span>
+        {/* Token 4: Interactive Prototype */}
+        <div className="p-2.5 rounded-lg bg-white border border-[#ebe5df] flex flex-col justify-between gap-1.5 shadow-xs hover:border-[#ea7008]/40 transition-colors">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-mono text-[#8a8077] uppercase tracking-wider font-semibold">
+              Prototype
+            </span>
+            <span className="text-[9px] font-mono text-[#ea7008] font-bold">100% HI-FI</span>
+          </div>
+          <div className="text-[12px] font-bold text-[#121110] font-sans leading-tight">
+            Clickable Flows
+          </div>
+          <span className="text-[10px] text-[#6b635b] font-medium">State Micro-motion</span>
+        </div>
       </div>
     </div>
   </div>
