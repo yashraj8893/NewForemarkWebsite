@@ -395,38 +395,76 @@ const DesignCockpit = () => (
   </div>
 );
 
-// Phase 03: Developer Terminal / Build Pipeline Stream
+// Phase 03: Full-Stack Engineering Architecture (Clean & Aesthetic)
 const EngineeringCockpit = () => (
   <div className="space-y-3">
-    <div className="p-3.5 rounded-xl bg-[#121110] text-white font-mono text-xs shadow-sm space-y-2">
-      {/* Terminal window bar */}
-      <div className="flex items-center justify-between pb-2 border-b border-white/10 text-[10px]">
-        <div className="flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-[#ea7008]" />
-          <span className="w-2 h-2 rounded-full bg-white/30" />
-          <span className="w-2 h-2 rounded-full bg-white/15" />
-          <span className="text-[#ea7008] font-bold ml-1 font-mono">foremark-engine</span>
+    <div className="p-3.5 rounded-xl border border-[#ebe5df] bg-[#faf8f5]/60 space-y-2.5">
+      <div className="flex items-center justify-between font-mono text-xs">
+        <span className="text-[11px] font-bold tracking-wider text-[#121110]">
+          ENGINEERING ARCHITECTURE
+        </span>
+        <span className="text-[10px] text-[#ea7008] font-bold bg-[#ea7008]/10 px-2 py-0.5 rounded border border-[#ea7008]/20">
+          SPRINT CADENCE
+        </span>
+      </div>
+
+      {/* 2x2 Clean Aesthetic Architecture Pillars */}
+      <div className="grid grid-cols-2 gap-2">
+        {/* Pillar 1: Frontend Engine */}
+        <div className="p-2.5 rounded-lg bg-white border border-[#ebe5df] flex flex-col justify-between gap-1.5 shadow-xs hover:border-[#ea7008]/40 transition-colors">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-mono text-[#8a8077] uppercase tracking-wider font-semibold">
+              Frontend Engine
+            </span>
+            <span className="text-[9px] font-mono text-[#ea7008] font-bold">REACT 19</span>
+          </div>
+          <div className="text-[12px] font-bold text-[#121110] font-sans leading-tight">
+            Next.js App Router
+          </div>
+          <span className="text-[10px] text-[#6b635b] font-medium">Server Components &amp; SSR</span>
         </div>
-        <span className="text-white/40">git:main (sprint-03)</span>
-      </div>
 
-      {/* Code logs */}
-      <div className="space-y-1 text-[11px] leading-relaxed py-1">
-        <p className="text-white/60">
-          <span className="text-[#ea7008] font-bold">$</span> npm run build:production
-        </p>
-        <p className="text-white/90">
-          <span className="text-[#ea7008] font-bold">✓</span> 2,191 modules transformed [clean]
-        </p>
-        <p className="text-white/80">
-          <span className="text-[#ea7008] font-bold">⚡</span> tsc --strict [0 errors found]
-        </p>
-      </div>
+        {/* Pillar 2: Type System */}
+        <div className="p-2.5 rounded-lg bg-white border border-[#ebe5df] flex flex-col justify-between gap-1.5 shadow-xs hover:border-[#ea7008]/40 transition-colors">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-mono text-[#8a8077] uppercase tracking-wider font-semibold">
+              Type Safety
+            </span>
+            <span className="text-[9px] font-mono text-[#ea7008] font-bold">STRICT</span>
+          </div>
+          <div className="text-[12px] font-bold text-[#121110] font-sans leading-tight">
+            End-to-End TypeScript
+          </div>
+          <span className="text-[10px] text-[#6b635b] font-medium">Zero Runtime Type Drift</span>
+        </div>
 
-      {/* Velocity Banner */}
-      <div className="p-2 rounded bg-white/5 border border-white/10 text-[10px] flex items-center justify-between mt-1">
-        <span className="text-white/70">Sprint Velocity: 42 pts shipped</span>
-        <span className="text-[#ea7008] font-bold font-mono">100% PASS</span>
+        {/* Pillar 3: Data Layer */}
+        <div className="p-2.5 rounded-lg bg-white border border-[#ebe5df] flex flex-col justify-between gap-1.5 shadow-xs hover:border-[#ea7008]/40 transition-colors">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-mono text-[#8a8077] uppercase tracking-wider font-semibold">
+              Data Layer
+            </span>
+            <span className="text-[9px] font-mono text-[#ea7008] font-bold">OPTIMIZED</span>
+          </div>
+          <div className="text-[12px] font-bold text-[#121110] font-sans leading-tight">
+            Postgres &amp; Redis Cache
+          </div>
+          <span className="text-[10px] text-[#6b635b] font-medium">ACID Schemas &amp; Pooled DB</span>
+        </div>
+
+        {/* Pillar 4: CI/CD & Staging */}
+        <div className="p-2.5 rounded-lg bg-white border border-[#ebe5df] flex flex-col justify-between gap-1.5 shadow-xs hover:border-[#ea7008]/40 transition-colors">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-mono text-[#8a8077] uppercase tracking-wider font-semibold">
+              CI/CD Pipeline
+            </span>
+            <span className="text-[9px] font-mono text-[#ea7008] font-bold">AUTOMATED</span>
+          </div>
+          <div className="text-[12px] font-bold text-[#121110] font-sans leading-tight">
+            Preview Deployments
+          </div>
+          <span className="text-[10px] text-[#6b635b] font-medium">Branch Testing on PRs</span>
+        </div>
       </div>
     </div>
   </div>
