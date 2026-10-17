@@ -7,8 +7,7 @@ import {
   ShoppingBag,
   Terminal,
   Gauge,
-  ArrowRight,
-  Sparkles
+  ArrowRight
 } from 'lucide-react';
 
 interface DeliverableItem {
@@ -33,10 +32,10 @@ const deliverablesData: DeliverableItem[] = [
   {
     id: '01',
     number: '01',
-    title: 'Custom Corporate Websites & Flagships',
+    title: 'Corporate Websites & Flagships',
     category: 'Brand Experience',
     description:
-      'Brand-defining digital flagships crafted with custom typography, bespoke layouts, and interactive brand storytelling.',
+      'Bespoke digital flagships with custom interactive storytelling and sub-second load times.',
     icon: Globe,
     topColor: '#ea7008', // Foremark Orange
     sideLeftColor: '#d66205',
@@ -50,10 +49,10 @@ const deliverablesData: DeliverableItem[] = [
   {
     id: '02',
     number: '02',
-    title: 'Custom SaaS Platforms & Web Applications',
+    title: 'SaaS Platforms & Web Apps',
     category: 'Cloud Software',
     description:
-      'Multi-tenant subscription web applications with integrated payment billing, team seats, role permissions, and analytics.',
+      'Multi-tenant cloud applications with secure auth, automated billing, and analytics.',
     icon: Layers,
     topColor: '#121110', // Brand Black
     sideLeftColor: '#1d1b19',
@@ -67,10 +66,10 @@ const deliverablesData: DeliverableItem[] = [
   {
     id: '03',
     number: '03',
-    title: 'Client Portals & Operations Systems',
+    title: 'Client Portals & Operations',
     category: 'Internal Systems',
     description:
-      'Secure authenticated workspaces, custom ERPs, and workflow dashboards tailored to your exact operational processes.',
+      'Tailored ERP workspaces, role-based workflows, and automated internal dashboards.',
     icon: Sliders,
     topColor: '#ea7008', // Foremark Orange
     sideLeftColor: '#d66205',
@@ -84,10 +83,10 @@ const deliverablesData: DeliverableItem[] = [
   {
     id: '04',
     number: '04',
-    title: 'Headless E-Commerce Solutions',
+    title: 'Headless E-Commerce',
     category: 'Commerce Engine',
     description:
-      'High-converting storefronts built on Shopify Plus or custom headless engines with sub-second checkout speeds.',
+      'High-converting modern storefronts with instant search and sub-second checkouts.',
     icon: ShoppingBag,
     topColor: '#ffffff', // Crisp White
     sideLeftColor: '#e8e2db',
@@ -101,10 +100,10 @@ const deliverablesData: DeliverableItem[] = [
   {
     id: '05',
     number: '05',
-    title: 'High-Throughput APIs & Integrations',
+    title: 'APIs & Microservices',
     category: 'Backend Architecture',
     description:
-      'REST, GraphQL, and tRPC endpoints with rate limiting, Swagger documentation, and deep CRM/payment integrations.',
+      'Scalable REST and GraphQL endpoints with rate limiting and enterprise integrations.',
     icon: Terminal,
     topColor: '#ea7008', // Foremark Orange
     sideLeftColor: '#d66205',
@@ -118,10 +117,10 @@ const deliverablesData: DeliverableItem[] = [
   {
     id: '06',
     number: '06',
-    title: 'Technical SEO & Performance Optimization',
+    title: 'Technical SEO & Performance',
     category: 'Core Web Vitals',
     description:
-      'Complete structured data setup, XML sitemaps, semantic hierarchy, and Core Web Vitals sub-second optimization.',
+      '100/100 Core Web Vitals, rich structured schemas, and sub-second indexable speed.',
     icon: Gauge,
     topColor: '#121110', // Brand Black with Orange accent
     sideLeftColor: '#1d1b19',
@@ -150,35 +149,20 @@ export const WhatWeBuildDeliver3D = () => {
       <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 relative z-10">
         
         {/* ─── SECTION HEADER ─── */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16">
-          <div className="max-w-2xl text-left">
-            <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-2.5 font-mono">
-              // ARCHITECTURAL DELIVERABLES
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#121110] tracking-tight leading-tight mb-3">
-              What We Build & <span className="text-[#ea7008]">Deliver</span>
-            </h2>
-            <p className="text-[#5c544d] text-sm sm:text-base leading-relaxed">
-              Ascending from bespoke brand flagships to multi-tenant SaaS engines and high-throughput microservices.
-            </p>
-          </div>
-
-          {/* Isometric 3D Legend Pill */}
-          <div className="hidden sm:flex items-center gap-2 self-start sm:self-auto px-3.5 py-1.5 rounded-full border border-[#ebe5df] bg-white/80 shadow-xs backdrop-blur-xs font-mono text-xs text-[#6b635b]">
-            <span className="w-2 h-2 rounded-full bg-[#ea7008] animate-pulse" />
-            <span>Interactive 3D Pedestals (01 — 06)</span>
-          </div>
+        <div className="max-w-2xl text-left mb-12 sm:mb-16">
+          <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-2.5 font-mono">
+            // ARCHITECTURAL DELIVERABLES
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#121110] tracking-tight leading-tight mb-3">
+            What We Build & <span className="text-[#ea7008]">Deliver</span>
+          </h2>
+          <p className="text-[#5c544d] text-sm sm:text-base leading-relaxed">
+            Ascending from bespoke brand flagships to multi-tenant SaaS engines and high-throughput microservices.
+          </p>
         </div>
 
         {/* ─── DESKTOP PANORAMA: 3D ISOMETRIC STAIRCASE STAGE (>= 1024px) ─── */}
-        <div 
-          className="hidden lg:block relative w-full h-[680px] rounded-[32px] border border-[#ebe5df]/90 bg-white/40 backdrop-blur-xs shadow-[0_12px_45px_rgba(0,0,0,0.02)] overflow-visible"
-        >
-          {/* Subtle Ambient Guidelines in Background */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-[32px]">
-            <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#ebe5df]/60 to-transparent" />
-            <div className="absolute -bottom-20 -right-20 w-[400px] h-[300px] bg-[#ea7008]/[0.08] blur-[80px] rounded-full pointer-events-none" />
-          </div>
+        <div className="hidden lg:block relative w-full h-[680px] overflow-visible">
 
           {/* SVG Canvas for the 6 Isometric Cubes & Dotted Guidelines */}
           <svg
@@ -364,7 +348,7 @@ export const WhatWeBuildDeliver3D = () => {
                   top: isTop ? '32px' : '450px',
                   transform: 'translateX(-50%)',
                 }}
-                className={`absolute w-[185px] z-20 cursor-pointer transition-all duration-300 ${
+                className={`absolute w-[194px] z-20 cursor-pointer transition-all duration-300 ${
                   isHovered ? '-translate-y-2' : ''
                 }`}
               >
@@ -373,7 +357,7 @@ export const WhatWeBuildDeliver3D = () => {
                   className={`p-3.5 rounded-2xl border transition-all duration-300 text-left ${
                     isHovered
                       ? 'bg-white border-[#ea7008] shadow-[0_10px_30px_rgba(234,112,8,0.18)] scale-[1.03]'
-                      : 'bg-white/90 border-[#ebe5df] shadow-[0_4px_16px_rgba(0,0,0,0.03)] hover:border-[#ea7008]/50'
+                      : 'bg-white/95 border-[#ebe5df] shadow-[0_4px_16px_rgba(0,0,0,0.04)] hover:border-[#ea7008]/50'
                   }`}
                 >
                   {/* Top Bar: Icon + Step Number */}
@@ -400,12 +384,12 @@ export const WhatWeBuildDeliver3D = () => {
                   </div>
 
                   {/* Title */}
-                  <h4 className="text-xs font-bold text-[#121110] leading-snug tracking-tight mb-1 font-display line-clamp-2">
+                  <h4 className="text-[12.5px] font-bold text-[#121110] leading-snug tracking-tight mb-1 font-display">
                     {item.title}
                   </h4>
 
                   {/* Description */}
-                  <p className="text-[11px] text-[#6b635b] leading-relaxed line-clamp-3 font-sans">
+                  <p className="text-[11px] text-[#6b635b] leading-relaxed font-sans">
                     {item.description}
                   </p>
                 </div>
@@ -521,18 +505,6 @@ export const WhatWeBuildDeliver3D = () => {
             ))}
           </div>
 
-        </div>
-
-        {/* ─── SECTION FOOTER BANNER ─── */}
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-3 text-xs font-mono text-[#6b635b]">
-          <span className="inline-flex items-center gap-1 text-[#ea7008] font-bold">
-            <Sparkles size={13} />
-            <span>Full IP & Source Code Ownership</span>
-          </span>
-          <span className="text-[#ebe5df]">•</span>
-          <span>Zero Vendor Lock-in</span>
-          <span className="text-[#ebe5df]">•</span>
-          <span>Automated CI/CD Deployment</span>
         </div>
 
       </div>
