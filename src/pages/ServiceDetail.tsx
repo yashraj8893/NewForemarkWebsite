@@ -326,7 +326,7 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                 {activeSlug === 'website-software-development' ? (
                     <CinematicProcessWalkthrough />
                 ) : (
-                    <section className="py-20 sm:py-28 border-t border-[#ebe5df]">
+                    <section className="py-20 sm:py-28">
                         <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
                             <div className="max-w-2xl mb-14">
                                 <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3">

@@ -568,14 +568,6 @@ export const TechStackServerRackVisual = () => {
 
               {/* Glowing Amber Core Energy Flare on top cube */}
               <div className="absolute top-[16%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 sm:w-28 sm:h-28 rounded-full bg-portfolio-gold/35 blur-xl pointer-events-none animate-pulse" />
-
-              {/* Central Server Core Holographic Badge */}
-              <div className="absolute bottom-5 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[#121110]/90 backdrop-blur-md border border-portfolio-gold/60 shadow-[0_4px_16px_rgba(0,0,0,0.35)] flex items-center gap-1.5 z-30 pointer-events-none">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#4ade80] animate-pulse" />
-                <span className="text-[9px] sm:text-[10px] font-mono text-portfolio-gold font-bold tracking-wider">
-                  FOREMARK // CORE CLUSTER
-                </span>
-              </div>
             </div>
 
             {/* Datacenter Floor Ambient Reflection & Ground Drop Shadow */}
@@ -642,16 +634,6 @@ export const TechStackServerRackVisual = () => {
             );
           })}
 
-        </div>
-
-        {/* Bottom SLA Guarantee */}
-        <div className="flex items-center justify-center gap-2 text-[11px] sm:text-xs text-[#7d746a] font-mono mt-3">
-          <span className="w-2 h-2 rounded-full bg-[#4ade80] animate-pulse" />
-          <span>ZERO-LOCKIN ARCHITECTURE</span>
-          <span className="text-[#d4cfc9]">•</span>
-          <span>ENTERPRISE RETRY QUEUES</span>
-          <span className="text-[#d4cfc9]">•</span>
-          <span>SELF-HOSTED CAPABLE</span>
         </div>
 
       </div>
