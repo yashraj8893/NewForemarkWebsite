@@ -48,6 +48,15 @@ const Footer = () => {
                 <WhatsappIcon size={16} />
               </a>
             </div>
+
+            {/* Startup India Recognition Badge */}
+            <div className="mt-8">
+              <img
+                src="/startup-india-badge.png"
+                alt="Startup India Recognized Startup"
+                className="w-32 sm:w-36 h-auto object-contain rounded-md drop-shadow-[0_8px_24px_rgba(0,0,0,0.5)] select-none"
+              />
+            </div>
           </div>
 
           {/* Services Column */}
@@ -101,27 +110,6 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-[#8c8275] text-xs">© {new Date().getFullYear()} Foremark Technologies LLP. All rights reserved.</p>
-
-          {/* Startup India Accreditation */}
-          <a
-            href="https://www.startupindia.gov.in/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Recognized by Startup India - DPIIT Certified"
-            className="group cursor-target inline-flex items-center gap-3 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 hover:border-portfolio-gold/40 hover:bg-white/[0.06] transition-all duration-300"
-          >
-            <img
-              src="/startup-india-badge.png"
-              alt="Startup India Recognized Startup"
-              className="h-7 w-auto object-contain drop-shadow group-hover:scale-105 transition-transform duration-300"
-            />
-            <span className="text-xs text-[#a89f91] group-hover:text-white transition-colors flex items-center gap-1.5">
-              Recognized by <span className="text-white font-semibold">Startup India</span>
-              <span className="text-white/20">|</span>
-              <span className="text-portfolio-gold font-medium">DPIIT Certified</span>
-              <ArrowUpRight size={12} className="text-[#a89f91] group-hover:text-portfolio-gold transition-colors ml-0.5" />
-            </span>
-          </a>
 
           <div className="flex items-center gap-6">
             <span className="text-[#a89f91] text-xs flex items-center gap-2">
