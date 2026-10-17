@@ -126,6 +126,9 @@ const architectureTiers: ArchitectureTier[] = [
       'Two-way data synchronizations between ERPs, databases, spreadsheets, and lightweight Node.js/Python microservices.',
     bullets: ['Zero data-loss retry queues', 'BullMQ & Redis persistent state', 'Self-hosted privacy on your infrastructure'],
     protocol: 'Redis BullMQ & PostgreSQL Event Streams',
+    videoSrc: {
+      mp4: '/videos/sync_infrastructure.mp4',
+    },
     icon: Database,
     planeTheme: {
       topBg: '#ffffff',
