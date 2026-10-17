@@ -646,11 +646,6 @@ const ServicesPage = () => {
                                     </filter>
                                 </defs>
 
-                                {/* Concentric Faint Orbital Rings Matching Reference */}
-                                <circle cx="230" cy="230" r="54" fill="none" stroke="#ea7008" strokeOpacity="0.16" strokeDasharray="3 3" />
-                                <circle cx="230" cy="230" r="148" fill="none" stroke="#ea7008" strokeOpacity="0.12" />
-                                <circle cx="230" cy="230" r="195" fill="none" stroke="#ea7008" strokeOpacity="0.08" strokeDasharray="5 5" />
-
                                 {whyChooseUsNodes.map((item) => {
                                     const alpha = (item.angle * Math.PI) / 180;
                                     const hx = 230 + 98 * Math.cos(alpha);
@@ -799,11 +794,6 @@ const ServicesPage = () => {
                                         <stop offset="100%" stopColor="#f2ede6" />
                                     </linearGradient>
                                 </defs>
-
-                                {/* Concentric orbital guide circles */}
-                                <circle cx="230" cy="230" r="54" fill="none" stroke="#ea7008" strokeOpacity="0.16" strokeDasharray="3 3" />
-                                <circle cx="230" cy="230" r="148" fill="none" stroke="#ea7008" strokeOpacity="0.12" />
-                                <circle cx="230" cy="230" r="195" fill="none" stroke="#ea7008" strokeOpacity="0.08" strokeDasharray="5 5" />
 
                                 {whyChooseUsNodes.map((item) => {
                                     const alpha = (item.angle * Math.PI) / 180;
