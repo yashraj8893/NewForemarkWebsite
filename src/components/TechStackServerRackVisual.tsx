@@ -7,7 +7,6 @@ interface TechItem {
   category: 'engine' | 'code' | 'ai' | 'integration';
   role: string;
   floatClass: string;
-  // Position percentages inside the visual canvas
   posDesktop: { left?: string; right?: string; top?: string; bottom?: string };
   posMobile: { left?: string; right?: string; top?: string; bottom?: string };
   icon: (props: { className?: string }) => React.ReactNode;
@@ -72,7 +71,6 @@ const PythonIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
 const BullMQIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
   <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
     <rect width="100" height="100" rx="20" fill="#181614" stroke="#ffffff" strokeWidth="2" />
-    {/* Bull horns + queue layers */}
     <path d="M22 34C28 22 42 24 50 36C58 24 72 22 78 34" stroke="#ea7008" strokeWidth="6" strokeLinecap="round" />
     <rect x="25" y="46" width="50" height="8" rx="4" fill="#ffffff" />
     <rect x="28" y="58" width="44" height="8" rx="4" fill="#ea7008" />
@@ -100,7 +98,6 @@ const WebhookIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
 const OpenAIIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
   <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
     <rect width="100" height="100" rx="20" fill="#121110" stroke="#ea7008" strokeWidth="2.5" />
-    {/* Swirling Rosette Geometry */}
     <circle cx="50" cy="50" r="10" stroke="#ea7008" strokeWidth="3" />
     <path d="M50 26C56 26 62 30 65 35L50 44L35 35C38 30 44 26 50 26Z" stroke="#ffffff" strokeWidth="3.5" />
     <path d="M72 40C75 45 75 52 72 58L57 49L57 32C63 33 69 36 72 40Z" stroke="#ea7008" strokeWidth="3.5" />
@@ -114,7 +111,6 @@ const OpenAIIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
 const ClaudeIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
   <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
     <circle cx="50" cy="50" r="46" fill="#181614" stroke="#ea7008" strokeWidth="3" />
-    {/* Sparkle starburst */}
     <path d="M50 18L54 42L78 46L54 50L50 74L46 50L22 46L46 42L50 18Z" fill="#ea7008" stroke="#ffffff" strokeWidth="2" strokeLinejoin="round" />
     <circle cx="50" cy="46" r="3.5" fill="#ffffff" />
   </svg>
@@ -123,7 +119,6 @@ const ClaudeIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
 const LangChainIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
   <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
     <rect width="100" height="100" rx="20" fill="#121110" stroke="#ffffff" strokeWidth="2.5" />
-    {/* Parrot / chain link motif */}
     <circle cx="38" cy="38" r="14" stroke="#ea7008" strokeWidth="5" />
     <circle cx="62" cy="62" r="14" stroke="#ffffff" strokeWidth="5" />
     <path d="M46 46L54 54" stroke="#ea7008" strokeWidth="7" strokeLinecap="round" />
@@ -146,7 +141,6 @@ const HubSpotIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
 const SalesforceIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
   <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
     <rect width="100" height="100" rx="20" fill="#181614" stroke="#ffffff" strokeWidth="2" />
-    {/* Stylized Cloud */}
     <path d="M36 68H68C76 68 82 62 82 54C82 47 77 41 70 40C69 31 61 24 51 24C43 24 36 28 33 35C26 36 20 42 20 50C20 60 27 68 36 68Z" fill="#ea7008" fillOpacity="0.25" stroke="#ea7008" strokeWidth="4" strokeLinejoin="round" />
     <path d="M42 48C45 44 54 44 58 48M36 56H64" stroke="#ffffff" strokeWidth="4" strokeLinecap="round" />
   </svg>
@@ -163,7 +157,6 @@ const StripeIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
 const SlackIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
   <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
     <circle cx="50" cy="50" r="46" fill="#181614" stroke="#ffffff" strokeWidth="2.5" />
-    {/* 4 Slack lozenges */}
     <rect x="24" y="44" width="22" height="10" rx="5" fill="#ea7008" />
     <circle cx="54" cy="32" r="5" fill="#ffffff" />
     <rect x="44" y="24" width="10" height="22" rx="5" fill="#ffffff" />
@@ -175,7 +168,7 @@ const SlackIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
   </svg>
 );
 
-// --- 16 Automation Technology Stack Items ---
+// --- 16 Restored Automation Technology Stack Items ---
 const automationTechItems: TechItem[] = [
   // ─── LEFT FLANK (8 ITEMS) ───
   {
@@ -344,6 +337,7 @@ const automationTechItems: TechItem[] = [
 
 export const TechStackServerRackVisual = () => {
   const [activeCategory, setActiveCategory] = useState<'all' | 'engine' | 'code' | 'ai' | 'integration'>('all');
+  const [hoveredTechId, setHoveredTechId] = useState<string | null>(null);
 
   const categories = [
     { id: 'all', label: 'All Stacks (16)' },
@@ -352,6 +346,29 @@ export const TechStackServerRackVisual = () => {
     { id: 'ai', label: 'AI & Document Parsing' },
     { id: 'integration', label: 'Integrations & APIs' },
   ] as const;
+
+  // 16 Symmetrical Fiber Optic Conduits connecting Core Platform to Badges
+  const connectingConduits = [
+    // LEFT FLANK
+    { id: 'n8n', d: 'M 430 275 C 310 220, 230 95, 170 55', endX: 170, endY: 55, startX: 430, startY: 275 },
+    { id: 'temporal', d: 'M 405 285 C 330 250, 300 170, 275 125', endX: 275, endY: 125, startX: 405, startY: 285 },
+    { id: 'make', d: 'M 385 300 C 295 285, 225 230, 175 205', endX: 175, endY: 205, startX: 385, startY: 300 },
+    { id: 'zapier', d: 'M 375 315 C 330 315, 300 295, 265 280', endX: 265, endY: 280, startX: 375, startY: 315 },
+    { id: 'nodejs', d: 'M 385 330 C 295 335, 225 350, 175 360', endX: 175, endY: 360, startX: 385, startY: 330 },
+    { id: 'python', d: 'M 405 345 C 345 365, 305 410, 265 440', endX: 265, endY: 440, startX: 405, startY: 345 },
+    { id: 'bullmq', d: 'M 430 360 C 320 395, 225 480, 170 515', endX: 170, endY: 515, startX: 430, startY: 360 },
+    { id: 'fastapi', d: 'M 455 375 C 380 430, 330 520, 265 570', endX: 265, endY: 570, startX: 455, startY: 375 },
+
+    // RIGHT FLANK
+    { id: 'openai', d: 'M 570 275 C 690 220, 770 95, 830 55', endX: 830, endY: 55, startX: 570, startY: 275 },
+    { id: 'claude', d: 'M 595 285 C 670 250, 700 170, 725 125', endX: 725, endY: 125, startX: 595, startY: 285 },
+    { id: 'langchain', d: 'M 615 300 C 705 285, 775 230, 825 205', endX: 825, endY: 205, startX: 615, startY: 300 },
+    { id: 'hubspot', d: 'M 625 315 C 670 315, 700 295, 735 280', endX: 735, endY: 280, startX: 625, startY: 315 },
+    { id: 'salesforce', d: 'M 615 330 C 705 335, 775 350, 825 360', endX: 825, endY: 360, startX: 615, startY: 330 },
+    { id: 'stripe', d: 'M 595 345 C 655 365, 695 410, 735 440', endX: 735, endY: 440, startX: 595, startY: 345 },
+    { id: 'slack', d: 'M 570 360 C 680 395, 775 480, 830 515', endX: 830, endY: 515, startX: 570, startY: 360 },
+    { id: 'webhooks', d: 'M 545 375 C 620 430, 670 520, 735 570', endX: 735, endY: 570, startX: 545, startY: 375 },
+  ];
 
   return (
     <section className="py-12 sm:py-16 relative overflow-hidden bg-transparent">
@@ -362,7 +379,7 @@ export const TechStackServerRackVisual = () => {
           <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3 font-mono">
             Technology Stack
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-display tracking-tight text-[#121110] mb-2.5 leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold font-display tracking-tight text-[#121110] mb-2.5 leading-tight">
             Intelligent Infrastructure For{' '}
             <span className="text-portfolio-gold">Business Automation</span>
           </h2>
@@ -388,23 +405,23 @@ export const TechStackServerRackVisual = () => {
           </div>
         </div>
 
-        {/* ─── VISUAL STAGE (Server Rack + Datacenter Glow + Floating Badges) ─── */}
-        <div className="relative w-full max-w-[960px] h-[480px] sm:h-[530px] md:h-[570px] flex items-center justify-center select-none overflow-hidden my-2">
+        {/* ─── VISUAL STAGE (Transparent Center 3D Datacenter Core + Connecting Light Orange Lines + 16 Real Technologies) ─── */}
+        <div className="relative w-full max-w-[980px] h-[480px] sm:h-[530px] md:h-[580px] flex items-center justify-center select-none overflow-hidden my-2">
           
           {/* 1. Datacenter Amber Core Halo */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[500px] h-[280px] sm:h-[380px] bg-portfolio-gold/[0.09] blur-[110px] rounded-full pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[520px] h-[280px] sm:h-[400px] bg-portfolio-gold/[0.12] blur-[110px] rounded-full pointer-events-none" />
 
-          {/* 2. Rotating Automation Circuit Rings & Nodes */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-40">
+          {/* 2. Rotating Automation Circuit Rings & Nodes (Transparent Background) */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-45">
             <svg
-              width="540"
-              height="540"
+              width="580"
+              height="580"
               viewBox="0 0 640 640"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="animate-tech-spin-slow w-[340px] sm:w-[480px] h-[340px] sm:h-[480px]"
+              className="animate-tech-spin-slow w-[340px] sm:w-[500px] h-[340px] sm:h-[500px]"
             >
-              <circle cx="320" cy="320" r="190" stroke="#ea7008" strokeWidth="1.5" strokeDasharray="6 8" opacity="0.45" />
+              <circle cx="320" cy="320" r="190" stroke="#ea7008" strokeWidth="1.5" strokeDasharray="6 8" opacity="0.5" />
               <circle cx="320" cy="320" r="240" stroke="#121110" strokeWidth="1" strokeDasharray="3 14" opacity="0.25" />
               <circle cx="320" cy="320" r="285" stroke="#ea7008" strokeWidth="1.5" strokeDasharray="12 18" opacity="0.4" />
               <circle cx="320" cy="80" r="4" fill="#ea7008" />
@@ -423,212 +440,150 @@ export const TechStackServerRackVisual = () => {
               xmlns="http://www.w3.org/2000/svg"
               className="animate-tech-spin-reverse w-[260px] sm:w-[380px] h-[260px] sm:h-[380px]"
             >
-              <circle cx="250" cy="250" r="160" stroke="#121110" strokeWidth="1.5" strokeDasharray="8 6" opacity="0.25" />
-              <path d="M250 40 V460 M40 250 H460" stroke="#ea7008" strokeWidth="0.8" strokeDasharray="4 8" opacity="0.4" />
-              <circle cx="250" cy="90" r="3" fill="#ea7008" />
-              <circle cx="410" cy="250" r="3" fill="#121110" opacity="0.4" />
-              <circle cx="250" cy="410" r="3" fill="#ea7008" />
-              <circle cx="90" cy="250" r="3" fill="#121110" opacity="0.4" />
+              <circle cx="250" cy="250" r="150" stroke="#121110" strokeWidth="1.5" strokeDasharray="8 6" opacity="0.25" />
+              <path d="M250 40 V460 M40 250 H460" stroke="#ea7008" strokeWidth="0.8" strokeDasharray="4 8" opacity="0.35" />
+              <circle cx="250" cy="100" r="3" fill="#ea7008" />
+              <circle cx="400" cy="250" r="3" fill="#121110" opacity="0.4" />
+              <circle cx="250" cy="400" r="3" fill="#ea7008" />
+              <circle cx="100" cy="250" r="3" fill="#121110" opacity="0.4" />
             </svg>
           </div>
 
-          {/* 3. 42U DATACENTER SERVER RACK CHASSIS (Centerpiece) */}
-          <div className="relative z-20 flex flex-col items-center scale-[0.72] sm:scale-[0.82] md:scale-[0.92] transition-transform duration-500">
-            
-            {/* Server Rack Cabinet Body */}
-            <div className="w-[310px] sm:w-[340px] md:w-[360px] h-[400px] sm:h-[430px] md:h-[450px] bg-gradient-to-b from-[#181614] via-[#121110] to-[#0d0c0b] border-2 border-[#2b2723] rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.45),0_0_40px_rgba(234,112,8,0.12)] p-3 relative overflow-hidden flex flex-col justify-between before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/60 before:to-transparent">
-              
-              {/* Top Fan Ventilation & Header */}
-              <div className="border-b border-white/10 pb-2 mb-2 flex items-center justify-between">
-                <div className="flex items-center gap-1.5">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#ea7008] animate-pulse" />
-                  <span className="w-2 h-2 rounded-full bg-white/40" />
-                  <span className="w-2 h-2 rounded-full bg-white/20" />
-                  <span className="text-[10px] font-mono font-bold text-[#a89f91] ml-1 tracking-wider">RACK 42U</span>
-                </div>
-                
-                {/* Datacenter Status Badge */}
-                <div className="flex items-center gap-1.5 bg-white/5 border border-white/5 px-2.5 py-0.5 rounded text-[9.5px] font-mono text-portfolio-gold">
-                  <span className="w-1.5 h-1.5 rounded-full bg-portfolio-gold animate-ping" />
-                  <span>CLUSTER ONLINE</span>
-                </div>
+          {/* ─── 3. BEAUTIFUL LIGHT ORANGE CONDUIT LINES (CONNECTING TO CORE) ─── */}
+          <div className="absolute inset-0 pointer-events-none z-15">
+            <svg
+              viewBox="0 0 1000 600"
+              preserveAspectRatio="none"
+              className="w-full h-full"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                {/* Soft Orange Glow Filter */}
+                <filter id="cableGlow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="2.5" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
 
-                {/* Ventilation fan vents */}
-                <div className="flex gap-1 opacity-50">
-                  <div className="w-1 h-3 bg-portfolio-gold/50 rounded-full" />
-                  <div className="w-1 h-3 bg-portfolio-gold/50 rounded-full" />
-                  <div className="w-1 h-3 bg-portfolio-gold/50 rounded-full" />
-                </div>
-              </div>
+                {/* Light Orange Radiant Gradient */}
+                <linearGradient id="lightOrangeConduit" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#ffb066" stopOpacity="0.95" />
+                  <stop offset="50%" stopColor="#ea7008" stopOpacity="0.85" />
+                  <stop offset="100%" stopColor="#ff9933" stopOpacity="0.95" />
+                </linearGradient>
 
-              {/* Server Mounting Rails with U-Height Tick Marks */}
-              <div className="flex-1 flex flex-col justify-between gap-2.5 relative">
-                
-                {/* Left & Right Rack Mounting Rails */}
-                <div className="absolute inset-y-0 left-0 w-2.5 flex flex-col justify-around py-1 pointer-events-none opacity-40">
-                  {['42', '36', '28', '18', '08', '01'].map((u) => (
-                    <span key={u} className="text-[7px] font-mono text-portfolio-gold leading-none">U{u}</span>
-                  ))}
-                </div>
-                <div className="absolute inset-y-0 right-0 w-1.5 flex flex-col justify-around py-1 pointer-events-none opacity-30">
-                  {[...Array(6)].map((_, i) => (
-                    <div key={i} className="w-1 h-1 rounded-full bg-white/60" />
-                  ))}
-                </div>
+                {/* Animated Dash Keyframes */}
+                <style>{`
+                  @keyframes cablePulse {
+                    from { stroke-dashoffset: 48; }
+                    to { stroke-dashoffset: 0; }
+                  }
+                  .cable-pulse-flow {
+                    animation: cablePulse 2.4s linear infinite;
+                  }
+                `}</style>
+              </defs>
 
-                {/* ─── BLADE 1: AUTOMATION DISPATCH ENGINE (n8n & Temporal) ─── */}
-                <div className="ml-3.5 mr-2.5 bg-[#0a0805] border border-white/10 hover:border-portfolio-gold/40 rounded-lg p-2.5 relative overflow-hidden flex flex-col justify-between transition-colors shadow-inner">
-                  {/* Subtle sweep line */}
-                  <div className="absolute inset-y-0 w-16 bg-gradient-to-r from-transparent via-portfolio-gold/15 to-transparent pointer-events-none animate-tech-scan" />
-                  
-                  <div className="flex items-center justify-between mb-1.5">
-                    <div className="flex items-center gap-1.5">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#ea7008]" />
-                      <span className="text-[10px] font-mono font-bold text-white tracking-wider">BLADE 01 // ORCHESTRATOR</span>
-                    </div>
-                    <span className="text-[9px] font-mono text-[#a89f91]">n8n &amp; Temporal</span>
-                  </div>
+              {connectingConduits.map((conduit) => {
+                const tech = automationTechItems.find((t) => t.id === conduit.id);
+                const isFiltered = activeCategory !== 'all' && tech?.category !== activeCategory;
+                const isHovered = hoveredTechId === conduit.id;
+                const isDimmed = isFiltered || (hoveredTechId !== null && !isHovered);
 
-                  {/* OLED Mini Telemetry Screen */}
-                  <div className="bg-[#121110] rounded border border-white/5 p-1.5 font-mono text-[9.5px] leading-tight text-left">
-                    <p className="text-white flex items-center justify-between">
-                      <span className="text-portfolio-gold">[PIPELINE]</span>
-                      <span className="text-[#a89f91]">ACTIVE: <strong className="text-white">142 FLOWS</strong></span>
-                    </p>
-                    <p className="text-[#a89f91] truncate mt-0.5">
-                      LATENCY: <strong className="text-portfolio-gold">1.8ms</strong> | ERRORS: <strong className="text-[#4ade80]">0.00%</strong>
-                    </p>
-                  </div>
+                return (
+                  <g
+                    key={conduit.id}
+                    className="transition-opacity duration-500"
+                    opacity={isDimmed ? 0.12 : isHovered ? 1 : 0.75}
+                  >
+                    {/* Layer 1: Soft Ambient Light Orange Glow */}
+                    <path
+                      d={conduit.d}
+                      stroke="#ea7008"
+                      strokeWidth={isHovered ? 4.5 : 3}
+                      strokeLinecap="round"
+                      opacity={0.35}
+                      filter="url(#cableGlow)"
+                    />
 
-                  {/* Activity LEDs */}
-                  <div className="flex items-center justify-between mt-1.5 pt-1 border-t border-white/5 text-[9px] font-mono text-[#6e665d]">
-                    <div className="flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#4ade80] animate-pulse" />
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#ea7008] animate-ping" />
-                      <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
-                      <span className="ml-1 text-[8.5px] text-[#a89f91]">EVENT LOOP</span>
-                    </div>
-                    <span className="text-portfolio-gold font-bold text-[8.5px]">SYNC OK</span>
-                  </div>
-                </div>
+                    {/* Layer 2: Radiant Light Orange Luminous Conduit */}
+                    <path
+                      d={conduit.d}
+                      stroke="url(#lightOrangeConduit)"
+                      strokeWidth={isHovered ? 2.2 : 1.5}
+                      strokeLinecap="round"
+                    />
 
-                {/* ─── BLADE 2: DISTRIBUTED QUEUES & STREAM MATRIX (BullMQ & Redis) ─── */}
-                <div className="ml-3.5 mr-2.5 bg-[#0a0805] border border-white/10 hover:border-portfolio-gold/40 rounded-lg p-2.5 relative overflow-hidden flex flex-col justify-between transition-colors shadow-inner">
-                  <div className="flex items-center justify-between mb-1">
-                    <div className="flex items-center gap-1.5">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#ffffff]" />
-                      <span className="text-[10px] font-mono font-bold text-white tracking-wider">BLADE 02 // TASK QUEUES</span>
-                    </div>
-                    <span className="text-[9px] font-mono text-portfolio-gold">BullMQ &amp; Redis</span>
-                  </div>
+                    {/* Layer 3: Animated Flowing Light Pulse */}
+                    <path
+                      d={conduit.d}
+                      stroke="#ffffff"
+                      strokeWidth={1.2}
+                      strokeDasharray="6 22"
+                      strokeLinecap="round"
+                      className="cable-pulse-flow"
+                      opacity={0.8}
+                    />
 
-                  {/* Live VU Throughput Meter Bar */}
-                  <div className="space-y-1 text-left">
-                    <div className="flex items-center justify-between text-[9px] font-mono text-[#a89f91]">
-                      <span>THROUGHPUT</span>
-                      <span className="text-white font-bold">4,820 JOBS/S</span>
-                    </div>
-                    <div className="grid grid-cols-10 gap-0.5 h-2 bg-black/40 p-0.5 rounded border border-white/5">
-                      {[...Array(10)].map((_, i) => (
-                        <div
-                          key={i}
-                          className={`h-full rounded-xs transition-opacity duration-300 ${
-                            i < 8
-                              ? i < 5
-                                ? 'bg-portfolio-gold opacity-90'
-                                : 'bg-[#ea7008] opacity-80'
-                              : 'bg-white/30 opacity-40'
-                          }`}
-                        />
-                      ))}
-                    </div>
-                  </div>
+                    {/* Terminal Connection Node at Badge End */}
+                    <circle
+                      cx={conduit.endX}
+                      cy={conduit.endY}
+                      r={isHovered ? 4 : 2.5}
+                      fill="#ea7008"
+                      className="transition-all duration-300"
+                    />
+                    <circle
+                      cx={conduit.endX}
+                      cy={conduit.endY}
+                      r={isHovered ? 2 : 1.2}
+                      fill="#ffffff"
+                    />
 
-                  {/* 4 Optical SFP+ Transceiver Ports */}
-                  <div className="flex items-center justify-between mt-1.5 pt-1 border-t border-white/5">
-                    <div className="flex items-center gap-1.5">
-                      {[...Array(4)].map((_, i) => (
-                        <div key={i} className="w-4 h-2.5 rounded-xs bg-[#161412] border border-white/15 flex items-center justify-center">
-                          <span className={`w-1 h-1 rounded-full ${i % 2 === 0 ? 'bg-portfolio-gold animate-ping' : 'bg-white/60'}`} />
-                        </div>
-                      ))}
-                    </div>
-                    <span className="text-[8.5px] font-mono text-[#a89f91]">10G FIBER BUS</span>
-                  </div>
-                </div>
-
-                {/* ─── BLADE 3: NEURAL & DOCUMENT INFERENCE (AI & OCR Unit) ─── */}
-                <div className="ml-3.5 mr-2.5 bg-[#0a0805] border border-white/10 hover:border-portfolio-gold/40 rounded-lg p-2.5 relative overflow-hidden flex flex-col justify-between transition-colors shadow-inner">
-                  <div className="flex items-center justify-between mb-1.5">
-                    <div className="flex items-center gap-1.5">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#ea7008]" />
-                      <span className="text-[10px] font-mono font-bold text-white tracking-wider">BLADE 03 // AI INFERENCE</span>
-                    </div>
-                    <span className="text-[9px] font-mono text-[#a89f91]">Claude &amp; GPT-4o</span>
-                  </div>
-
-                  {/* AI Extraction Status */}
-                  <div className="bg-[#121110] rounded border border-white/5 p-1.5 font-mono text-[9px] leading-tight text-left flex items-center justify-between">
-                    <div>
-                      <p className="text-white">OCR ACCURACY: <strong className="text-portfolio-gold">99.9%</strong></p>
-                      <p className="text-[#a89f91] mt-0.5">PARSING: <strong className="text-white">PDFs / INVOICES</strong></p>
-                    </div>
-                    <div className="w-6 h-6 rounded bg-white/5 border border-white/10 flex items-center justify-center text-portfolio-gold text-[10px] font-bold">
-                      AI
-                    </div>
-                  </div>
-
-                  {/* Heatsink dissipation cooling grill */}
-                  <div className="flex items-center justify-between mt-1 pt-1 border-t border-white/5">
-                    <div className="flex gap-1 opacity-70">
-                      {[...Array(8)].map((_, i) => (
-                        <div key={i} className="w-1.5 h-1.5 bg-[#ea7008]/40 rounded-xs" />
-                      ))}
-                    </div>
-                    <span className="text-[8.5px] font-mono text-portfolio-gold">ZERO DRIFT</span>
-                  </div>
-                </div>
-
-                {/* ─── BLADE 4: REDUNDANT POWER & ENTERPRISE BUS ─── */}
-                <div className="ml-3.5 mr-2.5 bg-[#0a0805] border border-white/10 rounded-lg p-2 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    {/* Hot-Swap PSU Handle 1 */}
-                    <div className="px-1.5 py-0.5 rounded bg-white/5 border border-white/10 flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#4ade80]" />
-                      <span className="text-[8px] font-mono text-white font-bold">PSU-A</span>
-                    </div>
-                    {/* Hot-Swap PSU Handle 2 */}
-                    <div className="px-1.5 py-0.5 rounded bg-white/5 border border-white/10 flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-portfolio-gold animate-pulse" />
-                      <span className="text-[8px] font-mono text-[#a89f91] font-bold">PSU-B</span>
-                    </div>
-                  </div>
-                  
-                  {/* Brand Laser Inscription */}
-                  <div className="text-[8.5px] font-mono tracking-widest text-portfolio-gold font-bold">
-                    FOREMARK // D-CENTER
-                  </div>
-                </div>
-
-              </div>
-
-              {/* Bottom Chassis Bevel & Footers */}
-              <div className="border-t border-white/10 pt-1.5 mt-2 flex items-center justify-between text-[8px] font-mono text-[#6e665d]">
-                <span>ENCLOSURE 19-INCH</span>
-                <span className="text-white/60">HOT-SWAPPABLE</span>
-                <span>FAILOVER: 0MS</span>
-              </div>
-
-              {/* Subtle CRT Screen Scanlines */}
-              <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:100%_3px] pointer-events-none" />
-            </div>
-
-            {/* Datacenter Floor Ambient Reflection & Drop Shadow */}
-            <div className="w-[280px] sm:w-[320px] md:w-[340px] h-5 bg-portfolio-gold/20 blur-lg -mt-1 pointer-events-none rounded-full" />
-            <div className="w-[310px] sm:w-[360px] md:w-[390px] h-7 bg-[#121110]/15 blur-xl -mt-2 pointer-events-none rounded-full" />
+                    {/* Terminal Connection Node at Core Platform End */}
+                    <circle
+                      cx={conduit.startX}
+                      cy={conduit.startY}
+                      r={2.5}
+                      fill="#ea7008"
+                      opacity={0.7}
+                    />
+                  </g>
+                );
+              })}
+            </svg>
           </div>
 
-          {/* 4. FLOATING AUTOMATION TECH BADGES (Compact Symmetrical Ring) */}
+          {/* 3. CENTERPIECE: TRANSPARENT 3D ISOMETRIC DATACENTER CLUSTER (NO BG) */}
+          <div className="relative z-20 flex flex-col items-center transition-transform duration-500 scale-[0.72] sm:scale-[0.84] md:scale-[0.95]">
+            
+            {/* The 3D Datacenter Supercluster with Background 100% Removed */}
+            <div className="relative flex items-center justify-center">
+              <img
+                src="/datacenter-server-core.png"
+                alt="Foremark Enterprise Datacenter Server Infrastructure"
+                className="w-[280px] sm:w-[340px] md:w-[390px] h-auto object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.25)] select-none pointer-events-none"
+                loading="eager"
+              />
+
+              {/* Glowing Amber Core Energy Flare on top cube */}
+              <div className="absolute top-[16%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 sm:w-28 sm:h-28 rounded-full bg-portfolio-gold/35 blur-xl pointer-events-none animate-pulse" />
+
+              {/* Central Server Core Holographic Badge */}
+              <div className="absolute bottom-5 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[#121110]/90 backdrop-blur-md border border-portfolio-gold/60 shadow-[0_4px_16px_rgba(0,0,0,0.35)] flex items-center gap-1.5 z-30 pointer-events-none">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#4ade80] animate-pulse" />
+                <span className="text-[9px] sm:text-[10px] font-mono text-portfolio-gold font-bold tracking-wider">
+                  FOREMARK // CORE CLUSTER
+                </span>
+              </div>
+            </div>
+
+            {/* Datacenter Floor Ambient Reflection & Ground Drop Shadow */}
+            <div className="w-[280px] sm:w-[340px] md:w-[380px] h-6 bg-portfolio-gold/25 blur-xl -mt-4 pointer-events-none rounded-full" />
+            <div className="w-[320px] sm:w-[380px] md:w-[420px] h-8 bg-[#121110]/20 blur-2xl -mt-3 pointer-events-none rounded-full" />
+          </div>
+
+          {/* 4. RESTORED 16 REAL AUTOMATION TECH BADGES (Surrounding the central 3D cluster) */}
           {automationTechItems.map((tech) => {
             const IconComp = tech.icon;
             const isFiltered = activeCategory !== 'all' && tech.category !== activeCategory;
@@ -644,7 +599,11 @@ export const TechStackServerRackVisual = () => {
                   isFiltered ? 'opacity-20 scale-85 blur-[0.6px] pointer-events-none' : 'opacity-100 scale-100'
                 }`}
               >
-                <div className={`${tech.floatClass}`}>
+                <div
+                  className={`${tech.floatClass}`}
+                  onMouseEnter={() => setHoveredTechId(tech.id)}
+                  onMouseLeave={() => setHoveredTechId(null)}
+                >
                   <div
                     className={`group relative flex items-center gap-2 sm:gap-2.5 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl border backdrop-blur-md transition-all duration-300 cursor-pointer shadow-sm hover:shadow-lg hover:-translate-y-1 ${
                       isMatch
@@ -685,7 +644,7 @@ export const TechStackServerRackVisual = () => {
 
         </div>
 
-        {/* Bottom Subtitle / SLA Guarantee */}
+        {/* Bottom SLA Guarantee */}
         <div className="flex items-center justify-center gap-2 text-[11px] sm:text-xs text-[#7d746a] font-mono mt-3">
           <span className="w-2 h-2 rounded-full bg-[#4ade80] animate-pulse" />
           <span>ZERO-LOCKIN ARCHITECTURE</span>
