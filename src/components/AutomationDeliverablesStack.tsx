@@ -43,7 +43,6 @@ const architectureTiers: ArchitectureTier[] = [
     bullets: ['One-click executive sign-offs', 'Automated revenue briefings', 'Real-time error escalation'],
     protocol: 'Slack Block-Kit & MS Graph Webhooks',
     videoSrc: {
-      webm: '/videos/operations_bot.webm',
       mp4: '/videos/operations_bot.mp4',
     },
     icon: MessageSquare,
