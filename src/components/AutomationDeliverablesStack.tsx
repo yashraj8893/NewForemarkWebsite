@@ -239,16 +239,60 @@ export const AutomationDeliverablesStack: React.FC = () => {
                   </div>
                 </div>
 
-                {/* ─── RIGHT COLUMN: THE CONNECTOR LINE & ISOMETRIC STACK LAYER ─── */}
+                {/* ─── RIGHT COLUMN: THE CONNECTOR LINE & VISUAL (VIDEO FOR CHATOPS, ISOMETRIC FOR OTHERS) ─── */}
                 <div className="lg:col-span-6 xl:col-span-6 flex items-center justify-center lg:justify-start">
-                  <div className="w-full max-w-[460px] relative select-none">
-                    
-                    <svg
-                      viewBox="0 0 460 140"
-                      className="w-full h-auto overflow-visible cursor-pointer"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
+                  {tier.id === 'chatops' ? (
+                    <div
+                      onClick={() => setActiveTierId(tier.id)}
+                      onMouseEnter={() => setActiveTierId(tier.id)}
+                      className="w-full max-w-[460px] relative flex items-center cursor-pointer select-none"
                     >
+                      {/* Horizontal Connector Line for Desktop */}
+                      <div className="hidden lg:flex items-center shrink-0 w-[45px] relative">
+                        <div
+                          className={`w-full h-[2px] transition-all duration-300 ${
+                            isActive
+                              ? 'bg-portfolio-gold shadow-[0_0_8px_rgba(234,112,8,0.8)]'
+                              : 'bg-[#d8d0c7]'
+                          }`}
+                        />
+                        <div
+                          className={`w-2.5 h-2.5 rounded-full transition-all duration-300 shrink-0 ${
+                            isActive
+                              ? 'bg-portfolio-gold shadow-[0_0_10px_rgba(234,112,8,0.9)] scale-125'
+                              : 'bg-[#a89f91]'
+                          }`}
+                        />
+                      </div>
+
+                      {/* Video Visual Wrapper (100% white-blended background, pure seamless canvas) */}
+                      <div
+                        className={`relative flex-1 rounded-2xl overflow-hidden transition-all duration-300 ${
+                          isActive
+                            ? 'scale-[1.02] -translate-y-1'
+                            : 'hover:scale-[1.01]'
+                        }`}
+                      >
+                        <video
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          className="w-full h-auto object-contain bg-transparent block"
+                        >
+                          <source src="/videos/operations_bot.webm" type="video/webm" />
+                          <source src="/videos/operations_bot.mp4" type="video/mp4" />
+                        </video>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="w-full max-w-[460px] relative select-none">
+                      <svg
+                        viewBox="0 0 460 140"
+                        className="w-full h-auto overflow-visible cursor-pointer"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
                       <defs>
                         {/* Foremark Orange Plane Gradient */}
                         <linearGradient id="orangeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -488,6 +532,7 @@ export const AutomationDeliverablesStack: React.FC = () => {
                     </svg>
 
                   </div>
+                  )}
                 </div>
               </div>
             );
