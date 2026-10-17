@@ -18,6 +18,10 @@ interface ArchitectureTier {
   description: string;
   bullets: string[];
   protocol: string;
+  videoSrc?: {
+    webm?: string;
+    mp4: string;
+  };
   icon: React.ComponentType<{ size?: number; className?: string }>;
   planeTheme: {
     topBg: string;
@@ -38,6 +42,10 @@ const architectureTiers: ArchitectureTier[] = [
       'Interactive chat bots for team approvals, daily metric summaries, automated alert triage, and incident war-rooms.',
     bullets: ['One-click executive sign-offs', 'Automated revenue briefings', 'Real-time error escalation'],
     protocol: 'Slack Block-Kit & MS Graph Webhooks',
+    videoSrc: {
+      webm: '/videos/operations_bot.webm',
+      mp4: '/videos/operations_bot.mp4',
+    },
     icon: MessageSquare,
     planeTheme: {
       topBg: '#ffffff',
@@ -56,6 +64,9 @@ const architectureTiers: ArchitectureTier[] = [
       'Extraction of key structured data from vendor PDFs, receipts, client intake forms, and legal agreements directly into your database.',
     bullets: ['99.9% OCR accuracy on complex PDFs', 'Automated contract summaries', 'Schema-guaranteed JSON output'],
     protocol: 'GPT-4o Vision & Claude 3.5 Sonnet RAG',
+    videoSrc: {
+      mp4: '/videos/ai_document_processing.mp4',
+    },
     icon: FileCheck,
     planeTheme: {
       topBg: 'url(#orangeGradient)',
@@ -239,9 +250,9 @@ export const AutomationDeliverablesStack: React.FC = () => {
                   </div>
                 </div>
 
-                {/* ─── RIGHT COLUMN: THE CONNECTOR LINE & VISUAL (VIDEO FOR CHATOPS, ISOMETRIC FOR OTHERS) ─── */}
+                {/* ─── RIGHT COLUMN: THE CONNECTOR LINE & VISUAL (VIDEO IF AVAILABLE, ISOMETRIC FOR OTHERS) ─── */}
                 <div className="lg:col-span-6 xl:col-span-6 flex items-center justify-center lg:justify-start">
-                  {tier.id === 'chatops' ? (
+                  {tier.videoSrc ? (
                     <div
                       onClick={() => setActiveTierId(tier.id)}
                       onMouseEnter={() => setActiveTierId(tier.id)}
@@ -265,7 +276,7 @@ export const AutomationDeliverablesStack: React.FC = () => {
                         />
                       </div>
 
-                      {/* Video Visual Wrapper (100% white-blended background, pure seamless canvas) */}
+                      {/* Video Visual Wrapper */}
                       <div
                         className={`relative flex-1 rounded-2xl overflow-hidden transition-all duration-300 ${
                           isActive
@@ -274,14 +285,15 @@ export const AutomationDeliverablesStack: React.FC = () => {
                         }`}
                       >
                         <video
+                          key={tier.videoSrc.mp4}
                           autoPlay
                           loop
                           muted
                           playsInline
                           className="w-full h-auto object-contain bg-transparent block"
                         >
-                          <source src="/videos/operations_bot.webm" type="video/webm" />
-                          <source src="/videos/operations_bot.mp4" type="video/mp4" />
+                          {tier.videoSrc.webm && <source src={tier.videoSrc.webm} type="video/webm" />}
+                          <source src={tier.videoSrc.mp4} type="video/mp4" />
                         </video>
                       </div>
                     </div>
