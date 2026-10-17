@@ -14,6 +14,7 @@ import { TechStackLaptopVisual } from '../components/TechStackLaptopVisual';
 import { TechStackServerRackVisual } from '../components/TechStackServerRackVisual';
 import { CinematicProcessWalkthrough } from '../components/CinematicProcessWalkthrough';
 import { WhatWeBuildDeliver3D } from '../components/WhatWeBuildDeliver3D';
+import { AutomationDeliverablesStack } from '../components/AutomationDeliverablesStack';
 
 const fadeUp: Variants = {
     hidden: { opacity: 0, y: 18 },
@@ -227,6 +228,8 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                 {/* ─── Deliverables ───────────────────────────────────── */}
                 {activeSlug === 'website-software-development' ? (
                     <WhatWeBuildDeliver3D />
+                ) : activeSlug === 'business-automation' ? (
+                    <AutomationDeliverablesStack />
                 ) : (
                     <section className="py-20 sm:py-28 border-t border-[#ebe5df]">
                         <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
