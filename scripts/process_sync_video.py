@@ -21,6 +21,16 @@ def process_sync():
     star_mask = np.zeros((1080, 1920), dtype=np.uint8)
     cv2.circle(star_mask, (1739, 899), 45, 255, -1)
     
+    # White-point threshold calibrated so all ambient room shadows and edge vignetting
+    # reach pure white (#ffffff) seamlessly, leaving zero visible rectangular borders.
+    th = np.array([170.0, 185.0, 193.0], dtype=np.float32)
+    
+    # Precompute edge fade ramp for bottom-right studio table gradient
+    h_sub, w_sub = int(720 * 0.25), int(1280 * 0.4)
+    ramp_y = np.linspace(0, 1, h_sub)[:, None]
+    ramp_x = np.linspace(0, 1, w_sub)[None, :]
+    ramp = (ramp_y * ramp_x)[:, :, None] ** 0.8
+    
     idx = 0
     while cap.isOpened():
         ret, frame = cap.read()
@@ -30,25 +40,27 @@ def process_sync():
         # 1. Seamlessly inpaint ONLY the Gemini star
         inpainted = cv2.inpaint(frame, star_mask, 7, cv2.INPAINT_TELEA)
         
-        # 2. Measure background color from outer corners
-        corners_b = np.median([inpainted[:40, :40, 0], inpainted[:40, -40:, 0], inpainted[-40:, :40, 0]])
-        corners_g = np.median([inpainted[:40, :40, 1], inpainted[:40, -40:, 1], inpainted[-40:, :40, 1]])
-        corners_r = np.median([inpainted[:40, :40, 2], inpainted[:40, -40:, 2], inpainted[-40:, :40, 2]])
-        bg_color = np.array([corners_b, corners_g, corners_r], dtype=np.float32)
-        
-        # 3. Remap background to pure white (#ffffff)
-        scaled = (inpainted.astype(np.float32) / (bg_color - 1.5)) * 255.0
+        # 2. Remap background to 100% pure white (#ffffff)
+        scaled = (inpainted.astype(np.float32) / th) * 255.0
         scaled = np.clip(scaled, 0, 255).astype(np.uint8)
         
-        # 4. Target size: 1280x720 for crisp display
+        # 3. Target size: 1280x720 for crisp display
         scaled_small = cv2.resize(scaled, (1280, 720), interpolation=cv2.INTER_AREA)
+        
+        # 4. Seamlessly blend bottom-right ambient studio vignette into pure white
+        sub = scaled_small[-h_sub:, -w_sub:]
+        bg_mask = (sub.mean(axis=2) > 200)[:, :, None].astype(float)
+        diff_to_255 = 255.0 - sub.astype(float)
+        sub_adjusted = sub.astype(float) + diff_to_255 * ramp * bg_mask
+        scaled_small[-h_sub:, -w_sub:] = np.clip(sub_adjusted, 0, 255).astype(np.uint8)
+        
         cv2.imwrite(os.path.join(out_dir, f"frame_{idx:04d}.png"), scaled_small)
         idx += 1
         
     cap.release()
     print("Done frame processing. Assembling sync_infrastructure.mp4...")
     os.system(f'ffmpeg -framerate {fps} -i "{out_dir}/frame_%04d.png" -c:v libx264 -pix_fmt yuv420p -crf 18 -preset slow -movflags +faststart "public/videos/sync_infrastructure.mp4" -y')
-    print("sync_infrastructure.mp4 created successfully!")
+    print("sync_infrastructure.mp4 created with 100% pure white seamless background!")
 
 if __name__ == '__main__':
     process_sync()
