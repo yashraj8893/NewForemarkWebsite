@@ -163,10 +163,10 @@ export const AutomationDeliverablesStack: React.FC = () => {
         </div>
 
         {/* ─── 5 PAIRED ARCHITECTURE ROWS: EACH BOX BESIDE ITS RESPECTIVE STACK LAYER ─── */}
-        <div className="relative space-y-4 sm:space-y-6">
+        <div className="relative space-y-6 sm:space-y-8">
           
           {/* Subtle vertical dashed technical axis down the center of the right column */}
-          <div className="hidden lg:block absolute right-[230px] xl:right-[230px] top-10 bottom-10 w-px border-r border-dashed border-[#ebe5df] pointer-events-none z-0" />
+          <div className="hidden lg:block absolute right-[260px] xl:right-[290px] top-10 bottom-10 w-px border-r border-dashed border-[#ebe5df] pointer-events-none z-0" />
 
           {architectureTiers.map((tier) => {
             const isActive = activeTierId === tier.id;
@@ -181,7 +181,7 @@ export const AutomationDeliverablesStack: React.FC = () => {
                 className="group relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-0 items-center transition-all duration-300"
               >
                 {/* ─── LEFT COLUMN: THE BOX / DELIVERABLE CARD ─── */}
-                <div className="lg:col-span-6 xl:col-span-6">
+                <div className="lg:col-span-6 xl:col-span-5">
                   <div
                     className={`relative p-5 sm:p-6 rounded-2xl border transition-all duration-300 cursor-pointer ${
                       isActive
@@ -250,12 +250,12 @@ export const AutomationDeliverablesStack: React.FC = () => {
                 </div>
 
                 {/* ─── RIGHT COLUMN: THE CONNECTOR LINE & VISUAL (VIDEO IF AVAILABLE, ISOMETRIC FOR OTHERS) ─── */}
-                <div className="lg:col-span-6 xl:col-span-6 flex items-center justify-center lg:justify-start">
+                <div className="lg:col-span-6 xl:col-span-7 flex items-center justify-center lg:justify-start">
                   {tier.videoSrc ? (
                     <div
                       onClick={() => setActiveTierId(tier.id)}
                       onMouseEnter={() => setActiveTierId(tier.id)}
-                      className="w-full max-w-[460px] relative flex items-center cursor-pointer select-none"
+                      className="w-full max-w-[560px] xl:max-w-[620px] relative flex items-center cursor-pointer select-none"
                     >
                       {/* Horizontal Connector Line for Desktop */}
                       <div className="hidden lg:flex items-center shrink-0 w-[45px] relative">
@@ -275,12 +275,12 @@ export const AutomationDeliverablesStack: React.FC = () => {
                         />
                       </div>
 
-                      {/* Video Visual Wrapper */}
+                      {/* Video Visual Wrapper (Enlarged for high-fidelity viewing) */}
                       <div
                         className={`relative flex-1 rounded-2xl overflow-hidden transition-all duration-300 ${
                           isActive
-                            ? 'scale-[1.02] -translate-y-1'
-                            : 'hover:scale-[1.01]'
+                            ? 'scale-[1.06] -translate-y-1'
+                            : 'scale-[1.02] hover:scale-[1.04]'
                         }`}
                       >
                         <video
@@ -297,7 +297,7 @@ export const AutomationDeliverablesStack: React.FC = () => {
                       </div>
                     </div>
                   ) : (
-                    <div className="w-full max-w-[460px] relative select-none">
+                    <div className="w-full max-w-[520px] xl:max-w-[560px] relative select-none">
                       <svg
                         viewBox="0 0 460 140"
                         className="w-full h-auto overflow-visible cursor-pointer"
