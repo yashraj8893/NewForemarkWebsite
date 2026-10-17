@@ -84,6 +84,9 @@ const architectureTiers: ArchitectureTier[] = [
       'Instant lead capture, AI qualification, routing to sales reps, and automated calendar scheduling with zero delay.',
     bullets: ['Sub-second lead notification to reps', 'Dynamic round-robin assignment', 'HubSpot & Salesforce sync'],
     protocol: 'HubSpot & Salesforce REST API v3',
+    videoSrc: {
+      mp4: '/videos/crm_pipeline.mp4',
+    },
     icon: Workflow,
     planeTheme: {
       topBg: '#121110',
