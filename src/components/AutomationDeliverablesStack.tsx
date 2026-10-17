@@ -105,6 +105,9 @@ const architectureTiers: ArchitectureTier[] = [
       'Automated Stripe, Razorpay, or QuickBooks invoice generation, bank reconciliation, and smart payment reminders.',
     bullets: ['Automated payment reconciliation', 'Smart failed-charge dunning', 'Multi-currency invoice delivery'],
     protocol: 'Stripe & QuickBooks Instant Webhooks',
+    videoSrc: {
+      mp4: '/videos/billing_workflows.mp4',
+    },
     icon: DollarSign,
     planeTheme: {
       topBg: '#faf5f0',
