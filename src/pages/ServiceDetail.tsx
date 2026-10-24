@@ -12,9 +12,11 @@ import { SEO } from '../components/SEO';
 import { FAQSection } from '../components/FAQSection';
 import { TechStackLaptopVisual } from '../components/TechStackLaptopVisual';
 import { TechStackServerRackVisual } from '../components/TechStackServerRackVisual';
+import { TechStackGlobeServerVisual } from '../components/TechStackGlobeServerVisual';
 import { CinematicProcessWalkthrough } from '../components/CinematicProcessWalkthrough';
 import { WhatWeBuildDeliver3D } from '../components/WhatWeBuildDeliver3D';
 import { AutomationDeliverablesStack } from '../components/AutomationDeliverablesStack';
+import { HostingDeliverablesRoadmap } from '../components/HostingDeliverablesRoadmap';
 
 const fadeUp: Variants = {
     hidden: { opacity: 0, y: 18 },
@@ -230,6 +232,8 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                     <WhatWeBuildDeliver3D />
                 ) : activeSlug === 'business-automation' ? (
                     <AutomationDeliverablesStack />
+                ) : activeSlug === 'cloud-hosting' ? (
+                    <HostingDeliverablesRoadmap />
                 ) : (
                     <section className="py-20 sm:py-28 border-t border-[#ebe5df]">
                         <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
@@ -279,6 +283,8 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                     <TechStackLaptopVisual />
                 ) : activeSlug === 'business-automation' ? (
                     <TechStackServerRackVisual />
+                ) : activeSlug === 'cloud-hosting' ? (
+                    <TechStackGlobeServerVisual />
                 ) : (
                     <section className="py-20 sm:py-28 border-t border-[#ebe5df]">
                         <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
