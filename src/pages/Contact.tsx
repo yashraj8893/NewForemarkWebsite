@@ -25,6 +25,7 @@ const ContactPage = () => {
   const serviceParam = normalizeServiceParam(rawServiceParam);
   const [selectedService, setSelectedService] = useState(serviceParam);
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const [fallbackUrl, setFallbackUrl] = useState('');
 
   useEffect(() => {
     if (serviceParam) {
@@ -66,6 +67,13 @@ const ContactPage = () => {
       form.reset();
       setSelectedService('');
     } catch {
+      // Provider outage / network failure — offer a prefilled email fallback
+      // so the visitor never has to retype their message
+      const subject = encodeURIComponent(`Contact enquiry from ${data.get('name')} — foremark.in`);
+      const body = encodeURIComponent(
+        `Name: ${data.get('name')}\nEmail: ${data.get('email')}\nService: ${serviceLabel}\n\n${data.get('message')}`
+      );
+      setFallbackUrl(`mailto:hello@foremark.in?subject=${subject}&body=${body}`);
       setStatus('error');
     }
   };
@@ -279,6 +287,7 @@ const ContactPage = () => {
                         name="service"
                         value={selectedService}
                         onChange={(e) => setSelectedService(e.target.value)}
+                        style={{ colorScheme: 'dark' }}
                         className="w-full appearance-none bg-[#201d19] border border-white/10 focus:border-portfolio-gold rounded-xl sm:rounded-2xl pl-4 pr-12 sm:pl-6 sm:pr-14 py-3 sm:py-4 text-white text-sm sm:text-base focus:outline-none focus:ring-1 focus:ring-portfolio-gold/50 transition-all cursor-pointer [&>option]:bg-[#181512] [&>option]:text-white"
                       >
                         <option value="">Select a service (Optional)</option>
@@ -334,9 +343,14 @@ const ContactPage = () => {
                       >
                         <AlertTriangle size={18} className="shrink-0 mt-0.5" />
                         <span>
-                          Something went wrong. Please email us directly at{' '}
-                          <a href="mailto:hello@foremark.in" className="underline font-semibold text-white hover:text-portfolio-gold transition-colors">
-                            hello@foremark.in
+                          <strong className="block text-white font-semibold">Couldn't send your message.</strong>
+                          Our form service is temporarily unavailable — your text is safe below. Either try again
+                          in a minute, or open your email app (everything you typed is already filled in):
+                          <a
+                            href={fallbackUrl || 'mailto:hello@foremark.in'}
+                            className="mt-2 inline-flex items-center gap-2 rounded-full bg-[#ea7008] px-4 py-2 text-xs font-bold uppercase tracking-wider text-white hover:bg-[#ff7e15] transition-colors"
+                          >
+                            <Mail size={14} /> Open email instead
                           </a>
                         </span>
                       </motion.div>
