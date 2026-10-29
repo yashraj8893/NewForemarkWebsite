@@ -1,21 +1,34 @@
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
-import Home from './pages/Home';
-import ProjectsPage from './pages/Projects';
-import ServicesPage from './pages/Services';
-import ServiceDetail from './pages/ServiceDetail';
-import CareersPage from './pages/Careers';
-import JobDetail from './pages/JobDetail';
-import ContactPage from './pages/Contact';
-import SovereignCounselPage from './pages/SovereignCounsel';
-import AboutPage from './pages/About';
-import AssociateProgramPage from './pages/AssociateProgram';
-import BlogPage from './pages/Blog';
+import { lazy, Suspense } from 'react';
 import Footer from './components/Footer';
 import TargetCursor from './components/TargetCursor';
 import { useEffect, useState } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SmoothScrollProvider, useLenis } from './components/SmoothScroll';
+
+// Route-level code splitting: visitors only download the page they open
+const Home = lazy(() => import('./pages/Home'));
+const ProjectsPage = lazy(() => import('./pages/Projects'));
+const ServicesPage = lazy(() => import('./pages/Services'));
+const ServiceDetail = lazy(() => import('./pages/ServiceDetail'));
+const CareersPage = lazy(() => import('./pages/Careers'));
+const JobDetail = lazy(() => import('./pages/JobDetail'));
+const ContactPage = lazy(() => import('./pages/Contact'));
+const SovereignCounselPage = lazy(() => import('./pages/SovereignCounsel'));
+const AboutPage = lazy(() => import('./pages/About'));
+const AssociateProgramPage = lazy(() => import('./pages/AssociateProgram'));
+const BlogPage = lazy(() => import('./pages/Blog'));
+const NotFound = lazy(() => import('./pages/NotFound'));
+
+const PageLoader = () => (
+  <div className="flex min-h-[70vh] items-center justify-center" role="status" aria-label="Loading page">
+    <div className="flex flex-col items-center gap-4">
+      <div className="h-10 w-10 rounded-full border-2 border-[#ea7008]/20 border-t-[#ea7008] animate-spin" />
+      <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-portfolio-muted">Loading</span>
+    </div>
+  </div>
+);
 
 const navLinks = [
   { label: 'Services', href: '/services' },
@@ -55,7 +68,7 @@ const Navbar = () => {
     <>
       <nav className="relative z-50 flex items-center justify-between px-4 sm:px-8 md:px-16 py-6 sm:py-8 pointer-events-auto max-w-[1280px] mx-auto w-full">
         <Link to="/" className="flex flex-col cursor-pointer cursor-target z-50 -ml-2">
-          <img src="/Foremark_Logo_-removebg-preview.png" alt="Foremark" className="h-10 md:h-12 w-auto object-contain" />
+          <img loading="lazy" decoding="async" src="/Foremark_Logo_-removebg-preview.png" alt="Foremark" className="h-10 md:h-12 w-auto object-contain" />
         </Link>
 
         {/* Desktop Nav */}
@@ -175,27 +188,31 @@ function App() {
         <div className="fixed bottom-0 -right-48 w-[700px] h-[650px] bg-[#ea7008]/[0.04] blur-[170px] rounded-full pointer-events-none -z-10" />
 
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/services/:slug" element={<ServiceDetail />} />
-          <Route path="/services/website-software-development" element={<ServiceDetail slug="website-software-development" />} />
-          <Route path="/services/website-development" element={<ServiceDetail slug="website-software-development" />} />
-          <Route path="/services/software-development" element={<ServiceDetail slug="website-software-development" />} />
-          <Route path="/services/web-app-development" element={<ServiceDetail slug="website-software-development" />} />
-          <Route path="/services/web-software-development" element={<ServiceDetail slug="website-software-development" />} />
-          <Route path="/services/cloud-hosting" element={<ServiceDetail slug="cloud-hosting" />} />
-          <Route path="/services/business-automation" element={<ServiceDetail slug="business-automation" />} />
-          <Route path="/services/web-servers-hosting" element={<ServiceDetail slug="cloud-hosting" />} />
-          <Route path="/careers" element={<CareersPage />} />
-          <Route path="/careers/:slug" element={<JobDetail />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/sovereign-counsel" element={<SovereignCounselPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/associate-program" element={<AssociateProgramPage />} />
-          <Route path="/blog" element={<BlogPage />} />
-        </Routes>
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/services/:slug" element={<ServiceDetail />} />
+            <Route path="/services/website-software-development" element={<ServiceDetail slug="website-software-development" />} />
+            <Route path="/services/website-development" element={<ServiceDetail slug="website-software-development" />} />
+            <Route path="/services/software-development" element={<ServiceDetail slug="website-software-development" />} />
+            <Route path="/services/web-app-development" element={<ServiceDetail slug="website-software-development" />} />
+            <Route path="/services/web-software-development" element={<ServiceDetail slug="website-software-development" />} />
+            <Route path="/services/cloud-hosting" element={<ServiceDetail slug="cloud-hosting" />} />
+            <Route path="/services/business-automation" element={<ServiceDetail slug="business-automation" />} />
+            <Route path="/services/web-servers-hosting" element={<ServiceDetail slug="cloud-hosting" />} />
+            <Route path="/careers" element={<CareersPage />} />
+            <Route path="/careers/:slug" element={<JobDetail />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/sovereign-counsel" element={<SovereignCounselPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/associate-program" element={<AssociateProgramPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            {/* Catch-all 404 */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
         <Footer />
       </div>
     </SmoothScrollProvider>

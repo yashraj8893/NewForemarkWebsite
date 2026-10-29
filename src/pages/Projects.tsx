@@ -6,103 +6,103 @@ import { SEO } from '../components/SEO';
 const projectsData = [
   {
     title: "Nappa Dori",
-    image: "/projects/project1.png",
+    image: "/projects/project1.webp",
     url: "https://www.nappadori.com/",
     aspect: "aspect-[4/3]"
   },
   {
     title: "PDR",
-    image: "/projects/project9.png",
+    image: "/projects/project9.webp",
     url: "#",
     aspect: "aspect-[4/3]"
   },
   {
     title: "Sharma & Associates",
-    image: "/projects/project10.png",
+    image: "/projects/project10.webp",
     url: "https://www.advocatesharma.com",
     aspect: "aspect-[4/3]"
   },
   {
     title: "Regius",
-    image: "/projects/project11.png",
+    image: "/projects/project11.webp",
     url: "#",
     aspect: "aspect-[4/3]"
   },
   {
     title: "The CenterSpread",
-    image: "/projects/project12.png",
+    image: "/projects/project12.webp",
     url: "https://www.thecenterspread.com",
     aspect: "aspect-[4/3]"
   },
   {
     title: "Tech Guru Store",
-    image: "/projects/project2.png",
+    image: "/projects/project2.webp",
     url: "https://techgurustore.in/",
     aspect: "aspect-[4/3]"
   },
   {
     title: "GetVantage",
-    image: "/projects/project3.png",
+    image: "/projects/project3.webp",
     url: "https://getvantage.co/",
     aspect: "aspect-[4/3]"
   },
   {
     title: "Samruddhi",
-    image: "/projects/project4.png",
+    image: "/projects/project4.webp",
     url: "https://www.samruddhiretail.com/en/",
     aspect: "aspect-[4/3]"
   },
   {
     title: "Mainstay",
-    image: "/projects/project5.png",
+    image: "/projects/project5.webp",
     url: "https://mainstayconsulting.in/",
     aspect: "aspect-[4/3]"
   },
   {
     title: "Athena",
-    image: "/projects/project6.png",
+    image: "/projects/project6.webp",
     url: "https://www.aesc.co.in/",
     aspect: "aspect-[4/3]"
   },
   {
     title: "Karma",
-    image: "/projects/project7.png",
+    image: "/projects/project7.webp",
     url: "https://karmamgmt.com/",
     aspect: "aspect-[4/3]"
   },
   {
     title: "Anjusmriti",
-    image: "/projects/project8.png",
+    image: "/projects/project8.webp",
     url: "https://www.anjusmriti.com/",
     aspect: "aspect-[4/3]"
   },
   {
     title: "Vertex Business Solutions",
-    image: "/projects/project13.png",
+    image: "/projects/project13.webp",
     url: "https://vertexbiz.com",
     aspect: "aspect-[4/3]"
   },
   {
     title: "Truecable",
-    image: "/projects/project14.png",
+    image: "/projects/project14.webp",
     url: "#",
     aspect: "aspect-[4/3]"
   },
   {
     title: "Scooboo",
-    image: "/projects/project15.png",
+    image: "/projects/project15.webp",
     url: "#",
     aspect: "aspect-[4/3]"
   },
   {
     title: "Soulflower",
-    image: "/projects/project16.png",
+    image: "/projects/project16.webp",
     url: "#",
     aspect: "aspect-[4/3]"
   },
   {
     title: "Glassybaby",
-    image: "/projects/project17.png",
+    image: "/projects/project17.webp",
     url: "#",
     aspect: "aspect-[4/3]"
   }
@@ -156,7 +156,7 @@ const ProjectsPage = () => {
               <div className="flex -space-x-3">
                 {[1, 2, 3].map((i) => (
                   <div key={i} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-[3px] border-white bg-[#f8f6f3] overflow-hidden shadow-md">
-                    <img src={`https://i.pravatar.cc/150?u=acc${i}`} alt="Client" className="w-full h-full object-cover" />
+                    <img loading="lazy" decoding="async" src={`https://i.pravatar.cc/150?u=acc${i}`} alt="Client" className="w-full h-full object-cover" />
                   </div>
                 ))}
               </div>
@@ -191,7 +191,7 @@ const ProjectsPage = () => {
                     { name: "Karma", logo: "/karmalogo.png" },
                   ].map((brand, j) => (
                     <div key={j} className="flex items-center justify-center gap-3 min-w-[120px] group cursor-default">
-                      <img
+                      <img loading="lazy" decoding="async"
                         src={brand.logo}
                         alt={`${brand.name} logo`}
                         className="h-10 md:h-12 w-auto object-contain transition-transform duration-400 group-hover:scale-105"
@@ -225,7 +225,7 @@ const ProjectsPage = () => {
                   </div>
 
                   <div className="relative w-full h-full rounded-t-xl overflow-hidden shadow-[0_10px_40px_-10px_rgba(0,0,0,0.15)] transition-transform duration-[1.2s] ease-[0.16,1,0.3,1] group-hover/card:scale-110 bg-[#f8f6f3]">
-                    <img
+                    <img loading="lazy" decoding="async"
                       src={project.image}
                       alt={project.title}
                       className="w-full h-full object-cover object-top"

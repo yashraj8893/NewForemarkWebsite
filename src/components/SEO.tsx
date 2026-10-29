@@ -6,14 +6,16 @@ interface SEOProps {
   type?: string;
   canonicalUrl?: string;
   structuredData?: Record<string, unknown>;
+  noindex?: boolean;
 }
 
-export const SEO = ({ 
+export const SEO = ({
   title = "Foremark Technologies",
   description = "Foremark is a premium software engineering company crafting scalable web applications, beautiful websites, and digital products that help businesses grow faster.",
   type = "website",
   canonicalUrl = "https://foremark.in",
-  structuredData
+  structuredData,
+  noindex = false
 }: SEOProps) => {
   const fullTitle = title.includes("Foremark") ? title : `${title} | Foremark`;
   
@@ -40,6 +42,7 @@ export const SEO = ({
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={canonicalUrl} />
+      {noindex && <meta name="robots" content="noindex, nofollow" />}
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />

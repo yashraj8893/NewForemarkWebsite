@@ -560,7 +560,7 @@ export const TechStackServerRackVisual = () => {
             {/* The 3D Datacenter Supercluster with Background 100% Removed */}
             <div className="relative flex items-center justify-center">
               <img
-                src="/datacenter-server-core.png"
+                src="/datacenter-server-core.webp"
                 alt="Foremark Enterprise Datacenter Server Infrastructure"
                 className="w-[280px] sm:w-[340px] md:w-[390px] h-auto object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.25)] select-none pointer-events-none"
                 loading="eager"

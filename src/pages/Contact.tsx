@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, type FormEvent } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Mail, MessageSquare, Globe, Share2, Info, ChevronDown } from 'lucide-react';
-import mapImage from '../assets/map.png';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, MessageSquare, Globe, Share2, Info, ChevronDown, CheckCircle2, AlertTriangle, Loader2 } from 'lucide-react';
+import mapImage from '../assets/map.webp';
 import { SEO } from '../components/SEO';
 
 const serviceOptions = [
@@ -24,12 +24,52 @@ const ContactPage = () => {
   const rawServiceParam = searchParams.get('service') || '';
   const serviceParam = normalizeServiceParam(rawServiceParam);
   const [selectedService, setSelectedService] = useState(serviceParam);
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
 
   useEffect(() => {
     if (serviceParam) {
       setSelectedService(serviceParam);
     }
   }, [serviceParam]);
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (status === 'sending') return;
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const serviceLabel =
+      serviceOptions.find((o) => o.value === data.get('service'))?.label ||
+      'General inquiry';
+
+    setStatus('sending');
+    try {
+      // Static site: deliver submissions to hello@foremark.in via FormSubmit
+      const res = await fetch('https://formsubmit.co/ajax/hello@foremark.in', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          _subject: `New contact enquiry from ${data.get('name')} — foremark.in`,
+          name: data.get('name'),
+          email: data.get('email'),
+          service: serviceLabel,
+          message: data.get('message'),
+          _honey: '', // spam honeypot
+          _captcha: 'false',
+        }),
+      });
+      if (!res.ok) throw new Error(`Submission failed: ${res.status}`);
+      setStatus('sent');
+      form.reset();
+      setSelectedService('');
+    } catch {
+      setStatus('error');
+    }
+  };
+
   return (
     <>
       <SEO title="Contact Us" description="Have a question or want to work together? Leave us a message and we'll get back to you as soon as possible." canonicalUrl="https://foremark.in/contact" />
@@ -106,7 +146,7 @@ const ContactPage = () => {
               WebkitMaskImage: 'radial-gradient(ellipse 95% 85% at 18% 50%, black 40%, rgba(0,0,0,0.65) 65%, rgba(0,0,0,0.15) 85%, transparent 100%)',
             }}
           >
-            <img
+            <img loading="lazy" decoding="async"
               src={mapImage}
               alt=""
               aria-hidden="true"
@@ -205,7 +245,7 @@ const ContactPage = () => {
                   </div>
                 </div>
 
-                <form className="space-y-4 sm:space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6" noValidate={false}>
                   <div className="space-y-1.5 sm:space-y-2">
                     <label htmlFor="contact-name" className="text-[11px] font-mono uppercase tracking-[0.18em] font-semibold text-portfolio-gold block ml-0.5">NAME *</label>
                     <input
@@ -213,6 +253,9 @@ const ContactPage = () => {
                       name="name"
                       type="text"
                       required
+                      minLength={2}
+                      maxLength={120}
+                      autoComplete="name"
                       placeholder="Your full name"
                       className="w-full bg-[#201d19] border border-white/10 focus:border-portfolio-gold rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-white text-sm sm:text-base focus:outline-none focus:ring-1 focus:ring-portfolio-gold/50 transition-all placeholder:text-[#a89f91]/60 cursor-target shadow-inner"
                     />
@@ -256,18 +299,59 @@ const ContactPage = () => {
                       id="contact-message"
                       name="message"
                       required
+                      minLength={10}
+                      maxLength={5000}
                       placeholder="How can we help you?"
                       rows={4}
                       className="w-full bg-[#201d19] border border-white/10 focus:border-portfolio-gold rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-white text-sm sm:text-base focus:outline-none focus:ring-1 focus:ring-portfolio-gold/50 transition-all placeholder:text-[#a89f91]/60 resize-none cursor-target shadow-inner"
                     />
                   </div>
+
+                  {/* Submission feedback */}
+                  <AnimatePresence>
+                    {status === 'sent' && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0 }}
+                        role="status"
+                        className="flex items-start gap-3 rounded-xl border border-[#16a34a]/40 bg-[#16a34a]/10 px-4 py-3 text-sm text-[#86efac]"
+                      >
+                        <CheckCircle2 size={18} className="shrink-0 mt-0.5" />
+                        <span>
+                          <strong className="block text-white font-semibold">Message sent!</strong>
+                          Thanks for reaching out — we'll get back to you within one business day.
+                        </span>
+                      </motion.div>
+                    )}
+                    {status === 'error' && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0 }}
+                        role="alert"
+                        className="flex items-start gap-3 rounded-xl border border-[#ea7008]/40 bg-[#ea7008]/10 px-4 py-3 text-sm text-[#fdba74]"
+                      >
+                        <AlertTriangle size={18} className="shrink-0 mt-0.5" />
+                        <span>
+                          Something went wrong. Please email us directly at{' '}
+                          <a href="mailto:hello@foremark.in" className="underline font-semibold text-white hover:text-portfolio-gold transition-colors">
+                            hello@foremark.in
+                          </a>
+                        </span>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
                   <motion.button
-                    whileHover={{ scale: 1.01 }}
-                    whileTap={{ scale: 0.98 }}
+                    whileHover={status === 'sending' ? undefined : { scale: 1.01 }}
+                    whileTap={status === 'sending' ? undefined : { scale: 0.98 }}
                     type="submit"
-                    className="w-full bg-[#ea7008] text-white font-bold py-3.5 sm:py-4 rounded-xl sm:rounded-2xl mt-4 sm:mt-6 hover:bg-[#ff7e15] transition-all text-sm sm:text-base cursor-target shadow-[0_4px_20px_rgba(234,112,8,0.28)] border border-[#ea7008] tracking-wider font-mono"
+                    disabled={status === 'sending' || status === 'sent'}
+                    className="w-full bg-[#ea7008] text-white font-bold py-3.5 sm:py-4 rounded-xl sm:rounded-2xl mt-4 sm:mt-6 hover:bg-[#ff7e15] transition-all text-sm sm:text-base cursor-target shadow-[0_4px_20px_rgba(234,112,8,0.28)] border border-[#ea7008] tracking-wider font-mono disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
-                    SEND MESSAGE
+                    {status === 'sending' && <Loader2 size={16} className="animate-spin" />}
+                    {status === 'sending' ? 'SENDING…' : status === 'sent' ? 'MESSAGE SENT ✓' : 'SEND MESSAGE'}
                   </motion.button>
                 </form>
               </motion.div>

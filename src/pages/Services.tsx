@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { WebAndSoftwareAnimation, ServerAnimation, AutomationAnimation } from '../components/ServicesGrid';
 import { FAQSection } from '../components/FAQSection';
+import { SEO } from '../components/SEO';
 
 const fadeUp: Variants = {
     hidden: { opacity: 0, y: 24 },
@@ -272,6 +273,11 @@ const ServicesPage = () => {
     }, [updateWhyCoords]);
     return (
         <main className="relative w-full overflow-hidden bg-white text-[#1a1816]">
+            <SEO
+                title="Services"
+                description="Foremark delivers website & software development, managed web servers & hosting, and business automation — three core services engineered for modern businesses."
+                canonicalUrl="https://foremark.in/services"
+            />
             {/* ─── Hero ─────────────────────────────────────────────── */}
             <section className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pt-12 sm:pt-16 pb-20 sm:pb-32">
                 <div className="flex flex-col mb-16">

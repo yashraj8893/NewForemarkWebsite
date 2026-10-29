@@ -16,7 +16,7 @@ const curatedProjects = [
     client: "Nappa Dori",
     date: "2024",
     stack: ["React", "Headless Commerce", "Edge Routing"],
-    image: "/projects/project1.png",
+    image: "/projects/project1.webp",
     accent: "#4a3728"
   },
   {
@@ -26,7 +26,7 @@ const curatedProjects = [
     client: "Regius Care",
     date: "2024",
     stack: ["Full-Stack", "Cloud SQL", "Automated Ops"],
-    image: "/projects/project11.png",
+    image: "/projects/project11.webp",
     accent: "#b45309"
   },
   {
@@ -36,16 +36,16 @@ const curatedProjects = [
     client: "PDR",
     date: "2024",
     stack: ["Interactive UI", "Performance", "SSR"],
-    image: "/projects/project9.png",
+    image: "/projects/project9.webp",
     accent: "#1e3a8a"
   }
 ];
 
 const carouselImages = [
-  { src: "/projects/project1.png", alt: "Nappa Dori", domain: "nappadori.com" },
-  { src: "/projects/project11.png", alt: "Regius Care", domain: "regiuscare.com" },
-  { src: "/projects/project12.png", alt: "Center Spread", domain: "thecenterspread.com" },
-  { src: "/projects/project9.png", alt: "PDR", domain: "pdr.studio" },
+  { src: "/projects/project1.webp", alt: "Nappa Dori", domain: "nappadori.com" },
+  { src: "/projects/project11.webp", alt: "Regius Care", domain: "regiuscare.com" },
+  { src: "/projects/project12.webp", alt: "Center Spread", domain: "thecenterspread.com" },
+  { src: "/projects/project9.webp", alt: "PDR", domain: "pdr.studio" },
 ];
 
 const Hero = () => {

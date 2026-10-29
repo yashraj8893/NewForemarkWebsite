@@ -32,7 +32,7 @@ const Footer = () => {
           {/* Brand Column */}
           <div className="flex flex-col col-span-1 sm:col-span-2 lg:col-span-1">
             <Link to="/" className="block cursor-pointer mb-6 group cursor-target h-10 sm:h-11 w-auto relative">
-              <img src="/foremark-logo-transparent.png" alt="Foremark Technologies" className="h-full w-auto object-contain object-left" />
+              <img loading="lazy" decoding="async" src="/foremark-logo-transparent.png" alt="Foremark Technologies" className="h-full w-auto object-contain object-left" />
             </Link>
             <p className="text-[#a89f91] text-sm leading-relaxed max-w-xs mb-8">
               We design and engineer intelligent digital systems that help companies build, scale, and automate modern technology platforms.
@@ -51,8 +51,8 @@ const Footer = () => {
 
             {/* Startup India Recognition Badge */}
             <div className="mt-8">
-              <img
-                src="/startup-india-badge.png"
+              <img loading="lazy" decoding="async"
+                src="/startup-india-badge.webp"
                 alt="Startup India Recognized Startup"
                 className="w-32 sm:w-36 h-auto object-contain rounded-md drop-shadow-[0_8px_24px_rgba(0,0,0,0.5)] select-none"
               />
