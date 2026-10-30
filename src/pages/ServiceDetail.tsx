@@ -17,6 +17,8 @@ import { CinematicProcessWalkthrough } from '../components/CinematicProcessWalkt
 import { WhatWeBuildDeliver3D } from '../components/WhatWeBuildDeliver3D';
 import { AutomationDeliverablesStack } from '../components/AutomationDeliverablesStack';
 import { HostingDeliverablesRoadmap } from '../components/HostingDeliverablesRoadmap';
+import { HostingApproachGallery } from '../components/HostingApproachGallery';
+import { HostingProcessDepthCarousel } from '../components/HostingProcessDepthCarousel';
 
 const fadeUp: Variants = {
     hidden: { opacity: 0, y: 18 },
@@ -187,45 +189,49 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                 </section>
 
                 {/* ─── How We Do It ───────────────────────────────────── */}
-                <section className="py-20 sm:py-28">
-                    <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
-                        <div className="max-w-2xl mb-14">
-                            <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3">
-                                Our Approach
-                            </span>
-                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#121110] tracking-tight leading-tight mb-4">
-                                {service.howWeDoItTitle}
-                            </h2>
-                            <p className="text-[#5c544d] text-base leading-relaxed">
-                                {service.howWeDoItSubtitle}
-                            </p>
-                        </div>
+                {activeSlug === 'cloud-hosting' ? (
+                    <HostingApproachGallery />
+                ) : (
+                    <section className="py-20 sm:py-28">
+                        <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
+                            <div className="max-w-2xl mb-14">
+                                <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3">
+                                    Our Approach
+                                </span>
+                                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#121110] tracking-tight leading-tight mb-4">
+                                    {service.howWeDoItTitle}
+                                </h2>
+                                <p className="text-[#5c544d] text-base leading-relaxed">
+                                    {service.howWeDoItSubtitle}
+                                </p>
+                            </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                            {service.philosophy.map((item, i) => (
-                                <motion.div
-                                    key={item.title}
-                                    variants={fadeUp}
-                                    initial="hidden"
-                                    whileInView="visible"
-                                    viewport={{ once: true, margin: '-40px' }}
-                                    custom={i}
-                                    className="p-7 rounded-2xl border border-[#ebe5df] hover:border-[#ea7008]/30 transition-all duration-300 group"
-                                >
-                                    <div className="w-10 h-10 rounded-xl bg-[#faf8f5] border border-[#ebe5df] flex items-center justify-center mb-5 text-[#ea7008] group-hover:bg-[#ea7008] group-hover:text-white group-hover:border-[#ea7008] transition-all duration-300">
-                                        <item.icon size={18} />
-                                    </div>
-                                    <h3 className="text-lg font-bold text-[#121110] mb-2 tracking-tight">
-                                        {item.title}
-                                    </h3>
-                                    <p className="text-[#5c544d] text-sm leading-relaxed">
-                                        {item.description}
-                                    </p>
-                                </motion.div>
-                            ))}
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                                {service.philosophy.map((item, i) => (
+                                    <motion.div
+                                        key={item.title}
+                                        variants={fadeUp}
+                                        initial="hidden"
+                                        whileInView="visible"
+                                        viewport={{ once: true, margin: '-40px' }}
+                                        custom={i}
+                                        className="p-7 rounded-2xl border border-[#ebe5df] hover:border-[#ea7008]/30 transition-all duration-300 group"
+                                    >
+                                        <div className="w-10 h-10 rounded-xl bg-[#faf8f5] border border-[#ebe5df] flex items-center justify-center mb-5 text-[#ea7008] group-hover:bg-[#ea7008] group-hover:text-white group-hover:border-[#ea7008] transition-all duration-300">
+                                            <item.icon size={18} />
+                                        </div>
+                                        <h3 className="text-lg font-bold text-[#121110] mb-2 tracking-tight">
+                                            {item.title}
+                                        </h3>
+                                        <p className="text-[#5c544d] text-sm leading-relaxed">
+                                            {item.description}
+                                        </p>
+                                    </motion.div>
+                                ))}
+                            </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                )}
 
                 {/* ─── Deliverables ───────────────────────────────────── */}
                 {activeSlug === 'website-software-development' ? (
@@ -334,6 +340,8 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                 {/* ─── Delivery Process ───────────────────────────────── */}
                 {activeSlug === 'website-software-development' ? (
                     <CinematicProcessWalkthrough />
+                ) : activeSlug === 'cloud-hosting' ? (
+                    <HostingProcessDepthCarousel />
                 ) : (
                     <section className="py-20 sm:py-28">
                         <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
