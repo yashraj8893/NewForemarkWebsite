@@ -105,6 +105,30 @@ const projectsData = [
     image: "/projects/project17.webp",
     url: "#",
     aspect: "aspect-[4/3]"
+  },
+  {
+    title: "Slursh",
+    image: "/projects/project18.webp",
+    url: "https://slursh.in/",
+    aspect: "aspect-[4/3]"
+  },
+  {
+    title: "Farda",
+    image: "/projects/project19.webp",
+    url: "https://fardaclothing.com/",
+    aspect: "aspect-[4/3]"
+  },
+  {
+    title: "JhaJi Store",
+    image: "/projects/project20.webp",
+    url: "https://jhajistore.com/",
+    aspect: "aspect-[4/3]"
+  },
+  {
+    title: "Bengal Luxe",
+    image: "/projects/project21.webp",
+    url: "https://bengal-luxe.vercel.app/",
+    aspect: "aspect-[4/3]"
   }
 ];
 
@@ -189,6 +213,10 @@ const ProjectsPage = () => {
                     { name: "Athena", logo: "/athenalogo.png" },
                     { name: "Mainstay", logo: "/mainstaylogo.png" },
                     { name: "Karma", logo: "/karmalogo.png" },
+                    { name: "Slursh", logo: "/slurshlogo.png?v=2" },
+                    { name: "Farda", logo: "/fardalogo.png" },
+                    { name: "JhaJi Store", logo: "/jhajilogo.png" },
+                    { name: "Bengal Luxe", logo: "/bengalluxe.svg" },
                   ].map((brand, j) => (
                     <div key={j} className="flex items-center justify-center gap-3 min-w-[120px] group cursor-default">
                       <img loading="lazy" decoding="async"

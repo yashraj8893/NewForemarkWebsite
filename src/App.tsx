@@ -22,7 +22,7 @@ const BlogPage = lazy(() => import('./pages/Blog'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 const PageLoader = () => (
-  <div className="flex min-h-[70vh] items-center justify-center" role="status" aria-label="Loading page">
+  <div className="flex min-h-screen items-center justify-center" role="status" aria-label="Loading page">
     <div className="flex flex-col items-center gap-4">
       <div className="h-10 w-10 rounded-full border-2 border-[#ea7008]/20 border-t-[#ea7008] animate-spin" />
       <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-portfolio-muted">Loading</span>
@@ -171,7 +171,7 @@ function App() {
   const location = useLocation();
   return (
     <SmoothScrollProvider>
-      <div className="relative min-h-screen bg-white text-[#1a1816] selection:bg-[#ea7008] selection:text-white font-sans overflow-x-hidden">
+      <div className="relative min-h-screen bg-white text-[#1a1816] selection:bg-[#ea7008] selection:text-white font-sans overflow-x-clip">
         <TargetCursor
           key={location.pathname}
           targetSelector=".cursor-target, a, button, input, textarea"

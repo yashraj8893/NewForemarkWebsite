@@ -20,6 +20,7 @@ import {
 import { WebAndSoftwareAnimation, ServerAnimation, AutomationAnimation } from '../components/ServicesGrid';
 import { FAQSection } from '../components/FAQSection';
 import { SEO } from '../components/SEO';
+import HaloCardsBlocks from '../components/blocks/HaloCardsBlocks';
 
 const fadeUp: Variants = {
     hidden: { opacity: 0, y: 24 },
@@ -272,7 +273,7 @@ const ServicesPage = () => {
         };
     }, [updateWhyCoords]);
     return (
-        <main className="relative w-full overflow-hidden bg-white text-[#1a1816]">
+        <main className="relative w-full overflow-clip bg-white text-[#1a1816]">
             <SEO
                 title="Services"
                 description="Foremark delivers website & software development, managed web servers & hosting, and business automation — three core services engineered for modern businesses."
@@ -319,33 +320,8 @@ const ServicesPage = () => {
                         </Link>
                     </motion.div>
 
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.4 }}
-                        className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-12 max-w-6xl"
-                    >
-                        {[
-                            { index: '01', title: 'Launch-ready builds', text: 'Production-grade software engineered for high availability and zero runtime compromise.' },
-                            { index: '02', title: 'Senior engineers', text: 'Direct engagement with seasoned architects and engineers from kickoff to deployment.' },
-                            { index: '03', title: 'Deterministic timelines', text: 'Transparent sprint cadences, honest scopes, and delivery dates you can rely on.' },
-                        ].map((item) => (
-                            <div
-                                key={item.title}
-                                className="p-6 sm:p-7 flex flex-col justify-center rounded-2xl border border-portfolio-gold/30 bg-white hover:bg-[#faf8f5] hover:border-portfolio-gold/60 hover:-translate-y-1 transition-all duration-300 shadow-md shadow-black/[0.03] group relative overflow-hidden before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent"
-                            >
-                                <h3 className="text-[#121110] text-base sm:text-lg font-bold font-display tracking-tight mb-2 flex items-baseline gap-2">
-                                    <span className="text-[#ea7008] text-sm font-semibold font-mono shrink-0">
-                                        {item.index}
-                                    </span>
-                                    <span>{item.title}</span>
-                                </h3>
-                                <p className="text-[#5c544d] text-sm leading-relaxed">
-                                    {item.text}
-                                </p>
-                            </div>
-                        ))}
-                    </motion.div>
+                    {/* Why-us blocks — Concept 10: Halo Cards (1: IsometricBlocks, 2: CircuitPulseBlocks, 3: SpotlightConsoleBlocks, 4: FoundryLineBlocks, 5: FoundryStage3D, 6: JourneyLineBlocks, 7: JourneyNightBlocks, 8: DarkBandBlocks, 9: PrismBlocks) */}
+                    <HaloCardsBlocks />
                 </div>
             </section>
 

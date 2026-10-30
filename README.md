@@ -30,8 +30,8 @@ The platform features a highly interactive and visually stunning UI, utilizing m
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/amey-bauchkar/foremark-preview.git
-   cd foremark-preview
+   git clone https://github.com/amey-bauchkar/NewForemarkWebsite.git
+   cd NewForemarkWebsite
    ```
 
 2. Install dependencies:

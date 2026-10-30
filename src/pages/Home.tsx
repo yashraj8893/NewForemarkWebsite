@@ -46,6 +46,10 @@ const carouselImages = [
   { src: "/projects/project11.webp", alt: "Regius Care", domain: "regiuscare.com" },
   { src: "/projects/project12.webp", alt: "Center Spread", domain: "thecenterspread.com" },
   { src: "/projects/project9.webp", alt: "PDR", domain: "pdr.studio" },
+  { src: "/projects/project18.webp", alt: "Slursh", domain: "slursh.in" },
+  { src: "/projects/project19.webp", alt: "Farda", domain: "fardaclothing.com" },
+  { src: "/projects/project20.webp", alt: "JhaJi Store", domain: "jhajistore.com" },
+  { src: "/projects/project21.webp", alt: "Bengal Luxe", domain: "bengal-luxe.vercel.app" },
 ];
 
 const Hero = () => {
