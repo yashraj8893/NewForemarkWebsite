@@ -19,6 +19,8 @@ import { AutomationDeliverablesStack } from '../components/AutomationDeliverable
 import { HostingDeliverablesRoadmap } from '../components/HostingDeliverablesRoadmap';
 import { HostingApproachGallery } from '../components/HostingApproachGallery';
 import { HostingProcessDepthCarousel } from '../components/HostingProcessDepthCarousel';
+import { AutomationApproachCarousel } from '../components/AutomationApproachCarousel';
+import { AutomationDeliveryFolder } from '../components/AutomationDeliveryFolder';
 
 const fadeUp: Variants = {
     hidden: { opacity: 0, y: 18 },
@@ -191,6 +193,8 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                 {/* ─── How We Do It ───────────────────────────────────── */}
                 {activeSlug === 'cloud-hosting' ? (
                     <HostingApproachGallery />
+                ) : activeSlug === 'business-automation' ? (
+                    <AutomationApproachCarousel />
                 ) : (
                     <section className="py-20 sm:py-28">
                         <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
@@ -342,6 +346,8 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                     <CinematicProcessWalkthrough />
                 ) : activeSlug === 'cloud-hosting' ? (
                     <HostingProcessDepthCarousel />
+                ) : activeSlug === 'business-automation' ? (
+                    <AutomationDeliveryFolder />
                 ) : (
                     <section className="py-20 sm:py-28">
                         <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
