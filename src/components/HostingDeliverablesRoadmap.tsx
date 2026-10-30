@@ -35,7 +35,7 @@ const journeySteps: JourneyStep[] = [
     stepNumber: 1,
     title: '1. Make the Case for Cloud Architecture',
     shortDesc: 'Multi-Tier VPC Topologies & Networks',
-    detail: 'Align your organization with multi-tier VPC topologies to isolate workloads, eliminate downtime, and optimize cloud infrastructure costs.',
+    detail: 'Multi-tier isolated VPC topologies engineered for zero downtime and cost efficiency.',
     isCurrent: true,
     position: 'bottom',
     icon: Cloud,
@@ -53,7 +53,7 @@ const journeySteps: JourneyStep[] = [
     stepNumber: 2,
     title: '2. Deploy Managed Server Hosting',
     shortDesc: 'Dedicated Bare-Metal & Kubernetes',
-    detail: 'Dedicated bare-metal Linux and container runtimes configured for maximum throughput, automated scaling, and memory caching.',
+    detail: 'Dedicated Linux and container environments tuned for maximum throughput and autoscaling.',
     position: 'top',
     icon: Server,
     stationX: 370,
@@ -70,7 +70,7 @@ const journeySteps: JourneyStep[] = [
     stepNumber: 3,
     title: '3. Cluster Databases with Auto-Failover',
     shortDesc: 'Zero-Data-Loss Replication & Replicas',
-    detail: 'High-availability PostgreSQL & Redis clusters with synchronous replication, automated failover, and continuous point-in-time recovery.',
+    detail: 'High-availability database clusters with instant failover and point-in-time recovery.',
     position: 'bottom',
     icon: Database,
     stationX: 595,
@@ -87,7 +87,7 @@ const journeySteps: JourneyStep[] = [
     stepNumber: 4,
     title: '4. Deliver Releases via CI/CD Pipelines',
     shortDesc: 'Blue/Green Releases & Automated Health',
-    detail: 'Zero-downtime blue/green deployment automation with instant rollback triggers, canary routing, and health check validation.',
+    detail: 'Zero-downtime blue/green deployment automation with instant rollback triggers.',
     position: 'top',
     icon: GitBranch,
     stationX: 820,
@@ -104,7 +104,7 @@ const journeySteps: JourneyStep[] = [
     stepNumber: 5,
     title: '5. Shield Origins & Enforce Disaster Drills',
     shortDesc: 'Global Anycast WAF, Snapshots & 15m RPO',
-    detail: 'Cloudflare Anycast WAF, bot mitigation rules, multi-region snapshot cold vaults, and guaranteed 15-minute disaster recovery SLA.',
+    detail: 'Enterprise edge WAF defense, offsite snapshot vaults, and guaranteed 15-min recovery SLA.',
     position: 'bottom',
     icon: ShieldCheck,
     stationX: 1045,
@@ -365,22 +365,22 @@ export const HostingDeliverablesRoadmap = () => {
             }}
             onMouseEnter={() => setHoveredStep(1)}
             onMouseLeave={() => setHoveredStep(null)}
-            className="absolute z-25 -translate-x-1/2 w-[185px] transition-all duration-300 cursor-pointer"
+            className="absolute z-25 -translate-x-1/2 w-[205px] transition-all duration-300 cursor-pointer"
           >
             <div
-              className={`p-3 rounded-xl border-2 border-dashed transition-all duration-300 text-center ${
+              className={`p-3.5 rounded-xl border-2 border-dashed transition-all duration-300 text-center ${
                 hoveredStep === 1
                   ? 'border-[#ea7008] bg-[#ea7008]/[0.08] shadow-[0_4px_20px_rgba(234,112,8,0.2)]'
                   : 'border-[#ea7008]/60 bg-[#ea7008]/[0.03] hover:border-[#ea7008]'
               }`}
             >
-              <h3 className="text-xs font-bold text-[#121110] leading-snug tracking-tight mb-1">
+              <h3 className="text-sm sm:text-[14.5px] font-bold text-[#121110] leading-snug tracking-tight mb-1.5">
                 {journeySteps[0].title}
               </h3>
-              <p className="text-[10.5px] text-[#5c544d] leading-relaxed mb-2 font-normal">
+              <p className="text-xs text-[#5c544d] leading-relaxed mb-2.5 font-normal">
                 {journeySteps[0].detail}
               </p>
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-[#ea7008] text-white text-[10px] font-bold tracking-wide uppercase shadow-xs">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-[#ea7008] text-white text-[11px] font-bold tracking-wide uppercase shadow-xs">
                 <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                 <span>We are here</span>
               </div>
@@ -391,18 +391,18 @@ export const HostingDeliverablesRoadmap = () => {
           <div
             style={{
               left: `${(journeySteps[1].stationX / 1190) * 100}%`,
-              top: '50px',
+              top: '42px',
             }}
             onMouseEnter={() => setHoveredStep(2)}
             onMouseLeave={() => setHoveredStep(null)}
-            className="absolute z-25 -translate-x-1/2 w-[190px] transition-all duration-300 cursor-pointer text-center"
+            className="absolute z-25 -translate-x-1/2 w-[205px] transition-all duration-300 cursor-pointer text-center"
           >
-            <h3 className={`text-xs sm:text-[13px] font-bold leading-snug tracking-tight mb-1 transition-colors ${
+            <h3 className={`text-sm sm:text-[14.5px] font-bold leading-snug tracking-tight mb-1.5 transition-colors ${
               hoveredStep === 2 ? 'text-[#ea7008]' : 'text-[#121110]'
             }`}>
               {journeySteps[1].title}
             </h3>
-            <p className="text-[10.5px] text-[#5c544d] leading-relaxed font-normal">
+            <p className="text-xs text-[#5c544d] leading-relaxed font-normal">
               {journeySteps[1].detail}
             </p>
           </div>
@@ -415,14 +415,14 @@ export const HostingDeliverablesRoadmap = () => {
             }}
             onMouseEnter={() => setHoveredStep(3)}
             onMouseLeave={() => setHoveredStep(null)}
-            className="absolute z-25 -translate-x-1/2 w-[190px] transition-all duration-300 cursor-pointer text-center"
+            className="absolute z-25 -translate-x-1/2 w-[205px] transition-all duration-300 cursor-pointer text-center"
           >
-            <h3 className={`text-xs sm:text-[13px] font-bold leading-snug tracking-tight mb-1 transition-colors ${
+            <h3 className={`text-sm sm:text-[14.5px] font-bold leading-snug tracking-tight mb-1.5 transition-colors ${
               hoveredStep === 3 ? 'text-[#ea7008]' : 'text-[#121110]'
             }`}>
               {journeySteps[2].title}
             </h3>
-            <p className="text-[10.5px] text-[#5c544d] leading-relaxed font-normal">
+            <p className="text-xs text-[#5c544d] leading-relaxed font-normal">
               {journeySteps[2].detail}
             </p>
           </div>
@@ -431,18 +431,18 @@ export const HostingDeliverablesRoadmap = () => {
           <div
             style={{
               left: `${(journeySteps[3].stationX / 1190) * 100}%`,
-              top: '50px',
+              top: '42px',
             }}
             onMouseEnter={() => setHoveredStep(4)}
             onMouseLeave={() => setHoveredStep(null)}
-            className="absolute z-25 -translate-x-1/2 w-[190px] transition-all duration-300 cursor-pointer text-center"
+            className="absolute z-25 -translate-x-1/2 w-[205px] transition-all duration-300 cursor-pointer text-center"
           >
-            <h3 className={`text-xs sm:text-[13px] font-bold leading-snug tracking-tight mb-1 transition-colors ${
+            <h3 className={`text-sm sm:text-[14.5px] font-bold leading-snug tracking-tight mb-1.5 transition-colors ${
               hoveredStep === 4 ? 'text-[#ea7008]' : 'text-[#121110]'
             }`}>
               {journeySteps[3].title}
             </h3>
-            <p className="text-[10.5px] text-[#5c544d] leading-relaxed font-normal">
+            <p className="text-xs text-[#5c544d] leading-relaxed font-normal">
               {journeySteps[3].detail}
             </p>
           </div>
@@ -455,14 +455,14 @@ export const HostingDeliverablesRoadmap = () => {
             }}
             onMouseEnter={() => setHoveredStep(5)}
             onMouseLeave={() => setHoveredStep(null)}
-            className="absolute z-25 -translate-x-1/2 w-[190px] transition-all duration-300 cursor-pointer text-center"
+            className="absolute z-25 -translate-x-1/2 w-[205px] transition-all duration-300 cursor-pointer text-center"
           >
-            <h3 className={`text-xs sm:text-[13px] font-bold leading-snug tracking-tight mb-1 transition-colors ${
+            <h3 className={`text-sm sm:text-[14.5px] font-bold leading-snug tracking-tight mb-1.5 transition-colors ${
               hoveredStep === 5 ? 'text-[#ea7008]' : 'text-[#121110]'
             }`}>
               {journeySteps[4].title}
             </h3>
-            <p className="text-[10.5px] text-[#5c544d] leading-relaxed font-normal">
+            <p className="text-xs text-[#5c544d] leading-relaxed font-normal">
               {journeySteps[4].detail}
             </p>
           </div>
