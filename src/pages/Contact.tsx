@@ -193,7 +193,7 @@ const ContactPage = () => {
                     label: "LOCATION",
                     value1: "Innov8 Times Square, Andheri East",
                     value2: "Unit No. 2, 4th Floor, A-Wing, Times Square Building, Marol, Andheri (E), Mumbai – 400059",
-                    link: "https://maps.app.goo.gl/B9dZpsf7i1K1B54t7"
+                    link: "https://maps.app.goo.gl/KruJhjPSm2YM46zp8"
                   }
                 ].map((item, i) => (
                   <motion.div

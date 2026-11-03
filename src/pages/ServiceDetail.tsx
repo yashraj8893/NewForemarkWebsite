@@ -21,6 +21,7 @@ import { HostingApproachGallery } from '../components/HostingApproachGallery';
 import { HostingProcessDepthCarousel } from '../components/HostingProcessDepthCarousel';
 import { AutomationApproachCarousel } from '../components/AutomationApproachCarousel';
 import { AutomationDeliveryFolder } from '../components/AutomationDeliveryFolder';
+import { WebsiteApproach } from '../components/WebsiteApproach';
 
 const fadeUp: Variants = {
     hidden: { opacity: 0, y: 18 },
@@ -195,6 +196,8 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                     <HostingApproachGallery />
                 ) : activeSlug === 'business-automation' ? (
                     <AutomationApproachCarousel />
+                ) : activeSlug === 'website-software-development' ? (
+                    <WebsiteApproach service={service} />
                 ) : (
                     <section className="py-20 sm:py-28">
                         <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
