@@ -1,9 +1,31 @@
 import { useState, useEffect, type FormEvent } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, MessageSquare, Globe, Share2, Info, ChevronDown, CheckCircle2, AlertTriangle, Loader2 } from 'lucide-react';
-import mapImage from '../assets/map.webp';
+import { Mail, MessageSquare, Globe, ChevronDown, CheckCircle2, AlertTriangle, Loader2 } from 'lucide-react';
 import { SEO } from '../components/SEO';
+
+const LinkedinIcon = ({ size = 18 }: { size?: number }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect x="2" y="9" width="4" height="12" />
+    <circle cx="4" cy="4" r="2" />
+  </svg>
+);
+
+const InstagramIcon = ({ size = 18 }: { size?: number }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+  </svg>
+);
+
+const WhatsappIcon = ({ size = 18 }: { size?: number }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9l-5.05.9" />
+    <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
+  </svg>
+);
 
 const serviceOptions = [
   { value: 'website-software-development', label: 'Website & Software Development' },
@@ -135,49 +157,10 @@ const ContactPage = () => {
           </motion.p>
         </div>
 
-        <div className="bg-[#121110] border border-portfolio-gold/35 hover:border-portfolio-gold/60 shadow-[0_20px_60px_rgba(0,0,0,0.5),0_0_50px_rgba(234,112,8,0.12)] rounded-[2rem] lg:rounded-[3rem] p-6 sm:p-8 md:p-16 lg:p-24 text-white relative overflow-hidden flex items-center transition-all duration-500 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/50 before:to-transparent">
+        <div className="bg-[#131211] border border-portfolio-gold/35 hover:border-portfolio-gold/60 shadow-[0_20px_60px_rgba(0,0,0,0.5),0_0_50px_rgba(234,112,8,0.12)] rounded-[2rem] lg:rounded-[3rem] p-6 sm:p-8 md:p-16 lg:p-24 text-white relative overflow-hidden flex items-center transition-all duration-500 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/50 before:to-transparent">
 
-          {/* Luminous Orange Spot Halos inside the container */}
-          <div className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-gradient-to-bl from-[#ea7008]/25 via-[#ea7008]/10 to-transparent blur-[120px] pointer-events-none" />
-          <div className="absolute -bottom-24 -left-20 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-[#ea7008]/20 via-[#ea7008]/05 to-transparent blur-[110px] pointer-events-none" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] rounded-full bg-[#ea7008]/[0.08] blur-[100px] pointer-events-none" />
-
-          {/* Dynamic Technical Grid inside the card */}
-          <div className="absolute inset-0 bg-[radial-gradient(rgba(234,112,8,0.22)_1.2px,transparent_1.2px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_90%)] pointer-events-none opacity-40" />
-
-          {/* Map image with gradient fade — night mode dark street map */}
-          <div
-            className="absolute inset-y-0 left-0 pointer-events-none hidden lg:block overflow-hidden"
-            style={{
-              width: '66%',
-              maskImage: 'radial-gradient(ellipse 95% 85% at 18% 50%, black 40%, rgba(0,0,0,0.65) 65%, rgba(0,0,0,0.15) 85%, transparent 100%)',
-              WebkitMaskImage: 'radial-gradient(ellipse 95% 85% at 18% 50%, black 40%, rgba(0,0,0,0.65) 65%, rgba(0,0,0,0.15) 85%, transparent 100%)',
-            }}
-          >
-            <img loading="lazy" decoding="async"
-              src={mapImage}
-              alt=""
-              aria-hidden="true"
-              className="w-full h-full object-cover object-left"
-              style={{ opacity: 0.18, filter: 'invert(1) hue-rotate(180deg) brightness(0.85) contrast(1.2)' }}
-            />
-            {/* Subtle warm amber brand gradient over the map */}
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background: 'linear-gradient(135deg, rgba(234,112,8,0.14) 0%, rgba(245,158,11,0.04) 50%, transparent 100%)',
-              }}
-            />
-          </div>
-
-          {/* Subtle orange brand glow — hidden on mobile */}
-          <div
-            className="absolute inset-y-0 left-0 pointer-events-none hidden lg:block"
-            style={{
-              width: '40%',
-              background: 'radial-gradient(ellipse at 20% 60%, rgba(234,112,8,0.12) 0%, transparent 70%)',
-            }}
-          />
+          {/* Subtle luminous accent glow behind form area */}
+          <div className="absolute -top-32 -right-32 w-[550px] h-[550px] rounded-full bg-gradient-to-bl from-[#ea7008]/15 via-[#ea7008]/05 to-transparent blur-[120px] pointer-events-none" />
 
           {/* Content */}
           <div className="relative z-30 w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
@@ -213,25 +196,33 @@ const ContactPage = () => {
                         <p className="text-sm font-normal text-[#a89f91] break-all sm:break-normal mt-1 leading-relaxed max-w-sm">{item.value2}</p>
                       )}
                       {item.link && (
-                        <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-portfolio-gold hover:text-white transition-colors mt-2">
-                          View on Google Maps →
-                        </a>
+                        <>
+                          <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-portfolio-gold hover:text-white transition-colors mt-2 inline-block">
+                            View on Google Maps →
+                          </a>
+                          <div className="flex items-center gap-3.5 sm:gap-4 mt-6 sm:mt-7">
+                            {[
+                              { icon: LinkedinIcon, href: "https://www.linkedin.com/company/foremark-technologies/", label: "LinkedIn" },
+                              { icon: InstagramIcon, href: "https://www.instagram.com/foremarktechnologies.official/", label: "Instagram" },
+                              { icon: WhatsappIcon, href: "https://wa.me/917666809812", label: "WhatsApp" },
+                            ].map((social, idx) => (
+                              <motion.a
+                                key={idx}
+                                href={social.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={social.label}
+                                whileHover={{ y: -4 }}
+                                className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-[#a89f91] hover:text-portfolio-gold hover:border-portfolio-gold hover:bg-white/10 transition-all duration-300 cursor-target shadow-xs"
+                              >
+                                <social.icon size={17} />
+                              </motion.a>
+                            ))}
+                          </div>
+                        </>
                       )}
                     </div>
                   </motion.div>
-                ))}
-              </div>
-
-              <div className="flex gap-4 mt-6 lg:mt-16">
-                {[Share2, Globe, Info].map((Icon, i) => (
-                  <motion.a
-                    key={i}
-                    href="#"
-                    whileHover={{ y: -4 }}
-                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-[#a89f91] hover:text-portfolio-gold hover:border-portfolio-gold hover:bg-white/10 transition-all duration-300 cursor-target shadow-xs"
-                  >
-                    <Icon size={18} />
-                  </motion.a>
                 ))}
               </div>
             </div>
