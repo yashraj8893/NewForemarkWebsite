@@ -158,7 +158,7 @@ export const AutomationDeliverablesStack: React.FC = () => {
         <div className="max-w-2xl mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-portfolio-gold/10 border border-portfolio-gold/25 mb-3">
             <span className="w-2 h-2 rounded-full bg-portfolio-gold animate-pulse" />
-            <span className="text-portfolio-gold text-[11px] font-bold uppercase tracking-widest font-mono">
+            <span className="text-portfolio-gold text-xs font-semibold uppercase tracking-widest">
               Architecture & Deliverables
             </span>
           </div>

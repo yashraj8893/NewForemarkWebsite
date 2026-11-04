@@ -176,7 +176,7 @@ const StatsGrid = () => (
             {stat.value}
             <span className={stat.accentColor}>{stat.accent}</span>
           </h3>
-          <p className="text-[11px] uppercase tracking-[0.2em] text-portfolio-gold font-bold mb-3 font-mono">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#ea7008] mb-3">
             {stat.label}
           </p>
           <p className="text-[#5c544d] text-[13px] md:text-[14px] leading-[1.7] font-medium">

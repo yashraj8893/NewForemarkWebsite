@@ -78,7 +78,7 @@ body {
   }
   
   .section-label {
-    @apply uppercase tracking-[0.22em] text-[11px] sm:text-xs font-semibold text-[#ea7008] mb-4 block font-mono;
+    @apply uppercase tracking-widest text-xs font-semibold text-[#ea7008] mb-3 block;
   }
 
   .tag-badge {

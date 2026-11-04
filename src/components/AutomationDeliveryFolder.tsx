@@ -96,8 +96,8 @@ export const AutomationDeliveryFolder: React.FC = () => {
         {/* ─── Header ────────────────────────────────────────── */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
           <div className="max-w-2xl">
-            <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3 font-mono">
-              PROCESS
+            <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3">
+              Process
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#121110] tracking-tight leading-tight mb-4">
               How We Deliver: The Automation Playbook

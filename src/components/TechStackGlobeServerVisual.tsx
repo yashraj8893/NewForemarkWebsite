@@ -368,7 +368,7 @@ export const TechStackGlobeServerVisual = () => {
         
         {/* Header Block matching Site Style */}
         <div className="flex flex-col items-center max-w-4xl mb-4 sm:mb-6 relative z-20">
-          <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3 font-mono">
+          <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3">
             Technology Stack
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-extrabold font-display tracking-tight text-[#121110] mb-3 leading-tight">

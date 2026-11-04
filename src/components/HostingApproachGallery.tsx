@@ -97,8 +97,8 @@ export const HostingApproachGallery: React.FC = () => {
         
         {/* ─── Header ────────────────────────────────────────── */}
         <div className="max-w-2xl mb-14">
-          <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3 font-mono">
-            OUR APPROACH
+          <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3">
+            Our Approach
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#121110] tracking-tight leading-tight mb-4">
             The Foremark Standard: How We Host & Manage Infrastructure

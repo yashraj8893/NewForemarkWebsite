@@ -146,8 +146,8 @@ export const HostingDeliverablesRoadmap = () => {
         
         {/* ─── SECTION HEADER (Faithful to Reference Image) ─── */}
         <div className="text-left mb-10 sm:mb-14">
-          <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-2 font-mono">
-            // INFRASTRUCTURE TRANSFORMATION ROADMAP
+          <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3">
+            Infrastructure Transformation Roadmap
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#121110] tracking-tight leading-tight mb-3">
             Your Cloud Transformation <span className="text-[#ea7008]">Journey</span>

@@ -97,7 +97,7 @@ const BlogPage = () => {
                         {/* Eyebrow Label */}
                         <motion.span
                             variants={itemFade}
-                            className="text-portfolio-gold font-bold mb-3 text-xs tracking-widest uppercase block font-mono"
+                            className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3"
                         >
                             The Foremark Journal
                         </motion.span>
@@ -308,7 +308,7 @@ const BlogPage = () => {
                                     <Mail size={20} />
                                 </div>
 
-                                <span className="text-[10px] font-bold uppercase tracking-widest text-portfolio-gold mb-2 block font-mono">
+                                <span className="text-xs font-semibold uppercase tracking-widest text-[#ea7008] mb-3 block">
                                     The Foremark Dispatch
                                 </span>
 

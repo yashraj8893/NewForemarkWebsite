@@ -86,8 +86,8 @@ export const AutomationApproachCarousel: React.FC = () => {
         {/* ─── Header ────────────────────────────────────────── */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div className="max-w-2xl">
-            <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3 font-mono">
-              OUR APPROACH
+            <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3">
+              Our Approach
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#121110] tracking-tight leading-tight mb-4">
               The Foremark Standard: How We Automate Workflows

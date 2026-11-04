@@ -33,7 +33,7 @@ const AssociateProgramPage = () => {
           <motion.span 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-portfolio-gold font-bold mb-3 text-xs tracking-widest uppercase block"
+            className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3"
           >
             Associate Partner Program
           </motion.span>
@@ -79,7 +79,7 @@ const AssociateProgramPage = () => {
       {/* What We Build Section */}
       <div className="mb-20 sm:mb-32">
         <motion.div {...fadeUp} className="mb-16">
-          <span className="text-sm font-bold uppercase tracking-widest text-portfolio-gold mb-4 block">
+          <span className="text-xs font-semibold uppercase tracking-widest text-[#ea7008] mb-3 block">
             What We Build
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight max-w-4xl leading-tight mb-4 sm:mb-6">
@@ -117,7 +117,7 @@ const AssociateProgramPage = () => {
       {/* How it Works Section */}
       <div className="mb-20 sm:mb-32">
         <motion.div {...fadeUp} className="mb-16">
-          <span className="text-sm font-bold uppercase tracking-widest text-portfolio-gold mb-4 block">
+          <span className="text-xs font-semibold uppercase tracking-widest text-[#ea7008] mb-3 block">
             The Process
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight max-w-4xl leading-tight">
@@ -154,7 +154,7 @@ const AssociateProgramPage = () => {
       {/* Earnings Section */}
       <div className="mb-20 sm:mb-32">
         <motion.div {...fadeUp} className="mb-16">
-          <span className="text-sm font-bold uppercase tracking-widest text-portfolio-gold mb-4 block">
+          <span className="text-xs font-semibold uppercase tracking-widest text-[#ea7008] mb-3 block">
             Your Earnings
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight max-w-4xl leading-tight mb-4 sm:mb-6">
@@ -222,7 +222,7 @@ const AssociateProgramPage = () => {
       {/* Why Partner With Us Section */}
       <div className="mb-20 sm:mb-32">
         <motion.div {...fadeUp} className="mb-16">
-          <span className="text-sm font-bold uppercase tracking-widest text-portfolio-gold mb-4 block">
+          <span className="text-xs font-semibold uppercase tracking-widest text-[#ea7008] mb-3 block">
             Why Partner With Us
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight max-w-4xl leading-tight">

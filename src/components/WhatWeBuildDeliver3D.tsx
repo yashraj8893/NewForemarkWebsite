@@ -150,8 +150,8 @@ export const WhatWeBuildDeliver3D = () => {
         
         {/* ─── SECTION HEADER ─── */}
         <div className="max-w-2xl text-left mb-12 sm:mb-16">
-          <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-2.5 font-mono">
-            // ARCHITECTURAL DELIVERABLES
+          <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3">
+            Architectural Deliverables
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#121110] tracking-tight leading-tight mb-3">
             What We Build & <span className="text-[#ea7008]">Deliver</span>

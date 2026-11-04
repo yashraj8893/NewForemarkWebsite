@@ -44,7 +44,7 @@ const CareersPage = () => {
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-portfolio-gold font-bold mb-3 text-xs tracking-widest uppercase block font-mono"
+            className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3"
           >
             We're hiring
           </motion.span>

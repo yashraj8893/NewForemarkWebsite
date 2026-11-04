@@ -47,7 +47,7 @@ const JobDetail = () => {
                     transition={{ delay: 0.05 }}
                     className="mb-16 pb-16 border-b border-[#e5e0da]"
                 >
-                    <span className="text-portfolio-gold font-bold text-xs tracking-widest uppercase block mb-4 font-mono">
+                    <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-4">
                         {job.category}
                     </span>
                     <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 md:gap-8">
@@ -80,12 +80,12 @@ const JobDetail = () => {
                     className="max-w-4xl space-y-16"
                 >
                     <div>
-                        <h2 className="text-sm font-bold uppercase tracking-widest text-portfolio-gold mb-6 font-mono">About the Role</h2>
+                        <h2 className="text-xs font-semibold uppercase tracking-widest text-[#ea7008] mb-6">About the Role</h2>
                         <p className="text-[#5c544d] leading-relaxed text-lg">{job.about}</p>
                     </div>
                     
                     <div>
-                        <h2 className="text-sm font-bold uppercase tracking-widest text-portfolio-gold mb-6 font-mono">Responsibilities</h2>
+                        <h2 className="text-xs font-semibold uppercase tracking-widest text-[#ea7008] mb-6">Responsibilities</h2>
                         <ul className="space-y-4">
                             {job.responsibilities.map((item, i) => (
                                 <li key={i} className="flex items-start gap-4 text-[#5c544d] text-lg leading-relaxed">
@@ -97,7 +97,7 @@ const JobDetail = () => {
                     </div>
 
                     <div>
-                        <h2 className="text-sm font-bold uppercase tracking-widest text-portfolio-gold mb-6 font-mono">Requirements</h2>
+                        <h2 className="text-xs font-semibold uppercase tracking-widest text-[#ea7008] mb-6">Requirements</h2>
                         <ul className="space-y-4">
                             {job.requirements.map((item, i) => (
                                 <li key={i} className="flex items-start gap-4 text-[#5c544d] text-lg leading-relaxed">
@@ -109,7 +109,7 @@ const JobDetail = () => {
                     </div>
 
                     <div>
-                        <h2 className="text-sm font-bold uppercase tracking-widest text-portfolio-gold mb-6 font-mono">Benefits</h2>
+                        <h2 className="text-xs font-semibold uppercase tracking-widest text-[#ea7008] mb-6">Benefits</h2>
                         <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {job.benefits.map((item, i) => (
                                 <li key={i} className="flex items-center gap-4 text-[#121110] font-medium text-base p-5 border border-portfolio-gold/35 rounded-2xl bg-[#faf8f5] hover:border-portfolio-gold/65 transition-all">
@@ -129,7 +129,7 @@ const JobDetail = () => {
                     className="mt-24 pt-16 border-t border-[#e5e0da]"
                 >
                     <div className="max-w-xl">
-                        <span className="text-portfolio-gold font-bold text-xs tracking-widest uppercase block mb-4 font-mono">Apply</span>
+                        <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-4">Apply</span>
                         <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-[#121110]">Interested in this role?</h2>
                         <p className="text-[#5c544d] text-base leading-relaxed mb-10">
                             We would love to hear from you. Send us your resume and a short note about why you would be a great fit.
