@@ -5,11 +5,13 @@ import { faqs } from '../data/faqs';
 interface FAQSectionProps {
   className?: string;
   withOuterContainer?: boolean;
+  useMainFont?: boolean;
 }
 
 export const FAQSection = ({
   className = "py-16 md:py-24",
   withOuterContainer = false,
+  useMainFont = false,
 }: FAQSectionProps) => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
@@ -45,7 +47,7 @@ export const FAQSection = ({
               className="w-full flex items-center justify-between gap-4 sm:gap-6 text-left group cursor-target"
             >
               <div className="flex items-center gap-3 sm:gap-4">
-                <span className="font-mono text-xs text-portfolio-gold/80 shrink-0 font-semibold">0{i + 1}</span>
+                <span className={`${useMainFont ? "font-sans" : "font-mono"} text-xs text-portfolio-gold/80 shrink-0 font-semibold`}>0{i + 1}</span>
                 <span
                   className={`text-sm md:text-base font-semibold leading-snug transition-colors duration-300 ${
                     openIndex === i ? 'text-portfolio-gold' : 'text-white group-hover:text-portfolio-gold'

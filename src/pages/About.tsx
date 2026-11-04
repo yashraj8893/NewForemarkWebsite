@@ -172,14 +172,14 @@ const StatsGrid = () => (
           transition={{ delay: i * 0.1 }}
           className="bg-[#faf8f5] border border-portfolio-gold/35 hover:border-portfolio-gold/65 rounded-2xl sm:rounded-3xl px-6 py-8 sm:px-8 sm:py-10 md:px-10 md:py-12 flex flex-col shadow-[0_4px_25px_rgba(234,112,8,0.06)] hover:shadow-[0_8px_35px_rgba(234,112,8,0.15)] hover:-translate-y-1 transition-all duration-500 cursor-target relative overflow-hidden before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent before:z-10"
         >
-          <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#121110] mb-6 sm:mb-8 font-mono">
+          <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#121110] mb-6 sm:mb-8">
             {stat.value}
             <span className={stat.accentColor}>{stat.accent}</span>
           </h3>
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#ea7008] mb-3">
+          <p className="text-sm uppercase tracking-wide text-portfolio-gold font-semibold mb-3">
             {stat.label}
           </p>
-          <p className="text-[#5c544d] text-[13px] md:text-[14px] leading-[1.7] font-medium">
+          <p className="text-[#5c544d] text-sm leading-[1.7] font-medium">
             {stat.desc}
           </p>
         </motion.div>

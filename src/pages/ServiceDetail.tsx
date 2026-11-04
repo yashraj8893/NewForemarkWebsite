@@ -394,7 +394,7 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                 )}
 
                 {/* ─── FAQs ───────────────────────────────────────────── */}
-                <FAQSection withOuterContainer className="py-20 sm:py-28" />
+                <FAQSection withOuterContainer useMainFont className="py-20 sm:py-28" />
 
                 {/* ─── Explore Other Services ─────────────────────────── */}
                 <section className="py-16 sm:py-24 border-t border-[#ebe5df]">

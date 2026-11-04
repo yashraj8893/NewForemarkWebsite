@@ -52,7 +52,7 @@ const CareersPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-4 sm:mb-6 text-[#121110]"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 sm:mb-6 text-[#121110]"
           >
             Be part of <br /> our mission
           </motion.h1>
@@ -73,7 +73,7 @@ const CareersPage = () => {
               key={type}
               onClick={() => setActiveType(type)}
               className={cn(
-                "px-4 py-2 text-xs md:px-5 md:py-2.5 md:text-sm rounded-full font-bold transition-all duration-300 cursor-target font-mono",
+                "px-4 py-2 text-sm md:px-5 md:py-2.5 rounded-full font-semibold transition-all duration-300 cursor-target",
                 activeType === type
                   ? "bg-portfolio-gold text-white shadow-[0_4px_15px_rgba(234,112,8,0.25)]"
                   : "border border-[#e5e0da] text-[#5c544d] hover:text-[#121110] hover:bg-[#faf8f5]"
@@ -91,7 +91,7 @@ const CareersPage = () => {
               key={category}
               onClick={() => setActiveCategory(category)}
               className={cn(
-                "px-4 py-2 text-xs md:px-5 md:py-2.5 md:text-sm rounded-full font-bold transition-all duration-300 cursor-target font-mono",
+                "px-4 py-2 text-sm md:px-5 md:py-2.5 rounded-full font-semibold transition-all duration-300 cursor-target",
                 activeCategory === category
                   ? "bg-portfolio-gold text-white shadow-[0_4px_15px_rgba(234,112,8,0.25)]"
                   : "border border-[#e5e0da] text-[#5c544d] hover:text-[#121110] hover:bg-[#faf8f5]"
@@ -118,10 +118,10 @@ const CareersPage = () => {
                       {job.shortDesc}
                     </p>
                     <div className="flex flex-wrap gap-2">
-                      <div className="flex items-center gap-1.5 text-portfolio-gold font-semibold text-[10px] uppercase tracking-widest border border-amber-500/20 px-2.5 py-1 rounded-full bg-amber-500/5 font-mono">
+                      <div className="flex items-center gap-1.5 text-portfolio-gold font-semibold text-xs tracking-wide border border-amber-500/20 px-2.5 py-1 rounded-full bg-amber-500/5">
                         <MapPin size={12} /> {job.location}
                       </div>
-                      <div className="flex items-center gap-1.5 text-[#5c544d] font-semibold text-[10px] uppercase tracking-widest border border-[#e5e0da] px-2.5 py-1 rounded-full bg-[#faf8f5] font-mono">
+                      <div className="flex items-center gap-1.5 text-[#5c544d] font-semibold text-xs tracking-wide border border-[#e5e0da] px-2.5 py-1 rounded-full bg-[#faf8f5]">
                         <Clock size={12} /> {job.type}
                       </div>
                     </div>
@@ -130,7 +130,7 @@ const CareersPage = () => {
                   <div className="flex items-center">
                     <a
                       href={job.applyLink} target="_blank" rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-portfolio-gold font-bold text-lg group/apply whitespace-nowrap cursor-target hover:brightness-125 transition-all font-mono"
+                      className="flex items-center gap-2 text-portfolio-gold font-bold text-base group/apply whitespace-nowrap cursor-target hover:brightness-125 transition-all"
                     >
                       Apply <ArrowUpRight size={20} className="transition-transform group-hover/apply:translate-x-0.5 group-hover/apply:-translate-y-0.5" />
                     </a>
@@ -145,9 +145,9 @@ const CareersPage = () => {
         <div className="mt-16 pt-16 border-t border-[#e5e0da]">
           <div className="flex flex-col items-center text-center px-4 md:px-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight max-w-4xl leading-tight text-[#121110]">
-              <span className="text-portfolio-gold font-serif">“</span>
+              <span className="text-portfolio-gold">“</span>
               Foremark truly values work-life balance. We work hard and deliver, but at the end of the day you can switch off.
-              <span className="text-portfolio-gold font-serif">”</span>
+              <span className="text-portfolio-gold">”</span>
             </h2>
           </div>
         </div>

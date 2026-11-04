@@ -107,7 +107,7 @@ export const AutomationDeliveryFolder: React.FC = () => {
             </p>
           </div>
 
-          <div className="flex items-center gap-2.5 text-xs text-[#5c544d] font-mono bg-white px-4 py-2.5 rounded-full border border-[#ebe5df] shadow-2xs self-start md:self-auto">
+          <div className="flex items-center gap-2.5 text-xs text-[#5c544d] bg-white px-4 py-2.5 rounded-full border border-[#ebe5df] shadow-2xs self-start md:self-auto">
             <MousePointerClick size={14} className="text-[#ea7008] animate-bounce" />
             <span>Click folder to open • Click sheets to zoom in</span>
           </div>
@@ -149,11 +149,11 @@ export const AutomationDeliveryFolder: React.FC = () => {
                       <div className="flex items-center justify-between border-b border-[#ebe5df] pb-2.5 mb-3">
                         <div className="flex items-center gap-1.5">
                           <span className="w-2 h-2 rounded-full bg-[#ea7008]" />
-                          <span className="text-[10px] font-mono font-bold tracking-wider uppercase text-[#ea7008]">
+                          <span className="text-[10px] font-bold tracking-wider uppercase text-[#ea7008]">
                             PHASE {phase.step}
                           </span>
                         </div>
-                        <span className="text-[10px] font-mono text-[#8a8077]">
+                        <span className="text-[10px] text-[#8a8077]">
                           {phase.category}
                         </span>
                       </div>
@@ -176,7 +176,7 @@ export const AutomationDeliveryFolder: React.FC = () => {
 
                     {/* Sheet Deliverable Bullets */}
                     <div className="space-y-1.5 pt-2 border-t border-[#ebe5df]/70 bg-[#faf8f5]/50 -mx-1 px-2 py-1.5 rounded-md">
-                      <span className="text-[9px] font-mono font-semibold uppercase text-[#8a8077] block">
+                      <span className="text-[9px] font-semibold uppercase text-[#8a8077] block">
                         Deliverables:
                       </span>
                       {phase.deliverables.map((item) => (
@@ -188,7 +188,7 @@ export const AutomationDeliveryFolder: React.FC = () => {
                     </div>
 
                     {/* Bottom Status Stamp */}
-                    <div className="flex items-center justify-between text-[8.5px] font-mono text-[#8a8077] pt-2 border-t border-[#ebe5df]">
+                    <div className="flex items-center justify-between text-[8.5px] text-[#8a8077] pt-2 border-t border-[#ebe5df]">
                       <span>FOREMARK STANDARD</span>
                       <span className="text-[#ea7008] font-bold">VERIFIED SPEC</span>
                     </div>
@@ -206,7 +206,7 @@ export const AutomationDeliveryFolder: React.FC = () => {
                 className="p-3 rounded-xl bg-[#faf8f5] border border-[#ebe5df] flex flex-col"
               >
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-[10px] font-mono font-bold text-[#ea7008]">
+                  <span className="text-[10px] font-bold text-[#ea7008]">
                     {phase.step}
                   </span>
                   <Sparkles size={11} className="text-[#8a8077]" />

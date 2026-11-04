@@ -121,7 +121,7 @@ const ContactPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-bold tracking-tight mb-6"
+            className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight mb-6"
           >
             Let's talk about <br /> your project
           </motion.h1>
@@ -207,13 +207,13 @@ const ContactPage = () => {
                       <item.icon size={22} />
                     </div>
                     <div className="flex flex-col min-w-0 pt-1">
-                      <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-portfolio-gold font-bold mb-1">{item.label}</span>
+                      <span className="text-sm uppercase tracking-wide text-portfolio-gold font-semibold mb-1">{item.label}</span>
                       <p className="text-sm sm:text-base font-bold text-white group-hover:text-portfolio-gold transition-colors duration-300 break-all sm:break-normal">{item.value1}</p>
                       {item.value2 && (
                         <p className="text-sm font-normal text-[#a89f91] break-all sm:break-normal mt-1 leading-relaxed max-w-sm">{item.value2}</p>
                       )}
                       {item.link && (
-                        <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-xs sm:text-sm font-bold font-mono text-portfolio-gold hover:text-white transition-colors mt-2">
+                        <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-portfolio-gold hover:text-white transition-colors mt-2">
                           View on Google Maps →
                         </a>
                       )}
@@ -255,7 +255,7 @@ const ContactPage = () => {
 
                 <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6" noValidate={false}>
                   <div className="space-y-1.5 sm:space-y-2">
-                    <label htmlFor="contact-name" className="text-[11px] font-mono uppercase tracking-[0.18em] font-semibold text-portfolio-gold block ml-0.5">NAME *</label>
+                    <label htmlFor="contact-name" className="text-sm uppercase tracking-wide font-semibold text-portfolio-gold block ml-0.5">NAME *</label>
                     <input
                       id="contact-name"
                       name="name"
@@ -265,22 +265,22 @@ const ContactPage = () => {
                       maxLength={120}
                       autoComplete="name"
                       placeholder="Your full name"
-                      className="w-full bg-[#201d19] border border-white/10 focus:border-portfolio-gold rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-white text-sm sm:text-base focus:outline-none focus:ring-1 focus:ring-portfolio-gold/50 transition-all placeholder:text-[#a89f91]/60 cursor-target shadow-inner"
+                      className="w-full bg-[#201d19] border border-white/10 focus:border-portfolio-gold rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-white text-base focus:outline-none focus:ring-1 focus:ring-portfolio-gold/50 transition-all placeholder:text-[#a89f91]/60 cursor-target shadow-inner"
                     />
                   </div>
                   <div className="space-y-1.5 sm:space-y-2">
-                    <label htmlFor="contact-email" className="text-[11px] font-mono uppercase tracking-[0.18em] font-semibold text-portfolio-gold block ml-0.5">EMAIL *</label>
+                    <label htmlFor="contact-email" className="text-sm uppercase tracking-wide font-semibold text-portfolio-gold block ml-0.5">EMAIL *</label>
                     <input
                       id="contact-email"
                       name="email"
                       type="email"
                       required
                       placeholder="Your email address"
-                      className="w-full bg-[#201d19] border border-white/10 focus:border-portfolio-gold rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-white text-sm sm:text-base focus:outline-none focus:ring-1 focus:ring-portfolio-gold/50 transition-all placeholder:text-[#a89f91]/60 cursor-target shadow-inner"
+                      className="w-full bg-[#201d19] border border-white/10 focus:border-portfolio-gold rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-white text-base focus:outline-none focus:ring-1 focus:ring-portfolio-gold/50 transition-all placeholder:text-[#a89f91]/60 cursor-target shadow-inner"
                     />
                   </div>
                   <div className="space-y-1.5 sm:space-y-2">
-                    <label htmlFor="contact-service" className="text-[11px] font-mono uppercase tracking-[0.18em] font-semibold text-portfolio-gold block ml-0.5">SERVICE OF INTEREST</label>
+                    <label htmlFor="contact-service" className="text-sm uppercase tracking-wide font-semibold text-portfolio-gold block ml-0.5">SERVICE OF INTEREST</label>
                     <div className="relative">
                       <select
                         id="contact-service"
@@ -288,7 +288,7 @@ const ContactPage = () => {
                         value={selectedService}
                         onChange={(e) => setSelectedService(e.target.value)}
                         style={{ colorScheme: 'dark' }}
-                        className="w-full appearance-none bg-[#201d19] border border-white/10 focus:border-portfolio-gold rounded-xl sm:rounded-2xl pl-4 pr-12 sm:pl-6 sm:pr-14 py-3 sm:py-4 text-white text-sm sm:text-base focus:outline-none focus:ring-1 focus:ring-portfolio-gold/50 transition-all cursor-pointer [&>option]:bg-[#181512] [&>option]:text-white"
+                        className="w-full appearance-none bg-[#201d19] border border-white/10 focus:border-portfolio-gold rounded-xl sm:rounded-2xl pl-4 pr-12 sm:pl-6 sm:pr-14 py-3 sm:py-4 text-white text-base focus:outline-none focus:ring-1 focus:ring-portfolio-gold/50 transition-all cursor-pointer [&>option]:bg-[#181512] [&>option]:text-white"
                       >
                         <option value="">Select a service (Optional)</option>
                         {serviceOptions.map((opt) => (
@@ -303,7 +303,7 @@ const ContactPage = () => {
                     </div>
                   </div>
                   <div className="space-y-1.5 sm:space-y-2">
-                    <label htmlFor="contact-message" className="text-[11px] font-mono uppercase tracking-[0.18em] font-semibold text-portfolio-gold block ml-0.5">MESSAGE *</label>
+                    <label htmlFor="contact-message" className="text-sm uppercase tracking-wide font-semibold text-portfolio-gold block ml-0.5">MESSAGE *</label>
                     <textarea
                       id="contact-message"
                       name="message"
@@ -312,7 +312,7 @@ const ContactPage = () => {
                       maxLength={5000}
                       placeholder="How can we help you?"
                       rows={4}
-                      className="w-full bg-[#201d19] border border-white/10 focus:border-portfolio-gold rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-white text-sm sm:text-base focus:outline-none focus:ring-1 focus:ring-portfolio-gold/50 transition-all placeholder:text-[#a89f91]/60 resize-none cursor-target shadow-inner"
+                      className="w-full bg-[#201d19] border border-white/10 focus:border-portfolio-gold rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-white text-base focus:outline-none focus:ring-1 focus:ring-portfolio-gold/50 transition-all placeholder:text-[#a89f91]/60 resize-none cursor-target shadow-inner"
                     />
                   </div>
 
@@ -348,7 +348,7 @@ const ContactPage = () => {
                           in a minute, or open your email app (everything you typed is already filled in):
                           <a
                             href={fallbackUrl || 'mailto:hello@foremark.in'}
-                            className="mt-2 inline-flex items-center gap-2 rounded-full bg-[#ea7008] px-4 py-2 text-xs font-bold uppercase tracking-wider text-white hover:bg-[#ff7e15] transition-colors"
+                            className="mt-2 inline-flex items-center gap-2 rounded-full bg-[#ea7008] px-4 py-2 text-sm font-bold uppercase tracking-wider text-white hover:bg-[#ff7e15] transition-colors"
                           >
                             <Mail size={14} /> Open email instead
                           </a>
@@ -362,7 +362,7 @@ const ContactPage = () => {
                     whileTap={status === 'sending' ? undefined : { scale: 0.98 }}
                     type="submit"
                     disabled={status === 'sending' || status === 'sent'}
-                    className="w-full bg-[#ea7008] text-white font-bold py-3.5 sm:py-4 rounded-xl sm:rounded-2xl mt-4 sm:mt-6 hover:bg-[#ff7e15] transition-all text-sm sm:text-base cursor-target shadow-[0_4px_20px_rgba(234,112,8,0.28)] border border-[#ea7008] tracking-wider font-mono disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="w-full bg-[#ea7008] text-white font-bold py-3.5 sm:py-4 rounded-xl sm:rounded-2xl mt-4 sm:mt-6 hover:bg-[#ff7e15] transition-all text-sm sm:text-base cursor-target shadow-[0_4px_20px_rgba(234,112,8,0.28)] border border-[#ea7008] tracking-wider disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     {status === 'sending' && <Loader2 size={16} className="animate-spin" />}
                     {status === 'sending' ? 'SENDING…' : status === 'sent' ? 'MESSAGE SENT ✓' : 'SEND MESSAGE'}

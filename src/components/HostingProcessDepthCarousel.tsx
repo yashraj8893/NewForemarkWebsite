@@ -204,7 +204,7 @@ export const HostingProcessDepthCarousel: React.FC = () => {
                       <Sparkles size={11} className="text-[#ea7008]" />
                       {step.phaseBadge}
                     </span>
-                    <span className="text-white/60 font-mono text-xs font-bold px-2 py-0.5 rounded-full bg-white/10 backdrop-blur-md">
+                    <span className="text-white/60 text-xs font-bold px-2 py-0.5 rounded-full bg-white/10 backdrop-blur-md">
                       {step.step} / 05
                     </span>
                   </div>

@@ -97,7 +97,7 @@ export const AutomationApproachCarousel: React.FC = () => {
             </p>
           </div>
 
-          <div className="hidden sm:flex items-center gap-2 text-xs text-[#8a8077] font-mono bg-[#faf8f5] px-4 py-2 rounded-full border border-[#ebe5df] self-start md:self-auto">
+          <div className="hidden sm:flex items-center gap-2 text-xs text-[#8a8077] bg-[#faf8f5] px-4 py-2 rounded-full border border-[#ebe5df] self-start md:self-auto">
             <span className="w-2 h-2 rounded-full bg-[#ea7008] animate-pulse" />
             Drag or use arrows to navigate • Click card to center
           </div>
@@ -143,11 +143,11 @@ export const AutomationApproachCarousel: React.FC = () => {
                       <div className="w-10 h-10 rounded-xl bg-[#faf8f5] border border-[#ebe5df] flex items-center justify-center text-[#ea7008] shrink-0 shadow-2xs">
                         <Icon size={19} />
                       </div>
-                      <span className="text-[11px] font-bold font-mono tracking-wider uppercase text-[#ea7008] bg-[#ea7008]/10 px-2.5 py-1 rounded-md">
+                      <span className="text-[11px] font-bold tracking-wider uppercase text-[#ea7008] bg-[#ea7008]/10 px-2.5 py-1 rounded-md">
                         {item.category}
                       </span>
                     </div>
-                    <span className="text-xs font-mono font-bold text-[#8a8077] bg-[#faf8f5] px-2 py-0.5 rounded border border-[#ebe5df]">
+                    <span className="text-xs font-bold text-[#8a8077] bg-[#faf8f5] px-2 py-0.5 rounded border border-[#ebe5df]">
                       {item.phase} / 06
                     </span>
                   </div>

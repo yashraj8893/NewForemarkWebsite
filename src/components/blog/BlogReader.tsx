@@ -103,14 +103,14 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, isOpen, onClose })
               {/* Left: Back Button */}
               <button
                 onClick={onClose}
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#faf8f5] border border-[#e5e0da] text-[#121110] text-[11px] font-bold uppercase tracking-wider hover:bg-portfolio-gold hover:text-white transition-all shadow-xs group cursor-pointer font-mono"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#faf8f5] border border-[#e5e0da] text-[#121110] text-[11px] font-bold uppercase tracking-wider hover:bg-portfolio-gold hover:text-white transition-all shadow-xs group cursor-pointer"
               >
                 <ArrowLeft size={13} className="transition-transform group-hover:-translate-x-0.5" />
                 <span>Back</span>
               </button>
 
               {/* Center: Live Post Breadcrumb / Category */}
-              <div className="hidden sm:flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-[#5c544d] font-mono">
+              <div className="hidden sm:flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-[#5c544d]">
                 <span className="w-1.5 h-1.5 rounded-full bg-portfolio-gold" />
                 <span className="text-[#121110]">{post.category}</span>
                 <span className="text-[#6b635b]/30">•</span>
@@ -122,7 +122,7 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, isOpen, onClose })
                 <button
                   onClick={handleShare}
                   title="Copy link"
-                  className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#faf8f5] border border-[#e5e0da] text-[#5c544d] hover:text-[#121110] text-[11px] font-bold uppercase tracking-wider transition-all shadow-xs cursor-pointer font-mono"
+                  className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#faf8f5] border border-[#e5e0da] text-[#5c544d] hover:text-[#121110] text-[11px] font-bold uppercase tracking-wider transition-all shadow-xs cursor-pointer"
                 >
                   {copied ? (
                     <>
@@ -137,7 +137,7 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, isOpen, onClose })
                   )}
                 </button>
 
-                <span className="hidden md:inline-block text-[10px] uppercase font-mono tracking-widest text-[#5c544d] bg-[#faf8f5] px-2 py-1 rounded border border-[#e5e0da]">
+                <span className="hidden md:inline-block text-[10px] uppercase tracking-widest text-[#5c544d] bg-[#faf8f5] px-2 py-1 rounded border border-[#e5e0da]">
                   ESC
                 </span>
 
@@ -166,7 +166,7 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, isOpen, onClose })
 
                 {/* Floating category badge on banner */}
                 <div className="absolute bottom-4 left-6 sm:left-10 md:left-14 z-10">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-portfolio-gold bg-white/95 backdrop-blur-md border border-portfolio-gold/30 px-3.5 py-1 rounded-full shadow-md font-mono">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-portfolio-gold bg-white/95 backdrop-blur-md border border-portfolio-gold/30 px-3.5 py-1 rounded-full shadow-md">
                     {post.category}
                   </span>
                 </div>
@@ -190,11 +190,11 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, isOpen, onClose })
                     </div>
                     <div>
                       <div className="text-sm font-bold text-[#121110]">{post.author}</div>
-                      <div className="text-[11px] text-portfolio-gold uppercase tracking-wider font-semibold font-mono">Technical Dispatch</div>
+                      <div className="text-[11px] text-portfolio-gold uppercase tracking-wider font-semibold">Technical Dispatch</div>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4 text-xs text-[#5c544d] font-bold uppercase tracking-wider font-mono">
+                  <div className="flex items-center gap-4 text-xs text-[#5c544d] font-bold uppercase tracking-wider">
                     <span className="flex items-center gap-1.5">
                       <Calendar size={13} className="text-portfolio-gold" />
                       {post.date}
@@ -233,7 +233,7 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, isOpen, onClose })
                     </div>
 
                     <div className="relative z-10 text-center sm:text-left max-w-md">
-                      <span className="text-portfolio-gold font-bold mb-2 text-[10px] tracking-widest block uppercase font-mono">
+                      <span className="text-portfolio-gold font-bold mb-2 text-[10px] tracking-widest block uppercase">
                         Engineering Partner
                       </span>
                       <h4 className="text-lg sm:text-xl font-bold tracking-tight mb-2 text-[#121110]">
@@ -258,7 +258,7 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, isOpen, onClose })
                   <div className="flex items-center justify-between mt-8 pt-4">
                     <button
                       onClick={onClose}
-                      className="inline-flex items-center gap-2 text-[#5c544d] hover:text-portfolio-gold text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer font-mono"
+                      className="inline-flex items-center gap-2 text-[#5c544d] hover:text-portfolio-gold text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
                     >
                       <ArrowLeft size={13} /> Back to all dispatches
                     </button>
@@ -267,7 +267,7 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, isOpen, onClose })
                       onClick={() => {
                         contentRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
                       }}
-                      className="text-[11px] text-portfolio-gold hover:underline font-bold uppercase tracking-wider cursor-pointer font-mono"
+                      className="text-[11px] text-portfolio-gold hover:underline font-bold uppercase tracking-wider cursor-pointer"
                     >
                       Back to top ↑
                     </button>

@@ -373,7 +373,7 @@ export const WhatWeBuildDeliver3D = () => {
                     </div>
 
                     <span
-                      className={`text-xs font-mono font-bold px-2 py-0.5 rounded-full border transition-colors ${
+                      className={`text-xs font-bold px-2 py-0.5 rounded-full border transition-colors ${
                         isHovered
                           ? 'bg-[#ea7008] text-white border-[#ea7008]'
                           : 'bg-[#ea7008]/10 text-[#ea7008] border-[#ea7008]/25'
@@ -418,7 +418,7 @@ export const WhatWeBuildDeliver3D = () => {
               <button
                 key={item.id}
                 onClick={() => setActiveMobileIndex(idx)}
-                className={`px-3 py-1.5 rounded-full text-xs font-mono font-bold transition-all whitespace-nowrap cursor-pointer ${
+                className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
                   activeMobileIndex === idx
                     ? 'bg-[#ea7008] text-white shadow-sm'
                     : 'bg-white text-[#6b635b] border border-[#ebe5df] hover:border-[#ea7008]/40'
@@ -453,13 +453,13 @@ export const WhatWeBuildDeliver3D = () => {
                       <Icon size={24} strokeWidth={2.2} />
                     </div>
 
-                    <span className="text-sm font-mono font-bold px-3 py-1 rounded-full bg-[#ea7008]/10 text-[#ea7008] border border-[#ea7008]/25">
+                    <span className="text-sm font-bold px-3 py-1 rounded-full bg-[#ea7008]/10 text-[#ea7008] border border-[#ea7008]/25">
                       STEP {activeItem.number} OF 06
                     </span>
                   </div>
 
                   {/* Category & Title */}
-                  <span className="text-[11px] font-mono text-[#8a8077] uppercase tracking-wider block mb-1">
+                  <span className="text-[11px] text-[#8a8077] uppercase tracking-wider block mb-1">
                     {activeItem.category}
                   </span>
                   <h3 className="text-xl sm:text-2xl font-bold font-display text-[#121110] mb-3">
@@ -473,7 +473,7 @@ export const WhatWeBuildDeliver3D = () => {
 
                   {/* Bottom Navigation */}
                   <div className="flex items-center justify-between pt-4 border-t border-[#f2eee9]">
-                    <span className="text-xs font-mono text-[#8a8077]">
+                    <span className="text-xs text-[#8a8077]">
                       Pedestal Elevation: Level {activeItem.number}
                     </span>
 

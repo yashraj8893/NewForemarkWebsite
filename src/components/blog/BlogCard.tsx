@@ -30,11 +30,11 @@ export const LeadStoryCard: React.FC<BlogCardProps> = ({ post, onClick }) => {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-portfolio-gold opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-portfolio-gold"></span>
             </span>
-            <span className="text-[10px] font-bold uppercase tracking-widest text-portfolio-gold font-mono">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-portfolio-gold">
               01 · Cover Story
             </span>
           </div>
-          <span className="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-portfolio-gold font-mono">
+          <span className="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-portfolio-gold">
             {post.category}
           </span>
         </div>
@@ -61,7 +61,7 @@ export const LeadStoryCard: React.FC<BlogCardProps> = ({ post, onClick }) => {
 
       {/* Footer Meta & Action */}
       <div className="flex items-center justify-between gap-4 pt-6 border-t border-[#e5e0da] mt-auto">
-        <div className="flex items-center gap-4 text-xs text-[#6b635b] font-semibold uppercase tracking-wider font-mono">
+        <div className="flex items-center gap-4 text-xs text-[#6b635b] font-semibold uppercase tracking-wider">
           <span className="flex items-center gap-1.5 text-[#121110]">
             <User size={13} className="text-portfolio-gold" />
             {post.author}
@@ -90,14 +90,14 @@ export const FieldNoteCard: React.FC<FieldNoteCardProps> = ({ post, indexNumber,
     >
       <div className="flex items-start justify-between gap-4 mb-2">
         <div className="flex items-center gap-2.5">
-          <span className="text-xs font-mono font-bold text-portfolio-gold group-hover:brightness-125 transition-all">
+          <span className="text-xs font-bold text-portfolio-gold group-hover:brightness-125 transition-all">
             № {indexNumber}
           </span>
-          <span className="text-[10px] font-bold uppercase tracking-widest text-portfolio-gold/70 font-mono">
+          <span className="text-[10px] font-bold uppercase tracking-widest text-portfolio-gold/70">
             {post.category}
           </span>
         </div>
-        <div className="flex items-center gap-1 text-[11px] text-[#5c544d] font-medium font-mono">
+        <div className="flex items-center gap-1 text-[11px] text-[#5c544d] font-medium">
           <Clock size={12} className="text-portfolio-gold" />
           <span>{post.readTime}</span>
         </div>
@@ -112,10 +112,10 @@ export const FieldNoteCard: React.FC<FieldNoteCardProps> = ({ post, indexNumber,
       </p>
 
       <div className="flex items-center justify-between text-xs text-[#5c544d]">
-        <span className="font-semibold text-[#121110] text-[11px] uppercase tracking-wider font-mono">
+        <span className="font-semibold text-[#121110] text-[11px] uppercase tracking-wider">
           {post.author}
         </span>
-        <span className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-widest text-portfolio-gold hover:brightness-125 transition-all font-mono">
+        <span className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-widest text-portfolio-gold hover:brightness-125 transition-all">
           Read <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
         </span>
       </div>
@@ -137,7 +137,7 @@ export const WideEditorialCard: React.FC<BlogCardProps> = ({ post, onClick }) =>
           className="transition-transform duration-700 ease-out group-hover:scale-105"
         />
         <div className="absolute top-3 left-3">
-          <span className="text-[9px] font-bold uppercase tracking-widest bg-white/90 backdrop-blur-sm text-portfolio-gold border border-amber-500/20 px-2.5 py-1 rounded-full font-mono">
+          <span className="text-[9px] font-bold uppercase tracking-widest bg-white/90 backdrop-blur-sm text-portfolio-gold border border-amber-500/20 px-2.5 py-1 rounded-full">
             {post.category}
           </span>
         </div>
@@ -146,7 +146,7 @@ export const WideEditorialCard: React.FC<BlogCardProps> = ({ post, onClick }) =>
       {/* Text Details */}
       <div className="lg:col-span-7 flex flex-col justify-between">
         <div>
-          <div className="flex items-center gap-3 text-xs text-[#5c544d] font-bold uppercase tracking-widest mb-3 font-mono">
+          <div className="flex items-center gap-3 text-xs text-[#5c544d] font-bold uppercase tracking-widest mb-3">
             <span className="text-portfolio-gold">Editorial Spotlight</span>
             <span className="w-1 h-1 rounded-full bg-[#e5e0da]" />
             <span>{post.date}</span>
@@ -162,7 +162,7 @@ export const WideEditorialCard: React.FC<BlogCardProps> = ({ post, onClick }) =>
         </div>
 
         <div className="flex items-center justify-between pt-4 border-t border-[#e5e0da] mt-auto">
-          <div className="flex items-center gap-3 text-xs text-[#5c544d] font-semibold font-mono">
+          <div className="flex items-center gap-3 text-xs text-[#5c544d] font-semibold">
             <span className="flex items-center gap-1.5 text-[#121110] font-bold">
               <User size={12} className="text-portfolio-gold" />
               {post.author}
@@ -171,7 +171,7 @@ export const WideEditorialCard: React.FC<BlogCardProps> = ({ post, onClick }) =>
             <span>{post.readTime}</span>
           </div>
 
-          <span className="inline-flex items-center gap-1.5 text-portfolio-gold font-bold text-xs uppercase tracking-widest group-hover:brightness-125 transition-all font-mono">
+          <span className="inline-flex items-center gap-1.5 text-portfolio-gold font-bold text-xs uppercase tracking-widest group-hover:brightness-125 transition-all">
             Read Article <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </span>
         </div>
@@ -194,14 +194,14 @@ export const EditorialGridCard: React.FC<BlogCardProps> = ({ post, onClick }) =>
           className="transition-transform duration-700 ease-out group-hover:scale-105"
         />
         <div className="absolute top-3 left-3">
-          <span className="text-[9px] font-bold uppercase tracking-widest bg-white/90 backdrop-blur-sm text-portfolio-gold border border-amber-500/20 px-2.5 py-1 rounded-full font-mono">
+          <span className="text-[9px] font-bold uppercase tracking-widest bg-white/90 backdrop-blur-sm text-portfolio-gold border border-amber-500/20 px-2.5 py-1 rounded-full">
             {post.category}
           </span>
         </div>
       </div>
 
       {/* Meta Top */}
-      <div className="flex items-center gap-2.5 text-[10px] text-[#5c544d] font-bold uppercase tracking-widest mb-2.5 font-mono">
+      <div className="flex items-center gap-2.5 text-[10px] text-[#5c544d] font-bold uppercase tracking-widest mb-2.5">
         <span>{post.date}</span>
         <span className="w-1 h-1 rounded-full bg-[#e5e0da]" />
         <span>{post.readTime}</span>
@@ -219,11 +219,11 @@ export const EditorialGridCard: React.FC<BlogCardProps> = ({ post, onClick }) =>
 
       {/* Bottom Footer */}
       <div className="flex items-center justify-between pt-4 border-t border-[#e5e0da] text-xs mt-auto">
-        <span className="text-[#5c544d] font-semibold flex items-center gap-1.5 text-[11px] font-mono">
+        <span className="text-[#5c544d] font-semibold flex items-center gap-1.5 text-[11px]">
           <User size={12} className="text-portfolio-gold" />
           {post.author.split(' ')[0]}
         </span>
-        <span className="inline-flex items-center gap-1 font-bold text-xs uppercase tracking-widest text-portfolio-gold group-hover:brightness-125 transition-all font-mono">
+        <span className="inline-flex items-center gap-1 font-bold text-xs uppercase tracking-widest text-portfolio-gold group-hover:brightness-125 transition-all">
           Read More <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
         </span>
       </div>

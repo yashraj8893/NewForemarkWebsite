@@ -12,7 +12,7 @@ const JobDetail = () => {
         return (
             <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pt-12 sm:pt-16 pb-20 sm:pb-32 bg-white text-[#1a1816]">
                 <p className="text-[#5c544d]">Job not found.</p>
-                <Link to="/careers" className="text-portfolio-gold font-bold underline mt-4 inline-block cursor-target font-mono">
+                <Link to="/careers" className="text-portfolio-gold font-bold underline mt-4 inline-block cursor-target">
                     Back to Careers
                 </Link>
             </div>
@@ -35,7 +35,7 @@ const JobDetail = () => {
                 >
                     <Link
                         to="/careers"
-                        className="inline-flex items-center gap-2 text-[#5c544d] text-sm font-bold uppercase tracking-widest hover:text-portfolio-gold transition-colors cursor-target font-mono"
+                        className="inline-flex items-center gap-2 text-[#5c544d] text-sm font-bold uppercase tracking-widest hover:text-portfolio-gold transition-colors cursor-target"
                     >
                         <ArrowLeft size={14} /> Back to Careers
                     </Link>
@@ -56,17 +56,17 @@ const JobDetail = () => {
                                 {job.title}
                             </h1>
                             <div className="flex flex-wrap gap-3">
-                                <div className="flex items-center gap-1.5 text-portfolio-gold font-bold text-[10px] uppercase tracking-widest border border-amber-500/20 px-2.5 py-1 rounded-full bg-amber-500/5 font-mono">
+                                <div className="flex items-center gap-1.5 text-portfolio-gold font-bold text-xs tracking-wide border border-amber-500/20 px-2.5 py-1 rounded-full bg-amber-500/5">
                                     <MapPin size={10} /> {job.location}
                                 </div>
-                                <div className="flex items-center gap-1.5 text-[#5c544d] font-bold text-[10px] uppercase tracking-widest border border-[#e5e0da] px-2.5 py-1 rounded-full bg-[#faf8f5] font-mono">
+                                <div className="flex items-center gap-1.5 text-[#5c544d] font-bold text-xs tracking-wide border border-[#e5e0da] px-2.5 py-1 rounded-full bg-[#faf8f5]">
                                     <Clock size={10} /> {job.type}
                                 </div>
                             </div>
                         </div>
                         <a
                             href={job.applyLink} target="_blank" rel="noopener noreferrer"
-                            className="btn-primary inline-flex justify-center items-center gap-2 font-bold text-xs md:text-sm uppercase tracking-widest px-6 py-3 md:px-8 md:py-4 rounded-full cursor-target whitespace-nowrap w-fit mt-2 md:mt-0 font-mono"
+                            className="btn-primary inline-flex justify-center items-center gap-2 font-bold text-xs md:text-sm uppercase tracking-widest px-6 py-3 md:px-8 md:py-4 rounded-full cursor-target whitespace-nowrap w-fit mt-2 md:mt-0"
                         >
                             Apply Now <ArrowUpRight size={16} />
                         </a>
@@ -140,7 +140,7 @@ const JobDetail = () => {
                             </p>
                             <a
                                 href={job.applyLink} target="_blank" rel="noopener noreferrer"
-                                className="btn-primary inline-flex items-center gap-2 text-sm uppercase tracking-widest px-8 py-4 rounded-full cursor-target font-mono"
+                                className="btn-primary inline-flex items-center gap-2 text-sm uppercase tracking-widest px-8 py-4 rounded-full cursor-target"
                             >
                                 Apply Here <ArrowUpRight size={16} />
                             </a>

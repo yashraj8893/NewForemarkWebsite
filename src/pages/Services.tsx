@@ -328,7 +328,7 @@ const ServicesPage = () => {
             {/* ─── Our Services ─────────────────────────────────────── */}
             <section className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pb-28 sm:pb-36 relative z-10">
                 <div className="text-center mb-16 sm:mb-20">
-                    <span className="section-label text-portfolio-gold">Our services</span>
+                    <span className="section-label font-sans text-portfolio-gold">Our services</span>
                     <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-[#121110] max-w-3xl mx-auto mt-2 leading-[1.1]">
                         Everything you need to build and run modern software
                     </h2>
@@ -363,7 +363,7 @@ const ServicesPage = () => {
                                                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-portfolio-gold opacity-75"></span>
                                                     <span className="relative inline-flex rounded-full h-2 w-2 bg-portfolio-gold"></span>
                                                 </span>
-                                                <span className="text-[10px] font-bold uppercase tracking-widest text-portfolio-gold font-mono">
+                                                <span className="text-[10px] font-bold uppercase tracking-widest text-portfolio-gold">
                                                     {service.tag}
                                                 </span>
                                             </div>
@@ -868,7 +868,7 @@ const ServicesPage = () => {
             {/* ─── Our Process ──────────────────────────────────────── */}
             <section className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 py-24 sm:py-32 relative z-10">
                 <div className="text-center mb-20">
-                    <span className="section-label text-portfolio-gold">Our process</span>
+                    <span className="section-label font-sans text-portfolio-gold">Our process</span>
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#121110] max-w-2xl mx-auto mt-2 leading-[1.15]">
                         How an engagement with us works
                     </h2>
@@ -903,7 +903,7 @@ const ServicesPage = () => {
                                                     <step.icon size={18} className="text-portfolio-gold" />
                                                 </div>
                                                 <div>
-                                                    <span className="text-[10px] font-bold uppercase tracking-widest text-portfolio-gold font-mono">
+                                                    <span className="text-[10px] font-bold uppercase tracking-widest text-portfolio-gold">
                                                         Step 0{i + 1}
                                                     </span>
                                                     <h3 className="text-xl font-bold text-[#121110] mt-0.5">{step.title}</h3>
@@ -923,7 +923,7 @@ const ServicesPage = () => {
             </section>
 
             {/* ─── Frequently Asked Questions ────── */}
-            <FAQSection withOuterContainer className="py-20 sm:py-28" />
+            <FAQSection withOuterContainer useMainFont className="py-20 sm:py-28" />
 
             {/* ─── Final CTA ─────────────────────────────────────────── */}
             <section className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pb-24 sm:pb-32 relative z-10">

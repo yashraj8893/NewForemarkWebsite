@@ -186,7 +186,7 @@ const ProjectsPage = () => {
               </div>
               <div>
                 <p className="font-bold text-sm text-[#121110]">50+ happy clients!</p>
-                <Link to="/contact" className="text-[12px] text-portfolio-gold hover:brightness-125 font-bold flex items-center gap-1 transition-all cursor-target mt-0.5 font-mono">
+                <Link to="/contact" className="text-[12px] text-portfolio-gold hover:brightness-125 font-bold flex items-center gap-1 transition-all cursor-target mt-0.5">
                   Join them now <ArrowUpRight size={14} />
                 </Link>
               </div>

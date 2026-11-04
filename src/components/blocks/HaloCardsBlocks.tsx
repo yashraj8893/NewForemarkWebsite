@@ -168,7 +168,7 @@ const HaloCard = ({ item, i, reduced }: { item: BlockItem; i: number; reduced: b
           </div>
 
           <div className="relative z-10 flex items-baseline gap-2.5" style={{ transform: 'translateZ(24px)' }}>
-            <span className="shrink-0 bg-gradient-to-r from-[#ea7008] to-[#f59e0b] bg-clip-text font-mono text-sm font-semibold text-transparent">{item.index}</span>
+            <span className="shrink-0 bg-gradient-to-r from-[#ea7008] to-[#f59e0b] bg-clip-text text-sm font-semibold text-transparent">{item.index}</span>
             <h3 className="font-display text-lg font-bold leading-[1.2] tracking-tight text-[#121110] sm:text-xl">
               {item.title}
             </h3>

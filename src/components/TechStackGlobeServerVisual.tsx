@@ -385,7 +385,7 @@ export const TechStackGlobeServerVisual = () => {
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold transition-all duration-300 cursor-pointer ${
+                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 cursor-pointer ${
                   activeCategory === cat.id
                     ? 'bg-[#121110] text-white shadow-[0_4px_14px_rgba(18,17,16,0.18)] border border-[#121110]'
                     : 'bg-white text-[#5c544d] hover:text-[#121110] border border-[#ebe5df] hover:border-portfolio-gold/50 shadow-xs'
@@ -865,7 +865,7 @@ export const TechStackGlobeServerVisual = () => {
                     <span className="text-[11px] sm:text-xs font-bold text-[#121110] group-hover:text-portfolio-gold transition-colors leading-tight whitespace-nowrap">
                       {tech.name}
                     </span>
-                    <span className="text-[9px] font-mono text-[#6b635b] group-hover:text-[#121110] transition-colors uppercase tracking-wider leading-tight mt-0.5">
+                    <span className="text-[9px] text-[#6b635b] group-hover:text-[#121110] transition-colors uppercase tracking-wider leading-tight mt-0.5">
                       {tech.role}
                     </span>
                   </div>

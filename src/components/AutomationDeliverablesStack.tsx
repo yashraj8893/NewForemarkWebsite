@@ -213,7 +213,7 @@ export const AutomationDeliverablesStack: React.FC = () => {
                       {/* Content */}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1">
-                          <span className="text-[10px] sm:text-[11px] font-mono font-bold tracking-wider text-portfolio-gold uppercase">
+                          <span className="text-[10px] sm:text-[11px] font-bold tracking-wider text-portfolio-gold uppercase">
                             LAYER {tier.number} // {tier.category}
                           </span>
                         </div>
@@ -231,7 +231,7 @@ export const AutomationDeliverablesStack: React.FC = () => {
                           {tier.bullets.map((bullet, idx) => (
                             <span
                               key={idx}
-                              className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[11px] font-mono transition-colors duration-200 ${
+                              className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[11px] transition-colors duration-200 ${
                                 isActive
                                   ? 'bg-[#faf8f5] border border-portfolio-gold/30 text-[#121110]'
                                   : 'bg-[#faf8f5] border border-[#ebe5df] text-[#5c544d]'
@@ -576,7 +576,7 @@ export const AutomationDeliverablesStack: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-2 self-end md:self-auto text-[11px] font-mono font-bold text-portfolio-gold uppercase">
+          <div className="flex items-center gap-2 self-end md:self-auto text-[11px] font-bold text-portfolio-gold uppercase">
             <span>EXPLORE INTEGRATION SPECS</span>
             <ArrowRight size={14} />
           </div>

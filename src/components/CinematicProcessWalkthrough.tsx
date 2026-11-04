@@ -771,7 +771,7 @@ export const CinematicProcessWalkthrough = () => {
                 <div>
                   {/* Header Pill: [● PHASE 0X OF 05] (Weeks removed as requested) */}
                   <div className="flex items-center gap-3 mb-5 sm:mb-6">
-                    <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#ea7008]/10 border border-[#ea7008]/25 text-[#ea7008] text-xs font-mono font-bold tracking-wide">
+                    <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#ea7008]/10 border border-[#ea7008]/25 text-[#ea7008] text-xs font-bold tracking-wide">
                       <span className="w-2 h-2 rounded-full bg-[#ea7008]" />
                       {activeStep.phaseBadge}
                     </div>
@@ -790,7 +790,7 @@ export const CinematicProcessWalkthrough = () => {
 
                   {/* Key Phase Deliverables Section */}
                   <div className="mb-8">
-                    <span className="text-[11px] font-mono font-bold uppercase tracking-[0.16em] text-[#8a8077] block mb-3.5">
+                    <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#8a8077] block mb-3.5">
                       KEY PHASE DELIVERABLES
                     </span>
 
@@ -839,7 +839,7 @@ export const CinematicProcessWalkthrough = () => {
                   {/* Auto-advance pause/play indicator */}
                   <button
                     onClick={() => setIsPlaying(!isPlaying)}
-                    className="flex items-center gap-1.5 text-[11px] font-mono text-[#8a8077] hover:text-[#121110] px-3 py-1.5 rounded-full border border-[#ebe5df] hover:border-[#ea7008]/40 transition-colors cursor-pointer bg-white"
+                    className="flex items-center gap-1.5 text-[11px] text-[#8a8077] hover:text-[#121110] px-3 py-1.5 rounded-full border border-[#ebe5df] hover:border-[#ea7008]/40 transition-colors cursor-pointer bg-white"
                     title={isPlaying ? "Pause auto-advance" : "Resume auto-advance"}
                   >
                     {isPlaying ? (
@@ -865,12 +865,12 @@ export const CinematicProcessWalkthrough = () => {
                   <div className="flex items-center justify-between pb-4 border-b border-[#f2eee9]">
                     <div className="flex items-center gap-2">
                       <div className="w-1 h-4 bg-[#ea7008] rounded-full" />
-                      <span className="font-bold text-[#121110] text-xs font-mono tracking-wider">
+                      <span className="font-bold text-[#121110] text-xs tracking-wider">
                         {activeStep.cockpit.title}
                       </span>
                     </div>
                     {/* Orange status pill (all green converted to Foremark orange) */}
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ea7008]/10 border border-[#ea7008]/20 text-[#ea7008] text-[10px] font-mono font-bold tracking-wider">
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ea7008]/10 border border-[#ea7008]/20 text-[#ea7008] text-[10px] font-bold tracking-wider">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#ea7008]" />
                       {activeStep.cockpit.statusBadge}
                     </div>
@@ -888,7 +888,7 @@ export const CinematicProcessWalkthrough = () => {
                   {/* 2 Metric Boxes Side-by-Side */}
                   <div className="grid grid-cols-2 gap-2.5 sm:gap-3 mt-3">
                     <div className="p-3 sm:p-3.5 rounded-xl bg-white border border-[#ebe5df]">
-                      <span className="text-[9px] sm:text-[10px] font-mono text-[#8a8077] font-semibold tracking-wider block mb-1">
+                      <span className="text-[9px] sm:text-[10px] text-[#8a8077] font-semibold tracking-wider block mb-1">
                         {activeStep.cockpit.metric1.label}
                       </span>
                       <span className="text-xs sm:text-sm font-bold text-[#121110] block">
@@ -896,7 +896,7 @@ export const CinematicProcessWalkthrough = () => {
                       </span>
                     </div>
                     <div className="p-3 sm:p-3.5 rounded-xl bg-white border border-[#ebe5df]">
-                      <span className="text-[9px] sm:text-[10px] font-mono text-[#8a8077] font-semibold tracking-wider block mb-1">
+                      <span className="text-[9px] sm:text-[10px] text-[#8a8077] font-semibold tracking-wider block mb-1">
                         {activeStep.cockpit.metric2.label}
                       </span>
                       <span className="text-xs sm:text-sm font-bold text-[#ea7008] block">
@@ -916,7 +916,7 @@ export const CinematicProcessWalkthrough = () => {
                   </div>
 
                   {/* Bottom Footer Line (Left Note + Orange Right Status) */}
-                  <div className="flex items-center justify-between pt-3 mt-3 border-t border-[#f2eee9] text-[11px] font-mono">
+                  <div className="flex items-center justify-between pt-3 mt-3 border-t border-[#f2eee9] text-[11px]">
                     <span className="text-[#8a8077]">
                       {activeStep.cockpit.footerLeft}
                     </span>

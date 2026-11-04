@@ -12,7 +12,7 @@
 .wa-row:hover, .wa-row:focus-visible { transform:translateX(4px); background:#fffaf5; border-color:rgba(234,112,8,.5); }
 .wa-row.is-active { border-color:rgba(234,112,8,.65); box-shadow:0 8px 22px -16px rgba(234,112,8,.65); }
 .wa-row-icon { flex:none; color:#ea7008; }
-.wa-number,.wa-label,.wa-progress { font-family:ui-monospace,monospace; font-size:11px; letter-spacing:.12em; color:#8a8178; }
+.wa-number,.wa-label,.wa-progress { font-family:var(--font-sans); font-size:11px; letter-spacing:.12em; color:#8a8178; }
 .wa-row.is-active .wa-number { color:#ea7008; }
 .wa-row-title { flex:1; color:#5c544d; font-size:15px; line-height:1.3; font-weight:700; }
 .wa-row.is-active .wa-row-title { color:#121110; }

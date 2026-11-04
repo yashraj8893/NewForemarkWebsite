@@ -481,7 +481,7 @@ export const HostingDeliverablesRoadmap = () => {
                 <button
                   key={`mobile-btn-${step.id}`}
                   onClick={() => setActiveMobileIdx(idx)}
-                  className={`flex items-center gap-2 px-3.5 py-2 rounded-xl border text-xs font-mono font-semibold transition-all duration-300 shrink-0 ${
+                  className={`flex items-center gap-2 px-3.5 py-2 rounded-xl border text-xs font-semibold transition-all duration-300 shrink-0 ${
                     isActive
                       ? 'bg-[#121110] text-white border-[#ea7008] shadow-[0_4px_16px_rgba(234,112,8,0.25)]'
                       : 'bg-white text-[#5c544d] border-[#ebe5df] hover:border-[#ea7008]/40'
@@ -522,17 +522,17 @@ export const HostingDeliverablesRoadmap = () => {
                           <IconComp size={20} />
                         </div>
                         <div className="flex flex-col">
-                          <span className="text-[10px] font-mono uppercase tracking-widest text-[#ea7008] font-bold">
+                          <span className="text-[10px] uppercase tracking-widest text-[#ea7008] font-bold">
                             PHASE 0{step.stepNumber}
                           </span>
-                          <span className="text-xs text-[#8a8077] font-mono">
+                          <span className="text-xs text-[#8a8077]">
                             {step.shortDesc}
                           </span>
                         </div>
                       </div>
 
                       {step.isCurrent && (
-                        <span className="text-[10px] font-mono font-bold uppercase text-white bg-[#ea7008] px-2.5 py-0.5 rounded-full shadow-xs">
+                        <span className="text-[10px] font-bold uppercase text-white bg-[#ea7008] px-2.5 py-0.5 rounded-full shadow-xs">
                           We are here
                         </span>
                       )}

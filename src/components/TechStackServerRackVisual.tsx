@@ -393,7 +393,7 @@ export const TechStackServerRackVisual = () => {
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`px-3 py-1 rounded-full text-[11px] font-mono font-semibold transition-all duration-300 cursor-pointer ${
+                className={`px-3 py-1 rounded-full text-[11px] font-semibold transition-all duration-300 cursor-pointer ${
                   activeCategory === cat.id
                     ? 'bg-[#121110] text-white shadow-[0_4px_14px_rgba(18,17,16,0.18)] border border-[#121110]'
                     : 'bg-white text-[#5c544d] hover:text-[#121110] border border-[#ebe5df] hover:border-portfolio-gold/50 shadow-xs'
@@ -618,7 +618,7 @@ export const TechStackServerRackVisual = () => {
                         {tech.name}
                       </span>
                       <span
-                        className={`text-[9px] sm:text-[9.5px] font-mono leading-none transition-colors duration-300 ${
+                        className={`text-[9px] sm:text-[9.5px] leading-none transition-colors duration-300 ${
                           isMatch ? 'text-portfolio-gold' : 'text-[#7d746a] group-hover:text-portfolio-gold'
                         }`}
                       >

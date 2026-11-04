@@ -136,11 +136,11 @@ const BlogPage = () => {
                                     <div className="flex items-center justify-between pb-4 mb-2 border-b border-[#e5e0da]">
                                         <div className="flex items-center gap-2">
                                             <Sparkles size={14} className="text-portfolio-gold" />
-                                            <h2 className="text-xs font-bold uppercase tracking-widest text-[#121110] font-mono">
+                                            <h2 className="text-xs font-bold uppercase tracking-widest text-[#121110]">
                                                 Curated Field Notes
                                             </h2>
                                         </div>
-                                        <span className="text-[10px] font-bold uppercase tracking-wider text-portfolio-gold font-mono">
+                                        <span className="text-[10px] font-bold uppercase tracking-wider text-portfolio-gold">
                                             Editor's Selection
                                         </span>
                                     </div>
@@ -164,7 +164,7 @@ const BlogPage = () => {
                                     </span>
                                     <a
                                         href="#dispatches-archive"
-                                        className="inline-flex items-center gap-1 font-bold text-portfolio-gold hover:brightness-125 transition-all cursor-target font-mono"
+                                        className="inline-flex items-center gap-1 font-bold text-portfolio-gold hover:brightness-125 transition-all cursor-target"
                                     >
                                         Jump to archive <ArrowRight size={12} />
                                     </a>
@@ -187,7 +187,7 @@ const BlogPage = () => {
                                             key={category}
                                             onClick={() => setActiveCategory(category)}
                                             className={cn(
-                                                "inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all duration-200 cursor-target shrink-0 font-mono",
+                                                "inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all duration-200 cursor-target shrink-0",
                                                 isSelected
                                                     ? "bg-portfolio-gold text-white shadow-[0_4px_15px_rgba(234,112,8,0.25)]"
                                                     : "text-[#5c544d] hover:text-[#121110] hover:bg-[#faf8f5] border border-transparent"
@@ -195,7 +195,7 @@ const BlogPage = () => {
                                         >
                                             <span>{category}</span>
                                             <span className={cn(
-                                                "text-[10px] px-1.5 py-0.5 rounded-full font-mono",
+                                                "text-[10px] px-1.5 py-0.5 rounded-full",
                                                 isSelected
                                                     ? "bg-white/20 text-white"
                                                     : "bg-[#faf8f5] text-[#5c544d]"
