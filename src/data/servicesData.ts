@@ -97,43 +97,43 @@ export const servicesData: Record<string, ServiceData> = {
         animation: WebAndSoftwareAnimation,
         howWeDoItTitle: 'The Foremark Standard: How We Build Websites & Software',
         howWeDoItSubtitle:
-            'We combine Swiss-style typographic precision with modern full-stack architecture, clean domain boundaries, and end-to-end type safety.',
+            'Thoughtful design and dependable engineering, built around your goals.',
         philosophy: [
             {
                 icon: Layout,
-                title: 'Component-Driven Design Systems',
+                title: 'Consistent, flexible design',
                 description:
-                    'Bespoke design tokens and modular React components guaranteeing visual cohesion, fluid responsive scaling, and effortless maintainability.',
+                    'Reusable components keep your experience consistent and easy to evolve.',
             },
             {
                 icon: Zap,
-                title: 'Sub-Second Performance SLA',
+                title: 'Built for speed',
                 description:
-                    'Edge delivery, server-side caching, and modern bundling achieving 98+ Google Lighthouse scores and instant responsiveness.',
+                    'We optimize loading and responsiveness for a smooth experience.',
             },
             {
                 icon: Database,
-                title: 'Domain-Driven Full-Stack Architecture',
+                title: 'A strong technical foundation',
                 description:
-                    'Decoupled frontends, typed API contracts, and scalable databases ensuring each layer scales independently without cascading failures.',
+                    'Clear architecture keeps your platform reliable as it grows.',
             },
             {
                 icon: ShieldCheck,
-                title: 'Zero-Trust Security & Type Safety',
+                title: 'Security by design',
                 description:
-                    'End-to-end TypeScript typing, encrypted sessions, and granular role-based access controls to safeguard your proprietary data.',
+                    'We build in safeguards for your data, users, and access.',
             },
             {
                 icon: Search,
-                title: 'Technical SEO & Search Dominance',
+                title: 'Ready for search',
                 description:
-                    'Semantic HTML5, automated OpenGraph metadata, and structured JSON-LD schema so search engines rank your platform effortlessly.',
+                    'A search-friendly foundation helps people discover your site.',
             },
             {
                 icon: Layers,
-                title: 'Headless CMS & Cloud Scale',
+                title: 'Easy to manage and grow',
                 description:
-                    'Client-friendly headless CMS setups (Sanity, Strapi) empowering marketing teams to publish updates freely without developer help.',
+                    'Your team can update content without relying on a developer.',
             },
         ],
         deliverables: [

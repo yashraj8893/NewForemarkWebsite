@@ -44,6 +44,30 @@ export function WebsiteApproach({ service }: { service: ServiceData }) {
                 <div className="wa-eyebrow"><span />Our Approach</div>
                 <h2 id="website-approach-title" className="wa-heading">The Foremark<br />Standard<span>.</span></h2>
                 <p className="wa-subtitle">{service.howWeDoItSubtitle}</p>
+                <div className="wa-mobile-approach" aria-label="Explore our approach">
+                    {items.map((item, i) => {
+                        const ItemIcon = item.icon;
+                        const open = selected === i;
+                        return (
+                            <div className={`wa-mobile-item ${open ? 'is-open' : ''}`} key={item.title}>
+                                <button
+                                    type="button"
+                                    className="wa-mobile-trigger"
+                                    onClick={() => select(i)}
+                                    aria-expanded={open}
+                                    aria-controls={`wa-mobile-panel-${i}`}
+                                >
+                                    <span className="wa-mobile-icon"><ItemIcon size={19} aria-hidden="true" /></span>
+                                    <span className="wa-mobile-title">{item.title}</span>
+                                    <span className="wa-mobile-toggle" aria-hidden="true">{open ? '−' : '+'}</span>
+                                </button>
+                                <div id={`wa-mobile-panel-${i}`} className="wa-mobile-panel" hidden={!open}>
+                                    <p>{item.description}</p>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
                 <div className="wa-layout">
                     <div className="wa-list" aria-label="Explore our approach">
                         {items.map((item, i) => {

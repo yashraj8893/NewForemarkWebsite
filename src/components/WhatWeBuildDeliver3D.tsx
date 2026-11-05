@@ -162,12 +162,12 @@ export const WhatWeBuildDeliver3D = () => {
         </div>
 
         {/* ─── DESKTOP PANORAMA: 3D ISOMETRIC STAIRCASE STAGE (>= 1024px) ─── */}
-        <div className="hidden lg:block relative w-full h-[680px] overflow-visible">
+        <div className="hidden lg:block relative w-full h-[920px] overflow-visible">
 
           {/* SVG Canvas for the 6 Isometric Cubes & Dotted Guidelines */}
           <svg
             viewBox="0 0 1180 660"
-            className="absolute inset-0 w-full h-full overflow-visible z-10 pointer-events-none"
+            className="absolute left-0 top-[130px] w-full h-[660px] overflow-visible z-10 pointer-events-none"
             preserveAspectRatio="xMidYMid meet"
           >
             <defs>
@@ -219,8 +219,8 @@ export const WhatWeBuildDeliver3D = () => {
               // Connection line coordinates
               // If position === 'top': line runs from top Callout (y ~ 190) down to top center dot (cx, topY)
               // If position === 'bottom': line runs from bottom center of cube (cx, cyBase + RADIUS_Y) or top face down to bottom Callout (y ~ 440)
-              const lineStartY = item.position === 'top' ? 200 : topY + RADIUS_Y;
-              const lineEndY = item.position === 'top' ? topY - RADIUS_Y : 445;
+              const lineStartY = item.position === 'top' ? 0 : topY + RADIUS_Y;
+              const lineEndY = item.position === 'top' ? topY - RADIUS_Y : 660;
 
               return (
                 <g key={item.id} className="transition-all duration-300">
@@ -345,16 +345,16 @@ export const WhatWeBuildDeliver3D = () => {
                 onMouseLeave={() => setHoveredId(null)}
                 style={{
                   left: leftOffset,
-                  top: isTop ? '32px' : '450px',
+                  top: isTop ? '32px' : '680px',
                   transform: 'translateX(-50%)',
                 }}
-                className={`absolute w-[194px] z-20 cursor-pointer transition-all duration-300 ${
+                className={`absolute w-[240px] z-20 cursor-pointer transition-all duration-300 ${
                   isHovered ? '-translate-y-2' : ''
                 }`}
               >
                 {/* Callout Card */}
                 <div
-                  className={`p-3.5 rounded-2xl border transition-all duration-300 text-left ${
+                  className={`p-4 rounded-2xl border transition-all duration-300 text-left ${
                     isHovered
                       ? 'bg-white border-[#ea7008] shadow-[0_10px_30px_rgba(234,112,8,0.18)] scale-[1.03]'
                       : 'bg-white/95 border-[#ebe5df] shadow-[0_4px_16px_rgba(0,0,0,0.04)] hover:border-[#ea7008]/50'
@@ -384,12 +384,12 @@ export const WhatWeBuildDeliver3D = () => {
                   </div>
 
                   {/* Title */}
-                  <h4 className="text-[12.5px] font-bold text-[#121110] leading-snug tracking-tight mb-1 font-display">
+                  <h4 className="text-[15px] font-bold text-[#121110] leading-snug tracking-tight mb-1 font-display">
                     {item.title}
                   </h4>
 
                   {/* Description */}
-                  <p className="text-[11px] text-[#6b635b] leading-relaxed font-sans">
+                  <p className="text-[13px] text-[#6b635b] leading-relaxed font-sans">
                     {item.description}
                   </p>
                 </div>
@@ -413,11 +413,12 @@ export const WhatWeBuildDeliver3D = () => {
         <div className="lg:hidden flex flex-col gap-6">
           
           {/* Mobile Phase Pill Carousel Tabs */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none justify-start sm:justify-center">
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none justify-start">
             {deliverablesData.map((item, idx) => (
               <button
                 key={item.id}
                 onClick={() => setActiveMobileIndex(idx)}
+                aria-pressed={activeMobileIndex === idx}
                 className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
                   activeMobileIndex === idx
                     ? 'bg-[#ea7008] text-white shadow-sm'
@@ -467,7 +468,7 @@ export const WhatWeBuildDeliver3D = () => {
                   </h3>
 
                   {/* Description */}
-                  <p className="text-[#5c544d] text-sm leading-relaxed mb-6">
+                  <p className="text-[#5c544d] text-base leading-relaxed mb-6">
                     {activeItem.description}
                   </p>
 
@@ -498,6 +499,7 @@ export const WhatWeBuildDeliver3D = () => {
               <button
                 key={idx}
                 onClick={() => setActiveMobileIndex(idx)}
+                aria-pressed={activeMobileIndex === idx}
                 className={`h-1.5 rounded-full transition-all cursor-pointer ${
                   activeMobileIndex === idx ? 'w-6 bg-[#ea7008]' : 'w-2 bg-[#ebe5df]'
                 }`}

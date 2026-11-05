@@ -331,6 +331,7 @@ const techItems: TechItem[] = [
 ];
 
 export const TechStackLaptopVisual = () => {
+  const [showAllMobile, setShowAllMobile] = useState(false);
   const [activeCategory, setActiveCategory] = useState<'all' | 'frontend' | 'backend' | 'database' | 'devops'>('all');
 
   const categories = [
@@ -363,7 +364,8 @@ export const TechStackLaptopVisual = () => {
             {categories.map((cat) => (
               <button
                 key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
+                onClick={() => { setActiveCategory(cat.id); setShowAllMobile(false); }}
+                aria-pressed={activeCategory === cat.id}
                 className={`px-3 py-1 rounded-full text-[11px] font-semibold transition-all duration-300 cursor-pointer ${
                   activeCategory === cat.id
                     ? 'bg-[#121110] text-white shadow-[0_4px_14px_rgba(18,17,16,0.18)] border border-[#121110]'
@@ -376,8 +378,23 @@ export const TechStackLaptopVisual = () => {
           </div>
         </div>
 
+        {/* On phones, show a lightweight, readable list instead of animated overlapping badges. */}
+        <div className="md:hidden w-full max-w-[520px] mt-3 text-left">
+          <div className="grid grid-cols-2 gap-2" aria-live="polite">
+            {techItems.filter(tech => activeCategory === 'all' || tech.category === activeCategory)
+              .slice(0, showAllMobile || activeCategory !== 'all' ? undefined : 6).map((tech, index) => {
+                const Icon = tech.icon;
+                return <div key={`${activeCategory}-${tech.id}`} className="mobile-tech-card min-w-0 flex items-center gap-2.5 rounded-xl border border-[#e8ddd2] bg-white p-2.5" style={{ '--entry-delay': `${Math.min(index, 5) * 35}ms`, '--float-delay': `${index * -0.45}s` } as React.CSSProperties}>
+                  <span className={`w-9 h-9 shrink-0 rounded-lg bg-[#121110] p-1.5 ${index < 6 ? 'mobile-tech-icon' : ''}`}><Icon className="w-full h-full" /></span>
+                  <span className="min-w-0"><span className="block text-[12px] font-bold leading-snug text-[#121110]">{tech.name}</span><span className="block text-[10px] leading-snug text-[#6b635b]">{tech.role}</span></span>
+                </div>;
+              })}
+          </div>
+          {activeCategory === 'all' && <button type="button" onClick={() => setShowAllMobile(!showAllMobile)} aria-expanded={showAllMobile} className="mt-3 w-full rounded-xl border border-[#e8ddd2] py-3 text-sm font-semibold text-[#121110]">{showAllMobile ? 'Show fewer technologies' : 'Show all 16 technologies'}</button>}
+        </div>
+
         {/* ─── VISUAL STAGE (Laptop + Moving Background + Floating Badges) ─── */}
-        <div className="relative w-full max-w-[940px] h-[400px] sm:h-[450px] md:h-[490px] flex items-center justify-center select-none overflow-hidden my-1">
+        <div className="relative w-full max-w-[940px] h-[400px] sm:h-[450px] md:h-[490px] hidden md:flex items-center justify-center select-none overflow-hidden my-1">
           
           {/* 1. Ambient Background Core & Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[480px] h-[220px] sm:h-[320px] bg-portfolio-gold/[0.08] blur-[100px] rounded-full pointer-events-none" />
