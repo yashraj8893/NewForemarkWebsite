@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import CircularCarousel from './CircularCarousel';
-import type { CircularCarouselItem } from './CircularCarousel';
-import { Search, Zap, Bot, Lock, RefreshCw, MessageSquare } from 'lucide-react';
+import { useState } from 'react';
+import { Bot, Lock, MessageSquare, RefreshCw, Search, Zap } from 'lucide-react';
+import './AutomationSections.css';
 
-export interface AutomationApproachItem extends CircularCarouselItem {
+interface AutomationApproachItem {
   id: string;
   phase: string;
   category: string;
@@ -76,111 +75,61 @@ const automationApproachItems: AutomationApproachItem[] = [
   }
 ];
 
-export const AutomationApproachCarousel: React.FC = () => {
-  const [, setActiveIdx] = useState<number>(0);
 
+
+const shapes = [
+  { name: 'hex', radius: '0%', path: 'polygon(25% 2%,75% 2%,87.5% 26%,100% 50%,75% 98%,25% 98%,12.5% 74%,0% 50%)' },
+  { name: 'oct', radius: '0%', path: 'polygon(29% 1%,71% 1%,99% 29%,99% 71%,71% 99%,29% 99%,1% 71%,1% 29%)' },
+  { name: 'round', radius: '50%', path: 'polygon(0% 0%,50% 0%,100% 0%,100% 50%,100% 100%,50% 100%,0% 100%,0% 50%)' },
+  { name: 'pent', radius: '0%', path: 'polygon(50% 1%,73.5% 18%,97% 35%,90% 66%,82% 97%,18% 97%,10% 66%,3% 35%)' },
+  { name: 'bevel', radius: '0%', path: 'polygon(7% 1%,93% 1%,99% 9%,99% 91%,93% 99%,7% 99%,1% 91%,1% 9%)' },
+  { name: 'diamond', radius: '0%', path: 'polygon(50% 1%,74.5% 25.5%,99% 50%,74.5% 74.5%,50% 99%,25.5% 74.5%,1% 50%,25.5% 25.5%)' },
+];
+
+export const AutomationApproachCarousel = () => {
+  const [selected, setSelected] = useState(0);
+  const item = automationApproachItems[selected];
+  const Icon = item.icon;
+  const next = (selected + 1) % automationApproachItems.length;
+  const shape = shapes[selected];
+  const shapeStyle = { '--shape': shape.path, '--shape-radius': shape.radius } as React.CSSProperties;
   return (
-    <section className="py-20 sm:py-28 relative overflow-hidden bg-white border-t border-[#ebe5df]">
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
-        
-        {/* ─── Header ────────────────────────────────────────── */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-          <div className="max-w-2xl">
-            <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3">
-              Our Approach
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#121110] tracking-tight leading-tight mb-4">
-              The Foremark Standard: How We Automate Workflows
-            </h2>
-            <p className="text-[#5c544d] text-base leading-relaxed">
-              We eliminate operational friction by building intelligent, fail-safe event pipelines that automate repetitive tasks and guarantee data accuracy.
-            </p>
-          </div>
-
-          <div className="hidden sm:flex items-center gap-2 text-xs text-[#8a8077] bg-[#faf8f5] px-4 py-2 rounded-full border border-[#ebe5df] self-start md:self-auto">
-            <span className="w-2 h-2 rounded-full bg-[#ea7008] animate-pulse" />
-            Drag or use arrows to navigate • Click card to center
-          </div>
-        </div>
-
-        {/* ─── 3D Circular Information Carousel (No Images, Option B Light Cards) ─── */}
-        <div 
-          data-lenis-prevent
-          className="relative w-full overflow-hidden select-none" 
-          style={{ height: '560px' }}
-        >
-          <CircularCarousel<AutomationApproachItem>
-            items={automationApproachItems}
-            preset="cylinder"
-            intro="rise"
-            cardWidth={330}
-            aspectRatio={0.78}
-            speed={10}
-            gap={32}
-            fadeColor="#ffffff"
-            depthFade={0.55}
-            captions={false}
-            showArrows={true}
-            showDots={true}
-            focusOnClick={true}
-            pauseOnHover={true}
-            onChange={(index) => {
-              setActiveIdx(index);
-            }}
-            renderCard={(item, _index, isActive) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  className={`w-full h-full p-6 sm:p-7 rounded-[22px] bg-white border flex flex-col justify-between transition-all duration-300 relative select-none cursor-pointer ${
-                    isActive
-                      ? 'border-[#ea7008] shadow-[0_16px_36px_-12px_rgba(234,112,8,0.18),0_4px_12px_-2px_rgba(18,17,16,0.06)] ring-1 ring-[#ea7008]/30'
-                      : 'border-[#ebe5df] hover:border-[#ea7008]/40 shadow-[0_10px_28px_-12px_rgba(18,17,16,0.06),0_2px_8px_-2px_rgba(18,17,16,0.03)]'
-                  }`}
-                >
-                  {/* Top Bar: Icon + Category Badge + Step Number */}
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-2.5">
-                      <div className="w-10 h-10 rounded-xl bg-[#faf8f5] border border-[#ebe5df] flex items-center justify-center text-[#ea7008] shrink-0 shadow-2xs">
-                        <Icon size={19} />
-                      </div>
-                      <span className="text-[11px] font-bold tracking-wider uppercase text-[#ea7008] bg-[#ea7008]/10 px-2.5 py-1 rounded-md">
-                        {item.category}
-                      </span>
-                    </div>
-                    <span className="text-xs font-bold text-[#8a8077] bg-[#faf8f5] px-2 py-0.5 rounded border border-[#ebe5df]">
-                      {item.phase} / 06
-                    </span>
-                  </div>
-
-                  {/* Body Content */}
-                  <div className="my-auto py-3">
-                    <h3 className="text-lg sm:text-[19px] font-bold text-[#121110] tracking-tight leading-snug mb-3">
-                      {item.title}
-                    </h3>
-                    <p className="text-xs sm:text-[13.5px] text-[#5c544d] leading-relaxed line-clamp-4">
-                      {item.description}
-                    </p>
-                  </div>
-
-                  {/* Bottom Tags */}
-                  <div className="pt-3 border-t border-[#ebe5df]/70 flex flex-wrap gap-1.5">
-                    {item.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2.5 py-1 rounded-md bg-[#faf8f5] text-[#3d3832] text-[11px] font-medium border border-[#ebe5df]"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+    <div className="automation-design">
+      <section className="section approach" aria-labelledby="auto-approach-title">
+        <div className="section-inner">
+          <div className="eyebrow">Our Approach</div>
+          <h2 id="auto-approach-title">The Foremark Standard:<br />How We Automate Workflows<em>.</em></h2>
+          <p className="intro">We eliminate operational friction by building intelligent, fail-safe event pipelines that automate repetitive tasks and guarantee data accuracy.</p>
+          <div className="a-layout">
+            <div className="a-list" aria-label="Explore our approach">
+              {automationApproachItems.map((entry, i) => {
+                const RowIcon = entry.icon;
+                return <button type="button" key={entry.id} className={`a-row ${selected === i ? 'active' : ''}`} onPointerEnter={e => { if (e.pointerType === 'mouse') setSelected(i); }} onFocus={() => setSelected(i)} onClick={() => setSelected(i)} aria-pressed={selected === i} aria-label={`${entry.phase}: ${entry.title}`}>
+                  <span className="row-icon"><RowIcon size={19} /></span><span className="row-num" aria-hidden="true">{entry.phase}</span><span className="row-title">{entry.title}</span><span className="row-arrow" aria-hidden="true">→</span>
+                </button>;
+              })}
+            </div>
+            <div className="orbit-wrap">
+              <div className="orbit">
+                <svg className="rings" viewBox="0 0 500 500" aria-hidden="true">
+                  <circle className="ring" cx="250" cy="250" r="235" /><circle className="ring-two" cx="250" cy="250" r="222" /><circle className="flow" cx="250" cy="250" r="235" />
+                  {[[250,15],[454,132],[454,368],[250,485],[46,368],[46,132]].map(([cx,cy],i) => <circle key={i} className={`orbit-node ${selected === i ? 'active' : ''}`} cx={cx} cy={cy} r="4" />)}
+                </svg>
+                <div className="plates" data-shape={shape.name} style={shapeStyle}>
+                  <div className="plate plate-back" /><div className="plate plate-mid" /><div className="plate plate-rim" /><div className="plate plate-face" />
+                  <div className="plate-content changing" key={item.id} aria-live="polite">
+                    <span className="stage-icon"><Icon size={23} /></span><span className="stage-label">{item.category}</span><h3>{item.title}</h3><p>{item.description}</p><div className="tags">{item.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
                   </div>
                 </div>
-              );
-            }}
-          />
+                <button type="button" className="orbit-button" onClick={() => setSelected(next)} aria-label={`Next: ${automationApproachItems[next].title}`}>→</button>
+              </div>
+              <div className="mobile-description"><p>{item.description}</p><div className="tags">{item.tags.map(tag => <span key={tag}>{tag}</span>)}</div></div>
+              <div className="stage-footer"><div className="counter"><b>{item.phase}</b> / 06</div><div className="dots" aria-label="Select a principle">{automationApproachItems.map((entry,i) => <button key={entry.id} type="button" className={i === selected ? 'active' : ''} onClick={() => setSelected(i)} aria-label={`Show ${entry.title}`} aria-pressed={i === selected} />)}</div></div>
+            </div>
+          </div>
         </div>
-
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
 

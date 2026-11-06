@@ -1,15 +1,7 @@
-import React from 'react';
-import Folder from './Folder';
-import {
-  Search,
-  Sliders,
-  GitMerge,
-  ShieldAlert,
-  Activity,
-  CheckCircle2,
-  Sparkles,
-  MousePointerClick
-} from 'lucide-react';
+import { useState } from 'react';
+import { Activity, ArrowLeft, ArrowRight, Check, GitMerge, Search, ShieldAlert, Sliders } from 'lucide-react';
+import './AutomationSections.css';
+import './AutomationDeliveryPlaybook.css';
 
 interface DeliveryPhaseDocument {
   step: string;
@@ -88,145 +80,45 @@ const deliveryPhases: DeliveryPhaseDocument[] = [
   }
 ];
 
-export const AutomationDeliveryFolder: React.FC = () => {
+
+export const AutomationDeliveryFolder = () => {
+  const [selected, setSelected] = useState(0);
+  const phase = deliveryPhases[selected];
+  const PhaseIcon = phase.icon;
   return (
-    <section className="py-20 sm:py-28 relative overflow-hidden bg-[#faf8f5]/60 border-t border-[#ebe5df]">
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
-        
-        {/* ─── Header ────────────────────────────────────────── */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
-          <div className="max-w-2xl">
-            <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3">
-              Process
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#121110] tracking-tight leading-tight mb-4">
-              How We Deliver: The Automation Playbook
-            </h2>
-            <p className="text-[#5c544d] text-base leading-relaxed">
-              A transparent, phased lifecycle with constant feedback loops, live sandbox simulations, and zero surprises.
-            </p>
-          </div>
-
-          <div className="flex items-center gap-2.5 text-xs text-[#5c544d] bg-white px-4 py-2.5 rounded-full border border-[#ebe5df] shadow-2xs self-start md:self-auto">
-            <MousePointerClick size={14} className="text-[#ea7008] animate-bounce" />
-            <span>Click folder to open • Click sheets to zoom in</span>
-          </div>
-        </div>
-
-        {/* ─── Interactive 3D Folder Container ───────────────── */}
-        <div className="relative w-full rounded-3xl bg-white border border-[#ebe5df] p-8 sm:p-14 shadow-xs overflow-hidden flex flex-col items-center justify-center min-h-[580px]">
-          {/* Subtle Ambient Background */}
-          <div className="absolute inset-0 bg-radial from-[#ea7008]/5 via-transparent to-transparent pointer-events-none" />
-          
-          <div className="relative z-10 my-4 flex items-center justify-center">
-            <Folder
-              label="DELIVERY PHASES"
-              tabPosition="right"
-              mode="flap"
-              variant="solid"
-              color="#ea7008"
-              paperColor="#ffffff"
-              layout="spread"
-              size={1.35}
-              openOn="click"
-              draggable={true}
-              zoomOnClick={true}
-              peek={true}
-              intro={true}
-              speed={1}
-              bounce={0.35}
-              theme="light"
-            >
-              {deliveryPhases.map((phase) => {
-                const Icon = phase.icon;
-                return (
-                  <div
-                    key={phase.step}
-                    className="w-full h-full p-4 sm:p-5 flex flex-col justify-between bg-white select-none box-border"
-                  >
-                    {/* Sheet Top Header */}
-                    <div>
-                      <div className="flex items-center justify-between border-b border-[#ebe5df] pb-2.5 mb-3">
-                        <div className="flex items-center gap-1.5">
-                          <span className="w-2 h-2 rounded-full bg-[#ea7008]" />
-                          <span className="text-[10px] font-bold tracking-wider uppercase text-[#ea7008]">
-                            PHASE {phase.step}
-                          </span>
-                        </div>
-                        <span className="text-[10px] text-[#8a8077]">
-                          {phase.category}
-                        </span>
-                      </div>
-
-                      {/* Title & Icon */}
-                      <div className="flex items-start gap-2.5 mb-2.5">
-                        <div className="w-7 h-7 rounded-lg bg-[#faf8f5] border border-[#ebe5df] flex items-center justify-center text-[#ea7008] shrink-0">
-                          <Icon size={14} />
-                        </div>
-                        <h4 className="text-xs sm:text-[13px] font-bold text-[#121110] tracking-tight leading-snug">
-                          {phase.title}
-                        </h4>
-                      </div>
-
-                      {/* Description */}
-                      <p className="text-[10px] sm:text-[10.5px] text-[#5c544d] leading-relaxed mb-3">
-                        {phase.description}
-                      </p>
-                    </div>
-
-                    {/* Sheet Deliverable Bullets */}
-                    <div className="space-y-1.5 pt-2 border-t border-[#ebe5df]/70 bg-[#faf8f5]/50 -mx-1 px-2 py-1.5 rounded-md">
-                      <span className="text-[9px] font-semibold uppercase text-[#8a8077] block">
-                        Deliverables:
-                      </span>
-                      {phase.deliverables.map((item) => (
-                        <div key={item} className="flex items-center gap-1.5 text-[9.5px] text-[#3d3832]">
-                          <CheckCircle2 size={11} className="text-[#ea7008] shrink-0" />
-                          <span className="truncate">{item}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Bottom Status Stamp */}
-                    <div className="flex items-center justify-between text-[8.5px] text-[#8a8077] pt-2 border-t border-[#ebe5df]">
-                      <span>FOREMARK STANDARD</span>
-                      <span className="text-[#ea7008] font-bold">VERIFIED SPEC</span>
-                    </div>
-                  </div>
-                );
-              })}
-            </Folder>
-          </div>
-
-          {/* Quick Phase Timeline Bar */}
-          <div className="mt-8 pt-6 border-t border-[#ebe5df]/80 w-full max-w-4xl grid grid-cols-2 sm:grid-cols-5 gap-3">
-            {deliveryPhases.map((phase) => (
-              <div
-                key={phase.step}
-                className="p-3 rounded-xl bg-[#faf8f5] border border-[#ebe5df] flex flex-col"
-              >
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-[10px] font-bold text-[#ea7008]">
-                    {phase.step}
-                  </span>
-                  <Sparkles size={11} className="text-[#8a8077]" />
-                </div>
-                <span className="text-xs font-bold text-[#121110] leading-tight mb-1">
-                  {phase.title}
-                </span>
-                <span className="text-[10.5px] text-[#8a8077] line-clamp-1">
-                  {phase.category}
-                </span>
+    <div className="automation-design">
+      <section className="section delivery" aria-labelledby="auto-delivery-title">
+        <div className="section-inner">
+          <div className="eyebrow">Process</div>
+          <h2 id="auto-delivery-title">How We Deliver:<br />The Automation Playbook<em>.</em></h2>
+          <p className="intro">A transparent, phased lifecycle with constant feedback loops, live sandbox simulations, and zero surprises.</p>
+          <div className="ad2-shell">
+            <div className="ad2-sidebar">
+              <div className="ad2-sidebar-header"><span>Delivery phases</span><span>01 — 05</span></div>
+              <div className="ad2-step-list" aria-label="Delivery phases">
+                {deliveryPhases.map((entry, index) => {
+                  const Icon = entry.icon;
+                  return <button type="button" key={entry.step} className={`ad2-step ${selected === index ? 'is-active' : ''}`} aria-pressed={selected === index} aria-label={`${entry.step}: ${entry.category}`} onPointerEnter={(event) => { if (event.pointerType === 'mouse') setSelected(index); }} onFocus={() => setSelected(index)} onClick={() => setSelected(index)}>
+                    <span className="ad2-step-number">{entry.step}</span><span className="ad2-step-icon"><Icon size={18} aria-hidden="true" /></span><span className="ad2-step-name">{entry.category}</span><ArrowRight size={17} className="ad2-step-arrow" aria-hidden="true" />
+                  </button>;
+                })}
               </div>
-            ))}
+              <div className="ad2-sidebar-footer"><span className="ad2-status-dot" />Foremark standard</div>
+            </div>
+            <div className="ad2-stage">
+              <div className="ad2-stage-top"><span>FOREMARK STANDARD</span><span><b>{phase.step}</b> / 05</span></div>
+              <div key={phase.step} className="ad2-main" aria-live="polite">
+                <div className="ad2-headline"><div className="ad2-phase-icon"><PhaseIcon size={24} aria-hidden="true" /></div><span>PHASE {phase.step} — {phase.category}</span></div>
+                <h3>{phase.title}</h3><p>{phase.description}</p>
+                <div className="ad2-deliverables"><div className="ad2-deliverables-head"><span>Deliverables</span><span>0{phase.deliverables.length}</span></div><ul>{phase.deliverables.map((value, index) => <li key={value}><span className="ad2-deliverable-no">0{index + 1}</span><span>{value}</span><Check className="ad2-check" size={16} aria-hidden="true" /></li>)}</ul></div>
+              </div>
+              <div className="ad2-footer"><span>FOREMARK STANDARD · VERIFIED SPEC</span><div className="ad2-controls"><button type="button" disabled={selected === 0} onClick={() => setSelected(selected - 1)} aria-label="Previous phase"><ArrowLeft size={18} /></button><button type="button" disabled={selected === deliveryPhases.length - 1} onClick={() => setSelected(selected + 1)} aria-label="Next phase"><ArrowRight size={18} /></button></div></div>
+            </div>
           </div>
-
         </div>
-
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
 
 export default AutomationDeliveryFolder;
-

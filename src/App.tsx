@@ -183,9 +183,9 @@ function App() {
         <div className="grainy-overlay" />
         
         {/* Global Ambient Orange Light Spots */}
-        <div className="fixed -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[550px] bg-[#ea7008]/[0.06] blur-[160px] rounded-full pointer-events-none -z-10" />
-        <div className="fixed top-1/3 -left-48 w-[650px] h-[650px] bg-[#ea7008]/[0.04] blur-[160px] rounded-full pointer-events-none -z-10" />
-        <div className="fixed bottom-0 -right-48 w-[700px] h-[650px] bg-[#ea7008]/[0.04] blur-[170px] rounded-full pointer-events-none -z-10" />
+        <div className="hidden sm:block fixed -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[550px] bg-[#ea7008]/[0.06] blur-[160px] rounded-full pointer-events-none -z-10" />
+        <div className="hidden sm:block fixed top-1/3 -left-48 w-[650px] h-[650px] bg-[#ea7008]/[0.04] blur-[160px] rounded-full pointer-events-none -z-10" />
+        <div className="hidden sm:block fixed bottom-0 -right-48 w-[700px] h-[650px] bg-[#ea7008]/[0.04] blur-[170px] rounded-full pointer-events-none -z-10" />
 
         <Navbar />
         <Suspense fallback={<PageLoader />}>

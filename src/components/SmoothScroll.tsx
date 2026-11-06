@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useRef } from 'react';
+import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
 import Lenis from 'lenis';
 import { useLocation } from 'react-router-dom';
 
@@ -18,8 +18,16 @@ interface SmoothScrollProviderProps {
 export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({ children }) => {
   const lenisRef = useRef<Lenis | null>(null);
   const location = useLocation();
+  const [nativeMobile, setNativeMobile] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches);
+  useEffect(() => {
+    const query = window.matchMedia('(max-width: 767px)');
+    const update = () => setNativeMobile(query.matches);
+    query.addEventListener('change', update);
+    return () => query.removeEventListener('change', update);
+  }, []);
 
   useEffect(() => {
+    if (nativeMobile) return;
     // Initialize Lenis with refined, cinematic inertia and damping
     const lenis = new Lenis({
       duration: 1.2,
@@ -47,12 +55,19 @@ export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({ chil
       lenisRef.current = null;
       delete (window as unknown as { __lenis?: Lenis }).__lenis;
     };
-  }, []);
+  }, [nativeMobile]);
 
   // Handle route and anchor hash changes seamlessly
   useEffect(() => {
     const lenis = lenisRef.current;
-    if (!lenis) return;
+    if (!lenis) {
+      if (location.hash) {
+        const timer = setTimeout(() => document.getElementById(location.hash.slice(1))?.scrollIntoView(), 100);
+        return () => clearTimeout(timer);
+      }
+      window.scrollTo({ top: 0, behavior: 'auto' });
+      return;
+    }
 
     if (location.hash) {
       const targetId = location.hash.replace('#', '');
@@ -67,7 +82,7 @@ export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({ chil
       // Immediate scroll reset to top on route change
       lenis.scrollTo(0, { immediate: true });
     }
-  }, [location.pathname, location.hash]);
+  }, [location.pathname, location.hash, nativeMobile]);
 
   return (
     <LenisContext.Provider value={{ lenis: lenisRef.current }}>

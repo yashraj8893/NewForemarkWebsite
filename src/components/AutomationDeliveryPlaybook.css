@@ -1,0 +1,84 @@
+/* Alternate delivery concept. Styles are scoped so the approach visual stays independent. */
+.automation-design .ad2-shell{display:grid;grid-template-columns:minmax(280px,.82fr) minmax(0,1.18fr);margin-top:48px;border:1px solid #e5d9cc;border-radius:24px;overflow:hidden;background:#fff;box-shadow:0 32px 65px -48px rgba(40,27,17,.45)}
+.automation-design .ad2-sidebar{background:radial-gradient(110% 70% at 0% 100%,rgba(234,112,8,.13),transparent 65%),#121110;padding:32px;display:flex;flex-direction:column;color:#fff}
+.automation-design .ad2-sidebar-header,.automation-design .ad2-stage-top{display:flex;align-items:center;justify-content:space-between;gap:15px;color:#aa9d90;font-weight:700;font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+.automation-design .ad2-sidebar-header{padding:0 0 25px;border-bottom:1px solid rgba(255,255,255,.11)}
+.automation-design .ad2-sidebar-header span:last-child{color:#7e7266}
+.automation-design .ad2-step-list{display:flex;flex-direction:column;gap:8px;margin:22px 0}
+.automation-design .ad2-step{display:flex;align-items:center;gap:12px;width:100%;min-height:59px;text-align:left;border:1px solid transparent;border-radius:11px;color:#aaa095;background:transparent;padding:9px 12px;cursor:pointer;transition:border-color .25s,background .25s,color .25s,transform .25s}
+.automation-design .ad2-step:hover{background:rgba(255,255,255,.045);color:#fff;transform:translateX(3px)}
+.automation-design .ad2-step.is-active{border-color:rgba(234,112,8,.42);background:linear-gradient(90deg,rgba(234,112,8,.16),rgba(234,112,8,.04));color:#fff}
+.automation-design .ad2-step-number{width:23px;flex:none;color:#887c70;font-size:10px;letter-spacing:.08em;font-weight:700}
+.automation-design .ad2-step.is-active .ad2-step-number{color:#f59b58}
+.automation-design .ad2-step-icon{width:36px;height:36px;display:grid;place-items:center;flex:none;border:1px solid rgba(255,255,255,.09);border-radius:10px;color:#c4b6a9}
+.automation-design .ad2-step.is-active .ad2-step-icon{border-color:rgba(234,112,8,.5);background:#ea7008;color:#fff;box-shadow:0 0 18px rgba(234,112,8,.25)}
+.automation-design .ad2-step-name{flex:1;font-size:13px;font-weight:700;line-height:1.35}
+.automation-design .ad2-step-arrow{opacity:0;color:#f39b57;transition:opacity .25s}
+.automation-design .ad2-step.is-active .ad2-step-arrow,.automation-design .ad2-step:hover .ad2-step-arrow{opacity:1}
+.automation-design .ad2-sidebar-footer{display:flex;gap:9px;align-items:center;margin-top:auto;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:#a7998b;font-weight:700}
+.automation-design .ad2-status-dot{width:7px;height:7px;border-radius:50%;background:#ea7008;box-shadow:0 0 10px rgba(234,112,8,.6)}
+.automation-design .ad2-stage{display:flex;flex-direction:column;min-width:0;background:radial-gradient(ellipse at 100% 0%,#fff8f0 0%,transparent 42%),#fff}
+.automation-design .ad2-stage-top{padding:30px 36px 23px;border-bottom:1px solid #f0e9e1}.automation-design .ad2-stage-top b{color:#ea7008}
+.automation-design .ad2-main{padding:34px 36px;flex:1;animation:ad2-arrive .35s ease both}
+.automation-design .ad2-headline{display:flex;align-items:center;gap:14px;color:#d86b12;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.automation-design .ad2-phase-icon{display:grid;place-items:center;width:49px;height:49px;flex:none;border-radius:14px;background:#faf1e8;border:1px solid #f1dcc9;color:#ea7008;box-shadow:0 8px 25px -17px rgba(234,112,8,.8)}
+.automation-design .ad2-main h3{font-size:clamp(25px,2.5vw,34px);line-height:1.17;letter-spacing:-.035em;margin:22px 0 12px;color:#121110}
+.automation-design .ad2-main p{color:#665d54;font-size:14px;line-height:1.75;max-width:55ch;margin:0}
+.automation-design .ad2-deliverables{margin-top:30px;padding:20px 22px 8px;background:#faf8f5;border:1px solid #eee6dd;border-radius:14px}
+.automation-design .ad2-deliverables-head{display:flex;justify-content:space-between;align-items:center;color:#a29487;font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;padding-bottom:12px}
+.automation-design .ad2-deliverables-head span:last-child{color:#d56a14}
+.automation-design .ad2-deliverables ul{list-style:none;margin:0;padding:0}
+.automation-design .ad2-deliverables li{display:flex;align-items:center;gap:13px;padding:12px 0;border-top:1px solid #ebe4dc;color:#4f473f;font-size:13px;line-height:1.4}
+.automation-design .ad2-deliverable-no{font-size:10px;color:#b3a69b;font-weight:700;letter-spacing:.08em}.automation-design .ad2-check{margin-left:auto;color:#ea7008;flex:none}
+.automation-design .ad2-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 36px;border-top:1px solid #f0e9e1;color:#a89b90;font-size:9px;font-weight:700;letter-spacing:.12em}
+.automation-design .ad2-controls{display:flex;gap:8px}.automation-design .ad2-controls button{display:grid;place-items:center;width:36px;height:36px;border:1px solid #e5d9ce;border-radius:50%;background:white;color:#2b2621;cursor:pointer;transition:background .25s,color .25s,border-color .25s}.automation-design .ad2-controls button:hover:not(:disabled){background:#ea7008;border-color:#ea7008;color:#fff}.automation-design .ad2-controls button:disabled{opacity:.35;cursor:not-allowed}
+.automation-design .ad2-step:focus-visible,.automation-design .ad2-controls button:focus-visible{outline:2px solid #ea7008;outline-offset:3px}
+/* Interactive highlights match the approach section without changing its styles. */
+.automation-design .ad2-shell{transition:border-color .3s,box-shadow .3s}
+.automation-design .ad2-shell:hover,.automation-design .ad2-shell:focus-within{border-color:rgba(234,112,8,.42);box-shadow:0 32px 65px -48px rgba(40,27,17,.45),0 0 24px -14px rgba(234,112,8,.4)}
+.automation-design .ad2-step{transition:border-color .25s,background .25s,color .25s,transform .25s,box-shadow .25s}
+.automation-design .ad2-step.is-active{border-color:rgba(234,112,8,.68);box-shadow:0 0 18px -10px rgba(234,112,8,.65),inset 0 0 15px rgba(234,112,8,.04)}
+.automation-design .ad2-step-icon{transition:background .25s,color .25s,border-color .25s,box-shadow .25s,transform .25s}
+.automation-design .ad2-step.is-active .ad2-step-icon{box-shadow:0 0 20px rgba(234,112,8,.42)}
+.automation-design .ad2-step:focus-visible .ad2-step-icon{color:#ffbd87;border-color:rgba(234,112,8,.65);box-shadow:0 0 15px rgba(234,112,8,.3)}
+.automation-design .ad2-phase-icon{background:#ea7008;border-color:#ea7008;color:#fff;box-shadow:0 0 21px rgba(234,112,8,.32);transition:box-shadow .25s,transform .25s}
+.automation-design .ad2-deliverables{border-color:#e8d1bc;box-shadow:0 8px 25px -23px rgba(234,112,8,.65);transition:border-color .25s,box-shadow .25s}
+.automation-design .ad2-controls button:hover:not(:disabled),.automation-design .ad2-controls button:focus-visible:not(:disabled){box-shadow:0 0 18px rgba(234,112,8,.4)}
+@media(hover:hover){
+  .automation-design .ad2-step:hover{border-color:rgba(234,112,8,.48);box-shadow:0 0 16px -10px rgba(234,112,8,.65)}
+  .automation-design .ad2-step:hover .ad2-step-icon{color:#ffbd87;border-color:rgba(234,112,8,.6);box-shadow:0 0 16px rgba(234,112,8,.3);transform:scale(1.05)}
+  .automation-design .ad2-step.is-active:hover{border-color:rgba(234,112,8,.85);box-shadow:0 0 22px -7px rgba(234,112,8,.65),inset 0 0 15px rgba(234,112,8,.08)}
+  .automation-design .ad2-step.is-active:hover .ad2-step-icon{color:#fff;box-shadow:0 0 22px rgba(234,112,8,.48)}
+  .automation-design .ad2-stage:hover .ad2-phase-icon{box-shadow:0 0 26px rgba(234,112,8,.45);transform:scale(1.04)}
+  .automation-design .ad2-deliverables:hover{border-color:rgba(234,112,8,.55);box-shadow:0 0 20px -12px rgba(234,112,8,.42)}
+}
+@keyframes ad2-arrive{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(max-width:900px){.automation-design .ad2-shell{grid-template-columns:1fr}.automation-design .ad2-sidebar{padding:24px}.automation-design .ad2-step-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.automation-design .ad2-step{min-height:54px}.automation-design .ad2-sidebar-footer{margin-top:0}.automation-design .ad2-stage-top{padding:24px}.automation-design .ad2-main{padding:28px 24px}.automation-design .ad2-footer{padding:16px 24px}}
+@media(max-width:480px){.automation-design .ad2-shell{margin-top:30px;border-radius:18px}.automation-design .ad2-sidebar{padding:20px}.automation-design .ad2-sidebar-header{padding-bottom:18px}.automation-design .ad2-step-list{grid-template-columns:1fr;gap:4px;margin:15px 0}.automation-design .ad2-step{min-height:50px;padding:7px 10px}.automation-design .ad2-step-icon{width:34px;height:34px}.automation-design .ad2-step-name{font-size:12px}.automation-design .ad2-stage-top{padding:20px}.automation-design .ad2-main{padding:24px 20px}.automation-design .ad2-main h3{font-size:25px}.automation-design .ad2-main p{font-size:13px}.automation-design .ad2-deliverables{padding:17px 17px 6px;margin-top:24px}.automation-design .ad2-deliverables li{font-size:12px}.automation-design .ad2-footer{padding:14px 20px}.automation-design .ad2-footer>span{font-size:8px}.automation-design .ad2-controls button{width:40px;height:40px}}
+@media(prefers-reduced-motion:reduce){.automation-design .ad2-shell *{animation:none!important;transition:none!important}}
+
+/* Mobile-only concept: a shorter selector with details directly underneath. */
+@media(max-width:767px){
+  .automation-design .ad2-sidebar{padding:18px}
+  .automation-design .ad2-step-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin:14px 0}
+  .automation-design .ad2-step{min-height:53px;padding:6px 7px;gap:7px}
+  .automation-design .ad2-step-number{width:auto;font-size:9px}
+  .automation-design .ad2-step-icon{width:30px;height:30px;border-radius:8px}
+  .automation-design .ad2-step-icon svg{width:15px;height:15px}
+  .automation-design .ad2-step-name{font-size:10px;line-height:1.25}
+  .automation-design .ad2-step-arrow{display:none}
+  .automation-design .ad2-sidebar-footer{padding-top:14px}
+  .automation-design .ad2-main{animation:none}
+  .automation-design .ad2-shell{box-shadow:0 15px 28px -24px rgba(40,27,17,.35)}
+}
+
+/* Mobile: all five phases remain selectable without a tall list. */
+@media(max-width:767px){
+  .automation-design .ad2-step-list{grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;margin:12px 0 2px}
+  .automation-design .ad2-step{min-height:48px;justify-content:center;gap:4px;padding:5px 2px}
+  .automation-design .ad2-step-number{font-size:9px}
+  .automation-design .ad2-step-icon{width:27px;height:27px}
+  .automation-design .ad2-step-name,.automation-design .ad2-sidebar-footer,.automation-design .ad2-stage-top{display:none}
+  .automation-design .ad2-sidebar-header{padding-bottom:14px}
+  .automation-design .ad2-main{padding-top:23px}
+}

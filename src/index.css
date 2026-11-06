@@ -316,3 +316,6 @@ html.lenis body {
 @media (prefers-reduced-motion: reduce) {
   .group:hover .chip-pulse { animation: none; }
 }
+
+/* Mobile preview: avoid repainting the full-screen noise texture on phones. */
+@media(max-width:767px){.grainy-overlay{display:none}}

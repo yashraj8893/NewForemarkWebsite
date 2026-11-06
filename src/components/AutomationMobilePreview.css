@@ -1,0 +1,18 @@
+/* Isolated mobile concept; desktop uses the existing full architecture display. */
+.mobile-build{padding:60px 20px 70px;background:#fff;color:#121110}
+.mobile-build-inner{max-width:620px;margin:auto}
+.mobile-build-label{display:flex;align-items:center;gap:10px;color:#ea7008;text-transform:uppercase;font-size:11px;letter-spacing:.14em;font-weight:700}
+.mobile-build-label span{width:28px;height:1px;background:#ea7008}
+.mobile-build h2{font-size:clamp(29px,8vw,38px);line-height:1.12;letter-spacing:-.04em;margin:16px 0 12px}
+.mobile-build h2 span{color:#ea7008}
+.mobile-build-intro{font-size:14px;line-height:1.65;color:#5c544d;margin:0 0 24px}
+.mobile-build-list{display:grid;gap:8px}
+.mobile-build-item{border:1px solid #ebe5df;border-radius:13px;overflow:hidden;background:#fff;transition:border-color .2s,box-shadow .2s}
+.mobile-build-item.is-open{border-color:#e6a673;box-shadow:0 8px 20px -17px rgba(234,112,8,.65)}
+.mobile-build-button{display:flex;align-items:center;gap:11px;width:100%;min-height:65px;border:0;padding:11px 12px;text-align:left;background:transparent;cursor:pointer}
+.mobile-build-button:focus-visible{outline:2px solid #ea7008;outline-offset:-3px}
+.mobile-build-icon{width:38px;height:38px;flex:none;display:grid;place-items:center;border-radius:11px;color:#ea7008;background:#faf4ed;border:1px solid #f1e5da}
+.is-open .mobile-build-icon{color:white;background:#ea7008;border-color:#ea7008;box-shadow:0 0 12px rgba(234,112,8,.25)}
+.mobile-build-name{flex:1;min-width:0}.mobile-build-name small{display:block;font-size:9px;color:#c76717;letter-spacing:.08em;text-transform:uppercase;font-weight:700;margin-bottom:4px}.mobile-build-name strong{display:block;font-size:13px;line-height:1.35;color:#1a1816}.mobile-build-toggle{font-size:20px;color:#ea7008}
+.mobile-build-panel{padding:14px 15px 16px;border-top:1px solid #f0e9e2}.mobile-build-panel p{font-size:13px;line-height:1.65;color:#5c544d;margin:0}.mobile-build-tags{display:flex;flex-wrap:wrap;gap:6px;margin:13px 0}.mobile-build-tags span{display:inline-flex;align-items:center;gap:5px;border:1px solid #ece3d9;border-radius:6px;background:#faf8f5;color:#5b5148;font-size:10px;line-height:1.4;padding:5px 7px}.mobile-build-tags svg{color:#ea7008;flex:none}.mobile-build-panel video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#121110;border-radius:10px}
+@media(prefers-reduced-motion:reduce){.mobile-build *{transition:none!important;animation:none!important}}

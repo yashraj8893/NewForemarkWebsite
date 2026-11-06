@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import './AutomationMobilePreview.css';
 import {
   MessageSquare,
   FileCheck,
@@ -142,6 +143,42 @@ const architectureTiers: ArchitectureTier[] = [
 
 export const AutomationDeliverablesStack: React.FC = () => {
   const [activeTierId, setActiveTierId] = useState<string>('chatops');
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches);
+  useEffect(() => {
+    const query = window.matchMedia('(max-width: 767px)');
+    const update = () => setIsMobile(query.matches);
+    query.addEventListener('change', update);
+    return () => query.removeEventListener('change', update);
+  }, []);
+
+  // On phones show one detailed layer at a time. The other videos are not mounted.
+  if (isMobile) return (
+    <section className="mobile-build" aria-labelledby="mobile-build-title">
+      <div className="mobile-build-inner">
+        <div className="mobile-build-label">Architecture & Deliverables</div>
+        <h2 id="mobile-build-title">What We Build & <span>Deliver</span></h2>
+        <p className="mobile-build-intro">A cohesive 5-tier automation architecture connecting frontline team interactions down to secure, fail-safe background microservices.</p>
+        <div className="mobile-build-list">
+          {architectureTiers.map((tier) => {
+            const active = activeTierId === tier.id;
+            const Icon = tier.icon;
+            const poster = tier.videoSrc?.mp4.replace('/videos/', '/mobile-posters/').replace('.mp4', '.jpg');
+            return <div className={`mobile-build-item ${active ? 'is-open' : ''}`} key={tier.id}>
+              <button type="button" className="mobile-build-button" onClick={() => setActiveTierId(tier.id)} aria-expanded={active} aria-controls={`mobile-build-${tier.id}`}>
+                <span className="mobile-build-icon"><Icon size={19} /></span><span className="mobile-build-name"><small>LAYER {tier.number} // {tier.category}</small><strong>{tier.title}</strong></span><span className="mobile-build-toggle" aria-hidden="true">{active ? '−' : '+'}</span>
+              </button>
+              <div className="mobile-build-panel" id={`mobile-build-${tier.id}`} hidden={!active}>
+                <p>{tier.description}</p>
+                <div className="mobile-build-tags">{tier.bullets.map(bullet => <span key={bullet}><CheckCircle2 size={12} />{bullet}</span>)}</div>
+                {active && tier.videoSrc && <video controls playsInline preload="none" poster={poster} aria-label={`${tier.title} preview`}><source src={tier.videoSrc.mp4} type="video/mp4" /></video>}
+              </div>
+            </div>;
+          })}
+        </div>
+      </div>
+    </section>
+  );
+
 
   // Isometric Diamond Dimensions for each row's plate
   const cx = 290;

@@ -19,7 +19,7 @@ import { AutomationDeliverablesStack } from '../components/AutomationDeliverable
 import { HostingDeliverablesRoadmap } from '../components/HostingDeliverablesRoadmap';
 import { HostingApproachGallery } from '../components/HostingApproachGallery';
 import { HostingProcessDepthCarousel } from '../components/HostingProcessDepthCarousel';
-import { AutomationApproachCarousel } from '../components/AutomationApproachCarousel';
+import { AutomationApproach } from '../components/AutomationApproach';
 import { AutomationDeliveryFolder } from '../components/AutomationDeliveryFolder';
 import { WebsiteApproach } from '../components/WebsiteApproach';
 
@@ -195,7 +195,7 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                 {activeSlug === 'cloud-hosting' ? (
                     <HostingApproachGallery />
                 ) : activeSlug === 'business-automation' ? (
-                    <AutomationApproachCarousel />
+                    <AutomationApproach />
                 ) : activeSlug === 'website-software-development' ? (
                     <WebsiteApproach service={service} />
                 ) : (

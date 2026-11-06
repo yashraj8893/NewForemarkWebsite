@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import './AutomationMobileTech.css';
 
 // --- Technology Definition ---
 interface TechItem {
@@ -338,6 +339,14 @@ const automationTechItems: TechItem[] = [
 export const TechStackServerRackVisual = () => {
   const [activeCategory, setActiveCategory] = useState<'all' | 'engine' | 'code' | 'ai' | 'integration'>('all');
   const [hoveredTechId, setHoveredTechId] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches);
+  const [mobileCategory, setMobileCategory] = useState<TechItem['category']>('engine');
+  useEffect(() => {
+    const query = window.matchMedia('(max-width: 767px)');
+    const update = () => setIsMobile(query.matches);
+    query.addEventListener('change', update);
+    return () => query.removeEventListener('change', update);
+  }, []);
 
   const categories = [
     { id: 'all', label: 'All Stacks (16)' },
@@ -346,6 +355,24 @@ export const TechStackServerRackVisual = () => {
     { id: 'ai', label: 'AI & Document Parsing' },
     { id: 'integration', label: 'Integrations & APIs' },
   ] as const;
+
+  if (isMobile) {
+    const selectedItems = automationTechItems.filter(item => item.category === mobileCategory);
+    return <section className="mobile-tech" aria-labelledby="mobile-tech-title">
+      <div className="mobile-tech-inner">
+        <div className="mobile-tech-eyebrow">Technology Stack</div>
+        <h2 id="mobile-tech-title">Intelligent Infrastructure For{' '}<span>Business Automation</span></h2>
+        <p className="mobile-tech-intro">Fault-tolerant event pipelines, enterprise task queues, AI reasoning models, and zero-data-loss system integrations.</p>
+        <div className="mobile-tech-panel">
+          <div className="mobile-tech-panel-top"><div><span>TECHNOLOGY STACK</span><strong>All Stacks (16)</strong></div><img src="/datacenter-server-core.webp" alt="" loading="lazy" /></div>
+          <div className="mobile-tech-tabs" aria-label="Technology categories">
+            {categories.filter(cat => cat.id !== 'all').map(cat => <button type="button" key={cat.id} className={mobileCategory === cat.id ? 'active' : ''} aria-pressed={mobileCategory === cat.id} onClick={() => setMobileCategory(cat.id as TechItem['category'])}>{cat.label}</button>)}
+          </div>
+          <div className="mobile-tech-list" aria-live="polite">{selectedItems.map(item => { const Icon = item.icon; return <div className="mobile-tech-item" key={item.id}><span className="mobile-tech-icon"><Icon className="mobile-tech-svg" /></span><span className="mobile-tech-copy"><strong>{item.name}</strong><small>{item.role}</small></span></div>; })}</div>
+        </div>
+      </div>
+    </section>;
+  }
 
   // 16 Symmetrical Fiber Optic Conduits connecting Core Platform to Badges
   const connectingConduits = [
