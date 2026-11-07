@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { usePhone } from '../hooks/usePhone';
+import './HostingMobile.css';
 import { CircularGallery } from './CircularGallery';
 import type { GalleryItem } from './CircularGallery';
 import {
@@ -91,8 +94,29 @@ export const hostingApproachItems: (GalleryItem & {
 ];
 
 export const HostingApproachGallery: React.FC = () => {
+  const isPhone = usePhone();
+  const [active, setActive] = useState(0);
+  const gallery = useRef<HTMLDivElement>(null);
+  const select = (index: number) => {
+    const strip = gallery.current;
+    const slide = strip?.children[index] as HTMLElement | undefined;
+    if (!strip || !slide) return;
+    setActive(index);
+    const left = strip.scrollLeft + slide.getBoundingClientRect().left - strip.getBoundingClientRect().left;
+    strip.scrollTo({ left, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  };
+  const onGalleryScroll = () => {
+    const strip = gallery.current;
+    if (!strip) return;
+    const start = strip.getBoundingClientRect().left;
+    const nearest = Array.from(strip.children).reduce((best, child, index, all) =>
+      Math.abs(child.getBoundingClientRect().left - start) < Math.abs(all[best].getBoundingClientRect().left - start) ? index : best, 0);
+    setActive(nearest);
+  };
+  const mobileItem = hostingApproachItems[active];
+  const MobileIcon = mobileItem.icon;
   return (
-    <section className="py-20 sm:py-28 relative overflow-hidden bg-white">
+    <section className="hosting-approach py-20 sm:py-28 relative overflow-hidden bg-white">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
         
         {/* ─── Header ────────────────────────────────────────── */}
@@ -109,9 +133,24 @@ export const HostingApproachGallery: React.FC = () => {
         </div>
 
         {/* ─── Circular Gallery Viewport (No Background Box) ──── */}
-        <div 
+        {isPhone ? <div className="hosting-mobile-gallery">
+          <div ref={gallery} onScroll={onGalleryScroll} className="hosting-gallery-strip" aria-label="Hosting approach gallery">
+            {hostingApproachItems.map((item, i) => <button type="button" key={item.image} className="hosting-gallery-slide" onClick={() => select(i)} aria-label={`Show ${item.text}`} aria-pressed={active === i}>
+              <img src={item.image.replace('/hosting/', '/hosting-mobile/').replace('.jpg', '.webp')} alt={item.alt || ''} loading={i === 0 ? 'eager' : 'lazy'} />
+              <span>{String(i + 1).padStart(2, '0')} / 08</span>
+            </button>)}
+          </div>
+          <div className="hosting-gallery-details" aria-live="polite">
+            <div className="hosting-gallery-category"><MobileIcon size={16} aria-hidden="true" />{mobileItem.category}</div>
+            <h3>{mobileItem.text}</h3><p>{mobileItem.description}</p>
+          </div>
+          <div className="hosting-gallery-controls">
+            <span>{String(active + 1).padStart(2, '0')} / 08</span>
+            <div><button type="button" onClick={() => select(Math.max(active - 1, 0))} disabled={active === 0} aria-label="Previous approach"><ArrowLeft size={18} /></button><button type="button" onClick={() => select(Math.min(active + 1, hostingApproachItems.length - 1))} disabled={active === hostingApproachItems.length - 1} aria-label="Next approach"><ArrowRight size={18} /></button></div>
+          </div>
+        </div> : <div
           data-lenis-prevent
-          className="relative w-full overflow-hidden" 
+          className="relative w-full overflow-hidden"
           style={{ height: '600px' }}
         >
           <CircularGallery
@@ -132,7 +171,7 @@ export const HostingApproachGallery: React.FC = () => {
               console.log('Opened card:', item.text, index);
             }}
           />
-        </div>
+        </div>}
 
       </div>
     </section>

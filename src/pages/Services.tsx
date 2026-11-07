@@ -1,4 +1,5 @@
-import { useState, useRef, useLayoutEffect, useCallback } from 'react';
+import { useState, useRef, useEffect, useLayoutEffect, useCallback } from 'react';
+import './ServicesMobile.css';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
@@ -40,6 +41,7 @@ const services = [
         tag: 'Core Engineering',
         icon: Code2,
         animation: WebAndSoftwareAnimation,
+        mobileVisual: '/services-mobile/website-software.webp',
     },
     {
         slug: 'cloud-hosting',
@@ -49,6 +51,7 @@ const services = [
         tag: 'Reliable & secure',
         icon: Server,
         animation: ServerAnimation,
+        mobileVisual: '/services-mobile/cloud-hosting.webp',
     },
     {
         slug: 'business-automation',
@@ -58,6 +61,7 @@ const services = [
         tag: 'High impact',
         icon: Workflow,
         animation: AutomationAnimation,
+        mobileVisual: '/services-mobile/business-automation.webp',
     },
 ];
 
@@ -213,7 +217,15 @@ const process = [
 
 
 const ServicesPage = () => {
+    const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches);
+    useEffect(() => {
+        const query = window.matchMedia('(max-width: 767px)');
+        const update = () => setIsMobile(query.matches);
+        query.addEventListener('change', update);
+        return () => query.removeEventListener('change', update);
+    }, []);
     const [hoveredWhyNode, setHoveredWhyNode] = useState<string | null>(null);
+    const [openMobileProcess, setOpenMobileProcess] = useState<number | null>(null);
     const hasAnyHover = hoveredWhyNode !== null;
 
     const whyStageRef = useRef<HTMLDivElement>(null);
@@ -255,6 +267,7 @@ const ServicesPage = () => {
     }, []);
 
     useLayoutEffect(() => {
+        if (isMobile) return;
         updateWhyCoords();
         const handleResize = () => updateWhyCoords();
         window.addEventListener('resize', handleResize);
@@ -271,7 +284,7 @@ const ServicesPage = () => {
             if (ro) ro.disconnect();
             clearTimeout(timer);
         };
-    }, [updateWhyCoords]);
+    }, [updateWhyCoords, isMobile]);
     return (
         <main className="relative w-full overflow-clip bg-white text-[#1a1816]">
             <SEO
@@ -280,7 +293,7 @@ const ServicesPage = () => {
                 canonicalUrl="https://foremark.in/services"
             />
             {/* ─── Hero ─────────────────────────────────────────────── */}
-            <section className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pt-12 sm:pt-16 pb-20 sm:pb-32">
+            <section className="services-page-hero max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pt-12 sm:pt-16 pb-20 sm:pb-32">
                 <div className="flex flex-col mb-16">
                     <motion.span
                         initial={{ opacity: 0, y: 20 }}
@@ -321,12 +334,12 @@ const ServicesPage = () => {
                     </motion.div>
 
                     {/* Why-us blocks — Concept 10: Halo Cards (1: IsometricBlocks, 2: CircuitPulseBlocks, 3: SpotlightConsoleBlocks, 4: FoundryLineBlocks, 5: FoundryStage3D, 6: JourneyLineBlocks, 7: JourneyNightBlocks, 8: DarkBandBlocks, 9: PrismBlocks) */}
-                    <HaloCardsBlocks />
+                    <HaloCardsBlocks mobile={isMobile} />
                 </div>
             </section>
 
             {/* ─── Our Services ─────────────────────────────────────── */}
-            <section className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pb-28 sm:pb-36 relative z-10">
+            <section className="services-overview-section max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pb-28 sm:pb-36 relative z-10">
                 <div className="text-center mb-16 sm:mb-20">
                     <span className="section-label font-sans text-portfolio-gold">Our services</span>
                     <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-[#121110] max-w-3xl mx-auto mt-2 leading-[1.1]">
@@ -334,7 +347,26 @@ const ServicesPage = () => {
                     </h2>
                 </div>
 
-                <div className="flex flex-col gap-10 max-w-[1150px] mx-auto">
+                {isMobile ? (
+                    <div className="services-mobile-list">
+                        {services.map((service) => (
+                            <article className="services-mobile-service" key={service.slug}>
+                                <div className="services-mobile-service-header">
+                                    <h3><Link to={`/services/${service.slug}`} className="services-mobile-service-link">
+                                        <span className="services-mobile-service-icon"><service.icon size={19} aria-hidden="true" /></span>
+                                        <span className="services-mobile-service-title"><small>{service.tag}</small><strong>{service.title}</strong></span>
+                                    </Link></h3>
+                                    <img src={service.mobileVisual} alt="" width="572" height="440" loading="lazy" className="services-mobile-thumb" />
+                                </div>
+                                <div className="services-mobile-service-detail"><p>{service.description}</p></div>
+                                <div className="services-mobile-actions">
+                                    <Link to={`/services/${service.slug}`} className="btn-primary" aria-label={`Explore ${service.title}`}>Explore Service <ArrowRight size={15} /></Link>
+                                    <Link to={`/contact?service=${service.slug}`} className="btn-ghost" aria-label={`Get a quote for ${service.title}`}>Get a quote</Link>
+                                </div>
+                            </article>
+                        ))}
+                    </div>
+                ) : <div className="flex flex-col gap-10 max-w-[1150px] mx-auto">
                     {services.map((service, i) => {
                         const isEven = i % 2 === 0;
                         const Visual = service.animation;
@@ -346,14 +378,14 @@ const ServicesPage = () => {
                                 whileInView="visible"
                                 viewport={{ once: true, margin: '-80px' }}
                                 custom={i}
-                                className="group relative bg-white border border-portfolio-gold/35 hover:border-portfolio-gold/65 rounded-[2.5rem] overflow-hidden shadow-[0_4px_30px_rgba(234,112,8,0.08)] hover:shadow-[0_4px_45px_rgba(234,112,8,0.18)] cursor-target transition-all duration-500"
+                                className="service-overview-card group relative bg-white border border-portfolio-gold/35 hover:border-portfolio-gold/65 rounded-[2.5rem] overflow-hidden shadow-[0_4px_30px_rgba(234,112,8,0.08)] hover:shadow-[0_4px_45px_rgba(234,112,8,0.18)] cursor-target transition-all duration-500"
                             >
                                 {/* Subtle inner glow gradient */}
                                 <div className="absolute inset-0 bg-gradient-to-br from-portfolio-gold/5 via-transparent to-transparent pointer-events-none" />
 
                                 <div className={`flex flex-col lg:flex-row items-stretch ${isEven ? '' : 'lg:flex-row-reverse'}`}>
                                     {/* Text Content Area */}
-                                    <div className="flex-1 lg:flex-[1.2] p-8 sm:p-12 md:p-16 flex flex-col justify-center">
+                                    <div className="service-overview-copy flex-1 lg:flex-[1.2] p-8 sm:p-12 md:p-16 flex flex-col justify-center">
                                         <div className="flex items-center gap-4 mb-6">
                                             <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-portfolio-gold shrink-0">
                                                 <service.icon size={18} />
@@ -398,7 +430,8 @@ const ServicesPage = () => {
                                     {/* Live Animation side */}
                                     <Link
                                         to={`/services/${service.slug}`}
-                                        className="flex-1 lg:flex-[0.8] bg-[#faf8f5] border-t lg:border-t-0 lg:border-l border-[#ebe5df] relative flex items-center justify-center p-6 min-h-[300px] md:min-h-[380px] overflow-hidden group/visual cursor-target"
+                                        aria-label={`Explore ${service.title}`}
+                                        className="service-overview-visual flex-1 lg:flex-[0.8] bg-[#faf8f5] border-t lg:border-t-0 lg:border-l border-[#ebe5df] relative flex items-center justify-center p-6 min-h-[300px] md:min-h-[380px] overflow-hidden group/visual cursor-target"
                                     >
                                         <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px]" />
                                         <div className="w-full h-full flex items-center justify-center scale-90 sm:scale-100 group-hover/visual:scale-105 transition-transform duration-500">
@@ -409,11 +442,11 @@ const ServicesPage = () => {
                             </motion.div>
                         );
                     })}
-                </div>
+                </div>}
             </section>
 
             {/* ─── Why Choose Us (Radial Hexagon Matrix) ─────────────── */}
-            <section className="bg-white relative z-10 overflow-hidden">
+            <section className="services-why-section bg-white relative z-10 overflow-hidden">
                 <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 py-20 sm:py-28 relative z-10">
                     <div className="text-center mb-12 sm:mb-16">
                         <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3">
@@ -425,7 +458,7 @@ const ServicesPage = () => {
                     </div>
 
                     {/* Desktop Radial Layout (with Interactive Sleek Strings & Spotlight Pop-Up) */}
-                    <div
+                    {!isMobile && <div
                         ref={whyStageRef}
                         className="relative hidden lg:grid lg:grid-cols-12 items-center gap-6 max-w-6xl mx-auto min-h-[500px]"
                     >
@@ -741,11 +774,11 @@ const ServicesPage = () => {
                                 );
                             })}
                         </div>
-                    </div>
+                    </div>}
 
                     {/* Mobile & Tablet Layout */}
-                    <div className="lg:hidden flex flex-col items-center gap-10">
-                        <div className="w-full max-w-[340px] flex justify-center relative">
+                    <div className="services-why-mobile lg:hidden flex flex-col items-center gap-10">
+                        <div className="services-why-visual w-full max-w-[340px] flex justify-center relative">
                             {/* Ambient glow */}
                             <div
                                 className="absolute w-[200px] h-[200px] rounded-full pointer-events-none"
@@ -832,7 +865,22 @@ const ServicesPage = () => {
                             </svg>
                         </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+                        {isMobile ? <div className="services-mobile-why">
+                            <p className="services-mobile-why-hint">Tap a benefit to learn more</p>
+                            <div className="services-mobile-why-grid" aria-label="Why choose us">
+                                {whyChooseUsNodes.map((item) => {
+                                    const active = hoveredWhyNode === item.id;
+                                    return <button type="button" key={item.id} className={`services-mobile-why-button ${active ? 'is-active' : ''}`} aria-expanded={active} aria-controls={`services-benefit-${item.id}`} onClick={() => setHoveredWhyNode(active ? null : item.id)}>
+                                        <span className="services-mobile-why-dot" style={{ backgroundColor: item.color }} />
+                                        <span>{item.title}</span>
+                                    </button>;
+                                })}
+                            </div>
+                            {whyChooseUsNodes.map((item) => <div key={item.id} id={`services-benefit-${item.id}`} className="services-mobile-why-detail" hidden={hoveredWhyNode !== item.id}>
+                                <strong>{item.title}</strong>
+                                <p>{item.description}</p>
+                            </div>)}
+                        </div> : <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
                             {whyChooseUsNodes.map((item) => {
                                 const isHovered = hoveredWhyNode === item.id;
                                 const isOtherHovered = hasAnyHover && !isHovered;
@@ -844,7 +892,7 @@ const ServicesPage = () => {
                                             isHovered
                                                 ? 'bg-white border-[#ea7008]/60 shadow-lg scale-[1.02]'
                                                 : isOtherHovered
-                                                ? 'bg-white/40 border-transparent opacity-35 blur-[1.5px]'
+                                                ? `bg-white/40 border-transparent opacity-35 ${isMobile ? '' : 'blur-[1.5px]'}`
                                                 : 'bg-white/80 border-[#ebe5df]'
                                         }`}
                                     >
@@ -860,13 +908,13 @@ const ServicesPage = () => {
                                     </div>
                                 );
                             })}
-                        </div>
+                        </div>}
                     </div>
                 </div>
             </section>
 
             {/* ─── Our Process ──────────────────────────────────────── */}
-            <section className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 py-24 sm:py-32 relative z-10">
+            <section className="services-process-section max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 py-24 sm:py-32 relative z-10">
                 <div className="text-center mb-20">
                     <span className="section-label font-sans text-portfolio-gold">Our process</span>
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#121110] max-w-2xl mx-auto mt-2 leading-[1.15]">
@@ -874,7 +922,19 @@ const ServicesPage = () => {
                     </h2>
                 </div>
 
-                <div className="relative max-w-5xl mx-auto">
+                {isMobile ? <div className="services-mobile-process">
+                    {process.map((step, i) => {
+                        const open = openMobileProcess === i;
+                        return <div className={`services-mobile-process-item ${open ? 'is-open' : ''}`} key={step.title}>
+                            <h3><button type="button" className="services-mobile-process-button" aria-expanded={open} aria-controls={`services-process-${i}`} onClick={() => setOpenMobileProcess(open ? null : i)}>
+                                <span className="services-mobile-process-icon"><step.icon size={18} aria-hidden="true" /></span>
+                                <span className="services-mobile-process-title"><small>Step 0{i + 1}</small><strong>{step.title}</strong></span>
+                                <span className="services-mobile-toggle" aria-hidden="true">{open ? '−' : '+'}</span>
+                            </button></h3>
+                            <p id={`services-process-${i}`} hidden={!open}>{step.description}</p>
+                        </div>;
+                    })}
+                </div> : <div className="relative max-w-5xl mx-auto">
                     {/* Central Connecting Timeline Line */}
                     <div className="absolute left-6 md:left-1/2 -translate-x-1/2 top-4 bottom-4 w-0.5 bg-gradient-to-b from-transparent via-portfolio-gold/35 to-transparent pointer-events-none" />
 
@@ -919,23 +979,23 @@ const ServicesPage = () => {
                             );
                         })}
                     </div>
-                </div>
+                </div>}
             </section>
 
             {/* ─── Frequently Asked Questions ────── */}
-            <FAQSection withOuterContainer useMainFont className="py-20 sm:py-28" />
+            <FAQSection withOuterContainer useMainFont className="services-faq py-20 sm:py-28" />
 
             {/* ─── Final CTA ─────────────────────────────────────────── */}
-            <section className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pb-24 sm:pb-32 relative z-10">
+            <section className="services-final-section max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pb-24 sm:pb-32 relative z-10">
                 <motion.div
                     variants={fadeUp}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: '-60px' }}
-                    className="relative bg-[#faf8f5] border border-portfolio-gold/35 hover:border-portfolio-gold/60 rounded-[2.5rem] px-8 sm:px-16 py-20 sm:py-28 text-center overflow-hidden shadow-[0_4px_30px_rgba(234,112,8,0.08)] transition-all duration-500"
+                    className="services-final-card relative bg-[#faf8f5] border border-portfolio-gold/35 hover:border-portfolio-gold/60 rounded-[2.5rem] px-8 sm:px-16 py-20 sm:py-28 text-center overflow-hidden shadow-[0_4px_30px_rgba(234,112,8,0.08)] transition-all duration-500"
                 >
                     {/* Enhanced background glow layers */}
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-portfolio-gold/10 rounded-full blur-[100px] pointer-events-none" />
+                    <div className="services-final-glow absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-portfolio-gold/10 rounded-full blur-[100px] pointer-events-none" />
 
                     <div className="relative z-10 max-w-3xl mx-auto">
                         <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-[#121110] mb-6 tracking-tight leading-none">
@@ -947,7 +1007,7 @@ const ServicesPage = () => {
                             obligation, just a conversation.
                         </p>
 
-                        <div className="flex items-center justify-center gap-4 flex-wrap">
+                        <div className="services-final-actions flex items-center justify-center gap-4 flex-wrap">
                             <Link
                                 to="/contact"
                                 className="btn-primary inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest rounded-full px-8 py-4 cursor-target"

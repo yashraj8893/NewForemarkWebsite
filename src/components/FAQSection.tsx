@@ -16,9 +16,9 @@ export const FAQSection = ({
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const content = (
-    <div className="bg-[#121110] border border-portfolio-gold/35 hover:border-portfolio-gold/60 shadow-[0_4px_30px_rgba(234,112,8,0.12)] rounded-3xl md:rounded-4xl p-5 sm:p-8 md:p-14 lg:p-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 transition-all duration-500 relative before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent">
+    <div className="faq-card bg-[#121110] border border-portfolio-gold/35 hover:border-portfolio-gold/60 shadow-[0_4px_30px_rgba(234,112,8,0.12)] rounded-3xl md:rounded-4xl p-5 sm:p-8 md:p-14 lg:p-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 transition-all duration-500 relative before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent">
       {/* Left Column */}
-      <div className="lg:col-span-4 flex flex-col justify-start pt-2">
+      <div className="faq-heading lg:col-span-4 flex flex-col justify-start pt-2">
         <span className="text-portfolio-gold text-xs font-semibold uppercase tracking-widest block mb-4 md:mb-6">
           Inquiries &amp; FAQ
         </span>
@@ -32,17 +32,19 @@ export const FAQSection = ({
       </div>
 
       {/* Right Column — Accordion */}
-      <div className="lg:col-span-8 flex flex-col gap-3 sm:gap-4">
+      <div className="faq-items lg:col-span-8 flex flex-col gap-3 sm:gap-4">
         {faqs.map((faq, i) => (
           <div
             key={i}
-            className={`transition-all duration-300 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-7 border ${
+            className={`faq-item transition-all duration-300 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-7 border ${
               openIndex === i
                 ? 'bg-portfolio-gold/[0.08] border-portfolio-gold/50 shadow-[0_4px_20px_rgba(234,112,8,0.12)]'
                 : 'bg-white/[0.03] border-white/10 hover:border-portfolio-gold/45 hover:bg-white/[0.06]'
             }`}
           >
             <button
+              type="button"
+              aria-expanded={openIndex === i}
               onClick={() => setOpenIndex(openIndex === i ? null : i)}
               className="w-full flex items-center justify-between gap-4 sm:gap-6 text-left group cursor-target"
             >
@@ -75,7 +77,7 @@ export const FAQSection = ({
 
             {/* Answer — animated open/close */}
             <div
-              className={`overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.21,0.45,0.32,0.9)] ${
+              className={`faq-answer overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.21,0.45,0.32,0.9)] ${
                 openIndex === i ? 'max-h-[500px] opacity-100 mt-3 sm:mt-4' : 'max-h-0 opacity-0'
               }`}
             >

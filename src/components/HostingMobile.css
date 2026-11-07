@@ -1,0 +1,61 @@
+/* Phone-only layouts keep the hosting page's image-led gallery and dark cards. */
+@media (max-width: 767px) {
+  .hosting-approach, .hosting-roadmap, .hosting-process { padding-top: 60px; padding-bottom: 72px; }
+  .hosting-approach > div > div:first-child, .hosting-process > div > div:first-child { margin-bottom: 26px; }
+  .hosting-approach h2, .hosting-process h2 { font-size: clamp(28px,7.6vw,38px); line-height:1.12; letter-spacing:-.035em; }
+  .hosting-approach > div > div:first-child > p, .hosting-process > div > div:first-child > p { font-size:14px; line-height:1.65; }
+  .hosting-gallery-strip { display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; padding:0 15% 4px 0; overscroll-behavior-x:contain; }
+  .hosting-gallery-strip::-webkit-scrollbar { display:none; }
+  .hosting-gallery-slide { flex:0 0 86%; position:relative; aspect-ratio: 1.36; border-radius:18px; overflow:hidden; scroll-snap-align:start; border:0; padding:0; background:#121110; cursor:pointer; }
+  .hosting-gallery-slide img { display:block; width:100%; height:100%; object-fit:cover; }
+  .hosting-gallery-slide > span { position:absolute; right:10px; bottom:10px; padding:6px 9px; border-radius:20px; color:white; background:rgba(18,17,16,.8); font-size:10px; font-weight:700; letter-spacing:.08em; }
+  .hosting-gallery-details { min-height:140px; padding:20px 0 0; }
+  .hosting-gallery-category { display:flex; align-items:center; gap:7px; color:#d66406; font-size:11px; text-transform:uppercase; letter-spacing:.12em; font-weight:700; }
+  .hosting-gallery-details h3 { margin:9px 0 8px; font-size:20px; line-height:1.25; letter-spacing:-.02em; font-weight:800; color:#121110; }
+  .hosting-gallery-details p { font-size:14px; line-height:1.6; color:#5c544d; margin:0; }
+  .hosting-gallery-controls, .hosting-process-navigation { display:flex; align-items:center; justify-content:space-between; margin-top:18px; padding-top:14px; border-top:1px solid #ebe5df; color:#8a8077; font-size:12px; letter-spacing:.08em; font-weight:600; }
+  .hosting-gallery-controls > div, .hosting-process-navigation > div { display:flex; gap:8px; }
+  .hosting-gallery-controls button, .hosting-process-navigation button { display:grid; place-items:center; width:42px; height:42px; border:1px solid #e7ded5; border-radius:50%; background:#fff; color:#121110; cursor:pointer; }
+  .hosting-gallery-controls button:last-child, .hosting-process-navigation button:last-child { color:#fff; background:#121110; border-color:#121110; }
+  .hosting-gallery-controls button:disabled { opacity:.32; cursor:default; }
+  .hosting-roadmap-glow, .hosting-process > .absolute { display:none; }
+  .hosting-roadmap [aria-label="Roadmap steps"] button { min-height:44px; }
+  /* A simplified version of the desktop globe and connected technology badges. */
+  .hosting-tech-mobile { padding:60px 20px 72px; background:#fff; color:#121110; overflow:hidden; }
+  .hosting-tech-inner { max-width:620px; margin:auto; }
+  .hosting-tech-eyebrow { color:#ea7008; font-size:11px; letter-spacing:.15em; text-transform:uppercase; font-weight:700; }
+  .hosting-tech-mobile h2 { font-size:clamp(28px,7.6vw,38px); line-height:1.12; letter-spacing:-.04em; margin:16px 0 12px; font-weight:800; }
+  .hosting-tech-mobile h2 span { color:#ea7008; }
+  .hosting-tech-intro { font-size:14px; line-height:1.65; color:#5c544d; margin:0; }
+  .hosting-tech-graphic { height:160px; margin:22px 0 14px; display:flex; justify-content:center; align-items:center; background:radial-gradient(ellipse at center,rgba(234,112,8,.08),transparent 65%); }
+  .hosting-tech-graphic svg { display:block; width:220px; height:160px; }
+  .hosting-tech-tabs { display:flex; gap:7px; overflow-x:auto; scrollbar-width:none; overscroll-behavior-x:contain; padding:2px 0 9px; }
+  .hosting-tech-tabs::-webkit-scrollbar { display:none; }
+  .hosting-tech-tabs button { flex:none; min-height:42px; padding:8px 13px; border:1px solid #e9e0d7; border-radius:999px; background:#fff; color:#62594f; font-size:11px; line-height:1.2; font-weight:700; cursor:pointer; }
+  .hosting-tech-tabs button.is-active { background:#121110; border-color:#121110; color:#fff; }
+  .hosting-tech-category { display:flex; align-items:center; justify-content:space-between; padding:13px 1px 11px; color:#8a8077; font-size:11px; letter-spacing:.06em; }
+  .hosting-tech-category strong { color:#ea7008; font-size:11px; text-transform:uppercase; letter-spacing:.08em; }
+  .hosting-tech-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+  .hosting-tech-node { display:flex; align-items:center; gap:8px; min-width:0; padding:10px 9px; min-height:64px; border:1px solid #eae3dc; border-radius:12px; background:#fff; box-shadow:0 5px 14px rgba(18,17,16,.035); }
+  .hosting-tech-node-icon { flex:none; width:30px; height:30px; display:grid; place-items:center; border-radius:8px; background:#121110; }
+  .hosting-tech-node-svg { width:25px; height:25px; }
+  .hosting-tech-node-copy { display:flex; flex:1; min-width:0; flex-direction:column; gap:3px; }
+  .hosting-tech-node-copy strong { font-size:11px; line-height:1.25; color:#121110; overflow-wrap:anywhere; }
+  .hosting-tech-node-copy small { font-size:10px; line-height:1.3; color:#766d64; overflow-wrap:anywhere; }
+  .hosting-tech-tabs button:focus-visible { outline:2px solid #ea7008; outline-offset:-2px; }
+  .hosting-process-tabs { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:6px; margin-bottom:14px; }
+  .hosting-process-tabs button { min-height:48px; display:flex; align-items:center; justify-content:center; gap:5px; border:1px solid #ebe5df; border-radius:11px; background:#fff; color:#8a8077; font-size:10px; font-weight:700; cursor:pointer; }
+  .hosting-process-tabs button svg { color:#ea7008; }
+  .hosting-process-tabs button.is-active { background:#121110; border-color:#ea7008; color:white; }
+  .hosting-process-card { overflow:hidden; border-radius:20px; background:#121110; border:1px solid #3c3025; color:white; box-shadow:0 14px 30px -20px rgba(18,17,16,.55); }
+  .hosting-process-card > img { width:100%; height:190px; display:block; object-fit:cover; }
+  .hosting-process-card-copy { padding:18px; }
+  .hosting-process-card-top { display:flex; align-items:center; justify-content:space-between; gap:10px; color:#ec8b3c; font-size:10px; letter-spacing:.1em; font-weight:700; }
+  .hosting-process-card-top span:last-child { color:#cbbcad; white-space:nowrap; }
+  .hosting-process-card h3 { color:#fff; font-size:21px; line-height:1.2; font-weight:800; letter-spacing:-.02em; margin:14px 0 8px; }
+  .hosting-process-card p { font-size:14px; line-height:1.6; color:#d6cdc5; margin:0; }
+  .hosting-process-pills { display:flex; flex-wrap:wrap; gap:6px; margin-top:15px; }
+  .hosting-process-pills span { padding:5px 8px; border:1px solid #504238; border-radius:6px; color:#e4dcd3; font-size:10px; line-height:1.3; }
+  .hosting-gallery-slide:focus-visible, .hosting-gallery-controls button:focus-visible, .hosting-process-tabs button:focus-visible, .hosting-process-navigation button:focus-visible { outline:2px solid #ea7008; outline-offset:2px; }
+}
+@media (prefers-reduced-motion: reduce) { .hosting-mobile-gallery *, .hosting-mobile-process * { animation:none!important; transition:none!important; } }

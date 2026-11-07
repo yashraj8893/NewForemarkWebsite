@@ -189,8 +189,22 @@ const HaloCard = ({ item, i, reduced }: { item: BlockItem; i: number; reduced: b
   );
 };
 
-const HaloCardsBlocks = () => {
+const HaloCardsBlocks = ({ mobile = false }: { mobile?: boolean }) => {
   const reduced = !!useReducedMotion();
+
+  if (mobile) return (
+    <div className="services-mobile-benefits">
+      {items.map((item) => (
+        <div className="services-mobile-benefit" key={item.index}>
+          <span className="services-mobile-benefit-icon"><item.Icon size={20} aria-hidden="true" /></span>
+          <div>
+            <div className="services-mobile-benefit-title"><span>{item.index}</span><h3>{item.title}</h3></div>
+            <p>{item.text}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 
   return (
     <motion.div

@@ -9,3 +9,13 @@
 @keyframes dl-enter { from { opacity:0; transform:translateY(5px) } to { opacity:1; transform:translateY(0) } }
 .dl-intro-body,.dl-detail-copy { animation:dl-enter .2s ease-out both; }
 @media(prefers-reduced-motion:reduce){.dl-intro-body,.dl-detail-copy{animation:none}}
+
+/* A little less vertical padding on phones, with all phase copy and details kept. */
+@media (max-width: 767px) {
+  .delivery-lifecycle { padding: 55px 0; }
+  .dl-tabs { margin-top: 27px; }
+  .dl-intro-body { margin: 26px 0 24px; }
+  .dl-outcome { padding-top: 18px; }
+  .dl-mobile-toggle { margin-top: 22px; }
+  .dl-navigation { margin-top: 22px; }
+}

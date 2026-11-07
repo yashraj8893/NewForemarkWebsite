@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import './HostingMobile.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Cloud,
@@ -121,6 +122,14 @@ const journeySteps: JourneyStep[] = [
 export const HostingDeliverablesRoadmap = () => {
   const [hoveredStep, setHoveredStep] = useState<number | null>(null);
   const [activeMobileIdx, setActiveMobileIdx] = useState<number>(0);
+  const tabs = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const strip = tabs.current;
+    const button = strip?.children[activeMobileIdx] as HTMLElement | undefined;
+    if (!strip || !button || strip.clientWidth === 0) return;
+    const left = strip.scrollLeft + button.getBoundingClientRect().left - strip.getBoundingClientRect().left - (strip.clientWidth - button.offsetWidth) / 2;
+    strip.scrollTo({ left: Math.max(0, Math.min(left, strip.scrollWidth - strip.clientWidth)), behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  }, [activeMobileIdx]);
 
   // Exact Undulating Road Path weaving smoothly OVER and UNDER each diamond:
   // Starts on bottom-left (30, 500) -> curves OVER #1 (145, 175) -> dips UNDER #2 (370, 345) ->
@@ -138,9 +147,9 @@ export const HostingDeliverablesRoadmap = () => {
   `;
 
   return (
-    <section className="py-20 sm:py-28 relative overflow-hidden bg-transparent select-none">
+    <section className="hosting-roadmap py-20 sm:py-28 relative overflow-hidden bg-transparent select-none">
       {/* Ambient Radial Orange Lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[450px] bg-gradient-to-r from-[#ea7008]/[0.06] via-[#ea7008]/[0.03] to-transparent blur-[140px] pointer-events-none rounded-full z-0" />
+      <div className="hosting-roadmap-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[450px] bg-gradient-to-r from-[#ea7008]/[0.06] via-[#ea7008]/[0.03] to-transparent blur-[140px] pointer-events-none rounded-full z-0" />
 
       <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 relative z-10">
         
@@ -472,7 +481,7 @@ export const HostingDeliverablesRoadmap = () => {
         {/* ─── TABLET & MOBILE EXPERIENCE (< 1024px) ─── */}
         <div className="block lg:hidden w-full">
           {/* Milestone Step Selector Buttons */}
-          <div className="flex items-center justify-center gap-2 overflow-x-auto pb-4 mb-6 scrollbar-none">
+          <div ref={tabs} aria-label="Roadmap steps" className="flex items-center justify-start gap-2 overflow-x-auto pb-4 mb-6 scrollbar-none">
             {journeySteps.map((step, idx) => {
               const isActive = activeMobileIdx === idx;
               const IconComp = step.icon;
@@ -480,6 +489,8 @@ export const HostingDeliverablesRoadmap = () => {
               return (
                 <button
                   key={`mobile-btn-${step.id}`}
+                  type="button"
+                  aria-pressed={isActive}
                   onClick={() => setActiveMobileIdx(idx)}
                   className={`flex items-center gap-2 px-3.5 py-2 rounded-xl border text-xs font-semibold transition-all duration-300 shrink-0 ${
                     isActive
@@ -563,6 +574,8 @@ export const HostingDeliverablesRoadmap = () => {
 
                       <div className="flex items-center gap-2">
                         <button
+                          type="button"
+                          aria-label="Previous roadmap step"
                           disabled={activeMobileIdx === 0}
                           onClick={() => setActiveMobileIdx((prev) => Math.max(0, prev - 1))}
                           className="w-8 h-8 rounded-full border border-[#ebe5df] flex items-center justify-center text-[#121110] disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[#faf8f5]"
@@ -570,6 +583,8 @@ export const HostingDeliverablesRoadmap = () => {
                           <ArrowLeft size={14} />
                         </button>
                         <button
+                          type="button"
+                          aria-label="Next roadmap step"
                           disabled={activeMobileIdx === journeySteps.length - 1}
                           onClick={() =>
                             setActiveMobileIdx((prev) =>

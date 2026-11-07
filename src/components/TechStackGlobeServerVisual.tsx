@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { usePhone } from '../hooks/usePhone';
+import './HostingMobile.css';
 
 // --- Technology Definition ---
 interface TechItem {
@@ -330,6 +332,18 @@ const hostingTechItems: TechItem[] = [
 export const TechStackGlobeServerVisual = () => {
   const [activeCategory, setActiveCategory] = useState<'all' | 'cloud' | 'devops' | 'edge' | 'observability'>('all');
   const [hoveredTechId, setHoveredTechId] = useState<string | null>(null);
+  const isPhone = usePhone();
+  const [mobileCategory, setMobileCategory] = useState<TechItem['category'] | 'all'>('cloud');
+  const mobileTabs = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const strip = mobileTabs.current;
+    const active = strip?.querySelector<HTMLButtonElement>('[aria-pressed="true"]');
+    if (!isPhone || !strip || !active) return;
+    const tabRect = active.getBoundingClientRect();
+    const stripRect = strip.getBoundingClientRect();
+    const shift = tabRect.left < stripRect.left ? tabRect.left - stripRect.left : tabRect.right > stripRect.right ? tabRect.right - stripRect.right : 0;
+    if (shift) strip.scrollTo({ left: strip.scrollLeft + shift, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  }, [isPhone, mobileCategory]);
 
   const categories = [
     { id: 'all', label: 'All Infrastructure (16)' },
@@ -338,6 +352,34 @@ export const TechStackGlobeServerVisual = () => {
     { id: 'edge', label: 'Edge & Security' },
     { id: 'observability', label: 'Monitoring & Logs' },
   ] as const;
+
+  if (isPhone) {
+    const selectedItems = hostingTechItems.filter(item => mobileCategory === 'all' || item.category === mobileCategory);
+    const selectedLabel = categories.find(category => category.id === mobileCategory)?.label;
+    return <section className="hosting-tech-mobile" aria-labelledby="hosting-mobile-tech-title">
+      <div className="hosting-tech-inner">
+        <div className="hosting-tech-eyebrow">Technology Stack</div>
+        <h2 id="hosting-mobile-tech-title">Mission-Critical Infrastructure For <span>Web Servers &amp; Hosting</span></h2>
+        <p className="hosting-tech-intro">High-availability cloud providers, container orchestration, global edge CDNs, and proactive 24/7 observability pipelines.</p>
+        <div className="hosting-tech-graphic" aria-hidden="true">
+          <svg viewBox="0 0 220 160" fill="none">
+            <circle cx="110" cy="76" r="65" fill="#faf5ef" stroke="#121110" strokeWidth="2" />
+            <circle cx="110" cy="76" r="69" stroke="#ea7008" strokeWidth="1" strokeDasharray="3 5" opacity=".65" />
+            <ellipse cx="110" cy="76" rx="31" ry="65" stroke="#bd865c" strokeWidth="1" />
+            <ellipse cx="110" cy="76" rx="52" ry="65" stroke="#a4998f" strokeWidth="1" />
+            <path d="M49 52 Q110 67 171 52 M45 76 Q110 90 175 76 M49 100 Q110 113 171 100" stroke="#b68c70" strokeWidth="1" />
+            <path d="M110 11V141" stroke="#ea7008" strokeWidth="1" strokeDasharray="5 4" />
+            {[43, 69, 95].map((y, i) => <g key={y}><rect x="39" y={y} width="142" height="22" rx="5" fill="#171512" stroke="#342d27" /><rect x="46" y={y+5} width="88" height="12" rx="3" fill="#0c0c0b" stroke="#39322b" /><circle cx="52" cy={y+11} r="2" fill={i === 1 ? '#e77a20' : '#2a9a59'} /><path d={`M58 ${y+11}h40`} stroke="#82766a" strokeWidth="1" /><circle cx="154" cy={y+11} r="3" fill="#ea7008" /><circle cx="165" cy={y+11} r="3" fill={i === 2 ? '#2a9a59' : '#675244'} /></g>)}
+          </svg>
+        </div>
+        <div className="hosting-tech-tabs" ref={mobileTabs} aria-label="Technology categories">
+          {categories.map(cat => <button type="button" key={cat.id} className={mobileCategory === cat.id ? 'is-active' : ''} aria-pressed={mobileCategory === cat.id} onClick={() => setMobileCategory(cat.id)}>{cat.label}</button>)}
+        </div>
+        <div className="hosting-tech-category"><strong>{selectedLabel}</strong><span>{String(selectedItems.length).padStart(2, '0')} / 16</span></div>
+        <div className="hosting-tech-grid" aria-live="polite">{selectedItems.map(item => { const Icon = item.icon; return <div className="hosting-tech-node" key={item.id}><span className="hosting-tech-node-icon"><Icon className="hosting-tech-node-svg" /></span><span className="hosting-tech-node-copy"><strong>{item.name}</strong><small>{item.role}</small></span></div>; })}</div>
+      </div>
+    </section>;
+  }
 
   // 16 Symmetrical Fiber Optic Conduits connecting Globe/Servers Hub to Badges (Canvas: 1000 x 680)
   const connectingConduits = [

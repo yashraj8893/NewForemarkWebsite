@@ -1,4 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { usePhone } from '../hooks/usePhone';
+import './HostingMobile.css';
 import { 
   Server, 
   Database, 
@@ -144,9 +147,12 @@ export const hostingProcessSteps: HostingProcessStep[] = [
 
 export const HostingProcessDepthCarousel: React.FC = () => {
   const carouselRef = useRef<DepthCarouselHandle>(null);
+  const isPhone = usePhone();
+  const [active, setActive] = useState(0);
+  const step = hostingProcessSteps[active];
 
   return (
-    <section className="py-20 sm:py-28 relative overflow-hidden bg-white">
+    <section className="hosting-process py-20 sm:py-28 relative overflow-hidden bg-white">
       {/* Background ambient decorative glow */}
       <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-[#ea7008]/[0.03] rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-10 left-0 w-[450px] h-[450px] bg-[#121110]/[0.02] rounded-full blur-[120px] pointer-events-none" />
@@ -167,7 +173,20 @@ export const HostingProcessDepthCarousel: React.FC = () => {
         </div>
 
         {/* ─── 3D Depth Carousel Viewport (No Background Box) ── */}
-        <div 
+        {isPhone ? <div className="hosting-mobile-process">
+          <div className="hosting-process-tabs" aria-label="Delivery phases">
+            {hostingProcessSteps.map((item, i) => { const Icon = item.icon; return <button type="button" key={item.step} className={active === i ? 'is-active' : ''} aria-label={`${item.step}: ${item.title}`} aria-pressed={active === i} onClick={() => setActive(i)}><Icon size={17} aria-hidden="true" /><span>{item.step}</span></button>; })}
+          </div>
+          <article className="hosting-process-card" aria-live="polite">
+            <img src={step.image.replace('/hosting/', '/hosting-mobile/').replace('.jpg', '.webp')} alt={step.alt || ''} />
+            <div className="hosting-process-card-copy">
+              <div className="hosting-process-card-top"><span>{step.phaseBadge}</span><span>{step.step} / 05</span></div>
+              <h3>{step.title}</h3><p>{step.description}</p>
+              <div className="hosting-process-pills">{step.pills?.map(pill => <span key={pill}>{pill}</span>)}</div>
+            </div>
+          </article>
+          <div className="hosting-process-navigation"><span>{step.step} / 05</span><div><button type="button" onClick={() => setActive((active + hostingProcessSteps.length - 1) % hostingProcessSteps.length)} aria-label="Previous phase"><ArrowLeft size={18} /></button><button type="button" onClick={() => setActive((active + 1) % hostingProcessSteps.length)} aria-label="Next phase"><ArrowRight size={18} /></button></div></div>
+        </div> : <div
           data-lenis-prevent
           className="relative w-full overflow-hidden"
           style={{ height: '640px' }}
@@ -231,7 +250,7 @@ export const HostingProcessDepthCarousel: React.FC = () => {
               );
             }}
           />
-        </div>
+        </div>}
 
       </div>
     </section>

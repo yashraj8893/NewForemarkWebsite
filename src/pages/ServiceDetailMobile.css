@@ -1,0 +1,14 @@
+/* Match the compact FAQ used on the Services page, without changing desktop. */
+@media (max-width: 767px) {
+  .detail-mobile-faq { padding-top: 42px; padding-bottom: 42px; }
+  .detail-mobile-faq .faq-card { padding: 18px; gap: 18px; }
+  .detail-mobile-faq .faq-heading { padding-top: 0; }
+  .detail-mobile-faq .faq-heading > span { margin-bottom: 8px; }
+  .detail-mobile-faq .faq-heading h2 { margin-bottom: 9px; }
+  .detail-mobile-faq .faq-heading p { max-width: none; line-height: 1.55; }
+  .detail-mobile-faq .faq-items { gap: 8px; }
+  .detail-mobile-faq .faq-item { padding: 8px 11px; }
+  .detail-mobile-faq .faq-item > button { min-height: 44px; gap: 10px; }
+  .detail-mobile-faq .faq-item > button > div:first-child { gap: 9px; }
+  .detail-mobile-faq .faq-answer p { padding: 0; font-size: 13px; line-height: 1.55; }
+}

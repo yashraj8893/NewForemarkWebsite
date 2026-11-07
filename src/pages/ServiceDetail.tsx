@@ -1,4 +1,5 @@
 import { useParams, Link, Navigate } from 'react-router-dom';
+import './ServiceDetailMobile.css';
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import {
@@ -394,7 +395,7 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                 )}
 
                 {/* ─── FAQs ───────────────────────────────────────────── */}
-                <FAQSection withOuterContainer useMainFont className="py-20 sm:py-28" />
+                <FAQSection withOuterContainer useMainFont className={`py-20 sm:py-28 ${['website-software-development', 'cloud-hosting'].includes(activeSlug) ? 'detail-mobile-faq' : ''}`} />
 
                 {/* ─── Explore Other Services ─────────────────────────── */}
                 <section className="py-16 sm:py-24 border-t border-[#ebe5df]">

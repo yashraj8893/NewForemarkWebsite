@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './AutomationMobilePreview.css';
 import {
   MessageSquare,
@@ -141,8 +141,38 @@ const architectureTiers: ArchitectureTier[] = [
   },
 ];
 
+// Play only the open mobile video when it is visible, and keep controls as a
+// fallback for browsers or user settings that block autoplay.
+const MobileTierVideo: React.FC<{ src: string; poster?: string; title: string }> = ({ src, poster, title }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const play = () => { void video.play().catch(() => { /* Controls remain available. */ }); };
+    if (!('IntersectionObserver' in window)) {
+      play();
+      return () => video.pause();
+    }
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) play();
+      else video.pause();
+    }, { threshold: 0.1 });
+    observer.observe(video);
+    return () => {
+      observer.disconnect();
+      video.pause();
+    };
+  }, []);
+
+  return <video ref={videoRef} controls muted loop playsInline preload="none" poster={poster} aria-label={`${title} preview`}><source src={src} type="video/mp4" /></video>;
+};
+
 export const AutomationDeliverablesStack: React.FC = () => {
   const [activeTierId, setActiveTierId] = useState<string>('chatops');
+  const [mobileActiveTierId, setMobileActiveTierId] = useState<string | null>('chatops');
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches);
   useEffect(() => {
     const query = window.matchMedia('(max-width: 767px)');
@@ -160,17 +190,17 @@ export const AutomationDeliverablesStack: React.FC = () => {
         <p className="mobile-build-intro">A cohesive 5-tier automation architecture connecting frontline team interactions down to secure, fail-safe background microservices.</p>
         <div className="mobile-build-list">
           {architectureTiers.map((tier) => {
-            const active = activeTierId === tier.id;
+            const active = mobileActiveTierId === tier.id;
             const Icon = tier.icon;
             const poster = tier.videoSrc?.mp4.replace('/videos/', '/mobile-posters/').replace('.mp4', '.jpg');
             return <div className={`mobile-build-item ${active ? 'is-open' : ''}`} key={tier.id}>
-              <button type="button" className="mobile-build-button" onClick={() => setActiveTierId(tier.id)} aria-expanded={active} aria-controls={`mobile-build-${tier.id}`}>
+              <button type="button" className="mobile-build-button" onClick={() => setMobileActiveTierId(current => current === tier.id ? null : tier.id)} aria-expanded={active} aria-controls={`mobile-build-${tier.id}`}>
                 <span className="mobile-build-icon"><Icon size={19} /></span><span className="mobile-build-name"><small>LAYER {tier.number} // {tier.category}</small><strong>{tier.title}</strong></span><span className="mobile-build-toggle" aria-hidden="true">{active ? '−' : '+'}</span>
               </button>
               <div className="mobile-build-panel" id={`mobile-build-${tier.id}`} hidden={!active}>
                 <p>{tier.description}</p>
                 <div className="mobile-build-tags">{tier.bullets.map(bullet => <span key={bullet}><CheckCircle2 size={12} />{bullet}</span>)}</div>
-                {active && tier.videoSrc && <video controls playsInline preload="none" poster={poster} aria-label={`${tier.title} preview`}><source src={tier.videoSrc.mp4} type="video/mp4" /></video>}
+                {active && tier.videoSrc && <MobileTierVideo src={tier.videoSrc.mp4} poster={poster} title={tier.title} />}
               </div>
             </div>;
           })}

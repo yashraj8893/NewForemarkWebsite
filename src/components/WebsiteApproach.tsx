@@ -27,6 +27,8 @@ export function WebsiteApproach({ service }: { service: ServiceData }) {
     const Icon = current.icon;
     const next = (selected + 1) % items.length;
     const shape = shapes[selected % shapes.length];
+    const mobileItem = items[selected];
+    const MobileIcon = mobileItem.icon;
 
     function tilt(e: React.PointerEvent<HTMLButtonElement>) {
         if (e.pointerType !== 'mouse' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -44,29 +46,36 @@ export function WebsiteApproach({ service }: { service: ServiceData }) {
                 <div className="wa-eyebrow"><span />Our Approach</div>
                 <h2 id="website-approach-title" className="wa-heading">The Foremark<br />Standard<span>.</span></h2>
                 <p className="wa-subtitle">{service.howWeDoItSubtitle}</p>
-                <div className="wa-mobile-approach" aria-label="Explore our approach">
-                    {items.map((item, i) => {
-                        const ItemIcon = item.icon;
-                        const open = selected === i;
-                        return (
-                            <div className={`wa-mobile-item ${open ? 'is-open' : ''}`} key={item.title}>
-                                <button
-                                    type="button"
-                                    className="wa-mobile-trigger"
-                                    onClick={() => select(i)}
-                                    aria-expanded={open}
-                                    aria-controls={`wa-mobile-panel-${i}`}
-                                >
-                                    <span className="wa-mobile-icon"><ItemIcon size={19} aria-hidden="true" /></span>
-                                    <span className="wa-mobile-title">{item.title}</span>
-                                    <span className="wa-mobile-toggle" aria-hidden="true">{open ? '−' : '+'}</span>
-                                </button>
-                                <div id={`wa-mobile-panel-${i}`} className="wa-mobile-panel" hidden={!open}>
-                                    <p>{item.description}</p>
-                                </div>
-                            </div>
-                        );
-                    })}
+                <div className="wa-mobile-approach">
+                    <div className="wa-mobile-list" aria-label="Explore our approach">
+                        {items.map((item, i) => {
+                            const ItemIcon = item.icon;
+                            return <button type="button" key={item.title} className={`wa-mobile-choice ${selected === i ? 'is-active' : ''}`} onClick={() => select(i)} aria-pressed={selected === i} aria-label={`${String(i + 1).padStart(2, '0')}: ${item.title}`}>
+                                <ItemIcon className="wa-mobile-choice-icon" size={19} aria-hidden="true" />
+                                <span className="wa-mobile-number" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+                            </button>;
+                        })}
+                    </div>
+                    <div className="wa-mobile-stage">
+                        <button type="button" className="wa-shape-button wa-mobile-shape-button" onClick={() => select(next)} aria-label={`Next: ${items[next].title}`}>
+                            <span aria-hidden="true" className={`wa-shape wa-peek wa-${shapes[next % shapes.length]}`} />
+                            <span aria-hidden="true" className={`wa-shape wa-plate wa-${shape}`} />
+                            <span aria-hidden="true" className={`wa-shape wa-outline wa-${shape}`} />
+                            <span className={`wa-shape wa-face wa-${shape}`}>
+                                <span className="wa-content">
+                                    <span className="wa-icon"><MobileIcon size={21} aria-hidden="true" /></span>
+                                    <span className="wa-label">FOREMARK STANDARD</span>
+                                    <span className="wa-card-title">{mobileItem.title}</span>
+                                </span>
+                            </span>
+                            <span className="wa-next" aria-hidden="true"><ArrowRight size={18} /></span>
+                        </button>
+                        <p className="wa-mobile-description" aria-live="polite">{mobileItem.description}</p>
+                        <div className="wa-progress" aria-label={`Principle ${selected + 1} of ${items.length}`}>
+                            <span><b>{String(selected + 1).padStart(2, '0')}</b> / {String(items.length).padStart(2, '0')}</span>
+                            <div className="wa-dots">{items.map((item, i) => <button type="button" key={item.title} className={i === selected ? 'is-active' : ''} onClick={() => select(i)} aria-label={`Show ${item.title}`} aria-pressed={i === selected} />)}</div>
+                        </div>
+                    </div>
                 </div>
                 <div className="wa-layout">
                     <div className="wa-list" aria-label="Explore our approach">

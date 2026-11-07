@@ -43,7 +43,12 @@ export const CinematicProcessWalkthrough = () => {
   const phase = phases[active];
   const select = (i: number) => {
     setActive(i); setDetail(0);
-    tabs.current?.children[i]?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'nearest', inline: 'nearest' });
+    const strip = tabs.current;
+    const button = strip?.children[i] as HTMLElement | undefined;
+    if (strip && button && strip.scrollWidth > strip.clientWidth) {
+      const left = strip.scrollLeft + button.getBoundingClientRect().left - strip.getBoundingClientRect().left - (strip.clientWidth - button.offsetWidth) / 2;
+      strip.scrollTo({ left: Math.max(0, Math.min(left, strip.scrollWidth - strip.clientWidth)), behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    }
   };
   return <section className="delivery-lifecycle" aria-labelledby="dl-title">
     <div className="dl-wrap">

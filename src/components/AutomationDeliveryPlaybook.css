@@ -82,3 +82,24 @@
   .automation-design .ad2-sidebar-header{padding-bottom:14px}
   .automation-design .ad2-main{padding-top:23px}
 }
+
+/* Tighter mobile rhythm: keep every phase and deliverable without a long panel. */
+@media(max-width:767px){
+  .automation-design .delivery{padding-top:48px;padding-bottom:52px}
+  .automation-design .delivery .intro{line-height:1.55}
+  .automation-design .ad2-shell{margin-top:22px}
+  .automation-design .ad2-sidebar{padding:14px 15px}
+  .automation-design .ad2-sidebar-header{padding-bottom:9px}
+  .automation-design .ad2-step-list{margin:9px 0 0}
+  .automation-design .ad2-step{min-height:44px}
+  .automation-design .ad2-main{padding:17px 17px 18px}
+  .automation-design .ad2-headline{gap:10px}
+  .automation-design .ad2-phase-icon{width:39px;height:39px;border-radius:11px}
+  .automation-design .ad2-phase-icon svg{width:20px;height:20px}
+  .automation-design .ad2-main h3{font-size:23px;margin:13px 0 8px}
+  .automation-design .ad2-main p{font-size:13px;line-height:1.55}
+  .automation-design .ad2-deliverables{margin-top:16px;padding:13px 14px 5px}
+  .automation-design .ad2-deliverables-head{padding-bottom:8px}
+  .automation-design .ad2-deliverables li{padding:8px 0}
+  .automation-design .ad2-footer{padding:10px 17px}
+}

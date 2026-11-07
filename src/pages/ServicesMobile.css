@@ -1,0 +1,84 @@
+/* Services page: lighter visuals and tighter spacing on phones only. */
+@media (max-width: 767px) {
+  .services-page-hero { padding-bottom: 54px; }
+  .services-page-hero > div { margin-bottom: 0; }
+  .services-mobile-benefits { display: grid; gap: 10px; margin: 38px auto 0; }
+  .services-mobile-benefit { display: flex; align-items: flex-start; gap: 14px; padding: 17px; border: 1px solid #f1dfca; border-radius: 18px; background: linear-gradient(135deg, #fff 30%, #fdf5e9); box-shadow: 0 8px 22px -18px rgba(234,112,8,.45); }
+  .services-mobile-benefit-icon { display: grid; place-items: center; width: 39px; height: 39px; flex: none; border: 1px solid #f4dfc9; border-radius: 12px; color: #ea7008; background: #fff3e3; }
+  .services-mobile-benefit-title { display: flex; align-items: baseline; gap: 8px; }
+  .services-mobile-benefit-title span { color: #ea7008; font-size: 11px; font-weight: 700; }
+  .services-mobile-benefit-title h3 { margin: 0; color: #121110; font-size: 15px; line-height: 1.25; font-weight: 700; }
+  .services-mobile-benefit p { margin: 6px 0 0; color: #6b635b; font-size: 13px; line-height: 1.5; }
+  .services-overview-section { padding-bottom: 70px; }
+  .services-overview-section > div:first-child { margin-bottom: 40px; }
+  .services-process-section { padding-top: 65px; padding-bottom: 65px; }
+  .services-process-section > div:first-child { margin-bottom: 46px; }
+}
+
+/* Compact mobile cards keep the service descriptions and links visible. */
+@media (max-width: 767px) {
+  .services-mobile-list { display: grid; gap: 9px; }
+  .services-mobile-service, .services-mobile-process-item { overflow: hidden; border: 1px solid #ebe5df; border-radius: 16px; background: #fff; }
+  .services-mobile-service { border-color: #eed9c6; border-radius: 20px; background: linear-gradient(145deg, #fffaf5, #fff 42%); box-shadow: 0 12px 28px -26px rgba(234,112,8,.45); }
+  .services-mobile-process-item.is-open { border-color: #e9a873; box-shadow: 0 9px 24px -21px rgba(234,112,8,.75); }
+  .services-mobile-service h3, .services-mobile-process-item h3 { margin: 0; }
+  .services-mobile-service-header { display: flex; align-items: center; gap: 10px; padding: 16px 15px 0; }
+  .services-mobile-service-header h3 { flex: 1; min-width: 0; }
+  .services-mobile-service-link { display: flex; align-items: center; gap: 10px; min-height: 52px; color: #121110; text-decoration: none; }
+  .services-mobile-thumb { flex: none; width: clamp(74px, 23vw, 102px); height: 78px; object-fit: contain; border: 1px solid #f0e9e2; border-radius: 12px; background: #faf8f5; }
+  .services-mobile-process-button { width: 100%; min-height: 69px; display: flex; align-items: center; gap: 12px; padding: 12px; border: 0; background: transparent; color: #121110; text-align: left; cursor: pointer; }
+  .services-mobile-service-link:focus-visible, .services-mobile-process-button:focus-visible, .services-mobile-why-button:focus-visible { outline: 2px solid #ea7008; outline-offset: -3px; }
+  .services-mobile-service-icon, .services-mobile-process-icon { width: 40px; height: 40px; flex: none; display: grid; place-items: center; color: #ea7008; border: 1px solid #f2dfcc; border-radius: 12px; background: #fff5e9; }
+  .is-open .services-mobile-process-icon { color: #fff; background: #ea7008; border-color: #ea7008; }
+  .services-mobile-service-title, .services-mobile-process-title { display: grid; flex: 1; min-width: 0; gap: 3px; }
+  .services-mobile-service-title small, .services-mobile-process-title small { color: #d66b13; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .services-mobile-service-title strong { font-size: 16px; line-height: 1.25; font-weight: 700; letter-spacing: -.02em; }
+  .services-mobile-process-title strong { font-size: 14px; line-height: 1.3; font-weight: 700; }
+  .services-mobile-toggle { flex: none; color: #ea7008; font-size: 21px; line-height: 1; padding: 0 4px; }
+  .services-mobile-service-detail { padding: 12px 16px 0; }
+  .services-mobile-service-detail > p { margin: 0; color: #5c544d; font-size: 14px; line-height: 1.6; }
+  .services-mobile-actions { display: flex; flex-wrap: wrap; gap: 8px; padding: 14px 15px 16px; }
+  .services-mobile-actions a { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 10px 8px; font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+  .services-why-section > div { padding-top: 55px; padding-bottom: 55px; }
+  .services-why-section > div > div:first-child { margin-bottom: 28px; }
+  .services-why-mobile { gap: 20px; }
+  .services-why-visual { max-width: 240px; }
+  .services-mobile-why { width: 100%; }
+  .services-mobile-why-hint { margin: 0 0 10px; color: #8a8077; font-size: 12px; text-align: center; }
+  .services-mobile-why-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .services-mobile-why-button { display: flex; align-items: center; gap: 8px; min-height: 55px; padding: 10px; border: 1px solid #ebe5df; border-radius: 12px; background: #fff; text-align: left; color: #28221d; font-size: 12px; font-weight: 700; line-height: 1.3; }
+  .services-mobile-why-button.is-active { border-color: #ea7008; background: #fff8f1; }
+  .services-mobile-why-dot { width: 9px; height: 9px; flex: none; border: 1px solid #dfd6ca; border-radius: 50%; }
+  .services-mobile-why-detail { margin-top: 9px; padding: 14px; border: 1px solid #ecd8c5; border-radius: 12px; background: #fdf8f2; }
+  .services-mobile-why-detail strong { color: #121110; font-size: 13px; }
+  .services-mobile-why-detail p { margin: 5px 0 0; color: #5c544d; font-size: 13px; line-height: 1.55; }
+  .services-mobile-process { display: grid; gap: 8px; }
+  .services-mobile-process-button { min-height: 62px; }
+  .services-mobile-process-item > p { margin: 0; padding: 12px 15px 15px; border-top: 1px solid #f1e8df; color: #5c544d; font-size: 13px; line-height: 1.6; }
+}
+
+/* Keep the closing call to action short without hiding its copy or links. */
+@media (max-width: 767px) {
+  .services-final-section { padding-bottom: 55px; }
+  .services-final-card { padding: 34px 18px; border-radius: 24px; }
+  .services-final-glow { display: none; }
+  .services-final-card h2 { font-size: 28px; line-height: 1.12; margin-bottom: 14px; }
+  .services-final-card p { font-size: 14px; line-height: 1.6; margin-bottom: 22px; }
+  .services-final-actions { gap: 8px; }
+  .services-final-actions a { min-height: 44px; justify-content: center; padding: 11px 14px; font-size: 10px; letter-spacing: .08em; }
+}
+
+/* The shared FAQ stays intact; only its Services-page phone layout is tighter. */
+@media (max-width: 767px) {
+  .services-faq { padding-top: 42px; padding-bottom: 42px; }
+  .services-faq .faq-card { padding: 18px; gap: 18px; }
+  .services-faq .faq-heading { padding-top: 0; }
+  .services-faq .faq-heading > span { margin-bottom: 8px; }
+  .services-faq .faq-heading h2 { margin-bottom: 9px; }
+  .services-faq .faq-heading p { max-width: none; line-height: 1.55; }
+  .services-faq .faq-items { gap: 8px; }
+  .services-faq .faq-item { padding: 8px 11px; }
+  .services-faq .faq-item > button { min-height: 44px; gap: 10px; }
+  .services-faq .faq-item > button > div:first-child { gap: 9px; }
+  .services-faq .faq-answer p { padding: 0; font-size: 13px; line-height: 1.55; }
+}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // --- Technology Definition ---
 interface TechItem {
@@ -331,6 +331,13 @@ const techItems: TechItem[] = [
 ];
 
 export const TechStackLaptopVisual = () => {
+  const [isPhone, setIsPhone] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches);
+  useEffect(() => {
+    const query = window.matchMedia('(max-width: 767px)');
+    const update = () => setIsPhone(query.matches);
+    query.addEventListener('change', update);
+    return () => query.removeEventListener('change', update);
+  }, []);
   const [showAllMobile, setShowAllMobile] = useState(false);
   const [activeCategory, setActiveCategory] = useState<'all' | 'frontend' | 'backend' | 'database' | 'devops'>('all');
 
@@ -394,7 +401,7 @@ export const TechStackLaptopVisual = () => {
         </div>
 
         {/* ─── VISUAL STAGE (Laptop + Moving Background + Floating Badges) ─── */}
-        <div className="relative w-full max-w-[940px] h-[400px] sm:h-[450px] md:h-[490px] hidden md:flex items-center justify-center select-none overflow-hidden my-1">
+        {!isPhone && <div className="relative w-full max-w-[940px] h-[400px] sm:h-[450px] md:h-[490px] hidden md:flex items-center justify-center select-none overflow-hidden my-1">
           
           {/* 1. Ambient Background Core & Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[480px] h-[220px] sm:h-[320px] bg-portfolio-gold/[0.08] blur-[100px] rounded-full pointer-events-none" />
@@ -580,7 +587,7 @@ export const TechStackLaptopVisual = () => {
             );
           })}
 
-        </div>
+        </div>}
 
       </div>
     </section>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Globe,
@@ -136,6 +136,19 @@ const deliverablesData: DeliverableItem[] = [
 export const WhatWeBuildDeliver3D = () => {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [activeMobileIndex, setActiveMobileIndex] = useState<number>(0);
+  const mobileTabsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const tabs = mobileTabsRef.current;
+    const active = tabs?.querySelector<HTMLButtonElement>('button[aria-pressed="true"]');
+    if (!tabs || !active || tabs.clientWidth === 0) return;
+    // Scroll only the tab strip, not the whole page. Centering also leaves room
+    // to see the next category; clamping handles the first and last item.
+    const left = tabs.scrollLeft + active.getBoundingClientRect().left - tabs.getBoundingClientRect().left
+      - (tabs.clientWidth - active.offsetWidth) / 2;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    tabs.scrollTo({ left: Math.max(0, Math.min(left, tabs.scrollWidth - tabs.clientWidth)), behavior: reducedMotion ? 'auto' : 'smooth' });
+  }, [activeMobileIndex]);
 
   // Isometric Block dimensions:
   const RADIUS_X = 46; // half width of isometric top rhombus
@@ -413,7 +426,7 @@ export const WhatWeBuildDeliver3D = () => {
         <div className="lg:hidden flex flex-col gap-6">
           
           {/* Mobile Phase Pill Carousel Tabs */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none justify-start">
+          <div ref={mobileTabsRef} className="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none justify-start" aria-label="Deliverable categories">
             {deliverablesData.map((item, idx) => (
               <button
                 key={item.id}
@@ -498,7 +511,9 @@ export const WhatWeBuildDeliver3D = () => {
             {deliverablesData.map((_, idx) => (
               <button
                 key={idx}
+                type="button"
                 onClick={() => setActiveMobileIndex(idx)}
+                aria-label={`Show ${deliverablesData[idx].title}`}
                 aria-pressed={activeMobileIndex === idx}
                 className={`h-1.5 rounded-full transition-all cursor-pointer ${
                   activeMobileIndex === idx ? 'w-6 bg-[#ea7008]' : 'w-2 bg-[#ebe5df]'
