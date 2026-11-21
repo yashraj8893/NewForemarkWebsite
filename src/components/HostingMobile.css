@@ -59,3 +59,11 @@
   .hosting-gallery-slide:focus-visible, .hosting-gallery-controls button:focus-visible, .hosting-process-tabs button:focus-visible, .hosting-process-navigation button:focus-visible { outline:2px solid #ea7008; outline-offset:2px; }
 }
 @media (prefers-reduced-motion: reduce) { .hosting-mobile-gallery *, .hosting-mobile-process * { animation:none!important; transition:none!important; } }
+
+/* Keep the soft desktop glows without allocating large blurred layers. */
+@media (min-width: 768px) {
+  .hosting-process-glow-warm { filter: none; background: radial-gradient(circle, rgba(234,112,8,.03), transparent 70%); }
+  .hosting-process-glow-dark { filter: none; background: radial-gradient(circle, rgba(18,17,16,.02), transparent 70%); }
+  .hosting-roadmap-glow { filter: none; background: radial-gradient(ellipse, rgba(234,112,8,.06), rgba(234,112,8,.025) 40%, transparent 72%); }
+  .hosting-tech-glow { filter: none; background: radial-gradient(ellipse, rgba(234,112,8,.12), rgba(234,112,8,.045) 38%, transparent 72%); }
+}

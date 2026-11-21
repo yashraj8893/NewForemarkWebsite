@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowUpRight, Clock, User, ArrowRight } from 'lucide-react';
 import type { BlogPost } from '../../data/blogPosts';
 import { BlogCover } from './BlogCover';
+import { EditorialArtwork } from './EditorialArtwork';
 
 interface BlogCardProps {
   post: BlogPost;
@@ -17,17 +18,17 @@ export const LeadStoryCard: React.FC<BlogCardProps> = ({ post, onClick }) => {
   return (
     <article
       onClick={() => onClick(post)}
-      className="group relative flex flex-col justify-between h-full bg-[#faf8f5] text-[#121110] border border-portfolio-gold/35 hover:border-portfolio-gold/65 rounded-[2rem] p-6 sm:p-8 md:p-10 overflow-hidden shadow-[0_4px_30px_rgba(234,112,8,0.08)] hover:shadow-[0_8px_40px_rgba(234,112,8,0.15)] transition-all duration-500 cursor-target select-none"
+      className="blog-lead-card group relative flex flex-col justify-between h-full bg-[#faf8f5] text-[#121110] border border-portfolio-gold/35 hover:border-portfolio-gold/65 rounded-[2rem] p-6 sm:p-8 md:p-10 overflow-hidden shadow-[0_4px_30px_rgba(234,112,8,0.08)] hover:shadow-[0_8px_40px_rgba(234,112,8,0.15)] transition-all duration-500 cursor-target select-none"
     >
       {/* Subtle atmospheric gold ambient warmth */}
-      <div className="absolute top-0 right-0 w-80 h-80 bg-portfolio-gold/5 blur-[100px] rounded-full pointer-events-none" />
+      <div className="blog-card-glow absolute top-0 right-0 w-80 h-80 bg-portfolio-gold/5 blur-[100px] rounded-full pointer-events-none" />
 
       <div>
         {/* Top Masthead Line */}
-        <div className="flex items-center justify-between gap-4 pb-5 mb-6 border-b border-[#e5e0da]">
+        <div className="blog-lead-masthead flex items-center justify-between gap-4 pb-5 mb-6 border-b border-[#e5e0da]">
           <div className="flex items-center gap-2">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-portfolio-gold opacity-75"></span>
+              <span className="blog-lead-ping animate-ping absolute inline-flex h-full w-full rounded-full bg-portfolio-gold opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-portfolio-gold"></span>
             </span>
             <span className="text-[10px] font-bold uppercase tracking-widest text-portfolio-gold">
@@ -40,12 +41,10 @@ export const LeadStoryCard: React.FC<BlogCardProps> = ({ post, onClick }) => {
         </div>
 
         {/* Visual Frame */}
-        <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden mb-6 border border-[#e5e0da] bg-[#1a1816]">
-          <BlogCover
-            theme={post.coverTheme}
-            className="transition-transform duration-700 ease-out group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#faf8f5]/80 via-transparent to-transparent pointer-events-none" />
+        <div className="blog-lead-visual relative aspect-[16/9] w-full rounded-2xl overflow-hidden mb-6 border border-[#e5e0da] bg-[#1a1816]">
+          <div className="blog-original-cover"><BlogCover theme={post.coverTheme} className="transition-transform duration-700 ease-out group-hover:scale-105" /></div>
+          <div className="blog-desktop-cover"><EditorialArtwork post={post} /></div>
+          <div className="blog-cover-fade absolute inset-0 bg-gradient-to-t from-[#faf8f5]/80 via-transparent to-transparent pointer-events-none" />
         </div>
 
         {/* Headline */}
@@ -86,12 +85,12 @@ export const FieldNoteCard: React.FC<FieldNoteCardProps> = ({ post, indexNumber,
   return (
     <article
       onClick={() => onClick(post)}
-      className="group py-6 first:pt-0 last:pb-0 flex flex-col justify-between transition-all duration-300 cursor-target select-none"
+      className="blog-field-note group py-6 first:pt-0 last:pb-0 flex flex-col justify-between transition-all duration-300 cursor-target select-none"
     >
       <div className="flex items-start justify-between gap-4 mb-2">
         <div className="flex items-center gap-2.5">
           <span className="text-xs font-bold text-portfolio-gold group-hover:brightness-125 transition-all">
-            № {indexNumber}
+            {indexNumber}
           </span>
           <span className="text-[10px] font-bold uppercase tracking-widest text-portfolio-gold/70">
             {post.category}
@@ -128,14 +127,12 @@ export const WideEditorialCard: React.FC<BlogCardProps> = ({ post, onClick }) =>
   return (
     <article
       onClick={() => onClick(post)}
-      className="group grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 p-6 sm:p-8 bg-[#faf8f5] border border-portfolio-gold/35 hover:border-portfolio-gold/65 rounded-3xl shadow-[0_4px_30px_rgba(234,112,8,0.08)] hover:shadow-[0_8px_40px_rgba(234,112,8,0.15)] transition-all duration-500 cursor-target select-none"
+      className="blog-wide-card group grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 p-6 sm:p-8 bg-[#faf8f5] border border-portfolio-gold/35 hover:border-portfolio-gold/65 rounded-3xl shadow-[0_4px_30px_rgba(234,112,8,0.08)] hover:shadow-[0_8px_40px_rgba(234,112,8,0.15)] transition-all duration-500 cursor-target select-none"
     >
       {/* Visual Cover */}
-      <div className="lg:col-span-5 relative aspect-[16/10] rounded-2xl overflow-hidden border border-[#e5e0da] bg-[#1a1816]">
-        <BlogCover
-          theme={post.coverTheme}
-          className="transition-transform duration-700 ease-out group-hover:scale-105"
-        />
+      <div className="blog-wide-visual lg:col-span-5 relative aspect-[16/10] rounded-2xl overflow-hidden border border-[#e5e0da] bg-[#1a1816]">
+        <div className="blog-original-cover"><BlogCover theme={post.coverTheme} className="transition-transform duration-700 ease-out group-hover:scale-105" /></div>
+        <div className="blog-desktop-cover"><EditorialArtwork post={post} /></div>
         <div className="absolute top-3 left-3">
           <span className="text-[9px] font-bold uppercase tracking-widest bg-white/90 backdrop-blur-sm text-portfolio-gold border border-amber-500/20 px-2.5 py-1 rounded-full">
             {post.category}
@@ -185,14 +182,12 @@ export const EditorialGridCard: React.FC<BlogCardProps> = ({ post, onClick }) =>
   return (
     <article
       onClick={() => onClick(post)}
-      className="group flex flex-col h-full bg-[#faf8f5] border border-portfolio-gold/35 hover:border-portfolio-gold/65 rounded-3xl p-5 sm:p-6 overflow-hidden hover:-translate-y-1 shadow-[0_4px_25px_rgba(234,112,8,0.06)] hover:shadow-[0_8px_35px_rgba(234,112,8,0.15)] transition-all duration-400 cursor-target select-none"
+      className="blog-grid-card group flex flex-col h-full bg-[#faf8f5] border border-portfolio-gold/35 hover:border-portfolio-gold/65 rounded-3xl p-5 sm:p-6 overflow-hidden hover:-translate-y-1 shadow-[0_4px_25px_rgba(234,112,8,0.06)] hover:shadow-[0_8px_35px_rgba(234,112,8,0.15)] transition-all duration-400 cursor-target select-none"
     >
       {/* Cover Image */}
-      <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-[#e5e0da] mb-5 bg-[#1a1816]">
-        <BlogCover
-          theme={post.coverTheme}
-          className="transition-transform duration-700 ease-out group-hover:scale-105"
-        />
+      <div className="blog-grid-visual relative aspect-[16/10] rounded-2xl overflow-hidden border border-[#e5e0da] mb-5 bg-[#1a1816]">
+        <div className="blog-original-cover"><BlogCover theme={post.coverTheme} className="transition-transform duration-700 ease-out group-hover:scale-105" /></div>
+        <div className="blog-desktop-cover"><EditorialArtwork post={post} /></div>
         <div className="absolute top-3 left-3">
           <span className="text-[9px] font-bold uppercase tracking-widest bg-white/90 backdrop-blur-sm text-portfolio-gold border border-amber-500/20 px-2.5 py-1 rounded-full">
             {post.category}

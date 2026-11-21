@@ -54,3 +54,10 @@
   .automation-design .mobile-description{padding:0 4px 12px}
   .automation-design .plate-content.changing{animation:none}
 }
+
+/* The circle is static: a rounded box shadow gives the same soft halo without
+   filtering a large SVG on every scroll frame. Mobile keeps its existing style. */
+@media (min-width:768px) {
+  .automation-design .orbit:before { inset:7.4%; box-shadow:0 0 22px rgba(234,112,8,.22), 0 12px 24px rgba(18,17,16,.08); }
+  .automation-design .ring-two { filter:none; }
+}

@@ -319,3 +319,21 @@ html.lenis body {
 
 /* Mobile preview: avoid repainting the full-screen noise texture on phones. */
 @media(max-width:767px){.grainy-overlay{display:none}}
+
+/* Keep decorative animation out of the rendering budget while off screen. */
+.decorative-motion-paused *,
+.decorative-motion-paused *::before,
+.decorative-motion-paused *::after { animation-play-state: paused !important; }
+
+/* Equivalent soft automation halo without the large desktop blur layer. */
+@media (min-width:768px) {
+  .automation-tech-glow { filter:none; background:radial-gradient(ellipse, rgba(234,112,8,.12), rgba(234,112,8,.045) 38%, transparent 72%); }
+}
+
+/* Large animated SVG strokes are paused only during page scrolling. The
+   diagrams remain visible and start moving again as soon as scrolling stops. */
+.page-is-scrolling .globe-cable-flow,
+.page-is-scrolling .globe-orbit-pulse,
+.page-is-scrolling .cable-pulse-flow,
+.page-is-scrolling .highway-beam-pulse,
+.page-is-scrolling .automation-design .flow { animation-play-state: paused !important; }

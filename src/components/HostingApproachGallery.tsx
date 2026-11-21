@@ -93,6 +93,8 @@ export const hostingApproachItems: (GalleryItem & {
   }
 ];
 
+const optimizedHostingApproachItems = hostingApproachItems.map(item => ({ ...item, image: item.image.replace('/hosting/', '/hosting-optimized/').replace('.jpg', '.webp') }));
+
 export const HostingApproachGallery: React.FC = () => {
   const isPhone = usePhone();
   const [active, setActive] = useState(0);
@@ -154,7 +156,7 @@ export const HostingApproachGallery: React.FC = () => {
           style={{ height: '600px' }}
         >
           <CircularGallery
-            items={hostingApproachItems}
+            items={optimizedHostingApproachItems}
             bend={3}
             textColor="#121110"
             borderRadius={0.06}
@@ -164,6 +166,7 @@ export const HostingApproachGallery: React.FC = () => {
             itemAspect={0.78}
             gap={0.38}
             shadow={0.3}
+            dpr={Math.min(window.devicePixelRatio || 1, 1.25)}
             wave={1.1}
             fadeEdges={0.12}
             font="bold 18px 'Plus Jakarta Sans', Figtree, sans-serif"

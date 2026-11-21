@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { usePhone } from '../hooks/usePhone';
+import { usePauseOffscreenAnimations } from '../hooks/usePauseOffscreenAnimations';
 import './HostingMobile.css';
 
 // --- Technology Definition ---
@@ -333,6 +334,7 @@ export const TechStackGlobeServerVisual = () => {
   const [activeCategory, setActiveCategory] = useState<'all' | 'cloud' | 'devops' | 'edge' | 'observability'>('all');
   const [hoveredTechId, setHoveredTechId] = useState<string | null>(null);
   const isPhone = usePhone();
+  const sectionRef = usePauseOffscreenAnimations<HTMLElement>(isPhone);
   const [mobileCategory, setMobileCategory] = useState<TechItem['category'] | 'all'>('cloud');
   const mobileTabs = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -356,7 +358,7 @@ export const TechStackGlobeServerVisual = () => {
   if (isPhone) {
     const selectedItems = hostingTechItems.filter(item => mobileCategory === 'all' || item.category === mobileCategory);
     const selectedLabel = categories.find(category => category.id === mobileCategory)?.label;
-    return <section className="hosting-tech-mobile" aria-labelledby="hosting-mobile-tech-title">
+    return <section ref={sectionRef} className="hosting-tech-mobile" aria-labelledby="hosting-mobile-tech-title">
       <div className="hosting-tech-inner">
         <div className="hosting-tech-eyebrow">Technology Stack</div>
         <h2 id="hosting-mobile-tech-title">Mission-Critical Infrastructure For <span>Web Servers &amp; Hosting</span></h2>
@@ -405,7 +407,7 @@ export const TechStackGlobeServerVisual = () => {
   ];
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 relative overflow-hidden bg-transparent">
+    <section ref={sectionRef} className="py-12 sm:py-16 md:py-20 relative overflow-hidden bg-transparent">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-12 relative z-10 flex flex-col items-center text-center">
         
         {/* Header Block matching Site Style */}
@@ -443,7 +445,7 @@ export const TechStackGlobeServerVisual = () => {
         <div className="relative w-full max-w-[1040px] h-[540px] sm:h-[620px] md:h-[680px] flex items-center justify-center select-none overflow-hidden my-2">
           
           {/* 1. Ambient Warm Core Halo */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[360px] sm:w-[560px] h-[300px] sm:h-[440px] bg-portfolio-gold/[0.12] blur-[120px] rounded-full pointer-events-none" />
+          <div className="hosting-tech-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[360px] sm:w-[560px] h-[300px] sm:h-[440px] bg-portfolio-gold/[0.12] blur-[120px] rounded-full pointer-events-none" />
 
           {/* 2. Rotating Engineering Rings in Background */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-40">
@@ -493,11 +495,6 @@ export const TechStackGlobeServerVisual = () => {
               xmlns="http://www.w3.org/2000/svg"
             >
               <defs>
-                <filter id="globeCableGlow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="2.5" result="blur" />
-                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                </filter>
-
                 <linearGradient id="globeConduitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" stopColor="#ffb066" stopOpacity="0.95" />
                   <stop offset="50%" stopColor="#ea7008" stopOpacity="0.85" />
@@ -548,8 +545,7 @@ export const TechStackGlobeServerVisual = () => {
                       stroke="#ea7008"
                       strokeWidth={isHovered ? 4.5 : 3}
                       strokeLinecap="round"
-                      opacity={0.35}
-                      filter="url(#globeCableGlow)"
+                      opacity={0.20}
                     />
 
                     {/* Layer 2: Radiant Orange Conduit */}

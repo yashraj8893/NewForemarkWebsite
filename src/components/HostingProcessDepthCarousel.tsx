@@ -145,6 +145,8 @@ export const hostingProcessSteps: HostingProcessStep[] = [
   }
 ];
 
+const optimizedHostingProcessSteps = hostingProcessSteps.map(item => ({ ...item, image: item.image.replace('/hosting/', '/hosting-optimized/').replace('.jpg', '.webp') }));
+
 export const HostingProcessDepthCarousel: React.FC = () => {
   const carouselRef = useRef<DepthCarouselHandle>(null);
   const isPhone = usePhone();
@@ -154,8 +156,8 @@ export const HostingProcessDepthCarousel: React.FC = () => {
   return (
     <section className="hosting-process py-20 sm:py-28 relative overflow-hidden bg-white">
       {/* Background ambient decorative glow */}
-      <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-[#ea7008]/[0.03] rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 left-0 w-[450px] h-[450px] bg-[#121110]/[0.02] rounded-full blur-[120px] pointer-events-none" />
+      <div className="hosting-process-glow-warm absolute top-1/4 right-0 w-[500px] h-[500px] bg-[#ea7008]/[0.03] rounded-full blur-[140px] pointer-events-none" />
+      <div className="hosting-process-glow-dark absolute bottom-10 left-0 w-[450px] h-[450px] bg-[#121110]/[0.02] rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 relative z-10">
         
@@ -194,7 +196,7 @@ export const HostingProcessDepthCarousel: React.FC = () => {
           {/* Depth Carousel Component */}
           <DepthCarousel
             ref={carouselRef}
-            items={hostingProcessSteps}
+            items={optimizedHostingProcessSteps}
             cardWidth={420}
             cardHeight={530}
             radius={22}

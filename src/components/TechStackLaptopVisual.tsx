@@ -1,3 +1,4 @@
+import { usePauseOffscreenAnimations } from '../hooks/usePauseOffscreenAnimations';
 import React, { useEffect, useState } from 'react';
 
 // --- Technology Definition ---
@@ -338,6 +339,7 @@ export const TechStackLaptopVisual = () => {
     query.addEventListener('change', update);
     return () => query.removeEventListener('change', update);
   }, []);
+  const sectionRef = usePauseOffscreenAnimations<HTMLElement>();
   const [showAllMobile, setShowAllMobile] = useState(false);
   const [activeCategory, setActiveCategory] = useState<'all' | 'frontend' | 'backend' | 'database' | 'devops'>('all');
 
@@ -350,7 +352,7 @@ export const TechStackLaptopVisual = () => {
   ] as const;
 
   return (
-    <section className="py-12 sm:py-16 relative overflow-hidden bg-transparent">
+    <section ref={sectionRef} className="py-12 sm:py-16 relative overflow-hidden bg-transparent">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-8 md:px-12 relative z-10 flex flex-col items-center text-center">
         
         {/* Header Block matching User Reference */}

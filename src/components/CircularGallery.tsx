@@ -1000,6 +1000,9 @@ export const CircularGallery: React.FC<CircularGalleryProps> = ({
     };
 
     const onWheel = (event: WheelEvent) => {
+      // Vertical wheel gestures should scroll the page, not trap the visitor.
+      // Horizontal gestures (or Shift+wheel) still navigate the gallery.
+      if (!event.shiftKey && Math.abs(event.deltaY) >= Math.abs(event.deltaX)) return;
       const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? view.height : 1;
       const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
       if (!delta) return;

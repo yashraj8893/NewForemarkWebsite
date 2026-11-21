@@ -1,0 +1,8 @@
+/* A soft radial gradient avoids continuously repainting enormous blur filters.
+   Leave the previously approved mobile rendering untouched. */
+@media (min-width: 768px) {
+  .contact-ambient-glow {
+    filter: none;
+    background-image: radial-gradient(circle, rgba(234, 112, 8, .18) 0%, rgba(234, 112, 8, .08) 35%, transparent 72%);
+  }
+}

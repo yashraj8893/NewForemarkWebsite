@@ -170,6 +170,33 @@ const MobileTierVideo: React.FC<{ src: string; poster?: string; title: string }>
   return <video ref={videoRef} controls muted loop playsInline preload="none" poster={poster} aria-label={`${title} preview`}><source src={src} type="video/mp4" /></video>;
 };
 
+// Avoid downloading and decoding all five desktop videos before the section is reached.
+const DesktopTierVideo: React.FC<{ src: string; title: string }> = ({ src, title }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    let visible = false;
+    const update = () => {
+      if (visible && !document.hidden) {
+        if (!video.src) video.src = src;
+        void video.play().catch(() => { /* Poster remains visible if autoplay is blocked. */ });
+      } else video.pause();
+    };
+    if (!('IntersectionObserver' in window)) {
+      visible = true;
+      update();
+      return () => video.pause();
+    }
+    const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; update(); }, { rootMargin: '100px 0px', threshold: 0.01 });
+    observer.observe(video);
+    document.addEventListener('visibilitychange', update);
+    return () => { observer.disconnect(); document.removeEventListener('visibilitychange', update); video.pause(); };
+  }, [src]);
+  const poster = src.replace('/videos/', '/mobile-posters/').replace('.mp4', '.jpg');
+  return <video ref={videoRef} muted loop playsInline preload="none" poster={poster} aria-label={`${title} preview`} className="w-full h-auto object-contain bg-transparent block" style={{ aspectRatio: '720 / 406' }} />;
+};
+
 export const AutomationDeliverablesStack: React.FC = () => {
   const [activeTierId, setActiveTierId] = useState<string>('chatops');
   const [mobileActiveTierId, setMobileActiveTierId] = useState<string | null>('chatops');
@@ -359,17 +386,7 @@ export const AutomationDeliverablesStack: React.FC = () => {
                             : 'scale-[1.02] hover:scale-[1.04]'
                         }`}
                       >
-                        <video
-                          key={tier.videoSrc.mp4}
-                          autoPlay
-                          loop
-                          muted
-                          playsInline
-                          className="w-full h-auto object-contain bg-transparent block"
-                        >
-                          {tier.videoSrc.webm && <source src={tier.videoSrc.webm} type="video/webm" />}
-                          <source src={tier.videoSrc.mp4} type="video/mp4" />
-                        </video>
+                        <DesktopTierVideo src={tier.videoSrc.mp4} title={tier.title} />
                       </div>
                     </div>
                   ) : (

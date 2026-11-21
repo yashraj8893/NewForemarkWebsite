@@ -15,6 +15,7 @@ import {
     EditorialGridCard
 } from '../components/blog/BlogCard';
 import { BlogReader } from '../components/blog/BlogReader';
+import './BlogDesktop.css';
 
 const BlogPage = () => {
     const [activeCategory, setActiveCategory] = useState("View all");
@@ -83,7 +84,7 @@ const BlogPage = () => {
                 canonicalUrl="https://foremark.in/blog"
             />
 
-            <main className="relative w-full overflow-hidden bg-white text-[#1a1816] selection:bg-[#ea7008] selection:text-white">
+            <main className="blog-page relative w-full overflow-hidden bg-white text-[#1a1816] selection:bg-[#ea7008] selection:text-white">
                 <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pt-8 sm:pt-12 pb-20 sm:pb-32">
 
 
@@ -121,7 +122,7 @@ const BlogPage = () => {
                     </motion.header>
 
                     {/* ─── THE EDITORIAL SPREAD (7:5 ASYMMETRIC HERO LAYOUT) ───── */}
-                    <section className="mb-20 sm:mb-28">
+                    <section className="blog-editorial-spread mb-20 sm:mb-28">
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
                             {/* Left Column (7 cols): Dominant Cover Story */}
                             <div className="lg:col-span-7 flex flex-col">
@@ -131,11 +132,11 @@ const BlogPage = () => {
                             </div>
 
                             {/* Right Column (5 cols): Curated Field Notes Stack */}
-                            <div className="lg:col-span-5 flex flex-col justify-between bg-[#faf8f5] border border-portfolio-gold/35 hover:border-portfolio-gold/65 shadow-[0_4px_30px_rgba(234,112,8,0.08)] rounded-[2rem] p-6 sm:p-8 transition-all duration-500">
+                            <div className="blog-field-panel lg:col-span-5 flex flex-col justify-between bg-[#faf8f5] border border-portfolio-gold/35 hover:border-portfolio-gold/65 shadow-[0_4px_30px_rgba(234,112,8,0.08)] rounded-[2rem] p-6 sm:p-8 transition-all duration-500">
                                 <div>
                                     <div className="flex items-center justify-between pb-4 mb-2 border-b border-[#e5e0da]">
                                         <div className="flex items-center gap-2">
-                                            <Sparkles size={14} className="text-portfolio-gold" />
+                                            <Sparkles size={14} className="blog-field-sparkle text-portfolio-gold" />
                                             <h2 className="text-xs font-bold uppercase tracking-widest text-[#121110]">
                                                 Curated Field Notes
                                             </h2>
@@ -151,7 +152,7 @@ const BlogPage = () => {
                                             <FieldNoteCard
                                                 key={post.id}
                                                 post={post}
-                                                indexNumber={`0${index + 2}`}
+                                                indexNumber={String(index + 1).padStart(2, '0')}
                                                 onClick={handlePostClick}
                                             />
                                         ))}
@@ -178,7 +179,7 @@ const BlogPage = () => {
                         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 py-4 border-y border-[#e5e0da]">
 
                             {/* Category Filter Tabs with Live Counters */}
-                            <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none -mx-4 px-4 md:mx-0 md:px-0">
+                            <div className="blog-filter-tabs flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none -mx-4 px-4 md:mx-0 md:px-0">
                                 {blogCategories.map((category) => {
                                     const isSelected = activeCategory === category;
                                     const count = categoryCounts[category] || 0;
@@ -208,7 +209,7 @@ const BlogPage = () => {
                             </div>
 
                             {/* Minimalist Inline Search */}
-                            <div className="relative w-full md:w-72 shrink-0">
+                            <div className="blog-search relative w-full md:w-72 shrink-0">
                                 <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#5c544d]" />
                                 <input
                                     type="text"
@@ -230,7 +231,7 @@ const BlogPage = () => {
                     </section>
 
                     {/* ─── DYNAMIC DISPATCHES ARCHIVE GRID ─────────────────────── */}
-                    <section className="mb-24 sm:mb-32">
+                    <section className="blog-archive mb-24 sm:mb-32">
                         {filteredPosts.length > 0 ? (
                             <div className="space-y-8">
                                 {/* If there are multiple articles and no active tight query, showcase the first as a Wide Spotlight */}
@@ -297,14 +298,14 @@ const BlogPage = () => {
                     </section>
 
                     {/* ─── EDITORIAL DISPATCH TERMINAL (NEWSLETTER) ───────────── */}
-                    <section className="mb-20 sm:mb-28">
-                        <div className="bg-[#faf8f5] text-[#121110] rounded-[2.5rem] p-8 sm:p-12 md:p-16 relative overflow-hidden border border-portfolio-gold/35 hover:border-portfolio-gold/60 shadow-[0_4px_35px_rgba(234,112,8,0.08)] transition-all duration-500">
+                    <section className="blog-newsletter mb-20 sm:mb-28">
+                        <div className="blog-newsletter-panel bg-[#faf8f5] text-[#121110] rounded-[2.5rem] p-8 sm:p-12 md:p-16 relative overflow-hidden border border-portfolio-gold/35 hover:border-portfolio-gold/60 shadow-[0_4px_35px_rgba(234,112,8,0.08)] transition-all duration-500">
                             {/* Blueprint grid background */}
-                            <div className="absolute inset-0 opacity-[0.04] bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
-                            <div className="absolute top-0 right-1/4 w-[400px] h-[250px] bg-portfolio-gold/10 rounded-full blur-[100px] pointer-events-none" />
+                            <div className="blog-newsletter-decoration absolute inset-0 opacity-[0.04] bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
+                            <div className="blog-newsletter-decoration absolute top-0 right-1/4 w-[400px] h-[250px] bg-portfolio-gold/10 rounded-full blur-[100px] pointer-events-none" />
 
                             <div className="relative z-10 max-w-2xl mx-auto text-center flex flex-col items-center">
-                                <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-6 text-portfolio-gold">
+                                <div className="blog-newsletter-icon w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-6 text-portfolio-gold">
                                     <Mail size={20} />
                                 </div>
 
@@ -342,7 +343,7 @@ const BlogPage = () => {
                     </section>
 
                     {/* ─── PROJECT INQUIRY CLOSER ─────────────────────────────── */}
-                    <section className="pt-12 sm:pt-16 border-t border-[#e5e0da] text-center">
+                    <section className="blog-project-cta pt-12 sm:pt-16 border-t border-[#e5e0da] text-center">
                         <div className="max-w-xl mx-auto flex flex-col items-center">
                             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#121110] mb-4">
                                 Have a project in mind?

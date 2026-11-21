@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Calendar, Clock, ArrowUpRight, ArrowLeft, Share2, Check } from 'lucide-react';
 import type { BlogPost } from '../../data/blogPosts';
 import { BlogCover } from './BlogCover';
+import { EditorialArtwork } from './EditorialArtwork';
 import { Link } from 'react-router-dom';
 import { useLenis } from '../SmoothScroll';
 
@@ -15,7 +16,7 @@ interface BlogReaderProps {
 export const BlogReader: React.FC<BlogReaderProps> = ({ post, isOpen, onClose }) => {
   const { lenis } = useLenis();
   const contentRef = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const progressRef = useRef<HTMLDivElement>(null);
   const [copied, setCopied] = useState(false);
 
   // Lock body scroll, pause Lenis smooth scroll, and add Escape key listener
@@ -35,7 +36,7 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, isOpen, onClose })
     } else {
       lenis?.start();
       document.body.style.overflow = '';
-      setScrollProgress(0);
+      if (progressRef.current) progressRef.current.style.transform = 'scaleX(0)';
       setCopied(false);
     }
   }, [isOpen, onClose, lenis]);
@@ -46,7 +47,7 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, isOpen, onClose })
     const { scrollTop, scrollHeight, clientHeight } = contentRef.current;
     const total = scrollHeight - clientHeight;
     if (total > 0) {
-      setScrollProgress(Math.min(100, Math.max(0, (scrollTop / total) * 100)));
+      if (progressRef.current) progressRef.current.style.transform = `scaleX(${Math.min(1, Math.max(0, scrollTop / total))})`;
     }
   };
 
@@ -93,8 +94,9 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, isOpen, onClose })
             {/* Live Reading Progress Indicator Bar */}
             <div className="absolute top-0 left-0 right-0 h-1 bg-[#f0ebe5] z-30">
               <div
-                className="h-full bg-portfolio-gold transition-all duration-150 ease-out"
-                style={{ width: `${scrollProgress}%` }}
+                ref={progressRef}
+                className="h-full w-full origin-left bg-portfolio-gold"
+                style={{ transform: 'scaleX(0)' }}
               />
             </div>
 
@@ -160,9 +162,10 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, isOpen, onClose })
               tabIndex={0}
             >
               {/* Cinematic Cover Banner */}
-              <div className="relative w-full aspect-[21/9] sm:aspect-[24/8] md:aspect-[21/7] bg-[#1a1816] overflow-hidden flex items-center justify-center">
-                <BlogCover theme={post.coverTheme} className="h-full w-full object-cover scale-[1.02]" />
-                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent pointer-events-none" />
+              <div className="blog-reader-visual relative w-full aspect-[21/9] sm:aspect-[24/8] md:aspect-[21/7] bg-[#1a1816] overflow-hidden flex items-center justify-center">
+                <div className="blog-original-cover"><BlogCover theme={post.coverTheme} className="h-full w-full object-cover scale-[1.02]" /></div>
+                <div className="blog-desktop-cover"><EditorialArtwork post={post} /></div>
+                <div className="blog-reader-fade absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent pointer-events-none" />
 
                 {/* Floating category badge on banner */}
                 <div className="absolute bottom-4 left-6 sm:left-10 md:left-14 z-10">

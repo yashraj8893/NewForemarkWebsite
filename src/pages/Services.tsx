@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useLayoutEffect, useCallback } from 'react';
 import './ServicesMobile.css';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import {
     Code2,
@@ -215,6 +215,14 @@ const process = [
     },
 ];
 
+
+// The desktop cards contain many looping motion elements. Keep their space in
+// the layout, but run each illustration only when it is close to the screen.
+const VisibleServiceVisual = ({ Visual }: { Visual: React.ComponentType }) => {
+    const ref = useRef<HTMLDivElement>(null);
+    const visible = useInView(ref, { margin: '300px' });
+    return <div ref={ref} className="w-full h-full flex items-center justify-center scale-90 sm:scale-100 group-hover/visual:scale-105 transition-transform duration-500">{visible && <Visual />}</div>;
+};
 
 const ServicesPage = () => {
     const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches);
@@ -434,9 +442,7 @@ const ServicesPage = () => {
                                         className="service-overview-visual flex-1 lg:flex-[0.8] bg-[#faf8f5] border-t lg:border-t-0 lg:border-l border-[#ebe5df] relative flex items-center justify-center p-6 min-h-[300px] md:min-h-[380px] overflow-hidden group/visual cursor-target"
                                     >
                                         <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px]" />
-                                        <div className="w-full h-full flex items-center justify-center scale-90 sm:scale-100 group-hover/visual:scale-105 transition-transform duration-500">
-                                            <Visual />
-                                        </div>
+                                        <VisibleServiceVisual Visual={Visual} />
                                     </Link>
                                 </div>
                             </motion.div>

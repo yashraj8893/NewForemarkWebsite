@@ -1,3 +1,4 @@
+import { usePauseOffscreenAnimations } from '../hooks/usePauseOffscreenAnimations';
 import { useState } from 'react';
 import { Bot, Lock, MessageSquare, RefreshCw, Search, Zap } from 'lucide-react';
 import './AutomationSections.css';
@@ -87,6 +88,7 @@ const shapes = [
 ];
 
 export const AutomationApproachCarousel = () => {
+  const sectionRef = usePauseOffscreenAnimations<HTMLDivElement>();
   const [selected, setSelected] = useState(0);
   const item = automationApproachItems[selected];
   const Icon = item.icon;
@@ -94,7 +96,7 @@ export const AutomationApproachCarousel = () => {
   const shape = shapes[selected];
   const shapeStyle = { '--shape': shape.path, '--shape-radius': shape.radius } as React.CSSProperties;
   return (
-    <div className="automation-design">
+    <div ref={sectionRef} className="automation-design">
       <section className="section approach" aria-labelledby="auto-approach-title">
         <div className="section-inner">
           <div className="eyebrow">Our Approach</div>

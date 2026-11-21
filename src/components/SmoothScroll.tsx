@@ -1,94 +1,45 @@
-import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
-import Lenis from 'lenis';
+import { createContext, useContext, useEffect } from 'react';
+import type { ReactNode } from 'react';
+import type Lenis from 'lenis';
 import { useLocation } from 'react-router-dom';
 
-interface LenisContextValue {
-  lenis: Lenis | null;
-}
-
+// Keep the context contract for menus and dialogs. Native browser scrolling
+// does not require a Lenis instance or a permanent animation frame loop.
+interface LenisContextValue { lenis: Lenis | null }
 const LenisContext = createContext<LenisContextValue>({ lenis: null });
-
 // eslint-disable-next-line react-refresh/only-export-components
 export const useLenis = () => useContext(LenisContext);
 
-interface SmoothScrollProviderProps {
-  children: React.ReactNode;
-}
-
-export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({ children }) => {
-  const lenisRef = useRef<Lenis | null>(null);
+export const SmoothScrollProvider = ({ children }: { children: ReactNode }) => {
   const location = useLocation();
-  const [nativeMobile, setNativeMobile] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches);
+  // Stroke-dash SVG animations repaint large diagrams while the page is moving.
+  // Freeze only those decorative strokes during scrolling; resume at rest.
   useEffect(() => {
-    const query = window.matchMedia('(max-width: 767px)');
-    const update = () => setNativeMobile(query.matches);
-    query.addEventListener('change', update);
-    return () => query.removeEventListener('change', update);
-  }, []);
-
-  useEffect(() => {
-    if (nativeMobile) return;
-    // Initialize Lenis with refined, cinematic inertia and damping
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Exponential deceleration
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 1.0,
-      touchMultiplier: 1.8,
-    });
-
-    lenisRef.current = lenis;
-    (window as unknown as { __lenis: Lenis }).__lenis = lenis;
-
-    let rafId: number;
-    function raf(time: number) {
-      lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
-    }
-    rafId = requestAnimationFrame(raf);
-
-    return () => {
-      cancelAnimationFrame(rafId);
-      lenis.destroy();
-      lenisRef.current = null;
-      delete (window as unknown as { __lenis?: Lenis }).__lenis;
+    let timer: number | undefined;
+    const markScrolling = () => {
+      document.documentElement.classList.add('page-is-scrolling');
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => document.documentElement.classList.remove('page-is-scrolling'), 180);
     };
-  }, [nativeMobile]);
-
-  // Handle route and anchor hash changes seamlessly
+    window.addEventListener('scroll', markScrolling, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', markScrolling);
+      window.clearTimeout(timer);
+      document.documentElement.classList.remove('page-is-scrolling');
+    };
+  }, []);
   useEffect(() => {
-    const lenis = lenisRef.current;
-    if (!lenis) {
-      if (location.hash) {
-        const timer = setTimeout(() => document.getElementById(location.hash.slice(1))?.scrollIntoView(), 100);
-        return () => clearTimeout(timer);
-      }
-      window.scrollTo({ top: 0, behavior: 'auto' });
-      return;
-    }
-
     if (location.hash) {
-      const targetId = location.hash.replace('#', '');
-      const element = document.getElementById(targetId);
-      if (element) {
-        const timer = setTimeout(() => {
-          lenis.scrollTo(element, { offset: -80, duration: 1.2 });
-        }, 60);
-        return () => clearTimeout(timer);
-      }
-    } else {
-      // Immediate scroll reset to top on route change
-      lenis.scrollTo(0, { immediate: true });
+      const timer = window.setTimeout(() => {
+        const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+        if (!target) return;
+        const offset = window.innerWidth >= 768 ? 80 : 0;
+        window.scrollTo({ top: Math.max(0, target.getBoundingClientRect().top + window.scrollY - offset), behavior: 'auto' });
+      }, 100);
+      return () => window.clearTimeout(timer);
     }
-  }, [location.pathname, location.hash, nativeMobile]);
-
-  return (
-    <LenisContext.Provider value={{ lenis: lenisRef.current }}>
-      {children}
-    </LenisContext.Provider>
-  );
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }, [location.pathname, location.hash]);
+  return <LenisContext.Provider value={{ lenis: null }}>{children}</LenisContext.Provider>;
 };
-
 export default SmoothScrollProvider;

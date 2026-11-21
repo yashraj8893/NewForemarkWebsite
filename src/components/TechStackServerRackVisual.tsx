@@ -1,3 +1,4 @@
+import { usePauseOffscreenAnimations } from '../hooks/usePauseOffscreenAnimations';
 import React, { useEffect, useState } from 'react';
 import './AutomationMobileTech.css';
 
@@ -340,6 +341,7 @@ export const TechStackServerRackVisual = () => {
   const [activeCategory, setActiveCategory] = useState<'all' | 'engine' | 'code' | 'ai' | 'integration'>('all');
   const [hoveredTechId, setHoveredTechId] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches);
+  const sectionRef = usePauseOffscreenAnimations<HTMLElement>(isMobile);
   const [mobileCategory, setMobileCategory] = useState<TechItem['category']>('engine');
   useEffect(() => {
     const query = window.matchMedia('(max-width: 767px)');
@@ -358,7 +360,7 @@ export const TechStackServerRackVisual = () => {
 
   if (isMobile) {
     const selectedItems = automationTechItems.filter(item => item.category === mobileCategory);
-    return <section className="mobile-tech" aria-labelledby="mobile-tech-title">
+    return <section ref={sectionRef} className="mobile-tech" aria-labelledby="mobile-tech-title">
       <div className="mobile-tech-inner">
         <div className="mobile-tech-eyebrow">Technology Stack</div>
         <h2 id="mobile-tech-title">Intelligent Infrastructure For{' '}<span>Business Automation</span></h2>
@@ -398,7 +400,7 @@ export const TechStackServerRackVisual = () => {
   ];
 
   return (
-    <section className="py-12 sm:py-16 relative overflow-hidden bg-transparent">
+    <section ref={sectionRef} className="py-12 sm:py-16 relative overflow-hidden bg-transparent">
       <div className="max-w-[1240px] mx-auto px-4 sm:px-8 md:px-12 relative z-10 flex flex-col items-center text-center">
         
         {/* Header Block matching Site Style */}
@@ -436,7 +438,7 @@ export const TechStackServerRackVisual = () => {
         <div className="relative w-full max-w-[980px] h-[480px] sm:h-[530px] md:h-[580px] flex items-center justify-center select-none overflow-hidden my-2">
           
           {/* 1. Datacenter Amber Core Halo */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[520px] h-[280px] sm:h-[400px] bg-portfolio-gold/[0.12] blur-[110px] rounded-full pointer-events-none" />
+          <div className="automation-tech-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[520px] h-[280px] sm:h-[400px] bg-portfolio-gold/[0.12] blur-[110px] rounded-full pointer-events-none" />
 
           {/* 2. Rotating Automation Circuit Rings & Nodes (Transparent Background) */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-45">
@@ -486,12 +488,6 @@ export const TechStackServerRackVisual = () => {
               xmlns="http://www.w3.org/2000/svg"
             >
               <defs>
-                {/* Soft Orange Glow Filter */}
-                <filter id="cableGlow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="2.5" result="blur" />
-                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                </filter>
-
                 {/* Light Orange Radiant Gradient */}
                 <linearGradient id="lightOrangeConduit" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" stopColor="#ffb066" stopOpacity="0.95" />
@@ -529,8 +525,7 @@ export const TechStackServerRackVisual = () => {
                       stroke="#ea7008"
                       strokeWidth={isHovered ? 4.5 : 3}
                       strokeLinecap="round"
-                      opacity={0.35}
-                      filter="url(#cableGlow)"
+                      opacity={0.20}
                     />
 
                     {/* Layer 2: Radiant Light Orange Luminous Conduit */}

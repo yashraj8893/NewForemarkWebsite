@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, MessageSquare, Globe, ChevronDown, CheckCircle2, AlertTriangle, Loader2 } from 'lucide-react';
 import { SEO } from '../components/SEO';
+import './ContactPerf.css';
 
 const LinkedinIcon = ({ size = 18 }: { size?: number }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -114,7 +115,7 @@ const ContactPage = () => {
             y: [0, -25, 0]
           }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-16 left-12 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-[#ea7008]/30 via-[#ea7008]/15 to-transparent blur-[140px] pointer-events-none -z-10"
+          className="contact-ambient-glow contact-ambient-glow--one absolute -top-16 left-12 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-[#ea7008]/30 via-[#ea7008]/15 to-transparent blur-[140px] pointer-events-none -z-10"
         />
         <motion.div
           animate={{
@@ -124,7 +125,7 @@ const ContactPage = () => {
             y: [0, 35, 0]
           }}
           transition={{ duration: 13, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute top-1/2 -right-32 w-[700px] h-[700px] rounded-full bg-gradient-to-bl from-[#ea7008]/30 via-[#ea7008]/12 to-transparent blur-[150px] pointer-events-none -z-10"
+          className="contact-ambient-glow contact-ambient-glow--two absolute top-1/2 -right-32 w-[700px] h-[700px] rounded-full bg-gradient-to-bl from-[#ea7008]/30 via-[#ea7008]/12 to-transparent blur-[150px] pointer-events-none -z-10"
         />
         <div className="absolute -bottom-32 left-1/4 w-[600px] h-[500px] rounded-full bg-[#ea7008]/18 blur-[140px] pointer-events-none -z-10" />
 

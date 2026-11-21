@@ -287,6 +287,8 @@ export const DepthCarousel = forwardRef<DepthCarouselHandle, DepthCarouselProps>
       const onWheel = (e: WheelEvent) => {
         const cfg = cfgRef.current;
         if (cfg.count < 2) return;
+        // Keep normal vertical page scrolling available over the carousel.
+        if (!e.shiftKey && Math.abs(e.deltaY) >= Math.abs(e.deltaX)) return;
         e.preventDefault();
 
         if (wheelLockRef.current) return;

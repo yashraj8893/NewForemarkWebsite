@@ -714,8 +714,10 @@ const ServicesGrid = () => {
   const isInView = useInView(sectionRef, { margin: "200px" });
   const isMobile = useIsMobile();
 
-  // On mobile, pause all animations when section is off-screen
+  // Desktop illustrations use many JS-driven animations. Mount them only near
+  // the viewport, while leaving the existing mobile behaviour unchanged.
   const shouldPause = isMobile && !isInView;
+  const showIllustrations = isMobile || isInView;
 
   return (
     <section
@@ -762,7 +764,7 @@ const ServicesGrid = () => {
           title="Website & Software Development" 
           desc="Crafting bespoke websites, scalable web applications, and modern software systems tailored to your business goals."
         >
-          <WebAndSoftwareAnimation />
+          {showIllustrations && <WebAndSoftwareAnimation />}
         </ServiceCard>
 
         <ServiceCard 
@@ -771,7 +773,7 @@ const ServicesGrid = () => {
           title="Web Servers & Hosting" 
           desc="Secure, scalable infrastructure and managed hosting for high-performance applications."
         >
-          <ServerAnimation />
+          {showIllustrations && <ServerAnimation />}
         </ServiceCard>
 
         <ServiceCard 
@@ -780,7 +782,7 @@ const ServicesGrid = () => {
           title="Business Automation" 
           desc="We map your business processes and build intelligent automations that save time."
         >
-          <AutomationAnimation />
+          {showIllustrations && <AutomationAnimation />}
         </ServiceCard>
       </div>
     </section>

@@ -1,3 +1,4 @@
+import { usePauseOffscreenAnimations } from '../hooks/usePauseOffscreenAnimations';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Mail, MessageSquare } from 'lucide-react';
 import { HeroAbstractLines } from '../components/HeroAbstractLines';
@@ -317,13 +318,14 @@ const TestimonialCard = ({ t }: { t: typeof testimonials[0] }) => (
 );
 
 const TestimonialsSection = () => {
+  const sectionRef = usePauseOffscreenAnimations<HTMLElement>();
   const col1 = testimonials.filter((_, i) => i % 4 === 0);
   const col2 = testimonials.filter((_, i) => i % 4 === 1);
   const col3 = testimonials.filter((_, i) => i % 4 === 2);
   const col4 = testimonials.filter((_, i) => i % 4 === 3);
 
   return (
-    <section className="py-20 sm:py-28 md:py-36 w-screen relative left-1/2 -translate-x-1/2 flex items-center justify-center bg-transparent">
+    <section ref={sectionRef} className="py-20 sm:py-28 md:py-36 w-screen relative left-1/2 -translate-x-1/2 flex items-center justify-center bg-transparent">
 
       {/* Subconscious ambient warmth */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-portfolio-gold/[0.04] blur-[120px] rounded-full pointer-events-none" />
