@@ -1,0 +1,110 @@
+/* Keep the Software page's original copy and interactions while using the Automation playbook visual system. */
+/* Slightly reduce the complete How we deliver module; its heading, intro, and panel share one centered alignment. */
+.website-delivery-design .section-inner { max-width: 1080px; }
+.website-delivery-design .section { padding-top: 72px; padding-bottom: 84px; }
+.website-delivery-design .section h2 { font-size: clamp(32px,4.2vw,52px); margin-top: 15px; margin-bottom: 12px; }
+.website-delivery-design .intro { font-size: 14px; }
+.website-delivery-design .ad2-shell { margin-top: 38px; border-radius: 20px; }
+.website-delivery-design .ad2-sidebar { padding: 27px; }
+.website-delivery-design .ad2-stage-top { padding: 25px 30px 19px; }
+.website-delivery-design .website-delivery-main { padding: 29px 30px 23px; }
+.website-delivery-design .ad2-phase-icon { width: 44px; height: 44px; border-radius: 12px; }
+.website-delivery-design .ad2-main h3 { font-size: clamp(24px,2.4vw,31px); margin-top: 18px; }
+.website-delivery-design .ad2-footer { padding-top: 13px; padding-bottom: 13px; }
+.website-delivery-design .ad2-step-list { margin-bottom: 0; }
+.website-delivery-design .ad2-stage-top { text-transform: none; letter-spacing: .12em; }
+.website-delivery-design .website-delivery-main { padding-bottom: 26px; }
+.website-delivery-design .website-delivery-description { max-width: 55ch; }
+.website-delivery-design .website-delivery-outcome {
+  margin-top: 22px; padding: 16px 18px; border: 1px solid #e8d1bc; border-radius: 12px;
+  background: #fff8f0;
+}
+.website-delivery-design .website-delivery-outcome > span,
+.website-delivery-design .website-delivery-brief-head > div > span,
+.website-delivery-design .website-delivery-brief-head > span,
+.website-delivery-design .website-delivery-hint {
+  color: #a29487; font-size: 10px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase;
+}
+.website-delivery-design .website-delivery-outcome p {
+  margin: 7px 0 0; color: #4f473f; font-size: 13px; font-weight: 700; line-height: 1.55;
+}
+.website-delivery-design .website-delivery-brief {
+  margin-top: 22px; padding: 18px 20px 8px; border: 1px solid #e8d1bc; border-radius: 14px;
+  background: #faf8f5; box-shadow: 0 8px 25px -23px rgba(234,112,8,.65);
+}
+.website-delivery-design .website-delivery-brief-head {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding-bottom: 12px;
+}
+.website-delivery-design .website-delivery-brief-head h4 {
+  margin: 6px 0 0; color: #121110; font-size: 18px; font-weight: 700; line-height: 1.25; letter-spacing: -.02em;
+}
+.website-delivery-design .website-delivery-brief-head > span { white-space: nowrap; color: #d56a14; }
+.website-delivery-design .website-delivery-hint { margin: 0 0 10px; color: #a29487; font-weight: 500; letter-spacing: .04em; text-transform: none; }
+.website-delivery-design .website-delivery-detail { border-top: 1px solid #ebe4dc; }
+.website-delivery-design .website-delivery-detail > button {
+  display: flex; width: 100%; align-items: center; gap: 12px; padding: 12px 0; border: 0;
+  background: transparent; color: #4f473f; text-align: left; font-size: 13px; font-weight: 600; line-height: 1.4; cursor: pointer;
+}
+.website-delivery-design .website-delivery-detail > button > span:nth-child(1) { flex: none; color: #b3a69b; font-size: 10px; font-weight: 700; letter-spacing: .08em; }
+.website-delivery-design .website-delivery-detail > button > span:nth-child(2) { flex: 1; }
+.website-delivery-design .website-delivery-detail > button svg { flex: none; color: #ea7008; }
+.website-delivery-design .website-delivery-detail > button:hover,
+.website-delivery-design .website-delivery-detail > button[aria-expanded="true"] { color: #121110; }
+.website-delivery-design .website-delivery-detail > p {
+  margin: 0 26px 13px 22px; color: #766b64; font-size: 12px; line-height: 1.6;
+}
+.website-delivery-design .dl-mobile-toggle { display: none; }
+.website-delivery-design .website-delivery-footer { padding: 15px 24px; }
+.website-delivery-design .website-delivery-footer > span { color: #a89b90; font-size: 10px; font-weight: 700; letter-spacing: .12em; }
+.website-delivery-design .website-delivery-footer > button {
+  display: inline-flex; align-items: center; gap: 8px; padding: 8px 0; border: 0; background: transparent;
+  color: #4f473f; font-size: 12px; font-weight: 700; cursor: pointer;
+}
+.website-delivery-design .website-delivery-footer > button:last-child { color: #cf5e00; }
+.website-delivery-design .website-delivery-footer > button:disabled { opacity: .35; cursor: not-allowed; }
+.website-delivery-design .website-delivery-footer > button:focus-visible,
+.website-delivery-design .website-delivery-detail > button:focus-visible { outline: 2px solid #ea7008; outline-offset: 3px; }
+
+@media (max-width: 900px) {
+  .website-delivery-design .ad2-sidebar { padding: 22px; }
+  .website-delivery-design .website-delivery-main { padding: 24px 22px; }
+}
+@media (max-width: 767px) {
+  .website-delivery-design .delivery { padding: 44px 0 48px; }
+  .website-delivery-design .section h2 { font-size: clamp(29px,7.5vw,38px); }
+  .website-delivery-design .intro { font-size: 13px; }
+  .website-delivery-design .ad2-shell { margin-top: 20px; border-radius: 18px; }
+}
+@media (max-width: 767px) {
+  .website-delivery-design .ad2-sidebar { padding: 18px; }
+  .website-delivery-design .ad2-step-list { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 6px; margin: 14px 0 0; }
+  .website-delivery-design .ad2-step { min-height: 50px; justify-content: flex-start; gap: 8px; padding: 6px 8px; }
+  .website-delivery-design .ad2-step-number { width: auto; font-size: 9px; }
+  .website-delivery-design .ad2-step-icon { width: 30px; height: 30px; border-radius: 8px; }
+  .website-delivery-design .ad2-step-icon svg { width: 15px; height: 15px; }
+  .website-delivery-design .ad2-step-name { display: block; font-size: 11px; line-height: 1.25; }
+  .website-delivery-design .ad2-step-arrow { display: none; }
+  .website-delivery-design .ad2-sidebar-header { padding-bottom: 9px; }
+  .website-delivery-design .ad2-stage-top { display: flex; padding: 18px 20px 14px; font-size: 9px; }
+  .website-delivery-design .website-delivery-main { padding: 18px 17px; }
+  .website-delivery-design .website-delivery-outcome { margin-top: 15px; padding: 13px 14px; }
+  .website-delivery-design .website-delivery-brief { display: none; margin-top: 14px; padding: 14px 14px 5px; }
+  .website-delivery-design .website-delivery-brief.is-open { display: block; }
+  .website-delivery-design .website-delivery-brief-head { padding-bottom: 9px; }
+  .website-delivery-design .website-delivery-brief-head h4 { font-size: 16px; }
+  .website-delivery-design .website-delivery-hint { font-size: 9px; margin-bottom: 7px; }
+  .website-delivery-design .website-delivery-detail > button { gap: 8px; padding: 9px 0; font-size: 12px; }
+  .website-delivery-design .website-delivery-detail > p { margin: 0 22px 10px 18px; font-size: 11px; }
+  .website-delivery-design .dl-mobile-toggle {
+    display: flex; justify-content: space-between; align-items: center; width: 100%; margin-top: 14px; padding: 11px 13px;
+    border: 1px solid #e8d1bc; border-radius: 10px; background: #fff; color: #3c332b; font-size: 12px; font-weight: 700;
+  }
+  .website-delivery-design .dl-mobile-toggle svg { color: #ea7008; }
+  .website-delivery-design .website-delivery-footer { gap: 8px; padding: 10px 14px; }
+  .website-delivery-design .website-delivery-footer > span { font-size: 8px; }
+  .website-delivery-design .website-delivery-footer > button { gap: 4px; font-size: 10px; }
+}
+@media (max-width: 380px) {
+  .website-delivery-design .ad2-step-name { font-size: 10px; }
+  .website-delivery-design .website-delivery-footer > span { display: none; }
+}

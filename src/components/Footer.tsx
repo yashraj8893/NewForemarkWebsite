@@ -30,7 +30,7 @@ const BandsFooter = () => <footer className="fc fc-bands">
   <div className="fc-services-block">
     <div className="fc-bands-head">
       <div className="fc-bands-title">
-        <h2>Built for what&apos;s next.</h2>
+        <h2>Built for what&apos;s next<span className="fc-heading-dot">.</span></h2>
       </div>
       <Link to="/services" className="fc-overview">Explore all services <ArrowUpRight size={15} /></Link>
     </div>

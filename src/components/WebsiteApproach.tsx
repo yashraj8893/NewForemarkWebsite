@@ -1,17 +1,17 @@
 import { useEffect, useRef, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
-import type { ServiceData } from '../data/servicesData';
+import type { PhilosophyItem, ServiceData } from '../data/servicesData';
 import './WebsiteApproach.css';
 
 const shapes = ['hex', 'oct', 'round', 'pent', 'bevel', 'diamond'] as const;
 
-export function WebsiteApproach({ service }: { service: ServiceData }) {
+export function WebsiteApproach({ service, items: itemOverride, heading }: { service: ServiceData; items?: PhilosophyItem[]; heading?: string }) {
     const [selected, setSelected] = useState(0);
     const [displayed, setDisplayed] = useState(0);
     const [leaving, setLeaving] = useState(false);
     const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
     const shapeRef = useRef<HTMLButtonElement>(null);
-    const items = service.philosophy;
+    const items = itemOverride ?? service.philosophy;
 
     function select(index: number) {
         if (index === selected) return;
@@ -44,7 +44,7 @@ export function WebsiteApproach({ service }: { service: ServiceData }) {
         <section className="website-approach" aria-labelledby="website-approach-title">
             <div className="wa-container">
                 <div className="wa-eyebrow"><span />Our Approach</div>
-                <h2 id="website-approach-title" className="wa-heading">The Foremark<br />Standard<span>.</span></h2>
+                <h2 id="website-approach-title" className="wa-heading">{heading ?? <>The Foremark<br />Standard<span>.</span></>}</h2>
                 <p className="wa-subtitle">{service.howWeDoItSubtitle}</p>
                 <div className="wa-mobile-approach">
                     <div className="wa-mobile-list" aria-label="Explore our approach">

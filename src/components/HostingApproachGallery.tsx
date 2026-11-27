@@ -1,9 +1,7 @@
-import React, { useRef, useState } from 'react';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { usePhone } from '../hooks/usePhone';
-import './HostingMobile.css';
-import { CircularGallery } from './CircularGallery';
-import type { GalleryItem } from './CircularGallery';
+import React from 'react';
+import type { LucideIcon } from 'lucide-react';
+import type { ServiceData, PhilosophyItem } from '../data/servicesData';
+import { WebsiteApproach } from './WebsiteApproach';
 import {
   Cloud,
   Shield,
@@ -15,10 +13,14 @@ import {
   Layers,
 } from 'lucide-react';
 
-export const hostingApproachItems: (GalleryItem & {
+export const hostingApproachItems: {
+  image: string;
+  text: string;
+  description: string;
+  alt: string;
   category: string;
-  icon: React.ComponentType<{ size?: number; className?: string }>;
-})[] = [
+  icon: LucideIcon;
+}[] = [
   {
     image: '/hosting/iac.jpg',
     text: 'Infrastructure as Code (IaC)',
@@ -93,92 +95,12 @@ export const hostingApproachItems: (GalleryItem & {
   }
 ];
 
-const optimizedHostingApproachItems = hostingApproachItems.map(item => ({ ...item, image: item.image.replace('/hosting/', '/hosting-optimized/').replace('.jpg', '.webp') }));
-
-export const HostingApproachGallery: React.FC = () => {
-  const isPhone = usePhone();
-  const [active, setActive] = useState(0);
-  const gallery = useRef<HTMLDivElement>(null);
-  const select = (index: number) => {
-    const strip = gallery.current;
-    const slide = strip?.children[index] as HTMLElement | undefined;
-    if (!strip || !slide) return;
-    setActive(index);
-    const left = strip.scrollLeft + slide.getBoundingClientRect().left - strip.getBoundingClientRect().left;
-    strip.scrollTo({ left, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
-  };
-  const onGalleryScroll = () => {
-    const strip = gallery.current;
-    if (!strip) return;
-    const start = strip.getBoundingClientRect().left;
-    const nearest = Array.from(strip.children).reduce((best, child, index, all) =>
-      Math.abs(child.getBoundingClientRect().left - start) < Math.abs(all[best].getBoundingClientRect().left - start) ? index : best, 0);
-    setActive(nearest);
-  };
-  const mobileItem = hostingApproachItems[active];
-  const MobileIcon = mobileItem.icon;
-  return (
-    <section className="hosting-approach py-20 sm:py-28 relative overflow-hidden bg-white">
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
-        
-        {/* ─── Header ────────────────────────────────────────── */}
-        <div className="max-w-2xl mb-14">
-          <span className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3">
-            Our Approach
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#121110] tracking-tight leading-tight mb-4">
-            The Foremark Standard: How We Host & Manage Infrastructure
-          </h2>
-          <p className="text-[#5c544d] text-base leading-relaxed">
-            We engineer resilient, self-healing cloud architectures that absorb traffic surges, deflect security threats, and keep your business online 24/7.
-          </p>
-        </div>
-
-        {/* ─── Circular Gallery Viewport (No Background Box) ──── */}
-        {isPhone ? <div className="hosting-mobile-gallery">
-          <div ref={gallery} onScroll={onGalleryScroll} className="hosting-gallery-strip" aria-label="Hosting approach gallery">
-            {hostingApproachItems.map((item, i) => <button type="button" key={item.image} className="hosting-gallery-slide" onClick={() => select(i)} aria-label={`Show ${item.text}`} aria-pressed={active === i}>
-              <img src={item.image.replace('/hosting/', '/hosting-mobile/').replace('.jpg', '.webp')} alt={item.alt || ''} loading={i === 0 ? 'eager' : 'lazy'} />
-              <span>{String(i + 1).padStart(2, '0')} / 08</span>
-            </button>)}
-          </div>
-          <div className="hosting-gallery-details" aria-live="polite">
-            <div className="hosting-gallery-category"><MobileIcon size={16} aria-hidden="true" />{mobileItem.category}</div>
-            <h3>{mobileItem.text}</h3><p>{mobileItem.description}</p>
-          </div>
-          <div className="hosting-gallery-controls">
-            <span>{String(active + 1).padStart(2, '0')} / 08</span>
-            <div><button type="button" onClick={() => select(Math.max(active - 1, 0))} disabled={active === 0} aria-label="Previous approach"><ArrowLeft size={18} /></button><button type="button" onClick={() => select(Math.min(active + 1, hostingApproachItems.length - 1))} disabled={active === hostingApproachItems.length - 1} aria-label="Next approach"><ArrowRight size={18} /></button></div>
-          </div>
-        </div> : <div
-          data-lenis-prevent
-          className="relative w-full overflow-hidden"
-          style={{ height: '600px' }}
-        >
-          <CircularGallery
-            items={optimizedHostingApproachItems}
-            bend={3}
-            textColor="#121110"
-            borderRadius={0.06}
-            scrollEase={0.05}
-            scrollSpeed={1.8}
-            itemSize={1.05}
-            itemAspect={0.78}
-            gap={0.38}
-            shadow={0.3}
-            dpr={Math.min(window.devicePixelRatio || 1, 1.25)}
-            wave={1.1}
-            fadeEdges={0.12}
-            font="bold 18px 'Plus Jakarta Sans', Figtree, sans-serif"
-            onItemClick={(item, index) => {
-              console.log('Opened card:', item.text, index);
-            }}
-          />
-        </div>}
-
-      </div>
-    </section>
-  );
-};
+export const HostingApproachGallery: React.FC<{ service: ServiceData }> = ({ service }) => (
+  <WebsiteApproach
+    service={service}
+    heading={service.howWeDoItTitle}
+    items={hostingApproachItems.map(({ text, description, icon }): PhilosophyItem => ({ title: text, description, icon }))}
+  />
+);
 
 export default HostingApproachGallery;

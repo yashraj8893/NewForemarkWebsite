@@ -511,10 +511,12 @@ export const ServerAnimation = () => {
   );
 };
 
-export const AutomationAnimation = () => {
+export const AutomationAnimation = ({ isHero = false }: { isHero?: boolean } = {}) => {
   const isMobile = useIsMobile();
   const d = isMobile ? 1.3 : 1;
-  const scaleClasses = "scale-[0.7] min-[360px]:scale-[0.75] sm:scale-[0.8] md:scale-[0.75] lg:scale-[0.8] xl:scale-[0.85] 2xl:scale-[0.9]";
+  const scaleClasses = isHero
+    ? "scale-[0.72] min-[360px]:scale-[0.82] sm:scale-[1.02] md:scale-[0.96] lg:scale-[1.15] xl:scale-[1.28] 2xl:scale-[1.35]"
+    : "scale-[0.7] min-[360px]:scale-[0.75] sm:scale-[0.8] md:scale-[0.75] lg:scale-[0.8] xl:scale-[0.85] 2xl:scale-[0.9]";
   return (
     <div className="relative w-full h-full flex items-center justify-center p-3.5 sm:p-4 overflow-hidden">
        {/* Pipeline canvas */}

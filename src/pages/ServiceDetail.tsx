@@ -5,12 +5,12 @@ import type { Variants } from 'framer-motion';
 import {
     ArrowRight,
     ArrowLeft,
-    ArrowUpRight,
     CheckCircle2,
 } from 'lucide-react';
 import { servicesData } from '../data/servicesData';
 import { SEO } from '../components/SEO';
 import { FAQSection } from '../components/FAQSection';
+import { AutomationAnimation } from '../components/ServicesGrid';
 import { TechStackLaptopVisual } from '../components/TechStackLaptopVisual';
 import { TechStackServerRackVisual } from '../components/TechStackServerRackVisual';
 import { TechStackGlobeServerVisual } from '../components/TechStackGlobeServerVisual';
@@ -23,6 +23,7 @@ import { HostingProcessDepthCarousel } from '../components/HostingProcessDepthCa
 import { AutomationApproach } from '../components/AutomationApproach';
 import { AutomationDeliveryFolder } from '../components/AutomationDeliveryFolder';
 import { WebsiteApproach } from '../components/WebsiteApproach';
+import { ProjectCTA } from '../components/ProjectCTA';
 
 const fadeUp: Variants = {
     hidden: { opacity: 0, y: 18 },
@@ -156,7 +157,7 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                         >
                             <div className="w-full aspect-[4/3] rounded-2xl bg-[#faf8f5] border border-[#ebe5df] overflow-hidden flex items-center justify-center">
                                 <div className="w-full h-full flex items-center justify-center scale-95 sm:scale-100 p-4">
-                                    <Visual />
+                                    {activeSlug === 'business-automation' ? <AutomationAnimation isHero /> : <Visual />}
                                 </div>
                             </div>
                         </motion.div>
@@ -194,7 +195,7 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
 
                 {/* ─── How We Do It ───────────────────────────────────── */}
                 {activeSlug === 'cloud-hosting' ? (
-                    <HostingApproachGallery />
+                    <HostingApproachGallery service={service} />
                 ) : activeSlug === 'business-automation' ? (
                     <AutomationApproach />
                 ) : activeSlug === 'website-software-development' ? (
@@ -450,21 +451,9 @@ const ServiceDetail = ({ slug: propSlug }: ServiceDetailProps) => {
                 </section>
 
                 {/* ─── Bottom CTA ─────────────────────────────────────── */}
-                <section className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pb-20 sm:pb-32">
-                    <div className="bg-[#121110] border border-portfolio-gold/35 hover:border-portfolio-gold/60 shadow-[0_4px_30px_rgba(234,112,8,0.12)] rounded-3xl md:rounded-4xl p-8 sm:p-12 md:p-24 text-white relative overflow-hidden flex flex-col items-center text-center transition-all duration-500 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#ea7008]/40 before:to-transparent">
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-portfolio-gold/[0.08] blur-[120px] rounded-full pointer-events-none" />
-                        <div className="relative z-10 max-w-3xl">
-                            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold font-display tracking-tight mb-5 md:mb-8 text-white leading-tight">Let's build something extraordinary together.</h2>
-                            <p className="text-sm sm:text-base md:text-lg text-[#a89f91] mb-8 md:mb-12 leading-relaxed">Whether you need a high-performance web platform built from scratch or want to explore how intelligent automation can transform your operations.</p>
-                            <Link
-                                to="/contact"
-                                className="inline-flex items-center gap-2 px-9 py-4 uppercase tracking-[0.16em] text-xs sm:text-sm cursor-target rounded-full font-bold text-[#121110] bg-white hover:bg-[#f7f5f2] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-[0_4px_25px_rgba(255,255,255,0.12)] border border-white group"
-                            >
-                                Start A Project <ArrowUpRight size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                            </Link>
-                        </div>
-                    </div>
-                </section>
+                <div className="project-cta-container">
+                    <ProjectCTA />
+                </div>
             </main>
         </>
     );

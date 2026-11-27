@@ -22,6 +22,7 @@ import { WebAndSoftwareAnimation, ServerAnimation, AutomationAnimation } from '.
 import { FAQSection } from '../components/FAQSection';
 import { SEO } from '../components/SEO';
 import HaloCardsBlocks from '../components/blocks/HaloCardsBlocks';
+import { ProjectCTA } from '../components/ProjectCTA';
 
 const fadeUp: Variants = {
     hidden: { opacity: 0, y: 24 },
@@ -992,45 +993,9 @@ const ServicesPage = () => {
             <FAQSection withOuterContainer useMainFont className="services-faq py-20 sm:py-28" />
 
             {/* ─── Final CTA ─────────────────────────────────────────── */}
-            <section className="services-final-section max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pb-24 sm:pb-32 relative z-10">
-                <motion.div
-                    variants={fadeUp}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: '-60px' }}
-                    className="services-final-card relative bg-[#faf8f5] border border-portfolio-gold/35 hover:border-portfolio-gold/60 rounded-[2.5rem] px-8 sm:px-16 py-20 sm:py-28 text-center overflow-hidden shadow-[0_4px_30px_rgba(234,112,8,0.08)] transition-all duration-500"
-                >
-                    {/* Enhanced background glow layers */}
-                    <div className="services-final-glow absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-portfolio-gold/10 rounded-full blur-[100px] pointer-events-none" />
-
-                    <div className="relative z-10 max-w-3xl mx-auto">
-                        <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-[#121110] mb-6 tracking-tight leading-none">
-                            Ready to build something that lasts?
-                        </h2>
-
-                        <p className="text-[#5c544d] text-base sm:text-lg max-w-xl mx-auto mb-10 leading-relaxed">
-                            Tell us about your project and we&rsquo;ll get back to you with next steps — no
-                            obligation, just a conversation.
-                        </p>
-
-                        <div className="services-final-actions flex items-center justify-center gap-4 flex-wrap">
-                            <Link
-                                to="/contact"
-                                className="btn-primary inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest rounded-full px-8 py-4 cursor-target"
-                            >
-                                Request a quote <ArrowRight size={16} />
-                            </Link>
-
-                            <Link
-                                to="/contact"
-                                className="btn-ghost inline-flex items-center gap-2 text-[#121110] text-sm font-bold uppercase tracking-widest rounded-full px-8 py-4 cursor-target"
-                            >
-                                Book a consultation
-                            </Link>
-                        </div>
-                    </div>
-                </motion.div>
-            </section>
+            <div className="project-cta-container relative z-10">
+                <ProjectCTA />
+            </div>
         </main>
     );
 };

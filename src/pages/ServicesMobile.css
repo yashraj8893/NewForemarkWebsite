@@ -57,17 +57,6 @@
   .services-mobile-process-item > p { margin: 0; padding: 12px 15px 15px; border-top: 1px solid #f1e8df; color: #5c544d; font-size: 13px; line-height: 1.6; }
 }
 
-/* Keep the closing call to action short without hiding its copy or links. */
-@media (max-width: 767px) {
-  .services-final-section { padding-bottom: 55px; }
-  .services-final-card { padding: 34px 18px; border-radius: 24px; }
-  .services-final-glow { display: none; }
-  .services-final-card h2 { font-size: 28px; line-height: 1.12; margin-bottom: 14px; }
-  .services-final-card p { font-size: 14px; line-height: 1.6; margin-bottom: 22px; }
-  .services-final-actions { gap: 8px; }
-  .services-final-actions a { min-height: 44px; justify-content: center; padding: 11px 14px; font-size: 10px; letter-spacing: .08em; }
-}
-
 /* The shared FAQ stays intact; only its Services-page phone layout is tighter. */
 @media (max-width: 767px) {
   .services-faq { padding-top: 42px; padding-bottom: 42px; }
