@@ -1,7 +1,25 @@
+/* Match the shared navigation content grid, so blog text aligns beneath the Foremark mark. */
+.blog-content-shell { padding-inline:16px; }
+@media (min-width:640px) { .blog-content-shell { padding-inline:32px; } }
+@media (min-width:768px) { .blog-content-shell { padding-inline:64px; } }
+@media (min-width:1024px) { .blog-content-shell { padding-inline:clamp(64px,calc(50vw - 576px),84px); } }
+
+/* Keep the journal's custom clear control; suppress the browser's duplicate search-field clear icon. */
+.blog-page input[type="search"] { -webkit-appearance:none; appearance:none; }
+.blog-page input[type="search"]::-webkit-search-cancel-button,
+.blog-page input[type="search"]::-webkit-search-decoration,
+.blog-page input[type="search"]::-webkit-search-results-button,
+.blog-page input[type="search"]::-webkit-search-results-decoration { -webkit-appearance:none; appearance:none; display:none; }
+.blog-page input[type="search"]::-moz-search-clear { display:none; }
+
+/* The journal uses an editorial, semibold hierarchy rather than the site's global extra-bold heading default. */
+.blog-page h1, .blog-page h2, .blog-page h3 { font-weight:600 !important; }
+
 /* Covers remain unchanged on phones and tablets. */
 .blog-original-cover { width:100%; height:100%; }
 .blog-desktop-cover { display:none; width:100%; height:100%; }
-.editorial-artwork { display:block; width:100%; height:100%; }
+.editorial-artwork { display:block; width:100%; height:100%; object-fit:cover; transition:transform .45s ease; }
+.blog-page .group:hover .editorial-artwork { transform:scale(1.035); }
 
 @media (min-width: 1024px) {
   .blog-original-cover { display:none; }

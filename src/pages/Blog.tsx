@@ -1,340 +1,228 @@
-import { useState, useMemo } from 'react';
-import { motion } from 'framer-motion';
-import { SEO } from '../components/SEO';
-import { ArrowUpRight, Search, Mail, Sparkles, SlidersHorizontal, ArrowRight, X } from 'lucide-react';
-import { cn } from "../lib/utils";
+import { useMemo, useState } from 'react';
+import { ArrowRight, ArrowUpRight, Mail, Search, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { SEO } from '../components/SEO';
+import { EditorialArtwork } from '../components/blog/EditorialArtwork';
+import { BlogReader } from '../components/blog/BlogReader';
 import { blogPosts, blogCategories } from '../data/blogPosts';
 import type { BlogPost } from '../data/blogPosts';
-
-// Refined Editorial Subcomponents
-import {
-    LeadStoryCard,
-    FieldNoteCard,
-    WideEditorialCard,
-    EditorialGridCard
-} from '../components/blog/BlogCard';
-import { BlogReader } from '../components/blog/BlogReader';
+import { cn } from '../lib/utils';
 import './BlogDesktop.css';
 
 const BlogPage = () => {
-    const [activeCategory, setActiveCategory] = useState("View all");
-    const [searchQuery, setSearchQuery] = useState("");
+    const [activeCategory, setActiveCategory] = useState('View all');
+    const [searchQuery, setSearchQuery] = useState('');
     const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
     const [isReaderOpen, setIsReaderOpen] = useState(false);
 
-    // Cover story: index 0 (or marked featured)
-    const leadPost = useMemo(() => blogPosts.find(p => p.featured) || blogPosts[0], []);
+    const leadPost = useMemo(
+        () => blogPosts.find((post) => post.featured) ?? blogPosts[0],
+        [],
+    );
 
-    // Field notes for hero right column: 3 curated dispatches (indices 1, 2, 3)
-    const fieldNotesPosts = useMemo(() => blogPosts.filter(p => p.id !== leadPost.id).slice(0, 3), [leadPost]);
-
-    // Compute post counts per category for masthead tags
-    const categoryCounts = useMemo(() => {
-        const counts: Record<string, number> = { "View all": blogPosts.length };
-        blogPosts.forEach(post => {
-            counts[post.category] = (counts[post.category] || 0) + 1;
-        });
-        return counts;
-    }, []);
-
-    // Filtered archive posts based on active category and search query
     const filteredPosts = useMemo(() => {
-        return blogPosts.filter(post => {
-            const categoryMatch = activeCategory === "View all" || post.category === activeCategory;
-            const query = searchQuery.toLowerCase().trim();
-            const searchMatch =
-                !query ||
-                post.title.toLowerCase().includes(query) ||
-                post.excerpt.toLowerCase().includes(query) ||
-                post.author.toLowerCase().includes(query) ||
-                post.category.toLowerCase().includes(query);
+        const query = searchQuery.trim().toLowerCase();
+        return blogPosts.filter((post) => {
+            const categoryMatch = activeCategory === 'View all' || post.category === activeCategory;
+            const searchMatch = !query ||
+                `${post.title} ${post.excerpt} ${post.author} ${post.category}`.toLowerCase().includes(query);
             return categoryMatch && searchMatch;
         });
     }, [activeCategory, searchQuery]);
 
-    // Handle opening slide-over reader
-    const handlePostClick = (post: BlogPost) => {
+    const showLeadPost = activeCategory === 'View all'
+        && !searchQuery.trim()
+        && filteredPosts.some((post) => post.id === leadPost.id);
+    const archivePosts = filteredPosts.filter((post) => !showLeadPost || post.id !== leadPost.id);
+
+    const openPost = (post: BlogPost) => {
         setSelectedPost(post);
         setIsReaderOpen(true);
     };
 
-    // Stagger animation helpers
-    const staggerContainer = {
-        hidden: { opacity: 0 },
-        show: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.08,
-            }
-        }
-    };
-
-    const itemFade = {
-        hidden: { opacity: 0, y: 16 },
-        show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } }
+    const resetFilters = () => {
+        setActiveCategory('View all');
+        setSearchQuery('');
     };
 
     return (
         <>
-            {/* Search Engine Optimization meta information */}
             <SEO
                 title="The Journal | Insights & Ideas | Foremark Technologies"
                 description="Insights on engineering first principles, observability, infrastructure, and product design from the Foremark Technologies team."
                 canonicalUrl="https://foremark.in/blog"
             />
 
-            <main className="blog-page relative w-full overflow-hidden bg-white text-[#1a1816] selection:bg-[#ea7008] selection:text-white">
-                <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pt-8 sm:pt-12 pb-20 sm:pb-32">
-
-
-                    {/* ─── HERO HEADER ─────────────────────────────────────────── */}
-                    <motion.header
-                        variants={staggerContainer}
-                        initial="hidden"
-                        animate="show"
-                        className="flex flex-col mb-12"
-                    >
-                        {/* Eyebrow Label */}
-                        <motion.span
-                            variants={itemFade}
-                            className="text-[#ea7008] text-xs font-semibold uppercase tracking-widest block mb-3"
-                        >
-                            The Foremark Journal
-                        </motion.span>
-
-                        {/* Heading */}
-                        <motion.h1
-                            variants={itemFade}
-                            className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight text-[#121110] mb-4 sm:mb-6"
-                        >
-                            Stories, Insights <br /> & Inspiration
-                        </motion.h1>
-
-                        {/* Paragraph */}
-                        <motion.p
-                            variants={itemFade}
-                            className="text-base text-[#5c544d] max-w-xl leading-relaxed mb-8"
-                        >
+            <main className="blog-page relative w-full overflow-hidden bg-[#fbfaf8] text-[#201f1c] selection:bg-[#ea7008] selection:text-white">
+                <div className="blog-content-shell mx-auto max-w-[1320px]">
+                    {/* Editorial masthead */}
+                    <header className="grid gap-8 border-b border-[#dedbd5] py-12 sm:py-16 lg:grid-cols-[1fr_320px] lg:items-end lg:gap-16 lg:py-20">
+                        <div>
+                            <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.22em] text-[#ea7008]">
+                                The Foremark Journal · 2026
+                            </p>
+                            <h1 className="max-w-4xl font-display text-5xl font-semibold leading-[0.98] tracking-[-0.055em] sm:text-6xl lg:text-[82px]">
+                                Stories, Insights
+                                <br />
+                                & Inspiration
+                            </h1>
+                        </div>
+                        <p className="max-w-sm text-base leading-7 text-[#625e58] lg:pb-1">
                             Thoughts on building with an engineering first mentality, designing scalable platforms,
                             and creating robust technology solutions that drive digital transformation.
-                        </motion.p>
-                    </motion.header>
+                        </p>
+                    </header>
 
-                    {/* ─── THE EDITORIAL SPREAD (7:5 ASYMMETRIC HERO LAYOUT) ───── */}
-                    <section className="blog-editorial-spread mb-20 sm:mb-28">
-                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-                            {/* Left Column (7 cols): Dominant Cover Story */}
-                            <div className="lg:col-span-7 flex flex-col">
-                                {leadPost && (
-                                    <LeadStoryCard post={leadPost} onClick={handlePostClick} />
-                                )}
-                            </div>
-
-                            {/* Right Column (5 cols): Curated Field Notes Stack */}
-                            <div className="blog-field-panel lg:col-span-5 flex flex-col justify-between bg-[#faf8f5] border border-portfolio-gold/35 hover:border-portfolio-gold/65 shadow-[0_4px_30px_rgba(234,112,8,0.08)] rounded-[2rem] p-6 sm:p-8 transition-all duration-500">
-                                <div>
-                                    <div className="flex items-center justify-between pb-4 mb-2 border-b border-[#e5e0da]">
-                                        <div className="flex items-center gap-2">
-                                            <Sparkles size={14} className="blog-field-sparkle text-portfolio-gold" />
-                                            <h2 className="text-xs font-bold uppercase tracking-widest text-[#121110]">
-                                                Curated Field Notes
-                                            </h2>
-                                        </div>
-                                        <span className="text-[10px] font-bold uppercase tracking-wider text-portfolio-gold">
-                                            Editor's Selection
-                                        </span>
-                                    </div>
-
-                                    {/* Stacked Field Notes with Hairline Dividers */}
-                                    <div className="divide-y divide-[#e5e0da]">
-                                        {fieldNotesPosts.map((post, index) => (
-                                            <FieldNoteCard
-                                                key={post.id}
-                                                post={post}
-                                                indexNumber={String(index + 1).padStart(2, '0')}
-                                                onClick={handlePostClick}
-                                            />
-                                        ))}
-                                    </div>
-                                </div>
-
-                                <div className="pt-5 mt-4 border-t border-[#e5e0da] flex items-center justify-between text-xs">
-                                    <span className="text-[#5c544d] font-medium">
-                                        Deep technical articles & case notes
+                    {/* Featured article */}
+                    {showLeadPost && (
+                        <button
+                            type="button"
+                            onClick={() => openPost(leadPost)}
+                            className="group grid w-full gap-0 border-b border-[#dedbd5] text-left md:grid-cols-[1.05fr_0.95fr]"
+                        >
+                            <div className="order-2 flex flex-col justify-center py-8 md:order-1 md:py-12 md:pr-12 lg:pr-20">
+                                <p className="mb-5 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.17em] text-[#ea7008]">
+                                    <span className="h-px w-8 bg-[#ea7008]" />
+                                    Editor’s pick
+                                    <span className="text-[#9a948d]">/ {leadPost.category}</span>
+                                </p>
+                                <h2 className="font-display text-3xl font-semibold leading-[1.08] tracking-[-0.035em] transition-colors group-hover:text-[#b65305] sm:text-4xl lg:text-5xl">
+                                    {leadPost.title}
+                                </h2>
+                                <p className="mt-5 max-w-xl text-base leading-7 text-[#625e58]">{leadPost.excerpt}</p>
+                                <div className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-[#dedbd5] pt-4 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#77716a]">
+                                    <span>{leadPost.author} <span className="px-2 text-[#c5c0b8]">/</span> {leadPost.date} <span className="px-2 text-[#c5c0b8]">/</span> {leadPost.readTime}</span>
+                                    <span className="inline-flex shrink-0 items-center gap-2 text-[#201f1c] transition-colors group-hover:text-[#ea7008]">
+                                        Read story <ArrowUpRight size={15} />
                                     </span>
-                                    <a
-                                        href="#dispatches-archive"
-                                        className="inline-flex items-center gap-1 font-bold text-portfolio-gold hover:brightness-125 transition-all cursor-target"
-                                    >
-                                        Jump to archive <ArrowRight size={12} />
-                                    </a>
                                 </div>
                             </div>
-                        </div>
-                    </section>
-
-                    {/* ─── ARCHITECTURAL MASTHEAD FILTER & SEARCH BAR ─────────── */}
-                    <section id="dispatches-archive" className="scroll-mt-8 mb-12 sm:mb-16">
-                        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 py-4 border-y border-[#e5e0da]">
-
-                            {/* Category Filter Tabs with Live Counters */}
-                            <div className="blog-filter-tabs flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none -mx-4 px-4 md:mx-0 md:px-0">
-                                {blogCategories.map((category) => {
-                                    const isSelected = activeCategory === category;
-                                    const count = categoryCounts[category] || 0;
-                                    return (
-                                        <button
-                                            key={category}
-                                            onClick={() => setActiveCategory(category)}
-                                            className={cn(
-                                                "inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all duration-200 cursor-target shrink-0",
-                                                isSelected
-                                                    ? "bg-portfolio-gold text-white shadow-[0_4px_15px_rgba(234,112,8,0.25)]"
-                                                    : "text-[#5c544d] hover:text-[#121110] hover:bg-[#faf8f5] border border-transparent"
-                                            )}
-                                        >
-                                            <span>{category}</span>
-                                            <span className={cn(
-                                                "text-[10px] px-1.5 py-0.5 rounded-full",
-                                                isSelected
-                                                    ? "bg-white/20 text-white"
-                                                    : "bg-[#faf8f5] text-[#5c544d]"
-                                            )}>
-                                                {count}
-                                            </span>
-                                        </button>
-                                    );
-                                })}
+                            <div className="blog-studio-artwork order-1 min-h-[230px] overflow-hidden bg-[#dedbd5] md:order-2 md:min-h-[360px] lg:min-h-[430px]">
+                                <EditorialArtwork post={leadPost} />
                             </div>
+                        </button>
+                    )}
 
-                            {/* Minimalist Inline Search */}
-                            <div className="blog-search relative w-full md:w-72 shrink-0">
-                                <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#5c544d]" />
+                    {/* Search and category navigation */}
+                    <section id="journal-archive" className="scroll-mt-8 py-8 sm:py-10">
+                        <div className="flex flex-col gap-6 border-b border-[#dedbd5] pb-6 lg:flex-row lg:items-center lg:justify-between">
+                            <div className="flex flex-wrap gap-x-6 gap-y-3" aria-label="Filter articles by category">
+                                {blogCategories.map((category) => (
+                                    <button
+                                        key={category}
+                                        type="button"
+                                        onClick={() => setActiveCategory(category)}
+                                        aria-pressed={activeCategory === category}
+                                        className={cn(
+                                            'border-b pb-2 text-[11px] font-bold uppercase tracking-[0.12em] transition-colors',
+                                            activeCategory === category
+                                                ? 'border-[#ea7008] text-[#201f1c]'
+                                                : 'border-transparent text-[#77716a] hover:text-[#201f1c]',
+                                        )}
+                                    >
+                                        {category}
+                                    </button>
+                                ))}
+                            </div>
+                            <div role="search" aria-label="Search journal articles" className="flex w-full items-center gap-3 border-b border-[#c9c4bc] pb-2 text-[#77716a] lg:w-56">
+                                <Search size={15} aria-hidden="true" />
                                 <input
-                                    type="text"
+                                    type="search"
                                     value={searchQuery}
-                                    onChange={(e) => setSearchQuery(e.target.value)}
-                                    placeholder="Search articles, tags..."
-                                    className="w-full pl-10 pr-8 py-2 rounded-full border border-[#e5e0da] bg-white text-xs text-[#121110] placeholder:text-[#6b635b]/60 focus:outline-none focus:border-portfolio-gold transition-all cursor-target shadow-sm"
+                                    onChange={(event) => setSearchQuery(event.target.value)}
+                                    placeholder="Search the journal"
+                                    aria-label="Search journal articles"
+                                    className="w-full bg-transparent text-sm text-[#201f1c] outline-none placeholder:text-[#99938b]"
                                 />
                                 {searchQuery && (
                                     <button
-                                        onClick={() => setSearchQuery("")}
-                                        className="absolute right-3 top-1/2 -translate-y-1/2 text-[#5c544d] hover:text-[#121110]"
+                                        type="button"
+                                        aria-label="Clear search"
+                                        onClick={() => setSearchQuery('')}
+                                        className="text-[#77716a] hover:text-[#ea7008]"
                                     >
-                                        <X size={13} />
+                                        <X size={14} />
                                     </button>
                                 )}
                             </div>
                         </div>
-                    </section>
 
-                    {/* ─── DYNAMIC DISPATCHES ARCHIVE GRID ─────────────────────── */}
-                    <section className="blog-archive mb-24 sm:mb-32">
-                        {filteredPosts.length > 0 ? (
-                            <div className="space-y-8">
-                                {/* If there are multiple articles and no active tight query, showcase the first as a Wide Spotlight */}
-                                {filteredPosts.length >= 2 && activeCategory === "View all" && !searchQuery ? (
-                                    <>
-                                        <motion.div
-                                            initial={{ opacity: 0, y: 15 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            transition={{ duration: 0.5 }}
-                                        >
-                                            <WideEditorialCard
-                                                post={filteredPosts[1]}
-                                                onClick={handlePostClick}
-                                            />
-                                        </motion.div>
+                        <div className="flex items-baseline justify-between py-6">
+                            <h2 className="font-display text-xl font-semibold tracking-tight">
+                                {activeCategory === 'View all' ? 'Latest writing' : activeCategory}
+                            </h2>
+                            <span className="text-[11px] uppercase tracking-[0.12em] text-[#77716a]">
+                                {archivePosts.length} {archivePosts.length === 1 ? 'story' : 'stories'}
+                            </span>
+                        </div>
 
-                                        {/* Remaining articles in 3-column refined bookbinding grid */}
-                                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                                            {filteredPosts.slice(2).map((post, index) => (
-                                                <motion.div
-                                                    key={post.id}
-                                                    initial={{ opacity: 0, y: 20 }}
-                                                    whileInView={{ opacity: 1, y: 0 }}
-                                                    viewport={{ once: true, margin: "-40px" }}
-                                                    transition={{ duration: 0.4, delay: (index % 3) * 0.08 }}
-                                                >
-                                                    <EditorialGridCard post={post} onClick={handlePostClick} />
-                                                </motion.div>
-                                            ))}
+                        {archivePosts.length > 0 ? (
+                            <div className="grid grid-cols-1 gap-x-7 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-9 lg:gap-y-14">
+                                {archivePosts.map((post) => (
+                                    <button
+                                        key={post.id}
+                                        type="button"
+                                        onClick={() => openPost(post)}
+                                        className="group text-left"
+                                    >
+                                        <div className="blog-studio-artwork mb-5 aspect-[1.55] overflow-hidden bg-[#e5e1da]">
+                                            <EditorialArtwork post={post} />
                                         </div>
-                                    </>
-                                ) : (
-                                    /* Filtered or search results grid */
-                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                                        {filteredPosts.map((post, index) => (
-                                            <motion.div
-                                                key={post.id}
-                                                initial={{ opacity: 0, y: 20 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                transition={{ duration: 0.4, delay: (index % 3) * 0.08 }}
-                                            >
-                                                <EditorialGridCard post={post} onClick={handlePostClick} />
-                                            </motion.div>
-                                        ))}
-                                    </div>
-                                )}
+                                        <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.16em] text-[#ea7008]">
+                                            {post.category}<span className="px-2 text-[#c5c0b8]">/</span><span className="text-[#77716a]">{post.date}</span>
+                                        </p>
+                                        <h3 className="font-display text-xl font-semibold leading-snug tracking-[-0.025em] transition-colors group-hover:text-[#b65305]">
+                                            {post.title}
+                                        </h3>
+                                        <p className="mt-3 line-clamp-3 text-sm leading-6 text-[#625e58]">{post.excerpt}</p>
+                                        <span className="mt-5 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.13em] text-[#201f1c] group-hover:text-[#ea7008]">
+                                            Read story <ArrowUpRight size={14} />
+                                        </span>
+                                    </button>
+                                ))}
                             </div>
                         ) : (
-                            /* Empty Search State */
-                            <div className="text-center py-20 bg-[#faf8f5] border border-portfolio-gold/35 rounded-3xl p-8 max-w-xl mx-auto shadow-sm">
-                                <SlidersHorizontal size={28} className="mx-auto text-portfolio-gold mb-4" />
-                                <h3 className="text-lg font-bold text-[#121110] mb-2">No publications matched your filter</h3>
-                                <p className="text-[#5c544d] text-sm mb-6">
-                                    Try broadening your search term or selecting another category.
-                                </p>
+                            <div className="py-16 text-center">
+                                <p className="font-display text-xl font-semibold">No stories match that search.</p>
+                                <p className="mt-2 text-sm text-[#77716a]">Try another term or category.</p>
                                 <button
-                                    onClick={() => { setActiveCategory("View all"); setSearchQuery(""); }}
-                                    className="btn-primary inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-6 py-3 rounded-full cursor-target"
+                                    type="button"
+                                    onClick={resetFilters}
+                                    className="mt-5 text-xs font-bold uppercase tracking-[0.13em] text-[#ea7008] hover:text-[#b65305]"
                                 >
-                                    Reset Filters
+                                    Reset filters
                                 </button>
                             </div>
                         )}
                     </section>
 
-                    {/* ─── EDITORIAL DISPATCH TERMINAL (NEWSLETTER) ───────────── */}
-                    <section className="blog-newsletter mb-20 sm:mb-28">
-                        <div className="blog-newsletter-panel bg-[#faf8f5] text-[#121110] rounded-[2.5rem] p-8 sm:p-12 md:p-16 relative overflow-hidden border border-portfolio-gold/35 hover:border-portfolio-gold/60 shadow-[0_4px_35px_rgba(234,112,8,0.08)] transition-all duration-500">
-                            {/* Blueprint grid background */}
-                            <div className="blog-newsletter-decoration absolute inset-0 opacity-[0.04] bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
-                            <div className="blog-newsletter-decoration absolute top-0 right-1/4 w-[400px] h-[250px] bg-portfolio-gold/10 rounded-full blur-[100px] pointer-events-none" />
-
-                            <div className="relative z-10 max-w-2xl mx-auto text-center flex flex-col items-center">
-                                <div className="blog-newsletter-icon w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-6 text-portfolio-gold">
-                                    <Mail size={20} />
+                    {/* Keep the existing newsletter sign-up */}
+                    <section className="blog-newsletter mb-16 mt-10 sm:mb-20">
+                        <div className="blog-newsletter-panel relative overflow-hidden border border-[#dedbd5] bg-[#f3f2ee] p-7 sm:p-10 lg:p-12">
+                            <div className="relative z-10 mx-auto flex max-w-2xl flex-col items-center text-center">
+                                <div className="blog-newsletter-icon mb-5 flex h-11 w-11 items-center justify-center border border-[#d9d2c9] text-[#ea7008]">
+                                    <Mail size={19} />
                                 </div>
-
-                                <span className="text-xs font-semibold uppercase tracking-widest text-[#ea7008] mb-3 block">
-                                    The Foremark Dispatch
-                                </span>
-
-                                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#121110] mb-4 leading-tight">
-                                    Engineering Notes Delivered Monthly
-                                </h2>
-
-                                <p className="text-[#5c544d] text-sm sm:text-base max-w-md mb-8 leading-relaxed">
+                                <span className="mb-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#ea7008]">The Foremark Dispatch</span>
+                                <h2 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">Engineering Notes Delivered Monthly</h2>
+                                <p className="mt-3 max-w-md text-sm leading-6 text-[#625e58]">
                                     Direct architectural analyses, performance case studies, and modern tooling breakdowns. No fluff, no sponsored spam.
                                 </p>
-
                                 <form
-                                    className="flex flex-col sm:flex-row gap-3 w-full max-w-md"
-                                    onSubmit={(e) => { e.preventDefault(); alert("Thank you for subscribing to The Foremark Dispatch."); }}
+                                    className="mt-6 flex w-full max-w-md flex-col gap-3 sm:flex-row"
+                                    onSubmit={(event) => {
+                                        event.preventDefault();
+                                        alert('Thank you for subscribing to The Foremark Dispatch.');
+                                    }}
                                 >
                                     <input
                                         type="email"
                                         required
+                                        aria-label="Email address"
                                         placeholder="Enter your email address"
-                                        className="flex-1 px-5 py-3.5 rounded-full bg-white border border-[#e5e0da] text-[#121110] placeholder:text-[#6b635b]/60 text-sm focus:outline-none focus:border-portfolio-gold transition-colors cursor-target shadow-sm"
+                                        className="min-w-0 flex-1 border border-[#dedbd5] bg-white px-4 py-3 text-sm outline-none transition-colors focus:border-[#ea7008]"
                                     />
-                                    <button
-                                        type="submit"
-                                        className="btn-primary inline-flex items-center justify-center gap-2 font-bold text-xs uppercase tracking-widest px-7 py-3.5 rounded-full cursor-target whitespace-nowrap"
-                                    >
+                                    <button type="submit" className="inline-flex items-center justify-center gap-2 bg-[#ea7008] px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white transition-colors hover:bg-[#b65305]">
                                         Subscribe <ArrowRight size={14} />
                                     </button>
                                 </form>
@@ -342,28 +230,21 @@ const BlogPage = () => {
                         </div>
                     </section>
 
-                    {/* ─── PROJECT INQUIRY CLOSER ─────────────────────────────── */}
-                    <section className="blog-project-cta pt-12 sm:pt-16 border-t border-[#e5e0da] text-center">
-                        <div className="max-w-xl mx-auto flex flex-col items-center">
-                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#121110] mb-4">
-                                Have a project in mind?
-                            </h2>
-                            <p className="text-[#5c544d] text-sm sm:text-base leading-relaxed mb-8">
+                    {/* Existing project inquiry link */}
+                    <section className="blog-project-cta mb-14 border-t border-[#dedbd5] pt-12 text-center sm:mb-20 sm:pt-16">
+                        <div className="mx-auto flex max-w-xl flex-col items-center">
+                            <h2 className="font-display mb-4 text-2xl font-semibold tracking-tight sm:text-3xl">Have a project in mind?</h2>
+                            <p className="mb-7 text-sm leading-6 text-[#625e58] sm:text-base">
                                 Let’s partner up to build, optimize, or scale your digital platforms with engineering excellence.
                             </p>
-                            <Link
-                                to="/contact"
-                                className="btn-primary inline-flex items-center gap-2 uppercase tracking-widest text-xs cursor-target"
-                            >
-                                Start a project <ArrowUpRight size={16} />
+                            <Link to="/contact" className="btn-primary inline-flex items-center gap-2 text-xs uppercase tracking-[0.13em]">
+                                Start a project <ArrowUpRight size={15} />
                             </Link>
                         </div>
                     </section>
-
                 </div>
             </main>
 
-            {/* Slide-over article drawer */}
             <BlogReader
                 post={selectedPost}
                 isOpen={isReaderOpen}

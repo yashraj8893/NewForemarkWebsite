@@ -64,7 +64,7 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, isOpen, onClose })
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 md:p-8 lg:p-10">
+        <div className="fixed inset-0 z-50">
           {/* Deep Ambient Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -76,17 +76,17 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, isOpen, onClose })
             aria-hidden="true"
           />
 
-          {/* Centered Modal Card */}
+          {/* Full-screen article reader */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.94, y: 24 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.96, y: 16 }}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 12 }}
             transition={{
-              duration: 0.38,
+              duration: 0.3,
               ease: [0.16, 1, 0.3, 1]
             }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-4xl max-h-[92vh] bg-white text-[#1a1816] rounded-2xl sm:rounded-3xl shadow-[0_20px_70px_rgba(0,0,0,0.25),0_0_0_1px_rgba(234,112,8,0.2)] border border-[#e5e0da] flex flex-col overflow-hidden z-10"
+            className="relative w-full h-full max-w-none max-h-none bg-white text-[#1a1816] rounded-none shadow-none border-0 flex flex-col overflow-hidden z-10"
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-article-title"
